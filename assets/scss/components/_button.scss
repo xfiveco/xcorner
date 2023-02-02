@@ -1,0 +1,42 @@
+.c-button {
+  border-radius: 0;
+  border-style: solid;
+  border-width: remCalc(1);
+  cursor: pointer;
+  font-family: "Montserrat", Arial, Helvetica, sans-serif;
+  font-weight: 400;
+  line-height: normal;
+  margin: 0 0 1rem;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  background-color: transparent;
+  border-color: $color-grey-450;
+  color: $color-grey-475;
+  font-size: 1rem;
+  padding: 0.85714rem 2.28571rem;
+  border-radius: 4px;
+  outline: none;
+  vertical-align: middle;
+
+  &:hover,
+  &:focus {
+    background-color: transparent;
+    border-color: $color-grey-615;
+    color: $color-grey-650;
+  }
+}
+
+.c-button--primary {
+  background-color: $color-grey-625;
+  border-color: $color-grey-625;
+  color: $color-white;
+
+  &:hover,
+  &:focus {
+    background-color: $color-grey-475;
+    border-color: $color-grey-475;
+    color: $color-white;
+  }
+}
