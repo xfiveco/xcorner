@@ -1,6 +1,12 @@
 /* ==========================================================================
-   #TYPOGRAPHY
+   #LINKS
    ========================================================================== */
 
-$font-size-root: 16px;
-$font-size-base: 1rem;
+a {
+  color: $color-link;
+  text-decoration: underline;
+
+  &:hover {
+    color: $color-hover;
+  }
+}

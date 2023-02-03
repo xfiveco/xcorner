@@ -1,18 +1,8 @@
-a {
-  color: $color-grey-650;
-  line-height: inherit;
-  text-decoration: underline;
-}
-
-h1, 
-h2, 
-h3, 
-h4, 
-h5, 
-h6 {
-  color: $color-grey-625;
-  font-family: "Montserrat", Arial, Helvetica, sans-serif;
-  font-weight: 400;
-  letter-spacing: 0.25px;
-  margin-bottom: 0.78571rem;
-}
+@import "html";
+@import "headings";
+@import "images";
+@import "links";
+@import "lists";
+@import "tables";
+@import "blockquote";
+@import "hr";

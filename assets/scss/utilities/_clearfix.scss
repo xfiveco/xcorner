@@ -1,6 +1,11 @@
 /* ==========================================================================
-   #TYPOGRAPHY
+   #CLEARFIX
    ========================================================================== */
 
-$font-size-root: 16px;
-$font-size-base: 1rem;
+/**
+ * Attach our clearfix mixin to a utility class.
+ */
+
+.u-clearfix {
+  @include clearfix();
+}

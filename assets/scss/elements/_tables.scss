@@ -1,6 +1,11 @@
 /* ==========================================================================
-   #TYPOGRAPHY
+   #TABLES
    ========================================================================== */
 
-$font-size-root: 16px;
-$font-size-base: 1rem;
+/**
+ * 1. Ensure tables fill up as much space as possible.
+ */
+
+table {
+  width: 100%; /* [1] */
+}

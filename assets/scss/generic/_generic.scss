@@ -1,11 +1,4 @@
-* {
-  box-sizing: border-box;
-}
-
-html,
-body {
-  margin: 0;
-  overflow-x: hidden;
-  min-width: 100vw;
-  min-height: 100vh;
-}
+@import "reset";
+@import "font-face";
+@import "box-sizing";
+@import "shared";
