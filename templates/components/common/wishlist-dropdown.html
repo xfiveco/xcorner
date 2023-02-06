@@ -1,7 +1,7 @@
 <form action="{{product.add_to_wishlist_url}}" class="form form-wishlist form-action" data-wishlist-add method="post">
     <a aria-controls="wishlist-dropdown"
        aria-expanded="false"
-       class="button dropdown-menu-button"
+       class="c-button dropdown-menu-button"
        data-dropdown="wishlist-dropdown"
        href="#"
     >
@@ -16,7 +16,7 @@
         {{#if customer.wishlists}}
             {{#each customer.wishlists}}
                 <li>
-                    <input class="button {{#if this.num_items '!==' '0'}}button--has-items{{/if}}"
+                    <input class="c-button {{#if this.num_items '!==' '0'}}button--has-items{{/if}}"
                            formaction="{{this.add_url}}&product_id={{../product.id}}"
                            type="submit"
                            value="{{this.name}}"
@@ -25,11 +25,11 @@
             {{/each}}
         {{else}}
         <li>
-            <input class="button" type="submit" value="{{lang 'account.wishlists.add_to_default'}}">
+            <input class="c-button" type="submit" value="{{lang 'account.wishlists.add_to_default'}}">
         </li>
         {{/if}}
         <li>
-            <a data-wishlist class="button" href="/wishlist.php?action=addwishlist&product_id={{product.id}}">{{lang 'account.wishlists.create_new'}}</a>
+            <a data-wishlist class="c-button" href="/wishlist.php?action=addwishlist&product_id={{product.id}}">{{lang 'account.wishlists.create_new'}}</a>
         </li>
     </ul>
 </form>

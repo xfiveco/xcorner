@@ -23,11 +23,11 @@
                 <form method="post" action="{{delete_url}}" class="form">
                     <fieldset class="form-fieldset">
                         {{#if is_public}}
-                            <a href="{{share_url}}" class="button button--primary button--small"
+                            <a href="{{share_url}}" class="c-button c-button--primary button--small"
                            role="button">{{lang 'common.share'}}</a>
                         {{/if}}
-                        <a href="{{edit_url}}" class="button button--small" data-wishlist>{{lang 'common.edit'}}</a>
-                        <input type="submit" value="{{lang 'common.delete'}}" class="button button--small" data-wishlist-delete>
+                        <a href="{{edit_url}}" class="c-button button--small" data-wishlist>{{lang 'common.edit'}}</a>
+                        <input type="submit" value="{{lang 'common.delete'}}" class="c-button button--small" data-wishlist-delete>
                     </fieldset>
                 </form>
             </td>
@@ -41,13 +41,13 @@
 
     {{/unless}}
     <div class="form-actions">
-        <a href="{{this.urls.account.wishlists.add}}" class="button button--primary" role="button" data-wishlist>{{lang 'account.wishlists.new'}}</a>
+        <a href="{{this.urls.account.wishlists.add}}" class="c-button c-button--primary" role="button" data-wishlist>{{lang 'account.wishlists.new'}}</a>
         {{inject 'wishlistDelete' (lang 'account.wishlists.delete_alert')}}
         {{#if customer.wishlists}}
             {{#each customer.wishlists}}
                 <input type="hidden" value="{{this.id}}" name="deletewishlist[]">
             {{/each}}
-            <input type="submit" value="{{lang 'account.wishlists.delete_all'}}" class="button" data-wishlist-delete>
+            <input type="submit" value="{{lang 'account.wishlists.delete_all'}}" class="c-button" data-wishlist-delete>
         {{/if}}
     </div>
 </form>

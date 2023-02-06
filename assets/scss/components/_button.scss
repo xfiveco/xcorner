@@ -17,7 +17,7 @@
   display: inline-block;
   background-color: transparent;
   border-color: $color-grey-450;
-  color: $color-grey-475;
+  color: $color-medium-grey;
   font-size: 1rem;
   padding: 0.85714rem 2.28571rem;
   border-radius: 4px;
@@ -28,7 +28,7 @@
   &:focus {
     background-color: transparent;
     border-color: $color-grey-615;
-    color: $color-grey-650;
+    color: $color-dark-grey;
   }
 }
 
@@ -41,8 +41,8 @@
 
   &:hover,
   &:focus {
-    background-color: $color-grey-475;
-    border-color: $color-grey-475;
+    background-color: $color-medium-grey;
+    border-color: $color-medium-grey;
     color: $color-white;
   }
 }

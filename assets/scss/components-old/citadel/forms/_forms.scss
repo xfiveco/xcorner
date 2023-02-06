@@ -109,7 +109,7 @@
         margin-top: spacing("single");
     }
 
-    .button,
+    .c-button,
     input,
     a {
         vertical-align: top;
@@ -120,7 +120,7 @@
             width: auto;
         }
 
-        + .button,
+        + .c-button,
         + input,
         + a {
             margin-top: spacing("half");
@@ -206,7 +206,7 @@
     }
 
     .form-input,
-    .button {
+    .c-button {
         display: block;
         width: 100%;
     }
@@ -221,7 +221,7 @@
         }
     }
 
-    .button {
+    .c-button {
         @include breakpoint("large") {
             width: auto;
         }
@@ -269,7 +269,7 @@
 // -----------------------------------------------------------------------------
 
 .form-increment {
-    .button {
+    .c-button {
         margin: 0;
         padding: remCalc(3px) remCalc(5px);
     }
@@ -372,7 +372,7 @@
         padding-right: $form-minMaxRow-column-gutter;
     }
 
-    .button {
+    .c-button {
         margin-bottom: 0;
         padding-left: 0;
         padding-right: 0;
