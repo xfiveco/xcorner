@@ -15,17 +15,17 @@ import carousel from './common/carousel';
 import svgInjector from './global/svg-injector';
 
 export default class Global extends PageManager {
-    onReady() {
-        const { cartId, secureBaseUrl } = this.context;
-        cartPreview(secureBaseUrl, cartId);
-        quickSearch();
-        currencySelector(cartId);
-        foundation($(document));
-        quickView(this.context);
-        carousel(this.context);
-        menu();
-        mobileMenuToggle();
-        privacyCookieNotification();
-        svgInjector();
-    }
+  onReady() {
+    const { cartId, secureBaseUrl } = this.context;
+    cartPreview(secureBaseUrl, cartId);
+    quickSearch();
+    currencySelector(cartId);
+    foundation($(document));
+    quickView(this.context);
+    carousel(this.context);
+    menu();
+    mobileMenuToggle();
+    privacyCookieNotification();
+    svgInjector();
+  }
 }

@@ -1,20 +1,24 @@
 export default class PageManager {
-    constructor(context) {
-        this.context = context;
-    }
+  constructor(context) {
+    this.context = context;
+  }
 
-    type() {
-        return this.constructor.name;
-    }
+  type() {
+    return this.constructor.name;
+  }
 
-    onReady() {
-    }
+  onReady() {
+  }
 
-    static load(context) {
-        const page = new this(context);
+  static load(context) {
+    const page = new this(context);
 
-        $(document).ready(() => {
-            page.onReady.bind(page)();
-        });
+    document.addEventListener('DOMContentLoaded', () => {
+      page.onReady.bind(page)();
+    })
+
+    if (document.readyState === 'interactive' || document.readyState === 'complete') {
+      page.onReady.bind(page)();
     }
+  }
 }

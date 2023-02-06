@@ -1,6 +1,7 @@
 import 'foundation-sites/js/foundation/foundation';
 import 'foundation-sites/js/foundation/foundation.dropdown';
 import utils from '@bigcommerce/stencil-utils';
+import q$ from './selector';
 
 export const CartPreviewEvents = {
     close: 'closed.fndtn.dropdown',
@@ -9,34 +10,34 @@ export const CartPreviewEvents = {
 
 export default function (secureBaseUrl, cartId) {
     const loadingClass = 'is-loading';
-    const $cart = $('[data-cart-preview]');
-    const $cartDropdown = $('#cart-preview-dropdown');
-    const $cartLoading = $('<div class="loadingOverlay"></div>');
+    const $cart = q$('[data-cart-preview]');
+    const $cartDropdown = q$('#cart-preview-dropdown');
+    const $cartLoading = document.createElement('div');
+    $cartLoading.classList.add('loadingOverlay');
 
-    const $body = $('body');
+    const $body = q$('body');
 
     if (window.ApplePaySession) {
-        $cartDropdown.addClass('apple-pay-supported');
+        $cartDropdown.classList.add('apple-pay-supported');
     }
 
-    $body.on('cart-quantity-update', (event, quantity) => {
-        $cart.attr('aria-label', (_, prevValue) => prevValue.replace(/\d+/, quantity));
+    $('body').on('cart-quantity-update', (event, quantity) => {
+        $cart.setAttribute('aria-label', (_, prevValue) => prevValue.replace(/\d+/, quantity));
 
         if (!quantity) {
-            $cart.addClass('navUser-item--cart__hidden-s');
+            $cart.classList.add('navUser-item--cart__hidden-s');
         } else {
-            $cart.removeClass('navUser-item--cart__hidden-s');
+            $cart.classList.remove('navUser-item--cart__hidden-s');
         }
 
-        $('.cart-quantity')
-            .text(quantity)
-            .toggleClass('countPill--positive', quantity > 0);
+        const $cartQuantity = q$('.cart-quantity').textContent = quantity;
+        $cartQuantity.classList.toggle('countPill--positive', quantity > 0);
         if (utils.tools.storage.localStorageAvailable()) {
             localStorage.setItem('cart-quantity', quantity);
         }
     });
 
-    $cart.on('click', event => {
+    $cart.addEventListener('click', event => {
         const options = {
             template: 'common/cart-preview',
         };
@@ -51,18 +52,14 @@ export default function (secureBaseUrl, cartId) {
 
         event.preventDefault();
 
-        $cartDropdown
-            .addClass(loadingClass)
-            .html($cartLoading);
-        $cartLoading
-            .show();
+        $cartDropdown.classList.add(loadingClass)
+        $cartDropdown.append($cartLoading);
+        $cartLoading.style.display = 'block';
 
         utils.api.cart.getContent(options, (err, response) => {
-            $cartDropdown
-                .removeClass(loadingClass)
-                .html(response);
-            $cartLoading
-                .hide();
+            $cartDropdown.classList.remove(loadingClass);
+            $cartDropdown.innerHTML = response;
+            $cartLoading.style.display = 'none';
         });
     });
 
@@ -73,7 +70,7 @@ export default function (secureBaseUrl, cartId) {
         if (utils.tools.storage.localStorageAvailable()) {
             if (localStorage.getItem('cart-quantity')) {
                 quantity = Number(localStorage.getItem('cart-quantity'));
-                $body.trigger('cart-quantity-update', quantity);
+                $('body').trigger('cart-quantity-update', quantity);  // TODO: check if it's necessary to create custom events or a utility library fro triggering them
             }
         }
 
@@ -95,9 +92,9 @@ export default function (secureBaseUrl, cartId) {
         // If the Cart API gives us a different quantity number, update it
         cartQtyPromise.then(qty => {
             quantity = qty;
-            $body.trigger('cart-quantity-update', quantity);
+            $('body').trigger('cart-quantity-update', quantity);
         });
     } else {
-        $body.trigger('cart-quantity-update', quantity);
+        $('body').trigger('cart-quantity-update', quantity);
     }
 }
