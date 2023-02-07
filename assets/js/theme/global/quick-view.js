@@ -11,7 +11,7 @@ import q$ from './selector';
 export default function (context) {
     const modal = defaultModal();
 
-    q$('.quickview').addEventListener('click', event => {
+    q$('.quickview')?.addEventListener('click', event => {
         event.preventDefault();
 
         const productId = event.currentTarget.dataset.productId;

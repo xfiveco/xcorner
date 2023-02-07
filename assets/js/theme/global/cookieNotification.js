@@ -20,15 +20,20 @@ export default function () {
     const $privacyDialog = q$('.cookieMessage');
 
     if (document.cookie.indexOf('ACCEPT_COOKIE_USAGE') === -1) {
-        $privacyDialog.style.display = 'block';
+        if ($privacyDialog !== null) {
+          $privacyDialog.style.display = 'block';
+        }
     }
 
-    q$('body [data-privacy-accept]').addEventListener('click', () => {
+    q$('body [data-privacy-accept]')?.addEventListener('click', () => {
         const date = new Date();
         date.setDate(date.getDate() + 365);
         document.cookie = `ACCEPT_COOKIE_USAGE=1;expires=${date.toGMTString()}; path=/`;
 
         utils.hooks.emit('cookie-privacy-accepted');
-        $privacyDialog.style.display = 'none';
+
+        if ($privacyDialog !== null) {
+          $privacyDialog.style.display = 'none';
+        }
     });
 }

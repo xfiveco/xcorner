@@ -19,5 +19,5 @@ export default function q$(selector, $context = null) {
  * @returns Array[DOMElement]
  */
 export function q$$(selector, $context = null) {
-  return [...($context || document).querySelectorAll(selector)];
+  return Array.from(($context || document).querySelectorAll(selector));
 }

@@ -240,5 +240,5 @@ export default function collapsibleFactory(selector = `[data-${PLUGIN_KEY}]`, ov
         $($toggle).data(instanceKey, collapsible);
 
         return collapsible;
-    }).toArray();
+    });
 }

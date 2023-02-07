@@ -121,7 +121,7 @@ export class Modal {
 
         /* STRF-2471 - Multiple Wish Lists - prevents double-firing
          * of foundation.dropdown click.fndtn.dropdown event */
-        q$('dropdown-menu-button', this.$modal).addEventListener('click', e => {
+        this.$modal.querySelector('.dropdown-menu-button')?.addEventListener('click', e => {
             e.stopPropagation();
         });
     }
@@ -149,7 +149,10 @@ export class Modal {
 
         this.$modal.classList.remove(SizeClasses.small);
         this.$modal.classList.remove(SizeClasses.large);
-        this.$modal.classList.add(SizeClasses[size] || '');
+        
+        if (size !== 'normal') {
+          this.$modal.classList.add(SizeClasses[size]);
+        }
     }
 
     bindEvents() {
@@ -266,7 +269,7 @@ export default function modalFactory(selector = '[data-reveal]', options = {}) {
     return $modals.map(element => {
         const $modal = element;
         const instanceKey = 'modalInstance';
-        const cachedModal = $modal.dataset[instanceKey];
+        const cachedModal = $($modal).data('instanceKey');
 
         if (cachedModal instanceof Modal) {
             return cachedModal;
@@ -274,7 +277,7 @@ export default function modalFactory(selector = '[data-reveal]', options = {}) {
 
         const modal = new Modal($modal, options);
 
-        $modal.dataset[instanceKey] = modal;
+        $($modal).data(instanceKey, modal);
 
         return modal;
     });

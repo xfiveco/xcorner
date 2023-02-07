@@ -20,12 +20,17 @@ export default class Global extends PageManager {
     cartPreview(secureBaseUrl, cartId);
     quickSearch();
     currencySelector(cartId);
-    foundation($(document));
     quickView(this.context);
     carousel(this.context);
     menu();
     mobileMenuToggle();
     privacyCookieNotification();
     svgInjector();
+    
+    try {
+      foundation($(document));
+    } catch( error ) {
+      console.log('foundation error: ', error);   // TODO: deal with foundation when finding if it's needed
+    }
   }
 }

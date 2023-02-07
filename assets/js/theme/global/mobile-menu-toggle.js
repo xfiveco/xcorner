@@ -35,7 +35,7 @@ export class MobileMenuToggle {
         this.$navList = q$('.navPages-list.navPages-list-depth-max');
         this.$header = q$(headerSelector);
         this.$scrollView = q$(scrollViewSelector, this.$menu);
-        this.$subMenus = this.$navList.querySelector('.navPages-action');
+        this.$subMenus = q$$('.navPages-action', this.$navList);
         this.$toggle = $toggle;
         this.mediumMediaQueryList = mediaQueryListFactory('medium');
 
@@ -49,7 +49,7 @@ export class MobileMenuToggle {
         this.bindEvents();
 
         // Assign DOM attributes
-        this.$toggle.setAttribute('aria-controls', this.$menu.attr('id'));
+        this.$toggle.setAttribute('aria-controls', this.$menu.getAttribute('id'));
 
         // Hide by default
         this.hide();
@@ -62,7 +62,7 @@ export class MobileMenuToggle {
     bindEvents() {
         this.$toggle.addEventListener('click', this.onToggleClick);
         $(this.$header).on(CartPreviewEvents.open, this.onCartPreviewOpen);
-        this.$subMenus.addEventListener('click', this.onSubMenuClick);
+        this.$subMenus.forEach($subMenu => $subMenu.addEventListener('click', this.onSubMenuClick));
 
         if (this.mediumMediaQueryList && this.mediumMediaQueryList.addListener) {
             this.mediumMediaQueryList.addListener(this.onMediumMediaQueryMatch);
@@ -95,7 +95,7 @@ export class MobileMenuToggle {
         this.$menu.classList.add('is-open');
 
         this.$header.classList.add('is-open');
-        this.$scrollView.scrollTop(0);
+        this.$scrollView.scrollIntoView(true);
 
         this.resetSubMenus();
     }
@@ -155,8 +155,8 @@ export class MobileMenuToggle {
     }
 
     resetSubMenus() {
-        this.$navList.querySelector('.is-hidden').classList.remove('is-hidden');
-        this.$navList.classList.remove('subMenu-is-open');
+        q$$('.is-hidden', this.$navList).forEach($el => $el.classList.remove('is-hidden'));
+        this.$navList?.classList.remove('subMenu-is-open');
     }
 }
 
