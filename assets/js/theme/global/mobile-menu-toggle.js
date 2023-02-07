@@ -1,6 +1,7 @@
 import _ from 'lodash';
 import mediaQueryListFactory from '../common/media-query-list';
 import { CartPreviewEvents } from './cart-preview';
+import q$, { q$$ } from './selector';
 
 const PLUGIN_KEY = {
     CAMEL: 'mobileMenuToggle',
@@ -8,7 +9,7 @@ const PLUGIN_KEY = {
 };
 
 function optionsFromData($element) {
-    const mobileMenuId = $element.data(PLUGIN_KEY.CAMEL);
+    const mobileMenuId = $($element).data(PLUGIN_KEY.CAMEL);
 
     return {
         menuSelector: mobileMenuId && `#${mobileMenuId}`,
@@ -29,12 +30,12 @@ export class MobileMenuToggle {
         menuSelector = '#menu',
         scrollViewSelector = '.navPages',
     } = {}) {
-        this.$body = $('body');
-        this.$menu = $(menuSelector);
-        this.$navList = $('.navPages-list.navPages-list-depth-max');
-        this.$header = $(headerSelector);
-        this.$scrollView = $(scrollViewSelector, this.$menu);
-        this.$subMenus = this.$navList.find('.navPages-action');
+        this.$body = q$('body');
+        this.$menu = q$(menuSelector);
+        this.$navList = q$('.navPages-list.navPages-list-depth-max');
+        this.$header = q$(headerSelector);
+        this.$scrollView = q$(scrollViewSelector, this.$menu);
+        this.$subMenus = this.$navList.querySelector('.navPages-action');
         this.$toggle = $toggle;
         this.mediumMediaQueryList = mediaQueryListFactory('medium');
 
@@ -48,20 +49,20 @@ export class MobileMenuToggle {
         this.bindEvents();
 
         // Assign DOM attributes
-        this.$toggle.attr('aria-controls', this.$menu.attr('id'));
+        this.$toggle.setAttribute('aria-controls', this.$menu.attr('id'));
 
         // Hide by default
         this.hide();
     }
 
     get isOpen() {
-        return this.$menu.hasClass('is-open');
+        return this.$menu.classList.contains('is-open');
     }
 
     bindEvents() {
-        this.$toggle.on('click', this.onToggleClick);
-        this.$header.on(CartPreviewEvents.open, this.onCartPreviewOpen);
-        this.$subMenus.on('click', this.onSubMenuClick);
+        this.$toggle.addEventListener('click', this.onToggleClick);
+        $(this.$header).on(CartPreviewEvents.open, this.onCartPreviewOpen);
+        this.$subMenus.addEventListener('click', this.onSubMenuClick);
 
         if (this.mediumMediaQueryList && this.mediumMediaQueryList.addListener) {
             this.mediumMediaQueryList.addListener(this.onMediumMediaQueryMatch);
@@ -69,8 +70,8 @@ export class MobileMenuToggle {
     }
 
     unbindEvents() {
-        this.$toggle.off('click', this.onToggleClick);
-        this.$header.off(CartPreviewEvents.open, this.onCartPreviewOpen);
+        this.$toggle.removeEventListener('click', this.onToggleClick);
+        $(this.$header).off(CartPreviewEvents.open, this.onCartPreviewOpen);
 
         if (this.mediumMediaQueryList && this.mediumMediaQueryList.addListener) {
             this.mediumMediaQueryList.removeListener(this.onMediumMediaQueryMatch);
@@ -86,30 +87,28 @@ export class MobileMenuToggle {
     }
 
     show() {
-        this.$body.addClass('has-activeNavPages');
+        this.$body.classList.add('has-activeNavPages');
 
-        this.$toggle
-            .addClass('is-open')
-            .attr('aria-expanded', true);
+        this.$toggle.classList.add('is-open')
+        this.$toggle.setAttribute('aria-expanded', true);
 
-        this.$menu.addClass('is-open');
+        this.$menu.classList.add('is-open');
 
-        this.$header.addClass('is-open');
+        this.$header.classList.add('is-open');
         this.$scrollView.scrollTop(0);
 
         this.resetSubMenus();
     }
 
     hide() {
-        this.$body.removeClass('has-activeNavPages');
+        this.$body.classList.remove('has-activeNavPages');
 
-        this.$toggle
-            .removeClass('is-open')
-            .attr('aria-expanded', false);
+        this.$toggle.classList.remove('is-open')
+        this.$toggle.setAttribute('aria-expanded', false);
 
-        this.$menu.removeClass('is-open');
+        this.$menu.classList.remove('is-open');
 
-        this.$header.removeClass('is-open');
+        this.$header.classList.remove('is-open');
 
         this.resetSubMenus();
     }
@@ -136,28 +135,28 @@ export class MobileMenuToggle {
     }
 
     onSubMenuClick(event) {
-        const $closestAction = $(event.target).closest('.navPages-action');
-        const $parentSiblings = $closestAction.parent().siblings();
-        const $parentAction = $closestAction.closest('.navPage-subMenu-horizontal').siblings('.navPages-action');
+        const $closestAction = event.target.closest('.navPages-action');
+        const $parentSiblings = Array.from($closestAction.parentNode.children);
+        const $parentAction = q$$('.navPages-action', $closestAction.closest('.navPage-subMenu-horizontal'));
 
-        if (this.$subMenus.hasClass('is-open')) {
-            this.$navList.addClass('subMenu-is-open');
+        if (this.$subMenus.classList.contains('is-open')) {
+            this.$navList.classList.add('subMenu-is-open');
         } else {
-            this.$navList.removeClass('subMenu-is-open');
+            this.$navList.classList.remove('subMenu-is-open');
         }
 
-        if ($(event.target).hasClass('is-open')) {
-            $parentSiblings.addClass('is-hidden');
-            $parentAction.addClass('is-hidden');
+        if (event.target.classList.contains('is-open')) {
+            $parentSiblings.forEach($el => $el.classList.add('is-hidden'));
+            $parentAction.forEach($el => $el.classList.add('is-hidden'));
         } else {
-            $parentSiblings.removeClass('is-hidden');
-            $parentAction.removeClass('is-hidden');
+            $parentSiblings.classList.remove('is-hidden');
+            $parentAction.classList.remove('is-hidden');
         }
     }
 
     resetSubMenus() {
-        this.$navList.find('.is-hidden').removeClass('is-hidden');
-        this.$navList.removeClass('subMenu-is-open');
+        this.$navList.querySelector('.is-hidden').classList.remove('is-hidden');
+        this.$navList.classList.remove('subMenu-is-open');
     }
 }
 
@@ -171,9 +170,9 @@ export class MobileMenuToggle {
  * @return {MobileMenuToggle}
  */
 export default function mobileMenuToggleFactory(selector = `[data-${PLUGIN_KEY.SNAKE}]`, overrideOptions = {}) {
-    const $toggle = $(selector).eq(0);
+    const $toggle = q$(selector);
     const instanceKey = `${PLUGIN_KEY.CAMEL}Instance`;
-    const cachedMobileMenu = $toggle.data(instanceKey);
+    const cachedMobileMenu = $($toggle).data(instanceKey);
 
     if (cachedMobileMenu instanceof MobileMenuToggle) {
         return cachedMobileMenu;
@@ -182,7 +181,7 @@ export default function mobileMenuToggleFactory(selector = `[data-${PLUGIN_KEY.S
     const options = _.extend(optionsFromData($toggle), overrideOptions);
     const mobileMenu = new MobileMenuToggle($toggle, options);
 
-    $toggle.data(instanceKey, mobileMenu);
+    $($toggle).data(instanceKey, mobileMenu);
 
     return mobileMenu;
 }

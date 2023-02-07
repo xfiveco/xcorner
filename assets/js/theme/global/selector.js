@@ -6,7 +6,7 @@
  * @param {DOMElement} [$context=null] 
  * @returns $DOMElement
  */
-export function q$(selector, $context = null) {
+export default function q$(selector, $context = null) {
   return ($context || document).querySelector(selector);
 }
 

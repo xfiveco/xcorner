@@ -30,8 +30,13 @@ export default function (secureBaseUrl, cartId) {
             $cart.classList.remove('navUser-item--cart__hidden-s');
         }
 
-        const $cartQuantity = q$('.cart-quantity').textContent = quantity;
-        $cartQuantity.classList.toggle('countPill--positive', quantity > 0);
+        const $cartQuantity = q$('.cart-quantity');
+        $cartQuantity.textContent = quantity;
+
+        if (quantity > 0) {
+          $cartQuantity.classList.add('countPill--positive');
+        }
+        
         if (utils.tools.storage.localStorageAvailable()) {
             localStorage.setItem('cart-quantity', quantity);
         }

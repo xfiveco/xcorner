@@ -1,21 +1,22 @@
 import _ from 'lodash';
 import utils from '@bigcommerce/stencil-utils';
 import StencilDropDown from './stencil-dropdown';
+import q$, { q$$ } from './selector';
 
 export default function () {
     const TOP_STYLING = 'top: 49px;';
-    const $quickSearchResults = $('.quickSearchResults');
-    const $quickSearchForms = $('[data-quick-search-form]');
-    const $quickSearchExpand = $('#quick-search-expand');
-    const $searchQuery = $quickSearchForms.find('[data-search-quick]');
+    const $quickSearchResults = q$('.quickSearchResults');
+    const $quickSearchForms = q$('[data-quick-search-form]');
+    const $quickSearchExpand = q$('#quick-search-expand');
+    const $searchQuery =  q$('[data-search-quick]', $quickSearchForms);
     const stencilDropDownExtendables = {
         hide: () => {
-            $quickSearchExpand.attr('aria-expanded', false);
-            $searchQuery.trigger('blur');
+            $quickSearchExpand.setAttribute('aria-expanded', false);
+            $searchQuery.blur();
         },
         show: (event) => {
-            $quickSearchExpand.attr('aria-expanded', true);
-            $searchQuery.trigger('focus');
+            $quickSearchExpand.setAttribute('aria-expanded', true);
+            $searchQuery.focus();
             event.stopPropagation();
         },
     };
@@ -26,7 +27,7 @@ export default function () {
         // If the target element has this data tag or one of it's parents, do not close the search results
         // We have to specify `.modal-background` because of limitations around Foundation Reveal not allowing
         // any modification to the background element.
-        if ($(e.target).closest('[data-prevent-quick-search-close], .modal-background').length === 0) {
+        if (e.target.closest('.modal-background') === null && e.target.closest('[data-prevent-quick-search-close]') === null) {
             stencilDropDown.hide($container);
         }
     };
@@ -39,33 +40,36 @@ export default function () {
                 return false;
             }
 
-            $quickSearchResults.html(response);
-            const $quickSearchResultsCurrent = $quickSearchResults.filter(':visible');
+            $quickSearchResults.innerHTML = response;
+            const $quickSearchResultsCurrent = q$$(':visible', $quickSearchResults);
 
-            const $noResultsMessage = $quickSearchResultsCurrent.find('.quickSearchMessage');
+            const $noResultsMessage = $quickSearchResultsCurrent.filter($el => $el.querySelector('.quickSearchMessage'));
             if ($noResultsMessage.length) {
-                $noResultsMessage.attr({
+                $noResultsMessage.forEach($el => $el.setAttribute({
                     role: 'status',
                     'aria-live': 'polite',
-                });
+                }));
             } else {
-                const $quickSearchAriaMessage = $quickSearchResultsCurrent.next();
-                $quickSearchAriaMessage.addClass('u-hidden');
+                const $quickSearchAriaMessage = $quickSearchResultsCurrent.map($el => {
+                  $el.classList.add('u-hidden');
 
-                const predefinedText = $quickSearchAriaMessage.data('search-aria-message-predefined-text');
-                const itemsFoundCount = $quickSearchResultsCurrent.find('.product').length;
+                  return $el.nextElementSibling;
+                });
 
-                $quickSearchAriaMessage.text(`${itemsFoundCount} ${predefinedText} ${searchQuery}`);
+                const predefinedText = $quickSearchAriaMessage[0].dataset['search-aria-message-predefined-text'];
+                const itemsFoundCount = $quickSearchResultsCurrent.filte($el => $el.classList.contains('product')).length;
+
+                $quickSearchAriaMessage.forEach($el => $el.textContent = `${itemsFoundCount} ${predefinedText} ${searchQuery}`);
 
                 setTimeout(() => {
-                    $quickSearchAriaMessage.removeClass('u-hidden');
+                    $quickSearchAriaMessage.forEach($el => $el.classList.remove('u-hidden'));
                 }, 100);
             }
         });
     }, debounceWaitTime);
 
     utils.hooks.on('search-quick', (event, currentTarget) => {
-        const searchQuery = $(currentTarget).val();
+        const searchQuery = currentTarget.value;
 
         // server will only perform search with at least 3 characters
         if (searchQuery.length < 3) {
@@ -76,12 +80,12 @@ export default function () {
     });
 
     // Catch the submission of the quick-search forms
-    $quickSearchForms.on('submit', event => {
+    $quickSearchForms.addEventListener('submit', event => {
         event.preventDefault();
 
-        const $target = $(event.currentTarget);
-        const searchQuery = $target.find('input').val();
-        const searchUrl = $target.data('url');
+        const $target = event.currentTarget;
+        const searchQuery = $target.querySelector('input').value;
+        const searchUrl = $target.dataset.url;
 
         if (searchQuery.length === 0) {
             return;
