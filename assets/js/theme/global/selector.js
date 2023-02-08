@@ -21,3 +21,30 @@ export default function q$(selector, $context = null) {
 export function q$$(selector, $context = null) {
   return Array.from(($context || document).querySelectorAll(selector));
 }
+
+/**
+ * We get all parent elemnts in order to replace jQuery#parents
+ * [https://gist.github.com/ziggi/2f15832b57398649ee9b]
+ *
+ * @export
+ * @param {string} selector
+ * @param {DOMElement} $context
+ * @returns Array<DOMElement>
+ */
+export function parents(selector, $context) {
+	const elements = [];
+	let elem = $context;
+	var ishaveselector = selector !== undefined;
+ 
+	while ((elem = elem.parentElement) !== null) {
+		if (elem.nodeType !== Node.ELEMENT_NODE) {
+			continue;
+		}
+ 
+		if (!ishaveselector || elem.matches(selector)) {
+			elements.push(elem);
+		}
+	}
+ 
+	return elements;
+}

@@ -1,4 +1,5 @@
 import { showAlertModal } from './modal';
+import q$, { q$$ } from './selector';
 
 function decrementCounter(counter, item) {
     const index = counter.indexOf(item);
@@ -14,33 +15,37 @@ function incrementCounter(counter, item) {
 
 function updateCounterNav(counter, $link, urls) {
     if (counter.length !== 0) {
-        if (!$link.is('visible')) {
-            $link.addClass('show');
+        if (!($link.offsetWidth > 0 && $link.offsetHeight > 0)) {
+            $link.classList.add('show');
         }
-        $link.attr('href', `${urls.compare}/${counter.join('/')}`);
-        $link.find('span.countPill').html(counter.length);
+
+        $link.setAttribute('href', `${urls.compare}/${counter.join('/')}`);
+        
+        $link
+          .querySelector('span.countPill')
+          .innerHTML = counter.length;
     } else {
-        $link.removeClass('show');
+        $link.classList.remove('show');
     }
 }
 
 export default function ({ noCompareMessage, urls }) {
     let compareCounter = [];
 
-    const $compareLink = $('a[data-compare-nav]');
+    const $compareLink = q$('a[data-compare-nav]');
 
     $('body').on('compareReset', () => {
-        const $checked = $('body').find('input[name="products\[\]"]:checked');
+        const $checked = q$$('input[name="products\[\]"]:checked', q$('body'));
 
-        compareCounter = $checked.length ? $checked.map((index, element) => element.value).get() : [];
+        compareCounter = $checked.length ? $checked.map(element => element.value) : [];
         updateCounterNav(compareCounter, $compareLink, urls);
     });
 
     $('body').triggerHandler('compareReset');
 
-    $('body').on('click', '[data-compare-id]', event => {
+    q$('[data-compare-id]').addEventListener('click', event => {
         const product = event.currentTarget.value;
-        const $clickedCompareLink = $('a[data-compare-nav]');
+        const $clickedCompareLink = q$('a[data-compare-nav]');
 
         if (event.currentTarget.checked) {
             incrementCounter(compareCounter, product);
@@ -51,8 +56,8 @@ export default function ({ noCompareMessage, urls }) {
         updateCounterNav(compareCounter, $clickedCompareLink, urls);
     });
 
-    $('body').on('click', 'a[data-compare-nav]', () => {
-        const $clickedCheckedInput = $('body').find('input[name="products\[\]"]:checked');
+    q$('a[data-compare-nav]').addEventListener('click', () => {
+        const $clickedCheckedInput = q$$('input[name="products\[\]"]:checked', q$('body'));
 
         if ($clickedCheckedInput.length <= 1) {
             showAlertModal(noCompareMessage);
