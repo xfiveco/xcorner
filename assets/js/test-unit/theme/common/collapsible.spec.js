@@ -38,23 +38,23 @@ describe('Collapsible', () => {
         });
 
         it('should open if it is closed', () => {
-            collapsible.$target.removeClass('is-open');
-            collapsible.$target.hide();
-            collapsible.$toggle.trigger(CollapsibleEvents.click);
+            collapsible.$target.classList.remove('is-open');
+            collapsible.$target.style.display = 'none';
+            $(collapsible.$toggle).trigger(CollapsibleEvents.click);
 
             expect(collapsible.open).toHaveBeenCalled();
         });
 
         it('should close if it is open', () => {
-            collapsible.$target.addClass('is-open');
-            collapsible.$toggle.trigger(CollapsibleEvents.click);
+            collapsible.$target.classList.add('is-open');
+            $(collapsible.$toggle).trigger(CollapsibleEvents.click);
 
             expect(collapsible.close).toHaveBeenCalled();
         });
 
         it('should not toggle if it is disabled', () => {
             collapsible.disabled = true;
-            collapsible.$toggle.trigger(CollapsibleEvents.click);
+            $(collapsible.$toggle).trigger(CollapsibleEvents.click);
 
             expect(collapsible.toggle).not.toHaveBeenCalled();
         });
@@ -103,13 +103,13 @@ describe('Collapsible', () => {
         it('should add active class to toggle', () => {
             collapsible.open();
 
-            expect(collapsible.$toggle.hasClass('is-open')).toBeTruthy();
+            expect(collapsible.$toggle.classList.contains('is-open')).toBeTruthy();
         });
 
         it('should add active class to target', () => {
             collapsible.open();
 
-            expect(collapsible.$target.hasClass('is-open')).toBeTruthy();
+            expect(collapsible.$target.classList.contains('is-open')).toBeTruthy();
         });
 
         it('should trigger open event', (done) => {
@@ -133,17 +133,17 @@ describe('Collapsible', () => {
 
     describe('close', () => {
         it('should remove active class from toggle', () => {
-            collapsible.$toggle.addClass('is-open');
+            collapsible.$toggle.classList.add('is-open');
             collapsible.close();
 
-            expect(collapsible.$toggle.hasClass('is-open')).toBeFalsy();
+            expect(collapsible.$toggle.classList.contains('is-open')).toBeFalsy();
         });
 
         it('should remove active class from target', () => {
-            collapsible.$target.addClass('is-open');
+            collapsible.$target.classList.add('is-open');
             collapsible.close();
 
-            expect(collapsible.$target.hasClass('is-open')).toBeFalsy();
+            expect(collapsible.$target.classList.contains('is-open')).toBeFalsy();
         });
     });
 

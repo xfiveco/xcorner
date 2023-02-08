@@ -15,22 +15,23 @@ import carousel from './common/carousel';
 import svgInjector from './global/svg-injector';
 
 export default class Global extends PageManager {
-  onReady() {
-    const { cartId, secureBaseUrl } = this.context;
-    cartPreview(secureBaseUrl, cartId);
-    quickSearch();
-    currencySelector(cartId);
-    quickView(this.context);
-    carousel(this.context);
-    menu();
-    mobileMenuToggle();
-    privacyCookieNotification();
-    svgInjector();
-    
-    try {
-      foundation($(document));
-    } catch( error ) {
-      console.log('foundation error: ', error);   // TODO: deal with foundation when finding if it's needed
+    onReady() {
+        const { cartId, secureBaseUrl } = this.context;
+        cartPreview(secureBaseUrl, cartId);
+        quickSearch();
+        currencySelector(cartId);
+        quickView(this.context);
+        carousel(this.context);
+        menu();
+        mobileMenuToggle();
+        privacyCookieNotification();
+        svgInjector();
+
+        try {
+            foundation($(document));
+        } catch (error) {
+            /* eslint-disable no-console */
+            console.log('foundation error: ', error); // TODO: deal with foundation when finding if it's needed
+        }
     }
-  }
 }

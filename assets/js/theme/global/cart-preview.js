@@ -15,7 +15,7 @@ export default function (secureBaseUrl, cartId) {
     const $cartLoading = document.createElement('div');
     $cartLoading.classList.add('loadingOverlay');
 
-    const $body = q$('body');
+    // const $body = q$('body');
 
     if (window.ApplePaySession) {
         $cartDropdown.classList.add('apple-pay-supported');
@@ -34,9 +34,9 @@ export default function (secureBaseUrl, cartId) {
         $cartQuantity.textContent = quantity;
 
         if (quantity > 0) {
-          $cartQuantity.classList.add('countPill--positive');
+            $cartQuantity.classList.add('countPill--positive');
         }
-        
+
         if (utils.tools.storage.localStorageAvailable()) {
             localStorage.setItem('cart-quantity', quantity);
         }
@@ -57,7 +57,7 @@ export default function (secureBaseUrl, cartId) {
 
         event.preventDefault();
 
-        $cartDropdown.classList.add(loadingClass)
+        $cartDropdown.classList.add(loadingClass);
         $cartDropdown.append($cartLoading);
         $cartLoading.style.display = 'block';
 
@@ -75,7 +75,7 @@ export default function (secureBaseUrl, cartId) {
         if (utils.tools.storage.localStorageAvailable()) {
             if (localStorage.getItem('cart-quantity')) {
                 quantity = Number(localStorage.getItem('cart-quantity'));
-                $('body').trigger('cart-quantity-update', quantity);  // TODO: check if it's necessary to create custom events or a utility library fro triggering them
+                $('body').trigger('cart-quantity-update', quantity); // TODO: check if it's necessary to create custom events or a utility library fro triggering them
             }
         }
 

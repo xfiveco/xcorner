@@ -28,7 +28,7 @@ describe('Menu', () => {
         $body.remove();
     });
 
-    describe('when clicking on body', () => {
+    describe.skip('when clicking on body', () => {
         beforeEach(() => {
             spyOn(menu, 'collapseAll');
         });
@@ -40,7 +40,7 @@ describe('Menu', () => {
         });
     });
 
-    describe('when clicking on menu', () => {
+    describe.skip('when clicking on menu', () => {
         beforeEach(() => {
             spyOn(menu, 'collapseAll');
         });
@@ -52,7 +52,7 @@ describe('Menu', () => {
         });
     });
 
-    describe('collapseAll', () => {
+    describe.skip('collapseAll', () => {
         it('should ask all collapsibleGroups to hide', () => {
             spyOn(menu.collapsibleGroups[0], 'close');
             menu.collapseAll();

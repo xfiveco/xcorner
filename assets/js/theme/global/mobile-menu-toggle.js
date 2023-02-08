@@ -89,7 +89,7 @@ export class MobileMenuToggle {
     show() {
         this.$body.classList.add('has-activeNavPages');
 
-        this.$toggle.classList.add('is-open')
+        this.$toggle.classList.add('is-open');
         this.$toggle.setAttribute('aria-expanded', true);
 
         this.$menu.classList.add('is-open');
@@ -103,7 +103,7 @@ export class MobileMenuToggle {
     hide() {
         this.$body.classList.remove('has-activeNavPages');
 
-        this.$toggle.classList.remove('is-open')
+        this.$toggle.classList.remove('is-open');
         this.$toggle.setAttribute('aria-expanded', false);
 
         this.$menu.classList.remove('is-open');
@@ -156,6 +156,7 @@ export class MobileMenuToggle {
 
     resetSubMenus() {
         q$$('.is-hidden', this.$navList).forEach($el => $el.classList.remove('is-hidden'));
+        /* eslint-disable no-unused-expressions */
         this.$navList?.classList.remove('subMenu-is-open');
     }
 }

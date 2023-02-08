@@ -1,7 +1,7 @@
 const revealCloseAttr = 'revealClose';
 const revealCloseSelector = `[data-${revealCloseAttr}]`;
 const revealSelector = '[data-reveal]';
-import q$, { q$$, parents } from "./selector";
+import q$, { q$$, parents } from './selector';
 
 class RevealClose {
     constructor($button) {

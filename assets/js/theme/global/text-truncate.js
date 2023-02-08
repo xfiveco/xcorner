@@ -30,10 +30,10 @@ export default class TextTruncate {
     }
 
     createViewAnchor() {
-      this.$viewAnchor = document.createElement('a');
-      this.$viewAnchor.classList.add('textTruncate-viewMore');
-      this.$viewAnchor.textContent = this.options.open ? this.options.text.viewLess : this.options.text.viewMore;
-      this.$viewAnchor.href = '#';
+        this.$viewAnchor = document.createElement('a');
+        this.$viewAnchor.classList.add('textTruncate-viewMore');
+        this.$viewAnchor.textContent = this.options.open ? this.options.text.viewLess : this.options.text.viewMore;
+        this.$viewAnchor.href = '#';
     }
 
     appendViewAnchor() {
@@ -67,10 +67,10 @@ export default class TextTruncate {
     }
 
     hideText() {
-      if (this.options.css['max-height']) {
-        this.$element.css('max-height', this.options.css['max-height']);
-      }
-      this.$viewAnchor.textContent = this.options.text.viewMore;
+        if (this.options.css['max-height']) {
+            this.$element.css('max-height', this.options.css['max-height']);
+        }
+        this.$viewAnchor.textContent = this.options.text.viewMore;
     }
 
     parseDataAttributes() {

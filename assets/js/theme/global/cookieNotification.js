@@ -21,10 +21,11 @@ export default function () {
 
     if (document.cookie.indexOf('ACCEPT_COOKIE_USAGE') === -1) {
         if ($privacyDialog !== null) {
-          $privacyDialog.style.display = 'block';
+            $privacyDialog.style.display = 'block';
         }
     }
 
+    /* eslint-disable no-unused-expressions */
     q$('body [data-privacy-accept]')?.addEventListener('click', () => {
         const date = new Date();
         date.setDate(date.getDate() + 365);
@@ -33,7 +34,7 @@ export default function () {
         utils.hooks.emit('cookie-privacy-accepted');
 
         if ($privacyDialog !== null) {
-          $privacyDialog.style.display = 'none';
+            $privacyDialog.style.display = 'none';
         }
     });
 }

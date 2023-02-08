@@ -91,7 +91,7 @@ export class Collapsible {
     }
 
     get isCollapsed() {
-        return this.$target.matches(':hidden') && !this.$target.classList.contains(this.openClassName);
+        return $(this.$target).is(':hidden') && !this.$target.classList.contains(this.openClassName);
     }
 
     get isOpen() {
@@ -120,10 +120,10 @@ export class Collapsible {
     }
 
     open({ notify = true } = {}) {
-        this.$toggle.classList.add(this.openClassName)
+        this.$toggle.classList.add(this.openClassName);
         this.$toggle.setAttribute('aria-expanded', true);
 
-        this.$target.classList.add(this.openClassName)
+        this.$target.classList.add(this.openClassName);
         this.$target.setAttribute('aria-hidden', false);
 
         if (notify) {
@@ -167,7 +167,7 @@ export class Collapsible {
     }
 
     hasCollapsible(collapsibleInstance) {
-        return $.contains(this.$target, collapsibleInstance.$target);
+        return this.$target.contains(collapsibleInstance.$target);
     }
 
     bindEvents() {

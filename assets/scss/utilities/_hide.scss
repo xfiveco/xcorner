@@ -8,7 +8,7 @@
  */
 
 .u-hidden-visually {
-  @include hidden-visually();
+    @include hidden-visually();
 }
 
 /**
@@ -16,13 +16,13 @@
  */
 
 .u-hidden {
-  display: none !important;
+    display: none !important;
 }
 
 .u-hidden\@small {
-  display: none;
+    display: none;
 
-  @include bp(medium) {
-    display: block;
-  }
+    @include bp(medium) {
+        display: block;
+    }
 }

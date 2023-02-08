@@ -71,7 +71,7 @@ function createModalContent($modal) {
 
         $content = document.createElement('div');
         $content.classList.add(modalContentClass);
-        
+
         existingContent.forEach($child => $content.append($child));
         $modal.append($content);
     }
@@ -121,6 +121,7 @@ export class Modal {
 
         /* STRF-2471 - Multiple Wish Lists - prevents double-firing
          * of foundation.dropdown click.fndtn.dropdown event */
+        /* eslint-disable no-unused-expressions */
         this.$modal.querySelector('.dropdown-menu-button')?.addEventListener('click', e => {
             e.stopPropagation();
         });
@@ -149,9 +150,9 @@ export class Modal {
 
         this.$modal.classList.remove(SizeClasses.small);
         this.$modal.classList.remove(SizeClasses.large);
-        
+
         if (size !== 'normal') {
-          this.$modal.classList.add(SizeClasses[size]);
+            this.$modal.classList.add(SizeClasses[size]);
         }
     }
 
@@ -196,7 +197,7 @@ export class Modal {
         $(this.$modal).trigger(ModalEvents.loaded);
 
         restrainContentHeight(this.$content);
-        foundation(this.$content);
+        foundation($(this.$content));
     }
 
     clearContent() {

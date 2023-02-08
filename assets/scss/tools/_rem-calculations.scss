@@ -2,27 +2,28 @@
 // Rem Calculations
 // -----------------------------------------------------------------------------
 
-@function stripUnit($num) {
+@function strip-unit($num) {
     @return $num / ($num * 0 + 1);
 }
 
 // scss-lint:disable ZeroUnit
-@function convertToRem($value, $base-value: $fontSize-base) {
-    $value: stripUnit($value) / stripUnit($base-value) * 1rem;
+@function convert-to-rem($value, $base-value: $fontSize-base) {
+    $value: strip-unit($value) / strip-unit($base-value) * 1rem;
+    /* stylelint-disable length-zero-no-unit */
     @if ($value == 0rem) { $value: 0; } // Turn 0rem into 0
     @return $value;
 }
 
-@function remCalc($values, $base-value: $font-size-root) {
+@function rem-calc($values, $base-value: $font-size-root) {
 
     $max: length($values);
 
-    @if $max == 1 { @return convertToRem(nth($values, 1), $base-value); }
+    @if $max == 1 { @return convert-to-rem(nth($values, 1), $base-value); }
 
     $remValues: ();
 
     @for $i from 1 through $max {
-        $remValues: append($remValues, convertToRem(nth($values, $i), $base-value));
+        $remValues: append($remValues, convert-to-rem(nth($values, $i), $base-value));
     }
 
     @return $remValues;

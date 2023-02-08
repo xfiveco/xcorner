@@ -8,7 +8,7 @@ export default function () {
     const $quickSearchResults = q$('.quickSearchResults');
     const $quickSearchForms = q$('[data-quick-search-form]');
     const $quickSearchExpand = q$('#quick-search-expand');
-    const $searchQuery =  q$('[data-search-quick]', $quickSearchForms);
+    const $searchQuery = q$('[data-search-quick]', $quickSearchForms);
     const stencilDropDownExtendables = {
         hide: () => {
             $quickSearchExpand.setAttribute('aria-expanded', false);
@@ -51,15 +51,16 @@ export default function () {
                 }));
             } else {
                 const $quickSearchAriaMessage = $quickSearchResultsCurrent.map($el => {
-                  $el.classList.add('u-hidden');
+                    $el.classList.add('u-hidden');
 
-                  return $el.nextElementSibling;
+                    return $el.nextElementSibling;
                 });
 
                 const predefinedText = $quickSearchAriaMessage[0].dataset['search-aria-message-predefined-text'];
                 const itemsFoundCount = $quickSearchResultsCurrent.filte($el => $el.classList.contains('product')).length;
 
-                $quickSearchAriaMessage.forEach($el => $el.textContent = `${itemsFoundCount} ${predefinedText} ${searchQuery}`);
+                /* eslint-disable no-return-assign, no-param-reassign */
+                $quickSearchAriaMessage.forEach($el => ($el.textContent = `${itemsFoundCount} ${predefinedText} ${searchQuery}`));
 
                 setTimeout(() => {
                     $quickSearchAriaMessage.forEach($el => $el.classList.remove('u-hidden'));

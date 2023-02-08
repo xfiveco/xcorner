@@ -68,7 +68,7 @@ class Menu {
  * @return {Menu}
  */
 export default function menuFactory(selector = `[data-${PLUGIN_KEY}]`) {
-    const $menu = q$(selector)
+    const $menu = q$(selector);
     const instanceKey = `${PLUGIN_KEY}Instance`;
     const cachedMenu = $($menu).data(instanceKey);
 

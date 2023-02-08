@@ -5,45 +5,45 @@
 /* Simple flexbox layout system */
 
 .o-layout {
-  display: block;
+    display: block;
 
-  @include bp(medium) {
-    display: flex;
-  }
+    @include bp(medium) {
+        display: flex;
+    }
 }
 
 .o-layout__item {
-  flex: 1;
+    flex: 1;
 }
 
 .o-layout--guttered {
-  justify-content: space-between;
+    justify-content: space-between;
 
-  > .o-layout__item {
-    flex: none;
-  }
+    > .o-layout__item {
+        flex: none;
+    }
 }
 
 .o-layout--2 {
-  > .o-layout__item {
-    @include bp(medium) {
-      width: 49%;
+    > .o-layout__item {
+        @include bp(medium) {
+            width: 49%;
+        }
     }
-  }
 }
 
 .o-layout--3 {
-  > .o-layout__item {
-    @include bp(medium) {
-      width: 32%;
+    > .o-layout__item {
+        @include bp(medium) {
+            width: 32%;
+        }
     }
-  }
 }
 
 .o-layout--4 {
-  > .o-layout__item {
-    @include bp(medium) {
-      width: 24%;
+    > .o-layout__item {
+        @include bp(medium) {
+            width: 24%;
+        }
     }
-  }
 }

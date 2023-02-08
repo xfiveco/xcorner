@@ -20,10 +20,11 @@ function updateCounterNav(counter, $link, urls) {
         }
 
         $link.setAttribute('href', `${urls.compare}/${counter.join('/')}`);
-        
+
+        /* eslint-disable no-param-reassign */
         $link
-          .querySelector('span.countPill')
-          .innerHTML = counter.length;
+            .querySelector('span.countPill')
+            .innerHTML = counter.length;
     } else {
         $link.classList.remove('show');
     }

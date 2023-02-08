@@ -11,6 +11,7 @@ import q$ from './selector';
 export default function (context) {
     const modal = defaultModal();
 
+    /* eslint-disable no-unused-expressions */
     q$('.quickview')?.addEventListener('click', event => {
         event.preventDefault();
 

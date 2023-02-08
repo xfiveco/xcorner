@@ -2,12 +2,12 @@
  * We return the element queried using native browser function
  *
  * @export
- * @param {string} selector 
- * @param {DOMElement} [$context=null] 
+ * @param {string} selector
+ * @param {DOMElement} [$context=null]
  * @returns $DOMElement
  */
 export default function q$(selector, $context = null) {
-  return ($context || document).querySelector(selector);
+    return ($context || document).querySelector(selector);
 }
 
 /**
@@ -19,7 +19,7 @@ export default function q$(selector, $context = null) {
  * @returns Array[DOMElement]
  */
 export function q$$(selector, $context = null) {
-  return Array.from(($context || document).querySelectorAll(selector));
+    return Array.from(($context || document).querySelectorAll(selector));
 }
 
 /**
@@ -32,19 +32,21 @@ export function q$$(selector, $context = null) {
  * @returns Array<DOMElement>
  */
 export function parents(selector, $context) {
-	const elements = [];
-	let elem = $context;
-	var ishaveselector = selector !== undefined;
- 
-	while ((elem = elem.parentElement) !== null) {
-		if (elem.nodeType !== Node.ELEMENT_NODE) {
-			continue;
-		}
- 
-		if (!ishaveselector || elem.matches(selector)) {
-			elements.push(elem);
-		}
-	}
- 
-	return elements;
+    const elements = [];
+    let elem = $context;
+    const ishaveselector = selector !== undefined;
+
+    /* eslint-disable no-cond-assign */
+    while ((elem = elem.parentElement) !== null) {
+        if (elem.nodeType !== Node.ELEMENT_NODE) {
+            /* eslint-disable no-continue */
+            continue;
+        }
+
+        if (!ishaveselector || elem.matches(selector)) {
+            elements.push(elem);
+        }
+    }
+
+    return elements;
 }

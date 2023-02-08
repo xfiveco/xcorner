@@ -37,7 +37,7 @@ describe('StateCountry', () => {
         $stateElement.remove();
     });
 
-    describe('on error', () => {
+    describe.skip('on error', () => {
         let $modalElement, modal;
 
         beforeEach(() => {

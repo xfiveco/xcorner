@@ -8,46 +8,46 @@
  */
 
 .o-media {
-  @include clearfix();
-  display: block;
+    @include clearfix();
+    display: block;
 }
 
 .o-media__img {
-  float: left;
-  margin-right: 1rem;
+    float: left;
+    margin-right: 1rem;
 
-  > img {
-    display: block;
-  }
+    > img {
+        display: block;
+    }
 }
 
 .o-media__body {
-  display: block;
-  overflow: hidden;
+    display: block;
+    overflow: hidden;
 
-  &,
-  > :last-child {
-    margin-bottom: 0;
-  }
+    &,
+    > :last-child {
+        margin-bottom: 0;
+    }
 }
 
 /* Reversed media objects
    ========================================================================== */
 
 .o-media--reverse {
-  > .o-media__img {
-    float: right;
-    margin-left: 1rem;
-    margin-right: 0;
-  }
+    > .o-media__img {
+        float: right;
+        margin-left: 1rem;
+        margin-right: 0;
+    }
 }
 
 /* Gutterless media objects
    ========================================================================== */
 
 .o-media--flush {
-  > .o-media__img {
-    margin-left: 0;
-    margin-right: 0;
-  }
+    > .o-media__img {
+        margin-left: 0;
+        margin-right: 0;
+    }
 }
