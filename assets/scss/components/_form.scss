@@ -5,8 +5,8 @@
 
     .form-prefix-postfix {
         display: flex;
-        gap: rem-calc(11);
         flex-wrap: wrap;
+        gap: rem-calc(11);
 
         @include bp(medium) {
             flex-wrap: nowrap;
