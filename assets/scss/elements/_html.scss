@@ -16,11 +16,10 @@ html {
     background: $color-bg;
     color: $color-text;
     font-family: $font-sans-serif;
-    font-size: 0.8125rem; /* [1] */ /* 13px */
+    font-size: rem-calc(16); 
     line-height: 1.5; /* [1] */
     min-height: 100%; /* [3] */
     overflow-y: scroll; /* [2] */
-    padding: 1rem;
     text-rendering: optimizeLegibility;
 
     @include bp(medium) {

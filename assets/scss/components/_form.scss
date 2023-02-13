@@ -1,0 +1,23 @@
+.c-form {
+    .form-fieldset {
+        margin-bottom: 0;
+    }
+
+    .form-prefix-postfix {
+        display: flex;
+        gap: rem-calc(11);
+        flex-wrap: wrap;
+
+        @include bp(medium) {
+            flex-wrap: nowrap;
+        }
+
+        > * {
+            flex-basis: 100%;
+
+            @include bp(medium) {
+                flex-basis: auto;
+            }
+        }
+    }
+}
