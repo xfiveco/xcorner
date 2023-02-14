@@ -27,7 +27,10 @@ function development() {
     var devConfig = require('./webpack.dev.js');
 
     // Rebuild the bundle once at bootup
-    webpack(devConfig).watch({}, (err, stats) => {
+    webpack(devConfig).watch({
+      poll: 500,
+      usePolling: true,
+    }, (err, stats) => {
         if (err) {
             console.error(err.message, err.details);
         }

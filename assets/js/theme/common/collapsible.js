@@ -1,5 +1,6 @@
 import _ from 'lodash';
 import mediaQueryListFactory from './media-query-list';
+import q$, { q$$ } from '../global/selector';
 
 const PLUGIN_KEY = 'collapsible';
 
@@ -25,10 +26,10 @@ function prependHash(id) {
 
 function optionsFromData($element) {
     return {
-        disabledBreakpoint: $element.data(`${PLUGIN_KEY}DisabledBreakpoint`),
-        disabledState: $element.data(`${PLUGIN_KEY}DisabledState`),
-        enabledState: $element.data(`${PLUGIN_KEY}EnabledState`),
-        openClassName: $element.data(`${PLUGIN_KEY}OpenClassName`),
+        disabledBreakpoint: $($element).data(`${PLUGIN_KEY}DisabledBreakpoint`),
+        disabledState: $($element).data(`${PLUGIN_KEY}DisabledState`),
+        enabledState: $($element).data(`${PLUGIN_KEY}EnabledState`),
+        openClassName: $($element).data(`${PLUGIN_KEY}OpenClassName`),
     };
 }
 
@@ -60,7 +61,7 @@ export class Collapsible {
     } = {}) {
         this.$toggle = $toggle;
         this.$target = $target;
-        this.targetId = $target.attr('id');
+        this.targetId = $target.getAttribute('id');
         this.openClassName = openClassName;
         this.disabledState = disabledState;
         this.enabledState = enabledState;
@@ -80,18 +81,17 @@ export class Collapsible {
         this.onDisabledMediaQueryListMatch = this.onDisabledMediaQueryListMatch.bind(this);
 
         // Assign DOM attributes
-        this.$target.attr('aria-hidden', this.isCollapsed);
-        this.$toggle
-            .attr('aria-label', this._getToggleAriaLabelText($toggle))
-            .attr('aria-controls', $target.attr('id'))
-            .attr('aria-expanded', this.isOpen);
+        this.$target.setAttribute('aria-hidden', this.isCollapsed);
+        this.$toggle.setAttribute('aria-label', this._getToggleAriaLabelText($toggle));
+        this.$toggle.setAttribute('aria-controls', $target.getAttribute('id'));
+        this.$toggle.setAttribute('aria-expanded', this.isOpen);
 
         // Listen
         this.bindEvents();
     }
 
     get isCollapsed() {
-        return this.$target.is(':hidden') && !this.$target.hasClass(this.openClassName);
+        return $(this.$target).is(':hidden') && !this.$target.classList.contains(this.openClassName);
     }
 
     get isOpen() {
@@ -113,39 +113,35 @@ export class Collapsible {
     }
 
     _getToggleAriaLabelText($toggle) {
-        const $textToggleChildren = $toggle.children().filter((__, child) => $(child).text().trim());
-        const $ariaLabelTarget = $textToggleChildren.length ? $textToggleChildren.first() : $toggle;
+        const $textToggleChildren = Array.from($toggle.children).filter(child => child.textContent.trim());
+        const $ariaLabelTarget = $textToggleChildren.length ? $textToggleChildren[0] : $toggle;
 
-        return $($ariaLabelTarget).text().trim();
+        return $ariaLabelTarget.textContent.trim();
     }
 
     open({ notify = true } = {}) {
-        this.$toggle
-            .addClass(this.openClassName)
-            .attr('aria-expanded', true);
+        this.$toggle.classList.add(this.openClassName);
+        this.$toggle.setAttribute('aria-expanded', true);
 
-        this.$target
-            .addClass(this.openClassName)
-            .attr('aria-hidden', false);
+        this.$target.classList.add(this.openClassName);
+        this.$target.setAttribute('aria-hidden', false);
 
         if (notify) {
-            this.$toggle.trigger(CollapsibleEvents.open, [this]);
-            this.$toggle.trigger(CollapsibleEvents.toggle, [this]);
+            $(this.$toggle).trigger(CollapsibleEvents.open, [this]);
+            $(this.$toggle).trigger(CollapsibleEvents.toggle, [this]);
         }
     }
 
     close({ notify = true } = {}) {
-        this.$toggle
-            .removeClass(this.openClassName)
-            .attr('aria-expanded', false);
+        this.$toggle.classList.remove(this.openClassName);
+        this.$toggle.setAttribute('aria-expanded', false);
 
-        this.$target
-            .removeClass(this.openClassName)
-            .attr('aria-hidden', true);
+        this.$target.classList.remove(this.openClassName);
+        this.$target.setAttribute('aria-hidden', true);
 
         if (notify) {
-            this.$toggle.trigger(CollapsibleEvents.close, [this]);
-            this.$toggle.trigger(CollapsibleEvents.toggle, [this]);
+            $(this.$toggle).trigger(CollapsibleEvents.close, [this]);
+            $(this.$toggle).trigger(CollapsibleEvents.toggle, [this]);
         }
     }
 
@@ -171,11 +167,11 @@ export class Collapsible {
     }
 
     hasCollapsible(collapsibleInstance) {
-        return $.contains(this.$target.get(0), collapsibleInstance.$target.get(0));
+        return this.$target.contains(collapsibleInstance.$target);
     }
 
     bindEvents() {
-        this.$toggle.on(CollapsibleEvents.click, this.onClicked);
+        $(this.$toggle).on(CollapsibleEvents.click, this.onClicked);
 
         if (this.disabledMediaQueryList && this.disabledMediaQueryList.addListener) {
             this.disabledMediaQueryList.addListener(this.onDisabledMediaQueryListMatch);
@@ -183,7 +179,7 @@ export class Collapsible {
     }
 
     unbindEvents() {
-        this.$toggle.off(CollapsibleEvents.click, this.onClicked);
+        $(this.$toggle).off(CollapsibleEvents.click, this.onClicked);
 
         if (this.disabledMediaQueryList && this.disabledMediaQueryList.removeListener) {
             this.disabledMediaQueryList.removeListener(this.onDisabledMediaQueryListMatch);
@@ -224,25 +220,25 @@ export class Collapsible {
  * collapsibleFactory();
  */
 export default function collapsibleFactory(selector = `[data-${PLUGIN_KEY}]`, overrideOptions = {}) {
-    const $collapsibles = $(selector, overrideOptions.$context);
+    const $collapsibles = q$$(selector, overrideOptions.$context);
 
-    return $collapsibles.map((index, element) => {
-        const $toggle = $(element);
+    return $collapsibles.map(element => {
+        const $toggle = element;
         const instanceKey = `${PLUGIN_KEY}Instance`;
-        const cachedCollapsible = $toggle.data(instanceKey);
+        const cachedCollapsible = $($toggle).data(instanceKey);
 
         if (cachedCollapsible instanceof Collapsible) {
             return cachedCollapsible;
         }
 
-        const targetId = prependHash($toggle.data(PLUGIN_KEY) ||
-            $toggle.data(`${PLUGIN_KEY}Target`) ||
-            $toggle.attr('href'));
+        const targetId = prependHash($($toggle).data(PLUGIN_KEY) ||
+            $($toggle).data(`${PLUGIN_KEY}Target`) ||
+            $toggle.getAttribute('href'));
         const options = _.extend(optionsFromData($toggle), overrideOptions);
-        const collapsible = new Collapsible($toggle, $(targetId, overrideOptions.$context), options);
+        const collapsible = new Collapsible($toggle, q$(targetId, overrideOptions.$context), options);
 
-        $toggle.data(instanceKey, collapsible);
+        $($toggle).data(instanceKey, collapsible);
 
         return collapsible;
-    }).toArray();
+    });
 }

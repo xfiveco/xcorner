@@ -30,11 +30,10 @@ export default class TextTruncate {
     }
 
     createViewAnchor() {
-        this.$viewAnchor = $('<a />', {
-            href: '#',
-            class: 'textTruncate-viewMore',
-            text: this.options.open ? this.options.text.viewLess : this.options.text.viewMore,
-        });
+        this.$viewAnchor = document.createElement('a');
+        this.$viewAnchor.classList.add('textTruncate-viewMore');
+        this.$viewAnchor.textContent = this.options.open ? this.options.text.viewLess : this.options.text.viewMore;
+        this.$viewAnchor.href = '#';
     }
 
     appendViewAnchor() {
@@ -43,7 +42,7 @@ export default class TextTruncate {
 
     bindAnchor() {
         // bind anchor to this scope
-        this.$viewAnchor.on('click', e => {
+        this.$viewAnchor.addEventListener('click', e => {
             e.preventDefault();
             // toggle state
             this.toggleState();
@@ -64,14 +63,14 @@ export default class TextTruncate {
         if (this.options.css['max-height']) {
             this.$element.css('max-height', '');
         }
-        this.$viewAnchor.text(this.options.text.viewLess);
+        this.$viewAnchor.textContent = this.options.text.viewLess;
     }
 
     hideText() {
         if (this.options.css['max-height']) {
             this.$element.css('max-height', this.options.css['max-height']);
         }
-        this.$viewAnchor.text(this.options.text.viewMore);
+        this.$viewAnchor.textContent = this.options.text.viewMore;
     }
 
     parseDataAttributes() {

@@ -1,11 +1,12 @@
 const revealCloseAttr = 'revealClose';
 const revealCloseSelector = `[data-${revealCloseAttr}]`;
 const revealSelector = '[data-reveal]';
+import q$, { q$$, parents } from './selector';
 
 class RevealClose {
     constructor($button) {
         this.$button = $button;
-        this.modalId = $button.data(revealCloseAttr);
+        this.modalId = $($button).data(revealCloseAttr);
 
         this.onClick = this.onClick.bind(this);
 
@@ -16,20 +17,20 @@ class RevealClose {
         let $modal;
 
         if (this.modalId) {
-            $modal = $(`#${this.modalId}`);
+            $modal = q$(`#${this.modalId}`);
         } else {
-            $modal = this.$button.parents(revealSelector).eq(0);
+            $modal = parents(revealSelector, this.$button)[0];
         }
 
-        return $modal.data('modalInstance');
+        return $($modal).data('modalInstance');
     }
 
     bindEvents() {
-        this.$button.on('click', this.onClick);
+        this.$button.addEventListener('click', this.onClick);
     }
 
     unbindEvents() {
-        this.$button.off('click', this.onClick);
+        this.$button.removeEventListener('click', this.onClick);
     }
 
     onClick(event) {
@@ -57,12 +58,12 @@ class RevealClose {
  * <button data-reveal-close="helloModal">Continue</button>
  */
 export default function revealCloseFactory(selector = revealCloseSelector, options = {}) {
-    const $buttons = $(selector, options.$context);
+    const $buttons = q$$(selector, options.$context);
 
-    return $buttons.map((index, element) => {
-        const $button = $(element);
+    return $buttons.map(element => {
+        const $button = element;
         const instanceKey = `${revealCloseAttr}Instance`;
-        const cachedButton = $button.data(instanceKey);
+        const cachedButton = $($button).data(instanceKey);
 
         if (cachedButton instanceof RevealClose) {
             return cachedButton;
@@ -70,8 +71,8 @@ export default function revealCloseFactory(selector = revealCloseSelector, optio
 
         const button = new RevealClose($button);
 
-        $button.data(instanceKey, button);
+        $($button).data(instanceKey, button);
 
         return button;
-    }).toArray();
+    });
 }

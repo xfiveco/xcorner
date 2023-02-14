@@ -66,31 +66,29 @@ window.stencilBootstrap = function stencilBootstrap(pageType, contextJSON = null
 
     return {
         load() {
-            $(() => {
-                // Load globals
-                if (loadGlobal) {
-                    Global.load(context);
-                }
+            // Load globals
+            if (loadGlobal) {
+                Global.load(context);
+            }
 
-                const importPromises = [];
+            const importPromises = [];
 
-                // Find the appropriate page loader based on pageType
-                const pageClassImporter = pageClasses[pageType];
-                if (typeof pageClassImporter === 'function') {
-                    importPromises.push(pageClassImporter());
-                }
+            // Find the appropriate page loader based on pageType
+            const pageClassImporter = pageClasses[pageType];
+            if (typeof pageClassImporter === 'function') {
+                importPromises.push(pageClassImporter());
+            }
 
-                // See if there is a page class default for a custom template
-                const customTemplateImporter = customClasses[context.template];
-                if (typeof customTemplateImporter === 'function') {
-                    importPromises.push(customTemplateImporter());
-                }
+            // See if there is a page class default for a custom template
+            const customTemplateImporter = customClasses[context.template];
+            if (typeof customTemplateImporter === 'function') {
+                importPromises.push(customTemplateImporter());
+            }
 
-                // Wait for imports to resolve, then call load() on them
-                Promise.all(importPromises).then(imports => {
-                    imports.forEach(imported => {
-                        imported.default.load(context);
-                    });
+            // Wait for imports to resolve, then call load() on them
+            Promise.all(importPromises).then(imports => {
+                imports.forEach(imported => {
+                    imported.default.load(context);
                 });
             });
         },

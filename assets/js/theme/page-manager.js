@@ -13,8 +13,12 @@ export default class PageManager {
     static load(context) {
         const page = new this(context);
 
-        $(document).ready(() => {
+        document.addEventListener('DOMContentLoaded', () => {
             page.onReady.bind(page)();
         });
+
+        if (document.readyState === 'interactive' || document.readyState === 'complete') {
+            page.onReady.bind(page)();
+        }
     }
 }

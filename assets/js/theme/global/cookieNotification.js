@@ -1,4 +1,5 @@
 import utils from '@bigcommerce/stencil-utils';
+import q$ from './selector';
 
 /**
  * European websites must notify users of cookies to comply with European Union law.
@@ -16,18 +17,24 @@ export default function () {
     });
     */
 
-    const $privacyDialog = $('.cookieMessage');
+    const $privacyDialog = q$('.cookieMessage');
 
     if (document.cookie.indexOf('ACCEPT_COOKIE_USAGE') === -1) {
-        $privacyDialog.show();
+        if ($privacyDialog !== null) {
+            $privacyDialog.style.display = 'block';
+        }
     }
 
-    $('body').on('click', '[data-privacy-accept]', () => {
+    /* eslint-disable no-unused-expressions */
+    q$('body [data-privacy-accept]')?.addEventListener('click', () => {
         const date = new Date();
         date.setDate(date.getDate() + 365);
         document.cookie = `ACCEPT_COOKIE_USAGE=1;expires=${date.toGMTString()}; path=/`;
 
         utils.hooks.emit('cookie-privacy-accepted');
-        $privacyDialog.hide();
+
+        if ($privacyDialog !== null) {
+            $privacyDialog.style.display = 'none';
+        }
     });
 }

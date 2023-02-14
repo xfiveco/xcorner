@@ -80,10 +80,10 @@
                         <div class="paymentMethod-row">
                             <form action="{{delete_url}}" method="post" data-delete-payment-method="{{lang 'forms.payment_methods.confirm_delete'}}">
                                 {{#if edit_url}}
-                                    <a class="button button--primary button--small methodActions-button" href="{{edit_url}}">{{lang 'common.edit' }}</a>
+                                    <a class="c-button c-button--primary button--small methodActions-button" href="{{edit_url}}">{{lang 'common.edit' }}</a>
                                 {{/if}}
                                 {{#if delete_url}}
-                                    <button type="submit" class="button button--small methodActions-button">{{lang 'common.delete' }}</button>
+                                    <button type="submit" class="c-button button--small methodActions-button">{{lang 'common.delete' }}</button>
                                 {{/if}}
                             </form>
                         </div>
@@ -105,4 +105,3 @@
         </div>
     {{/inArray}}
 {{/each}}
-

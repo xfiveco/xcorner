@@ -1,5 +1,6 @@
 import { showAlertModal } from './modal';
 import utils from '@bigcommerce/stencil-utils';
+import q$ from './selector';
 
 let currencySelectorCalled = false;
 
@@ -25,7 +26,7 @@ export default function (cartId) {
         });
     }
 
-    $('[data-cart-currency-switch-url]').on('click', event => {
+    q$('[data-cart-currency-switch-url]').addEventListener('click', event => {
         const currencySessionSwitcher = event.target.href;
         event.preventDefault();
         utils.api.cart.getCart({ cartId }, (err, response) => {
@@ -39,19 +40,19 @@ export default function (cartId) {
                 response.lineItems.giftCertificates.length > 0;
 
             if (showWarning) {
-                const text = $(event.target).data('warning');
-                const $preModalFocusedEl = $('.navUser-action--currencySelector');
+                const text = event.target.dataset.warning;
+                const $preModalFocusedEl = q$('.navUser-action--currencySelector');
 
                 showAlertModal(text, {
                     icon: 'warning',
                     showCancelButton: true,
                     $preModalFocusedEl,
                     onConfirm: () => {
-                        changeCurrency($(event.target).data('cart-currency-switch-url'), $(event.target).data('currency-code'));
+                        changeCurrency(event.target.dataset.cartCurrencySwitchUrl, event.target.dataset.currencyCode);
                     },
                 });
             } else {
-                changeCurrency($(event.target).data('cart-currency-switch-url'), $(event.target).data('currency-code'));
+                changeCurrency(event.target.dataset.cartCurrencySwitchUrl, event.target.dataset.currencyCode);
             }
         });
     });

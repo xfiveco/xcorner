@@ -6,21 +6,23 @@ import ProductDetails from '../common/product-details';
 import { defaultModal, ModalEvents } from './modal';
 import 'slick-carousel';
 import { setCarouselState, onSlickCarouselChange, onUserCarouselChange } from '../common/carousel';
+import q$ from './selector';
 
 export default function (context) {
     const modal = defaultModal();
 
-    $('body').on('click', '.quickview', event => {
+    /* eslint-disable no-unused-expressions */
+    q$('.quickview')?.addEventListener('click', event => {
         event.preventDefault();
 
-        const productId = $(event.currentTarget).data('productId');
+        const productId = event.currentTarget.dataset.productId;
         const handleDropdownExpand = ({ currentTarget }) => {
-            const $dropdownMenu = $(currentTarget);
-            const dropdownBtnHeight = $dropdownMenu.prev().outerHeight();
+            const $dropdownMenu = currentTarget;
+            const dropdownBtnHeight = $dropdownMenu.previousElementSibling.getBoundingClientRect().height;
 
-            $dropdownMenu.css('top', dropdownBtnHeight);
+            $dropdownMenu.style.top = dropdownBtnHeight;
 
-            return modal.$modal.one(ModalEvents.close, () => $dropdownMenu.off('opened.fndtn.dropdown', handleDropdownExpand));
+            return $(modal.$modal).one(ModalEvents.close, () => $($dropdownMenu).off('opened.fndtn.dropdown', handleDropdownExpand));
         };
 
         modal.open({ size: 'large' });
@@ -31,22 +33,22 @@ export default function (context) {
             modal.updateContent(response);
 
             $('#modal .dropdown-menu').on('opened.fndtn.dropdown', handleDropdownExpand);
-            modal.$content.find('.productView').addClass('productView--quickView');
+            modal.$content.querySelector('.productView').classList.add('productView--quickView');
 
-            const $carousel = modal.$content.find('[data-slick]');
-            if ($carousel.length) {
-                $carousel.on('init breakpoint swipe', setCarouselState);
-                $carousel.on('click', '.slick-arrow, .slick-dots', setCarouselState);
+            const $carousel = modal.$content.querySelector('[data-slick]');
+            if ($carousel !== null) {
+                $($carousel).on('init breakpoint swipe', setCarouselState);
+                $($carousel).on('click', '.slick-arrow, .slick-dots', setCarouselState);
 
-                $carousel.on('init afterChange', (e, carouselObj) => onSlickCarouselChange(e, carouselObj, context));
-                $carousel.on('click', '.slick-arrow, .slick-dots', $carousel, e => onUserCarouselChange(e, context));
-                $carousel.on('swipe', (e, carouselObj) => onUserCarouselChange(e, context, carouselObj.$slider));
+                $($carousel).on('init afterChange', (e, carouselObj) => onSlickCarouselChange(e, carouselObj, context));
+                $($carousel).on('click', '.slick-arrow, .slick-dots', $carousel, e => onUserCarouselChange(e, context));
+                $($carousel).on('swipe', (e, carouselObj) => onUserCarouselChange(e, context, carouselObj.$slider));
 
-                if (modal.$modal.hasClass('open')) {
-                    $carousel.slick();
+                if (modal.$modal.classList.contains('open')) {
+                    $($carousel).slick();
                 } else {
-                    modal.$modal.one(ModalEvents.opened, () => {
-                        if ($.contains(document, $carousel[0])) $carousel.slick();
+                    $(modal.$modal).one(ModalEvents.opened, () => {
+                        if ($.contains(document, $carousel[0])) $($carousel).slick();
                     });
                 }
             }
@@ -54,7 +56,7 @@ export default function (context) {
             /* eslint-disable no-new */
             new Review({ $context: modal.$content });
 
-            return new ProductDetails(modal.$content.find('.quickView'), context);
+            return new ProductDetails(modal.$content.querySelector('.quickView'), context);
         });
     });
 }

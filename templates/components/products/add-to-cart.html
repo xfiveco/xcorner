@@ -5,7 +5,7 @@
             <label class="form-label form-label--alternate"
                    for="qty[]">{{lang 'products.quantity'}}</label>
                 <div class="form-increment" data-quantity-change>
-                    <button class="button button--icon" data-action="dec">
+                    <button class="c-button button--icon" data-action="dec">
                         <span class="is-srOnly">{{lang 'products.quantity_decrease' name=product.title}}</span>
                         <i class="icon" aria-hidden="true">
                             <svg>
@@ -23,7 +23,7 @@
                            min="1"
                            pattern="[0-9]*"
                            aria-live="polite">
-                    <button class="button button--icon" data-action="inc">
+                    <button class="c-button button--icon" data-action="inc">
                         <span class="is-srOnly">{{lang 'products.quantity_increase' name=product.title}}</span>
                         <i class="icon" aria-hidden="true">
                             <svg>
@@ -47,7 +47,7 @@
                 <input
                         id="form-action-addToCart"
                         data-wait-message="{{lang 'products.adding_to_cart'}}"
-                        class="button button--primary"
+                        class="c-button c-button--primary"
                         type="submit"
                         value="{{#if product.pre_order}}{{lang 'products.pre_order'}}{{else}}{{lang 'products.add_to_cart'}}{{/if}}"
                 >

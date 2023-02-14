@@ -1,5 +1,6 @@
 import collapsibleFactory from '../common/collapsible';
 import collapsibleGroupFactory from '../common/collapsible-group';
+import q$ from './selector';
 
 const PLUGIN_KEY = 'menu';
 
@@ -10,8 +11,8 @@ const PLUGIN_KEY = 'menu';
 class Menu {
     constructor($menu) {
         this.$menu = $menu;
-        this.$body = $('body');
-        this.hasMaxMenuDisplayDepth = this.$body.find('.navPages-list').hasClass('navPages-list-depth-max');
+        this.$body = q$('body');
+        this.hasMaxMenuDisplayDepth = this.$body.querySelector('.navPages-list').classList.contains('navPages-list-depth-max');
 
         // Init collapsible
         this.collapsibles = collapsibleFactory('[data-collapsible]', { $context: this.$menu });
@@ -37,20 +38,20 @@ class Menu {
     }
 
     bindEvents() {
-        this.$menu.on('click', this.onMenuClick);
-        this.$body.on('click', this.onDocumentClick);
+        this.$menu.addEventListener('click', this.onMenuClick);
+        this.$body.addEventListener('click', this.onDocumentClick);
     }
 
     unbindEvents() {
-        this.$menu.off('click', this.onMenuClick);
-        this.$body.off('click', this.onDocumentClick);
+        this.$menu.removeEventListener('click', this.onMenuClick);
+        this.$body.removeEventListener('click', this.onDocumentClick);
     }
 
     onMenuClick(event) {
         event.stopPropagation();
 
         if (this.hasMaxMenuDisplayDepth) {
-            const $neighbors = $(event.target).parent().siblings();
+            const $neighbors = Array.from(event.target.parentNode.children);
 
             this.collapseNeighbors($neighbors);
         }
@@ -67,9 +68,9 @@ class Menu {
  * @return {Menu}
  */
 export default function menuFactory(selector = `[data-${PLUGIN_KEY}]`) {
-    const $menu = $(selector).eq(0);
+    const $menu = q$(selector);
     const instanceKey = `${PLUGIN_KEY}Instance`;
-    const cachedMenu = $menu.data(instanceKey);
+    const cachedMenu = $($menu).data(instanceKey);
 
     if (cachedMenu instanceof Menu) {
         return cachedMenu;
@@ -77,7 +78,7 @@ export default function menuFactory(selector = `[data-${PLUGIN_KEY}]`) {
 
     const menu = new Menu($menu);
 
-    $menu.data(instanceKey, menu);
+    $($menu).data(instanceKey, menu);
 
     return menu;
 }
