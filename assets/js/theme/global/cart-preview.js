@@ -13,28 +13,26 @@ export default function (secureBaseUrl, cartId) {
     const $cart = q$('[data-cart-preview]');
     const $cartDropdown = q$('#cart-preview-dropdown');
     const $cartLoading = document.createElement('div');
-    $cartLoading.classList.add('loadingOverlay');
-
-    // const $body = q$('body');
+    $cartLoading.classList.add('js-loading-overlay');
 
     if (window.ApplePaySession) {
-        $cartDropdown.classList.add('apple-pay-supported');
+        $cartDropdown.classList.add('js-apple-pay-supported');
     }
 
     $('body').on('cart-quantity-update', (event, quantity) => {
         $cart.setAttribute('aria-label', (_, prevValue) => prevValue.replace(/\d+/, quantity));
 
         if (!quantity) {
-            $cart.classList.add('navUser-item--cart__hidden-s');
+            $cart.classList.add('js-nav-user-item--cart__hidden-s');
         } else {
-            $cart.classList.remove('navUser-item--cart__hidden-s');
+            $cart.classList.remove('js-nav-user-item--cart__hidden-s');
         }
 
-        const $cartQuantity = q$('.cart-quantity');
+        const $cartQuantity = q$('.js-cart-quantity');
         $cartQuantity.textContent = quantity;
 
         if (quantity > 0) {
-            $cartQuantity.classList.add('countPill--positive');
+            $cartQuantity.classList.add('count-pill--positive');
         }
 
         if (utils.tools.storage.localStorageAvailable()) {

@@ -4,7 +4,7 @@
     </h1>
 </div>
 
-<div class="modal-body">
+<div class="js-modal-body">
     <div class="previewCart">
         <section class="previewCartCheckout">
             {{#if cart.show_primary_checkout_button}}
@@ -55,7 +55,7 @@
                 {{lang 'cart.added_to_cart.view_or_edit_cart'}}
             </a>
         </section>
-        <section class="productView">
+        <section class="js-product-view">
             {{#with cart.added_item}}
                 <figure class="productView-image">
                     <div class="productView-img-container">
@@ -109,7 +109,7 @@
 
             <ul class="productGrid">
                 {{#each cart.suggested_products}}
-                    <li class="product">
+                    <li class="js-product">
                         {{> components/products/card settings=../settings hide_product_quick_view=true theme_settings=../theme_settings}}
                     </li>
                 {{/each}}

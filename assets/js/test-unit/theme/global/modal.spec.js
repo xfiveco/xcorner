@@ -19,8 +19,8 @@ describe('Modal', () => {
                 <button class="modal-close" type="button">
                     <span aria-hidden="true">&#215;</span>
                 </button>
-                <div class="modal-content"></div>
-                <div class="loadingOverlay"></div>
+                <div class="js-modal-content"></div>
+                <div class="js-loading-overlay"></div>
             </div>
         `);
 
@@ -36,7 +36,7 @@ describe('Modal', () => {
         it('should add active class to body', () => {
             $(modal.$modal).trigger(ModalEvents.open);
 
-            expect($('body').hasClass('has-activeModal')).toBeTruthy();
+            expect($('body').hasClass('has-active-modal')).toBeTruthy();
         });
 
         it('should have a max-height', () => {
@@ -51,7 +51,7 @@ describe('Modal', () => {
 
         beforeEach(() => {
             $modalBody = $(`
-                <div class="modal-body">
+                <div class="js-modal-body">
                     <div style="height: 700px;"></div>
                 </div>
             `);
@@ -93,7 +93,7 @@ describe('Modal', () => {
         it('should remove active class to body', () => {
             $(modal.$modal).trigger(ModalEvents.close);
 
-            expect($('body').hasClass('has-activeModal')).toBeFalsy();
+            expect($('body').hasClass('has-active-modal')).toBeFalsy();
         });
     });
 
@@ -128,25 +128,25 @@ describe('Modal', () => {
             expect(modal.pending).toBeFalsy();
         });
 
-        describe('if template does not have `modal-content`', () => {
+        describe('if template does not have `js-modal-content`', () => {
             beforeEach(() => {
                 $element.remove();
                 $element = attachHtml(`
                     <div id="modal" class="modal" data-reveal>
                         <div class="modal-header"></div>
-                        <div class="modal-body"></div>
+                        <div class="js-modal-body"></div>
                     </div>
                 `);
 
                 modal = modalFactory()[0];
             });
 
-            it('should create and attach `modal-content`', () => {
-                expect($('.modal-content', modal.$modal).get(0)).toBeDefined();
+            it('should create and attach `js-modal-content`', () => {
+                expect($('.js-modal-content', modal.$modal).get(0)).toBeDefined();
             });
 
             it('should transclude existing content', () => {
-                expect(modal.$content.innerHTML).toEqual('<div class="modal-header"></div><div class="modal-body"></div>');
+                expect(modal.$content.innerHTML).toEqual('<div class="modal-header"></div><div class="js-modal-body"></div>');
             });
         });
     });

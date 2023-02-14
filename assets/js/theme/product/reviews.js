@@ -14,7 +14,7 @@ export default class {
         }
 
         this.$context = $context;
-        this.$reviewTabLink = $('.productView-reviewTabLink', this.$context);
+        this.$reviewTabLink = $('.js-product-view-review-tab-link', this.$context);
         this.$reviewsContent = $('#product-reviews', this.$context);
         this.$reviewsContentList = $('#productReviews-content', this.$reviewsContent);
         this.$collapsible = $('[data-collapsible]', this.$reviewsContent);
@@ -45,7 +45,7 @@ export default class {
         if (
             window.location.hash
             && window.location.hash.indexOf('#product-reviews') === 0
-            && this.$reviewsContent.parents('.quickView').length === 0
+            && this.$reviewsContent.parents('.js-quick-view').length === 0
         ) {
             this.expandReviews();
             return;
@@ -67,8 +67,8 @@ export default class {
      * Inject ID into the pagination link
      */
     injectPaginationLink() {
-        const $nextLink = $('.pagination-item--next .pagination-link', this.$reviewsContent);
-        const $prevLink = $('.pagination-item--previous .pagination-link', this.$reviewsContent);
+        const $nextLink = $('.js-pagination-item--next .js-pagination-link', this.$reviewsContent);
+        const $prevLink = $('.js-pagination-item--previous .js-pagination-link', this.$reviewsContent);
 
         if ($nextLink.length) {
             $nextLink.attr('href', `${$nextLink.attr('href')} #product-reviews`);
@@ -94,7 +94,7 @@ export default class {
             validate: 'presence',
             errorMessage: safeString(this.context.reviewComment),
         }, {
-            selector: '.writeReview-form [name="email"]',
+            selector: '.js-write-review-form [name="email"]',
             validate: (cb, val) => {
                 const result = forms.email(val);
                 cb(result);

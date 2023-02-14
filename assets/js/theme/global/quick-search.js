@@ -5,7 +5,7 @@ import q$, { q$$ } from './selector';
 
 export default function () {
     const TOP_STYLING = 'top: 49px;';
-    const $quickSearchResults = q$('.quickSearchResults');
+    const $quickSearchResults = q$('.js-quick-search-results');
     const $quickSearchForms = q$('[data-quick-search-form]');
     const $quickSearchExpand = q$('#quick-search-expand');
     const $searchQuery = q$('[data-search-quick]', $quickSearchForms);
@@ -27,7 +27,7 @@ export default function () {
         // If the target element has this data tag or one of it's parents, do not close the search results
         // We have to specify `.modal-background` because of limitations around Foundation Reveal not allowing
         // any modification to the background element.
-        if (e.target.closest('.modal-background') === null && e.target.closest('[data-prevent-quick-search-close]') === null) {
+        if (e.target.closest('.js-modal-background') === null && e.target.closest('[data-prevent-quick-search-close]') === null) {
             stencilDropDown.hide($container);
         }
     };
@@ -43,7 +43,7 @@ export default function () {
             $quickSearchResults.innerHTML = response;
             const $quickSearchResultsCurrent = q$$(':visible', $quickSearchResults);
 
-            const $noResultsMessage = $quickSearchResultsCurrent.filter($el => $el.querySelector('.quickSearchMessage'));
+            const $noResultsMessage = $quickSearchResultsCurrent.filter($el => $el.querySelector('.js-quick-search-message'));
             if ($noResultsMessage.length) {
                 $noResultsMessage.forEach($el => $el.setAttribute({
                     role: 'status',
@@ -57,7 +57,7 @@ export default function () {
                 });
 
                 const predefinedText = $quickSearchAriaMessage[0].dataset['search-aria-message-predefined-text'];
-                const itemsFoundCount = $quickSearchResultsCurrent.filte($el => $el.classList.contains('product')).length;
+                const itemsFoundCount = $quickSearchResultsCurrent.filte($el => $el.classList.contains('js-product')).length;
 
                 /* eslint-disable no-return-assign, no-param-reassign */
                 $quickSearchAriaMessage.forEach($el => ($el.textContent = `${itemsFoundCount} ${predefinedText} ${searchQuery}`));

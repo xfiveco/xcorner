@@ -2,10 +2,10 @@ import foundation from './foundation';
 import * as focusTrap from 'focus-trap';
 import q$, { q$$ } from './selector';
 
-const bodyActiveClass = 'has-activeModal';
-const loadingOverlayClass = 'loadingOverlay';
-const modalBodyClass = 'modal-body';
-const modalContentClass = 'modal-content';
+const bodyActiveClass = 'has-active-modal';
+const loadingOverlayClass = 'js-loading-overlay';
+const modalBodyClass = 'js-modal-body';
+const modalContentClass = 'js-modal-content';
 
 const SizeClasses = {
     small: 'modal--small',
@@ -122,7 +122,7 @@ export class Modal {
         /* STRF-2471 - Multiple Wish Lists - prevents double-firing
          * of foundation.dropdown click.fndtn.dropdown event */
         /* eslint-disable no-unused-expressions */
-        this.$modal.querySelector('.dropdown-menu-button')?.addEventListener('click', e => {
+        this.$modal.querySelector('.js-dropdown-menu-button')?.addEventListener('click', e => {
             e.stopPropagation();
         });
     }
@@ -303,8 +303,8 @@ export function alertModal() {
  */
 export function showAlertModal(message, options = {}) {
     const modal = alertModal();
-    const $cancelBtn = modal.$modal.querySelector('.cancel');
-    const $confirmBtn = modal.$modal.querySelector('.confirm');
+    const $cancelBtn = modal.$modal.querySelector('.js-cancel');
+    const $confirmBtn = modal.$modal.querySelector('.js-confirm');
     const {
         icon = 'error',
         $preModalFocusedEl = null,
@@ -317,12 +317,12 @@ export function showAlertModal(message, options = {}) {
     }
 
     modal.open();
-    modal.$modal.querySelector('.alert-icon').style.display = 'none';
+    modal.$modal.querySelector('.js-alert-icon').style.display = 'none';
 
     if (icon === 'error') {
-        modal.$modal.querySelector('.error-icon').style.display = 'block';
+        modal.$modal.querySelector('.js-error-icon').style.display = 'block';
     } else if (icon === 'warning') {
-        modal.$modal.querySelector('.warning-icon').style.display = 'block';
+        modal.$modal.querySelector('.js-warning-icon').style.display = 'block';
     }
 
     modal.updateContent(`<span>${message}</span>`);

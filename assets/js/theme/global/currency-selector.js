@@ -41,7 +41,7 @@ export default function (cartId) {
 
             if (showWarning) {
                 const text = event.target.dataset.warning;
-                const $preModalFocusedEl = q$('.navUser-action--currencySelector');
+                const $preModalFocusedEl = q$('.js-nav-user-action--currency-selector');
 
                 showAlertModal(text, {
                     icon: 'warning',

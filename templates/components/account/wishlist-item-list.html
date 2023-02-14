@@ -1,7 +1,8 @@
 <ul>
     {{#each wishlist.items}}
-        <li>
+        <li class="js-product">
             {{> components/products/card id=product_id theme_settings=../theme_settings}}
+            
             {{#if ../show_remove}}
                 <form action="{{remove_url}}" class="form" method="post">
                     <button type="submit" class="c-button c-button--primary button--small">

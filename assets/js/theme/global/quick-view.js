@@ -12,7 +12,7 @@ export default function (context) {
     const modal = defaultModal();
 
     /* eslint-disable no-unused-expressions */
-    q$('.quickview')?.addEventListener('click', event => {
+    q$('.js-quick-view')?.addEventListener('click', event => {
         event.preventDefault();
 
         const productId = event.currentTarget.dataset.productId;
@@ -32,8 +32,8 @@ export default function (context) {
 
             modal.updateContent(response);
 
-            $('#modal .dropdown-menu').on('opened.fndtn.dropdown', handleDropdownExpand);
-            modal.$content.querySelector('.productView').classList.add('productView--quickView');
+            $('#modal .js-dropdown-menu').on('opened.fndtn.dropdown', handleDropdownExpand);
+            modal.$content.querySelector('.js-product-view').classList.add('product-view--quick-view');
 
             const $carousel = modal.$content.querySelector('[data-slick]');
             if ($carousel !== null) {
@@ -56,7 +56,7 @@ export default function (context) {
             /* eslint-disable no-new */
             new Review({ $context: modal.$content });
 
-            return new ProductDetails(modal.$content.querySelector('.quickView'), context);
+            return new ProductDetails(modal.$content.querySelector('.js-quick-view'), context);
         });
     });
 }

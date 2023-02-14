@@ -16,7 +16,7 @@
                         {{lang 'common.store_credit_overview' credit=customer.store_credit.formatted}}
                     </span>
                 </a>
-                <div class="dropdown-menu" id="storeCredit-dropdown" data-dropdown-content aria-hidden="true">
+                <div class="js-dropdown-menu" id="storeCredit-dropdown" data-dropdown-content aria-hidden="true">
                     {{{lang 'common.store_credit' store_credit=customer.store_credit.formatted}}}
                 </div>
             </li>
@@ -98,10 +98,10 @@
                aria-label="{{lang 'cart.nav_aria_label'}}"
             >
                 <span class="navUser-item-cartLabel">{{lang 'common.cart'}}</span>
-                <span class="countPill cart-quantity"></span>
+                <span class="countPill js-cart-quantity"></span>
             </a>
 
-            <div class="dropdown-menu" id="cart-preview-dropdown" data-dropdown-content aria-hidden="true"></div>
+            <div class="js-dropdown-menu" id="cart-preview-dropdown" data-dropdown-content aria-hidden="true"></div>
         </li>
     </ul>
     <div class="dropdown dropdown--quickSearch" id="quickSearch" aria-hidden="true" data-prevent-quick-search-close>

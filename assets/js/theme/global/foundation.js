@@ -12,8 +12,8 @@ export default function ($element) {
             active_class: 'is-open',
         },
         reveal: {
-            bg_class: 'modal-background',
-            dismiss_modal_class: 'modal-close',
+            bg_class: 'js-modal-background',
+            dismiss_modal_class: 'js-modal-close',
             close_on_background_click: true,
         },
         tab: {

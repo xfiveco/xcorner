@@ -354,7 +354,7 @@
       {
         "type": "color",
         "label": "i18n.ModalLoadingBackground",
-        "id": "loadingOverlay-backgroundColor"
+        "id": "loading-overlay-backgroundColor"
       },
       {
         "type": "color",
@@ -748,22 +748,22 @@
       {
         "type": "color",
         "label": "i18n.TextColor",
-        "id": "navPages-color"
+        "id": "nav-pages-color"
       },
       {
         "type": "color",
         "label": "i18n.TextHoverColor",
-        "id": "navPages-color-hover"
+        "id": "nav-pages-color-hover"
       },
       {
         "type": "color",
         "label": "i18n.DropdownMenuBackground",
-        "id": "navPages-subMenu-backgroundColor"
+        "id": "nav-pages-subMenu-backgroundColor"
       },
       {
         "type": "color",
         "label": "i18n.DropdownMenuBorder",
-        "id": "navPages-subMenu-separatorColor"
+        "id": "nav-pages-subMenu-separatorColor"
       },
       {
         "type": "select",

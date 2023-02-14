@@ -26,16 +26,16 @@ function optionsFromData($element) {
  */
 export class MobileMenuToggle {
     constructor($toggle, {
-        headerSelector = '.header',
+        headerSelector = '.js-header',
         menuSelector = '#menu',
-        scrollViewSelector = '.navPages',
+        scrollViewSelector = '.js-nav-pages',
     } = {}) {
         this.$body = q$('body');
         this.$menu = q$(menuSelector);
-        this.$navList = q$('.navPages-list.navPages-list-depth-max');
+        this.$navList = q$('.js-nav-pages-list.js-nav-pages-list-depth-max');
         this.$header = q$(headerSelector);
         this.$scrollView = q$(scrollViewSelector, this.$menu);
-        this.$subMenus = q$$('.navPages-action', this.$navList);
+        this.$subMenus = q$$('.js-nav-pages-action', this.$navList);
         this.$toggle = $toggle;
         this.mediumMediaQueryList = mediaQueryListFactory('medium');
 
@@ -87,7 +87,7 @@ export class MobileMenuToggle {
     }
 
     show() {
-        this.$body.classList.add('has-activeNavPages');
+        this.$body.classList.add('has-active-nav-pages');
 
         this.$toggle.classList.add('is-open');
         this.$toggle.setAttribute('aria-expanded', true);
@@ -101,7 +101,7 @@ export class MobileMenuToggle {
     }
 
     hide() {
-        this.$body.classList.remove('has-activeNavPages');
+        this.$body.classList.remove('has-active-nav-pages');
 
         this.$toggle.classList.remove('is-open');
         this.$toggle.setAttribute('aria-expanded', false);
@@ -135,14 +135,14 @@ export class MobileMenuToggle {
     }
 
     onSubMenuClick(event) {
-        const $closestAction = event.target.closest('.navPages-action');
+        const $closestAction = event.target.closest('.js-nav-pages-action');
         const $parentSiblings = Array.from($closestAction.parentNode.children);
-        const $parentAction = q$$('.navPages-action', $closestAction.closest('.navPage-subMenu-horizontal'));
+        const $parentAction = q$$('.js-nav-pages-action', $closestAction.closest('.js-nav-page-sub-menu-horizontal'));
 
         if (this.$subMenus.classList.contains('is-open')) {
-            this.$navList.classList.add('subMenu-is-open');
+            this.$navList.classList.add('sub-menu-is-open');
         } else {
-            this.$navList.classList.remove('subMenu-is-open');
+            this.$navList.classList.remove('sub-menu-is-open');
         }
 
         if (event.target.classList.contains('is-open')) {
@@ -157,7 +157,7 @@ export class MobileMenuToggle {
     resetSubMenus() {
         q$$('.is-hidden', this.$navList).forEach($el => $el.classList.remove('is-hidden'));
         /* eslint-disable no-unused-expressions */
-        this.$navList?.classList.remove('subMenu-is-open');
+        this.$navList?.classList.remove('sub-menu-is-open');
     }
 }
 
