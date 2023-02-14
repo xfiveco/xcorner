@@ -1,6 +1,7 @@
 import _ from 'lodash';
 import mediaQueryListFactory from './media-query-list';
 import q$, { q$$ } from '../global/selector';
+import isVisible from './utils/is-visible';
 
 const PLUGIN_KEY = 'collapsible';
 
@@ -91,7 +92,7 @@ export class Collapsible {
     }
 
     get isCollapsed() {
-        return $(this.$target).is(':hidden') && !this.$target.classList.contains(this.openClassName);
+        return isVisible(this.$target) === false && !this.$target.classList.contains(this.openClassName);
     }
 
     get isOpen() {

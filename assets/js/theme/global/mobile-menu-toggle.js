@@ -35,7 +35,7 @@ export class MobileMenuToggle {
         this.$navList = q$('.js-nav-pages-list.js-nav-pages-list-depth-max');
         this.$header = q$(headerSelector);
         this.$scrollView = q$(scrollViewSelector, this.$menu);
-        this.$subMenus = q$$('.js-nav-pages-action', this.$navList);
+        this.$subMenus = this.$navList === null ? null : q$$('.js-nav-pages-action', this.$navList);
         this.$toggle = $toggle;
         this.mediumMediaQueryList = mediaQueryListFactory('medium');
 
@@ -62,7 +62,10 @@ export class MobileMenuToggle {
     bindEvents() {
         this.$toggle.addEventListener('click', this.onToggleClick);
         $(this.$header).on(CartPreviewEvents.open, this.onCartPreviewOpen);
-        this.$subMenus.forEach($subMenu => $subMenu.addEventListener('click', this.onSubMenuClick));
+
+        if (this.$subMenus && this.$subMenus.length) {
+            this.$subMenus.forEach($subMenu => $subMenu.addEventListener('click', this.onSubMenuClick));
+        }
 
         if (this.mediumMediaQueryList && this.mediumMediaQueryList.addListener) {
             this.mediumMediaQueryList.addListener(this.onMediumMediaQueryMatch);
@@ -139,18 +142,20 @@ export class MobileMenuToggle {
         const $parentSiblings = Array.from($closestAction.parentNode.children);
         const $parentAction = q$$('.js-nav-pages-action', $closestAction.closest('.js-nav-page-sub-menu-horizontal'));
 
-        if (this.$subMenus.classList.contains('is-open')) {
-            this.$navList.classList.add('sub-menu-is-open');
-        } else {
-            this.$navList.classList.remove('sub-menu-is-open');
+        if (this.$subMenus && this.$subMenus.length) {
+            if (this.$subMenus.some($subMenu => $subMenu.classList.contains('is-open'))) {
+                this.$navList.classList.add('sub-menu-is-open');
+            } else {
+                this.$navList.classList.remove('sub-menu-is-open');
+            }
         }
 
         if (event.target.classList.contains('is-open')) {
             $parentSiblings.forEach($el => $el.classList.add('is-hidden'));
             $parentAction.forEach($el => $el.classList.add('is-hidden'));
         } else {
-            $parentSiblings.classList.remove('is-hidden');
-            $parentAction.classList.remove('is-hidden');
+            $parentSiblings.forEach($el => $el.classList.remove('is-hidden'));
+            $parentAction.forEach($el => $el.classList.remove('is-hidden'));
         }
     }
 
