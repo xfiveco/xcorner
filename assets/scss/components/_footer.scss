@@ -1,3 +1,92 @@
 /* ==========================================================================
    #FOOTER
    ========================================================================== */
+
+.c-footer {
+    background-color: $color-white;
+    border-top: 1px solid $color-white-grey;
+    padding: 3rem 0;
+    position: relative;
+    transform: translateZ(0);
+
+    @include bp(medium) {
+        .footer-info {
+            display: grid;
+            gap: remCalc(10.5);
+            grid-template-columns: 1fr 1fr 1fr auto;
+        }
+    }
+
+    .footer-info-heading {
+        color: $color-grey-625;
+        font-size: 1rem;
+        font-weight: 400;
+        letter-spacing: 0.25px;
+        margin-bottom: 0.78571rem;
+        text-transform: inherit;
+    }
+
+    .footer-info-col {
+        color: $color-grey-425;
+        display: inline-block;
+        float: none;
+        font-size: 1rem;
+        margin-bottom: 3rem;
+        overflow-wrap: break-word;
+        text-align: center;
+        vertical-align: top;
+        width: 100%;
+
+        @include bp(medium) {
+            text-align: left;
+            width: auto;
+        }
+    }
+
+    .footer-info-list {
+        @include list-bare();
+
+        margin-bottom: 0;
+
+        li {
+            margin-bottom: 0;
+        }
+
+        a {
+            background-color: transparent;
+            color: $color-grey-425;
+            text-decoration: none;
+
+            &:hover {
+                color: $color-dark-grey;
+            }
+        }
+    }
+
+    .footer-copyright {
+        text-align: center;
+
+        @include bp(medium) {
+            text-align: left;
+        }
+
+        > .powered-by {
+            color: $color-grey-425;
+            font-size: rem-calc(11);
+            margin: 0;
+
+            @include bp(medium) {
+                font-size: rem-calc(12);
+            }
+        }
+        
+        a {
+            color: $color-grey-425;
+            text-decoration: none;
+
+            &:hover {
+                color: $color-dark-grey;
+            }
+        }
+    }
+}

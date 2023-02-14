@@ -1,15 +1,15 @@
 <h3 class="footer-info-heading">{{lang 'newsletter.subscribe'}}</h3>
 <p>{{lang 'newsletter.subscribe_intro'}}</p>
 
-<form class="form" action="{{urls.subscribe.action}}" method="post">
+<form class="c-form" action="{{urls.subscribe.action}}" method="post">
     <fieldset class="form-fieldset">
         <input type="hidden" name="action" value="subscribe">
         <input type="hidden" name="nl_first_name" value="bc">
         <input type="hidden" name="check" value="1">
         <div class="form-field">
-            <label class="form-label is-srOnly" for="nl_email">{{lang 'common.email_address'}}</label>
-            <div class="form-prefixPostfix wrap">
-                <input class="form-input"
+            <label class="form-label u-hidden-visually" for="nl_email">{{lang 'common.email_address'}}</label>
+            <div class="form-prefix-postfix wrap">
+                <input class="form-input c-input"
                        id="nl_email"
                        name="nl_email"
                        type="email"
@@ -19,7 +19,7 @@
                        aria-required="true"
                        required
                 >
-                <input class="c-button c-button--primary form-prefixPostfix-button--postfix"
+                <input class="c-button c-button--primary form-prefix-postfix-button--postfix"
                        type="submit"
                        value="{{lang 'newsletter.subscribe_submit'}}"
                 >
