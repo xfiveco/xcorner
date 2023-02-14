@@ -13,7 +13,7 @@ describe('carousel', () => {
 		            <div class='heroCarousel-content'>\
 		    			<h1 class='heroCarousel-title'>The Task Lamp</h1>\
 		    			<p class='heroCarousel-description'>Our signature fixture that bends to your will</p>\
-		        		<span class='heroCarousel-action button button--primary button--large'>Shop Now</span>\
+		        		<span class='heroCarousel-action c-button c-button--primary button--large'>Shop Now</span>\
 					</div>\
 		        </div>\
 		    </a>\
@@ -47,7 +47,7 @@ describe('carousel', () => {
 		            <div class='heroCarousel-content'>\
 		    			<h1 class='heroCarousel-title'>The Task Lamp</h1>\
 		    			<p class='heroCarousel-description'>Our signature fixture that bends to your will</p>\
-		        		<span class='heroCarousel-action button button--primary button--large'>Shop Now</span>\
+		        		<span class='heroCarousel-action c-button c-button--primary button--large'>Shop Now</span>\
 					</div>\
 		        </div>\
 		    </a>\

@@ -158,7 +158,7 @@ export default class Cart extends PageManager {
 
         utils.hooks.on('product-option-change', (event, currentTarget) => {
             const $form = $(currentTarget).find('form');
-            const $submit = $('input.button', $form);
+            const $submit = $('input.c-button', $form);
             const $messageBox = $('.alertMessageBox');
 
             utils.api.productAttributes.optionChange(productId, $form.serialize(), (err, result) => {

@@ -36,7 +36,7 @@ cart: true
                 {{#if cart.show_primary_checkout_button}}
                     <div class="cart-actions cart-content-padding-right">
                         <a
-                                class="button button--primary"
+                                class="c-button c-button--primary"
                                 href="{{urls.checkout.single_address}}"
                                 title="{{lang 'cart.checkout.title'}}"
                                 data-primary-checkout-now-action
@@ -51,7 +51,7 @@ cart: true
                     </div>
                 {{else}}
                     <div class="cart-actions cart-content-padding-right">
-                        <a class="button" href="{{urls.home}}" title="{{lang 'cart.continue_shopping'}}">{{lang 'cart.continue_shopping'}}</a>
+                        <a class="c-button" href="{{urls.home}}" title="{{lang 'cart.continue_shopping'}}">{{lang 'cart.continue_shopping'}}</a>
                     </div>
                 {{/if}}
 
@@ -62,7 +62,7 @@ cart: true
                 {{/if}}
             {{else}}
                 <div class="cart-actions cart-content-padding-right">
-                    <a class="button" href="{{urls.auth.login}}" title="{{lang 'cart.login_to_checkout'}}">{{lang 'cart.login_to_checkout'}}</a>
+                    <a class="c-button" href="{{urls.auth.login}}" title="{{lang 'cart.login_to_checkout'}}">{{lang 'cart.login_to_checkout'}}</a>
                 </div>
             {{/or}}
 

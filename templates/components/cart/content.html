@@ -100,7 +100,7 @@
                     <label class="form-label cart-item-label" for="qty-{{id}}">{{lang 'products.quantity'}}</label>
                     <div class="form-increment">
                         {{#if can_modify}}
-                            <button class="button button--icon"
+                            <button class="c-button button--icon"
                                     data-cart-update
                                     data-cart-itemid="{{id}}"
                                     data-action="dec"
@@ -125,7 +125,7 @@
                                aria-label="{{name}}"
                                aria-live="polite"{{#unless can_modify}} disabled{{/unless}}>
                         {{#if can_modify}}
-                            <button class="button button--icon"
+                            <button class="c-button button--icon"
                                     data-cart-update
                                     data-cart-itemid="{{id}}"
                                     data-action="inc"
