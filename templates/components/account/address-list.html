@@ -2,43 +2,57 @@
     {{> components/common/alert/alert-info (lang 'account.addresses.no_addresses')}}
 {{/unless}}
 
-<ul class="addressList">
+<ul>
     {{#each customer.addresses}}
-        <li class="address">
-            <div class="panel panel--address">
-                <div class="panel-body">
-                    <h5 class="address-title">{{first_name}} {{last_name}}</h5>
-                    <ul class="address-details address-details--postal">
-                        <li>{{company}}</li>
-                        <li>{{address1}}</li>
-                        <li>{{address2}}</li>
-                        <li>{{city}}{{#if state}}, {{state}}{{/if}} {{zip}}</li>
-                        <li>{{country}}</li>
+        <li>
+            <div>
+                <div>
+                    <div>
+                        {{first_name}} {{last_name}}
+                    </div>
+                    <ul>
+                        <li>
+                            {{company}}
+                        </li>
+                        <li>
+                            {{address1}}
+                        </li>
+                        <li>
+                            {{address2}}
+                        </li>
+                        <li>
+                            {{city}}{{#if state}}, {{state}}{{/if}} {{zip}}
+                        </li>
+                        <li>
+                            {{country}}
+                        </li>
                     </ul>
                     {{#if phone}}
-                        <dl class="address-details">
-                            <dt class="address-label">{{lang 'account.addresses.phone' }}</dt>
-                            <dd class="address-description">{{phone}}</dd>
+                        <dl>
+                            <dt>
+                                {{lang 'account.addresses.phone' }}
+                            </dt>
+                            <dd>
+                                {{phone}}
+                            </dd>
                         </dl>
                     {{/if}}
                     <form action="{{delete_url}}" method="post" data-delete-address="{{lang 'forms.address.confirm_delete'}}">
-                        <div class="form-actions">
-                            <a class="c-button c-button--primary button--small" href="{{edit_url}}">{{lang 'common.edit' }}</a>
-                            <button type="submit" class="c-button secondary button--small">{{lang 'common.delete' }}</button>
-                        </div>
+                        <a class="c-button c-button--primary button--small" href="{{edit_url}}">
+                            {{lang 'common.edit' }}
+                        </a>
+                        <button type="submit" class="c-button secondary button--small">
+                            {{lang 'common.delete' }}
+                        </button>
                     </form>
                 </div>
             </div>
         </li>
     {{/each}}
-    <li class="address">
-        <a class="panel panel--address panel--newAddress" href="{{urls.account.add_address}}">
-            <span class="panel-body">
-                <span class="address-addNew">
-                    <span class="address-symbol">&plus;</span>
-                    <h5 class="address-title">{{lang 'account.addresses.new_address' }}</h5>
-                </span>
-            </span>
+    <li>
+        <a href="{{urls.account.add_address}}">
+            <span class="address-symbol">&plus;</span>
+            {{lang 'account.addresses.new_address' }}
         </a>
     </li>
 </ul>
