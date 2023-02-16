@@ -1,7 +1,9 @@
+import q$ from '../../global/selector';
+
 function minMaxValidate(minInputSelector, maxInputSelector) {
     function validate(cb) {
-        const minValue = parseFloat($(minInputSelector).val());
-        const maxValue = parseFloat($(maxInputSelector).val());
+        const minValue = parseFloat(q$(minInputSelector).value);
+        const maxValue = parseFloat(q$(maxInputSelector).value);
 
         if (maxValue > minValue || Number.isNaN(maxValue) || Number.isNaN(minValue)) {
             return cb(true);

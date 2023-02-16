@@ -1,4 +1,3 @@
-import foundation from './foundation';
 import * as focusTrap from 'focus-trap';
 import q$, { q$$ } from './selector';
 
@@ -157,10 +156,10 @@ export class Modal {
     }
 
     bindEvents() {
-        $(this.$modal).on(ModalEvents.close, this.onModalClose);
-        $(this.$modal).on(ModalEvents.closed, this.onModalClosed);
-        $(this.$modal).on(ModalEvents.open, this.onModalOpen);
-        $(this.$modal).on(ModalEvents.opened, this.onModalOpened);
+        this.$modal.addEventListener(ModalEvents.close, this.onModalClose);
+        this.$modal.addEventListener(ModalEvents.closed, this.onModalClosed);
+        this.$modal.addEventListener(ModalEvents.open, this.onModalOpen);
+        this.$modal.addEventListener(ModalEvents.opened, this.onModalOpened);
     }
 
     open({
@@ -178,11 +177,11 @@ export class Modal {
             this.clearContent();
         }
 
-        this.$modal.foundation('reveal', 'open');
+        this.$modal.style.display = 'block';
     }
 
     close() {
-        this.$modal.foundation('reveal', 'close');
+        this.$modal.style.display = 'none';
     }
 
     updateContent(content, { wrap = false } = {}) {
@@ -197,7 +196,6 @@ export class Modal {
         $(this.$modal).trigger(ModalEvents.loaded);
 
         restrainContentHeight(this.$content);
-        foundation($(this.$content));
     }
 
     clearContent() {
@@ -246,9 +244,9 @@ export class Modal {
 
     onModalOpened() {
         if (this.pending) {
-            $(this.$modal).one(ModalEvents.loaded, () => {
+            this.$modal.addEventListener(ModalEvents.loaded, () => {
                 if (this.$modal.classList.contains('open')) this.setupFocusTrap();
-            });
+            }, { once: true });
         } else {
             this.setupFocusTrap();
         }
@@ -269,8 +267,7 @@ export default function modalFactory(selector = '[data-reveal]', options = {}) {
 
     return $modals.map(element => {
         const $modal = element;
-        const instanceKey = 'modalInstance';
-        const cachedModal = $($modal).data('instanceKey');
+        const cachedModal = $modal.data?.modalInstance;
 
         if (cachedModal instanceof Modal) {
             return cachedModal;
@@ -278,7 +275,11 @@ export default function modalFactory(selector = '[data-reveal]', options = {}) {
 
         const modal = new Modal($modal, options);
 
-        $($modal).data(instanceKey, modal);
+        if ('data' in $modal === false) {
+            $modal.data = {};
+        }
+
+        $modal.data.modalInstance = modal;
 
         return modal;
     });
@@ -330,9 +331,9 @@ export function showAlertModal(message, options = {}) {
     if (onConfirm) {
         $confirmBtn.addEventListener('click', onConfirm);
 
-        $(modal.$modal).one(ModalEvents.closed, () => {
+        modal.$modal.addEventListener(ModalEvents.closed, () => {
             $confirmBtn.removeEventListener('click', onConfirm);
-        });
+        }, { once: true });
     }
 
     if (showCancelButton) {

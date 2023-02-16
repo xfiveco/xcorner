@@ -9,7 +9,7 @@ const PLUGIN_KEY = {
 };
 
 function optionsFromData($element) {
-    const mobileMenuId = $($element).data(PLUGIN_KEY.CAMEL);
+    const mobileMenuId = $element.dataset[PLUGIN_KEY.CAMEL];
 
     return {
         menuSelector: mobileMenuId && `#${mobileMenuId}`,
@@ -61,7 +61,7 @@ export class MobileMenuToggle {
 
     bindEvents() {
         this.$toggle.addEventListener('click', this.onToggleClick);
-        $(this.$header).on(CartPreviewEvents.open, this.onCartPreviewOpen);
+        this.$header.addEventListener(CartPreviewEvents.open, this.onCartPreviewOpen);
 
         if (this.$subMenus && this.$subMenus.length) {
             this.$subMenus.forEach($subMenu => $subMenu.addEventListener('click', this.onSubMenuClick));
@@ -74,7 +74,7 @@ export class MobileMenuToggle {
 
     unbindEvents() {
         this.$toggle.removeEventListener('click', this.onToggleClick);
-        $(this.$header).off(CartPreviewEvents.open, this.onCartPreviewOpen);
+        this.$header.removeEventListener(CartPreviewEvents.open, this.onCartPreviewOpen);
 
         if (this.mediumMediaQueryList && this.mediumMediaQueryList.addListener) {
             this.mediumMediaQueryList.removeListener(this.onMediumMediaQueryMatch);
@@ -110,7 +110,6 @@ export class MobileMenuToggle {
         this.$toggle.setAttribute('aria-expanded', false);
 
         this.$menu.classList.remove('is-open');
-
         this.$header.classList.remove('is-open');
 
         this.resetSubMenus();
@@ -178,7 +177,7 @@ export class MobileMenuToggle {
 export default function mobileMenuToggleFactory(selector = `[data-${PLUGIN_KEY.SNAKE}]`, overrideOptions = {}) {
     const $toggle = q$(selector);
     const instanceKey = `${PLUGIN_KEY.CAMEL}Instance`;
-    const cachedMobileMenu = $($toggle).data(instanceKey);
+    const cachedMobileMenu = $toggle.data ? $toggle.data[instanceKey] : null;
 
     if (cachedMobileMenu instanceof MobileMenuToggle) {
         return cachedMobileMenu;
@@ -187,7 +186,11 @@ export default function mobileMenuToggleFactory(selector = `[data-${PLUGIN_KEY.S
     const options = _.extend(optionsFromData($toggle), overrideOptions);
     const mobileMenu = new MobileMenuToggle($toggle, options);
 
-    $($toggle).data(instanceKey, mobileMenu);
+    if ('data' in $toggle === false) {
+        $toggle.data = {};
+    }
+
+    $toggle.data[instanceKey] = mobileMenu;
 
     return mobileMenu;
 }

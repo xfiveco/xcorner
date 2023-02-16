@@ -1,12 +1,14 @@
 import _ from 'lodash';
 import nod from '../nod';
 import forms from '../models/forms';
+import q$, { parents, q$$ } from '../../global/selector';
 
 const inputTagNames = [
     'input',
     'select',
     'textarea',
 ];
+
 /**
  * Set up Object with Error Messages on Password Validation. Please use messages in mentioned order
  * @param {string} empty defines error text for empty field
@@ -30,16 +32,16 @@ export const createPasswordValidationErrorTextObject = (empty, confirm, mismatch
  * @return {object} Element itself
  */
 function classifyInput(input, formFieldClass) {
-    const $input = $(input);
-    const $formField = $input.parent(`.${formFieldClass}`);
-    const tagName = $input.prop('tagName').toLowerCase();
+    const $input = input;
+    const $formField = parents(`.${formFieldClass}`, $input);
+    const tagName = $input.getAttribute('tagName').toLowerCase();
 
     let className = `${formFieldClass}--${tagName}`;
     let specificClassName;
 
     // Input can be text/checkbox/radio etc...
     if (tagName === 'input') {
-        const inputType = $input.prop('type');
+        const inputType = $input.getAttribute('type');
 
         if (['radio', 'checkbox', 'submit'].includes(inputType)) {
             // ie: .form-field--checkbox, .form-field--radio
@@ -51,9 +53,9 @@ function classifyInput(input, formFieldClass) {
     }
 
     // Apply class modifier
-    return $formField
-        .addClass(className)
-        .addClass(specificClassName);
+    $formField.classList.add(className, specificClassName);
+
+    return $formField;
 }
 
 /**
@@ -77,18 +79,18 @@ function classifyInput(input, formFieldClass) {
  *
  * @param {string|object} formSelector - selector or element
  * @param {object} options
- * @return {jQuery} Element itself
+ * @return {DOMElement} Element itself
  */
 export function classifyForm(formSelector, options = {}) {
-    const $form = $(formSelector);
-    const $inputs = $form.find(inputTagNames.join(', '));
+    const $form = q$(formSelector);
+    const $inputs = q$$(inputTagNames.join(', '), $form);
 
     // Obtain options
     const { formFieldClass = 'form-field' } = options;
 
     // Classify each input in a form
-    $inputs.each((__, input) => {
-        classifyInput(input, formFieldClass);
+    $inputs.forEach($input => {
+        classifyInput($input, formFieldClass);
     });
 
     return $form;
@@ -100,7 +102,7 @@ export function classifyForm(formSelector, options = {}) {
  * @return {string}
  */
 function getFieldId($field) {
-    const fieldId = $field.prop('name').match(/(\[.*\])/);
+    const fieldId = $field.getAttribute('name').match(/(\[.*\])/);
 
     if (fieldId && fieldId.length !== 0) {
         return fieldId[0];
@@ -115,13 +117,8 @@ function getFieldId($field) {
  */
 function insertStateHiddenField($stateField) {
     const fieldId = getFieldId($stateField);
-    const stateFieldAttrs = {
-        type: 'hidden',
-        name: `FormFieldIsText${fieldId}`,
-        value: '1',
-    };
 
-    $stateField.after($('<input />', stateFieldAttrs));
+    $stateField.insertAdjacentHTML('beforeend', `<input type='hidden' name='FormFieldIsText${ fieldId }' value='1' />`);
 }
 
 /**
@@ -133,17 +130,16 @@ function announceInputErrorMessage({ element, result }) {
     if (result) {
         return;
     }
-    const activeInputContainer = $(element).parent();
+
+    const activeInputContainer = element.parentNode;
     // the reason for using span tag is nod-validate lib
     // which does not add error message class while initialising form.
     // specific class is added since it can be multiple spans
-    const errorMessage = $(activeInputContainer).find('span.form-inlineMessage');
+    const $errorMessage = activeInputContainer.querySelector('span.js-form-inline-message');
 
-    if (errorMessage.length) {
-        const $errMessage = $(errorMessage[0]);
-
-        if (!$errMessage.attr('role')) {
-            $errMessage.attr('role', 'alert');
+    if ($errorMessage) {
+        if (!$errorMessage.getAttribute('role')) {
+            $errorMessage.setAttribute('role', 'alert');
         }
     }
 }
@@ -181,7 +177,7 @@ const Validators = {
     setPasswordValidation: (validator, passwordSelector, password2Selector, requirements, {
         onEmptyPasswordErrorText, onConfirmPasswordErrorText, onMismatchPasswordErrorText, onNotValidPasswordErrorText,
     }, isOptional) => {
-        const $password = $(passwordSelector);
+        const $password = q$(passwordSelector);
         const passwordValidations = [
             {
                 selector: passwordSelector,
@@ -324,11 +320,11 @@ const Validators = {
      * @param field
      */
     cleanUpStateValidation: (field) => {
-        const $fieldClassElement = $((`[data-type="${field.data('fieldType')}"]`));
+        const $fieldClassElement = q$((`[data-type="${field.dataset.fieldType}"]`));
 
         Object.keys(nod.classes).forEach((value) => {
-            if ($fieldClassElement.hasClass(nod.classes[value])) {
-                $fieldClassElement.removeClass(nod.classes[value]);
+            if ($fieldClassElement.classList.contains(nod.classes[value])) {
+                $fieldClassElement.classList.remove(nod.classes[value]);
             }
         });
     },
