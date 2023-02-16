@@ -42,12 +42,20 @@
                 </div>
                 <div>
                     <div>
-                        <div class="account-product-detail-heading">{{lang 'account.orders.order_placed' }}</div>
-                        <span>{{this.date}}</span>
+                        <div>
+                            {{lang 'account.orders.order_placed' }}
+                        </div>
+                        <time>
+                            {{this.date}}
+                        </time>
                     </div>
-                    <div class="account-product-detail">
-                        <h6 class="account-product-detail-heading">{{lang 'account.orders.last_update' }}</h6>
-                        <span>{{this.last_update_date}}</span>
+                    <div>
+                        <div>
+                            {{lang 'account.orders.last_update' }}
+                        </div>
+                        <time>
+                            {{this.last_update_date}}
+                        </time>
                     </div>
                 </div>
             </div>
