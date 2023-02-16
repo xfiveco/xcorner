@@ -2,8 +2,8 @@
 <div class="accordion-block">
     {{> components/faceted-search/faceted-search-navigation}}
 
-    <div id="facetedSearch-content--{{dashcase facet}}" class="accordion-content facetedSearch-content--{{dashcase facet}}{{#unless start_collapsed}} is-open{{/unless}}">
-        <ul class="navList">
+    <div id="facets-{{dashcase facet}}" class="accordion-content facetedSearch-content--{{dashcase facet}}{{#unless start_collapsed}} is-open{{/unless}}">
+        <ul class="js-facets-search-nav-list">
             {{#each items}}
                 <li class="navList-item">
                     <a href="{{url}}"
