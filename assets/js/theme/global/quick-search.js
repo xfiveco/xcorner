@@ -2,24 +2,26 @@ import _ from 'lodash';
 import utils from '@bigcommerce/stencil-utils';
 import StencilDropDown from './stencil-dropdown';
 import q$, { q$$ } from './selector';
+import isVisible from '../common/utils/is-visible';
 
 export default function () {
     const TOP_STYLING = 'top: 49px;';
-    const $quickSearchResults = q$('.js-quick-search-results');
-    const $quickSearchForms = q$('[data-quick-search-form]');
+    const $quickSearchResults = q$$('.js-quick-search-results');
+    const $quickSearchForms = q$$('[data-quick-search-form]');
     const $quickSearchExpand = q$('#quick-search-expand');
-    const $searchQuery = q$('[data-search-quick]', $quickSearchForms);
+    const $searchQuery = $quickSearchForms.map($qsf => q$('[data-search-quick]', $qsf));
     const stencilDropDownExtendables = {
         hide: () => {
             $quickSearchExpand.setAttribute('aria-expanded', false);
-            $searchQuery.blur();
+            $searchQuery.forEach($sq => $sq.blur());
         },
         show: (event) => {
             $quickSearchExpand.setAttribute('aria-expanded', true);
-            $searchQuery.focus();
+            $searchQuery.forEach($sq => $sq.focus());
             event.stopPropagation();
         },
     };
+
     const stencilDropDown = new StencilDropDown(stencilDropDownExtendables);
     stencilDropDown.bind(q$('[data-search="quickSearch"]'), q$('#quickSearch'), TOP_STYLING);
 
@@ -40,8 +42,12 @@ export default function () {
                 return false;
             }
 
-            $quickSearchResults.innerHTML = response;
-            const $quickSearchResultsCurrent = q$$(':visible', $quickSearchResults);
+            $quickSearchResults.forEach($qsr => {
+                /* eslint-disable no-param-reassign */
+                $qsr.innerHTML = response;
+            });
+
+            const $quickSearchResultsCurrent = $quickSearchResults.filter($qsr => isVisible($qsr));
 
             const $noResultsMessage = $quickSearchResultsCurrent.filter($el => $el.querySelector('.js-quick-search-message'));
             if ($noResultsMessage.length) {
@@ -50,14 +56,11 @@ export default function () {
                     'aria-live': 'polite',
                 }));
             } else {
-                const $quickSearchAriaMessage = $quickSearchResultsCurrent.map($el => {
-                    $el.classList.add('u-hidden');
+                const $quickSearchAriaMessage = $quickSearchResultsCurrent.map($el => $el.nextElementSibling);
+                $noResultsMessage.forEach($nrm => $nrm.classList.add('u-hidden'));
 
-                    return $el.nextElementSibling;
-                });
-
-                const predefinedText = $quickSearchAriaMessage[0].dataset['search-aria-message-predefined-text'];
-                const itemsFoundCount = $quickSearchResultsCurrent.filte($el => $el.classList.contains('js-product')).length;
+                const predefinedText = $quickSearchAriaMessage[0].dataset.searchAriaMessagePredefinedText;
+                const itemsFoundCount = $quickSearchResultsCurrent[0].querySelectorAll('.js-product').length;
 
                 /* eslint-disable no-return-assign, no-param-reassign */
                 $quickSearchAriaMessage.forEach($el => ($el.textContent = `${itemsFoundCount} ${predefinedText} ${searchQuery}`));
@@ -81,17 +84,19 @@ export default function () {
     });
 
     // Catch the submission of the quick-search forms
-    $quickSearchForms.addEventListener('submit', event => {
-        event.preventDefault();
+    $quickSearchForms.forEach($qsf => {
+        $qsf.addEventListener('submit', event => {
+            event.preventDefault();
 
-        const $target = event.currentTarget;
-        const searchQuery = $target.querySelector('input').value;
-        const searchUrl = $target.dataset.url;
+            const $target = event.currentTarget;
+            const searchQuery = $target.querySelector('input')?.value;
+            const searchUrl = $target.dataset.url;
 
-        if (searchQuery.length === 0) {
-            return;
-        }
+            if (searchQuery.length === 0) {
+                return;
+            }
 
-        window.location.href = `${searchUrl}?search_query=${encodeURIComponent(searchQuery)}`;
+            window.location.href = `${searchUrl}?search_query=${encodeURIComponent(searchQuery)}`;
+        });
     });
 }

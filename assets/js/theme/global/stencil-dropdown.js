@@ -19,7 +19,7 @@ export default class StencilDropdown {
             this.extendables.hide();
         }
 
-        $dropDown.addClass.remove('is-open f-open-dropdown');
+        $dropDown.classList.remove('is-open', 'f-open-dropdown');
         $dropDown.setAttribute('aria-hidden', 'true');
     }
 
@@ -29,7 +29,7 @@ export default class StencilDropdown {
             $dropDown.setAttribute('aria-hidden', 'false');
         }
 
-        $dropDown.addClass.add('is-open f-open-dropdown');
+        $dropDown.addClass.add('is-open', 'f-open-dropdown');
         $dropDown.setAttribute('aria-hidden', 'false');
 
         // callback "show"
