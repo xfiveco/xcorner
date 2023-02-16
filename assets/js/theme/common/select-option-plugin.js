@@ -21,7 +21,7 @@ export default function toggleOption($element, show) {
     } else {
         selectElement = currentSelectElement;
         disabledSelectElement = currentSelectElement.data?.linkedSelectElement;
-        
+
         if (!disabledSelectElement) {
             const $select = document.createElement('select');
             $select.setAttribute('disabled', true);

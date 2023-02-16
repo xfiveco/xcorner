@@ -27,7 +27,7 @@ export default function (cartId) {
     q$('[data-cart-currency-switch-url]').addEventListener('click', event => {
         const currencySessionSwitcher = event.target.href;
         event.preventDefault();
-        
+
         utils.api.cart.getCart({ cartId }, (err, response) => {
             if (err || response === undefined) {
                 window.location.href = currencySessionSwitcher;

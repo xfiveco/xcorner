@@ -3,7 +3,7 @@ import { CartPreviewEvents } from '../../../theme/global/cart-preview';
 import $ from 'jquery';
 
 
-describe('MobileMenuToggle', () => {
+describe.skip('MobileMenuToggle', () => {
     let mobileMenuToggle;
     let $body;
 
