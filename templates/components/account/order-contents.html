@@ -21,7 +21,7 @@
                 {{#if show_reorder}}
                     <input type="checkbox" id="account-product-id-{{order_product_id}}" value="{{order_product_id}}">
                     <label for="account-product-id-{{order_product_id}}">
-                        <span class="u-hidden-visually"> 
+                        <span class="u-hidden-visually">
                             {{!-- todo: make this translatable --}}
                             Checkbox {{order_product_id}} label
                         </span>
@@ -98,20 +98,20 @@
                     </dl>
                 {{/if}}
                 {{#if refunded}}
-                    <div>
+                    <p>
                         {{lang 'account.orders.refunded_quantity' qty=refunded_qty}}
-                    </div>
+                    </p>
                 {{else}}
                     {{#if refunded_qty}}
-                        <div>
+                        <p>
                             {{lang 'account.orders.refunded_quantity' qty=refunded_qty}}
-                        </div>
+                        </p>
                     {{/if}}
                 {{/if}}
                 {{#if reorder_message}}
-                    <div>
+                    <p>
                         {{{reorder_message}}}
-                    </div>
+                    </p>
                 {{/if}}
             </div>
         </div>

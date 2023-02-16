@@ -55,9 +55,9 @@
 
 <form method="post" action="{{this.urls.account.wishlists.delete}}">
     {{#unless customer.wishlists}}
-        <div>
+        <p>
             {{> components/common/alert/alert-info (lang 'account.wishlists.you_have_none')}}
-        </div>
+        </p>
     {{/unless}}
     <div>
         <a href="{{this.urls.account.wishlists.add}}" class="c-button c-button--primary" role="button" data-wishlist>

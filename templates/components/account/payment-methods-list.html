@@ -9,9 +9,9 @@
             {{display_name}}
         </div>
         {{#if description}}
-            <div>
+            <p>
                 {{description}}
-            </div>
+            </p>
         {{/if}}
         <div>
             {{#each stored_instruments}}
@@ -23,16 +23,16 @@
                                     {{!-- If credit card STARTS --}}
                                     {{#if brand}}
                                         {{#inArray ../../theme_settings.supported_card_type_icons brand }}
-                                            <img src="{{cdn (concat (concat 'img/payment-methods/' brand) '.svg')}}" 
+                                            <img src="{{cdn (concat (concat 'img/payment-methods/' brand) '.svg')}}"
                                                 alt="{{lang (concat 'account.payment_methods.card_types.' brand)}}"
                                                 title="{{lang (concat 'account.payment_methods.card_types.' brand)}}">
                                         {{/inArray}}
                                         <span>
-                                            {{lang (concat 'account.payment_methods.card_types.' brand)}} 
+                                            {{lang (concat 'account.payment_methods.card_types.' brand)}}
                                             {{lang 'account.payment_methods.card_ending_in' last_four=last_4}}
                                         </span>
                                     {{else}}
-                                        <img src="{{cdn 'img/payment-methods/card.svg'}}" 
+                                        <img src="{{cdn 'img/payment-methods/card.svg'}}"
                                             alt="{{lang 'account.payment_methods.card_types.credit_card'}}"
                                             title="{{lang 'account.payment_methods.card_types.credit_card'}}">
                                         <span>
@@ -56,8 +56,8 @@
 
                                 {{#if type '===' 'stored_paypal_account'}}
                                     {{!-- If paypal STARTS --}}
-                                    <img src="{{cdn 'img/payment-methods/paypal.svg'}}" 
-                                        alt="{{lang 'account.payment_methods.paypal'}}" 
+                                    <img src="{{cdn 'img/payment-methods/paypal.svg'}}"
+                                        alt="{{lang 'account.payment_methods.paypal'}}"
                                             title="{{lang 'account.payment_methods.paypal'}}"
                                     >
                                     <span>
@@ -81,24 +81,24 @@
                         </div>
                         {{#if billing_address}}
                                 {{!-- If there is an address STARTS --}}
-                                <div>
+                                <p>
                                     <span>
                                         {{lang 'account.payment_methods.billing_address'}}:
                                     </span>
                                     <span class="methodDetails-description">
                                         <span>
-                                            {{billing_address.address1}}, 
+                                            {{billing_address.address1}},
                                         </span>
                                         {{#if billing_address.address2}}
                                             <span>
-                                                {{billing_address.address2}}, 
+                                                {{billing_address.address2}},
                                             </span>
                                         {{/if}}
                                         <span>
                                             {{billing_address.city}}, {{billing_address.state}} {{billing_address.zip}} {{billing_address.country}}
                                         </span>
                                     </span>
-                                </div>
+                                </p>
                                 {{!-- If there is an address ENDS --}}
                         {{/if}}
                         <div>
