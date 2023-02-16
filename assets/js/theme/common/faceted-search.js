@@ -9,19 +9,20 @@ import nod from './nod';
 
 
 const defaultOptions = {
-    accordionToggleSelector: '#facetedSearch .accordion-navigation, #facetedSearch .facetedSearch-toggle',
-    blockerSelector: '#facetedSearch .blocker',
-    clearFacetSelector: '#facetedSearch .facetedSearch-clearLink',
-    componentSelector: '#facetedSearch-navList',
-    facetNavListSelector: '#facetedSearch .navList',
-    priceRangeErrorSelector: '#facet-range-form .form-inlineMessage',
-    priceRangeFieldsetSelector: '#facet-range-form .js-form-fieldset',
-    priceRangeFormSelector: '#facet-range-form',
-    priceRangeMaxPriceSelector: '#facet-range-form [name=max_price]',
-    priceRangeMinPriceSelector: '#facet-range-form [name=min_price]',
-    showMoreToggleSelector: '#facetedSearch .accordion-content .toggleLink',
-    facetedSearchFilterItems: '#facetedSearch-filterItems .js-form-input',
-    modal: modalFactory('#modal'),
+    accordionToggleSelector:
+        '.js-facets-search-wrapper .js-accordion-navigation, .js-facets-search-wrapper .js-facets-search-toggle',
+    blockerSelector: '.js-facets-search-wrapper .js-blocker',
+    clearFacetSelector: '.js-facets-search-wrapper .js-facets-search-clear',
+    componentSelector: '.js-facets-search-nav-list',
+    facetNavListSelector: '.js-facets-search-wrapper .js-facets-search-nav-list',
+    priceRangeErrorSelector: '.js-facets-search-range-form .js-inline-message',
+    priceRangeFieldsetSelector: '.js-facets-search-range-form .form-fieldset',
+    priceRangeFormSelector: '.js-facets-search-range-form',
+    priceRangeMaxPriceSelector: '.js-facets-search-range-form [name=max_price]',
+    priceRangeMinPriceSelector: '.js-facets-search-range-form [name=min_price]',
+    showMoreToggleSelector: '.js-facets-search-wrapper .accordion-content .toggleLink',
+    facetedSearchFilterItems: '.js-facets-search-wrapper-filterItems .form-input',
+    modal: modalFactory('.js-modal')[0],
     modalOpen: false,
 };
 
@@ -64,14 +65,13 @@ class FacetedSearch {
         this.initPriceValidator();
 
         // Show limited items by default
-        $(this.options.facetNavListSelector).each((index, navList) => {
-            this.collapseFacetItems($(navList));
+        document.querySelectorAll(this.options.facetNavListSelector).forEach((list) => {
+            this.collapseFacetItems(list);
         });
 
         // Mark initially collapsed accordions
-        $(this.options.accordionToggleSelector).each((index, accordionToggle) => {
-            const $accordionToggle = $(accordionToggle);
-            const collapsible = $accordionToggle.data('collapsibleInstance');
+        document.querySelectorAll(this.options.accordionToggleSelector).forEach((item) => {
+            const collapsible = item.dataset.collapsibleInstance;
 
             if (collapsible.isCollapsed) {
                 this.collapsedFacets.push(collapsible.targetId);
