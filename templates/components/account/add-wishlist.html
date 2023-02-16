@@ -21,17 +21,17 @@
     <form action="{{#if forms.wishlist.id}}{{urls.account.wishlists.edit}}{{else}}{{urls.account.wishlists.add}}&product_id={{forms.wishlist.product_id}}{{/if}}" class="form wishlist-form" method="post">
         <input type="hidden" name="submit">
         <div>
-            <label for="wishlist-name">
+            <label for="wishlistname">
                 {{lang 'forms.wishlist.name'}}
                 <small>
                     {{lang 'common.required' }}
                 </small>
             </label>
-            <input class="form-input" name="wishlist-name" id="wishlist-name" value="{{forms.wishlist.name}}">
+            <input class="form-input" name="wishlistname" id="wishlistname" value="{{forms.wishlist.name}}">
         </div>
         <div>
-            <input type="checkbox" name="public-wishlist" id="public-wishlist"{{#if forms.wishlist.is_public}} checked{{/if}}>
-            <label for="public-wishlist">
+            <input type="checkbox" name="publicwishlist" id="publicwishlist"{{#if forms.wishlist.is_public}} checked{{/if}}>
+            <label for="publicwishlist">
                 {{lang 'forms.wishlist.public' }}
             </label>
         </div>
