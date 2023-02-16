@@ -1,17 +1,20 @@
 <nav>
     {{#if category.subcategories}}
-        <div class="sidebarBlock">
-            <h2 class="sidebarBlock-heading">{{category.name}}</h2>
-            <ul class="navList">
+        <aside>
+            <div>
+                {{category.name}}
+            </div>
+            <ul>
                 {{#each category.subcategories}}
-                <li class="navList-item">
-                    <a class="navList-action" href="{{url}}" title="{{name}}">{{name}}</a>
-                </li>
+                    <li>
+                        <a href="{{url}}" title="{{name}}">
+                            {{name}}
+                        </a>
+                    </li>
                 {{/each}}
             </ul>
-        </div>
+        </aside>
     {{/if}}
-
     {{#if category.faceted_search_enabled}}
         {{> components/faceted-search/index category}}
     {{else}}
