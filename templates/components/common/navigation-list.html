@@ -1,71 +1,78 @@
 {{#if children}}
-<a class="js-nav-pages-action has-subMenu{{#if is_active}} activePage{{/if}}"
-   href="{{url}}"
-   data-collapsible="navPages-{{id}}"
->
-    {{name}}
-    <i class="icon js-nav-pages-action-moreIcon" aria-hidden="true">
-        <svg><use href="#icon-chevron-down" /></svg>
-    </i>
-</a>
-<div class="navPage-subMenu" id="navPages-{{id}}" aria-hidden="true" tabindex="-1">
-    <ul class="navPage-subMenu-list">
-        <li class="navPage-subMenu-item">
-            <a class="navPage-subMenu-action js-nav-pages-action"
-               href="{{url}}"
-               aria-label="{{lang 'category.view_all.name' category=name}}"
-            >
-                {{lang 'category.view_all.name' category=name}}
-            </a>
-        </li>
-        {{#each children}}
-            <li class="navPage-subMenu-item">
-                {{#if children}}
-                    <a class="navPage-subMenu-action js-nav-pages-action has-subMenu{{#if is_active}} activePage{{/if}}"
-                       href="{{url}}"
-                       aria-label="{{name}}"
-                    >
-                        {{name}}
-                        <span class="collapsible-icon-wrapper"
-                            data-collapsible="navPages-{{id}}"
-                            data-collapsible-disabled-breakpoint="medium"
-                            data-collapsible-disabled-state="open"
-                            data-collapsible-enabled-state="closed"
-                        >
-                            <i class="icon js-nav-pages-action-moreIcon" aria-hidden="true">
-                                <svg><use href="#icon-chevron-down" /></svg>
-                            </i>
-                        </span>
-                    </a>
-                    <ul class="navPage-childList" id="navPages-{{id}}">
-                        {{#each children}}
-                        <li class="navPage-childList-item">
-                            <a class="navPage-childList-action js-nav-pages-action{{#if is_active}} activePage{{/if}}"
-                               href="{{url}}"
-                               aria-label="{{name}}"
-                            >
-                                {{name}}
-                            </a>
-                        </li>
-                        {{/each}}
-                    </ul>
-                {{else}}
-                    <a class="navPage-subMenu-action js-nav-pages-action{{#if is_active}} activePage{{/if}}"
-                       href="{{url}}"
-                       aria-label="{{name}}"
-                    >
-                        {{name}}
-                    </a>
-                {{/if}}
+    <a 
+        class="js-nav-pages-action has-sub-menu{{#if is_active}} active-page{{/if}}"
+        href="{{url}}"
+        data-collapsible="nav-pages-{{id}}"
+    >
+        {{name}}
+    
+        <svg>
+            <use href="#icon-chevron-down" />
+        </svg>
+    </a>
+    <div id="nav-pages-{{id}}" aria-hidden="true" tabindex="-1">
+        <ul>
+            <li>
+                <a 
+                    class="js-nav-pages-action"
+                    href="{{url}}"
+                    aria-label="{{lang 'category.view_all.name' category=name}}"
+                >
+                    {{lang 'category.view_all.name' category=name}}
+                </a>
             </li>
-        {{/each}}
-    </ul>
-</div>
+            {{#each children}}
+                <li>
+                    {{#if children}}
+                        <a 
+                            class=" js-nav-pages-action has-sub-menu{{#if is_active}} active-page{{/if}}"
+                            href="{{url}}"
+                            aria-label="{{name}}"
+                        >
+                            {{name}}
+                            <span 
+                                data-collapsible="nav-pages-{{id}}"
+                                data-collapsible-disabled-breakpoint="medium"
+                                data-collapsible-disabled-state="open"
+                                data-collapsible-enabled-state="closed"
+                            >
+                                <svg>
+                                    <use href="#icon-chevron-down" />
+                                </svg>
+                            </span>
+                        </a>
+                        <ul id="nav-pages-{{id}}">
+                            {{#each children}}
+                                <li>
+                                    <a 
+                                        class="js-nav-pages-action{{#if is_active}} active-page{{/if}}"
+                                        href="{{url}}"
+                                        aria-label="{{name}}"
+                                    >
+                                        {{name}}
+                                    </a>
+                                </li>
+                            {{/each}}
+                        </ul>
+                    {{else}}
+                        <a 
+                            class=" js-nav-pages-action{{#if is_active}} active-page{{/if}}"
+                            href="{{url}}"
+                            aria-label="{{name}}"
+                        >
+                            {{name}}
+                        </a>
+                    {{/if}}
+                </li>
+            {{/each}}
+        </ul>
+    </div>
 {{else}}
-<a class="js-nav-pages-action{{#if is_active}} activePage{{/if}}"
-   href="{{url}}"
-   aria-label="{{name}}"
->
-    {{name}}
-</a>
+    <a 
+        class="js-nav-pages-action{{#if is_active}} active-page{{/if}}"
+        href="{{url}}"
+        aria-label="{{name}}"
+    >
+        {{name}}
+    </a>
 {{/if}}

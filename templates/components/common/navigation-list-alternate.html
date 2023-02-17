@@ -1,19 +1,22 @@
 {{#if children}}
-    <a class="js-nav-pages-action navPages-action-depth-max has-subMenu is-root{{#if is_active}} activePage{{/if}}"
-       href="{{url}}"
-       data-collapsible="navPages-{{id}}"
-       aria-label="{{name}}"
+    <a 
+        class="js-nav-pages-action has-sub-menu is-root{{#if is_active}} active-page{{/if}}"
+        href="{{url}}"
+        data-collapsible="nav-pages-{{id}}"
+        aria-label="{{name}}"
     >
         {{name}}
-        <i class="icon navPages-action-moreIcon" aria-hidden="true">
-            <svg><use href="#icon-chevron-down" /></svg>
-        </i>
+            
+        <svg>
+            <use href="#icon-chevron-down" />
+        </svg>
     </a>
     {{> components/common/navigation-dropdown}}
 {{else}}
-    <a class="js-nav-pages-action{{#if is_active}} activePage{{/if}}"
-       href="{{url}}"
-       aria-label="{{name}}"
+    <a 
+        class="js-nav-pages-action{{#if is_active}} active-page{{/if}}"
+        href="{{url}}"
+        aria-label="{{name}}"
     >
         {{name}}
     </a>

@@ -713,27 +713,27 @@
       {
         "type": "color",
         "label": "i18n.TextColor",
-        "id": "navUser-color"
+        "id": "nav-user-color"
       },
       {
         "type": "color",
         "label": "i18n.TextHoverColor",
-        "id": "navUser-color-hover"
+        "id": "nav-user-color-hover"
       },
       {
         "type": "color",
         "label": "i18n.CartDropdownBackground",
-        "id": "navUser-dropdown-backgroundColor"
+        "id": "nav-user-dropdown-backgroundColor"
       },
       {
         "type": "color",
         "label": "i18n.CartDropdownBorder",
-        "id": "navUser-dropdown-borderColor"
+        "id": "nav-user-dropdown-borderColor"
       },
       {
         "type": "color",
         "label": "i18n.CartCounterBackground",
-        "id": "navUser-indicator-backgroundColor"
+        "id": "nav-user-indicator-backgroundColor"
       },
       {
         "type": "heading",
@@ -784,7 +784,7 @@
       {
         "type": "color",
         "label": "i18n.QuickSearchBackground",
-        "id": "dropdown--quickSearch-backgroundColor"
+        "id": "dropdown--quick-search-backgroundColor"
       },
       {
         "type": "heading",

@@ -1,17 +1,30 @@
-<div class="navPage-subMenu js-nav-page-sub-menu-horizontal" id="navPages-{{id}}" aria-hidden="true" tabindex="-1">
-    <ul class="navPage-subMenu-list">
-        <li class="navPage-subMenu-item-parent">
-            <a class="navPage-subMenu-action js-nav-pages-action navPages-action-depth-max" href="{{url}}">{{lang 'category.view_all.name' category=name}}</a>
+<div 
+    class="js-nav-page-sub-menu-horizontal" 
+    id="nav-pages-{{id}}" 
+    aria-hidden="true" 
+    tabindex="-1"
+>
+    <ul>
+        <li>
+            <a class="js-nav-pages-action" href="{{url}}">
+                {{lang 'category.view_all.name' category=name}}
+            </a>
         </li>
         {{#each children}}
-            <li class="navPage-subMenu-item-child">
+            <li>
                 {{#if children}}
-                    <a class="navPage-subMenu-action js-nav-pages-action navPages-action-depth-max has-subMenu{{#if is_active}} activePage{{/if}}" href="{{url}}" data-collapsible="navPages-{{id}}">
-                        {{name}}<i class="icon js-nav-pages-action-moreIcon" aria-hidden="true"><svg><use href="#icon-chevron-down" /></svg></i>
+                    <a 
+                        class="js-nav-pages-actionhas-sub-menu{{#if is_active}} active-page{{/if}}" 
+                        href="{{url}}" 
+                        data-collapsible="nav-pages-{{id}}"
+                    >
+                        {{name}}<svg><use href="#icon-chevron-down" /></svg>
                     </a>
                     {{> components/common/navigation-dropdown}}
                 {{else}}
-                    <a class="navPage-subMenu-action js-nav-pages-action{{#if is_active}} activePage{{/if}}" href="{{url}}">{{name}}</a>
+                    <a class="js-nav-pages-action{{#if is_active}} active-page{{/if}}" href="{{url}}">
+                        {{name}}
+                    </a>
                 {{/if}}
             </li>
         {{/each}}

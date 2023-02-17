@@ -32,7 +32,7 @@ export default function (secureBaseUrl, cartId) {
         $cartQuantity.textContent = quantity;
 
         if (quantity > 0) {
-            $cartQuantity.classList.add('count-pill--positive');
+            $cartQuantity.classList.add('js-count-pill--positive');
         }
 
         if (utils.tools.storage.localStorageAvailable()) {
