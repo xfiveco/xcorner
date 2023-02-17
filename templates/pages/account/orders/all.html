@@ -13,7 +13,7 @@ customer:
 <div class="account account--fixed">
     <div class="account-head">
         {{#if customer.store_credit.value '>' 0}}
-            <div class="alertBox alertBox--storeCredit">
+            <div>
                 {{{lang 'common.store_credit' store_credit=customer.store_credit.formatted}}}
             </div>
         {{/if}}
