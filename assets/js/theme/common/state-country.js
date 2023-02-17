@@ -57,7 +57,7 @@ function makeStateOptional(stateElement) {
         type: 'text',
         id: attrs.id,
         'data-label': attrs['data-label'],
-        class: 'form-input',
+        class: 'js-form-input',
         name: attrs.name,
         'data-field-type': attrs['data-field-type'],
     };

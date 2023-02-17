@@ -110,7 +110,7 @@ export default class ProductDetails extends ProductDetailsBase {
 
     registerAddToCartValidation() {
         this.addToCartValidator.add([{
-            selector: '[data-quantity-change] > .form-input--incrementTotal',
+            selector: '[data-quantity-change] > .js-form-input--increment-total',
             validate: (cb, val) => {
                 const result = forms.numbersOnly(val);
                 cb(result);
@@ -373,7 +373,7 @@ export default class ProductDetails extends ProductDetailsBase {
         });
 
         // Prevent triggering quantity change when pressing enter
-        this.$scope.on('keypress', '.form-input--incrementTotal', event => {
+        this.$scope.on('keypress', '.js-form-input--increment-total', event => {
             // If the browser supports event.which, then use event.which, otherwise use event.keyCode
             const x = event.which || event.keyCode;
             if (x === 13) {
@@ -382,7 +382,7 @@ export default class ProductDetails extends ProductDetailsBase {
             }
         });
 
-        this.$scope.on('keyup', '.form-input--incrementTotal', () => {
+        this.$scope.on('keyup', '.js-form-input--increment-total', () => {
             this.updateProductDetailsData();
         });
     }
