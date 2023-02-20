@@ -1,19 +1,23 @@
-<div id="alert-modal" class="modal modal--alert modal--small" data-reveal data-prevent-quick-search-close>
+<div id="alert-modal" class="is-modal-small" data-reveal data-prevent-quick-search-close>
     <div class="js-alert-icon js-error-icon">
-        <span class="icon-content">
-            <span class="line line-left"></span>
-            <span class="line line-right"></span>
+        <span>
+            <span></span>
+            <span></span>
         </span>
     </div>
 
     <div class="js-alert-icon js-warning-icon">
-        <div class="icon-content">!</div>
+        <div>!</div>
     </div>
 
     <div class="js-modal-content"></div>
 
-    <div class="button-container">
-        <button type="button" class="js-confirm c-button" data-reveal-close>{{lang 'common.ok'}}</button>
-        <button type="button" class="js-cancel c-button" data-reveal-close>{{lang 'common.cancel'}}</button>
+    <div>
+        <button type="button" class="js-confirm c-button" data-reveal-close>
+            {{lang 'common.ok'}}
+        </button>
+        <button type="button" class="js-cancel c-button" data-reveal-close>
+            {{lang 'common.cancel'}}
+        </button>
     </div>
 </div>

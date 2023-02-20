@@ -280,10 +280,10 @@ describe.skip('Modal', () => {
     describe('set size', () => {
         it('should set size class', () => {
             modal.size = 'large';
-            expect(modal.$modal.classList.contains('modal--large')).toBeTruthy();
+            expect(modal.$modal.classList.contains('is-modal-large')).toBeTruthy();
 
             modal.size = 'normal';
-            expect(modal.$modal.classList.contains('modal--large')).toBeFalsy();
+            expect(modal.$modal.classList.contains('is-modal-large')).toBeFalsy();
         });
     });
 });

@@ -336,7 +336,7 @@ export default class ProductDetailsBase {
         const $messageBox = $('.productAttributes-message');
 
         if (message) {
-            $('.alertBox-message', $messageBox).text(message);
+            $('.js-alert-box-message', $messageBox).text(message);
             $messageBox.show();
         } else {
             $messageBox.hide();
