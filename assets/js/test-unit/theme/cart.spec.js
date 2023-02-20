@@ -74,7 +74,7 @@ var $dom = $('<table class="cart" data-cart-quantity="2">\
                             <span class="is-srOnly">Decrease Quantity:</span>\
                             <i class="icon" aria-hidden="true"><svg><use xmlns:xlink="www.ccc.com"></use></svg></i>\
                         </button>\
-                        <input class="form-input form-input--incrementTotal cart-item-qty-input" id="item-id" name="qty-item-id" type="tel" value="2" data-quantity-min="0" data-quantity-max="" data-quantity-min-error="The minimum purchasable quantity is 0" data-quantity-max-error="The maximum purchasable quantity is null" min="1" pattern="[0-9]*" data-cart-itemid="item-id" data-action="manualQtyChange" aria-live="polite">\
+                        <input class="js-form-input form-input--incrementTotal cart-item-qty-input" id="item-id" name="qty-item-id" type="tel" value="2" data-quantity-min="0" data-quantity-max="" data-quantity-min-error="The minimum purchasable quantity is 0" data-quantity-max-error="The maximum purchasable quantity is null" min="1" pattern="[0-9]*" data-cart-itemid="item-id" data-action="manualQtyChange" aria-live="polite">\
                             <button class="c-button button--icon" data-cart-update="" data-cart-itemid="item-id" data-action="inc">\
                                 <span class="is-srOnly">Increase Quantity:</span>\
                                 <i class="icon" aria-hidden="true"><svg><use xmlns:xlink="www.ddd.com"></use></svg></i>\

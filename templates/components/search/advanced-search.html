@@ -10,7 +10,7 @@
                             {{lang 'forms.search.query' }}
                             <small>{{lang 'common.required' }}</small>
                         </label>
-                        <input type="text" class="form-input" name="search_query_adv" data-error-message="{{lang 'search.error.empty_field'}}" id="search_query_adv" value="{{forms.search.query}}">
+                        <input type="text" class="js-form-input" name="search_query_adv" data-error-message="{{lang 'search.error.empty_field'}}" id="search_query_adv" value="{{forms.search.query}}">
                     </div>
 
                     <div class="form-field">
@@ -47,11 +47,11 @@
                     </p>
                     <label>
                         <span class="is-srOnly">{{lang 'forms.search.price_range' }}</span>
-                        <span>{{lang 'common.from'}}</span><input type="number" step="any" class="form-input" name="price_from" id="search-form-price_from" value="{{forms.search.values.price_from}}">
+                        <span>{{lang 'common.from'}}</span><input type="number" step="any" class="js-form-input" name="price_from" id="search-form-price_from" value="{{forms.search.values.price_from}}">
                     </label>
                     <label>
                         <span class="is-srOnly">{{lang 'forms.search.price_range' }}</span>
-                        <span>{{lang 'common.to'}}</span><input type="number" step="any" class="form-input" name="price_to" id="search-form-price_to" value="{{forms.search.values.price_to}}">
+                        <span>{{lang 'common.to'}}</span><input type="number" step="any" class="js-form-input" name="price_to" id="search-form-price_to" value="{{forms.search.values.price_to}}">
                     </label>
                 </div>
             </div>
