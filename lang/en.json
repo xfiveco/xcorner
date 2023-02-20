@@ -32,7 +32,8 @@
         "brand_name": "Brand: {name}"
     },
     "categories": {
-        "no_products": "There are no products listed under this category."
+        "no_products": "There are no products listed under this category.",
+        "category_name": "Category: {name}"
     },
     "checkout": {
         "title": "Checkout"
