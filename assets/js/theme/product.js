@@ -31,14 +31,14 @@ export default class Product extends PageManager {
         // Init collapsible
         collapsibleFactory();
 
-        this.productDetails = new ProductDetails($('.productView'), this.context, window.BCData.product_attributes);
+        this.productDetails = new ProductDetails($('.js-product-view'), this.context, window.BCData.product_attributes);
         this.productDetails.setProductVariant();
 
         videoGallery();
 
         this.bulkPricingHandler();
 
-        const $reviewForm = classifyForm('.writeReview-form');
+        const $reviewForm = classifyForm('.js-write-review-form');
 
         if ($reviewForm.length === 0) return;
 

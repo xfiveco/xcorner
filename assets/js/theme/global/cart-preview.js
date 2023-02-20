@@ -1,6 +1,5 @@
-import 'foundation-sites/js/foundation/foundation';
-import 'foundation-sites/js/foundation/foundation.dropdown';
 import utils from '@bigcommerce/stencil-utils';
+import trigger from '../common/utils/trigger';
 import q$ from './selector';
 
 export const CartPreviewEvents = {
@@ -13,28 +12,27 @@ export default function (secureBaseUrl, cartId) {
     const $cart = q$('[data-cart-preview]');
     const $cartDropdown = q$('#cart-preview-dropdown');
     const $cartLoading = document.createElement('div');
-    $cartLoading.classList.add('loadingOverlay');
-
-    // const $body = q$('body');
+    $cartLoading.classList.add('js-loading-overlay');
 
     if (window.ApplePaySession) {
-        $cartDropdown.classList.add('apple-pay-supported');
+        $cartDropdown.classList.add('js-apple-pay-supported');
     }
 
-    $('body').on('cart-quantity-update', (event, quantity) => {
+    q$('body').addEventListener('cart-quantity-update', event => {
+        const quantity = event.details;
         $cart.setAttribute('aria-label', (_, prevValue) => prevValue.replace(/\d+/, quantity));
 
         if (!quantity) {
-            $cart.classList.add('navUser-item--cart__hidden-s');
+            $cart.classList.add('js-nav-user-item--cart__hidden-s');
         } else {
-            $cart.classList.remove('navUser-item--cart__hidden-s');
+            $cart.classList.remove('js-nav-user-item--cart__hidden-s');
         }
 
-        const $cartQuantity = q$('.cart-quantity');
+        const $cartQuantity = q$('.js-cart-quantity');
         $cartQuantity.textContent = quantity;
 
         if (quantity > 0) {
-            $cartQuantity.classList.add('countPill--positive');
+            $cartQuantity.classList.add('count-pill--positive');
         }
 
         if (utils.tools.storage.localStorageAvailable()) {
@@ -75,7 +73,7 @@ export default function (secureBaseUrl, cartId) {
         if (utils.tools.storage.localStorageAvailable()) {
             if (localStorage.getItem('cart-quantity')) {
                 quantity = Number(localStorage.getItem('cart-quantity'));
-                $('body').trigger('cart-quantity-update', quantity); // TODO: check if it's necessary to create custom events or a utility library fro triggering them
+                trigger(q$('body'), 'cart-quantity-update', quantity);
             }
         }
 
@@ -97,9 +95,9 @@ export default function (secureBaseUrl, cartId) {
         // If the Cart API gives us a different quantity number, update it
         cartQtyPromise.then(qty => {
             quantity = qty;
-            $('body').trigger('cart-quantity-update', quantity);
+            trigger(q$('body'), 'cart-quantity-update', quantity);
         });
     } else {
-        $('body').trigger('cart-quantity-update', quantity);
+        trigger(q$('body'), 'cart-quantity-update', quantity);
     }
 }

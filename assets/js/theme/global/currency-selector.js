@@ -14,21 +14,20 @@ export default function (cartId) {
     }
 
     function changeCurrency(url, currencyCode) {
-        $.ajax({
-            url,
-            contentType: 'application/json',
+        fetch(url, {
             method: 'POST',
-            data: JSON.stringify({ currencyCode }),
-        }).done(() => {
-            window.location.reload();
-        }).fail((e) => {
-            showAlertModal(JSON.parse(e.responseText).error);
-        });
+            headers: {
+                contentType: 'application/json',
+            },
+            body: JSON.stringify({ currencyCode }),
+        }).then(() => window.location.reload())
+            .catch(e => showAlertModal(JSON.parse(e.responseText).error));
     }
 
     q$('[data-cart-currency-switch-url]').addEventListener('click', event => {
         const currencySessionSwitcher = event.target.href;
         event.preventDefault();
+
         utils.api.cart.getCart({ cartId }, (err, response) => {
             if (err || response === undefined) {
                 window.location.href = currencySessionSwitcher;
@@ -41,7 +40,7 @@ export default function (cartId) {
 
             if (showWarning) {
                 const text = event.target.dataset.warning;
-                const $preModalFocusedEl = q$('.navUser-action--currencySelector');
+                const $preModalFocusedEl = q$('.js-nav-user-action--currency-selector');
 
                 showAlertModal(text, {
                     icon: 'warning',

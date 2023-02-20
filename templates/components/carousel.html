@@ -1,4 +1,4 @@
-<section class="heroCarousel"
+<section class="js-hero-carousel"
     data-slick='{
         "arrows": {{arrows}},
         "mobileFirst": true,
@@ -15,7 +15,7 @@
     {{else}}
     <a href="{{url}}" data-hero-slide="{{@index}}" aria-label="{{#if this.alt_text.length '!=' 0}}{{this.alt_text}}{{else}}{{lang 'carousel.slide_number' slide_number=(add @index 1)}}{{/if}}">
     {{/if}}
-        <div class="heroCarousel-slide {{#if ../theme_settings.homepage_stretch_carousel_images}}stretch{{/if}} {{#if @first}}heroCarousel-slide--first{{/if}}">
+        <div class="js-hero-carousel-slide {{#if ../theme_settings.homepage_stretch_carousel_images}}stretch{{/if}} {{#if @first}}heroCarousel-slide--first{{/if}}">
             {{#if button_text}}
             <a href="{{url}}" class="heroCarousel-image-wrapper">
             {{else}}

@@ -17,7 +17,7 @@ export default function () {
     });
     */
 
-    const $privacyDialog = q$('.cookieMessage');
+    const $privacyDialog = q$('.js-cookie-message');
 
     if (document.cookie.indexOf('ACCEPT_COOKIE_USAGE') === -1) {
         if ($privacyDialog !== null) {

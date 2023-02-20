@@ -15,7 +15,7 @@ export default class Cart extends PageManager {
         this.$cartMessages = $('[data-cart-status]');
         this.$cartTotals = $('[data-cart-totals]');
         this.$cartAdditionalCheckoutBtns = $('[data-cart-additional-checkout-buttons]');
-        this.$overlay = $('[data-cart] .loadingOverlay')
+        this.$overlay = $('[data-cart] .js-loading-overlay')
             .hide(); // TODO: temporary until roper pulls in his cart components
         this.$activeCartItemId = null;
         this.$activeCartItemBtnAction = null;
@@ -26,7 +26,7 @@ export default class Cart extends PageManager {
 
     setApplePaySupport() {
         if (window.ApplePaySession) {
-            this.$cartPageContent.addClass('apple-pay-supported');
+            this.$cartPageContent.addClass('js-apple-pay-supported');
         }
     }
 
@@ -132,7 +132,7 @@ export default class Cart extends PageManager {
         };
 
         modal.open();
-        this.$modal.find('.modal-content').addClass('hide-content');
+        this.$modal.find('.js-modal-content').addClass('hide-content');
 
         utils.api.productAttributes.configureInCart(itemId, options, (err, response) => {
             modal.updateContent(response.content);

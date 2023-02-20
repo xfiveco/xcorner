@@ -1,8 +1,8 @@
-<nav class="navPages">
+<nav class="js-nav-pages">
     <div class="navPages-quickSearch">
         {{> components/common/quick-search name='nav-menu-quick-search'}}
     </div>
-    <ul class="navPages-list{{#if theme_settings.navigation_design '!==' 'simple'}} navPages-list-depth-max{{/if}}">
+    <ul class="js-nav-pages-list{{#if theme_settings.navigation_design '!==' 'simple'}} js-nav-pages-list-depth-max{{/if}}">
         {{#each categories}}
             <li class="navPages-item">
             {{#if ../theme_settings.navigation_design '===' 'simple'}}
@@ -16,7 +16,7 @@
         {{#unless theme_settings.hide_content_navigation}}
             {{#each pages}}
                  <li class="navPages-item navPages-item-page">
-                     <a class="navPages-action{{#if name '==' ../page.title}} activePage{{/if}}"
+                     <a class="js-nav-pages-action{{#if name '==' ../page.title}} activePage{{/if}}"
                         href="{{url}}"
                         aria-label="{{name}}"
                      >
@@ -29,7 +29,7 @@
     <ul class="navPages-list navPages-list--user">
         {{#if currency_selector.currencies.length '>' 1}}
             <li class="navPages-item">
-                <a class="navPages-action has-subMenu"
+                <a class="js-nav-pages-action has-subMenu"
                    href="#"
                    data-collapsible="navPages-currency"
                    aria-controls="navPages-currency"
@@ -37,7 +37,7 @@
                    aria-label="{{lang 'common.currency' code=currency_selector.active_currency_code}}"
                 >
                     {{lang 'common.currency' code=currency_selector.active_currency_code}}
-                    <i class="icon navPages-action-moreIcon" aria-hidden="true">
+                    <i class="icon js-nav-pages-action-moreIcon" aria-hidden="true">
                         <svg>
                             <use href="#icon-chevron-down"></use>
                         </svg>
@@ -47,7 +47,7 @@
                     <ul class="navPage-subMenu-list">
                         {{#each currency_selector.currencies}}
                         <li class="navPage-subMenu-item">
-                            <a class="navPage-subMenu-action navPages-action"
+                            <a class="navPage-subMenu-action js-nav-pages-action"
                                href="{{{switch_url}}}"
                                aria-label="{{name}}"
                                data-currency-code="{{{code}}}"
@@ -70,7 +70,7 @@
         {{/if}}
         {{#if settings.gift_certificates_enabled}}
             <li class="navPages-item">
-                <a class="navPages-action"
+                <a class="js-nav-pages-action"
                    href="{{urls.gift_certificate.purchase}}"
                    aria-label="{{lang 'common.gift_cert'}}"
                 >
@@ -80,14 +80,14 @@
         {{/if}}
         {{#if customer.store_credit.value '>' 0}}
             <li class="navPages-item">
-                <a class="navPages-action navPages-action--storeCredit">
+                <a class="js-nav-pages-action navPages-action--storeCredit">
                     {{lang 'common.store_credit_overview' credit=customer.store_credit.formatted}}
                 </a>
             </li>
         {{/if}}
         {{#if theme_settings.product_list_display_mode '==' 'list'}}
             <li class="navPages-item">
-                <a class="navPages-action navPages-action--compare"
+                <a class="js-nav-pages-action navPages-action--compare"
                    href="{{urls.compare}}"
                    data-compare-nav
                    aria-label="{{lang 'common.compare'}}"
@@ -99,20 +99,20 @@
         {{/if}}
         {{#if customer}}
             <li class="navPages-item">
-                <a class="navPages-action has-subMenu"
+                <a class="js-nav-pages-action has-subMenu"
                    href="{{urls.account.index}}"
                    data-collapsible="navPages-account"
                    aria-label="{{lang 'common.account'}}"
                 >
                     {{lang 'common.account'}}
-                    <i class="icon navPages-action-moreIcon" aria-hidden="true">
+                    <i class="icon js-nav-pages-action-moreIcon" aria-hidden="true">
                         <svg><use href="#icon-chevron-down" /></svg>
                     </i>
                 </a>
                 <div class="navPage-subMenu" id="navPages-account" aria-hidden="true" tabindex="-1">
                     <ul class="navPage-subMenu-list">
                         <li class="navPage-subMenu-item">
-                            <a class="navPage-subMenu-action navPages-action"
+                            <a class="navPage-subMenu-action js-nav-pages-action"
                                href="{{urls.account.orders.all}}"
                                aria-label="{{lang 'account.nav.orders'}}"
                             >
@@ -121,7 +121,7 @@
                         </li>
                         {{#if settings.returns_enabled}}
                             <li class="navPage-subMenu-item">
-                                <a class="navPage-subMenu-action navPages-action"
+                                <a class="navPage-subMenu-action js-nav-pages-action"
                                    href="{{urls.account.returns}}"
                                    aria-label="{{lang 'account.nav.returns'}}"
                                 >
@@ -130,7 +130,7 @@
                             </li>
                         {{/if}}
                         <li class="navPage-subMenu-item">
-                            <a class="navPage-subMenu-action navPages-action"
+                            <a class="navPage-subMenu-action js-nav-pages-action"
                                href="{{urls.account.inbox}}"
                                aria-label="{{lang 'account.mobile_nav.messages'}}"
                             >
@@ -138,7 +138,7 @@
                             </a>
                         </li>
                         <li class="navPage-subMenu-item">
-                            <a class="navPage-subMenu-action navPages-action"
+                            <a class="navPage-subMenu-action js-nav-pages-action"
                                href="{{urls.account.addresses}}"
                                aria-label="{{lang 'account.nav.addresses'}}"
                             >
@@ -147,7 +147,7 @@
                         </li>
                         {{#if settings.show_payment_methods}}
                             <li class="navPage-subMenu-item">
-                                <a class="navPage-subMenu-action navPages-action"
+                                <a class="navPage-subMenu-action js-nav-pages-action"
                                    href="{{urls.account.payment_methods.all}}"
                                    aria-label="{{lang 'account.nav.payment_methods'}}"
                                 >
@@ -156,7 +156,7 @@
                             </li>
                         {{/if}}
                         <li class="navPage-subMenu-item">
-                            <a class="navPage-subMenu-action navPages-action"
+                            <a class="navPage-subMenu-action js-nav-pages-action"
                                href="{{urls.account.wishlists.all}}"
                                aria-label="{{lang 'account.mobile_nav.wishlists'}}"
                             >
@@ -164,7 +164,7 @@
                             </a>
                         </li>
                         <li class="navPage-subMenu-item">
-                            <a class="navPage-subMenu-action navPages-action"
+                            <a class="navPage-subMenu-action js-nav-pages-action"
                                href="{{urls.account.recent_items}}"
                                aria-label="{{lang 'account.nav.recently_viewed'}}"
                             >
@@ -172,7 +172,7 @@
                             </a>
                         </li>
                         <li class="navPage-subMenu-item">
-                            <a class="navPage-subMenu-action navPages-action"
+                            <a class="navPage-subMenu-action js-nav-pages-action"
                                href="{{urls.account.details}}"
                                aria-label="{{lang 'account.nav.settings'}}"
                             >
@@ -183,7 +183,7 @@
                 </div>
             </li>
             <li class="navPages-item">
-                <a class="navPages-action"
+                <a class="js-nav-pages-action"
                    href="{{urls.auth.logout}}"
                    aria-label="{{lang 'common.logout'}}"
                 >
@@ -192,7 +192,7 @@
             </li>
         {{else}}
             <li class="navPages-item">
-                <a class="navPages-action"
+                <a class="js-nav-pages-action"
                    href="{{urls.auth.login}}"
                    aria-label="{{lang 'common.login'}}"
                 >
@@ -200,7 +200,7 @@
                 </a>
                 {{#if settings.account_creation_enabled}}
                     {{lang 'common.or'}}
-                    <a class="navPages-action"
+                    <a class="js-nav-pages-action"
                        href="{{urls.auth.create_account}}"
                        aria-label="{{lang 'common.sign_up'}}"
                     >

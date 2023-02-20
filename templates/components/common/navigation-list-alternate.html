@@ -1,5 +1,5 @@
 {{#if children}}
-    <a class="navPages-action navPages-action-depth-max has-subMenu is-root{{#if is_active}} activePage{{/if}}"
+    <a class="js-nav-pages-action navPages-action-depth-max has-subMenu is-root{{#if is_active}} activePage{{/if}}"
        href="{{url}}"
        data-collapsible="navPages-{{id}}"
        aria-label="{{name}}"
@@ -11,7 +11,7 @@
     </a>
     {{> components/common/navigation-dropdown}}
 {{else}}
-    <a class="navPages-action{{#if is_active}} activePage{{/if}}"
+    <a class="js-nav-pages-action{{#if is_active}} activePage{{/if}}"
        href="{{url}}"
        aria-label="{{name}}"
     >

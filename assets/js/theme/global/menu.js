@@ -12,7 +12,7 @@ class Menu {
     constructor($menu) {
         this.$menu = $menu;
         this.$body = q$('body');
-        this.hasMaxMenuDisplayDepth = this.$body.querySelector('.navPages-list').classList.contains('navPages-list-depth-max');
+        this.hasMaxMenuDisplayDepth = this.$body.querySelector('.js-nav-pages-list')?.classList.contains('js-nav-pages-list-depth-max');
 
         // Init collapsible
         this.collapsibles = collapsibleFactory('[data-collapsible]', { $context: this.$menu });
@@ -70,7 +70,7 @@ class Menu {
 export default function menuFactory(selector = `[data-${PLUGIN_KEY}]`) {
     const $menu = q$(selector);
     const instanceKey = `${PLUGIN_KEY}Instance`;
-    const cachedMenu = $($menu).data(instanceKey);
+    const cachedMenu = $menu.data ? $menu.data[instanceKey] : null;
 
     if (cachedMenu instanceof Menu) {
         return cachedMenu;
@@ -78,7 +78,11 @@ export default function menuFactory(selector = `[data-${PLUGIN_KEY}]`) {
 
     const menu = new Menu($menu);
 
-    $($menu).data(instanceKey, menu);
+    if ('data' in $menu === false) {
+        $menu.data = {};
+    }
+
+    $menu.data[instanceKey] = menu;
 
     return menu;
 }

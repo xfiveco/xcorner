@@ -1,7 +1,7 @@
 <form action="{{product.add_to_wishlist_url}}" class="form form-wishlist form-action" data-wishlist-add method="post">
     <a aria-controls="wishlist-dropdown"
        aria-expanded="false"
-       class="c-button dropdown-menu-button"
+       class="c-button js-dropdown-menu-button"
        data-dropdown="wishlist-dropdown"
        href="#"
     >
@@ -12,7 +12,7 @@
             </svg>
         </i>
     </a>
-    <ul aria-hidden="true" class="dropdown-menu" data-dropdown-content id="wishlist-dropdown">
+    <ul aria-hidden="true" class="js-dropdown-menu" data-dropdown-content id="wishlist-dropdown">
         {{#if customer.wishlists}}
             {{#each customer.wishlists}}
                 <li>

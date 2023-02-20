@@ -17,7 +17,7 @@ export default class ProductDetails extends ProductDetailsBase {
     constructor($scope, context, productAttributesData = {}) {
         super($scope, context);
 
-        this.$overlay = $('[data-cart-item-add] .loadingOverlay');
+        this.$overlay = $('[data-cart-item-add] .js-loading-overlay');
         this.imageGallery = new ImageGallery($('[data-image-gallery]', this.$scope));
         this.imageGallery.init();
         this.listenQuantityChange();
@@ -219,7 +219,7 @@ export default class ProductDetails extends ProductDetailsBase {
         });
 
         let productVariant = unsatisfiedRequiredFields.length === 0 ? options.sort().join(', ') : 'unsatisfied';
-        const view = $('.productView');
+        const view = $('.js-product-view');
 
         if (productVariant) {
             productVariant = productVariant === 'unsatisfied' ? '' : productVariant;
@@ -269,7 +269,7 @@ export default class ProductDetails extends ProductDetailsBase {
             bannerUtils.dispatchProductBannerEvent(productAttributesData);
 
             if (!this.checkIsQuickViewChild($form)) {
-                const $context = $form.parents('.productView').find('.productView-info');
+                const $context = $form.parents('.js-product-view').find('.productView-info');
                 modalFactory('[data-reveal]', { $context });
             }
         });
@@ -297,7 +297,7 @@ export default class ProductDetails extends ProductDetailsBase {
     }
 
     checkIsQuickViewChild($element) {
-        return !!$element.parents('.quickView').length;
+        return !!$element.parents('.js-quick-view').length;
     }
 
     showProductImage(image) {
@@ -440,7 +440,7 @@ export default class ProductDetails extends ProductDetailsBase {
                 this.previewModal.open();
 
                 if (window.ApplePaySession) {
-                    this.previewModal.$modal.addClass('apple-pay-supported');
+                    this.previewModal.$modal.addClass('js-apple-pay-supported');
                 }
 
                 if (!this.checkIsQuickViewChild($addToCartBtn)) {
@@ -521,8 +521,8 @@ export default class ProductDetails extends ProductDetailsBase {
             const bannerUpdateHandler = () => {
                 const $productContainer = $('#main-content > .container');
 
-                $productContainer.append('<div class="loadingOverlay pdp-update"></div>');
-                $('.loadingOverlay.pdp-update', $productContainer).show();
+                $productContainer.append('<div class="js-loading-overlay pdp-update"></div>');
+                $('.js-loading-overlay.pdp-update', $productContainer).show();
                 window.location.reload();
             };
 

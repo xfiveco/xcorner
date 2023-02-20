@@ -4,9 +4,9 @@ import 'slick-carousel';
 
 describe('carousel', () => {
     it('should generate carousel WITH dots if carousel has more than one slide', () => {	
-		var multipleSlidesElement = $("<section class='heroCarousel' data-slick='{}'>\
+		var multipleSlidesElement = $("<section class='js-hero-carousel' data-slick='{}'>\
 			<a href=''>\
-		        <div class='heroCarousel-slide  heroCarousel-slide--first'>\
+		        <div class='js-hero-carousel-slide  heroCarousel-slide--first'>\
 		            <div class='heroCarousel-image-wrapper' style='height: 42.868654311039485vw'>\
 		                <img class='heroCarousel-image' data-lazy='https://img.jpg?t=1532986020' alt='Our signature fixture that bends to your will' title='Our signature fixture that bends to your will' width='1241' height='532'>\
 		            </div>\
@@ -18,7 +18,7 @@ describe('carousel', () => {
 		        </div>\
 		    </a>\
 		    <a href=''>\
-		        <div class='heroCarousel-slide'>\
+		        <div class='js-hero-carousel-slide'>\
 		            <div class='heroCarousel-image-wrapper' style='height: 99.75124378109453vw'>\
 		                <img class='heroCarousel-image' data-lazy='https://img.png?t=1532986020'>\
 		            </div>\
@@ -40,7 +40,7 @@ describe('carousel', () => {
     it('should generate carousel WITHOUT dots if carousel has one slide', () => {	
 		var multipleSlidesElement = $("<section class='heroCarousel' data-slick='{}'>\
 			<a href=''>\
-		        <div class='heroCarousel-slide  heroCarousel-slide--first'>\
+		        <div class='js-hero-carousel-slide  heroCarousel-slide--first'>\
 		            <div class='heroCarousel-image-wrapper' style='height: 42.868654311039485vw'>\
 		                <img class='heroCarousel-image' data-lazy='https://img.jpg?t=1532986020' alt='Our signature fixture that bends to your will' title='Our signature fixture that bends to your will' width='1241' height='532'>\
 		            </div>\

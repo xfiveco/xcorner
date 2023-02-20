@@ -9,7 +9,7 @@ const PLUGIN_KEY = {
 };
 
 function optionsFromData($element) {
-    const mobileMenuId = $($element).data(PLUGIN_KEY.CAMEL);
+    const mobileMenuId = $element.dataset[PLUGIN_KEY.CAMEL];
 
     return {
         menuSelector: mobileMenuId && `#${mobileMenuId}`,
@@ -26,16 +26,16 @@ function optionsFromData($element) {
  */
 export class MobileMenuToggle {
     constructor($toggle, {
-        headerSelector = '.header',
+        headerSelector = '.js-header',
         menuSelector = '#menu',
-        scrollViewSelector = '.navPages',
+        scrollViewSelector = '.js-nav-pages',
     } = {}) {
         this.$body = q$('body');
         this.$menu = q$(menuSelector);
-        this.$navList = q$('.navPages-list.navPages-list-depth-max');
+        this.$navList = q$('.js-nav-pages-list.js-nav-pages-list-depth-max');
         this.$header = q$(headerSelector);
         this.$scrollView = q$(scrollViewSelector, this.$menu);
-        this.$subMenus = q$$('.navPages-action', this.$navList);
+        this.$subMenus = this.$navList === null ? null : q$$('.js-nav-pages-action', this.$navList);
         this.$toggle = $toggle;
         this.mediumMediaQueryList = mediaQueryListFactory('medium');
 
@@ -61,8 +61,11 @@ export class MobileMenuToggle {
 
     bindEvents() {
         this.$toggle.addEventListener('click', this.onToggleClick);
-        $(this.$header).on(CartPreviewEvents.open, this.onCartPreviewOpen);
-        this.$subMenus.forEach($subMenu => $subMenu.addEventListener('click', this.onSubMenuClick));
+        this.$header.addEventListener(CartPreviewEvents.open, this.onCartPreviewOpen);
+
+        if (this.$subMenus && this.$subMenus.length) {
+            this.$subMenus.forEach($subMenu => $subMenu.addEventListener('click', this.onSubMenuClick));
+        }
 
         if (this.mediumMediaQueryList && this.mediumMediaQueryList.addListener) {
             this.mediumMediaQueryList.addListener(this.onMediumMediaQueryMatch);
@@ -71,7 +74,7 @@ export class MobileMenuToggle {
 
     unbindEvents() {
         this.$toggle.removeEventListener('click', this.onToggleClick);
-        $(this.$header).off(CartPreviewEvents.open, this.onCartPreviewOpen);
+        this.$header.removeEventListener(CartPreviewEvents.open, this.onCartPreviewOpen);
 
         if (this.mediumMediaQueryList && this.mediumMediaQueryList.addListener) {
             this.mediumMediaQueryList.removeListener(this.onMediumMediaQueryMatch);
@@ -87,7 +90,7 @@ export class MobileMenuToggle {
     }
 
     show() {
-        this.$body.classList.add('has-activeNavPages');
+        this.$body.classList.add('has-active-nav-pages');
 
         this.$toggle.classList.add('is-open');
         this.$toggle.setAttribute('aria-expanded', true);
@@ -101,13 +104,12 @@ export class MobileMenuToggle {
     }
 
     hide() {
-        this.$body.classList.remove('has-activeNavPages');
+        this.$body.classList.remove('has-active-nav-pages');
 
         this.$toggle.classList.remove('is-open');
         this.$toggle.setAttribute('aria-expanded', false);
 
         this.$menu.classList.remove('is-open');
-
         this.$header.classList.remove('is-open');
 
         this.resetSubMenus();
@@ -135,29 +137,31 @@ export class MobileMenuToggle {
     }
 
     onSubMenuClick(event) {
-        const $closestAction = event.target.closest('.navPages-action');
+        const $closestAction = event.target.closest('.js-nav-pages-action');
         const $parentSiblings = Array.from($closestAction.parentNode.children);
-        const $parentAction = q$$('.navPages-action', $closestAction.closest('.navPage-subMenu-horizontal'));
+        const $parentAction = q$$('.js-nav-pages-action', $closestAction.closest('.js-nav-page-sub-menu-horizontal'));
 
-        if (this.$subMenus.classList.contains('is-open')) {
-            this.$navList.classList.add('subMenu-is-open');
-        } else {
-            this.$navList.classList.remove('subMenu-is-open');
+        if (this.$subMenus && this.$subMenus.length) {
+            if (this.$subMenus.some($subMenu => $subMenu.classList.contains('is-open'))) {
+                this.$navList.classList.add('sub-menu-is-open');
+            } else {
+                this.$navList.classList.remove('sub-menu-is-open');
+            }
         }
 
         if (event.target.classList.contains('is-open')) {
             $parentSiblings.forEach($el => $el.classList.add('is-hidden'));
             $parentAction.forEach($el => $el.classList.add('is-hidden'));
         } else {
-            $parentSiblings.classList.remove('is-hidden');
-            $parentAction.classList.remove('is-hidden');
+            $parentSiblings.forEach($el => $el.classList.remove('is-hidden'));
+            $parentAction.forEach($el => $el.classList.remove('is-hidden'));
         }
     }
 
     resetSubMenus() {
         q$$('.is-hidden', this.$navList).forEach($el => $el.classList.remove('is-hidden'));
         /* eslint-disable no-unused-expressions */
-        this.$navList?.classList.remove('subMenu-is-open');
+        this.$navList?.classList.remove('sub-menu-is-open');
     }
 }
 
@@ -173,7 +177,7 @@ export class MobileMenuToggle {
 export default function mobileMenuToggleFactory(selector = `[data-${PLUGIN_KEY.SNAKE}]`, overrideOptions = {}) {
     const $toggle = q$(selector);
     const instanceKey = `${PLUGIN_KEY.CAMEL}Instance`;
-    const cachedMobileMenu = $($toggle).data(instanceKey);
+    const cachedMobileMenu = $toggle.data ? $toggle.data[instanceKey] : null;
 
     if (cachedMobileMenu instanceof MobileMenuToggle) {
         return cachedMobileMenu;
@@ -182,7 +186,11 @@ export default function mobileMenuToggleFactory(selector = `[data-${PLUGIN_KEY.S
     const options = _.extend(optionsFromData($toggle), overrideOptions);
     const mobileMenu = new MobileMenuToggle($toggle, options);
 
-    $($toggle).data(instanceKey, mobileMenu);
+    if ('data' in $toggle === false) {
+        $toggle.data = {};
+    }
+
+    $toggle.data[instanceKey] = mobileMenu;
 
     return mobileMenu;
 }

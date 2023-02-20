@@ -1,5 +1,6 @@
 import Wishlist from '../wishlist';
 import { initRadioOptions } from './aria';
+import toggleOption from './select-option-plugin';
 
 const optionsTypesMap = {
     INPUT_FILE: 'input-file',
@@ -401,7 +402,7 @@ export default class ProductDetailsBase {
         const $select = $attribute.parent();
 
         if (behavior === 'hide_option') {
-            $attribute.toggleOption(false);
+            toggleOption($attribute, false);
             // If the attribute is the selected option in a select dropdown, select the first option (MERC-639)
             if ($select.val() === $attribute.attr('value')) {
                 $select[0].selectedIndex = 0;
@@ -414,7 +415,7 @@ export default class ProductDetailsBase {
 
     enableSelectOptionAttribute($attribute, behavior, outOfStockMessage) {
         if (behavior === 'hide_option') {
-            $attribute.toggleOption(true);
+            toggleOption($attribute, true);
         } else {
             $attribute.prop('disabled', false);
             $attribute.html($attribute.html().replace(outOfStockMessage, ''));

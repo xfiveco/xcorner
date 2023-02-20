@@ -1,7 +1,7 @@
 {{#if currency_selector.currencies.length '>' 1}}
 <ul class="navUser-section">
     <li class="navUser-item">
-        <a class="navUser-action navUser-action--currencySelector has-dropdown"
+        <a class="navUser-action js-nav-user-action--currency-selector has-dropdown"
            href="#"
            data-dropdown="currencySelection"
            aria-controls="currencySelection"
@@ -14,7 +14,7 @@
                 </svg>
             </i>
         </a>
-        <ul class="dropdown-menu" id="currencySelection" data-dropdown-content aria-hidden="true" tabindex="-1">
+        <ul class="js-dropdown-menu" id="currencySelection" data-dropdown-content aria-hidden="true" tabindex="-1">
             {{#each currency_selector.currencies}}
             <li class="dropdown-menu-item">
                 <a href="{{{switch_url}}}"

@@ -1,11 +1,10 @@
-import foundation from './foundation';
 import * as focusTrap from 'focus-trap';
 import q$, { q$$ } from './selector';
 
-const bodyActiveClass = 'has-activeModal';
-const loadingOverlayClass = 'loadingOverlay';
-const modalBodyClass = 'modal-body';
-const modalContentClass = 'modal-content';
+const bodyActiveClass = 'has-active-modal';
+const loadingOverlayClass = 'js-loading-overlay';
+const modalBodyClass = 'js-modal-body';
+const modalContentClass = 'js-modal-content';
 
 const SizeClasses = {
     small: 'modal--small',
@@ -122,7 +121,7 @@ export class Modal {
         /* STRF-2471 - Multiple Wish Lists - prevents double-firing
          * of foundation.dropdown click.fndtn.dropdown event */
         /* eslint-disable no-unused-expressions */
-        this.$modal.querySelector('.dropdown-menu-button')?.addEventListener('click', e => {
+        this.$modal.querySelector('.js-dropdown-menu-button')?.addEventListener('click', e => {
             e.stopPropagation();
         });
     }
@@ -157,10 +156,10 @@ export class Modal {
     }
 
     bindEvents() {
-        $(this.$modal).on(ModalEvents.close, this.onModalClose);
-        $(this.$modal).on(ModalEvents.closed, this.onModalClosed);
-        $(this.$modal).on(ModalEvents.open, this.onModalOpen);
-        $(this.$modal).on(ModalEvents.opened, this.onModalOpened);
+        this.$modal.addEventListener(ModalEvents.close, this.onModalClose);
+        this.$modal.addEventListener(ModalEvents.closed, this.onModalClosed);
+        this.$modal.addEventListener(ModalEvents.open, this.onModalOpen);
+        this.$modal.addEventListener(ModalEvents.opened, this.onModalOpened);
     }
 
     open({
@@ -178,11 +177,11 @@ export class Modal {
             this.clearContent();
         }
 
-        this.$modal.foundation('reveal', 'open');
+        this.$modal.style.display = 'block';
     }
 
     close() {
-        this.$modal.foundation('reveal', 'close');
+        this.$modal.style.display = 'none';
     }
 
     updateContent(content, { wrap = false } = {}) {
@@ -197,7 +196,6 @@ export class Modal {
         $(this.$modal).trigger(ModalEvents.loaded);
 
         restrainContentHeight(this.$content);
-        foundation($(this.$content));
     }
 
     clearContent() {
@@ -246,9 +244,9 @@ export class Modal {
 
     onModalOpened() {
         if (this.pending) {
-            $(this.$modal).one(ModalEvents.loaded, () => {
+            this.$modal.addEventListener(ModalEvents.loaded, () => {
                 if (this.$modal.classList.contains('open')) this.setupFocusTrap();
-            });
+            }, { once: true });
         } else {
             this.setupFocusTrap();
         }
@@ -269,8 +267,7 @@ export default function modalFactory(selector = '[data-reveal]', options = {}) {
 
     return $modals.map(element => {
         const $modal = element;
-        const instanceKey = 'modalInstance';
-        const cachedModal = $($modal).data('instanceKey');
+        const cachedModal = $modal.data?.modalInstance;
 
         if (cachedModal instanceof Modal) {
             return cachedModal;
@@ -278,7 +275,11 @@ export default function modalFactory(selector = '[data-reveal]', options = {}) {
 
         const modal = new Modal($modal, options);
 
-        $($modal).data(instanceKey, modal);
+        if ('data' in $modal === false) {
+            $modal.data = {};
+        }
+
+        $modal.data.modalInstance = modal;
 
         return modal;
     });
@@ -303,8 +304,8 @@ export function alertModal() {
  */
 export function showAlertModal(message, options = {}) {
     const modal = alertModal();
-    const $cancelBtn = modal.$modal.querySelector('.cancel');
-    const $confirmBtn = modal.$modal.querySelector('.confirm');
+    const $cancelBtn = modal.$modal.querySelector('.js-cancel');
+    const $confirmBtn = modal.$modal.querySelector('.js-confirm');
     const {
         icon = 'error',
         $preModalFocusedEl = null,
@@ -317,12 +318,12 @@ export function showAlertModal(message, options = {}) {
     }
 
     modal.open();
-    modal.$modal.querySelector('.alert-icon').style.display = 'none';
+    modal.$modal.querySelector('.js-alert-icon').style.display = 'none';
 
     if (icon === 'error') {
-        modal.$modal.querySelector('.error-icon').style.display = 'block';
+        modal.$modal.querySelector('.js-error-icon').style.display = 'block';
     } else if (icon === 'warning') {
-        modal.$modal.querySelector('.warning-icon').style.display = 'block';
+        modal.$modal.querySelector('.js-warning-icon').style.display = 'block';
     }
 
     modal.updateContent(`<span>${message}</span>`);
@@ -330,9 +331,9 @@ export function showAlertModal(message, options = {}) {
     if (onConfirm) {
         $confirmBtn.addEventListener('click', onConfirm);
 
-        $(modal.$modal).one(ModalEvents.closed, () => {
+        modal.$modal.addEventListener(ModalEvents.closed, () => {
             $confirmBtn.removeEventListener('click', onConfirm);
-        });
+        }, { once: true });
     }
 
     if (showCancelButton) {
