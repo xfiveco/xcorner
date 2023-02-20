@@ -15,8 +15,8 @@ export const wishlistPaginatorHelper = () => {
 
     if (!$paginationList.length) return;
 
-    const $nextItem = $('.js-pagination-item--next', $paginationList);
-    const $prevItem = $('.js-pagination-item--previous', $paginationList);
+    const $nextItem = $('.js-pagination-item-next', $paginationList);
+    const $prevItem = $('.js-pagination-item-previous', $paginationList);
     const currentHref = $('[data-pagination-current-page-link]').attr('href');
     const partialPaginationUrl = currentHref.split('page=').shift();
 

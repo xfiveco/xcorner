@@ -68,8 +68,8 @@ export default class {
      * Inject ID into the pagination link
      */
     injectPaginationLink() {
-        const $nextLink = q$('.js-pagination-item--next .js-pagination-link', this.$reviewsContent);
-        const $prevLink = q$('.js-pagination-item--previous .js-pagination-link', this.$reviewsContent);
+        const $nextLink = q$('.js-pagination-item-next .js-pagination-link', this.$reviewsContent);
+        const $prevLink = q$('.js-pagination-item-previous .js-pagination-link', this.$reviewsContent);
 
         if ($nextLink) {
             $nextLink.setAttribute('href', `${$nextLink.getAttribute('href')} #product-reviews`);
