@@ -31,7 +31,7 @@
                         </dl>
                     {{/if}}
                     {{#if type '===' 'stored_paypal_account'}}
-                        <div class="form-field">
+                        <div class="js-form-field">
                             <h3 class="paymentMethodForm-heading">
                                 {{lang 'account.payment_methods.paypal'}} {{lang 'common.account'}}
                             </h3>
@@ -40,7 +40,7 @@
                             </p>
                         </div>
                     {{/if}}
-                    <div class="form-field">
+                    <div class="js-form-field">
                         <input type="checkbox" value="default_instrument" name="is_default" id="default_instrument" data-label="{{lang 'forms.payment_methods.default_instrument'}}" class="form-checkbox" {{#if is_default}}checked{{/if}}>
                         <label class="form-label" for="default_instrument">{{lang 'forms.payment_methods.default_instrument'}}</label>
                         <input type="checkbox" value="default_instrument" name="default_instrument" id="default_instrument" data-label="{{lang 'forms.payment_methods.default_instrument'}}" class="form-checkbox" {{#if customer.payment_methods.selected_payment_method.default_instrument}}checked{{/if}}>
@@ -50,7 +50,7 @@
                 {{#if type '===' 'stored_card'}}
                     <h3 class="paymentMethodForm-heading">{{lang 'account.payment_methods.billing_address'}}</h3>
 
-                    <fieldset class="form-fieldset">
+                    <fieldset class="js-form-fieldset">
                         <div class="form-row form-row--half">
                             {{#each forms.billing_fields}}
                                 {{{dynamicComponent 'components/common/forms'}}}

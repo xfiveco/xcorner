@@ -22,7 +22,7 @@
                 {{#if forms.address.address_id }}
                     <input type="hidden" name="shipid" value="{{forms.address.address_id}}">
                 {{/if}}
-                <fieldset class="form-fieldset">
+                <fieldset class="js-form-fieldset">
                     <div class="form-row form-row--half">
                         {{#each forms.address.shipping_fields }}
                             {{{dynamicComponent 'components/common/forms'}}}

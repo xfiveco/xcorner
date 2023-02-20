@@ -1,4 +1,4 @@
-<div class="form-field" id="{{id}}" data-validation="{{validation}}" {{#if private_id}}data-type="{{private_id}}"{{/if}}>
+<div class="js-form-field" id="{{id}}" data-validation="{{validation}}" {{#if private_id}}data-type="{{private_id}}"{{/if}}>
     <label class="form-label" for="{{id}}">
         {{label}}
         {{#if required}}
@@ -6,7 +6,7 @@
         {{/if}}
     </label>
     <div class="form-row form-row--third">
-        <div class="form-field">
+        <div class="js-form-field">
             <select class="form-select"
                     name="{{month.name}}"
                     id="{{id}}_month"
@@ -20,7 +20,7 @@
             {{> components/common/forms/date-options month isRequired=required}}
             </select>
         </div>
-        <div class="form-field">
+        <div class="js-form-field">
             <select class="form-select"
                     name="{{day.name}}"
                     id="{{id}}_day"
@@ -34,7 +34,7 @@
             {{> components/common/forms/date-options day isRequired=required}}
             </select>
         </div>
-        <div class="form-field">
+        <div class="js-form-field">
             <select class="form-select"
                     name="{{year.name}}"
                     id="{{id}}_year"

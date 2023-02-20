@@ -63,19 +63,19 @@ function classifyInput(input, formFieldClass) {
  * @example
  * // Before
  * <form id="form">
- *     <div class="form-field">
+ *     <div class="js-form-field">
  *         <input type="text">
  *     </div>
- *     <div class="form-field">
+ *     <div class="js-form-field">
  *         <select>...</select>
  *     </div>
  * </form>
  *
- * classifyForm('#form', { formFieldClass: 'form-field' });
+ * classifyForm('#form', { formFieldClass: 'js-form-field' });
  *
  * // After
- * <div class="form-field form-field--input form-field--inputText">...</div>
- * <div class="form-field form-field--select">...</div>
+ * <div class="js-form-field js-form-field--input js-form-field--input-text">...</div>
+ * <div class="js-form-field js-form-field--select">...</div>
  *
  * @param {string|object} formSelector - selector or element
  * @param {object} options
@@ -86,7 +86,7 @@ export function classifyForm(formSelector, options = {}) {
     const $inputs = q$$(inputTagNames.join(', '), $form);
 
     // Obtain options
-    const { formFieldClass = 'form-field' } = options;
+    const { formFieldClass = 'js-form-field' } = options;
 
     // Classify each input in a form
     $inputs.forEach($input => {

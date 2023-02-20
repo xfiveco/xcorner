@@ -239,7 +239,7 @@
                         {{{dynamicComponent 'components/products/options'}}}
                     {{/each}}
                 </div>
-                <div class="form-field form-field--stock{{#unless product.stock_level}} u-hiddenVisually{{/unless}}">
+                <div class="js-form-field js-form-field--stock{{#unless product.stock_level}} u-hiddenVisually{{/unless}}">
                     <label class="form-label form-label--alternate">
                         {{lang 'products.current_stock'}}
                         <span data-product-stock>{{product.stock_level}}</span>

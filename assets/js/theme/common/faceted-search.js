@@ -15,7 +15,7 @@ const defaultOptions = {
     componentSelector: '#facetedSearch-navList',
     facetNavListSelector: '#facetedSearch .navList',
     priceRangeErrorSelector: '#facet-range-form .form-inlineMessage',
-    priceRangeFieldsetSelector: '#facet-range-form .form-fieldset',
+    priceRangeFieldsetSelector: '#facet-range-form .js-form-fieldset',
     priceRangeFormSelector: '#facet-range-form',
     priceRangeMaxPriceSelector: '#facet-range-form [name=max_price]',
     priceRangeMinPriceSelector: '#facet-range-form [name=min_price]',
