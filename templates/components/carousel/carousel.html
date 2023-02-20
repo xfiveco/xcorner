@@ -42,7 +42,7 @@
             </div>
             {{/if}}
             {{#or heading text button_text}}
-                {{> components/carousel-content}}
+                {{> components/carousel/content}}
             {{/or}}
         </div>
     {{#if button_text}}
@@ -52,9 +52,9 @@
     {{/if}}
     {{/each}}
     {{#if carousel.slides.length '>' 1}}
-        {{> components/carousel-content-announcement}}
+        {{> components/carousel/content-announcement}}
         {{#if play_pause_button}}
-            {{> components/carousel-play-pause-button}}
+            {{> components/carousel/play-pause-button}}
         {{/if}}
     {{/if}}
 </section>
