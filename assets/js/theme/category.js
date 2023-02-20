@@ -19,12 +19,13 @@ export default class Category extends CatalogPage {
 
     makeShopByPriceFilterAccessible() {
         if (!$('[data-shop-by-price]').length) return;
+        const navListAction = $('.js-nav-list-action');
 
-        if ($('.navList-action').hasClass('is-active')) {
-            $('a.navList-action.is-active').focus();
+        if (navListAction.hasClass('is-active')) {
+            $('.js-nav-list-action.is-active').focus();
         }
 
-        $('a.navList-action').on('click', () => this.setLiveRegionAttributes($('span.price-filter-message'), 'status', 'assertive'));
+        navListAction.on('click', () => this.setLiveRegionAttributes($('.js-price-filter-message'), 'status', 'assertive'));
     }
 
     onReady() {
@@ -43,7 +44,7 @@ export default class Category extends CatalogPage {
             hooks.on('sortBy-submitted', this.onSortBySubmit);
         }
 
-        $('a.reset-btn').on('click', () => this.setLiveRegionsAttributes($('span.reset-message'), 'status', 'polite'));
+        $('.js-action-reset').on('click', () => this.setLiveRegionsAttributes($('.js-price-reset-message'), 'status', 'polite'));
 
         this.ariaNotifyNoProducts();
     }
@@ -63,8 +64,8 @@ export default class Category extends CatalogPage {
             price_max_not_entered: maxPriceNotEntered,
             price_invalid_value: onInvalidPrice,
         } = this.validationDictionary;
-        const $productListingContainer = $('#product-listing-container');
-        const $facetedSearchContainer = $('#faceted-search-container');
+        const $productListingContainer = $('.js-product-listing-container');
+        const $facetedSearchContainer = $('.js-faceted-search-container');
         const productsPerPage = this.context.categoryProductsPerPage;
         const requestOptions = {
             config: {
