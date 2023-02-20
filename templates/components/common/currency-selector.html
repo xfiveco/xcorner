@@ -1,38 +1,46 @@
 {{#if currency_selector.currencies.length '>' 1}}
-<ul class="navUser-section">
-    <li class="navUser-item">
-        <a class="navUser-action js-nav-user-action--currency-selector has-dropdown"
-           href="#"
-           data-dropdown="currencySelection"
-           aria-controls="currencySelection"
-           aria-expanded="false"
-        >
-            {{lang 'common.currency' code=currency_selector.active_currency_code}}
-            <i class="icon" aria-hidden="true">
-                <svg>
-                    <use href="#icon-chevron-down" />
-                </svg>
-            </i>
-        </a>
-        <ul class="js-dropdown-menu" id="currencySelection" data-dropdown-content aria-hidden="true" tabindex="-1">
-            {{#each currency_selector.currencies}}
-            <li class="dropdown-menu-item">
-                <a href="{{{switch_url}}}"
-                   data-currency-code="{{{code}}}"
-                   {{#if cart_currency_switch_url.length '>' 0 }}
-                   data-cart-currency-switch-url="{{{cart_currency_switch_url}}}"
-                   {{/if}}
-                   data-warning="{{lang 'common.currency_switch_promotion'}}"
-                >
-                {{#if is_active}}
-                    <strong>{{name}}</strong>
-                {{else}}
-                    {{name}}
-                {{/if}}
-                </a>
-            </li>
-            {{/each}}
-        </ul>
-    </li>
-</ul>
+    <ul>
+        <li>
+            <a 
+                class="js-nav-user-action js-nav-user-action--currency-selector has-dropdown"
+                href="#"
+                data-dropdown="currency-selection"
+                aria-controls="currency-selection"
+                aria-expanded="false"
+            >
+                {{lang 'common.currency' code=currency_selector.active_currency_code}}
+                <div aria-hidden="true">
+                    <svg>
+                        <use href="#icon-chevron-down" />
+                    </svg>
+                </div>
+            </a>
+            <ul
+                class="js-dropdown-menu" 
+                id="currency-selection" 
+                data-dropdown-content 
+                aria-hidden="true" 
+                tabindex="-1"
+            >
+                {{#each currency_selector.currencies}}
+                    <li>
+                        <a 
+                            href="{{{switch_url}}}"
+                            data-currency-code="{{{code}}}"
+                            {{#if cart_currency_switch_url.length '>' 0 }}
+                                data-cart-currency-switch-url="{{{cart_currency_switch_url}}}"
+                            {{/if}}
+                            data-warning="{{lang 'common.currency_switch_promotion'}}"
+                        >
+                            {{#if is_active}}
+                                <strong>{{name}}</strong>
+                            {{else}}
+                                {{name}}
+                            {{/if}}
+                        </a>
+                    </li>
+                {{/each}}
+            </ul>
+        </li>
+    </ul>
 {{/if}}

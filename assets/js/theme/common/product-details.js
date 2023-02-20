@@ -513,13 +513,13 @@ export default class ProductDetails extends ProductDetailsBase {
             // Update cart counter
             const $body = $('body');
             const $cartQuantity = $('[data-cart-quantity]', modal.$content);
-            const $cartCounter = $('.navUser-action .cart-count');
+            const $cartCounter = $('.js-nav-user-action .cart-count');
             const quantity = $cartQuantity.data('cartQuantity') || 0;
             const $promotionBanner = $('[data-promotion-banner]');
             const $backToShopppingBtn = $('.previewCartCheckout > [data-reveal-close]');
             const $modalCloseBtn = $('#previewModal > .modal-close');
             const bannerUpdateHandler = () => {
-                const $productContainer = $('#main-content > .container');
+                const $productContainer = $('#main-content > .js-container');
 
                 $productContainer.append('<div class="js-loading-overlay pdp-update"></div>');
                 $('.js-loading-overlay.pdp-update', $productContainer).show();

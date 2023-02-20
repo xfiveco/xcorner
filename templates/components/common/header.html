@@ -1,31 +1,34 @@
-<a href="#main-content" class="skip-to-main-link">{{lang 'header.skip_to_main'}}</a>
+<a href="#main-content">
+    {{lang 'header.skip_to_main'}}
+</a>
 {{#if banners.top}}
-<div class="banners" data-banner-location="top">
-    {{#each (limit banners.top_metadata 1)}}
-    <div class="banner" data-event-type="promotion" data-entity-id="{{this.id}}" data-name="{{this.banner-name}}" data-position="{{this.location}}" data-banner-id="{{this.banner-name}}">
-        <div data-event-type="promotion-click">
-            {{{this.content}}}
-        </div>
+    <div data-banner-location="top">
+        {{#each (limit banners.top_metadata 1)}}
+            <div 
+                data-event-type="promotion" 
+                data-entity-id="{{this.id}}" 
+                data-name="{{this.banner-name}}" 
+                data-position="{{this.location}}" 
+                data-banner-id="{{this.banner-name}}"
+            >
+                <div data-event-type="promotion-click">
+                    {{{this.content}}}
+                </div>
+            </div>
+        {{/each}}
     </div>
-    {{/each}}
-</div>
 {{/if}}
+
 <header class="js-header" role="banner">
-    <a href="#" class="mobileMenu-toggle" data-mobile-menu-toggle="menu">
-        <span class="mobileMenu-toggleIcon">Toggle menu</span>
+    <a href="#" data-mobile-menu-toggle="menu">
+        <span>Toggle menu</span>
     </a>
     {{> components/common/navigation}}
 
-    {{#if page_type '===' 'default'}}
-        <h1 class="header-logo header-logo--{{theme_settings.logo-position}}">
-            {{> components/common/store-logo}}
-        </h1>
-    {{else}}
-        <div class="header-logo header-logo--{{theme_settings.logo-position}}">
-            {{> components/common/store-logo}}
-        </div>
-    {{/if}}
-    <div class="navPages-container" id="menu" data-menu>
+    <div>
+        {{> components/common/store-logo}}
+    </div>
+    <div id="menu" data-menu>
         {{> components/common/navigation-menu}}
     </div>
     {{{region name="header_navigation_bottom--global"}}}
