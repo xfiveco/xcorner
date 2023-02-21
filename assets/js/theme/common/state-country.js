@@ -17,7 +17,6 @@ function makeStateRequired(stateElement, context) {
     const replacementAttributes = {
         id: attrs.id,
         'data-label': attrs['data-label'],
-        class: 'form-select',
         name: attrs.name,
         'data-field-type': attrs['data-field-type'],
     };

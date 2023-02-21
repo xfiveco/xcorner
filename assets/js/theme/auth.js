@@ -48,7 +48,7 @@ export default class Auth extends PageManager {
             },
         ]);
 
-        $loginForm.on('submit', event => {
+        $loginForm.addEventListener('submit', event => {
             this.loginValidator.performCheck();
 
             if (this.loginValidator.areAll('valid')) {
@@ -77,7 +77,7 @@ export default class Auth extends PageManager {
             },
         ]);
 
-        $forgotPasswordForm.on('submit', event => {
+        $forgotPasswordForm.addEventListener('submit', event => {
             this.forgotPasswordValidator.performCheck();
 
             if (this.forgotPasswordValidator.areAll('valid')) {
@@ -170,7 +170,7 @@ export default class Auth extends PageManager {
             );
         }
 
-        $createAccountForm.on('submit', (event) => {
+        $createAccountForm.addEventListener('submit', (event) => {
             this.submitAction(event, createAccountValidator);
         });
     }
@@ -204,19 +204,19 @@ export default class Auth extends PageManager {
         // Injected via auth.html
         this.passwordRequirements = this.context.passwordRequirements;
 
-        if ($loginForm.length) {
+        if ($loginForm) {
             this.registerLoginValidation($loginForm);
         }
 
-        if ($newPasswordForm.length) {
+        if ($newPasswordForm) {
             this.registerNewPasswordValidation();
         }
 
-        if ($forgotPasswordForm.length) {
+        if ($forgotPasswordForm) {
             this.registerForgotPasswordValidation($forgotPasswordForm);
         }
 
-        if ($createAccountForm.length) {
+        if ($createAccountForm) {
             this.registerCreateAccountValidator($createAccountForm);
         }
     }
