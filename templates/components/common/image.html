@@ -1,0 +1,13 @@
+<img 
+    {{#if image}}
+        src="{{getImageSrcset image 1x=(default fallback_size '160w')}}" 
+        alt="{{image.alt}}" 
+        title="{{image.alt}}"
+        srcset="{{getImageSrcset image use_default_sizes=true }}"
+    {{else if default_image}}
+        src="{{cdn default_image}}" 
+        alt="{{lang 'products.card_default_image_alt'}}"
+    {{/if}}
+    class="{{ class }}"
+    {{otherAttributes}}
+>
