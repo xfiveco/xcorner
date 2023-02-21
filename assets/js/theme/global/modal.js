@@ -306,7 +306,7 @@ export default function modalFactory(selector = '[data-reveal]', options = {}) {
         return modals;
     }
 
-    return modals[0]
+    return modals[0];
 }
 
 /*
