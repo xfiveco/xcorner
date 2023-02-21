@@ -139,7 +139,7 @@ export default class ShippingEstimator {
             // When you change a country, you swap the state/province between an input and a select dropdown
             // Not all countries require the province to be filled
             // We have to remove this class when we swap since nod validation doesn't cleanup for us
-            $(this.shippingEstimator).find('.js-form-field--success').removeClass('js-form-field--success');
+            $(this.shippingEstimator).find('.js-form-field-success').removeClass('js-form-field-success');
         });
     }
 
