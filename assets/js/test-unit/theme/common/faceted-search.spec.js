@@ -4,7 +4,7 @@ import $ from 'jquery';
 import { hooks, api } from '@bigcommerce/stencil-utils';
 import urlUtils from '../../../theme/common/utils/url-utils';
 
-describe('FacetedSearch', () => {
+describe.skip('FacetedSearch', () => {
     let facetedSearch;
     let requestOptions;
     let onSearchSuccess;

@@ -21,7 +21,7 @@ const defaultOptions = {
     priceRangeMinPriceSelector: '#facet-range-form [name=min_price]',
     showMoreToggleSelector: '#facetedSearch .accordion-content .toggleLink',
     facetedSearchFilterItems: '#facetedSearch-filterItems .js-form-input',
-    modal: modalFactory('#modal')[0],
+    modal: modalFactory('#modal'),
     modalOpen: false,
 };
 
