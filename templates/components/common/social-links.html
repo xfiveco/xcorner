@@ -1,14 +1,14 @@
 {{#if social_media}}
-    <ul class="socialLinks socialLinks--alt">
+    <ul>
         {{#each social_media}}
-            <li class="socialLinks-item">
-                <a class="icon icon--{{display_name}}"
+            <li>
+                <a
                    href="{{url}}"
                    target="_blank"
                    rel="noopener"
                    title="{{{capitalize display_name}}}"
                 >
-                    <span class="aria-description--hidden">{{{capitalize display_name}}}</span>
+                    <span>{{{capitalize display_name}}}</span>
                     <svg>
                         <use href="#icon-{{display_name}}"/>
                     </svg>

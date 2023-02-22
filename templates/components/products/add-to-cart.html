@@ -13,7 +13,7 @@
                             </svg>
                         </i>
                     </button>
-                    <input class="form-input form-input--incrementTotal"
+                    <input class="js-form-input js-form-input-increment-total"
                            id="qty[]"
                            name="qty[]"
                            type="tel"
@@ -35,11 +35,11 @@
         </div>
     {{/if}}
 
-    <div class="alertBox productAttributes-message" style="display:none">
-        <div class="alertBox-column alertBox-icon">
+    <div class="productAttributes-message" style="display:none">
+        <div>
             <icon glyph="ic-success" class="icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"></path></svg></icon>
         </div>
-        <p class="alertBox-column alertBox-message"></p>
+        <p class="js-alert-box-message"></p>
     </div>
     {{#or customer (unless settings.hide_price_from_guests)}}
         <div class="add-to-cart-buttons">

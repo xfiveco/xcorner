@@ -23,7 +23,7 @@ function updateCounterNav(counter, $link, urls) {
 
         /* eslint-disable no-param-reassign */
         $link
-            .querySelector('span.countPill')
+            .querySelector('span.js-count-pill')
             .innerHTML = counter.length;
     } else {
         $link.classList.remove('show');

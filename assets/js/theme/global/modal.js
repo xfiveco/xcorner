@@ -7,8 +7,8 @@ const modalBodyClass = 'js-modal-body';
 const modalContentClass = 'js-modal-content';
 
 const SizeClasses = {
-    small: 'modal--small',
-    large: 'modal--large',
+    small: 'is-modal-small',
+    large: 'is-modal-large',
     normal: '',
 };
 

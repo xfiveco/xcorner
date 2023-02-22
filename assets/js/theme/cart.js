@@ -170,7 +170,7 @@ export default class Cart extends PageManager {
                 }
 
                 if (data.purchasing_message) {
-                    $('p.alertBox-message', $messageBox).text(data.purchasing_message);
+                    $('.js-alert-box-message', $messageBox).text(data.purchasing_message);
                     $submit.prop('disabled', true);
                     $messageBox.show();
                 } else {
