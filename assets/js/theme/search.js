@@ -138,7 +138,7 @@ export default class Search extends CatalogPage {
         this.arrangeFocusOnSortBy();
 
         const $searchForm = $('[data-advanced-search-form]');
-        const $categoryTreeContainer = $searchForm.find('[data-search-category-tree]');
+        const $categoryTreeContainer = $searchForm.find('.js-search-category-tree');
         const url = Url.parse(window.location.href, true);
         const treeData = [];
         this.$productListingContainer = $('#product-listing-container');
