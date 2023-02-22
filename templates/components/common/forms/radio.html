@@ -23,6 +23,9 @@
                 {{#if private_id}}
                     data-field-type="{{private_id}}"
                 {{/if}}
+                {{#if required}}
+                    required
+                {{/if}}
             >
             <label for="{{../name}}_{{@index}}">
                 {{label}}
