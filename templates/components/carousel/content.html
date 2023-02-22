@@ -1,0 +1,17 @@
+<div class="{{#and (if heading '==' false) (if text '==' false)}} is-empty{{/and}}">
+    {{#if heading}}
+        <div>
+            {{{heading}}}
+        </div>
+    {{/if}}
+    {{#if text}}
+        <div>
+            {{{text}}}
+        </div>
+    {{/if}}
+    {{#if button_text}}
+        <a href="{{url}}" aria-label="{{#if this.alt_text.length '!=' 0}}{{this.alt_text}}{{else}}{{lang 'carousel.slide_number' slide_number=(add @index 1)}}{{/if}}, {{button_text}}" class="c-button c-button--primary button--large">
+            {{{button_text}}}
+        </a>
+    {{/if}}
+</div>
