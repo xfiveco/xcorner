@@ -1,4 +1,4 @@
-import q$, { q$$ } from '../../global/selector';
+import q$ from '../../global/selector';
 
 const changeWishlistPaginationLinks = (wishlistUrl, ...paginationItems) => paginationItems.forEach($item => {
     const paginationLink = $item.querySelector('.js-pagination-link');
