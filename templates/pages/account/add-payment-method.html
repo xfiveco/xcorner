@@ -60,7 +60,7 @@
                             {{/each}}
                         </span>
                     </p>
-                    <fieldset class="form-fieldset">
+                    <fieldset class="js-form-fieldset">
                         <div class="paymentMethodForm-column">
                             <div class="paymentMethodForm-inputs">
                                 {{> components/common/forms/text id="credit_card_number" name="credit_card_number" label=(lang 'account.payment_methods.credit_card_number')}}
@@ -83,7 +83,7 @@
                                 </svg>
                             </div>
                         </div>
-                        <div class="form-field">
+                        <div class="js-form-field">
                             <input type="checkbox" name="default_instrument" id="default_instrument" data-label="{{lang 'forms.payment_methods.default_instrument'}}" class="form-checkbox">
                             <label class="form-label" for="default_instrument">{{lang 'forms.payment_methods.default_instrument'}}</label>
                         </div>
@@ -92,7 +92,7 @@
 
                 <h3 class="paymentMethodForm-heading">{{lang 'account.payment_methods.billing_address'}}</h3>
 
-                <fieldset class="form-fieldset">
+                <fieldset class="js-form-fieldset">
                     <div class="form-row form-row--half">
                         {{> components/common/forms/text private_id="FirstName" required=true id="first_name" name="first_name" label=(lang 'forms.payment_methods.first_name')}}
                         {{> components/common/forms/text private_id="LastName" required=true id="last_name" name="last_name" label=(lang 'forms.payment_methods.last_name')}}

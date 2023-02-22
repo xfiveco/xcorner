@@ -33,10 +33,15 @@ export const createPasswordValidationErrorTextObject = (empty, confirm, mismatch
  */
 function classifyInput(input, formFieldClass) {
     const $input = input;
-    const $formField = parents(`.${formFieldClass}`, $input);
-    const tagName = $input.getAttribute('tagName').toLowerCase();
+    const $formField = parents(`.${formFieldClass}`, $input)[0];
 
-    let className = `${formFieldClass}--${tagName}`;
+    if (!$formField) {
+        return null;
+    }
+
+    const tagName = $input.tagName.toLowerCase();
+
+    let className = `${formFieldClass}-${tagName}`;
     let specificClassName;
 
     // Input can be text/checkbox/radio etc...
@@ -44,11 +49,11 @@ function classifyInput(input, formFieldClass) {
         const inputType = $input.getAttribute('type');
 
         if (['radio', 'checkbox', 'submit'].includes(inputType)) {
-            // ie: .form-field--checkbox, .form-field--radio
-            className = `${formFieldClass}--${_.camelCase(inputType)}`;
+            // ie: .form-field-checkbox, .form-field-radio
+            className = `${formFieldClass}-${_.kebabCase(inputType)}`;
         } else {
-            // ie: .form-field--input .form-field--inputText
-            specificClassName = `${className}${_.capitalize(inputType)}`;
+            // ie: .form-field-input .form-field-inputText
+            specificClassName = `${className}-${_.kebabCase(inputType)}`;
         }
     }
 
@@ -63,19 +68,19 @@ function classifyInput(input, formFieldClass) {
  * @example
  * // Before
  * <form id="form">
- *     <div class="form-field">
+ *     <div class="js-form-field">
  *         <input type="text">
  *     </div>
- *     <div class="form-field">
+ *     <div class="js-form-field">
  *         <select>...</select>
  *     </div>
  * </form>
  *
- * classifyForm('#form', { formFieldClass: 'form-field' });
+ * classifyForm('#form', { formFieldClass: 'js-form-field' });
  *
  * // After
- * <div class="form-field form-field--input form-field--inputText">...</div>
- * <div class="form-field form-field--select">...</div>
+ * <div class="js-form-field js-form-field-input js-form-field-input-text">...</div>
+ * <div class="js-form-field js-form-field-select">...</div>
  *
  * @param {string|object} formSelector - selector or element
  * @param {object} options
@@ -86,7 +91,7 @@ export function classifyForm(formSelector, options = {}) {
     const $inputs = q$$(inputTagNames.join(', '), $form);
 
     // Obtain options
-    const { formFieldClass = 'form-field' } = options;
+    const { formFieldClass = 'js-form-field' } = options;
 
     // Classify each input in a form
     $inputs.forEach($input => {
@@ -135,7 +140,7 @@ function announceInputErrorMessage({ element, result }) {
     // the reason for using span tag is nod-validate lib
     // which does not add error message class while initialising form.
     // specific class is added since it can be multiple spans
-    const $errorMessage = activeInputContainer.querySelector('span.js-form-inline-message');
+    const $errorMessage = activeInputContainer.querySelector('.js-form-inline-message');
 
     if ($errorMessage) {
         if (!$errorMessage.getAttribute('role')) {

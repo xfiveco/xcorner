@@ -7,9 +7,9 @@
             {{#if this.sort}}
                 <input type="hidden" name="sort" value="{{this.sort}}">
             {{/if}}
-            <fieldset class="form-fieldset">
+            <fieldset class="js-form-fieldset">
                 <div class="form-minMaxRow">
-                    <div class="form-field">
+                    <div class="js-form-field">
                         <input
                             name="min_price"
                             placeholder="{{lang 'search.faceted.range.min-placeholder'}}"
@@ -21,7 +21,7 @@
                         />
                     </div>
 
-                    <div class="form-field">
+                    <div class="js-form-field">
                         <input
                             name="max_price"
                             placeholder="{{lang 'search.faceted.range.max-placeholder'}}"
@@ -33,7 +33,7 @@
                         />
                     </div>
 
-                    <div class="form-field">
+                    <div class="js-form-field">
                         <button class="c-button button--small" type="submit">
                             {{lang 'search.faceted.range.update'}}
                         </button>

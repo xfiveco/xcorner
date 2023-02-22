@@ -38,11 +38,6 @@ export function parents(selector, $context) {
 
     /* eslint-disable no-cond-assign */
     while ((elem = elem.parentElement) !== null) {
-        if (elem.nodeType !== Node.ELEMENT_NODE) {
-            /* eslint-disable no-continue */
-            continue;
-        }
-
         if (!ishaveselector || elem.matches(selector)) {
             elements.push(elem);
         }

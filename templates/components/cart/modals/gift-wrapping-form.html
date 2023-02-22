@@ -10,9 +10,9 @@
     <form class="form giftWrapping-form" action="{{urls.cart}}" method="post">
         <input type="hidden" name="action" value="save_giftwrapping">
         <input type="hidden" name="item_id" value="{{item_id}}">
-        <fieldset class="form-fieldset">
+        <fieldset class="js-form-fieldset">
 
-            <div class="form-field" {{#if quantity '===' 1}}style="display:none"{{/if}}>
+            <div class="js-form-field" {{#if quantity '===' 1}}style="display:none"{{/if}}>
                 <input type="radio" class="form-radio" name="giftwraptype" id="girftWrapping-radio-same" checked="checked" value="same">
                 <label class="form-label" for="girftWrapping-radio-same">{{lang 'cart.gift_wrapping.option_same'}}</label>
 
@@ -21,7 +21,7 @@
             </div>
 
             <div class="giftWrapping-single">
-                <div class="form-field">
+                <div class="js-form-field">
                     <label class="form-label" for="giftWrapping-select-same">
                         {{lang 'cart.gift_wrapping.item_single' name=product_name}}
                         {{#each gift_wrappings}}
@@ -40,7 +40,7 @@
                     </select>
                 </div>
 
-                <div class="form-field" id="giftWrapping-message-all" {{#unless selected_wrapping}}style="display:none"{{/unless}}>
+                <div class="js-form-field" id="giftWrapping-message-all" {{#unless selected_wrapping}}style="display:none"{{/unless}}>
                     <label class="form-label" for="giftMessage">{{lang 'cart.gift_wrapping.gift_message'}}</label>
                     <textarea class="js-form-input" name="giftmessage[all]" id="giftMessage" rows="3">{{selected_wrapping.message}}</textarea>
                 </div>
@@ -48,7 +48,7 @@
 
             <div class="giftWrapping-multiple">
                 {{#for quantity this}}
-                    <div class="form-field">
+                    <div class="js-form-field">
                         <label class="form-label" for="giftWrapping-select-{{$index}}">
                             {{lang 'cart.gift_wrapping.item_multiple' index=$index name=product_name}}
                             {{#each gift_wrappings}}
@@ -67,7 +67,7 @@
                         </select>
                     </div>
 
-                    <div class="form-field" id="giftWrapping-message-{{$index}}" style="display:none">
+                    <div class="js-form-field" id="giftWrapping-message-{{$index}}" style="display:none">
                         <label class="form-label" for="giftMessage">{{lang 'cart.gift_wrapping.gift_message'}}</label>
                         <textarea class="js-form-input" name="giftmessage[{{$index}}]" id="giftMessage" rows="3">{{selected_wrapping.message}}</textarea>
                     </div>
