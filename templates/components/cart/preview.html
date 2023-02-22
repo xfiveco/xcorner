@@ -59,11 +59,10 @@
             {{#with cart.added_item}}
                 <figure class="productView-image">
                     <div class="productView-img-container">
-                        {{> components/common/responsive-img
+                        {{> components/common/image
                             image=image
                             class="productView-image--cart"
                             fallback_size=../theme_settings.product_size
-                            lazyload=../theme_settings.lazyload_mode
                             default_image=../theme_settings.default_image_product
                         }}
                     </div>
