@@ -3,6 +3,8 @@ import CatalogPage from './catalog';
 import compareProducts from './global/compare-products';
 import FacetedSearch from './common/faceted-search';
 import { createTranslationDictionary } from '../theme/common/utils/translations-utils';
+import q$, { q$$ } from './global/selector';
+import trigger from './common/utils/trigger';
 
 export default class Category extends CatalogPage {
     constructor(context) {
@@ -11,33 +13,34 @@ export default class Category extends CatalogPage {
     }
 
     setLiveRegionAttributes($element, roleType, ariaLiveStatus) {
-        $element.attr({
-            role: roleType,
-            'aria-live': ariaLiveStatus,
-        });
+        $element.setAttribute('role', roleType);
+        $element.setAttribute('aria-live', ariaLiveStatus);
     }
 
     makeShopByPriceFilterAccessible() {
-        if (!$('[data-shop-by-price]').length) return;
+        if (q$('[data-shop-by-price]') === null) return;
+
         const navListAction = $('.js-nav-list-action');
 
         if (navListAction.hasClass('is-active')) {
             $('.js-nav-list-action.is-active').focus();
         }
 
-        navListAction.on('click', () => this.setLiveRegionAttributes($('.js-price-filter-message'), 'status', 'assertive'));
+        navListAction.on('click', () => this.setLiveRegionAttributes(q$('.js-price-filter-message'), 'status', 'assertive'));
     }
 
     onReady() {
         this.arrangeFocusOnSortBy();
 
-        $('[data-button-type="add-cart"]').on('click', (e) => this.setLiveRegionAttributes($(e.currentTarget).next(), 'status', 'polite'));
+        q$$('[data-button-type="add-cart"]').forEach($addToCart => {
+            $addToCart.addEventListener('click', e => this.setLiveRegionAttributes(e.currentTarget.nextSibling, 'status', 'polite'));
+        });
 
         this.makeShopByPriceFilterAccessible();
 
         compareProducts(this.context);
 
-        if ($('#facetedSearch').length > 0) {
+        if (q$('#faceted-search') !== null) {
             this.initFacetedSearch();
         } else {
             this.onSortBySubmit = this.onSortBySubmit.bind(this);
@@ -64,8 +67,8 @@ export default class Category extends CatalogPage {
             price_max_not_entered: maxPriceNotEntered,
             price_invalid_value: onInvalidPrice,
         } = this.validationDictionary;
-        const $productListingContainer = $('.js-product-listing-container');
-        const $facetedSearchContainer = $('.js-faceted-search-container');
+        const $productListingContainer = q$('.js-product-listing-container');
+        const $facetedSearchContainer = q$('.js-faceted-search-container');
         const productsPerPage = this.context.categoryProductsPerPage;
         const requestOptions = {
             config: {
@@ -84,14 +87,12 @@ export default class Category extends CatalogPage {
         };
 
         this.facetedSearch = new FacetedSearch(requestOptions, (content) => {
-            $productListingContainer.html(content.productListing);
-            $facetedSearchContainer.html(content.sidebar);
+            $productListingContainer.innerHTML = content.productListing;
+            $facetedSearchContainer.innerHTML = content.sidebar;
 
-            $('body').triggerHandler('compareReset');
+            trigger(q$('body'), 'compare-reset');
 
-            $('html, body').animate({
-                scrollTop: 0,
-            }, 100);
+            q$('body').scrollTop = 0;
         }, {
             validationErrorMessages: {
                 onMinPriceError,

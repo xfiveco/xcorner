@@ -3,6 +3,7 @@ import CatalogPage from './catalog';
 import compareProducts from './global/compare-products';
 import FacetedSearch from './common/faceted-search';
 import { createTranslationDictionary } from '../theme/common/utils/translations-utils';
+import q$ from './global/selector';
 
 export default class Brand extends CatalogPage {
     constructor(context) {
@@ -13,7 +14,7 @@ export default class Brand extends CatalogPage {
     onReady() {
         compareProducts(this.context);
 
-        if ($('#facetedSearch').length > 0) {
+        if (q$('#faceted-search') !== null) {
             this.initFacetedSearch();
         } else {
             this.onSortBySubmit = this.onSortBySubmit.bind(this);
@@ -52,7 +53,7 @@ export default class Brand extends CatalogPage {
             $productListingContainer.html(content.productListing);
             $facetedSearchContainer.html(content.sidebar);
 
-            $('body').triggerHandler('compareReset');
+            $('body').triggerHandler('compare-reset');
 
             $('html, body').animate({
                 scrollTop: 0,

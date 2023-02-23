@@ -1,26 +1,31 @@
 {{#if items}}
-<div class="accordion-block">
-    {{> components/faceted-search/faceted-search-navigation}}
+    <div>
+        {{> components/faceted-search/faceted-search-navigation}}
 
-    <div id="facetedSearch-content--{{dashcase facet}}" class="accordion-content facetedSearch-content--{{dashcase facet}}{{#unless start_collapsed}} is-open{{/unless}}">
-        <ul class="navList">
-            {{#each items}}
-                <li class="navList-item">
-                    <a href="{{url}}"
-                       class="navList-action{{#if selected}} is-selected{{/if}}"
-                       rel="nofollow"
-                       data-faceted-search-facet>
-                        <span class="rating--small">
-                            {{> components/products/ratings rating=title}}
-                        </span>
-                        {{lang 'search.faceted.rating.and-up'}}
-                        {{#if ../show_product_counts}}
-                            <span>({{count}})</span>
-                        {{/if}}
-                    </a>
-                </li>
-            {{/each}}
-        </ul>
+        <div 
+            id="faceted-search-content-{{dashcase facet}}" 
+            class="is-accordion-content {{#unless start_collapsed}} is-open{{/unless}}"
+        >
+            <ul>
+                {{#each items}}
+                    <li class="js-nav-list-item">
+                        <a 
+                            href="{{url}}"
+                            class="js-nav-list-action{{#if selected}} is-selected{{/if}}"
+                            rel="nofollow"
+                            data-faceted-search-facet
+                        >
+                            <span>
+                                {{> components/products/ratings rating=title}}
+                            </span>
+                            {{lang 'search.faceted.rating.and-up'}}
+                            {{#if ../show_product_counts}}
+                                <span>({{count}})</span>
+                            {{/if}}
+                        </a>
+                    </li>
+                {{/each}}
+            </ul>
+        </div>
     </div>
-</div>
 {{/if}}

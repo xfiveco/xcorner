@@ -183,7 +183,7 @@ export default class Auth extends PageManager {
         }
         event.preventDefault();
         setTimeout(() => {
-            const earliestError = $('span.form-inlineMessage:first').prev('input');
+            const earliestError = $('.js-form-inline-message:first').prev('input');
             earliestError.focus();
         }, 900);
     }

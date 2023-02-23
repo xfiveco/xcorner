@@ -9,13 +9,13 @@
         {{#each facets}}
             {{#if facet '===' ../all_facets}}
                 {{#each items}}
-                    <li class="navList-item">
+                    <li class="js-nav-list-item">
                         <a
-                        href="{{url}}"
-                        class="navList-action{{#if selected}} is-active{{/if}}"
-                        rel="nofollow"
-                        data-id="{{id}}"
-                        data-faceted-search-facet
+                            href="{{url}}"
+                            class="js-nav-list-action{{#if selected}} is-active{{/if}}"
+                            rel="nofollow"
+                            data-id="{{id}}"
+                            data-faceted-search-facet
                         >
                             {{{title}}}
                             {{#if ../show_product_counts}}

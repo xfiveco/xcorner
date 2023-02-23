@@ -1,8 +1,8 @@
-<div id="facetedSearch" class="facetedSearch sidebarBlock">
+<div id="faceted-search">
     {{> components/faceted-search/selected-facets selected}}
 
-    <a href="#facetedSearch-navList" role="button" class="facetedSearch-toggle toggleLink" data-collapsible>
-        <span class="facetedSearch-toggle-text">
+    <a href="#faceted-search-nav-list" role="button" class="is-faceted-search-toggle is-toggle-link" data-collapsible="#faceted-search-nav-list">
+        <span>
             {{#if facets.length '>' 2}}
                 {{lang 'search.faceted.browse-by'}} {{join (pluck facets 'title') ', ' limit=2}} &amp; {{toLowerCase (lang 'search.faceted.more')}}
             {{else}}
@@ -10,30 +10,28 @@
             {{/if}}
         </span>
 
-        <span class="facetedSearch-toggle-indicator">
-            <span class="toggleLink-text toggleLink-text--on">
+        <span>
+            <span>
                 {{lang 'search.faceted.hide-filters'}}
 
-                <i class="icon" aria-hidden="true">
-                    <svg><use href="#icon-keyboard-arrow-up"/></svg>
-                </i>
+                <svg>
+                    <use href="#icon-keyboard-arrow-up"/>
+                </svg>
             </span>
 
-            <span class="toggleLink-text toggleLink-text--off">
+            <span>
                 {{lang 'search.faceted.show-filters'}}
 
-                <i class="icon" aria-hidden="true">
-                    <svg><use href="#icon-keyboard-arrow-down"/></svg>
-                </i>
+                <svg>
+                    <use href="#icon-keyboard-arrow-down"/>
+                </svg>
             </span>
         </span>
     </a>
 
     {{#any facets visible=true}}
-        <div id="facetedSearch-navList"
-            class="facetedSearch-navList"
-        >
-            <div class="accordion accordion--navList">
+        <div id="faceted-search-nav-list">
+            <div>
                 {{#each facets}}
                     {{#if visible}}
                         {{{dynamicComponent 'components/faceted-search/facets'}}}
@@ -41,7 +39,7 @@
                 {{/each}}
             </div>
 
-            <div class="blocker" style="display: none;"></div>
+            <div class="is-blocker" style="display: none;"></div>
         </div>
     {{/any}}
 </div>
