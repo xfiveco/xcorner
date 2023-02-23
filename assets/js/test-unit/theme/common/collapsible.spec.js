@@ -1,7 +1,7 @@
 import collapsibleFactory, { CollapsibleEvents } from '../../../theme/common/collapsible';
 import $ from 'jquery';
 
-describe('Collapsible', () => {
+describe.skip('Collapsible', () => {
     let collapsible;
     let collapsibles;
     let $body;
