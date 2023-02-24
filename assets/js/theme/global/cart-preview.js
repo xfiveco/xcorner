@@ -19,13 +19,13 @@ export default function (secureBaseUrl, cartId) {
     }
 
     q$('body').addEventListener('cart-quantity-update', event => {
-        const quantity = event.details;
+        const quantity = event.detail;
         $cart.setAttribute('aria-label', (_, prevValue) => prevValue.replace(/\d+/, quantity));
 
         if (!quantity) {
-            $cart.classList.add('js-nav-user-item--cart__hidden-s');
+            $cart.classList.add('is-nav-user-item-cart-hidden');
         } else {
-            $cart.classList.remove('js-nav-user-item--cart__hidden-s');
+            $cart.classList.remove('is-nav-user-item-cart-hidden');
         }
 
         const $cartQuantity = q$('.js-cart-quantity');
