@@ -1,10 +1,19 @@
-<form class="form"  action="{{urls.search}}">
+<form action="{{urls.search}}">
     <fieldset class="js-form-fieldset">
         <div class="js-form-field">
-            <label class="form-label is-srOnly" for="search_query_adv">{{lang 'search.results.form_label'}}</label>
-            <div class="form-prefix-postfix wrap">
-                <input class="js-form-input" id="search_query_adv" name="search_query_adv" value="{{forms.search.query}}">
-                <input class="c-button c-button--primary form-prefix-postfix-button--postfix" type="submit" value="{{lang 'search.results.form_button_text'}}">
+            <label class="u-hidden-visually" for="search_query_adv">
+                {{lang 'search.results.form_label'}}
+            </label>
+            <div>
+                <input 
+                    class="js-form-input" 
+                    id="search_query_adv" 
+                    name="search_query_adv" 
+                    value="{{forms.search.query}}"
+                >
+                <button class="c-button c-button--primary" type="submit">
+                    {{lang 'search.results.form_button_text'}}
+                </button> 
             </div>
         </div>
     </fieldset>
