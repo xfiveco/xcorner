@@ -20,7 +20,11 @@
             </li>
         {{/if}}
         {{#each links}}
-            <li class="{{#if this.number '==' ../current}}pagination-item-current{{/if}}">
+            <li 
+                {{#if this.number '==' ../current}}
+                    class="is-current"
+                {{/if}}
+            >
                 <a 
                     class="js-pagination-link"
                     href="{{this.url}}"
