@@ -226,8 +226,8 @@ export default class Auth extends PageManager {
                 this.recaptcha = q$('.g-recaptcha iframe[src]');
             }
 
-            if (!this.recaptcha.getAttribute('title')) {
-                this.recaptcha.setAttribute('title', this.context.recaptchaTitle);
+            if (!this.recaptcha?.getAttribute('title')) {
+                this.recaptcha?.setAttribute('title', this.context.recaptchaTitle);
             }
         }, 500);
     }
