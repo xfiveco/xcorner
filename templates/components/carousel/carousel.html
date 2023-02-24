@@ -17,18 +17,16 @@
         {{/if}}
                 <div class="js-hero-carousel-slide{{#if ../theme_settings.homepage_stretch_carousel_images}} is-stretch{{/if}}{{#if @first}} is-first{{/if}}">
                     {{#if @first}}
-                        {{> components/common/responsive-img
+                        {{> components/common/image
                             image=stencil_image
                             class="heroCarousel-image"
                             fallback_size='1280w'
-                            lazyload='disabled'
                         }}
                     {{else}}
-                        {{> components/common/responsive-img
+                        {{> components/common/image
                             image=stencil_image
                             class="heroCarousel-image"
                             fallback_size='1280w'
-                            lazyload='lazyload'
                         }}
                     {{/if}}
                     {{#or heading text button_text}}

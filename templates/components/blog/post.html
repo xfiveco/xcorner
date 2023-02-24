@@ -3,10 +3,9 @@
         {{#if post.thumbnail}}
             <figure>
                 <a href="{{post.url}}">
-                    {{> components/common/responsive-img
-                    image=post.thumbnail
-                    fallback_size=theme_settings.blog_size
-                    lazyload=theme_settings.lazyload_mode
+                    {{> components/common/image
+                        image=post.thumbnail
+                        fallback_size=theme_settings.blog_size
                     }}
                 </a>
             </figure>

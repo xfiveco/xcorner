@@ -66,11 +66,10 @@
            {{#if settings.data_tag_enabled}} data-event-type="product-click" {{/if}}
         >
             <div class="card-img-container">
-                {{> components/common/responsive-img
+                {{> components/common/image
                     image=image
                     class="card-image"
                     fallback_size=theme_settings.productgallery_size
-                    lazyload=theme_settings.lazyload_mode
                     default_image=theme_settings.default_image_product
                 }}
             </div>
