@@ -123,7 +123,7 @@ function getFieldId($field) {
 function insertStateHiddenField($stateField) {
     const fieldId = getFieldId($stateField);
 
-    $stateField.insertAdjacentHTML('beforeend', `<input type='hidden' name='FormFieldIsText${ fieldId }' value='1' />`);
+    $stateField.insertAdjacentHTML('afterend', `<input type='hidden' name='FormFieldIsText${ fieldId }' value='1' />`);
 }
 
 /**
