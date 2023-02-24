@@ -1,7 +1,7 @@
 <div id="faceted-search">
     {{> components/faceted-search/selected-facets selected}}
 
-    <a href="#faceted-search-nav-list" role="button" class="is-faceted-search-toggle is-toggle-link" data-collapsible="#faceted-search-nav-list">
+    <a href="#faceted-search-nav-list" role="button" class="is-faceted-search-toggle js-toggle-link" data-collapsible="#faceted-search-nav-list">
         <span>
             {{#if facets.length '>' 2}}
                 {{lang 'search.faceted.browse-by'}} {{join (pluck facets 'title') ', ' limit=2}} &amp; {{toLowerCase (lang 'search.faceted.more')}}

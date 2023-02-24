@@ -15,7 +15,7 @@
                     <li class="js-nav-list-item">
                         <a
                             href="{{url}}"
-                            class="js-nav-list-action {{#if selected}} is-selected{{/if}}"
+                            class="js-nav-list-action{{#if selected}} is-selected{{/if}}"
                             rel="nofollow"
                             data-faceted-search-facet>
                             {{{sanitize title}}}
@@ -32,7 +32,7 @@
             </ul>
 
             {{#if show_more_toggle}}
-                <a href="#faceted-search-nav-list-{{dashcase facet}}" role="button" class="is-toggle-link">
+                <a href="#faceted-search-nav-list-{{dashcase facet}}" role="button" class="js-toggle-link">
                     <span>{{lang 'search.faceted.show-more'}}</span>
                 </a>
             {{/if}}
