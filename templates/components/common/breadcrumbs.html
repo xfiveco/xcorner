@@ -1,11 +1,13 @@
 <nav aria-label="Breadcrumb">
-    <ol class="breadcrumbs">
+    <ol>
         {{#unless theme_settings.hide_breadcrumbs }}
             {{#each breadcrumbs}}
-                <li class="breadcrumb {{#if @last}}is-active{{/if}}">
-                    <a class="breadcrumb-label"
-                       href="{{url}}"
-                       {{#if @last}}aria-current="page"{{/if}}
+                <li class="{{#if @last}}is-active{{/if}}">
+                    <a 
+                        href="{{url}}"
+                        {{#if @last}}
+                            aria-current="page"
+                        {{/if}}
                     >
                         <span>{{name}}</span>
                     </a>
@@ -22,14 +24,14 @@
     "itemListElement":
     [
         {{#each breadcrumbs}}
-        {
-            "@type": "ListItem",
-            "position": {{add @index 1}},
-            "item": {
-                "@id": {{{JSONstringify url}}},
-                "name": {{{JSONstringify name}}}
-            }
-        }{{#unless @last}},{{/unless}}
+            {
+                "@type": "ListItem",
+                "position": {{add @index 1}},
+                "item": {
+                    "@id": {{{JSONstringify url}}},
+                    "name": {{{JSONstringify name}}}
+                }
+            }{{#unless @last}},{{/unless}}
         {{/each}}
     ]
 }
