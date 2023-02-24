@@ -30,12 +30,13 @@
     <ul>
         {{#if currency_selector.currencies.length '>' 1}}
             <li>
-                <a class="js-nav-pages-action has-sub-menu"
-                   href="#"
-                   data-collapsible="nav-pages-currency"
-                   aria-controls="nav-pages-currency"
-                   aria-expanded="false"
-                   aria-label="{{lang 'common.currency' code=currency_selector.active_currency_code}}"
+                <a 
+                    class="js-nav-pages-action has-sub-menu"
+                    href="#"
+                    data-collapsible="nav-pages-currency"
+                    aria-controls="nav-pages-currency"
+                    aria-expanded="false"
+                    aria-label="{{lang 'common.currency' code=currency_selector.active_currency_code}}"
                 >
                     {{lang 'common.currency' code=currency_selector.active_currency_code}}
                     <svg>
