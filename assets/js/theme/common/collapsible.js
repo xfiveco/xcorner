@@ -21,6 +21,10 @@ function prependHash(id) {
         return id;
     }
 
+    if (id && id[0] === '.') {
+        return id;
+    }
+
     return `#${id}`;
 }
 

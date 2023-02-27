@@ -40,7 +40,7 @@ export default class Category extends CatalogPage {
 
         compareProducts(this.context);
 
-        if (q$('#faceted-search') !== null) {
+        if (q$('.js-facets-search-wrapper') !== null) {
             this.initFacetedSearch();
         } else {
             this.onSortBySubmit = this.onSortBySubmit.bind(this);

@@ -18,13 +18,13 @@ const defaultOptions = {
     componentSelector: '.js-facets-search-nav-list',
     facetNavListSelector: '.js-facets-search-wrapper .js-facets-search-nav-list',
     priceRangeErrorSelector: '.js-facets-search-range-form .js-inline-message',
-    priceRangeFieldsetSelector: '.js-facets-search-range-form .form-fieldset',
+    priceRangeFieldsetSelector: '.js-facets-search-range-form .js-form-fieldset',
     priceRangeFormSelector: '.js-facets-search-range-form',
     priceRangeMaxPriceSelector: '.js-facets-search-range-form [name=max_price]',
     priceRangeMinPriceSelector: '.js-facets-search-range-form [name=min_price]',
     showMoreToggleSelector: '.js-facets-search-wrapper .accordion-content .toggleLink',
     facetedSearchFilterItems: '.js-facets-search-wrapper-filterItems .form-input',
-    modal: modalFactory('.js-modal')[0],
+    modal: modalFactory('#modal'),
     modalOpen: false,
 };
 

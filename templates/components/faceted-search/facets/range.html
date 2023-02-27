@@ -1,7 +1,7 @@
 <div>
     {{> components/faceted-search/faceted-search-navigation}}
 
-    <div id="{{dashcase facet}}" class="{{#unless start_collapsed}} is-open{{/unless}}">
+    <div id="facets-{{dashcase facet}}" class="{{#unless start_collapsed}} is-open{{/unless}}">
         <form 
             class="js-facets-search-range-form"
             method="get" 
@@ -45,7 +45,7 @@
                     </div>
                 </div>
 
-                <div class="js-form-inline-message"></div>
+                <div class="js-inline-message"></div>
             </fieldset>
         </form>
     </div>
