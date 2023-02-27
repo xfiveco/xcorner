@@ -3,11 +3,11 @@
         {{> components/faceted-search/faceted-search-navigation}}
 
         <div 
-            id="faceted-search-content-{{dashcase facet}}" 
-            class="is-accordion-content{{#unless start_collapsed}} is-open{{/unless}}"
+            id="{{dashcase facet}}" 
+            class="{{#unless start_collapsed}} is-open{{/unless}}"
         >
             <ul 
-                id="faceted-search-nav-list-{{dashcase facet}}" 
+                id="list-{{dashcase facet}}" 
                 data-facet="{{facet}}" 
                 data-has-more-results="{{has_more_results}}"
             >
@@ -15,14 +15,16 @@
                     <li class="js-nav-list-item">
                         <a
                             href="{{url}}"
-                            class="js-nav-list-action {{#if selected }} is-selected{{/if}}{{#if has_sub_categories}} has-children{{/if}}"
+                            class="{{#if selected }} is-selected{{/if}}{{#if has_sub_categories}} has-children{{/if}}"
                             rel="nofollow"
                             data-id="{{id}}"
                             data-faceted-search-facet
                         >
                             {{{sanitize title}}}
                             {{#if ../show_product_counts}}
-                                <span>({{count}})</span>
+                                <span>
+                                    ({{count}})
+                                </span>
                             {{/if}}
                         </a>
                         {{#if children}}
@@ -33,8 +35,8 @@
             </ul>
 
             {{#if show_more_toggle}}
-                <a href="#faceted-search-nav-list-{{dashcase facet}}" role="button" class="js-toggle-link">
-                    <span>{{lang 'search.faceted.show-more'}}</span>
+                <a href="#list-{{dashcase facet}}" role="button" class="js-toggle-link">
+                    {{lang 'search.faceted.show-more'}}
                 </a>
             {{/if}}
         </div>

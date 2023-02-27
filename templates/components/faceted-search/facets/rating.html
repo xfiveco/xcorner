@@ -3,15 +3,15 @@
         {{> components/faceted-search/faceted-search-navigation}}
 
         <div 
-            id="faceted-search-content-{{dashcase facet}}" 
-            class="is-accordion-content {{#unless start_collapsed}} is-open{{/unless}}"
+            id="facets-{{dashcase facet}}" 
+            class="{{#unless start_collapsed}} is-open{{/unless}}"
         >
-            <ul>
+            <ul class="js-facets-search-nav-list">
                 {{#each items}}
                     <li class="js-nav-list-item">
                         <a 
                             href="{{url}}"
-                            class="js-nav-list-action{{#if selected}} is-selected{{/if}}"
+                            class="{{#if selected}} is-selected{{/if}}"
                             rel="nofollow"
                             data-faceted-search-facet
                         >

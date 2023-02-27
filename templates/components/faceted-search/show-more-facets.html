@@ -1,11 +1,15 @@
-<div class="is-modal-body">
-    <h1 class="facet-quick-heading">
+{{!-- todo: this should be a modal --}}
+<div class="js-modal">
+    <div>
         {{all_facets}}
-    </h1>
-    <div class="js-form-field" id="facetedSearch-filterItems">
-        <input class="js-form-input" type="search" placeholder="{{lang 'forms.search.search'}}">
     </div>
-    <ul class="navList facetedSearch-optionColumns">
+    <div>
+        <label class="u-hidden-visually" for="facet-search">
+            {{lang 'forms.search.search'}}
+        </label>
+        <input id="facet-search" type="search" placeholder="{{lang 'forms.search.search'}}">
+    </div>
+    <ul class="js-facets-search-nav-list">
         {{#each facets}}
             {{#if facet '===' ../all_facets}}
                 {{#each items}}
@@ -20,7 +24,9 @@
                             {{{title}}}
                             {{#if ../show_product_counts}}
                                 {{#if count}}
-                                    <span>({{count}})</span>
+                                    <span>
+                                        ({{count}})
+                                        </span>
                                 {{/if}}
                             {{/if}}
                         </a>

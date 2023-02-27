@@ -1,7 +1,6 @@
-<div id="faceted-search">
+<div class="js-facets-search-wrapper">
     {{> components/faceted-search/selected-facets selected}}
-
-    <a href="#faceted-search-nav-list" role="button" class="is-faceted-search-toggle js-toggle-link" data-collapsible="#faceted-search-nav-list">
+    <a href="#facets-search-nav-list" role="button" class="js-facets-search-toggle" data-collapsible=".js-facets-search-nav-list">
         <span>
             {{#if facets.length '>' 2}}
                 {{lang 'search.faceted.browse-by'}} {{join (pluck facets 'title') ', ' limit=2}} &amp; {{toLowerCase (lang 'search.faceted.more')}}
@@ -9,28 +8,23 @@
                 {{lang 'search.faceted.browse-by'}} {{join (pluck facets 'title') ', ' lastSeparator=' & '}}
             {{/if}}
         </span>
-
         <span>
             <span>
                 {{lang 'search.faceted.hide-filters'}}
-
-                <svg>
-                    <use href="#icon-keyboard-arrow-up"/>
+                <svg aria-hidden="true">
+                    <use href="#icon-keyboard-arrow-up"></use>
                 </svg>
             </span>
-
             <span>
                 {{lang 'search.faceted.show-filters'}}
-
-                <svg>
-                    <use href="#icon-keyboard-arrow-down"/>
+                <svg aria-hidden="true">
+                    <use href="#icon-keyboard-arrow-down"></use>
                 </svg>
             </span>
         </span>
     </a>
-
     {{#any facets visible=true}}
-        <div id="faceted-search-nav-list">
+        <div id="facets-search-nav-list" class="js-facets-search-nav-list">
             <div>
                 {{#each facets}}
                     {{#if visible}}
@@ -38,8 +32,7 @@
                     {{/if}}
                 {{/each}}
             </div>
-
-            <div class="is-blocker" style="display: none;"></div>
+            <div class="c-blocker js-blocker" style="display: none;"></div>
         </div>
     {{/any}}
 </div>

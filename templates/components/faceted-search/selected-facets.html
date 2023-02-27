@@ -2,7 +2,6 @@
     <div>
         {{lang 'search.faceted.selected.title'}}
     </div>
-
     {{#if items}}
         <ul>
             {{#each items}}
@@ -17,7 +16,6 @@
                         {{else}}
                             {{{sanitize title}}}
                         {{/if}}
-
                         <svg>
                             <use href="#icon-close" />
                         </svg>
@@ -28,7 +26,6 @@
     {{else}}
         <p>{{lang 'search.faceted.selected.no-filters'}}</p>
     {{/if}}
-
     {{#if remove_all_url}}
         <a href="{{remove_all_url}}" data-faceted-search-facet>
             {{lang 'search.faceted.selected.clear-all'}}

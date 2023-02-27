@@ -1,9 +1,8 @@
 <div>
-    <button 
-        type="button"
-        class="is-accordion-navigation js-toggle-link{{#unless start_collapsed}} is-open{{/unless}}"
-        data-collapsible="#faceted-search-content-{{dashcase facet}}"
-        aria-label="{{lang 'search.faceted.toggleSection' title=title}}"
+    <button type="button"
+         class="js-accordion-navigation{{#unless start_collapsed}} is-open{{/unless}}"
+         data-collapsible="#facets-{{dashcase facet}}"
+         aria-label="{{lang 'search.faceted.toggleSection' title=title}}"
     >
         <span>
             {{title}}
@@ -19,7 +18,7 @@
         </span>
     </button>
     {{#if selected}}
-        <a href="{{remove_url}}" class="is-faceted-search-clear-link" data-faceted-search-facet>
+        <a href="{{remove_url}}" class="js-facets-search-clear" data-faceted-search-facet>
             {{lang 'search.faceted.clear'}}
         </a>
     {{/if}}
