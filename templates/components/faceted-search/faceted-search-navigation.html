@@ -1,8 +1,9 @@
 <div>
-    <button type="button"
-         class="js-accordion-navigation{{#unless start_collapsed}} is-open{{/unless}}"
-         data-collapsible="#facets-{{dashcase facet}}"
-         aria-label="{{lang 'search.faceted.toggleSection' title=title}}"
+    <button 
+        type="button"
+        class="js-accordion-navigation{{#unless start_collapsed}} is-open{{/unless}}"
+        data-collapsible="#facets-{{dashcase facet}}"
+        aria-label="{{lang 'search.faceted.toggleSection' title=title}}"
     >
         <span>
             {{title}}
