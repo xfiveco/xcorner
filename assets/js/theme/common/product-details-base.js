@@ -170,7 +170,7 @@ export default class ProductDetailsBase {
             $weight: $('.productView-info [data-product-weight]', $scope),
             $increments: $('.js-form-field-increments :input', $scope),
             $addToCart: $('#form-action-addToCart', $scope),
-            $wishlistVariation: $('[data-wishlist-add] [name="variation_id"]', $scope),
+            $wishlistVariation: $('.js-wishlist-add [name="variation_id"]', $scope),
             stock: {
                 $container: $('.js-form-field-stock', $scope),
                 $input: $('[data-product-stock]', $scope),

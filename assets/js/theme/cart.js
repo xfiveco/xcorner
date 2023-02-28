@@ -15,7 +15,7 @@ export default class Cart extends PageManager {
         this.$cartMessages = $('[data-cart-status]');
         this.$cartTotals = $('[data-cart-totals]');
         this.$cartAdditionalCheckoutBtns = $('[data-cart-additional-checkout-buttons]');
-        this.$overlay = $('[data-cart] .is-loading-overlay')
+        this.$overlay = $('[data-cart] .js-loading-overlay')
             .hide(); // TODO: temporary until roper pulls in his cart components
         this.$activeCartItemId = null;
         this.$activeCartItemBtnAction = null;
@@ -132,7 +132,7 @@ export default class Cart extends PageManager {
         };
 
         modal.open();
-        this.$modal.find('.is-modal-content').addClass('hide-content');
+        this.$modal.find('.js-modal-content').addClass('hide-content');
 
         utils.api.productAttributes.configureInCart(itemId, options, (err, response) => {
             modal.updateContent(response.content);

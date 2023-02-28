@@ -1,4 +1,4 @@
-<div id="modal-review-form" class="modal" data-reveal>
+<div id="modal-review-form" class="modal js-reveal">
     {{inject 'reviewRating' (lang 'forms.validate.reviews.rating')}}
     {{inject 'reviewSubject' (lang 'forms.validate.reviews.title')}}
     {{inject 'reviewComment' (lang 'forms.validate.reviews.comment')}}
@@ -7,7 +7,7 @@
         <h2 class="modal-header-title">{{lang 'products.reviews.write_a_review'}}</h2>
         {{> components/common/modal/modal-close-btn}}
     </div>
-    <div class="is-modal-body">
+    <div class="js-modal-body">
         <div class="writeReview-productDetails">
             <div class="writeReview-productImage-container">
                 {{> components/common/image
@@ -27,7 +27,7 @@
                     </label>
                     <!-- Stars -->
                     <!-- TODO: Review Stars need to be componentised, both for display and input -->
-                    <select id="rating-rate" class="form-select" name="revrating" data-input aria-required="true">
+                    <select id="rating-rate" class="form-select js-input" name="revrating" aria-required="true">
                         <option value="">{{lang 'products.reviews.select_rating'}}</option>
                         {{#for 1 5}}
                             {{#if ../product.reviews.selected_rating '===' $index}}

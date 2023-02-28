@@ -2,7 +2,13 @@
     {{#if settings.data_tag_enabled}}
         <div data-banner-location="bottom">
             {{#each (limit banners.bottom_metadata 1)}}
-                <div data-event-type="promotion" data-entity-id="{{this.id}}" data-name="{{this.banner-name}}" data-position="{{this.location}}" data-name="{{this.banner-name}}">
+                <div 
+                    data-event-type="promotion" 
+                    data-entity-id="{{this.id}}" 
+                    data-name="{{this.banner-name}}" 
+                    data-position="{{this.location}}" 
+                    data-name="{{this.banner-name}}"
+                >
                     <div data-event-type="promotion-click">
                         {{{this.content}}}
                     </div>

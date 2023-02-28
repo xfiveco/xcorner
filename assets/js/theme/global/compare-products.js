@@ -33,7 +33,7 @@ function updateCounterNav(counter, $link, urls) {
 export default function ({ noCompareMessage, urls }) {
     let compareCounter = [];
 
-    const $compareLink = q$('a[data-compare-nav]');
+    const $compareLink = q$('a.js-compare-nav');
 
     $('body').on('compare-reset', () => {
         const $checked = q$$('input[name="products\[\]"]:checked', q$('body'));
@@ -47,7 +47,7 @@ export default function ({ noCompareMessage, urls }) {
     /* eslint-disable no-unused-expressions */
     q$('[data-compare-id]')?.addEventListener('click', event => {
         const product = event.currentTarget.value;
-        const $clickedCompareLink = q$('a[data-compare-nav]');
+        const $clickedCompareLink = q$('a.js-compare-nav');
 
         if (event.currentTarget.checked) {
             incrementCounter(compareCounter, product);
@@ -58,7 +58,7 @@ export default function ({ noCompareMessage, urls }) {
         updateCounterNav(compareCounter, $clickedCompareLink, urls);
     });
 
-    q$('a[data-compare-nav]').addEventListener('click', () => {
+    q$('a.js-compare-nav').addEventListener('click', () => {
         const $clickedCheckedInput = q$$('input[name="products\[\]"]:checked', q$('body'));
 
         if ($clickedCheckedInput.length <= 1) {
