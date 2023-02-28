@@ -15,7 +15,7 @@ const changeWishlistPaginationLinks = (wishlistUrl, ...paginationItems) => pagin
 export const wishlistPaginatorHelper = () => {
     const $paginationList = q$('.js-pagination-list');
 
-    if (!$paginationList.length) return;
+    if ($paginationList === null) return;
 
     const $nextItem = q$('.js-pagination-item-next', $paginationList);
     const $prevItem = q$('.js-pagination-item-previous', $paginationList);

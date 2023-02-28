@@ -1,5 +1,4 @@
 {{#partial "page"}}
-
     {{inject 'creditCardNumber' (lang 'forms.validate.payment_method.credit_card_number')}}
     {{inject 'expiration' (lang 'forms.validate.payment_method.expiration')}}
     {{inject 'nameOnCard' (lang 'forms.validate.payment_method.name_on_card')}}
@@ -26,12 +25,13 @@
 
     {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
 
-    <h2 class="page-heading">{{lang 'forms.payment_methods.add.heading'}}</h2>
+    <div>
+        {{lang 'forms.payment_methods.add.heading'}}
+    </div>
 
     {{> components/account/navigation account_page='payment_methods'}}
 
-    <div class="account account--fixed">
-
+    <div>
         {{#if forms.error}}
             {{> components/common/alert/alert-error forms.error}}
         {{/if}}
@@ -45,55 +45,72 @@
                 window.BigCommerce.currencyCode = '{{currency_selector.active_currency_code}}';
             </script>
         {{else}}
-            <form data-payment-method-form class="form">
+            <form class="js-payment-method-form">
                 <input type="hidden" name="email" value="{{customer.email}}">
                 <input type="hidden" name="provider_id" value="{{forms.provider}}">
                 <input type="hidden" name="currency_code" value="{{currency_selector.active_currency_code}}">
 
-                <h3 class="paymentMethodForm-heading">{{lang 'account.payment_methods.payment_method'}}</h3>
-                <div class="paymentMethodForm">
-                    <p class="paymentMethodForm-subheading">
+                <div>
+                    {{lang 'account.payment_methods.payment_method'}}
+                </div>
+                
+                <div>
+                    <p>
                         {{forms.payment_method.provider_name}}
-                        <span class="paymentMethodForm-cards">
+                        <span>
                             {{#each ../theme_settings.supported_card_type_icons}}
-                                <img class="paymentMethodForm-cards-icon" src="{{cdn (concat (concat 'img/payment-methods/' this) '.svg')}}" alt="{{lang (concat 'account.payment_methods.card_types.' this)}}" title="{{lang (concat 'account.payment_methods.card_types.' this)}}">
+                                <img
+                                    src="{{cdn (concat (concat 'img/payment-methods/' this) '.svg')}}" 
+                                    alt="{{lang (concat 'account.payment_methods.card_types.' this)}}" 
+                                    title="{{lang (concat 'account.payment_methods.card_types.' this)}}"
+                                >
                             {{/each}}
                         </span>
                     </p>
+
                     <fieldset class="js-form-fieldset">
-                        <div class="paymentMethodForm-column">
-                            <div class="paymentMethodForm-inputs">
+                        <div>
+                            <div>
                                 {{> components/common/forms/text id="credit_card_number" name="credit_card_number" label=(lang 'account.payment_methods.credit_card_number')}}
-                                <svg class="paymentMethodForm-inputs-icon icon">
+                                <svg>
                                     <use href="#icon-lock" />
                                 </svg>
                             </div>
-                            <div class="paymentMethodForm-inputs">
+                            <div>
                                 {{> components/common/forms/text id="expiration" name="expiration" label=(lang 'account.payment_methods.expiration') placeholder="MM/YY"}}
                             </div>
                         </div>
-                        <div class="paymentMethodForm-column">
-                            <div class="paymentMethodForm-inputs">
+                        <div>
+                            <div>
                                 {{> components/common/forms/text id="name_on_card" name="name_on_card" label=(lang 'account.payment_methods.name_on_card')}}
                             </div>
-                            <div class="paymentMethodForm-inputs">
+                            <div>
                                 {{> components/common/forms/text id="cvv" name="cvv" label=(lang 'account.payment_methods.cvv')}}
-                                <svg class="paymentMethodForm-inputs-icon icon">
+                                <svg>
                                     <use href="#icon-lock" />
                                 </svg>
                             </div>
                         </div>
                         <div class="js-form-field">
-                            <input type="checkbox" name="default_instrument" id="default_instrument" data-label="{{lang 'forms.payment_methods.default_instrument'}}" class="form-checkbox">
-                            <label class="form-label" for="default_instrument">{{lang 'forms.payment_methods.default_instrument'}}</label>
+                            <input
+                                type="checkbox" 
+                                name="default_instrument" 
+                                id="default_instrument" 
+                                data-label="{{lang 'forms.payment_methods.default_instrument'}}"
+                            >
+                            <label for="default_instrument">
+                                {{lang 'forms.payment_methods.default_instrument'}}
+                            </label>
                         </div>
                     </fieldset>
                 </div>
 
-                <h3 class="paymentMethodForm-heading">{{lang 'account.payment_methods.billing_address'}}</h3>
+                <div>
+                    {{lang 'account.payment_methods.billing_address'}}
+                </div>
 
                 <fieldset class="js-form-fieldset">
-                    <div class="form-row form-row--half">
+                    <div>
                         {{> components/common/forms/text private_id="FirstName" required=true id="first_name" name="first_name" label=(lang 'forms.payment_methods.first_name')}}
                         {{> components/common/forms/text private_id="LastName" required=true id="last_name" name="last_name" label=(lang 'forms.payment_methods.last_name')}}
                         {{> components/common/forms/text private_id="CompanyName" required=false id="company" name="company" label=(lang 'forms.payment_methods.company')}}
@@ -106,9 +123,16 @@
                         {{> components/common/forms/text private_id="Zip" required=true id="postal_code" name="postal_code" label=(lang 'forms.payment_methods.postal_code')}}
                     </div>
                 </fieldset>
-                <div class="form-actions">
-                    <input type="submit" class="c-button c-button--primary" value="{{lang 'forms.payment_methods.submit_value'}}">
-                    <a href="{{urls.account.payment_methods.all}}" class="c-button">{{lang 'common.cancel'}}</a>
+
+                <div>
+                    <button type="submit" class="c-button c-button--primary">
+                        {{lang 'forms.payment_methods.submit_value'}}
+                    </button> 
+
+                    <a href="{{urls.account.payment_methods.all}}" class="c-button">
+                        {{lang 'common.cancel'}}
+                    </a>
+
                     {{inject 'required' (lang 'common.required')}}
                     {{inject 'state_error' (lang 'errors.state_error')}}
                     {{inject 'generic_error' (lang 'common.generic_error')}}
@@ -116,6 +140,5 @@
             </form>
         {{/if}}
     </div>
-
 {{/partial}}
 {{> layout/base}}

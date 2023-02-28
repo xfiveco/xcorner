@@ -229,7 +229,7 @@ const Validators = {
             {
                 selector: password2Selector,
                 validate: (cb, val) => {
-                    const result = val === $password.val();
+                    const result = val === $password.value;
 
                     cb(result);
                 },

@@ -2,7 +2,10 @@
 {{inject 'recaptchaTitle' (lang 'create_account.recaptcha_title')}}
 {{#partial "page"}}
     {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
-    <h1 class="page-heading">{{lang 'create_account.heading' }}</h1>
+
+    <h1>
+        {{lang 'create_account.heading' }}
+    </h1>
 
     <div>
         <div>
@@ -12,7 +15,7 @@
             {{#if settings.account_creation_enabled}}
                 <form 
                     action="{{urls.auth.save_new_account}}" 
-                    data-create-account-form 
+                    class="js-create-account-form"
                     method="post"
                 >
                     <div>
@@ -28,7 +31,7 @@
                     {{{ forms.create_account.recaptcha.markup}}}
                     <div>
                         <button type="submit" class="c-button c-button--primary">
-                            {{lang 'forms.create_account.submit_value' }}"
+                            {{lang 'forms.create_account.submit_value' }}
                         </button> 
                     </div>
                 </form>

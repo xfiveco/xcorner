@@ -12,7 +12,7 @@
         {{/if}}
 
         {{#with customer.edit_stored_instrument}}
-            <form action="{{forms.action}}" data-address-form class="form" method="post">
+            <form action="{{forms.action}}" class="js-address-form" method="post">
                 <input type="hidden" name="token" value="{{token}}">
                 <input type="hidden" name="currency_code" value="{{../currency_selector.active_currency_code}}">
                 <input type="hidden" name="type" value="{{type}}">

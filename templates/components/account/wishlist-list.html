@@ -43,7 +43,7 @@
                     <a href="{{edit_url}}" class="c-button button--small">
                         {{lang 'common.edit'}}
                     </a>
-                    <button type="submit" class="c-button button--small" data-wishlist-delete>
+                    <button type="submit" class="c-button button--small js-wishlist-delete">
                         {{lang 'common.delete'}}
                     </button>
                 </form>
@@ -68,7 +68,7 @@
             {{#each customer.wishlists}}
                 <input type="hidden" value="{{this.id}}" name="deletewishlist[]">
             {{/each}}
-            <button type="submit" class="c-button" data-wishlist-delete>
+            <button type="submit" class="c-button js-wishlist-delete">
                 {{lang 'account.wishlists.delete_all'}}
             </button>
         {{/if}}
