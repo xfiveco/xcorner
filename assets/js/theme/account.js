@@ -25,7 +25,7 @@ export default class Account extends PageManager {
     }
 
     onReady() {
-        const $editAccountForm = classifyForm('form[data-edit-account-form]');
+        const $editAccountForm = classifyForm('form.js-edit-account-form');
         const $addressForm = classifyForm('form.js-address-form');
         const $inboxForm = classifyForm('form[data-inbox-form]');
         const $accountReturnForm = classifyForm('.js-account-return-form');
@@ -201,7 +201,7 @@ export default class Account extends PageManager {
             });
         }
 
-        $addressForm.on('submit', event => {
+        $addressForm.addEventListener('submit', event => {
             addressValidator.performCheck();
 
             if (addressValidator.areAll('valid')) {
@@ -215,7 +215,7 @@ export default class Account extends PageManager {
     initAccountReturnFormValidation($accountReturnForm) {
         const errorMessage = $accountReturnForm.data('accountReturnFormError');
 
-        $accountReturnForm.on('submit', event => {
+        $accountReturnForm.addEventListener('submit', event => {
             let formSubmit = false;
 
             // Iterate until we find a non-zero value in the dropdown for quantity
@@ -341,7 +341,7 @@ export default class Account extends PageManager {
 
     registerEditAccountValidation($editAccountForm) {
         const validationModel = validation($editAccountForm, this.context);
-        const formEditSelector = 'form[data-edit-account-form]';
+        const formEditSelector = 'form.js-edit-account-form';
         const editValidator = nod({
             submit: '${formEditSelector} input[type="submit"]',
             delay: 900,

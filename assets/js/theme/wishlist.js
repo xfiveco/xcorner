@@ -61,13 +61,13 @@ export default class WishList extends PageManager {
     }
 
     onReady() {
-        const $addWishListForm = $('.js-wishlist-form');
+        const $addWishListForm = q$('.js-wishlist-form');
 
-        if ($('[data-pagination-wishlist]').length) {
+        if (q$('.js-pagination-wishlist')) {
             wishlistPaginatorHelper();
         }
 
-        if ($addWishListForm.length) {
+        if ($addWishListForm) {
             this.registerAddWishListValidation($addWishListForm);
         }
 

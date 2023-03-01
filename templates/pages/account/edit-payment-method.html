@@ -1,66 +1,103 @@
 {{#partial "page"}}
-
     {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
 
-    <h2 class="page-heading">{{lang 'forms.payment_methods.edit.heading'}}</h2>
+    <div>
+        {{lang 'forms.payment_methods.edit.heading'}}
+    </div>
 
     {{> components/account/navigation account_page='payment_methods'}}
 
-    <div class="account account--fixed">
+    <div>
         {{#if forms.error}}
             {{> components/common/alert/alert-error forms.error}}
         {{/if}}
 
         {{#with customer.edit_stored_instrument}}
-            <form action="{{forms.action}}" class="js-address-form" method="post">
+            <form 
+                action="{{forms.action}}" 
+                class="js-address-form" 
+                method="post"
+            >
                 <input type="hidden" name="token" value="{{token}}">
                 <input type="hidden" name="currency_code" value="{{../currency_selector.active_currency_code}}">
                 <input type="hidden" name="type" value="{{type}}">
 
-                <h3 class="paymentMethodForm-heading">{{lang 'account.payment_methods.payment_method'}}</h3>
+                <div>
+                    {{lang 'account.payment_methods.payment_method'}}
+                </div>
 
-                <div class="paymentMethodForm">
+                <div>
                     {{#if type '===' 'stored_card'}}
-                        <dl class="paymentMethodForm-details">
-                            <dt class="paymentMethodForm-details-term">{{lang 'account.payment_methods.credit_card_number'}}</dt>
-                            <dd class="paymentMethodForm-details-description">**** **** **** {{last_4}}</dd>
+                        <dl>
+                            <dt>{{lang 'account.payment_methods.credit_card_number'}}</dt>
+                            <dd>**** **** **** {{last_4}}</dd>
                         </dl>
-                        <dl class="paymentMethodForm-details">
-                            <dt class="paymentMethodForm-details-term">{{lang 'account.payment_methods.expiration'}}</dt>
-                            <dd class="paymentMethodForm-details-description">{{expiry_month}}/{{expiry_year}}</dd>
+                        <dl>
+                            <dt>{{lang 'account.payment_methods.expiration'}}</dt>
+                            <dd>{{expiry_month}}/{{expiry_year}}</dd>
                         </dl>
                     {{/if}}
+
                     {{#if type '===' 'stored_paypal_account'}}
                         <div class="js-form-field">
-                            <h3 class="paymentMethodForm-heading">
+                            <div>
                                 {{lang 'account.payment_methods.paypal'}} {{lang 'common.account'}}
-                            </h3>
+                            </div>
                             <p>
                                 {{email}}
                             </p>
                         </div>
                     {{/if}}
+
                     <div class="js-form-field">
-                        <input type="checkbox" value="default_instrument" name="is_default" id="default_instrument" data-label="{{lang 'forms.payment_methods.default_instrument'}}" class="form-checkbox" {{#if is_default}}checked{{/if}}>
-                        <label class="form-label" for="default_instrument">{{lang 'forms.payment_methods.default_instrument'}}</label>
-                        <input type="checkbox" value="default_instrument" name="default_instrument" id="default_instrument" data-label="{{lang 'forms.payment_methods.default_instrument'}}" class="form-checkbox" {{#if customer.payment_methods.selected_payment_method.default_instrument}}checked{{/if}}>
+                        <input 
+                            type="checkbox" 
+                            value="default_instrument" 
+                            name="is_default" 
+                            id="default_instrument" 
+                            data-label="{{lang 'forms.payment_methods.default_instrument'}}" 
+                            {{#if is_default}}
+                                checked
+                            {{/if}}
+                        >
+                        <label for="default_instrument">
+                            {{lang 'forms.payment_methods.default_instrument'}}
+                        </label>
+                        <input 
+                            type="checkbox" 
+                            value="default_instrument" 
+                            name="default_instrument" 
+                            id="default_instrument" 
+                            data-label="{{lang 'forms.payment_methods.default_instrument'}}" 
+                            {{#if customer.payment_methods.selected_payment_method.default_instrument}}
+                                checked
+                            {{/if}}
+                        >
                     </div>
                 </div>
 
                 {{#if type '===' 'stored_card'}}
-                    <h3 class="paymentMethodForm-heading">{{lang 'account.payment_methods.billing_address'}}</h3>
+                    <div>
+                        {{lang 'account.payment_methods.billing_address'}}
+                    </div>
 
                     <fieldset class="js-form-fieldset">
-                        <div class="form-row form-row--half">
+                        <div>
                             {{#each forms.billing_fields}}
                                 {{{dynamicComponent 'components/common/forms'}}}
                             {{/each}}
                         </div>
                     </fieldset>
                 {{/if}}
-                <div class="form-actions">
-                    <input type="submit" class="c-button c-button--primary" value="{{lang 'forms.payment_methods.submit_value'}}">
-                    <a href="{{../urls.account.payment_methods.all}}" class="c-button">{{lang 'common.cancel'}}</a>
+
+                <div>
+                    <button type="submit" class="c-button c-button--primary">
+                        {{lang 'forms.payment_methods.submit_value'}}
+                    </button> 
+
+                    <a href="{{../urls.account.payment_methods.all}}" class="c-button">
+                        {{lang 'common.cancel'}}
+                    </a>
                     {{inject 'required' (lang 'common.required')}}
                     {{inject 'state_error' (lang 'errors.state_error')}}
                 </div>

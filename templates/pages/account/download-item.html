@@ -1,38 +1,52 @@
 {{#partial "page"}}
-
     {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
-    <h1 class="page-heading">{{lang 'account.orders.downloads.heading' number=downloads.order_id}}</h1>
+    
+    <div>
+        {{lang 'account.orders.downloads.heading' number=downloads.order_id}}
+    </div>
+    
     {{> components/account/navigation account_page='orders'}}
 
-    <div class="account account--fixedLarge">
-        <div class="account-body">
-            <figure class="account-sidebar">
+    <div>
+        <div>
+            <figure>
                 {{#each downloads.images}}
-                    <img src="{{getImage this}}" alt="{{../downloads.product_name}}" title="{{../downloads.product_name}}"/>
+                    <img 
+                        src="{{getImage this}}" 
+                        alt="{{../downloads.product_name}}" 
+                        title="{{../downloads.product_name}}"
+                    />
+                    
                     <figcaption>{{../downloads.product_name}}</figcaption>
                 {{/each}}
             </figure>
 
-            <section class="account-content account-content--fixed">
-                <p class="account-downloads-summary">{{lang 'account.orders.downloads.download_files_below'}} <strong>{{downloads.product_name}}</strong></p>
+            <section>
+                <p>
+                    {{lang 'account.orders.downloads.download_files_below'}} <strong>{{downloads.product_name}}</strong>
+                </p>
 
-                <ul class="account-downloadsList">
+                <ul>
                     {{#each downloads.items}}
-                        <li class="account-downloadsItem">
+                        <li>
                             {{#if expired}}
-                                <h5 class="account-downloadsItem-title">{{name}} <span class="account-downloadsItem-accent">({{size}})</span></h5>
-                                <p class="account-downloadsItem-availability">{{lang 'account.orders.downloads.expired_content'}}</p>
+                                <div>
+                                    {{name}} <span>({{size}})</span>
+                                </div>
+                                <p>
+                                    {{lang 'account.orders.downloads.expired_content'}}
+                                </p>
                             {{else}}
-                                <h5 class="account-downloadsItem-title">
+                                <div>
                                     <a href="{{url}}">{{name}}</a> ({{size}})
-                                </h5>
+                                </div>
 
                                 {{#if description}}
-                                    <p class="account-downloadsItem-description">{{description}}</p>
+                                    <p>{{description}}</p>
                                 {{/if}}
 
                                 {{#if days_remaining}}
-                                    <p class="account-downloadsItem-availability">
+                                    <p>
                                         {{lang 'account.orders.downloads.days_remaining' number=days_remaining}}
 
                                         {{#if downloads_remaining}}
@@ -42,7 +56,9 @@
                                     </p>
                                 {{else}}
                                     {{#if downloads_remaining}}
-                                        <p class="account-downloadsItem-availability">{{lang 'account.orders.downloads.downloads_remaining' number=downloads_remaining}}</p>
+                                        <p>
+                                            {{lang 'account.orders.downloads.downloads_remaining' number=downloads_remaining}}
+                                        </p>
                                     {{/if}}
                                 {{/if}}
                             {{/if}}
@@ -50,7 +66,6 @@
                     {{/each}}
                 </ul>
             </section>
-
         </div>
     </div>
 

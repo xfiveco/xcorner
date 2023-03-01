@@ -1,5 +1,5 @@
-<div class="modal-header">
-    <h1 class="modal-header-title">
+<div>
+    <h1 class="js-modal-header-title">
         {{lang 'cart.added_to_cart.what_next' num_products=cart.quantity}}
     </h1>
 </div>
@@ -87,10 +87,10 @@
 
                     {{#each options}}
                         <dl class="productView-info">
-                            <dt class="productView-info-name">
+                            <dt>
                                 {{name}}
                             </dt>
-                            <dd class="productView-info-value">
+                            <dd>
                                 {{> components/common/product-options}}
                             </dd>
                         </dl>
