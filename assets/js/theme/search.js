@@ -8,6 +8,7 @@ import Url from 'url';
 import collapsibleFactory from './common/collapsible';
 import 'jstree';
 import nod from './common/nod';
+import q$ from './global/selector';
 
 const leftArrowKey = 37;
 const rightArrowKey = 39;
@@ -146,7 +147,7 @@ export default class Search extends CatalogPage {
         this.$contentResultsContainer = $('#search-results-content');
 
         // Init faceted search
-        if ($('#facetedSearch').length > 0) {
+        if (q$('#faceted-search') !== null) {
             this.initFacetedSearch();
         } else {
             this.onSortBySubmit = this.onSortBySubmit.bind(this);
@@ -305,7 +306,7 @@ export default class Search extends CatalogPage {
                 this.showProducts(false);
             }
 
-            $('body').triggerHandler('compareReset');
+            $('body').triggerHandler('compare-reset');
 
             $('html, body').animate({
                 scrollTop: 0,

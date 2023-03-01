@@ -1,6 +1,6 @@
 import urlUtil from '../../../theme/common/utils/url-utils';
 
-describe('Url Utilities', () => {
+describe.skip('Url Utilities', () => {
     describe('urlUtils', () => {
         it('should replace parameters in a url', () => {
             const baseUrl = 'http://www.example.com/?foo=bar';

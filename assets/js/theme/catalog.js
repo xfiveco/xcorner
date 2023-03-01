@@ -1,6 +1,6 @@
 import PageManager from './page-manager';
 import urlUtils from './common/utils/url-utils';
-import Url from 'url';
+import q$ from './global/selector';
 
 export default class CatalogPage extends PageManager {
     constructor(context) {
@@ -14,7 +14,7 @@ export default class CatalogPage extends PageManager {
     }
 
     arrangeFocusOnSortBy() {
-        const $sortBySelector = $('[data-sort-by="product"] #sort');
+        const $sortBySelector = q$('[data-sort-by="product"] #sort');
 
         if (window.localStorage.getItem('sortByStatus')) {
             $sortBySelector.focus();
@@ -23,13 +23,15 @@ export default class CatalogPage extends PageManager {
     }
 
     onSortBySubmit(event, currentTarget) {
-        const url = Url.parse(window.location.href, true);
-        const queryParams = $(currentTarget).serialize().split('=');
+        const url = urlUtils.parse(window.location.href);
+        const queryParams = new URLSearchParams(new FormData(currentTarget));
+        const urlQuery = new URLSearchParams(url.searchParams);
 
-        url.query[queryParams[0]] = queryParams[1];
-        delete url.query.page;
+        for (const [key, value] of queryParams) {
+            urlQuery.set(key, value);
+        }
+        urlQuery.delete('page');
 
-        event.preventDefault();
-        window.location = Url.format({ pathname: url.pathname, search: urlUtils.buildQueryString(url.query) });
+        urlUtils.goToUrl(new URL(`${ url.origin }${ url.pathname }?${ urlQuery }`));
     }
 }

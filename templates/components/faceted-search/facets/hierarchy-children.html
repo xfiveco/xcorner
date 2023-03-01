@@ -1,12 +1,13 @@
-<ul class="navList navList--inner">
+<ul>
     {{#each this}}
-        <li class="navList-item">
+        <li class="js-nav-list-item">
             <a
-            href="{{url}}"
-            class="navList-action navList-action--checkbox{{#if selected}} is-selected{{/if}}{{#if has_sub_categories}} has-children{{/if}}"
-            rel="nofollow"
-            data-id="{{id}}"
-            data-faceted-search-facet>
+                href="{{url}}"
+                class="js-nav-list-action{{#if selected}} is-selected{{/if}}{{#if has_sub_categories}} has-children{{/if}}"
+                rel="nofollow"
+                data-id="{{id}}"
+                data-faceted-search-facet
+            >
                 {{{sanitize title}}}
                 {{#if ../show_product_counts}}
                     {{#if count}}

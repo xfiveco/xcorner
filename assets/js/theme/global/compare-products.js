@@ -35,16 +35,17 @@ export default function ({ noCompareMessage, urls }) {
 
     const $compareLink = q$('a[data-compare-nav]');
 
-    $('body').on('compareReset', () => {
+    $('body').on('compare-reset', () => {
         const $checked = q$$('input[name="products\[\]"]:checked', q$('body'));
 
         compareCounter = $checked.length ? $checked.map(element => element.value) : [];
         updateCounterNav(compareCounter, $compareLink, urls);
     });
 
-    $('body').triggerHandler('compareReset');
+    $('body').triggerHandler('compare-reset');
 
-    q$('[data-compare-id]').addEventListener('click', event => {
+    /* eslint-disable no-unused-expressions */
+    q$('[data-compare-id]')?.addEventListener('click', event => {
         const product = event.currentTarget.value;
         const $clickedCompareLink = q$('a[data-compare-nav]');
 

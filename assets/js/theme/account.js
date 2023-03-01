@@ -423,7 +423,7 @@ export default class Account extends PageManager {
 
             event.preventDefault();
             setTimeout(() => {
-                const earliestError = $('span.form-inlineMessage:first').prev('input');
+                const earliestError = $('.js-form-inline-message:first').prev('input');
                 earliestError.focus();
             }, 900);
         });
@@ -475,7 +475,7 @@ export default class Account extends PageManager {
             event.preventDefault();
 
             setTimeout(() => {
-                const earliestError = $('span.form-inlineMessage:first').prev('input');
+                const earliestError = $('.js-form-inline-message:first').prev('input');
                 earliestError.focus();
             }, 900);
         });
