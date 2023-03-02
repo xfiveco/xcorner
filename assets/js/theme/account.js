@@ -15,23 +15,24 @@ import { createTranslationDictionary } from './common/utils/translations-utils';
 import { creditCardType, storeInstrument, Validators as CCValidators, Formatters as CCFormatters } from './common/payment-method';
 import { showAlertModal } from './global/modal';
 import compareProducts from './global/compare-products';
+import q$, { prev, q$$ } from './global/selector';
 
 export default class Account extends PageManager {
     constructor(context) {
         super(context);
         this.validationDictionary = createTranslationDictionary(context);
-        this.$state = $('[data-field-type="State"]');
-        this.$body = $('body');
+        this.$state = q$('[data-field-type="State"]');
+        this.$body = q$('body');
     }
 
     onReady() {
         const $editAccountForm = classifyForm('form.js-edit-account-form');
         const $addressForm = classifyForm('form.js-address-form');
-        const $inboxForm = classifyForm('form[data-inbox-form]');
+        const $inboxForm = classifyForm('form.js-inbox-form');
         const $accountReturnForm = classifyForm('.js-account-return-form');
         const $paymentMethodForm = classifyForm('form.js-payment-method-form');
         const $reorderForm = classifyForm('.js-account-reorder-form');
-        const $invoiceButton = $('[data-print-invoice]');
+        const $invoiceButton = q$('[data-print-invoice]');
         const $bigCommerce = window.BigCommerce;
 
         compareProducts(this.context);
@@ -44,16 +45,16 @@ export default class Account extends PageManager {
 
         if ($editAccountForm) {
             this.registerEditAccountValidation($editAccountForm);
-            if (this.$state.is('input')) {
+            if (this.$state?.tagName.toLowerCase() === 'input') {
                 insertStateHiddenField(this.$state);
             }
         }
 
         if ($invoiceButton) {
-            $invoiceButton.on('click', () => {
+            $invoiceButton.addEventListener('click', () => {
                 const left = window.screen.availWidth / 2 - 450;
                 const top = window.screen.availHeight / 2 - 320;
-                const url = $invoiceButton.data('printInvoice');
+                const url = $invoiceButton.dataset.printInvoice;
 
                 window.open(url, 'orderInvoice', `width=900,height=650,left=${left},top=${top},scrollbars=1`);
             });
@@ -62,7 +63,7 @@ export default class Account extends PageManager {
         if ($addressForm) {
             this.initAddressFormValidation($addressForm);
 
-            if (this.$state.is('input')) {
+            if (this.$state.tagName.toLowerCase() === 'input') {
                 insertStateHiddenField(this.$state);
             }
         }
@@ -116,8 +117,9 @@ export default class Account extends PageManager {
      * Binds a submit hook to ensure the customer receives a confirmation dialog before deleting an address
      */
     bindDeleteAddress() {
-        $('[data-delete-address]').on('submit', event => {
-            const message = $(event.currentTarget).data('deleteAddress');
+        /* eslint-disable no-unused-expressions */
+        q$('[data-delete-address]')?.addEventListener('submit', event => {
+            const message = event.currentTarget.dataset.deleteAddress;
 
             if (!window.confirm(message)) {
                 event.preventDefault();
@@ -126,8 +128,8 @@ export default class Account extends PageManager {
     }
 
     bindDeletePaymentMethod() {
-        $('[data-delete-payment-method]').on('submit', event => {
-            const message = $(event.currentTarget).data('deletePaymentMethod');
+        q$('[data-delete-payment-method]')?.addEventListener('submit', event => {
+            const message = event.currentTarget.dataset.deletePaymentMethod;
 
             if (!window.confirm(message)) {
                 event.preventDefault();
@@ -136,19 +138,18 @@ export default class Account extends PageManager {
     }
 
     initReorderForm($reorderForm) {
-        $reorderForm.on('submit', event => {
-            const $productReorderCheckboxes = $('.account-listItem input[type="checkbox"]:checked');
+        $reorderForm.addEventListener('submit', event => {
+            const $productReorderCheckboxes = q$$('.account-listItem input[type="checkbox"]:checked');
             let submitForm = false;
 
-            $reorderForm.find('[name^="reorderitem"]').remove();
+            $reorderForm.querySelector('[name^="reorderitem"]').remove();
 
-            $productReorderCheckboxes.each((index, productCheckbox) => {
-                const productId = $(productCheckbox).val();
-                const $input = $('<input>', {
-                    type: 'hidden',
-                    name: `reorderitem[${productId}]`,
-                    value: '1',
-                });
+            $productReorderCheckboxes.forEach($productCheckbox => {
+                const productId = $productCheckbox.value;
+                const $input = document.createElement('input');
+                $input.type = 'hidden';
+                $input.name = `reorderitem[${productId}]`;
+                $input.value = '1';
 
                 submitForm = true;
 
@@ -165,9 +166,9 @@ export default class Account extends PageManager {
     initAddressFormValidation($addressForm) {
         const validationModel = validation($addressForm, this.context);
         const stateSelector = 'form.js-address-form [data-field-type="State"]';
-        const $stateElement = $(stateSelector);
+        const $stateElement = q$(stateSelector);
         const addressValidator = nod({
-            submit: 'form.js-address-form input[type="submit"]',
+            submit: 'form.js-address-form [type="submit"]',
             tap: announceInputErrorMessage,
         });
 
@@ -177,12 +178,10 @@ export default class Account extends PageManager {
             let $last;
 
             // Requests the states for a country with AJAX
-            stateCountry($stateElement, this.context, (err, field) => {
+            stateCountry($stateElement, this.context, (err, $field) => {
                 if (err) {
                     throw new Error(err);
                 }
-
-                const $field = $(field);
 
                 if (addressValidator.getStatus($stateElement) !== 'undefined') {
                     addressValidator.remove($stateElement);
@@ -192,11 +191,11 @@ export default class Account extends PageManager {
                     addressValidator.remove($last);
                 }
 
-                if ($field.is('select')) {
-                    $last = field;
-                    Validators.setStateCountryValidation(addressValidator, field, this.validationDictionary.field_not_blank);
+                if ($field.tagName.toLowerCase() === 'select') {
+                    $last = $field;
+                    Validators.setStateCountryValidation(addressValidator, $field, this.validationDictionary.field_not_blank);
                 } else {
-                    Validators.cleanUpStateValidation(field);
+                    Validators.cleanUpStateValidation($field);
                 }
             });
         }
@@ -213,14 +212,14 @@ export default class Account extends PageManager {
     }
 
     initAccountReturnFormValidation($accountReturnForm) {
-        const errorMessage = $accountReturnForm.data('accountReturnFormError');
+        const errorMessage = $accountReturnForm.dataset.accountReturnFormError;
 
         $accountReturnForm.addEventListener('submit', event => {
             let formSubmit = false;
 
             // Iterate until we find a non-zero value in the dropdown for quantity
-            $('[name^="return_qty"]', $accountReturnForm).each((i, ele) => {
-                if (parseInt($(ele).val(), 10) !== 0) {
+            q$$('[name^="return_qty"]', $accountReturnForm).forEach($ele => {
+                if (parseInt($ele.value, 10) !== 0) {
                     formSubmit = true;
 
                     // Exit out of loop if we found at least one return
@@ -240,33 +239,32 @@ export default class Account extends PageManager {
 
     initPaymentMethodFormValidation($paymentMethodForm) {
         // Inject validations into form fields before validation runs
-        $paymentMethodForm.find('#first_name.js-form-field').attr('data-validation', `{ "type": "singleline", "label": "${this.context.firstNameLabel}", "required": true, "maxlength": 0 }`);
-        $paymentMethodForm.find('#last_name.js-form-field').attr('data-validation', `{ "type": "singleline", "label": "${this.context.lastNameLabel}", "required": true, "maxlength": 0 }`);
-        $paymentMethodForm.find('#company.js-form-field').attr('data-validation', `{ "type": "singleline", "label": "${this.context.companyLabel}", "required": false, "maxlength": 0 }`);
-        $paymentMethodForm.find('#phone.js-form-field').attr('data-validation', `{ "type": "singleline", "label": "${this.context.phoneLabel}", "required": false, "maxlength": 0 }`);
-        $paymentMethodForm.find('#address1.js-form-field').attr('data-validation', `{ "type": "singleline", "label": "${this.context.address1Label}", "required": true, "maxlength": 0 }`);
-        $paymentMethodForm.find('#address2.js-form-field').attr('data-validation', `{ "type": "singleline", "label": "${this.context.address2Label}", "required": false, "maxlength": 0 }`);
-        $paymentMethodForm.find('#city.js-form-field').attr('data-validation', `{ "type": "singleline", "label": "${this.context.cityLabel}", "required": true, "maxlength": 0 }`);
-        $paymentMethodForm.find('#country.js-form-field').attr('data-validation', `{ "type": "singleselect", "label": "${this.context.countryLabel}", "required": true, "prefix": "${this.context.chooseCountryLabel}" }`);
-        $paymentMethodForm.find('#state.js-form-field').attr('data-validation', `{ "type": "singleline", "label": "${this.context.stateLabel}", "required": true, "maxlength": 0 }`);
-        $paymentMethodForm.find('#postal_code.js-form-field').attr('data-validation', `{ "type": "singleline", "label": "${this.context.postalCodeLabel}", "required": true, "maxlength": 0 }`);
+        /* eslint-disable no-param-reassign */
+        $paymentMethodForm.querySelector('#first_name.js-form-field').dataset.validation = `{ "type": "singleline", "label": "${this.context.firstNameLabel}", "required": true, "maxlength": 0 }`;
+        $paymentMethodForm.querySelector('#last_name.js-form-field').dataset.validation = `{ "type": "singleline", "label": "${this.context.lastNameLabel}", "required": true, "maxlength": 0 }`;
+        $paymentMethodForm.querySelector('#company.js-form-field').dataset.validation = `{ "type": "singleline", "label": "${this.context.companyLabel}", "required": false, "maxlength": 0 }`;
+        $paymentMethodForm.querySelector('#phone.js-form-field').dataset.validation = `{ "type": "singleline", "label": "${this.context.phoneLabel}", "required": false, "maxlength": 0 }`;
+        $paymentMethodForm.querySelector('#address1.js-form-field').dataset.validation = `{ "type": "singleline", "label": "${this.context.address1Label}", "required": true, "maxlength": 0 }`;
+        $paymentMethodForm.querySelector('#address2.js-form-field').dataset.validation = `{ "type": "singleline", "label": "${this.context.address2Label}", "required": false, "maxlength": 0 }`;
+        $paymentMethodForm.querySelector('#city.js-form-field').dataset.validation = `{ "type": "singleline", "label": "${this.context.cityLabel}", "required": true, "maxlength": 0 }`;
+        $paymentMethodForm.querySelector('#country.js-form-field').dataset.validation = `{ "type": "singleselect", "label": "${this.context.countryLabel}", "required": true, "prefix": "${this.context.chooseCountryLabel}" }`;
+        $paymentMethodForm.querySelector('#state.js-form-field').dataset.validation = `{ "type": "singleline", "label": "${this.context.stateLabel}", "required": true, "maxlength": 0 }`;
+        $paymentMethodForm.querySelector('#postal_code.js-form-field').dataset.validation = `{ "type": "singleline", "label": "${this.context.postalCodeLabel}", "required": true, "maxlength": 0 }`;
 
         const validationModel = validation($paymentMethodForm, this.context);
         const paymentMethodSelector = 'form.js-payment-method-form';
         const paymentMethodValidator = nod({
-            submit: `${paymentMethodSelector} input[type="submit"]`,
+            submit: `${paymentMethodSelector} [type="submit"]`,
             tap: announceInputErrorMessage,
         });
-        const $stateElement = $(`${paymentMethodSelector} [data-field-type="State"]`);
+        const $stateElement = q$(`${paymentMethodSelector} [data-field-type="State"]`);
 
         let $last;
         // Requests the states for a country with AJAX
-        stateCountry($stateElement, this.context, (err, field) => {
+        stateCountry($stateElement, this.context, (err, $field) => {
             if (err) {
                 throw new Error(err);
             }
-
-            const $field = $(field);
 
             if (paymentMethodValidator.getStatus($stateElement) !== 'undefined') {
                 paymentMethodValidator.remove($stateElement);
@@ -276,22 +274,24 @@ export default class Account extends PageManager {
                 paymentMethodValidator.remove($last);
             }
 
-            if ($field.is('select')) {
-                $last = field;
-                Validators.setStateCountryValidation(paymentMethodValidator, field, this.validationDictionary.field_not_blank);
+            if ($field.tagName.toLowerCase() === 'select') {
+                $last = $field;
+                Validators.setStateCountryValidation(paymentMethodValidator, $field, this.validationDictionary.field_not_blank);
             } else {
-                Validators.cleanUpStateValidation(field);
+                Validators.cleanUpStateValidation($field);
             }
         });
 
         // Use credit card number input listener to highlight credit card type
         let cardType;
-        $(`${paymentMethodSelector} input[name="credit_card_number"]`).on('keyup', ({ target }) => {
+        q$(`${paymentMethodSelector} input[name="credit_card_number"]`).addEventListener('keyup', ({ target }) => {
             cardType = creditCardType(target.value);
             if (cardType) {
-                $(`${paymentMethodSelector} img[alt="${cardType}"]`).siblings().css('opacity', '.2');
+                q$(`${paymentMethodSelector} img[alt="${cardType}"]`).childNodes.forEach($child => {
+                    $child.style.opacity = 0.2;
+                });
             } else {
-                $(`${paymentMethodSelector} img`).css('opacity', '1');
+                q$(`${paymentMethodSelector} img`).style.opacity = 1;
             }
         });
 
@@ -308,17 +308,14 @@ export default class Account extends PageManager {
         // Billing address validation
         paymentMethodValidator.add(validationModel);
 
-        $paymentMethodForm.on('submit', event => {
+        $paymentMethodForm.addEventListener('submit', event => {
             event.preventDefault();
+
             // Perform final form validation
             paymentMethodValidator.performCheck();
             if (paymentMethodValidator.areAll('valid')) {
                 // Serialize form data and reduce it to object
-                const data = _.reduce($paymentMethodForm.serializeArray(), (obj, item) => {
-                    const refObj = obj;
-                    refObj[item.name] = item.value;
-                    return refObj;
-                }, {});
+                const data = Object.fromEntries(new FormData($paymentMethodForm).entries());
 
                 // Assign country and state code
                 const country = _.find(this.context.countries, ({ value }) => value === data.country);
@@ -343,17 +340,17 @@ export default class Account extends PageManager {
         const validationModel = validation($editAccountForm, this.context);
         const formEditSelector = 'form.js-edit-account-form';
         const editValidator = nod({
-            submit: '${formEditSelector} input[type="submit"]',
+            submit: '${formEditSelector} [type="submit"]',
             delay: 900,
         });
         const emailSelector = `${formEditSelector} [data-field-type="EmailAddress"]`;
-        const $emailElement = $(emailSelector);
+        const $emailElement = q$(emailSelector);
         const passwordSelector = `${formEditSelector} [data-field-type="Password"]`;
-        const $passwordElement = $(passwordSelector);
+        const $passwordElement = q$(passwordSelector);
         const password2Selector = `${formEditSelector} [data-field-type="ConfirmPassword"]`;
-        const $password2Element = $(password2Selector);
+        const $password2Element = q$(password2Selector);
         const currentPasswordSelector = `${formEditSelector} [data-field-type="CurrentPassword"]`;
-        const $currentPassword = $(currentPasswordSelector);
+        const $currentPassword = q$(currentPasswordSelector);
 
         // This only handles the custom fields, standard fields are added below
         editValidator.add(validationModel);
@@ -383,7 +380,7 @@ export default class Account extends PageManager {
                 validate: (cb, val) => {
                     let result = true;
 
-                    if (val === '' && $passwordElement.val() !== '') {
+                    if (val === '' && $passwordElement.value !== '') {
                         result = false;
                     }
 
@@ -414,7 +411,7 @@ export default class Account extends PageManager {
             },
         ]);
 
-        $editAccountForm.on('submit', event => {
+        $editAccountForm.addEventListener('submit', event => {
             editValidator.performCheck();
 
             if (editValidator.areAll('valid')) {
@@ -423,21 +420,21 @@ export default class Account extends PageManager {
 
             event.preventDefault();
             setTimeout(() => {
-                const earliestError = $('.js-form-inline-message:first').prev('input');
-                earliestError.focus();
+                const earliestError = prev(q$('.js-inline-message'), 'input');
+                earliestError?.focus();
             }, 900);
         });
     }
 
     registerInboxValidation($inboxForm) {
         const inboxValidator = nod({
-            submit: 'form[data-inbox-form] input[type="submit"]',
+            submit: 'form.js-inbox-form [type="submit"]',
             delay: 900,
         });
 
         inboxValidator.add([
             {
-                selector: 'form[data-inbox-form] select[name="message_order_id"]',
+                selector: 'form.js-inbox-form select[name="message_order_id"]',
                 validate: (cb, val) => {
                     const result = Number(val) !== 0;
 
@@ -446,7 +443,7 @@ export default class Account extends PageManager {
                 errorMessage: this.context.enterOrderNum,
             },
             {
-                selector: 'form[data-inbox-form] input[name="message_subject"]',
+                selector: 'form.js-inbox-form input[name="message_subject"]',
                 validate: (cb, val) => {
                     const result = val.length;
 
@@ -455,7 +452,7 @@ export default class Account extends PageManager {
                 errorMessage: this.context.enterSubject,
             },
             {
-                selector: 'form[data-inbox-form] textarea[name="message_content"]',
+                selector: 'form.js-inbox-form textarea[name="message_content"]',
                 validate: (cb, val) => {
                     const result = val.length;
 
@@ -475,7 +472,7 @@ export default class Account extends PageManager {
             event.preventDefault();
 
             setTimeout(() => {
-                const earliestError = $('.js-form-inline-message:first').prev('input');
+                const earliestError = prev(q$('.js-form-inline-message:first'), 'input');
                 earliestError.focus();
             }, 900);
         });

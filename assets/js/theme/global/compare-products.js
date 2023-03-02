@@ -1,3 +1,4 @@
+import trigger from '../common/utils/trigger';
 import { showAlertModal } from './modal';
 import q$, { q$$ } from './selector';
 
@@ -35,14 +36,14 @@ export default function ({ noCompareMessage, urls }) {
 
     const $compareLink = q$('a.js-compare-nav');
 
-    $('body').on('compare-reset', () => {
+    q$('body').addEventListener('compare-reset', () => {
         const $checked = q$$('input[name="products\[\]"]:checked', q$('body'));
 
         compareCounter = $checked.length ? $checked.map(element => element.value) : [];
         updateCounterNav(compareCounter, $compareLink, urls);
     });
 
-    $('body').triggerHandler('compare-reset');
+    trigger(q$('body'), 'compare-reset');
 
     /* eslint-disable no-unused-expressions */
     q$('[data-compare-id]')?.addEventListener('click', event => {

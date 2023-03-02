@@ -49,7 +49,7 @@ export default class WishList extends PageManager {
             },
         ]);
 
-        $addWishlistForm.on('submit', event => {
+        $addWishlistForm.addEventListener('submit', event => {
             this.addWishlistValidator.performCheck();
 
             if (this.addWishlistValidator.areAll('valid')) {
