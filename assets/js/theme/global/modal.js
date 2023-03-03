@@ -4,7 +4,7 @@ import q$, { q$$ } from './selector';
 
 const bodyActiveClass = 'has-active-modal';
 const loadingOverlayClass = 'is-loading-overlay';
-const modalBodyClass = 'is-modal-body';
+const modalBodyClass = 'js-is-modal-body';
 const modalContentClass = 'is-modal-content';
 const modalCloseClass = 'is-modal-close';
 
