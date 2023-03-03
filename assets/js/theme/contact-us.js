@@ -9,7 +9,7 @@ export default class ContactUs extends PageManager {
     }
 
     registerContactFormValidation() {
-        const formSelector = 'form[data-contact-form]';
+        const formSelector = 'form.js-contact-form';
         const contactUsValidator = nod({
             submit: `${formSelector} input[type="submit"]`,
             tap: announceInputErrorMessage,
