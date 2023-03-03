@@ -16,21 +16,26 @@ brand:
 {{#partial "page"}}
 {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
 {{#if brand.image}}
-    <div class="brand-image-container">
+    <div>
         {{> components/common/image
             image=brand.image
             fallback_size=theme_settings.thumb_size
         }}
     </div>
 {{/if}}
-<h1 class="page-heading">{{brand.name}}</h1>
+
+<h1>
+    {{brand.name}}
+</h1>
+
 {{{region name="brand_below_header"}}}
-<div class="page">
-    <aside class="page-sidebar" id="faceted-search-container">
+
+<div>
+    <aside id="faceted-search-container">
         {{> components/brand/sidebar}}
     </aside>
 
-    <div class="page-content" id="product-listing-container">
+    <div id="product-listing-container">
         {{#if brand.search_error }}
             <p>{{lang 'search.errorMessage'}}</p>
         {{else}}
