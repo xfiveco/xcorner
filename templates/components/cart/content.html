@@ -1,19 +1,16 @@
-<table class="cart" data-cart-quantity="{{cart.quantity}}">
-    <thead class="cart-header">
-        <tr>
-            <th class="cart-header-item" colspan="2">{{lang 'cart.checkout.item'}}</th>
-            <th class="cart-header-item">{{lang 'cart.checkout.price'}}</th>
-            <th class="cart-header-item cart-header-quantity">{{lang 'cart.checkout.quantity'}}</th>
-            <th class="cart-header-item">{{lang 'cart.checkout.total'}}</th>
-        </tr>
-    </thead>
-    <tbody class="cart-list">
+<div data-cart-quantity="{{cart.quantity}}">
+    <div>
+        <div>{{lang 'cart.checkout.item'}}</div>
+        <div>{{lang 'cart.checkout.price'}}</div>
+        <div>{{lang 'cart.checkout.quantity'}}</div>
+        <div>{{lang 'cart.checkout.total'}}</div>
+    </div>
+    <div>
         {{#each cart.items}}
-            <tr class="cart-item" data-item-row>
-                <td class="cart-item-block cart-item-figure">
+            <div class="js-item-row">
+                <div>
                     {{#if type '==' 'GiftCertificate'}}
                         <img
-                            class="cart-item-fixed-image"
                             src="{{cdn ../theme_settings.default_image_gift_certificate}}"
                             alt="{{lang 'cart.gift_certificates.gift_certificate'}}"
                             title="{{lang 'cart.gift_certificates.gift_certificate'}}"
@@ -21,30 +18,33 @@
                     {{else}}
                         {{> components/common/image
                             image=image
-                            class="cart-item-image"
                             fallback_size=../theme_settings.productthumb_size
                             default_image=../theme_settings.default_image_product
                         }}
                     {{/if}}
-                </td>
-                <td class="cart-item-block cart-item-title">
+                </div>
+                <div>
                     {{#if brand.name}}
-                        <p class="cart-item-brand">{{brand.name}}</p>
+                        <p>{{brand.name}}</p>
                     {{/if}}
-                    <h2 class="cart-item-name">
-                        <a class="cart-item-name__label" href="{{url}}">{{name}}</a>
-                    </h2>
+                    <div>
+                        <a href="{{url}}">
+                            {{name}}
+                        </a>
+                    </div>
                     {{#if release_date}}
                         <p>({{release_date}})</p>
                     {{/if}}
 
                     {{#if options}}
-                        <dl class="definitionList">
+                        <dl>
                             {{#each options}}
-                                <dt class="definitionList-key">{{name}}:</dt>
-                                <dd class="definitionList-value">
+                                <dt>{{name}}:</dt>
+                                <dd>
                                     {{#if is_file}}
-                                        <a href="/viewfile.php?attributeId={{id}}&cartitem={{../id}}">{{value}}</a>
+                                        <a href="/viewfile.php?attributeId={{id}}&cartitem={{../id}}">
+                                            {{value}}
+                                        </a>
                                     {{else}}
                                         {{> components/common/product-options}}
                                     {{/if}}
@@ -52,51 +52,62 @@
                             {{/each}}
                         </dl>
 
-                        <a href="#"
-                           data-item-edit="{{id}}"
-                           data-product-id="{{product_id}}"
-                           aria-label="{{lang 'products.change_product_options' name=name}}"
+                        <a 
+                            href="#"
+                            data-item-edit="{{id}}"
+                            data-product-id="{{product_id}}"
+                            aria-label="{{lang 'products.change_product_options' name=name}}"
                         >
                             {{lang 'common.change'}}
                         </a>
                     {{/if}}
 
                     {{#if type '==' 'GiftCertificate'}}
-                        <a href="{{edit_url}}"
-                           aria-label="{{lang 'cart.gift_certificates.change_gift_certificate' certificate_name=name}}"
+                        <a 
+                            href="{{edit_url}}"
+                            aria-label="{{lang 'cart.gift_certificates.change_gift_certificate' certificate_name=name}}"
                         >
                             {{lang 'common.change'}}
                         </a>
                     {{/if}}
+
                     {{> components/cart/item-giftwrap this}}
+                    
                     {{#if event_date}}
-                        <dl class="cart-item-options">
-                            <dt class="cart-item-option-title">
+                        <dl>
+                            <dt>
                                 {{event_date.name}}
                             </dt>
-
-                            <dd class="cart-item-option-description">
+                            <dd>
                                 {{event_date.date}}
                             </dd>
                         </dl>
                     {{/if}}
+                </div>
 
-                </td>
-                <td class="cart-item-block cart-item-info">
-                    <span class="cart-item-label">{{lang 'cart.checkout.price'}}</span>
+                <div>
+                    <span>{{lang 'cart.checkout.price'}}</span>
+                    
                     {{#or ../customer (unless ../settings.hide_price_from_guests) (if type '==' 'GiftCertificate')}}
-                        <span class="cart-item-value {{#if price_discounted}}price--discounted{{/if}}">{{price.formatted}}</span>
+                        <span class="{{#if price_discounted}}price-discounted{{/if}}">
+                            {{price.formatted}}
+                        </span>
+                        
                         {{#if price_discounted}}
-                            <span class="cart-item-value">{{price_discounted.formatted}}</span>
+                            <span>
+                                {{price_discounted.formatted}}
+                            </span>
                         {{/if}}
                     {{else}}
                         {{> components/common/login-for-pricing}}
                     {{/or}}
-                </td>
+                </div>
 
-                <td class="cart-item-block cart-item-info cart-item-quantity">
-
-                    <label class="form-label cart-item-label" for="qty-{{id}}">{{lang 'products.quantity'}}</label>
+                <div>
+                    <label for="qty-{{id}}">
+                        {{lang 'products.quantity'}}
+                    </label>
+                    
                     <div class="form-increment">
                         {{#if can_modify}}
                             <button class="c-button button--icon"
@@ -157,7 +168,7 @@
                         </button>
                     {{/or}}
                 </td>
-            </tr>
+            </div>
         {{/each}}
-    </tbody>
-</table>
+    </div>
+</div>

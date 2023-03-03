@@ -6,16 +6,17 @@ import utils from '@bigcommerce/stencil-utils';
 import ShippingEstimator from './cart/shipping-estimator';
 import { defaultModal, showAlertModal, ModalEvents } from './global/modal';
 import CartItemDetails from './common/cart-item-details';
+import q$ from './global/selector';
 
 export default class Cart extends PageManager {
     onReady() {
         this.$modal = null;
-        this.$cartPageContent = $('[data-cart]');
-        this.$cartContent = $('[data-cart-content]');
-        this.$cartMessages = $('[data-cart-status]');
+        this.$cartPageContent = q$('.js-cart');
+        this.$cartContent = $('.js-cart-content');
+        this.$cartMessages = $('.js-cart-status');
         this.$cartTotals = $('[data-cart-totals]');
         this.$cartAdditionalCheckoutBtns = $('[data-cart-additional-checkout-buttons]');
-        this.$overlay = $('[data-cart] .is-loading-overlay')
+        this.$overlay = $('.js-cart .js-loading-overlay')
             .hide(); // TODO: temporary until roper pulls in his cart components
         this.$activeCartItemId = null;
         this.$activeCartItemBtnAction = null;
@@ -188,8 +189,8 @@ export default class Cart extends PageManager {
     }
 
     refreshContent(remove) {
-        const $cartItemsRows = $('[data-item-row]', this.$cartContent);
-        const $cartPageTitle = $('[data-cart-page-title]');
+        const $cartItemsRows = $('.js-item-row', this.$cartContent);
+        const $cartPageTitle = $('.js-cart-page-title');
         const options = {
             template: {
                 content: 'cart/content',

@@ -4,21 +4,21 @@ cart: true
 {{inject 'cancelButtonText' (lang 'common.cancel')}}
 {{#partial "page"}}
 {{inject 'invalidEntryMessage' (lang 'cart.invalid_entry_message')}}
-<div class="page">
 
-    <div class="page-content" data-cart>
+<div>
+    <div class="js-cart">
         {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
 
         {{> components/cart/page-title}}
 
-        <div data-cart-status>
+        <div class="js-cart-status">
             {{> components/cart/status-messages}}
         </div>
 
         {{#if cart.items.length}}
             <div class="is-loading-overlay"></div>
 
-            <div data-cart-content class="cart-content-padding-right">
+            <div class="js-cart-content">
                 {{> components/cart/content}}
             </div>
 
