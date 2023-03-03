@@ -1,6 +1,6 @@
 const revealCloseAttr = 'revealClose';
 const revealCloseSelector = `[data-${revealCloseAttr}]`;
-const revealSelector = '[data-reveal]';
+const revealSelector = '.js-reveal';
 import q$, { q$$, parents } from './selector';
 
 class RevealClose {

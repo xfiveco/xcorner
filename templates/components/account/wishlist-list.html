@@ -1,57 +1,59 @@
-<table>
-    <thead>
-        <tr>
-            <th>
-                {{lang 'account.wishlists.name'}}
-            </th>
-            <th>
-                {{lang 'account.wishlists.num_items'}}
-            </th>
-            <th>
-                {{lang 'account.wishlists.shared'}}
-            </th>
-            <th>
-                {{lang 'account.wishlists.action'}}
-            </th>
-        </tr>
-    </thead>
-    <tbody>
-    {{#each customer.wishlists}}
-        <tr>
-            <td>
-                <a href="{{view_url}}">
-                    {{name}}
-                </a>
-            </td>
-            <td>
-                {{num_items}}
-            </td>
-            <td>
-                {{#if is_public }}
-                    {{lang 'common.yes'}}
-                {{else}}
-                    {{lang 'common.no'}}
-                {{/if}}
-            </td>
-            <td>
-                <form method="post" action="{{delete_url}}">
-                    {{#if is_public}}
-                        <a href="{{share_url}}" class="c-button c-button--primary button--small" role="button">
-                            {{lang 'common.share'}}
-                        </a>
-                    {{/if}}
-                    <a href="{{edit_url}}" class="c-button button--small" data-wishlist>
-                        {{lang 'common.edit'}}
+<div>
+    <div>
+        <div>
+            {{lang 'account.wishlists.name'}}
+        </div>
+        <div>
+            {{lang 'account.wishlists.num_items'}}
+        </div>
+        <div>
+            {{lang 'account.wishlists.shared'}}
+        </div>
+        <div>
+            {{lang 'account.wishlists.action'}}
+        </div>
+    </div>
+    <div>
+        {{#each customer.wishlists}}
+            <div>
+                <div>
+                    <a href="{{view_url}}">
+                        {{name}}
                     </a>
-                    <button type="submit" class="c-button button--small" data-wishlist-delete>
-                        {{lang 'common.delete'}}
-                    </button>
-                </form>
-            </td>
-        </tr>
-    {{/each}}
-    </tbody>
-</table>
+                </div>
+                <div>
+                    {{num_items}}
+                </div>
+                <div>
+                    {{#if is_public }}
+                        {{lang 'common.yes'}}
+                    {{else}}
+                        {{lang 'common.no'}}
+                    {{/if}}
+                </div>
+                <div>
+                    <form method="post" action="{{delete_url}}">
+                        {{#if is_public}}
+                            <a 
+                                href="{{share_url}}" 
+                                class="c-button c-button--primary" 
+                                role="button"
+                            >
+                                {{lang 'common.share'}}
+                            </a>
+                        {{/if}}
+                        <a href="{{edit_url}}" class="c-button">
+                            {{lang 'common.edit'}}
+                        </a>
+                        <button type="submit" class="c-button js-wishlist-delete">
+                            {{lang 'common.delete'}}
+                        </button>
+                    </form>
+                </div>
+            </div>
+        {{/each}}
+    </div>
+</div>
 
 <form method="post" action="{{this.urls.account.wishlists.delete}}">
     {{#unless customer.wishlists}}
@@ -60,7 +62,11 @@
         </p>
     {{/unless}}
     <div>
-        <a href="{{this.urls.account.wishlists.add}}" class="c-button c-button--primary" role="button" data-wishlist>
+        <a 
+            href="{{this.urls.account.wishlists.add}}" 
+            class="c-button c-button--primary" 
+            role="button"
+        >
             {{lang 'account.wishlists.new'}}
         </a>
         {{inject 'wishlistDelete' (lang 'account.wishlists.delete_alert')}}
@@ -68,7 +74,7 @@
             {{#each customer.wishlists}}
                 <input type="hidden" value="{{this.id}}" name="deletewishlist[]">
             {{/each}}
-            <button type="submit" class="c-button" data-wishlist-delete>
+            <button type="submit" class="c-button js-wishlist-delete">
                 {{lang 'account.wishlists.delete_all'}}
             </button>
         {{/if}}

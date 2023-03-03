@@ -5,16 +5,11 @@
                 <a 
                     class="js-pagination-link"
                     href="{{previous}}"
-                    {{#unless reload}}
-                        data-faceted-search-facet
-                    {{/unless}}
                     aria-label="{{lang 'common.previous'}}"
                 >
-                    <i class="icon" aria-hidden="true">
-                        <svg>
-                            <use href="#icon-chevron-left"></use>
-                        </svg>
-                    </i>
+                    <svg>
+                        <use href="#icon-chevron-left"></use>
+                    </svg>
                     {{lang 'common.previous'}}
                 </a>
             </li>
@@ -26,14 +21,10 @@
                 {{/if}}
             >
                 <a 
-                    class="js-pagination-link"
+                    class="js-pagination-link{{#if this.number '==' ../current}} .js-pagination-current-page-link{{/if}}"
                     href="{{this.url}}"
-                    {{#unless reload}}
-                        data-faceted-search-facet
-                    {{/unless}}
                     {{#if this.number '==' ../current}}
                         aria-current="page"
-                        data-pagination-current-page-link
                     {{/if}}
                     aria-label="{{lang 'common.paginator.page_of' current=this.number total=../links.length}}"
                 >
@@ -47,17 +38,12 @@
                 <a 
                     class="js-pagination-link"
                     href="{{next}}"
-                    {{#unless reload}}
-                        data-faceted-search-facet
-                    {{/unless}}
                     aria-label="{{lang 'common.next'}}"
                 >
                     {{lang 'common.next'}}
-                    <i class="icon" aria-hidden="true">
-                        <svg>
-                            <use href="#icon-chevron-right"></use>
-                        </svg>
-                    </i>
+                    <svg>
+                        <use href="#icon-chevron-right"></use>
+                    </svg>
                 </a>
             </li>
         {{/if}}

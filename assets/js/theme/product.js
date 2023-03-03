@@ -62,7 +62,7 @@ export default class Product extends PageManager {
     }
 
     ariaDescribeReviewInputs($form) {
-        $form.find('[data-input]').each((_, input) => {
+        $form.find('.js-input').each((_, input) => {
             const $input = $(input);
             const msgSpanId = `${$input.attr('name')}-msg`;
 

@@ -139,38 +139,38 @@ export default class ProductDetailsBase {
      */
     getViewModel($scope) {
         return {
-            $priceWithTax: $('[data-product-price-with-tax]', $scope),
-            $priceWithoutTax: $('[data-product-price-without-tax]', $scope),
+            $priceWithTax: $('.js-product-price-with-tax', $scope),
+            $priceWithoutTax: $('.js-product-price-without-tax', $scope),
             rrpWithTax: {
-                $div: $('.rrp-price--withTax', $scope),
-                $span: $('[data-product-rrp-with-tax]', $scope),
+                $div: $('.js-rrp-price-with-tax', $scope),
+                $span: $('.js-product-rrp-with-tax', $scope),
             },
             rrpWithoutTax: {
-                $div: $('.rrp-price--withoutTax', $scope),
-                $span: $('[data-product-rrp-price-without-tax]', $scope),
+                $div: $('.js-rrp-price-without-tax', $scope),
+                $span: $('.js-product-rrp-price-without-tax', $scope),
             },
             nonSaleWithTax: {
-                $div: $('.non-sale-price--withTax', $scope),
-                $span: $('[data-product-non-sale-price-with-tax]', $scope),
+                $div: $('.js-non-sale-price-with-tax', $scope),
+                $span: $('.js-product-non-sale-price-with-tax', $scope),
             },
             nonSaleWithoutTax: {
-                $div: $('.non-sale-price--withoutTax', $scope),
-                $span: $('[data-product-non-sale-price-without-tax]', $scope),
+                $div: $('.js-non-sale-price-without-tax', $scope),
+                $span: $('.js-product-non-sale-price-without-tax', $scope),
             },
             priceSaved: {
-                $div: $('.price-section--saving', $scope),
-                $span: $('[data-product-price-saved]', $scope),
+                $div: $('.js-price-section-saving', $scope),
+                $span: $('.js-product-price-saved', $scope),
             },
             priceNowLabel: {
-                $span: $('.price-now-label', $scope),
+                $span: $('.js-price-now-label', $scope),
             },
             priceLabel: {
-                $span: $('.price-label', $scope),
+                $span: $('.js-price-label', $scope),
             },
             $weight: $('.productView-info [data-product-weight]', $scope),
             $increments: $('.js-form-field-increments :input', $scope),
             $addToCart: $('#form-action-addToCart', $scope),
-            $wishlistVariation: $('[data-wishlist-add] [name="variation_id"]', $scope),
+            $wishlistVariation: $('.js-wishlist-add [name="variation_id"]', $scope),
             stock: {
                 $container: $('.js-form-field-stock', $scope),
                 $input: $('[data-product-stock]', $scope),

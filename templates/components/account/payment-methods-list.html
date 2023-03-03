@@ -23,18 +23,22 @@
                                     {{!-- If credit card STARTS --}}
                                     {{#if brand}}
                                         {{#inArray ../../theme_settings.supported_card_type_icons brand }}
-                                            <img src="{{cdn (concat (concat 'img/payment-methods/' brand) '.svg')}}"
+                                            <img 
+                                                src="{{cdn (concat (concat 'img/payment-methods/' brand) '.svg')}}"
                                                 alt="{{lang (concat 'account.payment_methods.card_types.' brand)}}"
-                                                title="{{lang (concat 'account.payment_methods.card_types.' brand)}}">
+                                                title="{{lang (concat 'account.payment_methods.card_types.' brand)}}"
+                                            >
                                         {{/inArray}}
                                         <span>
                                             {{lang (concat 'account.payment_methods.card_types.' brand)}}
                                             {{lang 'account.payment_methods.card_ending_in' last_four=last_4}}
                                         </span>
                                     {{else}}
-                                        <img src="{{cdn 'img/payment-methods/card.svg'}}"
+                                        <img 
+                                            src="{{cdn 'img/payment-methods/card.svg'}}"
                                             alt="{{lang 'account.payment_methods.card_types.credit_card'}}"
-                                            title="{{lang 'account.payment_methods.card_types.credit_card'}}">
+                                            title="{{lang 'account.payment_methods.card_types.credit_card'}}"
+                                        >
                                         <span>
                                             {{lang 'account.payment_methods.card_types.credit_card'}}
                                             {{lang 'account.payment_methods.card_ending_in' last_four=last_4}}
@@ -45,9 +49,11 @@
 
                                 {{#if type '===' 'stored_bank_account'}}
                                     {{!-- If bank_account STARTS --}}
-                                    <img src="{{cdn 'img/payment-methods/card.svg'}}"
-                                         alt="{{lang 'account.payment_methods.card_types.credit_card'}}"
-                                         title="{{lang 'account.payment_methods.card_types.credit_card'}}">
+                                    <img 
+                                        src="{{cdn 'img/payment-methods/card.svg'}}"
+                                        alt="{{lang 'account.payment_methods.card_types.credit_card'}}"
+                                        title="{{lang 'account.payment_methods.card_types.credit_card'}}"
+                                    >
                                     <span>
                                         {{ lang 'account.payment_methods.payment_method'}}
                                     </span>
@@ -56,9 +62,10 @@
 
                                 {{#if type '===' 'stored_paypal_account'}}
                                     {{!-- If paypal STARTS --}}
-                                    <img src="{{cdn 'img/payment-methods/paypal.svg'}}"
+                                    <img 
+                                        src="{{cdn 'img/payment-methods/paypal.svg'}}"
                                         alt="{{lang 'account.payment_methods.paypal'}}"
-                                            title="{{lang 'account.payment_methods.paypal'}}"
+                                        title="{{lang 'account.payment_methods.paypal'}}"
                                     >
                                     <span>
                                         {{email}}
@@ -85,7 +92,7 @@
                                     <span>
                                         {{lang 'account.payment_methods.billing_address'}}:
                                     </span>
-                                    <span class="methodDetails-description">
+                                    <span>
                                         <span>
                                             {{billing_address.address1}},
                                         </span>
@@ -102,7 +109,10 @@
                                 {{!-- If there is an address ENDS --}}
                         {{/if}}
                         <div>
-                            <form action="{{delete_url}}" method="post" data-delete-payment-method="{{lang 'forms.payment_methods.confirm_delete'}}">
+                            <form 
+                                action="{{delete_url}}" 
+                                method="post" data-delete-payment-method="{{lang 'forms.payment_methods.confirm_delete'}}"
+                            >
                                 {{#if edit_url}}
                                     <a class="c-button c-button--primary" href="{{edit_url}}">
                                         {{lang 'common.edit' }}

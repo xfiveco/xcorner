@@ -117,7 +117,7 @@ export default class CartItemDetails extends ProductDetailsBase {
         });
 
         let productVariant = unsatisfiedRequiredFields.length === 0 ? options.sort().join(', ') : 'unsatisfied';
-        const view = $('.modal-header-title');
+        const view = $('.js-modal-header-title');
 
         if (productVariant) {
             productVariant = productVariant === 'unsatisfied' ? '' : productVariant;
@@ -138,6 +138,6 @@ export default class CartItemDetails extends ProductDetailsBase {
     updateProductAttributes(data) {
         super.updateProductAttributes(data);
 
-        this.$scope.find('.is-modal-content').removeClass('hide-content');
+        this.$scope.find('.js-modal-content').removeClass('hide-content');
     }
 }

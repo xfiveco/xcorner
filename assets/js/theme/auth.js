@@ -10,26 +10,27 @@ import {
     announceInputErrorMessage,
 } from './common/utils/form-utils';
 import { createTranslationDictionary } from './common/utils/translations-utils';
+import q$ from './global/selector';
 
 export default class Auth extends PageManager {
     constructor(context) {
         super(context);
         this.validationDictionary = createTranslationDictionary(context);
-        this.formCreateSelector = 'form[data-create-account-form]';
-        this.recaptcha = $('.g-recaptcha iframe[src]');
+        this.formCreateSelector = 'form.js-create-account-form';
+        this.recaptcha = q$('.g-recaptcha iframe[src]');
     }
 
     registerLoginValidation($loginForm) {
         const loginModel = forms;
 
         this.loginValidator = nod({
-            submit: '.login-form input[type="submit"]',
+            submit: '.js-login-form button[type="submit"]',
             tap: announceInputErrorMessage,
         });
 
         this.loginValidator.add([
             {
-                selector: '.login-form input[name="login_email"]',
+                selector: '.js-login-form input[name="login_email"]',
                 validate: (cb, val) => {
                     const result = loginModel.email(val);
 
@@ -38,7 +39,7 @@ export default class Auth extends PageManager {
                 errorMessage: this.context.useValidEmail,
             },
             {
-                selector: '.login-form input[name="login_pass"]',
+                selector: '.js-login-form input[name="login_pass"]',
                 validate: (cb, val) => {
                     const result = loginModel.password(val);
 
@@ -61,13 +62,13 @@ export default class Auth extends PageManager {
 
     registerForgotPasswordValidation($forgotPasswordForm) {
         this.forgotPasswordValidator = nod({
-            submit: '.forgot-password-form input[type="submit"]',
+            submit: '.js-forgot-password-form button[type="submit"]',
             tap: announceInputErrorMessage,
         });
 
         this.forgotPasswordValidator.add([
             {
-                selector: '.forgot-password-form input[name="email"]',
+                selector: '.js-forgot-password-form input[name="email"]',
                 validate: (cb, val) => {
                     const result = forms.email(val);
 
@@ -90,13 +91,13 @@ export default class Auth extends PageManager {
 
     registerNewPasswordValidation() {
         const { password: enterPassword, password_match: matchPassword } = this.validationDictionary;
-        const newPasswordForm = '.new-password-form';
+        const newPasswordForm = '.js-new-password-form';
         const newPasswordValidator = nod({
-            submit: $(`${newPasswordForm} input[type="submit"]`),
+            submit: q$(`${newPasswordForm} button[type="submit"]`),
             tap: announceInputErrorMessage,
         });
-        const passwordSelector = $(`${newPasswordForm} input[name="password"]`);
-        const password2Selector = $(`${newPasswordForm} input[name="password_confirm"]`);
+        const passwordSelector = q$(`${newPasswordForm} input[name="password"]`);
+        const password2Selector = q$(`${newPasswordForm} input[name="password_confirm"]`);
         const errorTextMessages = createPasswordValidationErrorTextObject(enterPassword, enterPassword, matchPassword, this.passwordRequirements.error);
         Validators.setPasswordValidation(
             newPasswordValidator,
@@ -110,16 +111,16 @@ export default class Auth extends PageManager {
     registerCreateAccountValidator($createAccountForm) {
         const validationModel = validation($createAccountForm, this.context);
         const createAccountValidator = nod({
-            submit: `${this.formCreateSelector} input[type='submit']`,
+            submit: `${this.formCreateSelector} button[type='submit']`,
             delay: 900,
         });
-        const $stateElement = $('[data-field-type="State"]');
+        const $stateElement = q$('[data-field-type="State"]');
         const emailSelector = `${this.formCreateSelector} [data-field-type='EmailAddress']`;
-        const $emailElement = $(emailSelector);
+        const $emailElement = q$(emailSelector);
         const passwordSelector = `${this.formCreateSelector} [data-field-type='Password']`;
-        const $passwordElement = $(passwordSelector);
+        const $passwordElement = q$(passwordSelector);
         const password2Selector = `${this.formCreateSelector} [data-field-type='ConfirmPassword']`;
-        const $password2Element = $(password2Selector);
+        const $password2Element = q$(password2Selector);
 
         createAccountValidator.add(validationModel);
 
@@ -132,8 +133,6 @@ export default class Auth extends PageManager {
                     throw new Error(err);
                 }
 
-                const $field = $(field);
-
                 if (createAccountValidator.getStatus($stateElement) !== 'undefined') {
                     createAccountValidator.remove($stateElement);
                 }
@@ -142,7 +141,7 @@ export default class Auth extends PageManager {
                     createAccountValidator.remove($last);
                 }
 
-                if ($field.is('select')) {
+                if (field.tagName.toLowerCase() === 'select') {
                     $last = field;
                     Validators.setStateCountryValidation(createAccountValidator, field, this.validationDictionary.field_not_blank);
                 } else {
@@ -182,9 +181,15 @@ export default class Auth extends PageManager {
             return;
         }
         event.preventDefault();
+
         setTimeout(() => {
-            const earliestError = $('.js-form-inline-message:first').prev('input');
-            earliestError.focus();
+            let $current = q$('.js-form-inline-message:first').previousElementSibling;
+
+            while (!!$current && $current.tagName.toLowerCase() !== 'input') {
+                $current = $current.previousElementSibling;
+            }
+            /* eslint-disable no-unused-expressions */
+            $current?.focus();
         }, 900);
     }
 
@@ -192,14 +197,10 @@ export default class Auth extends PageManager {
      * Request is made in this function to the remote endpoint and pulls back the states for country.
      */
     onReady() {
-        if (!this.recaptcha.attr('title')) {
-            this.recaptcha.attr('title', this.context.recaptchaTitle);
-        }
-
         const $createAccountForm = classifyForm(this.formCreateSelector);
-        const $loginForm = classifyForm('.login-form');
-        const $forgotPasswordForm = classifyForm('.forgot-password-form');
-        const $newPasswordForm = classifyForm('.new-password-form'); // reset password
+        const $loginForm = classifyForm('.js-login-form');
+        const $forgotPasswordForm = classifyForm('.js-forgot-password-form');
+        const $newPasswordForm = classifyForm('.js-new-password-form'); // reset password
 
         // Injected via auth.html
         this.passwordRequirements = this.context.passwordRequirements;
@@ -219,5 +220,15 @@ export default class Auth extends PageManager {
         if ($createAccountForm) {
             this.registerCreateAccountValidator($createAccountForm);
         }
+
+        setTimeout(() => {
+            if (this.recaptcha === null) {
+                this.recaptcha = q$('.g-recaptcha iframe[src]');
+            }
+
+            if (!this.recaptcha?.getAttribute('title')) {
+                this.recaptcha?.setAttribute('title', this.context.recaptchaTitle);
+            }
+        }, 500);
     }
 }
