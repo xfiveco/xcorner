@@ -15,7 +15,7 @@ export default class Product extends PageManager {
         this.url = window.location.href;
         this.$reviewLink = $('[data-reveal-id="modal-review-form"]');
         this.$bulkPricingLink = $('[data-reveal-id="modal-bulk-pricing"]');
-        this.reviewModal = modalFactory('#modal-review-form')[0];
+        this.reviewModal = modalFactory('#js-modal-review-form')[0];
     }
 
     onReady() {
@@ -62,7 +62,7 @@ export default class Product extends PageManager {
     }
 
     ariaDescribeReviewInputs($form) {
-        $form.find('[data-input]').each((_, input) => {
+        $form.find('.js-input').each((_, input) => {
             const $input = $(input);
             const msgSpanId = `${$input.attr('name')}-msg`;
 
