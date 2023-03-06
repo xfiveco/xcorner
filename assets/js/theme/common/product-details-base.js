@@ -114,19 +114,19 @@ export default class ProductDetailsBase {
      * Check for fragment identifier in URL requesting a specific tab
      */
     getTabRequests() {
-        if (window.location.hash && window.location.hash.indexOf('#tab-') === 0) {
-            const $activeTab = $('.tabs').has(`[href='${window.location.hash}']`);
+        if (window.location.hash && window.location.hash.indexOf('#js-tab-') === 0) {
+            const $activeTab = $('.js-tabs').has(`[href='${window.location.hash}']`);
             const $tabContent = $(`${window.location.hash}`);
 
             if ($activeTab.length > 0) {
-                $activeTab.find('.tab')
-                    .removeClass('is-active')
+                $activeTab.find('.js-tab')
+                    .removeClass('js-active')
                     .has(`[href='${window.location.hash}']`)
-                    .addClass('is-active');
+                    .addClass('js-active');
 
-                $tabContent.addClass('is-active')
+                $tabContent.addClass('js-active')
                     .siblings()
-                    .removeClass('is-active');
+                    .removeClass('js-active');
             }
         }
     }
@@ -167,7 +167,7 @@ export default class ProductDetailsBase {
             priceLabel: {
                 $span: $('.js-price-label', $scope),
             },
-            $weight: $('.productView-info [data-product-weight]', $scope),
+            $weight: $('.js-product-view-info [data-product-weight]', $scope),
             $increments: $('.js-form-field-increments :input', $scope),
             $addToCart: $('#form-action-addToCart', $scope),
             $wishlistVariation: $('.js-wishlist-add [name="variation_id"]', $scope),
