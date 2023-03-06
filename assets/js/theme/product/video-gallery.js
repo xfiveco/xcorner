@@ -25,8 +25,8 @@ export class VideoGallery {
     }
 
     setActiveThumb() {
-        this.$videos.removeClass('is-active');
-        this.currentVideo.$selectedThumb.addClass('is-active');
+        this.$videos.removeClass('js-active');
+        this.currentVideo.$selectedThumb.addClass('js-active');
     }
 
     bindEvents() {
