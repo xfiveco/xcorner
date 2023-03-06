@@ -226,7 +226,7 @@ export default class ProductDetails extends ProductDetailsBase {
             if (view.attr('data-event-type')) {
                 view.attr('data-product-variant', productVariant);
             } else {
-                const productName = view.find('.productView-title')[0].innerText.replace(/"/g, '\\$&');
+                const productName = view.find('.js-product-view-title')[0].innerText.replace(/"/g, '\\$&');
                 const card = $(`[data-name="${productName}"]`);
                 card.attr('data-product-variant', productVariant);
             }
