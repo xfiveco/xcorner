@@ -1,8 +1,8 @@
 <div class="js-product-view"
     {{#if settings.data_tag_enabled}}
-    data-event-type="product"
+    js-event-type="product"
     data-entity-id="{{product.id}}"
-    data-name="{{product.title}}"
+    js-name="{{product.title}}"
     data-product-category="
     {{#each product.category}}
         {{#if @last}}{{this}}{{else}}{{this}}, {{/if}}
@@ -29,7 +29,7 @@
         {{/if}}
     {{/each}}
 
-    <section class="js-product-view-images" data-image-gallery>
+    <section class="js-product-view-images js-image-gallery">
         {{!--
             Note that these image sizes are coupled to image sizes used in /assets/js/theme/common/product-details.js
             for variant/rule image replacement
@@ -37,10 +37,9 @@
         {{#if product.images.length '>' 1 }}
         {{> components/carousel/content-announcement}}
         {{/if}}
-        <figure class="productView-image"
-                data-image-gallery-main
+        <figure class="js-product-view-image js-image-gallery-main"
                 {{#if product.main_image}}
-                data-zoom-image="{{getImageSrcset product.main_image (cdn theme_settings.default_image_product) 1x=theme_settings.zoom_size }}"
+                js-zoom-image="{{getImageSrcset product.main_image (cdn theme_settings.default_image_product) 1x=theme_settings.zoom_size }}"
                 {{/if}}
                 >
             <div class="productView-img-container">
@@ -51,10 +50,10 @@
                 {{/if}}
                 {{> components/common/image
                     image=product.main_image
-                    class="productView-image--default"
+                    class=""
                     fallback_size=theme_settings.product_size
                     default_image=theme_settings.default_image_product
-                    otherAttributes="data-main-image"
+                    otherAttributes="js-main-image"
                 }}
                 {{!-- Remove the surrounding a-element if there is no main image. --}}
                 {{#if product.main_image}}
@@ -71,14 +70,13 @@
                 "slidesToScroll": 5
             }'{{/gt}}>
             {{#each product.images}}
-                <li class="productView-thumbnail">
+                <li>
                     <a
-                        class="productView-thumbnail-link"
+                        class="js-image-gallery-item"
                         href="{{getImageSrcset this (cdn ../theme_settings.default_image_product) 1x=../theme_settings.zoom_size}}"
-                        data-image-gallery-item
-                        data-image-gallery-new-image-url="{{getImageSrcset this (cdn ../theme_settings.default_image_product) 1x=../theme_settings.product_size}}"
-                        data-image-gallery-new-image-srcset="{{getImageSrcset this use_default_sizes=true}}"
-                        data-image-gallery-zoom-image-url="{{getImageSrcset this (cdn ../theme_settings.default_image_product) 1x=../theme_settings.zoom_size}}"
+                        js-image-gallery-new-image-url="{{getImageSrcset this (cdn ../theme_settings.default_image_product) 1x=../theme_settings.product_size}}"
+                        js-image-gallery-new-image-srcset="{{getImageSrcset this use_default_sizes=true}}"
+                        js-image-gallery-zoom-image-url="{{getImageSrcset this (cdn ../theme_settings.default_image_product) 1x=../theme_settings.zoom_size}}"
                     >
                     {{> components/common/image
                         image=this
@@ -90,20 +88,20 @@
         </ul>
     </section>
 
-    <section class="productView-details product-data">
-        <div class="productView-product">
-            <h1 class="productView-title">{{product.title}}</h1>
+    <section>
+        <div>
+            <h1 class="js-product-view-title">{{product.title}}</h1>
             {{#if product.brand}}
-                <h2 class="productView-brand">
+                <h2>
                     <a href="{{product.brand.url}}"><span>{{product.brand.name}}</span></a>
                 </h2>
             {{/if}}
             {{#if product.call_for_price}}
-                <p class="productView-price">
+                <p>
                     <span>{{product.call_for_price}}</span>
                 </p>
             {{/if}}
-            <div class="productView-price">
+            <div>
                 {{#or customer (unless settings.hide_price_from_guests)}}
                     {{> components/products/price price=product.price}}
                 {{else}}
@@ -111,11 +109,11 @@
                 {{/or}}
             </div>
             {{{region name="product_below_price"}}}
-            <div class="productView-rating">
+            <div>
                 {{#if settings.show_product_rating}}
                     {{> components/products/ratings rating=product.rating}}
                     {{#if product.num_reviews '>' 0}}
-                        <a href="{{product.url}}{{#if is_ajax}}#product-reviews{{/if}}" id="productReview_link">
+                        <a href="{{product.url}}{{#if is_ajax}}#product-reviews{{/if}}" id="js-product-review_link">
                             {{lang 'products.reviews.link_to_review' total=product.num_reviews}}
                         </a>
                     {{else}}
@@ -124,8 +122,7 @@
                 {{/if}}
                 {{#if settings.show_product_reviews}}
                     <a href="{{product.url}}{{#if is_ajax}}#write_review{{/if}}"
-                       class="productView-reviewLink productView-reviewLink--new"
-                       {{#unless is_ajax}}data-reveal-id="modal-review-form"{{/unless}}
+                       {{#unless is_ajax}}js-reveal-id="modal-review-form"{{/unless}}
                        role="button"
                     >
                        {{lang 'products.reviews.new'}}
@@ -136,11 +133,11 @@
                 {{/if}}
             </div>
             {{product.detail_messages}}
-            <dl class="productView-info">
-                <dt class="productView-info-name sku-label"{{#unless product.sku}} style="display: none;"{{/unless}}>{{lang 'products.sku'}}</dt>
-                <dd class="productView-info-value" data-product-sku>{{product.sku}}</dd>
-                <dt class="productView-info-name upc-label"{{#unless product.upc}} style="display: none;"{{/unless}}>{{lang 'products.upc'}}</dt>
-                <dd class="productView-info-value" data-product-upc>{{product.upc}}</dd>
+            <dl class="js-product-view-info">
+                <dt class="js-sku-label"{{#unless product.sku}} style="display: none;"{{/unless}}>{{lang 'products.sku'}}</dt>
+                <dd class="js-product-sku">{{product.sku}}</dd>
+                <dt class="js-upc-label"{{#unless product.upc}} style="display: none;"{{/unless}}>{{lang 'products.upc'}}</dt>
+                <dd class="js-product-upc">{{product.upc}}</dd>
                 {{#if product.condition}}
                     <dt class="productView-info-name">{{lang 'products.condition'}}</dt>
                     <dd class="productView-info-value">{{product.condition}}</dd>
@@ -150,12 +147,12 @@
                     <dd class="productView-info-value">{{product.availability}}</dd>
                 {{/if}}
                 {{#all product.weight theme_settings.show_product_weight}}
-                    <dt class="productView-info-name">{{lang 'products.weight'}}</dt>
-                    <dd class="productView-info-value" data-product-weight>{{product.weight}}</dd>
+                    <dt>{{lang 'products.weight'}}</dt>
+                    <dd class="js-product-weight">{{product.weight}}</dd>
                 {{/all}}
                 {{#all product.width product.height product.depth theme_settings.show_product_dimensions}}
-                    <dt class="productView-info-name">{{lang 'products.width'}}</dt>
-                    <dd class="productView-info-value" data-product-width>
+                    <dt>{{lang 'products.width'}}</dt>
+                    <dd>
                         {{product.width}}
                         {{#if settings.measurements.length '==' 'Centimeters'}}
                         ({{lang 'products.measurement.metric'}})
@@ -163,8 +160,8 @@
                         ({{lang 'products.measurement.imperial'}})
                         {{/if}}
                     </dd>
-                    <dt class="productView-info-name">{{lang 'products.height'}}</dt>
-                    <dd class="productView-info-value" data-product-height>
+                    <dt>{{lang 'products.height'}}</dt>
+                    <dd>
                         {{product.height}}
                         {{#if settings.measurements.length '==' 'Centimeters'}}
                         ({{lang 'products.measurement.metric'}})
@@ -172,8 +169,8 @@
                         ({{lang 'products.measurement.imperial'}})
                         {{/if}}
                     </dd>
-                    <dt class="productView-info-name">{{lang 'products.depth'}}</dt>
-                    <dd class="productView-info-value" data-product-depth>
+                    <dt>{{lang 'products.depth'}}</dt>
+                    <dd>
                         {{product.depth}}
                         {{#if settings.measurements.length '==' 'Centimeters'}}
                         ({{lang 'products.measurement.metric'}})
@@ -210,7 +207,7 @@
                 {{/if}}
 
                 {{#if settings.bulk_discount_enabled}}
-                    <div class="productView-info-bulkPricing">
+                    <div class="js-product-view-info-bulk-pricing">
                         {{> components/products/bulk-discount-rates bulk_discount_rates=product.bulk_discount_rates}}
                     </div>
                 {{/if}}
@@ -222,23 +219,22 @@
         </div>
     </section>
 
-    <section class="productView-details product-options">
-        <div class="productView-options">
+    <section>
+        <div>
             {{#if product.release_date }}
                 <p>{{product.release_date}}</p>
             {{/if}}
-            <form class="form" method="post" action="{{product.cart_url}}" enctype="multipart/form-data"
-                  data-cart-item-add>
+            <form class="js-cart-item-add" method="post" action="{{product.cart_url}}" enctype="multipart/form-data">
                 <input type="hidden" name="action" value="add">
                 <input type="hidden" name="product_id" value="{{product.id}}"/>
-                <div data-product-option-change style="display:none;">
+                <div class="js-product-option-change" style="display:none;">
                     {{inject 'showSwatchNames' theme_settings.show_product_swatch_names}}
                     {{#each product.options}}
                         {{{dynamicComponent 'components/products/options'}}}
                     {{/each}}
                 </div>
-                <div class="js-form-field js-form-field--stock{{#unless product.stock_level}} u-hiddenVisually{{/unless}}">
-                    <label class="form-label form-label--alternate">
+                <div class="js-form-field js-form-field--stock{{#unless product.stock_level}} js-u-hidden-visually{{/unless}}">
+                    <label>
                         {{lang 'products.current_stock'}}
                         <span data-product-stock>{{product.stock_level}}</span>
                     </label>
@@ -259,7 +255,7 @@
         {{> components/common/share url=product.url}}
     </section>
 
-    <article class="productView-description">
+    <article>
         {{#if theme_settings.show_product_details_tabs}}
             {{> components/products/description-tabs}}
         {{else}}
@@ -268,7 +264,7 @@
     </article>
 </div>
 
-<div id="previewModal" class="modal is-modal-large" data-reveal>
+<div id="preview-modal" class="modal is-modal-large js-reveal">
     {{> components/common/modal/modal-close-btn }}
     <div class="is-modal-content"></div>
     <div class="is-loading-overlay"></div>
