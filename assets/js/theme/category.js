@@ -22,8 +22,8 @@ export default class Category extends CatalogPage {
 
         const navListAction = $('.js-nav-list-action');
 
-        if (navListAction.hasClass('is-active')) {
-            $('.js-nav-list-action.is-active').focus();
+        if (navListAction.hasClass('js-active')) {
+            $('.js-nav-list-action.js-active').focus();
         }
 
         navListAction.on('click', () => this.setLiveRegionAttributes(q$('.js-price-filter-message'), 'status', 'assertive'));
