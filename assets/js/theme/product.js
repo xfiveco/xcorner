@@ -15,7 +15,7 @@ export default class Product extends PageManager {
         this.url = window.location.href;
         this.$reviewLink = $('[data-reveal-id="modal-review-form"]');
         this.$bulkPricingLink = $('[data-reveal-id="modal-bulk-pricing"]');
-        this.reviewModal = modalFactory('#js-modal-review-form')[0];
+        this.reviewModal = modalFactory('#modal-review-form')[0];
     }
 
     onReady() {
@@ -44,7 +44,7 @@ export default class Product extends PageManager {
 
         const review = new Review({ $reviewForm });
 
-        $('body').on('click', '[data-reveal-id="modal-review-form"]', () => {
+        $('body').on('click', '[js-reveal-id="modal-review-form"]', () => {
             validator = review.registerValidation(this.context);
             this.ariaDescribeReviewInputs($reviewForm);
         });
