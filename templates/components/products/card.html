@@ -1,6 +1,4 @@
 <article
-    class="card
-    {{#if alternate}} card--alternate{{/if}}"
     data-test="card-{{id}}"
     {{#if settings.data_tag_enabled}}
         data-event-type="{{event}}"
@@ -87,8 +85,15 @@
                     {{/if}}
                 {{/unless}}
                 {{#if show_compare}}
-                    <label class="c-button button--small card-figcaption-button" for="compare-{{id}}">
-                        {{lang 'products.compare'}} <input type="checkbox" name="products[]" value="{{id}}" id="compare-{{id}}" data-compare-id="{{id}}">
+                    <label class="c-button" for="compare-{{id}}">
+                        {{lang 'products.compare'}} 
+                        <input 
+                            type="checkbox" 
+                            name="products[]" 
+                            value="{{id}}" 
+                            id="compare-{{id}}" 
+                            data-compare-id="{{id}}"
+                        >
                     </label>
                 {{/if}}
                 {{#if show_cart_action}}
@@ -99,8 +104,17 @@
                         <a href="{{pre_order_add_to_cart_url}}" data-event-type="product-click" class="c-button button--small card-figcaption-button">{{lang 'products.pre_order'}}</a>
                     {{/if}}
                     {{#if add_to_cart_url }}
-                        <a href="{{add_to_cart_url}}" data-event-type="product-click" data-button-type="add-cart" class="c-button button--small card-figcaption-button">{{lang 'products.add_to_cart'}}</a>
-                        <span class="product-status-message aria-description--hidden">{{lang 'category.add_cart_announcement'}}</span>
+                        <a 
+                            href="{{add_to_cart_url}}" 
+                            data-event-type="product-click" 
+                            data-button-type="add-cart" 
+                            class="c-button"
+                        >
+                            {{lang 'products.add_to_cart'}}
+                        </a>
+                        <span>
+                            {{lang 'category.add_cart_announcement'}}
+                        </span>
                     {{/if}}
                     {{#if out_of_stock_message }}
                         <a href="{{url}}" data-event-type="product-click" class="c-button button--small card-figcaption-button" data-product-id="{{id}}">{{out_of_stock_message}}</a>
