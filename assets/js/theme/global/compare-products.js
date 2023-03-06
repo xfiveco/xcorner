@@ -45,7 +45,7 @@ export default function ({ noCompareMessage, urls }) {
     $('body').triggerHandler('compare-reset');
 
     /* eslint-disable no-unused-expressions */
-    q$('[data-compare-id]')?.addEventListener('click', event => {
+    q$('[js-compare-id]')?.addEventListener('click', event => {
         const product = event.currentTarget.value;
         const $clickedCompareLink = q$('a[data-compare-nav]');
 
