@@ -53,9 +53,9 @@ export default class ImageGallery {
     }
 
     setActiveThumb() {
-        this.$selectableImages.removeClass('is-active');
+        this.$selectableImages.removeClass('js-active');
         if (this.currentImage.$selectedThumb) {
-            this.currentImage.$selectedThumb.addClass('is-active');
+            this.currentImage.$selectedThumb.addClass('js-active');
         }
     }
 
