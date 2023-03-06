@@ -1,43 +1,47 @@
-<ul class="tabs" data-tab>
+<ul class="js-tabs" data-tab>
     {{#if product.description}}
-        <li class="tab is-active">
-            <a class="tab-title" href="#tab-description">{{lang 'products.description'}}</a>
+        <li class="js-tab js-active">
+            <a href="#tab-description">
+                {{lang 'products.description'}}
+            </a>
         </li>
     {{/if}}
     {{#if product.warranty}}
-        <li class="tab {{#unless product.description}}is-active{{/unless}}">
-            <a class="tab-title" href="#tab-warranty">{{lang 'products.warranty'}}</a>
+        <li class="js-tab {{#unless product.description}}js-active{{/unless}}">
+            <a href="#tab-warranty">
+                {{lang 'products.warranty'}}
+            </a>
         </li>
     {{/if}}
     {{#all product.custom_fields theme_settings.show_custom_fields_tabs}}
-        <li class="tab">
-            <a class="tab-title"
-               href="#tab-{{dashcase (lowercase (sanitize theme_settings.pdp-custom-fields-tab-label))}}"
-            >
+        <li class="js-tab">
+            <a href="#js-tab-{{dashcase (lowercase (sanitize theme_settings.pdp-custom-fields-tab-label))}}">
                 {{sanitize theme_settings.pdp-custom-fields-tab-label}}
             </a>
         </li>
     {{/all}}
     {{#all settings.show_product_reviews theme_settings.show_product_reviews product.reviews.total}}
-        <li class="tab">
-            <a class="tab-title js-product-view-review-tab-link" href="#tab-reviews">{{lang 'products.reviews.header' total=product.reviews.total}}</a>
+        <li class="js-tab">
+            <a class="js-product-view-review-tab-link" href="#tab-reviews">
+                {{lang 'products.reviews.header' total=product.reviews.total}}
+            </a>
         </li>
     {{/all}}
 </ul>
 <div class="tabs-contents">
     {{#if product.description}}
-        <div class="tab-content is-active" id="tab-description">
+        <div class="js-active" id="tab-description">
             {{{product.description}}}
         </div>
     {{/if}}
     {{#if product.warranty}}
-        <div class="tab-content {{#unless product.description}}is-active{{/unless}}" id="tab-warranty">
+        <div class="{{#unless product.description}}js-active{{/unless}}" id="tab-warranty">
             {{{product.warranty}}}
         </div>
     {{/if}}
     {{#all product.custom_fields theme_settings.show_custom_fields_tabs}}
-      <div class="tab-content" id="tab-{{dashcase (lowercase (sanitize theme_settings.pdp-custom-fields-tab-label))}}">
-         <dl class="productView-info">
+      <div id="js-tab-{{dashcase (lowercase (sanitize theme_settings.pdp-custom-fields-tab-label))}}">
+         <dl class="js-product-view-info">
             {{> components/products/custom-fields }}
          </dl>
       </div>
