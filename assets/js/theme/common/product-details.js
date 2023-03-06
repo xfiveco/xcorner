@@ -41,7 +41,7 @@ export default class ProductDetails extends ProductDetailsBase {
 
         const $productOptionsElement = $('[data-product-option-change]', $form);
         const hasOptions = $productOptionsElement.html().trim().length;
-        const hasDefaultOptions = $productOptionsElement.find('[data-default]').length;
+        const hasDefaultOptions = $productOptionsElement.find('.js-default').length;
         const $productSwatchGroup = $('[id*="attribute_swatch"]', $form);
         const $productSwatchLabels = $('.form-option-swatch', $form);
         const placeSwatchLabelImage = (_, label) => {
@@ -284,7 +284,7 @@ export default class ProductDetails extends ProductDetailsBase {
         const activeSwatchGroupId = $swatchGroup.attr('aria-labelledby');
         const $swatchOptionMessage = $(`#${activeSwatchGroupId} ~ .swatch-option-message`);
 
-        $('[data-option-value]', $swatchGroup).text(swatchName);
+        $('.js-option-value', $swatchGroup).text(swatchName);
         $swatchOptionMessage.text(`${this.swatchInitMessageStorage[activeSwatchGroupId]} ${swatchName}`);
         this.setLiveRegionAttributes($swatchOptionMessage, 'status', 'assertive');
     }
