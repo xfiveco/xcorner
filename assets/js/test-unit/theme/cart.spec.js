@@ -72,12 +72,12 @@ describe.skip('todo', () => {
                     <td class="cart-item-block cart-item-info cart-item-quantity">\
                         <label class="form-label cart-item-label" for="qty-item-id">Quantity:</label>\
                         <div class="form-increment">\
-                            <button class="c-button button--icon" data-cart-update="" data-cart-itemid="item-id" data-action="dec">\
+                            <button class="c-button button--icon" data-cart-update="" data-cart-itemid="item-id" js-action="dec">\
                                 <span class="is-srOnly">Decrease Quantity:</span>\
                                 <i class="icon" aria-hidden="true"><svg><use xmlns:xlink="www.ccc.com"></use></svg></i>\
                             </button>\
-                            <input class="js-form-input form-input--incrementTotal cart-item-qty-input" id="item-id" name="qty-item-id" type="tel" value="2" data-quantity-min="0" data-quantity-max="" data-quantity-min-error="The minimum purchasable quantity is 0" data-quantity-max-error="The maximum purchasable quantity is null" min="1" pattern="[0-9]*" data-cart-itemid="item-id" data-action="manualQtyChange" aria-live="polite">\
-                                <button class="c-button button--icon" data-cart-update="" data-cart-itemid="item-id" data-action="inc">\
+                            <input class="js-form-input form-input--incrementTotal cart-item-qty-input" id="item-id" name="qty-item-id" type="tel" value="2" data-quantity-min="0" data-quantity-max="" data-quantity-min-error="The minimum purchasable quantity is 0" data-quantity-max-error="The maximum purchasable quantity is null" min="1" pattern="[0-9]*" data-cart-itemid="item-id" js-action="manualQtyChange" aria-live="polite">\
+                                <button class="c-button button--icon" data-cart-update="" data-cart-itemid="item-id" js-action="inc">\
                                     <span class="is-srOnly">Increase Quantity:</span>\
                                     <i class="icon" aria-hidden="true"><svg><use xmlns:xlink="www.ddd.com"></use></svg></i>\
                                 </button>\
