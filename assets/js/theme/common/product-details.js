@@ -17,7 +17,7 @@ export default class ProductDetails extends ProductDetailsBase {
     constructor($scope, context, productAttributesData = {}) {
         super($scope, context);
 
-        this.$overlay = $('[data-cart-item-add] .is-loading-overlay');
+        this.$overlay = $('[data-cart-item-add] .js-loading-overlay');
         this.imageGallery = new ImageGallery($('[data-image-gallery]', this.$scope));
         this.imageGallery.init();
         this.listenQuantityChange();
@@ -35,13 +35,13 @@ export default class ProductDetails extends ProductDetailsBase {
         }
 
         this.addToCartValidator = nod({
-            submit: $form.find('input#js-form-action-add-to-cart'),
+            submit: $form.find('input#form-action-add-to-cart'),
             tap: announceInputErrorMessage,
         });
 
         const $productOptionsElement = $('[data-product-option-change]', $form);
         const hasOptions = $productOptionsElement.html().trim().length;
-        const hasDefaultOptions = $productOptionsElement.find('.js-default').length;
+        const hasDefaultOptions = $productOptionsElement.find('[data-default]').length;
         const $productSwatchGroup = $('[id*="attribute_swatch"]', $form);
         const $productSwatchLabels = $('.form-option-swatch', $form);
         const placeSwatchLabelImage = (_, label) => {
@@ -179,7 +179,7 @@ export default class ProductDetails extends ProductDetailsBase {
                 }
             }
 
-            if (type === 'set-rectangle' || type === 'set-radio' || type === 'swatch' || type === 'input-checkbox' || type === 'js-product-list') {
+            if (type === 'set-rectangle' || type === 'set-radio' || type === 'swatch' || type === 'input-checkbox' || type === 'product-list') {
                 const checked = value.querySelector(':checked');
                 if (checked) {
                     const getSelectedOptionLabel = () => {
@@ -187,7 +187,7 @@ export default class ProductDetails extends ProductDetailsBase {
                         const matchLabelForCheckedInput = inpt => inpt.dataset.productAttributeValue === checked.value;
                         return productVariantslist.filter(matchLabelForCheckedInput)[0];
                     };
-                    if (type === 'set-rectangle' || type === 'set-radio' || type === 'js-product-list') {
+                    if (type === 'set-rectangle' || type === 'set-radio' || type === 'product-list') {
                         const label = isBrowserIE ? getSelectedOptionLabel().innerText.trim() : checked.labels[0].innerText;
                         if (label) {
                             options.push(`${optionTitle}:${label}`);
@@ -226,7 +226,7 @@ export default class ProductDetails extends ProductDetailsBase {
             if (view.attr('data-event-type')) {
                 view.attr('data-product-variant', productVariant);
             } else {
-                const productName = view.find('.js-product-view-title')[0].innerText.replace(/"/g, '\\$&');
+                const productName = view.find('.productView-title')[0].innerText.replace(/"/g, '\\$&');
                 const card = $(`[data-name="${productName}"]`);
                 card.attr('data-product-variant', productVariant);
             }
@@ -284,7 +284,7 @@ export default class ProductDetails extends ProductDetailsBase {
         const activeSwatchGroupId = $swatchGroup.attr('aria-labelledby');
         const $swatchOptionMessage = $(`#${activeSwatchGroupId} ~ .swatch-option-message`);
 
-        $('.js-option-value', $swatchGroup).text(swatchName);
+        $('[data-option-value]', $swatchGroup).text(swatchName);
         $swatchOptionMessage.text(`${this.swatchInitMessageStorage[activeSwatchGroupId]} ${swatchName}`);
         this.setLiveRegionAttributes($swatchOptionMessage, 'status', 'assertive');
     }
@@ -393,7 +393,7 @@ export default class ProductDetails extends ProductDetailsBase {
      *
      */
     addProductToCart(event, form) {
-        const $addToCartBtn = $('#js-form-action-add-to-cart', $(event.target));
+        const $addToCartBtn = $('#form-action-add-to-cart', $(event.target));
         const originalBtnVal = $addToCartBtn.val();
         const waitMessage = $addToCartBtn.data('waitMessage');
 
@@ -515,14 +515,14 @@ export default class ProductDetails extends ProductDetailsBase {
             const $cartQuantity = $('[data-cart-quantity]', modal.$content);
             const $cartCounter = $('.js-nav-user-action .cart-count');
             const quantity = $cartQuantity.data('cartQuantity') || 0;
-            const $promotionBanner = $('[data-promotion-banner]');
-            const $backToShopppingBtn = $('.previewCartCheckout > [data-reveal-close]');
+            const $promotionBanner = $('.js-promotion-banner');
+            const $backToShopppingBtn = $('.previewCartCheckout > .js-reveal-close');
             const $modalCloseBtn = $('#previewModal > .modal-close');
             const bannerUpdateHandler = () => {
                 const $productContainer = $('#main-content > .js-container');
 
-                $productContainer.append('<div class="is-loading-overlay pdp-update"></div>');
-                $('.is-loading-overlay.pdp-update', $productContainer).show();
+                $productContainer.append('<div class="js-loading-overlay pdp-update"></div>');
+                $('.js-loading-overlay.pdp-update', $productContainer).show();
                 window.location.reload();
             };
 
