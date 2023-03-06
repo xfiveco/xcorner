@@ -125,7 +125,7 @@ export default class CartItemDetails extends ProductDetailsBase {
                 view.attr('data-product-variant', productVariant);
             } else {
                 const productName = view.html().match(/'(.*?)'/)[1];
-                const card = $(`[data-name="${productName}"]`);
+                const card = $(`[js-name="${productName}"]`);
                 card.attr('data-product-variant', productVariant);
             }
         }
