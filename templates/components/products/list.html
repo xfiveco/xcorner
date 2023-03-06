@@ -1,4 +1,4 @@
-<ul class="productList">
+<ul>
     {{#each products}}
     <li class="js-product">
 		{{>components/products/list-item show_compare=../show_compare show_rating=../settings.show_product_rating theme_settings=../theme_settings customer=../customer event=../event settings=../settings position=(add @index 1)}}
