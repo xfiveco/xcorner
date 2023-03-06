@@ -6,14 +6,14 @@
         <a 
             href="{{product.url}}#bulk_pricing"
             {{#unless is_ajax }}
-                data-reveal-id="modal-bulk-pricing"
+                js-reveal-id="js-modal-bulk-pricing"
             {{/unless}}
         >
             {{lang 'products.bulk_pricing.view'}}
         </a>
     </dd>
 
-    <div id="modal-bulk-pricing" class="is-modal-small js-reveal">
+    <div id="js-modal-bulk-pricing" class="js-modal-small js-reveal">
         <div>
             <div class="js-modal-header-title">
                 {{lang 'products.bulk_pricing.modal_title'}}
