@@ -58,7 +58,7 @@ product_results:
 
 <section class="page">
     {{#if product_results.faceted_search_enabled}}
-        <aside class="page-sidebar{{#if forms.search.section '!=' 'product'}} u-hiddenVisually{{/if}}" id="faceted-search-container">
+        <aside class="page-sidebar{{#if forms.search.section '!=' 'product'}} js-u-hidden-visually{{/if}}" id="faceted-search-container">
             {{> components/faceted-search/index product_results}}
         </aside>
     {{/if}}
