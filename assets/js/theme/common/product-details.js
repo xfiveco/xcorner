@@ -270,7 +270,7 @@ export default class ProductDetails extends ProductDetailsBase {
 
             if (!this.checkIsQuickViewChild($form)) {
                 const $context = $form.parents('.js-product-view').find('.productView-info');
-                modalFactory('[js-data-reveal]', { $context });
+                modalFactory('.js-reveal', { $context });
             }
         });
     }
