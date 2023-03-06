@@ -63,7 +63,7 @@ export default class Account extends PageManager {
         if ($addressForm) {
             this.initAddressFormValidation($addressForm);
 
-            if (this.$state.tagName.toLowerCase() === 'input') {
+            if (this.$state?.tagName.toLowerCase() === 'input') {
                 insertStateHiddenField(this.$state);
             }
         }

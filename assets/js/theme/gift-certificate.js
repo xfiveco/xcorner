@@ -6,13 +6,14 @@ import { createTranslationDictionary } from './common/utils/translations-utils';
 import { announceInputErrorMessage } from './common/utils/form-utils';
 import { api } from '@bigcommerce/stencil-utils';
 import { defaultModal } from './global/modal';
+import q$ from './global/selector';
 
 export default class GiftCertificate extends PageManager {
     constructor(context) {
         super(context);
         this.validationDictionary = createTranslationDictionary(context);
 
-        const $certBalanceForm = $('#gift-certificate-balance');
+        const $certBalanceForm = q$('#gift-certificate-balance');
 
         const purchaseModel = {
             recipientName(val) {
@@ -44,20 +45,20 @@ export default class GiftCertificate extends PageManager {
             },
         };
 
-        const $purchaseForm = $('#gift-certificate-form');
-        const $customAmounts = $purchaseForm.find('input[name="certificate_amount"]');
+        const $purchaseForm = q$('#gift-certificate-form');
+        const $customAmounts = $purchaseForm?.querySelector('input[name="certificate_amount"]');
         const purchaseValidator = nod({
-            submit: '#gift-certificate-form input[type="submit"]',
+            submit: '#gift-certificate-form [type="submit"]',
             delay: 300,
             tap: announceInputErrorMessage,
         });
 
-        if ($customAmounts.length) {
-            const $element = $purchaseForm.find('input[name="certificate_amount"]');
-            const min = $element.data('min');
-            const minFormatted = $element.data('minFormatted');
-            const max = $element.data('max');
-            const maxFormatted = $element.data('maxFormatted');
+        if ($customAmounts) {
+            const $element = $purchaseForm.querySelector('input[name="certificate_amount"]');
+            const min = $element.dataset.min;
+            const minFormatted = $element.dataset.minFormatted;
+            const max = $element.dataset.max;
+            const maxFormatted = $element.dataset.maxFormatted;
             const insertFormattedAmountsIntoErrorMessage = (message, ...amountRange) => {
                 const amountPlaceholders = ['[MIN]', '[MAX]'];
                 let updatedErrorText = message;
@@ -125,7 +126,7 @@ export default class GiftCertificate extends PageManager {
                 selector: '#gift-certificate-form input[name="certificate_theme"]:first-of-type',
                 triggeredBy: '#gift-certificate-form input[name="certificate_theme"]',
                 validate: (cb) => {
-                    const val = $purchaseForm.find('input[name="certificate_theme"]:checked').val();
+                    const val = $purchaseForm.querySelector('input[name="certificate_theme"]:checked')?.value;
 
                     cb(typeof (val) === 'string');
                 },
@@ -134,7 +135,7 @@ export default class GiftCertificate extends PageManager {
             {
                 selector: '#gift-certificate-form input[name="agree"]',
                 validate: (cb) => {
-                    const val = $purchaseForm.find('input[name="agree"]').get(0).checked;
+                    const val = $purchaseForm.querySelector('input[name="agree"]').checked;
 
                     cb(val);
                 },
@@ -143,7 +144,7 @@ export default class GiftCertificate extends PageManager {
             {
                 selector: '#gift-certificate-form input[name="agree2"]',
                 validate: (cb) => {
-                    const val = $purchaseForm.find('input[name="agree2"]').get(0).checked;
+                    const val = $purchaseForm.querySelector('input[name="agree2"]').checked;
 
                     cb(val);
                 },
@@ -151,10 +152,10 @@ export default class GiftCertificate extends PageManager {
             },
         ]);
 
-        if ($certBalanceForm.length) {
+        if ($certBalanceForm) {
             const balanceVal = this.checkCertBalanceValidator($certBalanceForm);
 
-            $certBalanceForm.on('submit', () => {
+            $certBalanceForm.addEventListener('submit', () => {
                 balanceVal.performCheck();
 
                 if (!balanceVal.areAll('valid')) {
@@ -163,7 +164,8 @@ export default class GiftCertificate extends PageManager {
             });
         }
 
-        $purchaseForm.on('submit', event => {
+        /* eslint-disable no-unused-expressions */
+        $purchaseForm?.addEventListener('submit', event => {
             purchaseValidator.performCheck();
 
             if (!purchaseValidator.areAll('valid')) {
@@ -171,7 +173,7 @@ export default class GiftCertificate extends PageManager {
             }
         });
 
-        $('#gift-certificate-preview').click(event => {
+        q$('#gift-certificate-preview')?.addEventListener('click', event => {
             event.preventDefault();
 
             purchaseValidator.performCheck();
@@ -181,7 +183,7 @@ export default class GiftCertificate extends PageManager {
             }
 
             const modal = defaultModal();
-            const previewUrl = `${$(event.currentTarget).data('previewUrl')}&${$purchaseForm.serialize()}`;
+            const previewUrl = `${ event.currentTarget.dataset.previewUrl }&${ new URLSearchParams(new FormData($purchaseForm)) }`;
 
             modal.open();
 
@@ -197,12 +199,12 @@ export default class GiftCertificate extends PageManager {
 
     checkCertBalanceValidator($balanceForm) {
         const balanceValidator = nod({
-            submit: $balanceForm.find('input[type="submit"]'),
+            submit: $balanceForm.querySelector('[type="submit"]'),
             tap: announceInputErrorMessage,
         });
 
         balanceValidator.add({
-            selector: $balanceForm.find('input[name="giftcertificatecode"]'),
+            selector: $balanceForm.querySelector('input[name="giftcertificatecode"]'),
             validate(cb, val) {
                 cb(checkIsGiftCertValid(val));
             },
