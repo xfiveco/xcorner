@@ -169,7 +169,7 @@ export default class ProductDetailsBase {
             },
             $weight: q$('.productView-info [data-product-weight]', $scope),
             $increments: q$('.js-form-field-increments :input', $scope),
-            $addToCart: q$('#form-action-addToCart', $scope),
+            $addToCart: q$('#js-form-action-add-to-cart', $scope),
             $wishlistVariation: q$('.js-wishlist-add [name="variation_id"]', $scope),
             stock: {
                 $container: q$('.js-form-field-stock', $scope),
@@ -188,7 +188,7 @@ export default class ProductDetailsBase {
                 $input: q$('[name=qty\\[\\]]', $scope),
             },
             $bulkPricing: q$('.productView-info-bulkPricing', $scope),
-            $walletButtons: q$('[data-add-to-cart-wallet-buttons]', $scope),
+            $walletButtons: q$('.js-add-to-cart-wallet-buttons', $scope),
         };
     }
 
