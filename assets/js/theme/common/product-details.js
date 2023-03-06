@@ -35,7 +35,7 @@ export default class ProductDetails extends ProductDetailsBase {
         }
 
         this.addToCartValidator = nod({
-            submit: $form.find('input#form-action-addToCart'),
+            submit: $form.find('input#js-form-action-add-to-cart'),
             tap: announceInputErrorMessage,
         });
 
@@ -110,7 +110,7 @@ export default class ProductDetails extends ProductDetailsBase {
 
     registerAddToCartValidation() {
         this.addToCartValidator.add([{
-            selector: '[data-quantity-change] > .js-form-input-increment-total',
+            selector: '.js-quantity-change > .js-form-input-increment-total',
             validate: (cb, val) => {
                 const result = forms.numbersOnly(val);
                 cb(result);
@@ -346,7 +346,7 @@ export default class ProductDetails extends ProductDetailsBase {
      *
      */
     listenQuantityChange() {
-        this.$scope.on('click', '[data-quantity-change] button', event => {
+        this.$scope.on('click', '.js-quantity-change button', event => {
             event.preventDefault();
             const $target = $(event.currentTarget);
             const viewModel = this.getViewModel(this.$scope);
@@ -393,7 +393,7 @@ export default class ProductDetails extends ProductDetailsBase {
      *
      */
     addProductToCart(event, form) {
-        const $addToCartBtn = $('#form-action-addToCart', $(event.target));
+        const $addToCartBtn = $('#js-form-action-add-to-cart', $(event.target));
         const originalBtnVal = $addToCartBtn.val();
         const waitMessage = $addToCartBtn.data('waitMessage');
 
