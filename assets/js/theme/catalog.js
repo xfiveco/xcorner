@@ -14,7 +14,7 @@ export default class CatalogPage extends PageManager {
     }
 
     arrangeFocusOnSortBy() {
-        const $sortBySelector = q$('[data-sort-by="product"] #sort');
+        const $sortBySelector = q$('[js-sort-by="product"] #sort');
 
         if (window.localStorage.getItem('sortByStatus')) {
             $sortBySelector.focus();
