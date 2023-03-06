@@ -10,7 +10,7 @@ const modalCloseClass = 'js-modal-close';
 
 const SizeClasses = {
     small: 'is-modal-small',
-    large: 'is-modal-large',
+    large: 'js-modal-large',
     normal: '',
 };
 
