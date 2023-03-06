@@ -10,7 +10,7 @@ export default class CartItemDetails extends ProductDetailsBase {
         const $form = $('#CartEditProductFieldsForm', this.$scope);
         const $productOptionsElement = $('[data-product-attributes-wrapper]', $form);
         const hasOptions = $productOptionsElement.html().trim().length;
-        const hasDefaultOptions = $productOptionsElement.find('[data-default]').length;
+        const hasDefaultOptions = $productOptionsElement.find('.js-default').length;
 
         $productOptionsElement.on('change', () => {
             this.setProductVariant();
