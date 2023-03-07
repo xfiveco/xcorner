@@ -1,4 +1,4 @@
-import { hooks } from '@bigcommerce/stencil-utils';
+import hooks from './common/hooks';
 import CatalogPage from './catalog';
 import FacetedSearch from './common/faceted-search';
 import { announceInputErrorMessage } from './common/utils/form-utils';

@@ -1,5 +1,6 @@
 import _ from 'lodash';
 import utils from '@bigcommerce/stencil-utils';
+import hooks from '../common/hooks';
 import StencilDropDown from './stencil-dropdown';
 import q$, { q$$ } from './selector';
 import isVisible from '../common/utils/is-visible';
@@ -72,7 +73,7 @@ export default function () {
         });
     }, debounceWaitTime);
 
-    utils.hooks.on('search-quick', (event, currentTarget) => {
+    hooks.on('search-quick', (event, currentTarget) => {
         const searchQuery = currentTarget.value;
 
         // server will only perform search with at least 3 characters

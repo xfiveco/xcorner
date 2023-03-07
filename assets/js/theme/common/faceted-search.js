@@ -1,4 +1,5 @@
-import { hooks, api } from '@bigcommerce/stencil-utils';
+import { api } from '@bigcommerce/stencil-utils';
+import hooks from './hooks';
 import _ from 'lodash';
 import urlUtils from './utils/url-utils';
 import modalFactory from '../global/modal';

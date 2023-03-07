@@ -1,4 +1,4 @@
-import utils from '@bigcommerce/stencil-utils';
+import hooks from '../common/hooks';
 import q$ from './selector';
 
 /**
@@ -8,7 +8,7 @@ import q$ from './selector';
 export default function () {
     /*
     // Here you can override the default browser alert box by hooking to the 'cookie-privacy-notification' hook.
-    utils.hooks.on('cookie-privacy-notification', (event, privacyMessage) => {
+    hooks.on('cookie-privacy-notification', (event, privacyMessage) => {
         // You can make your own custom modal or alert box appear in your theme using the privacyMessage provided
         myCustomAlert(privacyMessage);
 
@@ -31,7 +31,7 @@ export default function () {
         date.setDate(date.getDate() + 365);
         document.cookie = `ACCEPT_COOKIE_USAGE=1;expires=${date.toGMTString()}; path=/`;
 
-        utils.hooks.emit('cookie-privacy-accepted');
+        hooks.emit('cookie-privacy-accepted');
 
         if ($privacyDialog !== null) {
             $privacyDialog.style.display = 'none';

@@ -1,3 +1,4 @@
+import trigger from '../common/utils/trigger';
 import { showAlertModal } from './modal';
 import q$, { q$$ } from './selector';
 
@@ -33,32 +34,34 @@ function updateCounterNav(counter, $link, urls) {
 export default function ({ noCompareMessage, urls }) {
     let compareCounter = [];
 
-    const $compareLink = q$('a[data-compare-nav]');
+    const $compareLink = q$('a.js-compare-nav');
 
-    $('body').on('compare-reset', () => {
+    q$('body').addEventListener('compare-reset', () => {
         const $checked = q$$('input[name="products\[\]"]:checked', q$('body'));
 
         compareCounter = $checked.length ? $checked.map(element => element.value) : [];
         updateCounterNav(compareCounter, $compareLink, urls);
     });
 
-    $('body').triggerHandler('compare-reset');
+    trigger(q$('body'), 'compare-reset');
 
     /* eslint-disable no-unused-expressions */
-    q$('[data-compare-id]')?.addEventListener('click', event => {
-        const product = event.currentTarget.value;
-        const $clickedCompareLink = q$('a[data-compare-nav]');
+    q$$('[data-compare-id]').forEach($compare => {
+        $compare.addEventListener('click', event => {
+            const product = event.currentTarget.value;
+            const $clickedCompareLink = q$('a.js-compare-nav');
 
-        if (event.currentTarget.checked) {
-            incrementCounter(compareCounter, product);
-        } else {
-            decrementCounter(compareCounter, product);
-        }
+            if (event.currentTarget.checked) {
+                incrementCounter(compareCounter, product);
+            } else {
+                decrementCounter(compareCounter, product);
+            }
 
-        updateCounterNav(compareCounter, $clickedCompareLink, urls);
+            updateCounterNav(compareCounter, $clickedCompareLink, urls);
+        });
     });
 
-    q$('a[data-compare-nav]').addEventListener('click', () => {
+    q$('a.js-compare-nav').addEventListener('click', () => {
         const $clickedCheckedInput = q$$('input[name="products\[\]"]:checked', q$('body'));
 
         if ($clickedCheckedInput.length <= 1) {
