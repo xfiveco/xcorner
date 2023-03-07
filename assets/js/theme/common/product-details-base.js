@@ -114,7 +114,7 @@ export default class ProductDetailsBase {
      * Check for fragment identifier in URL requesting a specific tab
      */
     getTabRequests() {
-        if (window.location.hash && window.location.hash.indexOf('#js-tab-') === 0) {
+        if (window.location.hash && window.location.hash.indexOf('#tab-') === 0) {
             const $activeTab = $('.js-tabs').has(`[href='${window.location.hash}']`);
             const $tabContent = $(`${window.location.hash}`);
 
