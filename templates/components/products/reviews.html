@@ -1,9 +1,9 @@
 {{#if reviews.total}}
-<section id="js-product-reviews">
+<section id="product-reviews">
     <h4>
         {{lang 'products.reviews.header' total=reviews.total}}
         {{#if theme_settings.show_product_reviews}}
-            <a class="js-toggle-link js-open" data-collapsible href="#js-product-reviews-content">
+            <a class="js-toggle-link is-open" data-collapsible href="#product-reviews-content">
                 <span>
                     {{lang 'products.reviews.hide'}}
                 </span>
@@ -13,7 +13,7 @@
             </a>
         {{/if}}
     </h4>
-    <div class="js-open" id="js-product-reviews-content" aria-hidden="false">
+    <div class="is-open" id="product-reviews-content" aria-hidden="false">
         <ul>
             {{#each reviews.list}}
             <li>

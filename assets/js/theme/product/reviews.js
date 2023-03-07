@@ -16,8 +16,8 @@ export default class {
 
         this.$context = $context;
         this.$reviewTabLink = q$('.js-product-view-review-tab-link', this.$context);
-        this.$reviewsContent = q$('#js-product-reviews', this.$context);
-        this.$reviewsContentList = q$('#js-product-reviews-content', this.$reviewsContent);
+        this.$reviewsContent = q$('#product-reviews', this.$context);
+        this.$reviewsContentList = q$('#product-reviews-content', this.$reviewsContent);
         this.$collapsible = q$('[data-collapsible]', this.$reviewsContent);
 
         if (this.$context) {
@@ -37,7 +37,7 @@ export default class {
     initLinkBind() {
         const $productReviewLink = q$('#productReview_link');
 
-        $productReviewLink.getAttribute('href', `${$productReviewLink.getAttribute('href')}${window.location.search}#js-product-reviews`);
+        $productReviewLink.getAttribute('href', `${$productReviewLink.getAttribute('href')}${window.location.search}#product-reviews`);
         $productReviewLink.addEventListener('click', () => this.expandReviews());
     }
 
@@ -45,7 +45,7 @@ export default class {
         // We're in paginating state, reviews should be visible
         if (
             window.location.hash
-            && window.location.hash.indexOf('#js-product-reviews') === 0
+            && window.location.hash.indexOf('#product-reviews') === 0
             && parents('.js-quick-view', this.$reviewsContent).length === 0
         ) {
             this.expandReviews();
@@ -59,7 +59,7 @@ export default class {
     expandReviews() {
         this.$reviewTabLink.click();
 
-        if (!this.$reviewsContentList.hasClass('js-open')) {
+        if (!this.$reviewsContentList.hasClass('is-open')) {
             this.$collapsible.dispatchEvent(new Event(CollapsibleEvents.click));
         }
     }
@@ -72,11 +72,11 @@ export default class {
         const $prevLink = q$('.js-pagination-item-previous .js-pagination-link', this.$reviewsContent);
 
         if ($nextLink) {
-            $nextLink.setAttribute('href', `${$nextLink.getAttribute('href')} #js-product-reviews`);
+            $nextLink.setAttribute('href', `${$nextLink.getAttribute('href')} #product-reviews`);
         }
 
         if ($prevLink) {
-            $prevLink.setAttribute('href', `${$prevLink.getAttribute('href')} #js-product-reviews`);
+            $prevLink.setAttribute('href', `${$prevLink.getAttribute('href')} #product-reviews`);
         }
     }
 
