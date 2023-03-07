@@ -8,10 +8,10 @@ export default class CartItemDetails extends ProductDetailsBase {
     constructor($scope, context, productAttributesData = {}) {
         super($scope, context);
 
-        const $form = q$('#CartEditProductFieldsForm', this.$scope);
-        const $productOptionsElement = q$('[data-product-attributes-wrapper]', $form);
-        const hasOptions = $productOptionsElement.innerHTML.trim().length;
-        const hasDefaultOptions = !!$productOptionsElement.querySelector('.js-default');
+        const $form =  q$('#cart-edit-product-fields-form', this.$scope);
+        const $productOptionsElement = q$('.js-product-attributes-wrapper', $form);
+        const hasOptions = $productOptionsElement.html().trim().length;
+        const hasDefaultOptions = $productOptionsElement.find('[data-default]').length;
 
         $productOptionsElement.addEventListener('change', () => {
             this.setProductVariant();
