@@ -1,11 +1,11 @@
 <div id="add-to-cart-wrapper" {{#unless product.can_purchase}}style="display: none"{{/unless}}>
     {{#if theme_settings.show_product_quantity_box}}
         {{inject 'productQuantityErrorMessage'  (lang 'products.quantity_error_message')}}
-        <div class="js-form-field js-form-field--increments">
+        <div class="js-form-field js-form-field-increments">
             <label for="qty[]">{{lang 'products.quantity'}}</label>
                 <div class="js-quantity-change">
                     <button class="c-button button--icon" data-action="dec">
-                        <span>{{lang 'products.quantity_decrease' name=product.title}}</span>
+                        <span class="u-hidden-visually">{{lang 'products.quantity_decrease' name=product.title}}</span>
                         <svg>
                             <use href="#icon-keyboard-arrow-down"/>
                         </svg>
@@ -21,7 +21,7 @@
                            pattern="[0-9]*"
                            aria-live="polite">
                     <button class="c-button button--icon" data-action="inc">
-                        <span>{{lang 'products.quantity_increase' name=product.title}}</span>
+                        <span class="u-hidden-visually">{{lang 'products.quantity_increase' name=product.title}}</span>
                         <svg>
                             <use href="#icon-keyboard-arrow-up"/>
                         </svg>

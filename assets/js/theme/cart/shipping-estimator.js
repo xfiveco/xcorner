@@ -105,9 +105,8 @@ export default class ShippingEstimator {
 
             event.preventDefault();
 
-            /* eslint-disable no-unused-expressions */
-            $estimatorFormUps?.classList.toggle('u-hiddenVisually');
-            $estimatorFormDefault?.classList.toggle('u-hiddenVisually');
+            $estimatorFormUps.toggleClass('u-hidden-visually');
+            $estimatorFormDefault.toggleClass('u-hidden-visually');
         });
     }
 
@@ -154,10 +153,10 @@ export default class ShippingEstimator {
 
         if (!this.isEstimatorFormOpened) {
             changeAttributesOnToggle('estimator-close');
-            $toggleContainer.classList.remove('u-hidden');
+            $toggleContainer.removeClass('u-hidden-visually');
         } else {
             changeAttributesOnToggle('estimator-add');
-            $toggleContainer.classList.add('u-hidden');
+            $toggleContainer.addClass('u-hidden-visually');
         }
         this.isEstimatorFormOpened = !this.isEstimatorFormOpened;
     }

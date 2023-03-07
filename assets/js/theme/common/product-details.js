@@ -63,7 +63,7 @@ export default class ProductDetails extends ProductDetailsBase {
         });
 
         if (context.showSwatchNames) {
-            this.$swatchOptionMessage.removeClass('u-hidden');
+            this.$swatchOptionMessage.removeClass('u-hidden-visually');
 
             $productSwatchGroup.on('change', ({ target }) => {
                 const swatchGroupElement = target.parentNode.parentNode;
