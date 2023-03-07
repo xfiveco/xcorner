@@ -39,9 +39,9 @@ export default class Search extends CatalogPage {
     }
 
     showProducts(navigate = true) {
-        this.$productListingContainer.removeClass('u-hidden');
-        this.$facetedSearchContainer.removeClass('u-hidden');
-        this.$contentResultsContainer.addClass('u-hidden');
+        this.$productListingContainer.removeClass('u-hidden-visually');
+        this.$facetedSearchContainer.removeClass('u-hidden-visually');
+        this.$contentResultsContainer.addClass('u-hidden-visually');
 
         $('[data-content-results-toggle]').removeClass('navBar-action-color--active');
         $('[data-content-results-toggle]').addClass('navBar-action');
@@ -64,9 +64,9 @@ export default class Search extends CatalogPage {
     }
 
     showContent(navigate = true) {
-        this.$contentResultsContainer.removeClass('u-hidden');
-        this.$productListingContainer.addClass('u-hidden');
-        this.$facetedSearchContainer.addClass('u-hidden');
+        this.$contentResultsContainer.removeClass('u-hidden-visually');
+        this.$productListingContainer.addClass('u-hidden-visually');
+        this.$facetedSearchContainer.addClass('u-hidden-visually');
 
         $('[data-product-results-toggle]').removeClass('navBar-action-color--active');
         $('[data-product-results-toggle]').addClass('navBar-action');

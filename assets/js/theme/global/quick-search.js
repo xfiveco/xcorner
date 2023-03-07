@@ -57,7 +57,7 @@ export default function () {
                 }));
             } else {
                 const $quickSearchAriaMessage = $quickSearchResultsCurrent.map($el => $el.nextElementSibling);
-                $noResultsMessage.forEach($nrm => $nrm.classList.add('u-hidden'));
+                $noResultsMessage.forEach($nrm => $nrm.classList.add('u-hidden-visually'));
 
                 const predefinedText = $quickSearchAriaMessage[0].dataset.searchAriaMessagePredefinedText;
                 const itemsFoundCount = $quickSearchResultsCurrent[0].querySelectorAll('.js-product').length;
@@ -66,7 +66,7 @@ export default function () {
                 $quickSearchAriaMessage.forEach($el => ($el.textContent = `${itemsFoundCount} ${predefinedText} ${searchQuery}`));
 
                 setTimeout(() => {
-                    $quickSearchAriaMessage.forEach($el => $el.classList.remove('u-hidden'));
+                    $quickSearchAriaMessage.forEach($el => $el.classList.remove('u-hidden-visually'));
                 }, 100);
             }
         });
