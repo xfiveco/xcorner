@@ -17,7 +17,7 @@ export default class {
         this.$context = $context;
         this.$reviewTabLink = q$('.js-product-view-review-tab-link', this.$context);
         this.$reviewsContent = q$('#product-reviews', this.$context);
-        this.$reviewsContentList = q$('#productReviews-content', this.$reviewsContent);
+        this.$reviewsContentList = q$('#product-reviews-content', this.$reviewsContent);
         this.$collapsible = q$('[data-collapsible]', this.$reviewsContent);
 
         if (this.$context) {
