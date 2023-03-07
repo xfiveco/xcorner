@@ -6,10 +6,15 @@ import creditcards from 'creditcards';
  * @returns {Object}
  */
 const omitNullString = obj => {
-    const refArray = Object.entries(obj)
-        .filter(([, value]) => !(value === null || value === ''));
+    const refObj = obj;
 
-    return Object.fromEntries(refArray);
+    $.each(refObj, (key, value) => {
+        if (value === null || value === '') {
+            delete refObj[key];
+        }
+    });
+
+    return refObj;
 };
 
 /**
@@ -60,15 +65,17 @@ export const storeInstrument = ({
 }, done, fail) => {
     const expiry = expiration.split('/');
 
-    fetch(`${paymentsUrl}/stores/${storeHash}/customers/${shopperId}/stored_instruments`, {
+    $.ajax({
+        url: `${paymentsUrl}/stores/${storeHash}/customers/${shopperId}/stored_instruments`,
+        dataType: 'json',
         method: 'POST',
-        cache: 'no-cache',
+        cache: false,
         headers: {
             Authorization: vaultToken,
             Accept: 'application/vnd.bc.v1+json',
             'Content-Type': 'application/vnd.bc.v1+json',
         },
-        body: JSON.stringify({
+        data: JSON.stringify({
             instrument: {
                 type: 'card',
                 cardholder_name: name_on_card,
@@ -95,9 +102,8 @@ export const storeInstrument = ({
             currency_code,
         }),
     })
-        .then(response => response.json())
-        .then(done)
-        .catch(fail);
+        .done(done)
+        .fail(fail);
 };
 
 export const Formatters = {
@@ -107,7 +113,7 @@ export const Formatters = {
      */
     setCreditCardNumberFormat: field => {
         if (field) {
-            field.addEventListener('keyup', ({ target }) => {
+            $(field).on('keyup', ({ target }) => {
                 const refTarget = target;
                 refTarget.value = creditcards.card.format(creditcards.card.parse(target.value));
             });
@@ -120,7 +126,7 @@ export const Formatters = {
      */
     setExpirationFormat: field => {
         if (field) {
-            field.addEventListener('keyup', ({ target, which }) => {
+            $(field).on('keyup', ({ target, which }) => {
                 const refTarget = target;
                 if (which === 8 && /.*(\/)$/.test(target.value)) {
                     refTarget.value = target.value.slice(0, -1);

@@ -1,4 +1,3 @@
-import { q$$ } from '../global/selector';
 import { createTranslationDictionary } from './utils/translations-utils';
 
 /**
@@ -11,7 +10,7 @@ function buildDateValidation($formField, validation, requiredMessage) {
     // No date range restriction, skip
     if (validation.min_date && validation.max_date) {
         const invalidMessage = `Your chosen date must fall between ${validation.min_date} and ${validation.max_date}.`;
-        const formElementId = $formField.id;
+        const formElementId = $formField.attr('id');
         const minSplit = validation.min_date.split('-');
         const maxSplit = validation.max_date.split('-');
         const minDate = new Date(minSplit[0], minSplit[1] - 1, minSplit[2]);
@@ -21,8 +20,8 @@ function buildDateValidation($formField, validation, requiredMessage) {
             selector: `#${formElementId} select[data-label="year"]`,
             triggeredBy: `#${formElementId} select:not([data-label="year"])`,
             validate: (cb, val) => {
-                const day = Number($formField.querySelector('select[data-label="day"]').value);
-                const month = Number($formField.querySelector('select[data-label="month"]').value) - 1;
+                const day = Number($formField.find('select[data-label="day"]').val());
+                const month = Number($formField.find('select[data-label="month"]').val()) - 1;
                 const year = Number(val);
                 const chosenDate = new Date(year, month, day);
 
@@ -31,17 +30,16 @@ function buildDateValidation($formField, validation, requiredMessage) {
             errorMessage: invalidMessage,
         };
     }
-
     // Required Empty Date field
     if (validation.required && (!validation.min_date || !validation.max_date)) {
-        const formElementId = $formField.id;
+        const formElementId = $formField.attr('id');
 
         return {
             selector: `#${formElementId} select[data-label="year"]`,
             triggeredBy: `#${formElementId} select:not([data-label="year"])`,
             validate: (cb, val) => {
-                const day = $formField.querySelector('select[data-label="day"]').value;
-                const month = $formField.querySelector('select[data-label="month"]').value;
+                const day = $formField.find('select[data-label="day"]').val();
+                const month = $formField.find('select[data-label="month"]').val();
                 const year = val;
 
                 cb(day && month && year);
@@ -59,7 +57,7 @@ function buildDateValidation($formField, validation, requiredMessage) {
  * @param errorText provides error validation message
  */
 function buildRequiredCheckboxValidation(validation, $formField, errorText) {
-    const formFieldId = $formField.id;
+    const formFieldId = $formField.attr('id');
     const primarySelector = `#${formFieldId} input:first-of-type`;
     const secondarySelector = `#${formFieldId} input`;
 
@@ -69,8 +67,8 @@ function buildRequiredCheckboxValidation(validation, $formField, errorText) {
         validate: (cb) => {
             let result = false;
 
-            q$$(secondarySelector).forEach($checkbox => {
-                if ($checkbox.checked) {
+            $(secondarySelector).each((index, checkbox) => {
+                if (checkbox.checked) {
                     result = true;
 
                     return false;
@@ -111,9 +109,9 @@ function buildNumberRangeValidation(validation, formFieldSelector) {
 
 
 function buildValidation($validateableElement, errorMessage) {
-    const validation = JSON.parse($validateableElement.dataset.validation);
+    const validation = $validateableElement.data('validation');
     const fieldValidations = [];
-    const formFieldSelector = `#${ $validateableElement.id }`;
+    const formFieldSelector = `#${$validateableElement.attr('id')}`;
 
     if (validation.type === 'datechooser') {
         const dateValidation = buildDateValidation($validateableElement, validation, errorMessage);
@@ -124,21 +122,18 @@ function buildValidation($validateableElement, errorMessage) {
     } else if (validation.required && (validation.type === 'checkboxselect' || validation.type === 'radioselect')) {
         fieldValidations.push(buildRequiredCheckboxValidation(validation, $validateableElement, errorMessage));
     } else {
-        'input, select, textarea'.split(', ').forEach(selector => {
-            q$$(selector, $validateableElement).forEach($element => {
-                const $inputElement = $element;
-                const tagName = $inputElement.tagName;
-                const inputName = $inputElement.getAttribute('name');
-                const elementSelector = `${formFieldSelector} ${tagName}[name="${inputName}"]`;
+        $validateableElement.find('input, select, textarea').each((index, element) => {
+            const $inputElement = $(element);
+            const tagName = $inputElement.get(0).tagName;
+            const inputName = $inputElement.attr('name');
+            const elementSelector = `${formFieldSelector} ${tagName}[name="${inputName}"]`;
 
-                if (validation.type === 'numberonly') {
-                    fieldValidations.push(buildNumberRangeValidation(validation, formFieldSelector));
-                }
-
-                if (validation.required) {
-                    fieldValidations.push(buildRequiredValidation(validation, elementSelector, errorMessage));
-                }
-            });
+            if (validation.type === 'numberonly') {
+                fieldValidations.push(buildNumberRangeValidation(validation, formFieldSelector));
+            }
+            if (validation.required) {
+                fieldValidations.push(buildRequiredValidation(validation, elementSelector, errorMessage));
+            }
         });
     }
 
@@ -155,17 +150,11 @@ export default function ($form, context) {
     let validationsToPerform = [];
     const { field_not_blank: requiredFieldValidationText } = createTranslationDictionary(context);
 
-    q$$('[data-validation]', $form).forEach($input => {
-        const getLabel = $el => {
-            try {
-                return JSON.parse($el.dataset.validation).label;
-                /* eslint-disable no-console */
-            } catch (err) { console.log(err, 'Trying to parse data-validation'); }
-        };
+    $form.find('[data-validation]').each((index, input) => {
+        const getLabel = $el => $el.first().data('validation').label;
+        const requiredValidationMessage = getLabel($(input)) + requiredFieldValidationText;
 
-        const requiredValidationMessage = getLabel($input) + requiredFieldValidationText;
-
-        validationsToPerform = validationsToPerform.concat(buildValidation($input, requiredValidationMessage));
+        validationsToPerform = validationsToPerform.concat(buildValidation($(input), requiredValidationMessage));
     });
 
     return validationsToPerform;
