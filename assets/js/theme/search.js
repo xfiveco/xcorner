@@ -151,7 +151,7 @@ export default class Search extends CatalogPage {
             this.initFacetedSearch();
         } else {
             this.onSortBySubmit = this.onSortBySubmit.bind(this);
-            hooks.on('sortBy-submitted', this.onSortBySubmit);
+            hooks.on('sort-by-submitted', this.onSortBySubmit);
         }
 
         // Init collapsibles
@@ -206,7 +206,7 @@ export default class Search extends CatalogPage {
         });
 
         const $searchResultsMessage = $(`<p
-            class="aria-description--hidden"
+            class="aria-description-hidden"
             tabindex="-1"
             role="status"
             aria-live="polite"

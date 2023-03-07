@@ -18,7 +18,7 @@ export default class Category extends CatalogPage {
     }
 
     makeShopByPriceFilterAccessible() {
-        if (q$('[data-shop-by-price]') === null) return;
+        if (q$('.js-shop-by-price') === null) return;
 
         const navListAction = $('.js-nav-list-action');
 
@@ -44,7 +44,7 @@ export default class Category extends CatalogPage {
             this.initFacetedSearch();
         } else {
             this.onSortBySubmit = this.onSortBySubmit.bind(this);
-            hooks.on('sortBy-submitted', this.onSortBySubmit);
+            hooks.on('sort-by-submitted', this.onSortBySubmit);
         }
 
         $('.js-action-reset').on('click', () => this.setLiveRegionsAttributes($('.js-price-reset-message'), 'status', 'polite'));
