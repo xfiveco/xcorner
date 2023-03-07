@@ -1,15 +1,9 @@
 {{#partial "page"}}
-    <section>
-        <div>
-            <h1>
-                {{lang 'create_account.created.heading'}}
-            </h1>
-            <p>
-                {{lang 'create_account.created.intro' store_name=settings.store_name email=customer.email}}
-            </p>
-            <a class="c-button c-button--primary" href="{{create_account.continue_url}}">
-                {{lang 'create_account.created.continue'}}
-            </a>
+    <section class="page">
+        <div class="page-content page-content--textCenter">
+            <h1 class="page-heading">{{lang 'create_account.created.heading'}}</h1>
+            <p>{{lang 'create_account.created.intro' store_name=settings.store_name email=customer.email}}</p>
+            <a class="c-button c-button--primary" href="{{create_account.continue_url}}">{{lang 'create_account.created.continue'}}</a>
         </div>
     </section>
 {{/partial}}

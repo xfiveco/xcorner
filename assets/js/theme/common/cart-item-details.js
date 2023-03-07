@@ -138,6 +138,6 @@ export default class CartItemDetails extends ProductDetailsBase {
     updateProductAttributes(data) {
         super.updateProductAttributes(data);
 
-        this.$scope.find('.js-modal-content').removeClass('hide-content');
+        this.$scope.find('.is-modal-content').removeClass('hide-content');
     }
 }
