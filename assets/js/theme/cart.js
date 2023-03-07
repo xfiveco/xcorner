@@ -400,7 +400,7 @@ export default class Cart extends PageManager {
     }
 
     bindGiftWrappingForm() {
-        q$('.giftWrapping-select').addEventListener('change', event => {
+        q$('.js-gift-wrapping-select').addEventListener('change', event => {
             const $select = event.currentTarget;
             const id = $select.value;
             const index = $select.dataset.index;
@@ -421,12 +421,12 @@ export default class Cart extends PageManager {
             }
         });
 
-        trigger(q$('.giftWrapping-select'), 'change');
+        trigger(q$('.js-gift-wrapping-select'), 'change');
 
         function toggleViews() {
             const value = q$('input[name ="giftwraptype"]:checked').value;
-            const $singleForm = q$('.giftWrapping-single');
-            const $multiForm = q$('.giftWrapping-multiple');
+            const $singleForm = q$('.js-gift-wrapping-single');
+            const $multiForm = q$('.js-gift-wrapping-multiple');
 
             try {
                 if (value === 'same') {
