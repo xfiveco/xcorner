@@ -115,11 +115,11 @@ export default class ProductDetailsBase {
      */
     getTabRequests() {
         if (window.location.hash && window.location.hash.indexOf('#tab-') === 0) {
-            const $activeTab = $('.tabs').has(`[href='${window.location.hash}']`);
+            const $activeTab = $('.js-tabs').has(`[href='${window.location.hash}']`);
             const $tabContent = $(`${window.location.hash}`);
 
             if ($activeTab.length > 0) {
-                $activeTab.find('.tab')
+                $activeTab.find('.js-tab')
                     .removeClass('is-active')
                     .has(`[href='${window.location.hash}']`)
                     .addClass('is-active');
