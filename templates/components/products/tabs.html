@@ -1,6 +1,6 @@
 <ul class="js-tabs" role="tablist">
     {{#if product.related_products}}
-        <li class="js-tab js-active" role="presentation">
+        <li class="js-tab is-active" role="presentation">
             <a 
                 href="#tab-related" 
                 role="tab" 
@@ -12,7 +12,7 @@
         </li>
     {{/if}}
     {{#if product.similar_by_views}}
-        <li class="js-tab {{#unless product.related_products}}js-active{{/unless}}" role="presentation">
+        <li class="js-tab {{#unless product.related_products}}is-active{{/unless}}" role="presentation">
             <a 
                 href="#tab-similar"
                 role="tab" 
@@ -30,7 +30,7 @@
     <div 
         role="tabpanel" 
         aria-hidden="false" 
-        class="js-active" 
+        class="is-active" 
         id="tab-related">
         {{#if settings.data_tag_enabled}}
             {{> components/products/carousel products=product.related_products columns=6 list="Related Products"}}
@@ -44,7 +44,7 @@
     <div 
         role="tabpanel"
         aria-hidden="{{#if product.related_products}}true{{else}}false{{/if}}" 
-        class="{{#unless product.related_products}}js-active{{/unless}}" 
+        class="{{#unless product.related_products}}is-active{{/unless}}" 
         id="tab-similar">
         {{> components/products/carousel products=product.similar_by_views columns=6 list="Customers Also Viewed"}}
     </div>

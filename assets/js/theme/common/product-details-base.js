@@ -120,13 +120,13 @@ export default class ProductDetailsBase {
 
             if ($activeTab.length > 0) {
                 $activeTab.find('.js-tab')
-                    .removeClass('js-active')
+                    .removeClass('is-active')
                     .has(`[href='${window.location.hash}']`)
-                    .addClass('js-active');
+                    .addClass('is-active');
 
-                $tabContent.addClass('js-active')
+                $tabContent.addClass('is-active')
                     .siblings()
-                    .removeClass('js-active');
+                    .removeClass('is-active');
             }
         }
     }

@@ -17,7 +17,7 @@ export default function ($element) {
             close_on_background_click: true,
         },
         tab: {
-            active_class: 'js-active',
+            active_class: 'is-active',
         },
     });
 
