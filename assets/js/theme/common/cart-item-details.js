@@ -2,17 +2,18 @@ import utils from '@bigcommerce/stencil-utils';
 import ProductDetailsBase, { optionChangeDecorator } from './product-details-base';
 import { isEmpty } from 'lodash';
 import { isBrowserIE, convertIntoArray } from './utils/ie-helpers';
+import q$, { q$$ } from '../global/selector';
 
 export default class CartItemDetails extends ProductDetailsBase {
     constructor($scope, context, productAttributesData = {}) {
         super($scope, context);
 
-        const $form = $('#CartEditProductFieldsForm', this.$scope);
-        const $productOptionsElement = $('[data-product-attributes-wrapper]', $form);
-        const hasOptions = $productOptionsElement.html().trim().length;
-        const hasDefaultOptions = $productOptionsElement.find('.js-default').length;
+        const $form = q$('#CartEditProductFieldsForm', this.$scope);
+        const $productOptionsElement = q$('[data-product-attributes-wrapper]', $form);
+        const hasOptions = $productOptionsElement.innerHTML.trim().length;
+        const hasDefaultOptions = !!$productOptionsElement.querySelector('.js-default');
 
-        $productOptionsElement.on('change', () => {
+        $productOptionsElement.addEventListener('change', () => {
             this.setProductVariant();
         });
 
@@ -23,7 +24,7 @@ export default class CartItemDetails extends ProductDetailsBase {
         if ((isEmpty(productAttributesData) || hasDefaultOptions) && hasOptions) {
             const productId = this.context.productForChangeId;
 
-            utils.api.productAttributes.optionChange(productId, $form.serialize(), 'products/bulk-discount-rates', optionChangeCallback);
+            utils.api.productAttributes.optionChange(productId, Object.fromEntries(new FormData($form)), 'products/bulk-discount-rates', optionChangeCallback);
         } else {
             this.updateProductAttributes(productAttributesData);
         }
@@ -33,17 +34,17 @@ export default class CartItemDetails extends ProductDetailsBase {
         const unsatisfiedRequiredFields = [];
         const options = [];
 
-        $.each($('[data-product-attribute]'), (index, value) => {
+        q$$('[data-product-attribute]').forEach(value => {
             const optionLabel = value.children[0].innerText;
             const optionTitle = optionLabel.split(':')[0].trim();
             const required = optionLabel.toLowerCase().includes('required');
             const type = value.getAttribute('data-product-attribute');
 
-            if ((type === 'input-file' || type === 'input-text' || type === 'input-number') && value.querySelector('input').value === '' && required) {
+            if ((type === 'input-file' || type === 'input-text' || type === 'input-number') && value.querySelector('input')?.value === '' && required) {
                 unsatisfiedRequiredFields.push(value);
             }
 
-            if (type === 'textarea' && value.querySelector('textarea').value === '' && required) {
+            if (type === 'textarea' && value.querySelector('textarea')?.value === '' && required) {
                 unsatisfiedRequiredFields.push(value);
             }
 
@@ -51,7 +52,11 @@ export default class CartItemDetails extends ProductDetailsBase {
                 const isSatisfied = Array.from(value.querySelectorAll('select')).every((select) => select.selectedIndex !== 0);
 
                 if (isSatisfied) {
-                    const dateString = Array.from(value.querySelectorAll('select')).map((x) => x.value).join('-');
+                    const dateString = Array
+                        .from(value.querySelectorAll('select'))
+                        .map((x) => x.value)
+                        .join('-');
+
                     options.push(`${optionTitle}:${dateString}`);
 
                     return;
@@ -117,16 +122,16 @@ export default class CartItemDetails extends ProductDetailsBase {
         });
 
         let productVariant = unsatisfiedRequiredFields.length === 0 ? options.sort().join(', ') : 'unsatisfied';
-        const view = $('.js-modal-header-title');
+        const view = q$('.js-modal-header-title');
 
         if (productVariant) {
             productVariant = productVariant === 'unsatisfied' ? '' : productVariant;
-            if (view.attr('data-event-type')) {
-                view.attr('data-product-variant', productVariant);
+            if (view.getAttribute('data-event-type')) {
+                view.dataset.productVariant = productVariant;
             } else {
-                const productName = view.html().match(/'(.*?)'/)[1];
-                const card = $(`[data-name="${productName}"]`);
-                card.attr('data-product-variant', productVariant);
+                const productName = view.innerHTML.match(/'(.*?)'/)[1];
+                const card = q$(`[data-name="${productName}"]`);
+                card.dataset.productVariant = productVariant;
             }
         }
     }
@@ -138,6 +143,7 @@ export default class CartItemDetails extends ProductDetailsBase {
     updateProductAttributes(data) {
         super.updateProductAttributes(data);
 
-        this.$scope.find('.is-modal-content').removeClass('hide-content');
+        /* eslint-disable no-unused-expressions */
+        this.$scope?.querySelector('.js-modal-content')?.classList.remove('hide-content');
     }
 }

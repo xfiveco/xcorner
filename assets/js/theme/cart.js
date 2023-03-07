@@ -6,17 +6,20 @@ import utils from '@bigcommerce/stencil-utils';
 import ShippingEstimator from './cart/shipping-estimator';
 import { defaultModal, showAlertModal, ModalEvents } from './global/modal';
 import CartItemDetails from './common/cart-item-details';
+import q$, { q$$ } from './global/selector';
+import trigger from './common/utils/trigger';
+import toggle from './global/toggle';
 
 export default class Cart extends PageManager {
     onReady() {
         this.$modal = null;
-        this.$cartPageContent = $('[data-cart]');
-        this.$cartContent = $('[data-cart-content]');
-        this.$cartMessages = $('[data-cart-status]');
-        this.$cartTotals = $('[data-cart-totals]');
-        this.$cartAdditionalCheckoutBtns = $('[data-cart-additional-checkout-buttons]');
-        this.$overlay = $('[data-cart] .is-loading-overlay')
-            .hide(); // TODO: temporary until roper pulls in his cart components
+        this.$cartPageContent = q$('.js-cart');
+        this.$cartContent = q$('.js-cart-content');
+        this.$cartMessages = q$('.js-cart-status');
+        this.$cartTotals = q$('.js-cart-totals');
+        this.$cartAdditionalCheckoutBtns = q$('.js-cart-additional-checkout-buttons');
+        this.$overlay = q$('.js-cart .js-loading-overlay');
+        this.$overlay.style.display = 'none'; // TODO: temporary until roper pulls in his cart components
         this.$activeCartItemId = null;
         this.$activeCartItemBtnAction = null;
 
@@ -26,22 +29,22 @@ export default class Cart extends PageManager {
 
     setApplePaySupport() {
         if (window.ApplePaySession) {
-            this.$cartPageContent.addClass('js-apple-pay-supported');
+            this.$cartPageContent.classList.add('js-apple-pay-supported');
         }
     }
 
     cartUpdate($target) {
-        const itemId = $target.data('cartItemid');
+        const itemId = $target.dataset.cartItemid;
         this.$activeCartItemId = itemId;
-        this.$activeCartItemBtnAction = $target.data('action');
+        this.$activeCartItemBtnAction = $target.dataset.action;
 
-        const $el = $(`#qty-${itemId}`);
-        const oldQty = parseInt($el.val(), 10);
-        const maxQty = parseInt($el.data('quantityMax'), 10);
-        const minQty = parseInt($el.data('quantityMin'), 10);
-        const minError = $el.data('quantityMinError');
-        const maxError = $el.data('quantityMaxError');
-        const newQty = $target.data('action') === 'inc' ? oldQty + 1 : oldQty - 1;
+        const $el = q$(`#qty-${itemId}`);
+        const oldQty = parseInt($el.value, 10);
+        const maxQty = parseInt($el.dataset.quantityMax, 10);
+        const minQty = parseInt($el.dataset.quantityMin, 10);
+        const minError = $el.dataset.quantityMinError;
+        const maxError = $el.dataset.quantityMaxError;
+        const newQty = $target.dataset.action === 'inc' ? oldQty + 1 : oldQty - 1;
         // Does not quality for min/max quantity
         if (newQty < minQty) {
             return showAlertModal(minError);
@@ -49,10 +52,10 @@ export default class Cart extends PageManager {
             return showAlertModal(maxError);
         }
 
-        this.$overlay.show();
+        this.$overlay.style.display = 'block';
 
         utils.api.cart.itemUpdate(itemId, newQty, (err, response) => {
-            this.$overlay.hide();
+            this.$overlay.style.display = 'block';
 
             if (response.data.status === 'succeed') {
                 // if the quantity is changed "1" from "0", we have to remove the row.
@@ -60,39 +63,39 @@ export default class Cart extends PageManager {
 
                 this.refreshContent(remove);
             } else {
-                $el.val(oldQty);
+                $el.value = oldQty;
                 showAlertModal(response.data.errors.join('\n'));
             }
         });
     }
 
     cartUpdateQtyTextChange($target, preVal = null) {
-        const itemId = $target.data('cartItemid');
-        const $el = $(`#qty-${itemId}`);
-        const maxQty = parseInt($el.data('quantityMax'), 10);
-        const minQty = parseInt($el.data('quantityMin'), 10);
+        const itemId = $target.dataset.cartItemid;
+        const $el = q$(`#qty-${itemId}`);
+        const maxQty = parseInt($el.dataset.quantityMax, 10);
+        const minQty = parseInt($el.dataset.quantityMin, 10);
         const oldQty = preVal !== null ? preVal : minQty;
-        const minError = $el.data('quantityMinError');
-        const maxError = $el.data('quantityMaxError');
-        const newQty = parseInt(Number($el.val()), 10);
+        const minError = $el.dataset.quantityMinError;
+        const maxError = $el.dataset.quantityMaxError;
+        const newQty = parseInt(Number($el.value), 10);
         let invalidEntry;
 
         // Does not quality for min/max quantity
         if (!Number.isInteger(newQty)) {
-            invalidEntry = $el.val();
-            $el.val(oldQty);
+            invalidEntry = $el.value;
+            $el.value = oldQty;
             return showAlertModal(this.context.invalidEntryMessage.replace('[ENTRY]', invalidEntry));
         } else if (newQty < minQty) {
-            $el.val(oldQty);
+            $el.value = oldQty;
             return showAlertModal(minError);
         } else if (maxQty > 0 && newQty > maxQty) {
-            $el.val(oldQty);
+            $el.value = oldQty;
             return showAlertModal(maxError);
         }
 
-        this.$overlay.show();
+        this.$overlay.style.display = 'block';
         utils.api.cart.itemUpdate(itemId, newQty, (err, response) => {
-            this.$overlay.hide();
+            this.$overlay.style.display = 'none';
 
             if (response.data.status === 'succeed') {
                 // if the quantity is changed "1" from "0", we have to remove the row.
@@ -100,7 +103,7 @@ export default class Cart extends PageManager {
 
                 this.refreshContent(remove);
             } else {
-                $el.val(oldQty);
+                $el.value = oldQty;
 
                 return showAlertModal(response.data.errors.join('\n'));
             }
@@ -108,12 +111,12 @@ export default class Cart extends PageManager {
     }
 
     cartRemoveItem(itemId) {
-        this.$overlay.show();
+        this.$overlay.style.display = 'block';
         utils.api.cart.itemRemove(itemId, (err, response) => {
             if (response.data.status === 'succeed') {
                 this.refreshContent(true);
             } else {
-                this.$overlay.hide();
+                this.$overlay.style.display = 'none';
                 showAlertModal(response.data.errors.join('\n'));
             }
         });
@@ -124,7 +127,7 @@ export default class Cart extends PageManager {
         const modal = defaultModal();
 
         if (this.$modal === null) {
-            this.$modal = $('#modal');
+            this.$modal = q$('#modal');
         }
 
         const options = {
@@ -132,23 +135,24 @@ export default class Cart extends PageManager {
         };
 
         modal.open();
-        this.$modal.find('.is-modal-content').addClass('hide-content');
+        /* eslint-disable no-unused-expressions */
+        this.$modal.querySelector('.js-modal-content')?.classList.add('hide-content');
 
         utils.api.productAttributes.configureInCart(itemId, options, (err, response) => {
             modal.updateContent(response.content);
             const optionChangeHandler = () => {
-                const $productOptionsContainer = $('[data-product-attributes-wrapper]', this.$modal);
-                const modalBodyReservedHeight = $productOptionsContainer.outerHeight();
+                const $productOptionsContainer = q$('[data-product-attributes-wrapper]', this.$modal);
+                const modalBodyReservedHeight = $productOptionsContainer?.getBoundingClientRect().height;
 
-                if ($productOptionsContainer.length && modalBodyReservedHeight) {
-                    $productOptionsContainer.css('height', modalBodyReservedHeight);
+                if ($productOptionsContainer && modalBodyReservedHeight) {
+                    $productOptionsContainer.style.height = modalBodyReservedHeight;
                 }
             };
 
-            if (this.$modal.hasClass('open')) {
+            if (this.$modal.classList.contains('open')) {
                 optionChangeHandler();
             } else {
-                this.$modal.one(ModalEvents.opened, optionChangeHandler);
+                this.$modal.addEventListener(ModalEvents.opened, optionChangeHandler, { once: true });
             }
 
             this.productDetails = new CartItemDetails(this.$modal, context);
@@ -157,11 +161,11 @@ export default class Cart extends PageManager {
         });
 
         utils.hooks.on('product-option-change', (event, currentTarget) => {
-            const $form = $(currentTarget).find('form');
-            const $submit = $('input.c-button', $form);
-            const $messageBox = $('.alertMessageBox');
+            const $form = currentTarget.querySelector('form');
+            const $submit = q$('c-button', $form);
+            const $messageBox = q$('.js-alert-message-box');
 
-            utils.api.productAttributes.optionChange(productId, $form.serialize(), (err, result) => {
+            utils.api.productAttributes.optionChange(productId, Object.fromEntries(new FormData($form)), (err, result) => {
                 const data = result.data || {};
 
                 if (err) {
@@ -170,26 +174,26 @@ export default class Cart extends PageManager {
                 }
 
                 if (data.purchasing_message) {
-                    $('.js-alert-box-message', $messageBox).text(data.purchasing_message);
-                    $submit.prop('disabled', true);
-                    $messageBox.show();
+                    q$('.js-alert-box-message', $messageBox).textContent = data.purchasing_message;
+                    $submit.disabled = true;
+                    $messageBox.style.display = 'block';
                 } else {
-                    $submit.prop('disabled', false);
-                    $messageBox.hide();
+                    $submit.disabled = false;
+                    $messageBox.style.display = 'none';
                 }
 
                 if (!data.purchasable || !data.instock) {
-                    $submit.prop('disabled', true);
+                    $submit.disabled = true;
                 } else {
-                    $submit.prop('disabled', false);
+                    $submit.disabled = false;
                 }
             });
         });
     }
 
     refreshContent(remove) {
-        const $cartItemsRows = $('[data-item-row]', this.$cartContent);
-        const $cartPageTitle = $('[data-cart-page-title]');
+        const $cartItemsRows = q$$('.js-item-row', this.$cartContent);
+        const $cartPageTitle = q$('.js-cart-page-title');
         const options = {
             template: {
                 content: 'cart/content',
@@ -200,7 +204,7 @@ export default class Cart extends PageManager {
             },
         };
 
-        this.$overlay.show();
+        this.$overlay.style.display = 'block';
 
         // Remove last item from cart? Reload
         if (remove && $cartItemsRows.length === 1) {
@@ -208,22 +212,25 @@ export default class Cart extends PageManager {
         }
 
         utils.api.cart.getContent(options, (err, response) => {
-            this.$cartContent.html(response.content);
-            this.$cartTotals.html(response.totals);
-            this.$cartMessages.html(response.statusMessages);
-            this.$cartAdditionalCheckoutBtns.html(response.additionalCheckoutButtons);
+            this.$cartContent.innerHTML = response.content;
+            this.$cartTotals.innerHTML = response.totals;
+            this.$cartMessages.innerHTML = response.statusMessages;
+            this.$cartAdditionalCheckoutBtns.innerHTML = response.additionalCheckoutButtons;
 
             $cartPageTitle.replaceWith(response.pageTitle);
             this.bindEvents();
-            this.$overlay.hide();
+            this.$overlay.style.display = 'none';
 
-            const quantity = $('[data-cart-quantity]', this.$cartContent).data('cartQuantity') || 0;
+            const quantity = q$('[data-cart-quantity]', this.$cartContent).dataset.cartQuantity || 0;
 
-            $('body').trigger('cart-quantity-update', quantity);
+            trigger(q$('body'), 'cart-quantity-update', quantity);
 
-            $(`[data-cart-itemid='${this.$activeCartItemId}']`, this.$cartContent)
-                .filter(`[data-action='${this.$activeCartItemBtnAction}']`)
-                .trigger('focus');
+            const $foundItem = q$$(`[data-cart-itemid='${this.$activeCartItemId}']`, this.$cartContent)
+                .filter($cartItem => $cartItem.matches(`[data-action='${this.$activeCartItemBtnAction}']`));
+
+            if ($foundItem.length > 0) {
+                trigger($foundItem, 'focus');
+            }
         });
     }
 
@@ -235,8 +242,8 @@ export default class Cart extends PageManager {
         let preVal;
 
         // cart update
-        $('[data-cart-update]', this.$cartContent).on('click', event => {
-            const $target = $(event.currentTarget);
+        q$('.js-cart-update', this.$cartContent).addEventListener('click', event => {
+            const $target = event.currentTarget;
 
             event.preventDefault();
 
@@ -245,73 +252,83 @@ export default class Cart extends PageManager {
         });
 
         // cart qty manually updates
-        $('.cart-item-qty-input', this.$cartContent).on('focus', function onQtyFocus() {
-            preVal = this.value;
-        }).change(event => {
-            const $target = $(event.currentTarget);
-            event.preventDefault();
-
-            // update cart quantity
-            cartUpdateQtyTextChange($target, preVal);
-        });
-
-        $('.cart-remove', this.$cartContent).on('click', event => {
-            const itemId = $(event.currentTarget).data('cartItemid');
-            const string = $(event.currentTarget).data('confirmDelete');
-            showAlertModal(string, {
-                icon: 'warning',
-                showCancelButton: true,
-                onConfirm: () => {
-                    // remove item from cart
-                    cartRemoveItem(itemId);
-                },
+        q$$('.js-cart-item-qty-input', this.$cartContent).forEach($input => {
+            $input.addEventListener('focus', function onQtyFocus() {
+                preVal = this.value;
             });
-            event.preventDefault();
+
+            $input.addEventListener('change', event => {
+                const $target = event.currentTarget;
+                event.preventDefault();
+
+                // update cart quantity
+                cartUpdateQtyTextChange($target, preVal);
+            });
         });
 
-        $('[data-item-edit]', this.$cartContent).on('click', event => {
-            const itemId = $(event.currentTarget).data('itemEdit');
-            const productId = $(event.currentTarget).data('productId');
-            event.preventDefault();
-            // edit item in cart
-            this.cartEditOptions(itemId, productId);
+        q$$('.js-cart-remove', this.$cartContent).forEach($remove => {
+            $remove.addEventListener('click', event => {
+                const itemId = event.currentTarget.dataset.cartItemid;
+                const string = event.currentTarget.dataset.confirmDelete;
+
+                showAlertModal(string, {
+                    icon: 'warning',
+                    showCancelButton: true,
+                    onConfirm: () => {
+                        // remove item from cart
+                        cartRemoveItem(itemId);
+                    },
+                });
+                event.preventDefault();
+            });
+        });
+
+        q$$('[data-item-edit]', this.$cartContent).forEach($edit => {
+            $edit.addEventListener('click', event => {
+                const itemId = event.currentTarget.dataset.itemEdit;
+                const productId = event.currentTarget.dataset.productId;
+                event.preventDefault();
+                // edit item in cart
+                this.cartEditOptions(itemId, productId);
+            });
         });
     }
 
     bindPromoCodeEvents() {
-        const $couponContainer = $('.coupon-code');
-        const $couponForm = $('.coupon-form');
-        const $codeInput = $('[name="couponcode"]', $couponForm);
+        const $couponContainer = q$('.js-coupon-code');
+        const $couponForm = q$('.js-coupon-form');
+        const $codeInput = q$('[name="couponcode"]', $couponForm);
 
-        $('.coupon-code-add').on('click', event => {
+        q$('.js-coupon-code-add').addEventListener('click', event => {
             event.preventDefault();
 
-            $(event.currentTarget).hide();
-            $couponContainer.show();
-            $('.coupon-code-cancel').show();
-            $codeInput.trigger('focus');
+            /* eslint-disable no-param-reassign */
+            event.currentTarget.style.display = 'none';
+            $couponContainer.style.display = 'block';
+            q$('.js-coupon-code-cancel').style.display = 'block';
+            trigger($codeInput, 'focus');
         });
 
-        $('.coupon-code-cancel').on('click', event => {
+        q$('.js-coupon-code-cancel').addEventListener('click', event => {
             event.preventDefault();
 
-            $couponContainer.hide();
-            $('.coupon-code-cancel').hide();
-            $('.coupon-code-add').show();
+            $couponContainer.style.display = 'none';
+            q$('.js-coupon-code-cancel').style.display = 'none';
+            q$('.js-coupon-code-add').style.display = 'block';
         });
 
-        $couponForm.on('submit', event => {
-            const code = $codeInput.val();
+        $couponForm.addEventListener('submit', event => {
+            const code = $codeInput.value;
 
             event.preventDefault();
 
             // Empty code
             if (!code) {
-                return showAlertModal($codeInput.data('error'));
+                return showAlertModal($codeInput.dataset.error);
             }
 
             utils.api.cart.applyCode(code, (err, response) => {
-                if (response.data.status === 'success') {
+                if (response.dataset.status === 'success') {
                     this.refreshContent();
                 } else {
                     showAlertModal(response.data.errors.join('\n'));
@@ -321,26 +338,26 @@ export default class Cart extends PageManager {
     }
 
     bindGiftCertificateEvents() {
-        const $certContainer = $('.gift-certificate-code');
-        const $certForm = $('.cart-gift-certificate-form');
-        const $certInput = $('[name="certcode"]', $certForm);
+        const $certContainer = q$('.js-gift-certificate-code');
+        const $certForm = q$('.js-cart-gift-certificate-form');
+        const $certInput = q$('[name="certcode"]', $certForm);
 
-        $('.gift-certificate-add').on('click', event => {
+        q$('.js-gift-certificate-add')?.addEventListener('click', event => {
             event.preventDefault();
-            $(event.currentTarget).toggle();
-            $certContainer.toggle();
-            $('.gift-certificate-cancel').toggle();
+            toggle(event.currentTarget);
+            toggle($certContainer);
+            toggle(q$('.js-gift-certificate-cancel'));
         });
 
-        $('.gift-certificate-cancel').on('click', event => {
+        q$('.js-gift-certificate-cancel')?.addEventListener('click', event => {
             event.preventDefault();
-            $certContainer.toggle();
-            $('.gift-certificate-add').toggle();
-            $('.gift-certificate-cancel').toggle();
+            toggle($certContainer);
+            toggle(q$('.js-gift-certificate-add'));
+            toggle(q$('.js-gift-certificate-cancel'));
         });
 
-        $certForm.on('submit', event => {
-            const code = $certInput.val();
+        $certForm?.addEventListener('submit', event => {
+            const code = $certInput.value;
 
             event.preventDefault();
 
@@ -362,63 +379,69 @@ export default class Cart extends PageManager {
     bindGiftWrappingEvents() {
         const modal = defaultModal();
 
-        $('[data-item-giftwrap]').on('click', event => {
-            const itemId = $(event.currentTarget).data('itemGiftwrap');
-            const options = {
-                template: 'cart/modals/gift-wrapping-form',
-            };
+        q$$('[data-item-giftwrap]').forEach($giftwrap => {
+            $giftwrap.addEventListener('click', event => {
+                const itemId = event.currentTarget.dataset.itemGiftwrap;
+                const options = {
+                    template: 'cart/modals/gift-wrapping-form',
+                };
 
-            event.preventDefault();
+                event.preventDefault();
 
-            modal.open();
+                modal.open();
 
-            utils.api.cart.getItemGiftWrappingOptions(itemId, options, (err, response) => {
-                modal.updateContent(response.content);
+                utils.api.cart.getItemGiftWrappingOptions(itemId, options, (err, response) => {
+                    modal.updateContent(response.content);
 
-                this.bindGiftWrappingForm();
+                    this.bindGiftWrappingForm();
+                });
             });
         });
     }
 
     bindGiftWrappingForm() {
-        $('.giftWrapping-select').on('change', event => {
-            const $select = $(event.currentTarget);
-            const id = $select.val();
-            const index = $select.data('index');
+        q$('.giftWrapping-select').addEventListener('change', event => {
+            const $select = event.currentTarget;
+            const id = $select.value;
+            const index = $select.dataset.index;
 
             if (!id) {
                 return;
             }
 
-            const allowMessage = $select.find(`option[value=${id}]`).data('allowMessage');
+            const allowMessage = $select.querySelector(`option[value=${id}]`).dataset.allowMessage;
 
-            $(`.giftWrapping-image-${index}`).hide();
-            $(`#giftWrapping-image-${index}-${id}`).show();
+            q$(`.giftWrapping-image-${index}`).style.display = 'none';
+            q$(`#giftWrapping-image-${index}-${id}`).style.display = 'block';
 
             if (allowMessage) {
-                $(`#giftWrapping-message-${index}`).show();
+                q$(`#giftWrapping-message-${index}`).style.display = 'block';
             } else {
-                $(`#giftWrapping-message-${index}`).hide();
+                q$(`#giftWrapping-message-${index}`).style.display = 'none';
             }
         });
 
-        $('.giftWrapping-select').trigger('change');
+        trigger(q$('.giftWrapping-select'), 'change');
 
         function toggleViews() {
-            const value = $('input:radio[name ="giftwraptype"]:checked').val();
-            const $singleForm = $('.giftWrapping-single');
-            const $multiForm = $('.giftWrapping-multiple');
+            const value = q$('input[name ="giftwraptype"]:checked').value;
+            const $singleForm = q$('.giftWrapping-single');
+            const $multiForm = q$('.giftWrapping-multiple');
 
-            if (value === 'same') {
-                $singleForm.show();
-                $multiForm.hide();
-            } else {
-                $singleForm.hide();
-                $multiForm.show();
-            }
+            try {
+                if (value === 'same') {
+                    $singleForm.style.display = 'block';
+                    $multiForm.style.display = 'none';
+                } else {
+                    $singleForm.style.display = 'none';
+                    $multiForm.style.display = 'block';
+                }
+            } catch (error) { /* NOOP */ }
         }
 
-        $('[name="giftwraptype"]').on('click', toggleViews);
+        q$$('[name="giftwraptype"]').forEach($giftType => {
+            $giftType.addEventListener('click', toggleViews);
+        });
 
         toggleViews();
     }
@@ -434,6 +457,6 @@ export default class Cart extends PageManager {
             country: this.context.shippingCountryErrorMessage,
             province: this.context.shippingProvinceErrorMessage,
         };
-        this.shippingEstimator = new ShippingEstimator($('[data-shipping-estimator]'), shippingErrorMessages);
+        this.shippingEstimator = new ShippingEstimator(q$('.js-shipping-estimator'), shippingErrorMessages);
     }
 }

@@ -4,12 +4,13 @@ import utils from '@bigcommerce/stencil-utils';
 import { Validators, announceInputErrorMessage } from '../common/utils/form-utils';
 import collapsibleFactory from '../common/collapsible';
 import { showAlertModal } from '../global/modal';
+import q$ from '../global/selector';
 
 export default class ShippingEstimator {
     constructor($element, shippingErrorMessages) {
         this.$element = $element;
 
-        this.$state = $('[data-field-type="State"]', this.$element);
+        this.$state = q$('[data-field-type="State"]', this.$element);
         this.isEstimatorFormOpened = false;
         this.shippingErrorMessages = shippingErrorMessages;
         this.initFormValidation();
@@ -18,27 +19,27 @@ export default class ShippingEstimator {
     }
 
     initFormValidation() {
-        const shippingEstimatorAlert = $('.shipping-quotes');
+        const shippingEstimatorAlert = q$('.js-shipping-quotes');
 
-        this.shippingEstimator = 'form[data-shipping-estimator]';
+        this.shippingEstimator = 'form.js-shipping-estimator';
         this.shippingValidator = nod({
-            submit: `${this.shippingEstimator} .shipping-estimate-submit`,
+            submit: `${this.shippingEstimator} .js-shipping-estimate-submit`,
             tap: announceInputErrorMessage,
         });
 
-        $('.shipping-estimate-submit', this.$element).on('click', event => {
+        q$('.js-shipping-estimate-submit', this.$element).addEventListener('click', event => {
             // estimator error messages are being injected in html as a result
             // of user submit; clearing and adding role on submit provides
             // regular announcement of these error messages
-            if (shippingEstimatorAlert.attr('role')) {
-                shippingEstimatorAlert.removeAttr('role');
+            if (shippingEstimatorAlert.getAttribute('role')) {
+                shippingEstimatorAlert.removeAttribute('role');
             }
 
-            shippingEstimatorAlert.attr('role', 'alert');
+            shippingEstimatorAlert.setAttribute('role', 'alert');
             // When switching between countries, the state/region is dynamic
             // Only perform a check for all fields when country has a value
             // Otherwise areAll('valid') will check country for validity
-            if ($(`${this.shippingEstimator} select[name="shipping-country"]`).val()) {
+            if (q$(`${this.shippingEstimator} select[name="shipping-country"]`).value) {
                 this.shippingValidator.performCheck();
             }
 
@@ -72,16 +73,16 @@ export default class ShippingEstimator {
     bindStateValidation() {
         this.shippingValidator.add([
             {
-                selector: $(`${this.shippingEstimator} select[name="shipping-state"]`),
+                selector: `${this.shippingEstimator} select[name="shipping-state"]`,
                 validate: (cb) => {
                     let result;
 
-                    const $ele = $(`${this.shippingEstimator} select[name="shipping-state"]`);
+                    const $ele = q$(`${this.shippingEstimator} select[name="shipping-state"]`);
 
-                    if ($ele.length) {
-                        const eleVal = $ele.val();
+                    if ($ele) {
+                        const eleVal = $ele.value;
 
-                        result = eleVal && eleVal.length && eleVal !== 'State/province';
+                        result = eleVal && eleVal !== 'State/province';
                     }
 
                     cb(result);
@@ -97,14 +98,16 @@ export default class ShippingEstimator {
     bindUPSRates() {
         const UPSRateToggle = '.estimator-form-toggleUPSRate';
 
-        $('body').on('click', UPSRateToggle, (event) => {
-            const $estimatorFormUps = $('.estimator-form--ups');
-            const $estimatorFormDefault = $('.estimator-form--default');
+        /* eslint-disable no-unused-expressions */
+        q$(UPSRateToggle)?.addEventListener('click', (event) => {
+            const $estimatorFormUps = q$('.estimator-form--ups');
+            const $estimatorFormDefault = q$('.estimator-form--default');
 
             event.preventDefault();
 
-            $estimatorFormUps.toggleClass('u-hiddenVisually');
-            $estimatorFormDefault.toggleClass('u-hiddenVisually');
+            /* eslint-disable no-unused-expressions */
+            $estimatorFormUps?.classList.toggle('u-hiddenVisually');
+            $estimatorFormDefault?.classList.toggle('u-hiddenVisually');
         });
     }
 
@@ -112,13 +115,11 @@ export default class ShippingEstimator {
         let $last;
 
         // Requests the states for a country with AJAX
-        stateCountry(this.$state, this.context, { useIdForStates: true }, (err, field) => {
+        stateCountry(this.$state, this.context, { useIdForStates: true }, (err, $field) => {
             if (err) {
                 showAlertModal(err);
                 throw new Error(err);
             }
-
-            const $field = $(field);
 
             if (this.shippingValidator.getStatus(this.$state) !== 'undefined') {
                 this.shippingValidator.remove(this.$state);
@@ -128,57 +129,61 @@ export default class ShippingEstimator {
                 this.shippingValidator.remove($last);
             }
 
-            if ($field.is('select')) {
-                $last = field;
+            if ($field.tagName.toLowerCase() === 'select') {
+                $last = $field;
                 this.bindStateValidation();
             } else {
-                $field.attr('placeholder', 'State/province');
-                Validators.cleanUpStateValidation(field);
+                $field.setAttribute('placeholder', 'State/province');
+                Validators.cleanUpStateValidation($field);
             }
 
             // When you change a country, you swap the state/province between an input and a select dropdown
             // Not all countries require the province to be filled
             // We have to remove this class when we swap since nod validation doesn't cleanup for us
-            $(this.shippingEstimator).find('.js-form-field-success').removeClass('js-form-field-success');
+            q$(this.shippingEstimator)
+                .querySelector('.js-form-field-success')
+                .classList.remove('js-form-field-success');
         });
     }
 
-    toggleEstimatorFormState(toggleButton, buttonSelector, $toggleContainer) {
+    toggleEstimatorFormState($toggleButton, buttonSelector, $toggleContainer) {
         const changeAttributesOnToggle = (selectorToActivate) => {
-            $(toggleButton).attr('aria-labelledby', selectorToActivate);
-            $(buttonSelector).text($(`#${selectorToActivate}`).text());
+            $toggleButton.setAttribute('aria-labelledby', selectorToActivate);
+            q$(buttonSelector).textContent = $(`#${selectorToActivate}`).textContent;
         };
 
         if (!this.isEstimatorFormOpened) {
             changeAttributesOnToggle('estimator-close');
-            $toggleContainer.removeClass('u-hidden');
+            $toggleContainer.classList.remove('u-hidden');
         } else {
             changeAttributesOnToggle('estimator-add');
-            $toggleContainer.addClass('u-hidden');
+            $toggleContainer.classList.add('u-hidden');
         }
         this.isEstimatorFormOpened = !this.isEstimatorFormOpened;
     }
 
     bindEstimatorEvents() {
-        const $estimatorContainer = $('.shipping-estimator');
-        const $estimatorForm = $('.estimator-form');
+        const $estimatorContainer = q$('.js-shipping-estimator');
+        const $estimatorForm = q$('.js-estimator-form');
+
         collapsibleFactory();
-        $estimatorForm.on('submit', event => {
+
+        $estimatorForm.addEventListener('submit', event => {
             const params = {
-                country_id: $('[name="shipping-country"]', $estimatorForm).val(),
-                state_id: $('[name="shipping-state"]', $estimatorForm).val(),
-                city: $('[name="shipping-city"]', $estimatorForm).val(),
-                zip_code: $('[name="shipping-zip"]', $estimatorForm).val(),
+                country_id: q$('[name="shipping-country"]', $estimatorForm).value,
+                state_id: q$('[name="shipping-state"]', $estimatorForm).value,
+                city: q$('[name="shipping-city"]', $estimatorForm).value,
+                zip_code: q$('[name="shipping-zip"]', $estimatorForm).value,
             };
 
             event.preventDefault();
 
             utils.api.cart.getShippingQuotes(params, 'cart/shipping-quotes', (err, response) => {
-                $('.shipping-quotes').html(response.content);
+                q$('.js-shipping-quotes').innerHTML = response.content;
 
                 // bind the select button
-                $('.select-shipping-quote').on('click', clickEvent => {
-                    const quoteId = $('.shipping-quote:checked').val();
+                q$('.select-shipping-quote').addEventListener('click', clickEvent => {
+                    const quoteId = q$('.shipping-quote:checked').value;
 
                     clickEvent.preventDefault();
 
@@ -189,9 +194,10 @@ export default class ShippingEstimator {
             });
         });
 
-        $('.shipping-estimate-show').on('click', event => {
+        q$('.js-shipping-estimate-show').addEventListener('click', event => {
             event.preventDefault();
-            this.toggleEstimatorFormState(event.currentTarget, '.shipping-estimate-show__btn-name', $estimatorContainer);
+
+            this.toggleEstimatorFormState(event.currentTarget, '.js-shipping-estimate-show-btn-name', $estimatorContainer);
         });
     }
 }
