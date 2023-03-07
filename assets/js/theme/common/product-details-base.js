@@ -13,7 +13,7 @@ const optionsTypesMap = {
     SET_RECTANGLE: 'set-rectangle',
     SET_RADIO: 'set-radio',
     SWATCH: 'swatch',
-    PRODUCT_LIST: 'product-list',
+    PRODUCT_LIST: 'js-product-list',
 };
 
 export function optionChangeDecorator(areDefaultOtionsSet) {

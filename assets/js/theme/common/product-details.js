@@ -179,7 +179,7 @@ export default class ProductDetails extends ProductDetailsBase {
                 }
             }
 
-            if (type === 'set-rectangle' || type === 'set-radio' || type === 'swatch' || type === 'input-checkbox' || type === 'product-list') {
+            if (type === 'set-rectangle' || type === 'set-radio' || type === 'swatch' || type === 'input-checkbox' || type === 'js-product-list') {
                 const checked = value.querySelector(':checked');
                 if (checked) {
                     const getSelectedOptionLabel = () => {
@@ -187,7 +187,7 @@ export default class ProductDetails extends ProductDetailsBase {
                         const matchLabelForCheckedInput = inpt => inpt.dataset.productAttributeValue === checked.value;
                         return productVariantslist.filter(matchLabelForCheckedInput)[0];
                     };
-                    if (type === 'set-rectangle' || type === 'set-radio' || type === 'product-list') {
+                    if (type === 'set-rectangle' || type === 'set-radio' || type === 'js-product-list') {
                         const label = isBrowserIE ? getSelectedOptionLabel().innerText.trim() : checked.labels[0].innerText;
                         if (label) {
                             options.push(`${optionTitle}:${label}`);
