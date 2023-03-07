@@ -1,15 +1,12 @@
 <div class="js-container">
-    <form 
-        class="js-quick-search-form"
-        onsubmit="return false" 
-        data-url="{{urls.search}}" 
-    >
+    <form onsubmit="return false" data-url="{{urls.search}}" data-quick-search-form>
         <div class="js-form-field">
             <label class="u-hidden-visually" for="{{name}}">
                 {{lang "search.quick_search.input_label"}}
             </label>
             <input 
-                class="js-form-input js-search-quick"
+                class="js-form-input"
+                data-search-quick
                 name="{{name}}"
                 id="{{name}}"
                 data-error-message="{{lang 'search.error.empty_field'}}"

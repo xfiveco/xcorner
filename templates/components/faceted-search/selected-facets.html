@@ -9,6 +9,7 @@
                     <a 
                         href="{{url}}"
                         rel="nofollow"
+                        data-faceted-search-facet
                     >
                         {{#if facet '===' 'rating'}}
                             {{lang 'search.faceted.selected.rating-label' rating=title}}
@@ -26,7 +27,7 @@
         <p>{{lang 'search.faceted.selected.no-filters'}}</p>
     {{/if}}
     {{#if remove_all_url}}
-        <a href="{{remove_all_url}}">
+        <a href="{{remove_all_url}}" data-faceted-search-facet>
             {{lang 'search.faceted.selected.clear-all'}}
         </a>
     {{/if}}

@@ -51,13 +51,14 @@
             </ul>
             <div>
                 {{#if cart.additional_checkout_buttons}}
-                    <div></div>
+                    <div data-cart-accelerated-checkout-buttons></div>
                 {{/if}}
                 {{#if cart.show_primary_checkout_button}}
                     <div>
                         <a
                             href="{{urls.checkout.single_address}}"
                             class="c-button c-button--primary"
+                            data-primary-checkout-now-action
                         >
                             {{lang 'cart.preview.checkout_now'}}
                         </a>

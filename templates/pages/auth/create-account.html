@@ -2,23 +2,16 @@
 {{inject 'recaptchaTitle' (lang 'create_account.recaptcha_title')}}
 {{#partial "page"}}
     {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
+    <h1 class="page-heading">{{lang 'create_account.heading' }}</h1>
 
-    <h1>
-        {{lang 'create_account.heading' }}
-    </h1>
-
-    <div>
-        <div>
+    <div class="account account--fixed">
+        <div class="account-body">
             {{#if forms.create_account.error}}
                 {{> components/common/alert/alert-error forms.create_account.error}}
             {{/if}}
             {{#if settings.account_creation_enabled}}
-                <form 
-                    action="{{urls.auth.save_new_account}}" 
-                    class="js-create-account-form"
-                    method="post"
-                >
-                    <div>
+                <form action="{{urls.auth.save_new_account}}" data-create-account-form method="post" class="form">
+                    <div class="form-row form-row--half">
                         {{#each forms.create_account.account_fields }}
                             {{{dynamicComponent 'components/common/forms'}}}
                         {{/each}}
@@ -29,10 +22,8 @@
                         {{inject 'state_error' (lang 'errors.state_error')}}
                     </div>
                     {{{ forms.create_account.recaptcha.markup}}}
-                    <div>
-                        <button type="submit" class="c-button c-button--primary">
-                            {{lang 'forms.create_account.submit_value' }}
-                        </button> 
+                    <div class="form-actions">
+                        <input type="submit" class="c-button c-button--primary" value="{{lang 'forms.create_account.submit_value' }}" />
                     </div>
                 </form>
             {{/if}}

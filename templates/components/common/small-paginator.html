@@ -2,10 +2,12 @@
     <ul class="js-pagination-list">
         {{#if previous}}
             <li class="js-pagination-item-previous">
-                <a class="js-pagination-link" href="{{previous}}">
-                    <svg>
-                        <use href="#icon-chevron-left"></use>
-                    </svg>
+                <a class="js-pagination-link" href="{{previous}}" data-faceted-search-facet>
+                    <i class="icon" aria-hidden="true">
+                        <svg>
+                            <use href="#icon-chevron-left"></use>
+                        </svg>
+                    </i>
                     {{lang 'common.previous'}}
                 </a>
             </li>
@@ -21,11 +23,13 @@
 
         {{#if next}}
             <li class="js-pagination-item-next">
-                <a class="js-pagination-link" href="{{next}}">
+                <a class="js-pagination-link" href="{{next}}" data-faceted-search-facet>
                     {{lang 'common.next'}}
-                    <svg>
-                        <use href="#icon-chevron-right"></use>
-                    </svg>
+                    <i class="icon" aria-hidden="true">
+                        <svg>
+                            <use href="#icon-chevron-right"></use>
+                        </svg>
+                    </i>
                 </a>
             </li>
         {{/if}}

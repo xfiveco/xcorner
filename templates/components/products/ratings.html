@@ -7,13 +7,13 @@
 >
     {{#for 1 5}}
         {{#if ../this.rating '>=' $index}}
-            <span>
+            <span class="icon icon--ratingFull">
                 <svg>
                     <use href="#icon-star" />
                 </svg>
             </span>
         {{else}}
-            <span>
+            <span class="icon icon--ratingEmpty">
                 <svg>
                     <use href="#icon-star" />
                 </svg>

@@ -1,52 +1,38 @@
 {{#partial "page"}}
+
     {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
-    
-    <div>
-        {{lang 'account.orders.downloads.heading' number=downloads.order_id}}
-    </div>
-    
+    <h1 class="page-heading">{{lang 'account.orders.downloads.heading' number=downloads.order_id}}</h1>
     {{> components/account/navigation account_page='orders'}}
 
-    <div>
-        <div>
-            <figure>
+    <div class="account account--fixedLarge">
+        <div class="account-body">
+            <figure class="account-sidebar">
                 {{#each downloads.images}}
-                    <img 
-                        src="{{getImage this}}" 
-                        alt="{{../downloads.product_name}}" 
-                        title="{{../downloads.product_name}}"
-                    />
-                    
+                    <img src="{{getImage this}}" alt="{{../downloads.product_name}}" title="{{../downloads.product_name}}"/>
                     <figcaption>{{../downloads.product_name}}</figcaption>
                 {{/each}}
             </figure>
 
-            <section>
-                <p>
-                    {{lang 'account.orders.downloads.download_files_below'}} <strong>{{downloads.product_name}}</strong>
-                </p>
+            <section class="account-content account-content--fixed">
+                <p class="account-downloads-summary">{{lang 'account.orders.downloads.download_files_below'}} <strong>{{downloads.product_name}}</strong></p>
 
-                <ul>
+                <ul class="account-downloadsList">
                     {{#each downloads.items}}
-                        <li>
+                        <li class="account-downloadsItem">
                             {{#if expired}}
-                                <div>
-                                    {{name}} <span>({{size}})</span>
-                                </div>
-                                <p>
-                                    {{lang 'account.orders.downloads.expired_content'}}
-                                </p>
+                                <h5 class="account-downloadsItem-title">{{name}} <span class="account-downloadsItem-accent">({{size}})</span></h5>
+                                <p class="account-downloadsItem-availability">{{lang 'account.orders.downloads.expired_content'}}</p>
                             {{else}}
-                                <div>
+                                <h5 class="account-downloadsItem-title">
                                     <a href="{{url}}">{{name}}</a> ({{size}})
-                                </div>
+                                </h5>
 
                                 {{#if description}}
-                                    <p>{{description}}</p>
+                                    <p class="account-downloadsItem-description">{{description}}</p>
                                 {{/if}}
 
                                 {{#if days_remaining}}
-                                    <p>
+                                    <p class="account-downloadsItem-availability">
                                         {{lang 'account.orders.downloads.days_remaining' number=days_remaining}}
 
                                         {{#if downloads_remaining}}
@@ -56,9 +42,7 @@
                                     </p>
                                 {{else}}
                                     {{#if downloads_remaining}}
-                                        <p>
-                                            {{lang 'account.orders.downloads.downloads_remaining' number=downloads_remaining}}
-                                        </p>
+                                        <p class="account-downloadsItem-availability">{{lang 'account.orders.downloads.downloads_remaining' number=downloads_remaining}}</p>
                                     {{/if}}
                                 {{/if}}
                             {{/if}}
@@ -66,6 +50,7 @@
                     {{/each}}
                 </ul>
             </section>
+
         </div>
     </div>
 

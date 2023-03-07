@@ -1,6 +1,6 @@
 import { creditCardType, storeInstrument, Formatters, Validators } from '../../../theme/common/payment-method';
 
-describe.skip('PaymentMethod', () => {
+describe('PaymentMethod', () => {
     describe('creditCardType', () => {
         it('should return a credit card type from the first six caracters of a given string', () => {
             expect(creditCardType('370000')).toEqual('American Express');
