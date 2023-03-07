@@ -20,11 +20,12 @@
     <article>
 {{/if}}
     <figure>
-        <a href="{{url}}"
-           aria-label="{{> components/products/product-info}}"
-           {{#if settings.data_tag_enabled}}
-           data-event-type="product-click"
-           {{/if}}
+        <a 
+            href="{{url}}"
+            aria-label="{{> components/products/product-info}}"
+            {{#if settings.data_tag_enabled}}
+                data-event-type="product-click"
+            {{/if}}
         >
         {{#if stock_level '===' 0}}
             {{#if theme_settings.pdp_sold_out_label '===' ''}}
@@ -68,9 +69,14 @@
                 <div>
                     <button 
                         type="button" 
-                        {{#if settings.data_tag_enabled}} data-event-type="product-click" {{/if}} 
-                        class="c-button button--small js-quick-view" 
-                        data-product-id="{{id}}">{{lang 'products.quick_view'}}</button>
+                        {{#if settings.data_tag_enabled}} 
+                            data-event-type="product-click" 
+                        {{/if}} 
+                        class="c-button js-quick-view" 
+                        data-product-id="{{id}}"
+                    >
+                        {{lang 'products.quick_view'}}
+                    </button>
                 </div>
             {{/if}}
         {{/unless}}
@@ -79,20 +85,24 @@
         <div>
             <div>
                 {{#if show_rating}}
-                    <p>{{> components/products/ratings rating_target=name rating=rating}}</p>
+                    <p>
+                        {{> components/products/ratings rating_target=name rating=rating}}
+                    </p>
                 {{/if}}
                 {{#if brand.name}}
-                <p>{{brand.name}}</p>
+                    <p>{{brand.name}}</p>
                 {{/if}}
-                <h4>
-                    <a href="{{url}}"
-                    aria-label="{{> components/products/product-info}}"
-                    {{#if settings.data_tag_enabled}}
-                    data-event-type="product-click"
-                    {{/if}}>
+                <div>
+                    <a 
+                        href="{{url}}"
+                        aria-label="{{> components/products/product-info}}"
+                        {{#if settings.data_tag_enabled}}
+                            data-event-type="product-click"
+                        {{/if}}
+                    >
                         {{name}}
                     </a>
-                </h4>
+                </div>
                 {{#if summary}}
                     <p>{{{summary}}}</p>
                 {{/if}}
@@ -109,9 +119,12 @@
                     {{#if has_options}}
                         <a 
                             href="{{url}}" 
-                            {{#if settings.data_tag_enabled}} data-event-type="product-click" {{/if}} 
-                            class="c-button button--small" 
-                            data-product-id="{{id}}">
+                            {{#if settings.data_tag_enabled}} 
+                                data-event-type="product-click" 
+                            {{/if}} 
+                            class="c-button" 
+                            data-product-id="{{id}}"
+                        >
                             {{lang 'products.choose_options'}}
                         </a>
                     {{/if}}
@@ -119,7 +132,8 @@
                         <a 
                             href="{{pre_order_add_to_cart_url}}" 
                             data-event-type="product-click" 
-                            class="c-button c-button--primary">
+                            class="c-button c-button--primary"
+                        >
                             {{lang 'products.pre_order'}}
                         </a>
                     {{/if}}
@@ -127,8 +141,10 @@
                         <a 
                             href="{{add_to_cart_url}}" 
                             {{#if settings.data_tag_enabled}} 
-                            data-event-type="product-click" {{/if}} 
-                            class="c-button c-button--primary">
+                                data-event-type="product-click" 
+                            {{/if}} 
+                            class="c-button c-button--primary"
+                        >
                             {{lang 'products.add_to_cart'}}
                         </a>
                     {{/if}}
@@ -136,21 +152,23 @@
                         <a 
                             href="{{url}}" 
                             data-event-type="product-click" 
-                            class="c-button button--small" 
-                            data-product-id="{{id}}">
+                            class="c-button" 
+                            data-product-id="{{id}}"
+                        >
                             {{out_of_stock_message}}
                         </a>
                     {{/if}}
                 {{/if}}
                 {{#if show_compare}}
-                    <label class="c-button button--small" for="compare-{{id}}">
-                        {{lang "products.compare"}}
+                    <label class="c-button" for="compare-{{id}}">
+                        {{lang "products.compare"}} 
                         <input 
                             type="checkbox" 
                             name="products[]" 
                             value="{{id}}" 
                             id="compare-{{id}}" 
-                            data-compare-id="{{id}}">
+                            data-compare-id="{{id}}"
+                        >
                     </label>
                 {{/if}}
             </div>

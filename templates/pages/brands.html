@@ -6,16 +6,20 @@ brands:
 
 {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
 
-<section class="page">
-    <h1 class="page-heading">{{lang 'brand.label'}}</h1>
+<section>
+    <h1>
+        {{lang 'brand.label'}}
+    </h1>
+    
     {{{region name="brands_below_header"}}}
-    <ul class="brandGrid">
+    
+    <ul>
         {{#each brands}}
-            <li class="brand">
-                <article class="card {{#if alternate}}card--alternate{{/if}}">
-                    <figure class="card-figure">
-                        <a class="card-figure__link" aria-label="{{name}}" href="{{url}}">
-                            <div class="card-img-container">
+            <li>
+                <article>
+                    <figure>
+                        <a aria-label="{{name}}" href="{{url}}">
+                            <div>
                                 {{> components/common/image
                                     image=image
                                     class="card-image"
@@ -25,16 +29,15 @@ brands:
                             </div>
                         </a>
                     </figure>
-                    <div class="card-body">
-                        <h3 class="card-title">
-                            <a href="{{url}}">{{name}}</a>
-                        </h3>
+                    <div>
+                        <a href="{{url}}">{{name}}</a>
                     </div>
                 </article>
             </li>
         {{/each}}
     </ul>
     {{> components/common/paginator pagination.brands}}
+
     {{{region name="brands_below_content"}}}
 </section>
 {{/partial}}
