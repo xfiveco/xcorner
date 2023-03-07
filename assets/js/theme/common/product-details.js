@@ -35,7 +35,7 @@ export default class ProductDetails extends ProductDetailsBase {
         }
 
         this.addToCartValidator = nod({
-            submit: $form.find('input#form-action-add-to-cart'),
+            submit: $form.find('button#form-action-add-to-cart'),
             tap: announceInputErrorMessage,
         });
 
