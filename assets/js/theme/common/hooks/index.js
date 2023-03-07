@@ -41,10 +41,10 @@ class Hooks {
         return hook.off(hookName, callback);
     }
 
-    emit(hookName) {
+    emit(hookName, ...args) {
         const hook = internals.parseHooks(hookName);
 
-        return hook.emit(...arguments);
+        return hook.emit(args);
     }
 }
 
