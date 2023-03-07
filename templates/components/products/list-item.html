@@ -7,16 +7,15 @@
         data-product-category="{{#each category}}{{#if @last}}{{this}}{{else}}{{this}}, {{/if}}{{/each}}" 
         data-product-brand="{{brand.name}}" 
         data-product-price="
-            {{#or customer (unless settings.hide_price_from_guests)}}
-                {{#if price.with_tax}}
-                    {{price.with_tax.value}}
-                {{else}}
-                    {{price.without_tax.value}}
-                {{/if}}
+        {{#or customer (unless settings.hide_price_from_guests)}}
+            {{#if price.with_tax}}
+                {{price.with_tax.value}}
             {{else}}
-                {{lang 'common.login_for_pricing'}}
-            {{/or}}"
-    >
+                {{price.without_tax.value}}
+            {{/if}}
+        {{else}}
+            {{lang 'common.login_for_pricing'}}
+        {{/or}}">
 {{else}}
     <article>
 {{/if}}
