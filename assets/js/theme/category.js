@@ -32,7 +32,7 @@ export default class Category extends CatalogPage {
     onReady() {
         this.arrangeFocusOnSortBy();
 
-        q$$('[js-button-type="add-cart"]').forEach($addToCart => {
+        q$$('[data-button-type="add-cart"]').forEach($addToCart => {
             $addToCart.addEventListener('click', e => this.setLiveRegionAttributes(e.currentTarget.nextSibling, 'status', 'polite'));
         });
 
