@@ -17,7 +17,7 @@ export default class ProductDetails extends ProductDetailsBase {
     constructor($scope, context, productAttributesData = {}) {
         super($scope, context);
 
-        this.$overlay = $('[data-cart-item-add] .js-loading-overlay');
+        this.$overlay = $('[data-cart-item-add] .is-loading-overlay');
         this.imageGallery = new ImageGallery($('[data-image-gallery]', this.$scope));
         this.imageGallery.init();
         this.listenQuantityChange();
@@ -515,14 +515,14 @@ export default class ProductDetails extends ProductDetailsBase {
             const $cartQuantity = $('[data-cart-quantity]', modal.$content);
             const $cartCounter = $('.js-nav-user-action .cart-count');
             const quantity = $cartQuantity.data('cartQuantity') || 0;
-            const $promotionBanner = $('.js-promotion-banner');
-            const $backToShopppingBtn = $('.previewCartCheckout > .js-reveal-close');
+            const $promotionBanner = $('[data-promotion-banner]');
+            const $backToShopppingBtn = $('.previewCartCheckout > [data-reveal-close]');
             const $modalCloseBtn = $('#previewModal > .modal-close');
             const bannerUpdateHandler = () => {
                 const $productContainer = $('#main-content > .js-container');
 
-                $productContainer.append('<div class="js-loading-overlay pdp-update"></div>');
-                $('.js-loading-overlay.pdp-update', $productContainer).show();
+                $productContainer.append('<div class="is-loading-overlay pdp-update"></div>');
+                $('.is-loading-overlay.pdp-update', $productContainer).show();
                 window.location.reload();
             };
 

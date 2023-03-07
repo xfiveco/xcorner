@@ -1,128 +1,106 @@
 {{#partial "page"}}
 
 {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
-
-<h1>
-    {{lang 'account.returns.new_return' }}
-</h1>
-
+<h1 class="page-heading">{{lang 'account.returns.new_return' }}</h1>
 {{> components/account/navigation account_page='returns'}}
 
-<div>
-    <div>
-        <section>
-            <div>
-                {{lang 'account.returns.from_order' id=forms.return.order_id}}
-            </div>
+<div class="account account--fixed account--addReturn">
+    <div class="account-body">
+        <section class="account-content">
+
+            <h3 class="account-heading">{{lang 'account.returns.from_order' id=forms.return.order_id}}</h3>
 
             {{#if forms.return.order_products.length}}
                 <form
                     action="{{urls.account.orders.save_new_return}}"
+                    class="form"
                     method="post"
                     data-account-return-form-error="{{lang 'account.returns.error_no_qty'}}"
-                    class="js-account-return-form"
+                    data-account-return-form
                 >
                     <fieldset class="js-form-fieldset">
                         <input type="hidden" name="order_id" value="{{forms.return.order_id}}">
-                        <div>
-                            <div>
-                                <div>{{lang 'account.orders.return.order_item'}}</div>
-                                <div>{{lang 'account.orders.return.item_price'}}</div>
-                                <div>{{lang 'account.orders.return.quantity'}}</div>
-                            </div>
-                        </div>
-                        <div>
-                            {{#each forms.return.order_products}}
-                                <div>
-                                    <div>
-                                        <span>{{name}}</span>
-                                        {{#if options}}
-                                            <dl>
+                        <table class="table table--line">
+                            <thead class="table-thead">
+                                <tr>
+                                    <th class="return-itemName">{{lang 'account.orders.return.order_item'}}</th>
+                                    <th class="return-itemPrice">{{lang 'account.orders.return.item_price'}}</th>
+                                    <th class="return-itemQuantity">{{lang 'account.orders.return.quantity'}}</th>
+                                </tr>
+                            </thead>
+                            <tbody class="table-tbody">
+                                {{#each forms.return.order_products}}
+                                    <tr>
+                                        <td class="return-itemName">
+                                            <span class="return-itemTitle">{{name}}</span>
+                                            {{#if options}}
+                                            <dl class="definitionList">
                                                 {{#each options}}
-                                                    <dt>{{name}}:</dt>
-                                                    <dd>{{{sanitize value}}}</dd>
+                                                <dt class="definitionList-label">{{name}}:</dt>
+                                                <dd class="definitionList-description">{{{sanitize value}}}</dd>
                                                 {{/each}}
                                             </dl>
-                                        {{/if}}
-                                    </div>
-                                    <div>{{price.formatted}}</div>
-                                    <div>
-                                        <label>
-                                            {{lang 'account.orders.return.quantity'}}:
-                                        </label>
-                                        <select name="return_qty[{{id}}]">
-                                            {{#for 0 quantity}}
-                                                <option value="{{$index}}">
-                                                    {{$index}}
-                                                </option>
-                                            {{/for}}
-                                        </select>
-                                    </div>
-                                </div>
-                            {{/each}}
-                        </div>
+                                            {{/if}}
+                                        </td>
+                                        <td class="return-itemPrice">{{price.formatted}}</td>
+                                        <td class="return-itemQuantity">
+                                            <label class="form-label">{{lang 'account.orders.return.quantity'}}:</label>
+                                            <select class="form-select form-select--small form-select--short" name="return_qty[{{id}}]">
+                                                {{#for 0 quantity}}
+                                                    <option value="{{$index}}">{{$index}}</option>
+                                                {{/for}}
+                                            </select>
+                                        </td>
+                                    </tr>
+                                {{/each}}
+                            </tbody>
+                        </table>
                     </fieldset>
-                    <div>
-                        <fieldset class="js-form-fieldset">
+                    <div class="account--addReturn-row">
+                        <fieldset class="js-form-fieldset account--addReturn-column">
                             <div class="js-form-field">
-                                <label for="return_reason">
+                                <label for="return_reason" class="form-label">
                                     {{lang 'account.orders.return.reason'}}
-                                    <small>
-                                        {{lang 'common.required'}}
-                                    </small>
+                                    <small>{{lang 'common.required'}}</small>
                                 </label>
-                                <select name="return_reason" id="return_reason">
+                                <select name="return_reason" id="return_reason" class="form-select">
                                     {{#each forms.return.reasons}}
-                                        <option value="{{this}}">
-                                            {{this}}
-                                        </option>
+                                        <option value="{{this}}">{{this}}</option>
                                     {{/each}}
                                 </select>
                             </div>
                             <div class="js-form-field">
-                                <label for="return_action">
+                                <label for="return_action" class="form-label">
                                     {{lang 'account.orders.return.action'}}
                                 </label>
-                                <select name="return_action" id="return_action">
+                                <select name="return_action" id="return_action" class="form-select">
                                     {{#each forms.return.actions}}
-                                        <option value="{{this}}">
-                                            {{this}}
-                                        </option>
+                                        <option value="{{this}}">{{this}}</option>
                                     {{/each}}
                                 </select>
                             </div>
                         </fieldset>
-                        <fieldset class="js-form-fieldset">
+                        <fieldset class="js-form-fieldset account--addReturn-column">
                             <div class="js-form-field">
-                                <label for="return_comments">
+                                <label for="return_comments" class="form-label">
                                     {{lang 'account.orders.return.comments'}}
                                 </label>
-                                <textarea 
-                                    class="js-form-input" 
-                                    rows="8" 
-                                    name="return_comments" 
-                                    id="return_comments"
-                                ></textarea>
+                                <textarea class="js-form-input" rows="8" name="return_comments" id="return_comments"></textarea>
                             </div>
                         </fieldset>
                     </div>
-                    <div>
-                        <button class="c-button c-button--primary" type="submit">
-                            Submit Return Request"
-                        </button> 
+                    <div class="form-actions">
+                        <input class=c-button c-button--primary" type="submit" value="Submit Return Request" />
                     </div>
                 </form>
             {{else}}
-                <p>
-                    {{lang 'account.orders.return.already_returned'}}
-                </p>
-                <a href="{{urls.account.orders.all}}" class="c-button">
-                    {{lang 'account.orders.return.back_button'}}
-                </a>
+                <p>{{lang 'account.orders.return.already_returned'}}</p>
+                <a href="{{urls.account.orders.all}}" class="c-button">{{lang 'account.orders.return.back_button'}}</a>
             {{/if}}
 
         </section>
     </div>
 </div>
+
 {{/partial}}
 {{> layout/base}}

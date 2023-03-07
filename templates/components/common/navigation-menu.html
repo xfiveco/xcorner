@@ -90,8 +90,9 @@
         {{#if theme_settings.product_list_display_mode '==' 'list'}}
             <li>
                 <a 
-                    class="js-nav-pages-action js-compare-nav"
+                    class="js-nav-pages-action"
                     href="{{urls.compare}}"
+                    data-compare-nav
                     aria-label="{{lang 'common.compare'}}"
                 >
                     {{lang 'common.compare'}}

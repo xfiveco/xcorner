@@ -2,34 +2,39 @@ import utils from '@bigcommerce/stencil-utils';
 import _ from 'lodash';
 import { insertStateHiddenField } from './utils/form-utils';
 import { showAlertModal } from '../global/modal';
-import q$, { q$$ } from '../global/selector';
 
 /**
  * If there are no options from bcapp, a text field will be sent. This will create a select element to hold options after the remote request.
- * @returns {HTMLElement}
+ * @returns {jQuery|HTMLElement}
  */
 function makeStateRequired(stateElement, context) {
-    /* eslint-disable no-param-reassign */
-    stateElement.innerHTML = `
-        <select 
-            id=${ stateElement.id }
-            name=${ stateElement.getAttribute('name') }
-            data-label=${ stateElement.dataset.label }
-            data-field-type=${ stateElement.dataset.fieldType }
-        >
-        </select>
-    `;
+    const attrs = _.transform(stateElement.prop('attributes'), (result, item) => {
+        const ret = result;
+        ret[item.name] = item.value;
+        return ret;
+    });
 
-    const $hiddenInput = q$$('[name*="FormFieldIsText"]');
-    $hiddenInput.forEach($hi => $hi.remove());
+    const replacementAttributes = {
+        id: attrs.id,
+        'data-label': attrs['data-label'],
+        name: attrs.name,
+        'data-field-type': attrs['data-field-type'],
+    };
 
-    const $newElement = q$('[data-field-type="State"]');
-    const $prevElement = $newElement.previousElementSibling;
-    if ($prevElement.querySelector('small') === null) {
+    stateElement.replaceWith($('<select></select>', replacementAttributes));
+
+    const $newElement = $('[data-field-type="State"]');
+    const $hiddenInput = $('[name*="FormFieldIsText"]');
+
+    if ($hiddenInput.length !== 0) {
+        $hiddenInput.remove();
+    }
+
+    if ($newElement.prev().find('small').length === 0) {
         // String is injected from localizer
-        $prevElement.insertAdjacentHTML('beforeend', `<small>${ context.required }</small>`);
+        $newElement.prev().append(`<small>${context.required}</small>`);
     } else {
-        $prevElement.querySelector('small').style.display = 'block';
+        $newElement.prev().find('small').show();
     }
 
     return $newElement;
@@ -40,25 +45,29 @@ function makeStateRequired(stateElement, context) {
  * In this case we need to be able to switch to an input field and hide the required field
  */
 function makeStateOptional(stateElement) {
-    /* eslint-disable no-param-reassign */
-    stateElement.innerHTML = `
-        <input 
-            type="text"
-            id=${ stateElement.id }
-            name=${ stateElement.getAttribute('name') }
-            data-label=${ stateElement.dataset.label }
-            data-field-type=${ stateElement.dataset.fieldType }
-            class="js-form-input"
-        />
-    `;
+    const attrs = _.transform(stateElement.prop('attributes'), (result, item) => {
+        const ret = result;
+        ret[item.name] = item.value;
 
-    const $newElement = q$('[data-field-type="State"]');
-    if ($newElement !== null) {
+        return ret;
+    });
+
+    const replacementAttributes = {
+        type: 'text',
+        id: attrs.id,
+        'data-label': attrs['data-label'],
+        class: 'js-form-input',
+        name: attrs.name,
+        'data-field-type': attrs['data-field-type'],
+    };
+
+    stateElement.replaceWith($('<input />', replacementAttributes));
+
+    const $newElement = $('[data-field-type="State"]');
+
+    if ($newElement.length !== 0) {
         insertStateHiddenField($newElement);
-
-        $newElement.previousElementSibling
-            .querySelector('small')
-            .style.display = 'none';
+        $newElement.prev().find('small').hide();
     }
 
     return $newElement;
@@ -67,7 +76,7 @@ function makeStateOptional(stateElement) {
 /**
  * Adds the array of options from the remote request to the newly created select box.
  * @param {Object} statesArray
- * @param {HTMLElement} $selectElement
+ * @param {jQuery} $selectElement
  * @param {Object} options
  */
 function addOptions(statesArray, $selectElement, options) {
@@ -84,13 +93,13 @@ function addOptions(statesArray, $selectElement, options) {
             }
         });
 
-        $selectElement.innerHTML = container.join(' ');
+        $selectElement.html(container.join(' '));
     }
 }
 
 /**
  *
- * @param {HTMLElement} stateElement
+ * @param {jQuery} stateElement
  * @param {Object} context
  * @param {Object} options
  * @param {Function} callback
@@ -110,8 +119,8 @@ export default function (stateElement, context = {}, options, callback) {
         /* eslint-enable no-param-reassign */
     }
 
-    q$('select[data-field-type="Country"]').addEventListener('change', event => {
-        const countryName = event.currentTarget.value;
+    $('select[data-field-type="Country"]').on('change', event => {
+        const countryName = $(event.currentTarget).val();
 
         if (countryName === '') {
             return;
@@ -123,7 +132,7 @@ export default function (stateElement, context = {}, options, callback) {
                 return callback(err);
             }
 
-            const $currentInput = q$('[data-field-type="State"]');
+            const $currentInput = $('[data-field-type="State"]');
 
             if (!_.isEmpty(response.data.states)) {
                 // The element may have been replaced with a select, reselect it
