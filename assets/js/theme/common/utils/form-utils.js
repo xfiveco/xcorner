@@ -107,7 +107,7 @@ export function classifyForm(formSelector, options = {}) {
  * @return {string}
  */
 function getFieldId($field) {
-    const fieldId = `${ $field.getAttribute('name') }`.match(/(\[.*\])/);
+    const fieldId = $field.getAttribute('name').match(/(\[.*\])/);
 
     if (fieldId && fieldId.length !== 0) {
         return fieldId[0];
@@ -122,12 +122,8 @@ function getFieldId($field) {
  */
 function insertStateHiddenField($stateField) {
     const fieldId = getFieldId($stateField);
-    const $hiddenInput = document.createElement('input');
-    $hiddenInput.type = 'hidden';
-    $hiddenInput.name = `FormFieldIsText${ fieldId }`;
-    $hiddenInput.value = '1';
 
-    $stateField.after($hiddenInput);
+    $stateField.insertAdjacentHTML('beforeend', `<input type='hidden' name='FormFieldIsText${ fieldId }' value='1' />`);
 }
 
 /**
@@ -233,7 +229,7 @@ const Validators = {
             {
                 selector: password2Selector,
                 validate: (cb, val) => {
-                    const result = val === $password.value;
+                    const result = val === $password.val();
 
                     cb(result);
                 },

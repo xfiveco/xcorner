@@ -1,14 +1,10 @@
 {{#partial "page"}}
     {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
-    
-    <div>
-        {{lang 'account.payment_methods.heading' }}
-    </div>
-    
+    <h2 class="page-heading">{{lang 'account.payment_methods.heading' }}</h2>
     {{> components/account/navigation account_page='payment_methods'}}
 
-    <div>
-        <div>
+    <div class="account account--fixedLarge">
+        <div class="account-body">
             {{> components/account/payment-methods-list }}
         </div>
     </div>
