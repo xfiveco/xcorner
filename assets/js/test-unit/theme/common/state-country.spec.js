@@ -11,7 +11,7 @@ import stateCountry from '../../../theme/common/state-country';
 //console.log(utils);
 //jest.mock('api.country');
 
-describe.skip('StateCountry', () => {
+describe('StateCountry', () => {
     let $countryElement, $stateElement;
 
     beforeEach(() => {

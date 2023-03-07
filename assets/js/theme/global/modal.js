@@ -9,7 +9,7 @@ const modalContentClass = 'js-modal-content';
 const modalCloseClass = 'js-modal-close';
 
 const SizeClasses = {
-    small: 'js-modal-small',
+    small: 'is-modal-small',
     large: 'is-modal-large',
     normal: '',
 };
@@ -231,7 +231,7 @@ export class Modal {
                 fallbackFocus: () => {
                     const fallbackNode = this.$preModalFocusedEl && (this.$preModalFocusedEl !== null)
                         ? this.$preModalFocusedEl
-                        : q$('.js-header-logo-link');
+                        : q$('[data-header-logo-link]');
 
                     return fallbackNode;
                 },
@@ -280,7 +280,7 @@ export class Modal {
  * @param {string} [options.size]
  * @returns {array}
  */
-export default function modalFactory(selector = '.js-reveal', options = {}) {
+export default function modalFactory(selector = '[data-reveal]', options = {}) {
     const $modals = q$$(selector, options.$context);
 
     const modals = $modals.map(element => {
@@ -328,8 +328,8 @@ export function alertModal() {
  */
 export function showAlertModal(message, options = {}) {
     const modal = alertModal();
-    const $cancelBtn = modal.$modal.querySelector('.js-cancel');
-    const $confirmBtn = modal.$modal.querySelector('.js-confirm');
+    const $cancelBtn = modal.$modal.querySelector('.is-cancel');
+    const $confirmBtn = modal.$modal.querySelector('.is-confirm');
     const {
         icon = 'error',
         $preModalFocusedEl = null,
@@ -342,16 +342,12 @@ export function showAlertModal(message, options = {}) {
     }
 
     modal.open();
-    modal.$modal.querySelectorAll('.js-alert-icon')
-        .forEach($alert => {
-            /* eslint-disable no-param-reassign */
-            $alert.style.display = 'none';
-        });
+    modal.$modal.querySelector('.is-alert-icon').style.display = 'none';
 
     if (icon === 'error') {
-        modal.$modal.querySelector('.js-error-icon').style.display = 'block';
+        modal.$modal.querySelector('.is-error-icon').style.display = 'block';
     } else if (icon === 'warning') {
-        modal.$modal.querySelector('.js-warning-icon').style.display = 'block';
+        modal.$modal.querySelector('.is-warning-icon').style.display = 'block';
     }
 
     modal.updateContent(`<span>${message}</span>`);

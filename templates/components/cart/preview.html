@@ -1,18 +1,18 @@
-<div>
-    <h1 class="js-modal-header-title">
+<div class="modal-header">
+    <h1 class="modal-header-title">
         {{lang 'cart.added_to_cart.what_next' num_products=cart.quantity}}
     </h1>
 </div>
 
-<div class="js-modal-body">
+<div class="is-modal-body">
     <div class="previewCart">
         <section class="previewCartCheckout">
             {{#if cart.show_primary_checkout_button}}
                 {{#if cart.additional_checkout_buttons}}
-                    <div class="previewCartCheckout-acceleratedCheckoutButtons"></div>
+                    <div data-cart-accelerated-checkout-buttons class="previewCartCheckout-acceleratedCheckoutButtons"></div>
                 {{/if}}
 
-                <a href="{{urls.checkout.single_address}}" class="c-button c-button--primary">
+                <a href="{{urls.checkout.single_address}}" class="c-button c-button--primary" data-primary-checkout-now-action>
                     {{lang 'cart.added_to_cart.proceed_to_checkout'}}
                 </a>
             {{/if}}
@@ -47,7 +47,7 @@
                 {{lang 'cart.added_to_cart.your_cart_contains' num_products=cart.quantity}}
             </p>
 
-            <a href="#" class="c-button c-button--primary js-reveal-close" role="button">
+            <a href="#" class="c-button c-button--primary" role="button" data-reveal-close>
                 {{lang 'cart.added_to_cart.continue_shopping'}}
             </a>
 
@@ -87,10 +87,10 @@
 
                     {{#each options}}
                         <dl class="productView-info">
-                            <dt>
+                            <dt class="productView-info-name">
                                 {{name}}
                             </dt>
-                            <dd>
+                            <dd class="productView-info-value">
                                 {{> components/common/product-options}}
                             </dd>
                         </dl>
