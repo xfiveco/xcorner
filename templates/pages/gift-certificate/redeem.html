@@ -1,12 +1,21 @@
 {{#partial "page"}}
-
 {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
-<h1 class="page-heading">{{lang 'gift_certificate.heading' }}</h1>
+
+<h1>
+    {{lang 'gift_certificate.heading' }}
+</h1>
+
 {{> components/gift-certificate/navigation gift_page='redeem'}}
 
-<div class="account account--fixed">
-    <h3>{{lang 'gift_certificate.redeem.heading'}}</h3>
-    <p><strong>{{lang 'gift_certificate.redeem.intro' store_name=settings.store_name }}</strong></p>
+<div>
+    <div>
+        {{lang 'gift_certificate.redeem.heading'}}
+    </div>
+
+    <p>
+        <strong>{{lang 'gift_certificate.redeem.intro' store_name=settings.store_name }}</strong>
+    </p>
+    
     <ol>
         <li>{{lang 'gift_certificate.redeem.item1' }}</li>
         <li>{{lang 'gift_certificate.redeem.item2' }}</li>

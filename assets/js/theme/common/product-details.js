@@ -179,7 +179,7 @@ export default class ProductDetails extends ProductDetailsBase {
                 }
             }
 
-            if (type === 'set-rectangle' || type === 'set-radio' || type === 'swatch' || type === 'input-checkbox' || type === 'product-list') {
+            if (type === 'set-rectangle' || type === 'set-radio' || type === 'swatch' || type === 'input-checkbox' || type === 'js-product-list') {
                 const checked = value.querySelector(':checked');
                 if (checked) {
                     const getSelectedOptionLabel = () => {
@@ -187,7 +187,7 @@ export default class ProductDetails extends ProductDetailsBase {
                         const matchLabelForCheckedInput = inpt => inpt.dataset.productAttributeValue === checked.value;
                         return productVariantslist.filter(matchLabelForCheckedInput)[0];
                     };
-                    if (type === 'set-rectangle' || type === 'set-radio' || type === 'product-list') {
+                    if (type === 'set-rectangle' || type === 'set-radio' || type === 'js-product-list') {
                         const label = isBrowserIE ? getSelectedOptionLabel().innerText.trim() : checked.labels[0].innerText;
                         if (label) {
                             options.push(`${optionTitle}:${label}`);
@@ -226,7 +226,7 @@ export default class ProductDetails extends ProductDetailsBase {
             if (view.attr('data-event-type')) {
                 view.attr('data-product-variant', productVariant);
             } else {
-                const productName = view.find('.productView-title')[0].innerText.replace(/"/g, '\\$&');
+                const productName = view.find('.js-product-view-title')[0].innerText.replace(/"/g, '\\$&');
                 const card = $(`[data-name="${productName}"]`);
                 card.attr('data-product-variant', productVariant);
             }

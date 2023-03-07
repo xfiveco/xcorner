@@ -1,15 +1,21 @@
+import trigger from '../utils/trigger';
 import { ariaKeyCodes } from './constants';
+import { q$$ } from '../../global/selector';
 
 const setCheckedRadioItem = (itemCollection, itemIdx) => {
-    itemCollection.each((idx, item) => {
-        const $item = $(item);
+    itemCollection.forEach(($item, idx) => {
         if (idx !== itemIdx) {
-            $item.attr('aria-checked', false).prop('checked', false);
+            $item.setAttribute('aria-checked', false);
+            /* eslint-disable no-param-reassign */
+            $item.checked = false;
             return;
         }
 
-        $item.attr('aria-checked', true).prop('checked', true).focus();
-        $item.trigger('change');
+        $item.setAttribute('aria-checked', true);
+        $item.checked = true;
+        $item.focus();
+
+        trigger($item, 'change');
     });
 };
 
@@ -23,7 +29,7 @@ const calculateTargetItemPosition = (lastItemIdx, currentIdx) => {
 
 const handleItemKeyDown = itemCollection => e => {
     const { keyCode } = e;
-    const itemIdx = itemCollection.index(e.currentTarget);
+    const itemIdx = itemCollection.indexOf(e.currentTarget);
     const lastCollectionItemIdx = itemCollection.length - 1;
 
     if (Object.values(ariaKeyCodes).includes(keyCode)) {
@@ -35,14 +41,14 @@ const handleItemKeyDown = itemCollection => e => {
     case ariaKeyCodes.LEFT:
     case ariaKeyCodes.UP: {
         const prevItemIdx = calculateTargetItemPosition(lastCollectionItemIdx, itemIdx - 1);
-        itemCollection.get(prevItemIdx).focus();
+        itemCollection[prevItemIdx].focus();
         setCheckedRadioItem(itemCollection, itemIdx - 1);
         break;
     }
     case ariaKeyCodes.RIGHT:
     case ariaKeyCodes.DOWN: {
         const nextItemIdx = calculateTargetItemPosition(lastCollectionItemIdx, itemIdx + 1);
-        itemCollection.get(nextItemIdx).focus();
+        itemCollection[nextItemIdx].focus();
         setCheckedRadioItem(itemCollection, itemIdx + 1);
         break;
     }
@@ -52,7 +58,7 @@ const handleItemKeyDown = itemCollection => e => {
 };
 
 export default ($container, itemSelector) => {
-    const $itemCollection = $container.find(itemSelector);
+    const $itemCollection = q$$($container, itemSelector);
 
-    $container.on('keydown', itemSelector, handleItemKeyDown($itemCollection));
+    $container.addEventListener('keydown', itemSelector, handleItemKeyDown($itemCollection));
 };

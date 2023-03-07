@@ -1,40 +1,40 @@
 {{#if reviews.total}}
-<section class="toggle productReviews" id="product-reviews" data-product-reviews>
-    <h4 class="toggle-title">
+<section id="product-reviews">
+    <h4>
         {{lang 'products.reviews.header' total=reviews.total}}
         {{#if theme_settings.show_product_reviews}}
-            <a class="js-toggle-link is-open" data-collapsible href="#productReviews-content">
-                <span class="toggleLink-text toggleLink-text--on">
+            <a class="js-toggle-link is-open" data-collapsible href="#product-reviews-content">
+                <span>
                     {{lang 'products.reviews.hide'}}
                 </span>
-                <span class="toggleLink-text toggleLink-text--off">
+                <span>
                     {{lang 'products.reviews.show'}}
                 </span>
             </a>
         {{/if}}
     </h4>
-    <div class="toggle-content is-open" id="productReviews-content" aria-hidden="false">
-        <ul class="productReviews-list" id="productReviews-list">
+    <div class="is-open" id="product-reviews-content" aria-hidden="false">
+        <ul>
             {{#each reviews.list}}
-            <li class="productReview">
+            <li>
                 <article>
                     <header>
-                        <span class="productReview-rating rating--small">
+                        <span>
                             {{> components/products/ratings rating=rating}}
-                            <span class="productReview-ratingNumber">{{ rating }}</span>
+                            <span>{{ rating }}</span>
                         </span>
-                        <h5 class="productReview-title">{{{ sanitize title }}}</h5>
+                        <h5>{{{ sanitize title }}}</h5>
                         {{#if name}}
-                            <p class="productReview-author">
+                            <p>
                                 {{{lang 'products.reviews.post_on_by' date=date name=(sanitize name) }}}
                             </p>
                         {{else}}
-                            <p class="productReview-author">
+                            <p>
                                 {{lang 'products.reviews.post_on_by' date=date name=(lang 'products.reviews.anonymous_poster')}}
                             </p>
                         {{/if}}
                     </header>
-                    <p class="productReview-body">{{{ sanitize text }}}</p>
+                    <p>{{{ sanitize text }}}</p>
                 </article>
             </li>
             {{/each}}
