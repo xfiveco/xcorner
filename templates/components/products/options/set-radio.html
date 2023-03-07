@@ -1,5 +1,5 @@
 <div class="js-form-field" data-product-attribute="set-radio" role="radiogroup" aria-labelledby="radio-group-label-{{id}}">
-    <label class="form-label form-label--alternate form-label--inlineSmall" id="radio-group-label-{{id}}">
+    <label id="radio-group-label-{{id}}">
         {{ this.display_name }}:
 
         {{> components/common/requireness-msg}}
@@ -7,28 +7,26 @@
 
     {{#unless required}}
         <input
-            class="form-radio"
             type="radio"
             id="attribute_radio_{{id}}_none"
             name="attribute[{{id}}]"
             value=""
             checked="{{#if defaultValue '==' ''}}checked{{/if}}"
         >
-        <label class="form-label" for="attribute_radio_{{id}}_none">{{lang 'products.none'}}</label>
+        <label for="attribute_radio_{{id}}_none">{{lang 'products.none'}}</label>
     {{/unless}}
 
     {{#each this.values}}
         <input
-            class="form-radio"
+            class="{{#if selected}}js-default{{/if}}"
             type="radio"
             id="attribute_radio_{{../id}}_{{id}}"
             name="attribute[{{../id}}]"
             value="{{id}}"
             {{#if selected}}
                 checked
-                data-default
             {{/if}}
             {{#if ../required}}required{{/if}}>
-        <label data-product-attribute-value="{{id}}" class="form-label" for="attribute_radio_{{../id}}_{{id}}">{{this.label}}</label>
+        <label data-product-attribute-value="{{id}}" for="attribute_radio_{{../id}}_{{id}}">{{this.label}}</label>
     {{/each}}
 </div>
