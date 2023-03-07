@@ -7,9 +7,9 @@ import isVisible from '../common/utils/is-visible';
 export default function () {
     const TOP_STYLING = 'top: 49px;';
     const $quickSearchResults = q$$('.js-quick-search-results');
-    const $quickSearchForms = q$$('.js-quick-search-form');
+    const $quickSearchForms = q$$('[data-quick-search-form]');
     const $quickSearchExpand = q$('#quick-search-expand');
-    const $searchQuery = $quickSearchForms.map($qsf => q$('.js-search-quick', $qsf));
+    const $searchQuery = $quickSearchForms.map($qsf => q$('[data-search-quick]', $qsf));
     const stencilDropDownExtendables = {
         hide: () => {
             $quickSearchExpand.setAttribute('aria-expanded', false);
@@ -29,7 +29,7 @@ export default function () {
         // If the target element has this data tag or one of it's parents, do not close the search results
         // We have to specify `.modal-background` because of limitations around Foundation Reveal not allowing
         // any modification to the background element.
-        if (e.target.closest('.js-modal-background') === null && e.target.closest('.js-prevent-quick-search-close') === null) {
+        if (e.target.closest('.js-modal-background') === null && e.target.closest('[data-prevent-quick-search-close]') === null) {
             stencilDropDown.hide($container);
         }
     };
