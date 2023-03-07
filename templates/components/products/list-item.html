@@ -3,7 +3,7 @@
         data-event-type="{{event}}" 
         data-entity-id="{{id}}" 
         data-position="{{position}}" 
-        js-name="{{name}}" 
+        data-name="{{name}}" 
         data-product-category="{{#each category}}{{#if @last}}{{this}}{{else}}{{this}}, {{/if}}{{/each}}" 
         data-product-brand="{{brand.name}}" 
         data-product-price="
@@ -59,7 +59,6 @@
         {{/if}}
         {{> components/common/image
             image=image
-            class=""
             fallback_size=theme_settings.productgallery_size
             default_image=theme_settings.default_image_product
         }}
@@ -151,7 +150,7 @@
                             name="products[]" 
                             value="{{id}}" 
                             id="compare-{{id}}" 
-                            js-compare-id="{{id}}">
+                            data-compare-id="{{id}}">
                     </label>
                 {{/if}}
             </div>
