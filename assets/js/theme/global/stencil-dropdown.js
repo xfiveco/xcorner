@@ -42,7 +42,7 @@ export default class StencilDropdown {
         let modalOpened = false;
 
         $dropDownTrigger.addEventListener('click', event => {
-            const $cart = q$('.is-open.js-cart-preview');
+            const $cart = q$('.is-open[data-cart-preview]');
 
             if ($cart) {
                 $cart.click();
@@ -70,11 +70,11 @@ export default class StencilDropdown {
             }
         });
 
-        q$('.js-reveal').addEventListener('open.fndtn.reveal', () => {
+        q$('[data-reveal]').addEventListener('open.fndtn.reveal', () => {
             modalOpened = true;
         });
 
-        q$('.js-reveal').addEventListener('close.fndtn.reveal', () => {
+        q$('[data-reveal]').addEventListener('close.fndtn.reveal', () => {
             modalOpened = false;
         });
 

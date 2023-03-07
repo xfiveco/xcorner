@@ -21,6 +21,6 @@ export default function ($element) {
         },
     });
 
-    modalFactory('.js-reveal', { $context: $element });
-    revealCloseFactory('.js-reveal-close', { $context: $element });
+    modalFactory('[data-reveal]', { $context: $element });
+    revealCloseFactory('[data-reveal-close]', { $context: $element });
 }
