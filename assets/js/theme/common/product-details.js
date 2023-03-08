@@ -17,7 +17,7 @@ export default class ProductDetails extends ProductDetailsBase {
     constructor($scope, context, productAttributesData = {}) {
         super($scope, context);
 
-        this.$overlay = $('[data-cart-item-add] .is-loading-overlay');
+        this.$overlay = $('[data-cart-item-add] .js-loading-overlay');
         this.imageGallery = new ImageGallery($('[data-image-gallery]', this.$scope));
         this.imageGallery.init();
         this.listenQuantityChange();
@@ -35,7 +35,7 @@ export default class ProductDetails extends ProductDetailsBase {
         }
 
         this.addToCartValidator = nod({
-            submit: $form.find('input#form-action-addToCart'),
+            submit: $form.find('button#form-action-add-to-cart'),
             tap: announceInputErrorMessage,
         });
 
@@ -63,7 +63,7 @@ export default class ProductDetails extends ProductDetailsBase {
         });
 
         if (context.showSwatchNames) {
-            this.$swatchOptionMessage.removeClass('u-hidden');
+            this.$swatchOptionMessage.classList.remove('u-hidden-visually');
 
             $productSwatchGroup.on('change', ({ target }) => {
                 const swatchGroupElement = target.parentNode.parentNode;
@@ -110,7 +110,7 @@ export default class ProductDetails extends ProductDetailsBase {
 
     registerAddToCartValidation() {
         this.addToCartValidator.add([{
-            selector: '[data-quantity-change] > .js-form-input-increment-total',
+            selector: '.js-quantity-change > .js-form-input-increment-total',
             validate: (cb, val) => {
                 const result = forms.numbersOnly(val);
                 cb(result);
@@ -346,7 +346,7 @@ export default class ProductDetails extends ProductDetailsBase {
      *
      */
     listenQuantityChange() {
-        this.$scope.on('click', '[data-quantity-change] button', event => {
+        this.$scope.on('click', '.js-quantity-change button', event => {
             event.preventDefault();
             const $target = $(event.currentTarget);
             const viewModel = this.getViewModel(this.$scope);
@@ -393,7 +393,7 @@ export default class ProductDetails extends ProductDetailsBase {
      *
      */
     addProductToCart(event, form) {
-        const $addToCartBtn = $('#form-action-addToCart', $(event.target));
+        const $addToCartBtn = $('#form-action-add-to-cart', $(event.target));
         const originalBtnVal = $addToCartBtn.val();
         const waitMessage = $addToCartBtn.data('waitMessage');
 
@@ -515,14 +515,14 @@ export default class ProductDetails extends ProductDetailsBase {
             const $cartQuantity = $('[data-cart-quantity]', modal.$content);
             const $cartCounter = $('.js-nav-user-action .cart-count');
             const quantity = $cartQuantity.data('cartQuantity') || 0;
-            const $promotionBanner = $('[data-promotion-banner]');
-            const $backToShopppingBtn = $('.previewCartCheckout > [data-reveal-close]');
+            const $promotionBanner = $('.js-promotion-banner');
+            const $backToShopppingBtn = $('.previewCartCheckout > .js-reveal-close');
             const $modalCloseBtn = $('#previewModal > .modal-close');
             const bannerUpdateHandler = () => {
                 const $productContainer = $('#main-content > .js-container');
 
-                $productContainer.append('<div class="is-loading-overlay pdp-update"></div>');
-                $('.is-loading-overlay.pdp-update', $productContainer).show();
+                $productContainer.append('<div class="js-loading-overlay pdp-update"></div>');
+                $('.js-loading-overlay.pdp-update', $productContainer).show();
                 window.location.reload();
             };
 

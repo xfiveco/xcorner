@@ -188,7 +188,7 @@ export default class ProductDetailsBase {
                 $input: q$('[name=qty\\[\\]]', $scope),
             },
             $bulkPricing: q$('.productView-info-bulkPricing', $scope),
-            $walletButtons: q$('[data-add-to-cart-wallet-buttons]', $scope),
+            $walletButtons: q$('.js-add-to-cart-wallet-buttons', $scope),
         };
     }
 
