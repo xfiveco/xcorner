@@ -1,40 +1,40 @@
-<div class="modal-header">
-    <h1 class="modal-header-title">
+<div class="js-modal-header">
+    <h1 class="js-modal-header-title">
         {{lang 'cart.added_to_cart.what_next' num_products=cart.quantity}}
     </h1>
 </div>
 
 <div class="is-modal-body">
-    <div class="previewCart">
-        <section class="previewCartCheckout">
+    <div>
+        <section class="js-preview-cart-checkout">
             {{#if cart.show_primary_checkout_button}}
                 {{#if cart.additional_checkout_buttons}}
-                    <div data-cart-accelerated-checkout-buttons class="previewCartCheckout-acceleratedCheckoutButtons"></div>
+                    <div></div>
                 {{/if}}
 
-                <a href="{{urls.checkout.single_address}}" class="c-button c-button--primary" data-primary-checkout-now-action>
+                <a href="{{urls.checkout.single_address}}" class="c-button c-button--primary">
                     {{lang 'cart.added_to_cart.proceed_to_checkout'}}
                 </a>
             {{/if}}
 
-            <div class="previewCartCheckout-additionalCheckoutButtons">
+            <div>
                 {{#each cart.additional_checkout_buttons}}
                     {{{this}}}
                 {{/each}}
             </div>
 
             {{#if cart.show_multiple_address_shipping}}
-                <div class="previewCartAction-checkoutMultiple">
+                <div>
                     <a href="{{urls.checkout.multiple_address}}">
                         {{lang 'cart.preview.checkout_multiple'}}
                     </a>
                 </div>
             {{/if}}
 
-            <div class="previewCartCheckout-subtotal">
+            <div>
                 {{lang 'cart.added_to_cart.order_subtotal'}}
 
-                <strong class="previewCartCheckout-price">
+                <strong>
                     {{#or customer (unless settings.hide_price_from_guests)}}
                         {{cart.sub_total.formatted}}
                     {{else}}
@@ -47,7 +47,7 @@
                 {{lang 'cart.added_to_cart.your_cart_contains' num_products=cart.quantity}}
             </p>
 
-            <a href="#" class="c-button c-button--primary" role="button" data-reveal-close>
+            <a href="#" class="c-button c-button--primary js-reveal-close" role="button">
                 {{lang 'cart.added_to_cart.continue_shopping'}}
             </a>
 
@@ -57,27 +57,26 @@
         </section>
         <section class="js-product-view">
             {{#with cart.added_item}}
-                <figure class="productView-image">
-                    <div class="productView-img-container">
+                <figure class="js-product-view-image">
+                    <div>
                         {{> components/common/image
                             image=image
-                            class="productView-image--cart"
                             fallback_size=../theme_settings.product_size
                             default_image=../theme_settings.default_image_product
                         }}
                     </div>
                 </figure>
 
-                <div class="productView-details">
-                    <h2 class="productView-title">
+                <div>
+                    <div>
                         {{name}}
-                    </h2>
+                    </div>
 
-                    <div class="productView-brand">
+                    <div>
                         {{brand.name}}
                     </div>
 
-                    <div class="productView-price">
+                    <div>
                         {{#or ../customer (unless ../settings.hide_price_from_guests)}}
                             {{quantity}} &times; {{price.formatted}}
                         {{else}}
@@ -86,11 +85,11 @@
                     </div>
 
                     {{#each options}}
-                        <dl class="productView-info">
-                            <dt class="productView-info-name">
+                        <dl class="js-product-view-info">
+                            <dt>
                                 {{name}}
                             </dt>
-                            <dd class="productView-info-value">
+                            <dd>
                                 {{> components/common/product-options}}
                             </dd>
                         </dl>
@@ -101,12 +100,12 @@
     </div>
 
     {{#if cart.suggested_products}}
-        <section class="suggestiveCart">
-            <h2>
+        <section>
+            <div>
                 {{lang 'cart.added_to_cart.you_might_also_like'}}&hellip;
-            </h2>
+            </div>
 
-            <ul class="productGrid">
+            <ul>
                 {{#each cart.suggested_products}}
                     <li class="js-product">
                         {{> components/products/card settings=../settings hide_product_quick_view=true theme_settings=../theme_settings}}
