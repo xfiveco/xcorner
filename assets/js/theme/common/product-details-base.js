@@ -176,18 +176,18 @@ export default class ProductDetailsBase {
                 $input: q$('[data-product-stock]', $scope),
             },
             sku: {
-                $label: q$('dt.sku-label', $scope),
-                $value: q$('[data-product-sku]', $scope),
+                $label: q$('dt.js-sku-label', $scope),
+                $value: q$('dd.js-product-sku', $scope),
             },
             upc: {
-                $label: q$('dt.upc-label', $scope),
-                $value: q$('[data-product-upc]', $scope),
+                $label: q$('dt.js-upc-label', $scope),
+                $value: q$('dd.js-product-upc', $scope),
             },
             quantity: {
                 $text: q$('.incrementTotal', $scope),
                 $input: q$('[name=qty\\[\\]]', $scope),
             },
-            $bulkPricing: q$('.productView-info-bulkPricing', $scope),
+            $bulkPricing: q$('.js-product-view-info-bulk-pricing', $scope),
             $walletButtons: q$('.js-add-to-cart-wallet-buttons', $scope),
         };
     }

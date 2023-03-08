@@ -2,9 +2,9 @@ import 'easyzoom';
 
 export default class ImageGallery {
     constructor($gallery) {
-        this.$mainImage = $gallery.find('[data-image-gallery-main]');
-        this.$mainImageNested = $gallery.find('[data-main-image]');
-        this.$selectableImages = $gallery.find('[data-image-gallery-item]');
+        this.$mainImage = $gallery.find('.js-image-gallery-main');
+        this.$mainImageNested = $gallery.find('.js-main-image');
+        this.$selectableImages = $gallery.find('.js-image-gallery-item');
         this.currentImage = {};
     }
 
@@ -90,7 +90,7 @@ export default class ImageGallery {
     }
 
     checkImage() {
-        const $imageContainer = $('.productView-image');
+        const $imageContainer = $('.js-product-view-image');
         const containerHeight = $imageContainer.height();
         const containerWidth = $imageContainer.width();
 

@@ -17,8 +17,8 @@ export default class ProductDetails extends ProductDetailsBase {
     constructor($scope, context, productAttributesData = {}) {
         super($scope, context);
 
-        this.$overlay = $('[data-cart-item-add] .js-loading-overlay');
-        this.imageGallery = new ImageGallery($('[data-image-gallery]', this.$scope));
+        this.$overlay = $('.js-cart-item-add .js-loading-overlay');
+        this.imageGallery = new ImageGallery($('.js-image-gallery', this.$scope));
         this.imageGallery.init();
         this.listenQuantityChange();
         this.$swatchOptionMessage = $('.swatch-option-message');
@@ -26,7 +26,7 @@ export default class ProductDetails extends ProductDetailsBase {
         this.swatchGroupIdList = $('[id^="swatchGroup"]').map((_, group) => $(group).attr('id'));
         this.storeInitMessagesForSwatches();
 
-        const $form = $('form[data-cart-item-add]', $scope);
+        const $form = $('form.js-cart-item-add', $scope);
 
         if ($form[0].checkValidity()) {
             this.updateProductDetailsData();
@@ -39,7 +39,7 @@ export default class ProductDetails extends ProductDetailsBase {
             tap: announceInputErrorMessage,
         });
 
-        const $productOptionsElement = $('[data-product-option-change]', $form);
+        const $productOptionsElement = $('.js-product-option-change', $form);
         const hasOptions = $productOptionsElement.html().trim().length;
         const hasDefaultOptions = $productOptionsElement.find('.js-default').length;
         const $productSwatchGroup = $('[id*="attribute_swatch"]', $form);
@@ -105,7 +105,7 @@ export default class ProductDetails extends ProductDetailsBase {
 
         $productOptionsElement.show();
 
-        this.previewModal = modalFactory('#previewModal')[0];
+        this.previewModal = modalFactory('#preview-modal')[0];
     }
 
     registerAddToCartValidation() {
@@ -269,7 +269,7 @@ export default class ProductDetails extends ProductDetailsBase {
             bannerUtils.dispatchProductBannerEvent(productAttributesData);
 
             if (!this.checkIsQuickViewChild($form)) {
-                const $context = $form.parents('.js-product-view').find('.productView-info');
+                const $context = $form.parents('.js-product-view').find('.js-product-view-info');
                 modalFactory('.js-reveal', { $context });
             }
         });
@@ -517,7 +517,7 @@ export default class ProductDetails extends ProductDetailsBase {
             const quantity = $cartQuantity.data('cartQuantity') || 0;
             const $promotionBanner = $('.js-promotion-banner');
             const $backToShopppingBtn = $('.previewCartCheckout > .js-reveal-close');
-            const $modalCloseBtn = $('#previewModal > .modal-close');
+            const $modalCloseBtn = $('#preview-modal > .modal-close');
             const bannerUpdateHandler = () => {
                 const $productContainer = $('#main-content > .js-container');
 
@@ -550,7 +550,7 @@ export default class ProductDetails extends ProductDetailsBase {
     }
 
     updateProductDetailsData() {
-        const $form = $('form[data-cart-item-add]');
+        const $form = $('form.js-cart-item-add');
         const formDataItems = $form.serializeArray();
 
         const productDetails = {};

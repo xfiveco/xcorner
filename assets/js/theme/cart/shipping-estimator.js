@@ -105,6 +105,7 @@ export default class ShippingEstimator {
 
             event.preventDefault();
 
+            /* eslint-disable no-unused-expressions */
             $estimatorFormUps?.classList.toggle('u-hidden-visually');
             $estimatorFormDefault?.classList.toggle('u-hidden-visually');
         });
