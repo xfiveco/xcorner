@@ -146,7 +146,7 @@ describe.skip('Modal', () => {
             });
 
             it('should transclude existing content', () => {
-                expect(modal.$content.innerHTML).toEqual('<div class="modal-header"></div><div class="js-modal-body"></div>');
+                expect(modal.$content.innerHTML).toEqual('<div class="js-modal-header"></div><div class="js-modal-body"></div>');
             });
         });
     });
