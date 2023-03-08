@@ -1,4 +1,5 @@
-import { hooks, api } from '@bigcommerce/stencil-utils';
+import { api } from '@bigcommerce/stencil-utils';
+import hooks from './hooks';
 import _ from 'lodash';
 import urlUtils from './utils/url-utils';
 import modalFactory from '../global/modal';
@@ -326,9 +327,9 @@ class FacetedSearch {
         });
 
         // Hooks
-        hooks.on('facetedSearch-facet-clicked', this.onFacetClick);
-        hooks.on('facetedSearch-range-submitted', this.onRangeSubmit);
-        hooks.on('sortBy-submitted', this.onSortBySubmit);
+        hooks.on('faceted-search-facet-clicked', this.onFacetClick);
+        hooks.on('faceted-search-range-submitted', this.onRangeSubmit);
+        hooks.on('sort-by-submitted', this.onSortBySubmit);
     }
 
     unbindEvents() {
@@ -357,9 +358,9 @@ class FacetedSearch {
         });
 
         // Hooks
-        hooks.off('facetedSearch-facet-clicked', this.onFacetClick);
-        hooks.off('facetedSearch-range-submitted', this.onRangeSubmit);
-        hooks.off('sortBy-submitted', this.onSortBySubmit);
+        hooks.off('faceted-search-facet-clicked', this.onFacetClick);
+        hooks.off('faceted-search-range-submitted', this.onRangeSubmit);
+        hooks.off('sort-by-submitted', this.onSortBySubmit);
     }
 
     onClearFacet(event) {

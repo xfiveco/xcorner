@@ -231,7 +231,7 @@ export class Modal {
                 fallbackFocus: () => {
                     const fallbackNode = this.$preModalFocusedEl && (this.$preModalFocusedEl !== null)
                         ? this.$preModalFocusedEl
-                        : q$('[data-header-logo-link]');
+                        : q$('.js-header-logo-link');
 
                     return fallbackNode;
                 },

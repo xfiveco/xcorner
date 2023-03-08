@@ -3,11 +3,8 @@
         {{#if previous}}
             <li class="js-pagination-item-previous">
                 <a 
-                    class="js-pagination-link"
+                    class="js-pagination-link js-faceted-search-facet"
                     href="{{previous}}"
-                    {{#unless reload}}
-                        data-faceted-search-facet
-                    {{/unless}}
                     aria-label="{{lang 'common.previous'}}"
                 >
                     <i class="icon" aria-hidden="true">
@@ -26,14 +23,10 @@
                 {{/if}}
             >
                 <a 
-                    class="js-pagination-link"
+                    class="js-pagination-link js-faceted-search-facet js-pagination-current-page-link"
                     href="{{this.url}}"
-                    {{#unless reload}}
-                        data-faceted-search-facet
-                    {{/unless}}
                     {{#if this.number '==' ../current}}
                         aria-current="page"
-                        data-pagination-current-page-link
                     {{/if}}
                     aria-label="{{lang 'common.paginator.page_of' current=this.number total=../links.length}}"
                 >

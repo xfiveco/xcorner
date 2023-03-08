@@ -17,6 +17,7 @@ category:
 {{#partial "page"}}
 
 {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
+
 {{#if category.image}}
     {{> components/common/image
         image=category.image
@@ -24,40 +25,44 @@ category:
         class="category-header-image"
     }}
 {{/if}}
+
 {{#unless theme_settings.hide_category_page_heading }}
-    <h1 class="page-heading">{{category.name}}</h1>
+    <h1>{{category.name}}</h1>
     {{{region name="category_below_header"}}}
 {{/unless}}
+
 {{{category.description}}}
-<div class="page">
+
+<div>
     {{#if category.faceted_search_enabled}}
-        <aside class="page-sidebar js-faceted-search-container" id="faceted-search-container">
+        <aside class="js-faceted-search-container" id="faceted-search-container">
             {{> components/category/sidebar}}
         </aside>
     {{else if category.subcategories}}
-        <aside class="page-sidebar js-faceted-search-container" id="faceted-search-container">
+        <aside class="js-faceted-search-container" id="faceted-search-container">
             {{> components/category/sidebar}}
         </aside>
     {{else if category.shop_by_price}}
         {{#if theme_settings.shop_by_price_visibility}}
-             <aside class="page-sidebar js-faceted-search-container" id="faceted-search-container">
+             <aside class="js-faceted-search-container" id="faceted-search-container">
                 {{> components/category/sidebar}}
             </aside>
         {{else if category.subcategories}}
-            <aside class="grid-item-1-4">
+            <aside>
                 {{> components/category/sidebar}}
             </aside>
         {{else if category.shop_by_price}}
             {{#if theme_settings.shop_by_price_visibility}}
-                 <aside class="grid-item-1-4">
+                 <aside>
                     {{> components/category/sidebar}}
                 </aside>
             {{/if}}
         {{/if}}
     {{/if}}
 
-    <div class="page-content js-product-listing-container" id="product-listing-container">
+    <div class="js-product-listing-container" id="product-listing-container">
         {{> components/category/product-listing}}
+    
         {{{region name="category_below_content"}}}
     </div>
 {{/partial}}

@@ -19,7 +19,7 @@ export const wishlistPaginatorHelper = () => {
 
     const $nextItem = q$('.js-pagination-item-next', $paginationList);
     const $prevItem = q$('.js-pagination-item-previous', $paginationList);
-    const currentHref = q$('[data-pagination-current-page-link]').href;
+    const currentHref = q$('.js-pagination-current-page-link').href;
     const partialPaginationUrl = currentHref.split('page=').shift();
 
     changeWishlistPaginationLinks(partialPaginationUrl, $prevItem, $nextItem);

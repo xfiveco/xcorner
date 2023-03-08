@@ -1,4 +1,4 @@
-import { hooks } from '@bigcommerce/stencil-utils';
+import hooks from './common/hooks';
 import CatalogPage from './catalog';
 import compareProducts from './global/compare-products';
 import FacetedSearch from './common/faceted-search';
@@ -18,15 +18,15 @@ export default class Category extends CatalogPage {
     }
 
     makeShopByPriceFilterAccessible() {
-        if (q$('[data-shop-by-price]') === null) return;
+        if (q$('.js-shop-by-price') === null) return;
 
-        const navListAction = $('.js-nav-list-action');
+        const navListAction = q$('.js-nav-list-action');
 
-        if (navListAction.hasClass('is-active')) {
+        if (navListAction.classList.contains('is-active')) {
             $('.js-nav-list-action.is-active').focus();
         }
 
-        navListAction.on('click', () => this.setLiveRegionAttributes(q$('.js-price-filter-message'), 'status', 'assertive'));
+        navListAction.addEventListener('click', () => this.setLiveRegionAttributes(q$('.js-price-filter-message'), 'status', 'assertive'));
     }
 
     onReady() {
@@ -44,17 +44,18 @@ export default class Category extends CatalogPage {
             this.initFacetedSearch();
         } else {
             this.onSortBySubmit = this.onSortBySubmit.bind(this);
-            hooks.on('sortBy-submitted', this.onSortBySubmit);
+            hooks.on('sort-by-submitted', this.onSortBySubmit);
         }
 
-        $('.js-action-reset').on('click', () => this.setLiveRegionsAttributes($('.js-price-reset-message'), 'status', 'polite'));
+        /* eslint-disable no-unused-expressions */
+        q$('.js-action-reset')?.addEventListener('click', () => this.setLiveRegionsAttributes(q$('.js-price-reset-message'), 'status', 'polite'));
 
         this.ariaNotifyNoProducts();
     }
 
     ariaNotifyNoProducts() {
-        const $noProductsMessage = $('[data-no-products-notification]');
-        if ($noProductsMessage.length) {
+        const $noProductsMessage = q$('.js-no-products-notification');
+        if ($noProductsMessage) {
             $noProductsMessage.focus();
         }
     }

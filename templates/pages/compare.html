@@ -13,8 +13,8 @@
                 <th class="compareTable-product">
                     <article class="card">
                         <figure class="card-figure">
-                            <a class="card-figure__link" aria-label="{{name}}" href="{{url}}" {{#if settings.data_tag_enabled}} data-event-type="product-click" {{/if}}>
-                                <div class="card-img-container">
+                            <a aria-label="{{name}}" href="{{url}}" {{#if settings.data_tag_enabled}} data-event-type="product-click" {{/if}}>
+                                <div>
                                     {{> components/common/image
                                         image=image
                                         class="card-image"
