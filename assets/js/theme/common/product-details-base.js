@@ -176,12 +176,12 @@ export default class ProductDetailsBase {
                 $input: q$('[data-product-stock]', $scope),
             },
             sku: {
-                $label: $('dt.js-sku-label', $scope),
-                $value: $('dd.js-product-sku', $scope),
+                $label: q$('dt.js-sku-label', $scope),
+                $value: q$('dd.js-product-sku', $scope),
             },
             upc: {
-                $label: $('dt.js-upc-label', $scope),
-                $value: $('dd.js-product-upc', $scope),
+                $label: q$('dt.js-upc-label', $scope),
+                $value: q$('dd.js-product-upc', $scope),
             },
             quantity: {
                 $text: q$('.incrementTotal', $scope),

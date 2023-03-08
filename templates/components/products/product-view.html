@@ -1,8 +1,8 @@
 <div class="js-product-view"
     {{#if settings.data_tag_enabled}}
-    js-event-type="product"
+    data-event-type="product"
     data-entity-id="{{product.id}}"
-    js-name="{{product.title}}"
+    data-name="{{product.title}}"
     data-product-category="
     {{#each product.category}}
         {{#if @last}}{{this}}{{else}}{{this}}, {{/if}}
@@ -39,7 +39,7 @@
         {{/if}}
         <figure class="js-product-view-image js-image-gallery-main"
                 {{#if product.main_image}}
-                js-zoom-image="{{getImageSrcset product.main_image (cdn theme_settings.default_image_product) 1x=theme_settings.zoom_size }}"
+                data-zoom-image="{{getImageSrcset product.main_image (cdn theme_settings.default_image_product) 1x=theme_settings.zoom_size }}"
                 {{/if}}
                 >
             <div class="productView-img-container">
@@ -50,10 +50,9 @@
                 {{/if}}
                 {{> components/common/image
                     image=product.main_image
-                    class=""
+                    class="js-main-image"
                     fallback_size=theme_settings.product_size
                     default_image=theme_settings.default_image_product
-                    otherAttributes="js-main-image"
                 }}
                 {{!-- Remove the surrounding a-element if there is no main image. --}}
                 {{#if product.main_image}}
@@ -74,9 +73,9 @@
                     <a
                         class="js-image-gallery-item"
                         href="{{getImageSrcset this (cdn ../theme_settings.default_image_product) 1x=../theme_settings.zoom_size}}"
-                        js-image-gallery-new-image-url="{{getImageSrcset this (cdn ../theme_settings.default_image_product) 1x=../theme_settings.product_size}}"
-                        js-image-gallery-new-image-srcset="{{getImageSrcset this use_default_sizes=true}}"
-                        js-image-gallery-zoom-image-url="{{getImageSrcset this (cdn ../theme_settings.default_image_product) 1x=../theme_settings.zoom_size}}"
+                        data-image-gallery-new-image-url="{{getImageSrcset this (cdn ../theme_settings.default_image_product) 1x=../theme_settings.product_size}}"
+                        data-image-gallery-new-image-srcset="{{getImageSrcset this use_default_sizes=true}}"
+                        data-image-gallery-zoom-image-url="{{getImageSrcset this (cdn ../theme_settings.default_image_product) 1x=../theme_settings.zoom_size}}"
                     >
                     {{> components/common/image
                         image=this
@@ -122,7 +121,7 @@
                 {{/if}}
                 {{#if settings.show_product_reviews}}
                     <a href="{{product.url}}{{#if is_ajax}}#write_review{{/if}}"
-                       {{#unless is_ajax}}js-reveal-id="modal-review-form"{{/unless}}
+                       {{#unless is_ajax}}data-reveal-id="modal-review-form"{{/unless}}
                        role="button"
                     >
                        {{lang 'products.reviews.new'}}
@@ -139,12 +138,12 @@
                 <dt class="js-upc-label"{{#unless product.upc}} style="display: none;"{{/unless}}>{{lang 'products.upc'}}</dt>
                 <dd class="js-product-upc">{{product.upc}}</dd>
                 {{#if product.condition}}
-                    <dt class="productView-info-name">{{lang 'products.condition'}}</dt>
-                    <dd class="productView-info-value">{{product.condition}}</dd>
+                    <dt>{{lang 'products.condition'}}</dt>
+                    <dd>{{product.condition}}</dd>
                 {{/if}}
                 {{#if product.availability}}
-                    <dt class="productView-info-name">{{lang 'products.availability'}}</dt>
-                    <dd class="productView-info-value">{{product.availability}}</dd>
+                    <dt>{{lang 'products.availability'}}</dt>
+                    <dd>{{product.availability}}</dd>
                 {{/if}}
                 {{#all product.weight theme_settings.show_product_weight}}
                     <dt>{{lang 'products.weight'}}</dt>
@@ -180,28 +179,28 @@
                     </dd>
                 {{/all}}
                 {{#if product.min_purchase_quantity}}
-                    <dt class="productView-info-name">{{lang 'products.min_purchase_quantity'}}</dt>
-                    <dd class="productView-info-value">{{lang 'products.purchase_units' quantity=product.min_purchase_quantity}}</dd>
+                    <dt>{{lang 'products.min_purchase_quantity'}}</dt>
+                    <dd>{{lang 'products.purchase_units' quantity=product.min_purchase_quantity}}</dd>
                 {{/if}}
                 {{#if product.max_purchase_quantity}}
-                    <dt class="productView-info-name">{{lang 'products.max_purchase_quantity'}}</dt>
-                    <dd class="productView-info-value">{{lang 'products.purchase_units' quantity=product.max_purchase_quantity}}</dd>
+                    <dt>{{lang 'products.max_purchase_quantity'}}</dt>
+                    <dd>{{lang 'products.purchase_units' quantity=product.max_purchase_quantity}}</dd>
                 {{/if}}
                 {{#if product.gift_wrapping_available}}
-                    <dt class="productView-info-name">{{lang 'products.gift_wrapping'}}</dt>
-                    <dd class="productView-info-value">{{lang 'products.gift_wrapping_available'}}</dd>
+                    <dt>{{lang 'products.gift_wrapping'}}</dt>
+                    <dd>{{lang 'products.gift_wrapping_available'}}</dd>
                 {{/if}}
                 {{#if product.shipping}}
                     {{#if product.shipping.calculated}}
-                        <dt class="productView-info-name">{{lang 'products.shipping'}}</dt>
-                        <dd class="productView-info-value">{{lang 'products.shipping_calculated'}}</dd>
+                        <dt>{{lang 'products.shipping'}}</dt>
+                        <dd>{{lang 'products.shipping_calculated'}}</dd>
                     {{else}}
                         {{#if product.shipping.price.value '===' 0}}
-                            <dt class="productView-info-name">{{lang 'products.shipping'}}</dt>
-                            <dd class="productView-info-value">{{lang 'products.shipping_free'}}</dd>
+                            <dt>{{lang 'products.shipping'}}</dt>
+                            <dd>{{lang 'products.shipping_free'}}</dd>
                         {{else}}
-                            <dt class="productView-info-name">{{lang 'products.shipping'}}</dt>
-                            <dd class="productView-info-value">{{lang 'products.shipping_fixed' amount=product.shipping.price.formatted}}</dd>
+                            <dt>{{lang 'products.shipping'}}</dt>
+                            <dd>{{lang 'products.shipping_fixed' amount=product.shipping.price.formatted}}</dd>
                         {{/if}}
                     {{/if}}
                 {{/if}}
@@ -233,7 +232,7 @@
                         {{{dynamicComponent 'components/products/options'}}}
                     {{/each}}
                 </div>
-                <div class="js-form-field js-form-field--stock{{#unless product.stock_level}} js-u-hidden-visually{{/unless}}">
+                <div class="js-form-field js-form-field-stock {{#unless product.stock_level}}u-hidden-visually{{/unless}}">
                     <label>
                         {{lang 'products.current_stock'}}
                         <span data-product-stock>{{product.stock_level}}</span>

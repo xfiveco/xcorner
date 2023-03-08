@@ -3,7 +3,7 @@ import 'easyzoom';
 export default class ImageGallery {
     constructor($gallery) {
         this.$mainImage = $gallery.find('.js-image-gallery-main');
-        this.$mainImageNested = $gallery.find('[js-main-image]');
+        this.$mainImageNested = $gallery.find('.js-main-image');
         this.$selectableImages = $gallery.find('.js-image-gallery-item');
         this.currentImage = {};
     }
@@ -24,7 +24,7 @@ export default class ImageGallery {
         if (!this.savedImage) {
             this.savedImage = {
                 mainImageUrl: this.$mainImage.find('img').attr('src'),
-                zoomImageUrl: this.$mainImage.attr('js-zoom-image'),
+                zoomImageUrl: this.$mainImage.attr('data-zoom-image'),
                 mainImageSrcset: this.$mainImage.find('img').attr('srcset'),
                 $selectedThumb: this.currentImage.$selectedThumb,
             };
@@ -43,9 +43,9 @@ export default class ImageGallery {
         e.preventDefault();
         const $target = $(e.currentTarget);
         const imgObj = {
-            mainImageUrl: $target.attr('js-image-gallery-new-image-url'),
-            zoomImageUrl: $target.attr('js-image-gallery-zoom-image-url'),
-            mainImageSrcset: $target.attr('js-image-gallery-new-image-srcset'),
+            mainImageUrl: $target.attr('data-image-gallery-new-image-url'),
+            zoomImageUrl: $target.attr('data-image-gallery-zoom-image-url'),
+            mainImageSrcset: $target.attr('data-image-gallery-new-image-srcset'),
             $selectedThumb: $target,
             mainImageAlt: $target.children().first().attr('alt'),
         };
@@ -69,7 +69,7 @@ export default class ImageGallery {
         );
 
         this.$mainImage.attr({
-            'js-zoom-image': this.currentImage.zoomImageUrl,
+            'data-zoom-image': this.currentImage.zoomImageUrl,
         });
         this.$mainImageNested.attr({
             alt: this.currentImage.mainImageAlt,
