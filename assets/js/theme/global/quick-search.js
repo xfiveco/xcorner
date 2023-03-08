@@ -30,7 +30,7 @@ export default function () {
         // If the target element has this data tag or one of it's parents, do not close the search results
         // We have to specify `.modal-background` because of limitations around Foundation Reveal not allowing
         // any modification to the background element.
-        if (e.target.closest('.js-modal-background') === null && e.target.closest('[data-prevent-quick-search-close]') === null) {
+        if (e.target.closest('.js-modal-background') === null && e.target.closest('.js-prevent-quick-search-close') === null) {
             stencilDropDown.hide($container);
         }
     };

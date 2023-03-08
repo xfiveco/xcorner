@@ -11,14 +11,14 @@
                     <li class="js-nav-list-item">
                         <a 
                             href="{{url}}"
-                            class="{{#if selected}} is-selected{{/if}}"
+                            class="{{#if selected}}is-selected{{/if}} js-faceted-search-facet"
                             rel="nofollow"
-                            data-faceted-search-facet
                         >
                             <span>
                                 {{> components/products/ratings rating=title}}
                             </span>
                             {{lang 'search.faceted.rating.and-up'}}
+                            
                             {{#if ../show_product_counts}}
                                 <span>({{count}})</span>
                             {{/if}}

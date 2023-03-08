@@ -6,6 +6,7 @@
             </a>
         </li>
     {{/if}}
+
     {{#if product.warranty}}
         <li class="js-tab {{#unless product.description}}is-active{{/unless}}">
             <a href="#tab-warranty">
@@ -13,6 +14,7 @@
             </a>
         </li>
     {{/if}}
+
     {{#all product.custom_fields theme_settings.show_custom_fields_tabs}}
         <li class="js-tab">
             <a href="#tab-{{dashcase (lowercase (sanitize theme_settings.pdp-custom-fields-tab-label))}}">
@@ -20,6 +22,7 @@
             </a>
         </li>
     {{/all}}
+
     {{#all settings.show_product_reviews theme_settings.show_product_reviews product.reviews.total}}
         <li class="js-tab">
             <a class="js-product-view-review-tab-link" href="#tab-reviews">
@@ -28,26 +31,30 @@
         </li>
     {{/all}}
 </ul>
-<div class="tabs-contents">
+
+<div>
     {{#if product.description}}
         <div class="is-active" id="tab-description">
             {{{product.description}}}
         </div>
     {{/if}}
+
     {{#if product.warranty}}
         <div class="{{#unless product.description}}is-active{{/unless}}" id="tab-warranty">
             {{{product.warranty}}}
         </div>
     {{/if}}
+
     {{#all product.custom_fields theme_settings.show_custom_fields_tabs}}
-      <div id="tab-{{dashcase (lowercase (sanitize theme_settings.pdp-custom-fields-tab-label))}}">
-         <dl class="js-product-view-info">
-            {{> components/products/custom-fields }}
-         </dl>
-      </div>
+        <div id="tab-{{dashcase (lowercase (sanitize theme_settings.pdp-custom-fields-tab-label))}}">
+            <dl class="js-product-view-info">
+                {{> components/products/custom-fields }}
+            </dl>
+        </div>
     {{/all}}
+
     {{#all settings.show_product_reviews theme_settings.show_product_reviews}}
-       <div class="tab-content" id="tab-reviews">
+       <div id="tab-reviews">
            {{> components/products/reviews reviews=product.reviews product=product urls=urls}}
        </div>
     {{/all}}

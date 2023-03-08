@@ -173,7 +173,7 @@ export default class ProductDetailsBase {
             $wishlistVariation: q$('.js-wishlist-add [name="variation_id"]', $scope),
             stock: {
                 $container: q$('.js-form-field-stock', $scope),
-                $input: q$('[data-product-stock]', $scope),
+                $input: q$('.js-product-stock', $scope),
             },
             sku: {
                 $label: q$('dt.js-sku-label', $scope),

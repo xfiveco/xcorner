@@ -1,4 +1,9 @@
-<div class="js-form-field" data-product-attribute="swatch" role="radiogroup" aria-labelledby="swatchGroup_{{id}}">
+<div 
+    class="js-form-field" 
+    data-product-attribute="swatch" 
+    role="radiogroup" 
+    aria-labelledby="swatchGroup_{{id}}"
+>
     <label id="swatchGroup_{{id}}">
         {{this.display_name}}:
         <span class="js-option-value"></span>
@@ -19,7 +24,9 @@
             aria-label="{{lang 'products.none'}}"
         >
         <label for="attribute_swatch_{{id}}_none">
-            <span title="{{lang 'products.none'}}">{{lang 'products.none'}}</span>
+            <span title="{{lang 'products.none'}}">
+                {{lang 'products.none'}}
+            </span>
         </label>
     {{/unless}}
 
@@ -31,8 +38,12 @@
             name="attribute[{{../id}}]"
             value="{{id}}"
             id="attribute_swatch_{{../id}}_{{id}}"
-            {{#if selected}}checked{{/if}}
-            {{#if ../required}}required{{/if}}
+            {{#if selected}}
+                checked
+            {{/if}}
+            {{#if ../required}}
+                required
+            {{/if}}
             aria-label="{{this.label}}"
         >
         <label for="attribute_swatch_{{../id}}_{{id}}" data-product-attribute-value="{{id}}">

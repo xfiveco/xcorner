@@ -1,5 +1,10 @@
-<div class="js-form-field" data-product-attribute="js-product-list" role="radiogroup" aria-labelledby="product-list-label">
-    <label class="form-label form-label--alternate form-label--inlineSmall" id="product-list-label">
+<div 
+    class="js-form-field" 
+    data-product-attribute="js-product-list" 
+    role="radiogroup" 
+    aria-labelledby="product-list-label"
+>
+    <label id="product-list-label">
         {{display_name}}:
         <span class="js-option-value"></span>
 
@@ -15,8 +20,13 @@
                         name="attribute[{{id}}]"
                         value=""
                         id="attribute_productlist_{{id}}_none"
-                        {{#unless defaultValue}}checked{{/unless}}>
-                    <label for="attribute_productlist_{{id}}_none">{{lang 'products.none'}}</label>
+                        {{#unless defaultValue}}
+                            checked
+                        {{/unless}}
+                    >
+                    <label for="attribute_productlist_{{id}}_none">
+                        {{lang 'products.none'}}
+                    </label>
                 </li>
             {{/unless}}
             {{#each values}}
@@ -39,21 +49,31 @@
                             {{#if selected}}
                                 checked
                             {{/if}}
-                            {{#if ../required}}required{{/if}}>
-                        <label data-product-attribute-value="{{id}}" for="attribute_productlist_{{../id}}_{{id}}">{{label}}</label>
+                            {{#if ../required}}
+                                required
+                            {{/if}}
+                        >
+                        <label data-product-attribute-value="{{id}}" for="attribute_productlist_{{../id}}_{{id}}">
+                            {{label}}
+                        </label>
                     </div>
                 </li>
             {{/each}}
         </ul>
     {{else}}
         {{#unless required}}
-        <input
-            type="radio"
-            name="attribute[{{id}}]"
-            value="0"
-            id="attribute_productlist_0_{{id}}"
-            {{#unless defaultValue}}checked{{/unless}}>
-        <label for="attribute_productlist_0_{{id}}">{{lang 'products.none'}}</label>
+            <input
+                type="radio"
+                name="attribute[{{id}}]"
+                value="0"
+                id="attribute_productlist_0_{{id}}"
+                {{#unless defaultValue}}
+                    checked
+                {{/unless}}
+            >
+            <label for="attribute_productlist_0_{{id}}">
+                {{lang 'products.none'}}
+            </label>
         {{/unless}}
         {{#each values}}
             <input
@@ -65,8 +85,13 @@
                 {{#if selected}}
                     checked
                 {{/if}}
-                {{#if ../required}}required{{/if}}>
-            <label data-product-attribute-value="{{id}}" for="attribute_productlist_{{../id}}_{{id}}">{{label}}</label>
+                {{#if ../required}}
+                    required
+                {{/if}}
+            >
+            <label data-product-attribute-value="{{id}}" for="attribute_productlist_{{../id}}_{{id}}">
+                {{label}}
+            </label>
         {{/each}}
     {{/if}}
 </div>

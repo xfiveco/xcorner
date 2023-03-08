@@ -7,15 +7,14 @@
                     href="{{previous}}"
                     aria-label="{{lang 'common.previous'}}"
                 >
-                    <i class="icon" aria-hidden="true">
-                        <svg>
-                            <use href="#icon-chevron-left"></use>
-                        </svg>
-                    </i>
+                    <svg>
+                        <use href="#icon-chevron-left"></use>
+                    </svg>
                     {{lang 'common.previous'}}
                 </a>
             </li>
         {{/if}}
+
         {{#each links}}
             <li 
                 {{#if this.number '==' ../current}}
@@ -38,19 +37,18 @@
         {{#if next}}
             <li class="js-pagination-item-next">
                 <a 
-                    class="js-pagination-link"
+                    class="js-pagination-link
+                        {{#unless reload}}
+                            js-faceted-search-facet
+                        {{/unless}}
+                    "
                     href="{{next}}"
-                    {{#unless reload}}
-                        data-faceted-search-facet
-                    {{/unless}}
                     aria-label="{{lang 'common.next'}}"
                 >
                     {{lang 'common.next'}}
-                    <i class="icon" aria-hidden="true">
-                        <svg>
-                            <use href="#icon-chevron-right"></use>
-                        </svg>
-                    </i>
+                    <svg>
+                        <use href="#icon-chevron-right"></use>
+                    </svg>
                 </a>
             </li>
         {{/if}}

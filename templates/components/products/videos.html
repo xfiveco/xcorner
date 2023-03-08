@@ -25,23 +25,24 @@
             </iframe>
         </div>
         <ul>
-        {{#each this.list}}
-            <li>
-                <a href="#" class="js-video-item {{#if @first}}is-active{{/if}}" data-video-id="{{id}}">
-                    <div>
-                        <img 
-                            loading="lazy" 
-                            src="{{cdn 'img/loading.svg'}}" 
-                            data-src="//i.ytimg.com/vi/{{id}}/default.jpg"/>
-                    </div>
-                    <div>
-                        <div>{{title_long}}</div>
-                        <p>{{description_short}}</p>
-                    </div>
-                </a>
-            </li>
-        {{/each}}
+            {{#each this.list}}
+                <li>
+                    <a href="#" class="js-video-item{{#if @first}} is-active{{/if}}" data-video-id="{{id}}">
+                        <div>
+                            <img 
+                                loading="lazy" 
+                                src="{{cdn 'img/loading.svg'}}" 
+                                data-src="//i.ytimg.com/vi/{{id}}/default.jpg"
+                            />
+                        </div>
+
+                        <div>
+                            <div>{{title_long}}</div>
+                            <p>{{description_short}}</p>
+                        </div>
+                    </a>
+                </li>
+            {{/each}}
         </ul>
     </div>
-
 </section>
