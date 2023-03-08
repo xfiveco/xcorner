@@ -380,5 +380,26 @@
     "shop_by_brand": {
       "limit": 10
     }
-  }
+  },
+  "variations": [
+    {
+      "name": "Normal",
+      "id": "normal",
+      "meta": {
+        "desktop_screenshot": "",
+        "mobile_screenshot": "",
+        "description": "Xfive.co custom BigCommerce theme",
+        "demo_url": "",
+        "optimized_for": [
+          "multi_purpose",
+          "mobile_tablet_desktop",
+          "sales_discounts",
+          "large_catalog"
+        ],
+        "industries": []
+      },
+      "images": {},
+      "settings": {}
+    }
+  ]
 }
