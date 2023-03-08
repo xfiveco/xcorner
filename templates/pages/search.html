@@ -28,18 +28,18 @@ product_results:
         </span>
         <ul role="tablist" class="navBar-section account-navigation" data-search-page-tabs>
             <li role="presentation" class="navBar-item">
-                <a aria-describedby="search-tabs-widget-description" role="tab" aria-controls="product-listing-container" id="search-results-product-count" class="navBar-action" href="{{forms.search.product_url}}" data-product-results-toggle>
+                <a aria-describedby="search-tabs-widget-description" role="tab" aria-controls="product-listing-container" id="search-results-product-count" class="js-nav-bar-action" href="{{forms.search.product_url}}" data-product-results-toggle>
                     {{>components/search/product-count}}
                 </a>
             </li>
             <li role="presentation" class="navBar-item">
-                <a aria-describedby="search-tabs-widget-description" role="tab" aria-controls="search-results-content" id="search-results-content-count" class="navBar-action" href="{{forms.search.content_url}}" data-content-results-toggle>
+                <a aria-describedby="search-tabs-widget-description" role="tab" aria-controls="search-results-content" id="search-results-content-count" class="js-nav-bar-action" href="{{forms.search.content_url}}" data-content-results-toggle>
                     {{>components/search/content-count}}
                 </a>
             </li>
             {{#unless product_results.faceted_search_enabled}}
                 <li class="navBar-item navBar-item--separate">
-                    <a class="navBar-action js-toggle-link" data-collapsible="advanced-search-content" href="#" aria-controls="advanced-search-content" aria-expanded="false">
+                    <a class="js-nav-bar-action js-toggle-link" data-collapsible="advanced-search-content" href="#" aria-controls="advanced-search-content" aria-expanded="false">
                         <span class="toggleLink-text toggleLink-text--on">
                             {{lang 'forms.search.hide'}}
                         </span>

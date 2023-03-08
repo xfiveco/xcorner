@@ -2,6 +2,7 @@ import PageManager from './page-manager';
 import nod from './common/nod';
 import forms from './common/models/forms';
 import { announceInputErrorMessage } from './common/utils/form-utils';
+import q$ from './global/selector';
 
 export default class ContactUs extends PageManager {
     onReady() {
@@ -9,12 +10,12 @@ export default class ContactUs extends PageManager {
     }
 
     registerContactFormValidation() {
-        const formSelector = 'form[data-contact-form]';
+        const formSelector = 'form.js-contact-form';
         const contactUsValidator = nod({
-            submit: `${formSelector} input[type="submit"]`,
+            submit: `${formSelector} button[type="submit"]`,
             tap: announceInputErrorMessage,
         });
-        const $contactForm = $(formSelector);
+        const $contactForm = q$(formSelector);
 
         contactUsValidator.add([
             {
@@ -37,7 +38,7 @@ export default class ContactUs extends PageManager {
             },
         ]);
 
-        $contactForm.on('submit', event => {
+        $contactForm.addEventListener('submit', event => {
             contactUsValidator.performCheck();
 
             if (contactUsValidator.areAll('valid')) {
