@@ -96,12 +96,12 @@ export default class ShippingEstimator {
      * Toggle between default shipping and ups shipping rates
      */
     bindUPSRates() {
-        const UPSRateToggle = '.estimator-form-toggleUPSRate';
+        const UPSRateToggle = '.js-estimator-form-toggle-ups-rate';
 
         /* eslint-disable no-unused-expressions */
         q$(UPSRateToggle)?.addEventListener('click', (event) => {
-            const $estimatorFormUps = q$('.estimator-form--ups');
-            const $estimatorFormDefault = q$('.estimator-form--default');
+            const $estimatorFormUps = q$('.js-estimator-form-ups');
+            const $estimatorFormDefault = q$('.js-estimator-form-default');
 
             event.preventDefault();
 
@@ -182,8 +182,8 @@ export default class ShippingEstimator {
                 q$('.js-shipping-quotes').innerHTML = response.content;
 
                 // bind the select button
-                q$('.select-shipping-quote').addEventListener('click', clickEvent => {
-                    const quoteId = q$('.shipping-quote:checked').value;
+                q$('.js-select-shipping-quote').addEventListener('click', clickEvent => {
+                    const quoteId = q$('.js-shipping-quote:checked').value;
 
                     clickEvent.preventDefault();
 
