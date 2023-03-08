@@ -51,7 +51,7 @@
     </div>
 {{/and}}
 {{#and price.retail_price_range.min.without_tax price.retail_price_range.max.without_tax}}
-    <div class="price-section price-section--withoutTax rrp-price--withoutTax{{#if price.with_tax}} price-section--minor{{/if}}">
+    <div class="{{#if price.with_tax}}price-section-minor{{/if}}">
         <span>
             {{> components/products/price-label
                 label_value=theme_settings.pdp-retail-price-label
@@ -62,7 +62,7 @@
     </div>
 {{else}}
     {{#if price.without_tax}}
-        <div class="price-section price-section--withoutTax rrp-price--withoutTax{{#if price.with_tax}} price-section--minor{{/if}}" style="display: none;">
+        <div class="{{#if price.with_tax}}price-section-minor{{/if}}" style="display: none;">
             <span>
                 {{> components/products/price-label
                     label_value=theme_settings.pdp-retail-price-label
