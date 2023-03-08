@@ -49,7 +49,7 @@
                             {{/if}}
                         {{/each}}
                     </label>
-                    <select class="js-gift-wrapping-select" name="giftwrapping[all]" id="gift-wrapping-select-same">
+                    <select class="js-gift-wrapping-select" name="giftwrapping[all]" id="gift-wrapping-select-same"  data-index="all">
                         <option value="">{{lang 'cart.gift_wrapping.choose_type'}}</option>
                         {{#each gift_wrappings}}
                             <option 
@@ -96,7 +96,8 @@
                         <select 
                             class="js-gift-wrapping-select" 
                             name="giftwrapping[{{$index}}]" 
-                            id="gift-wrapping-select-{{$index}}">
+                            id="gift-wrapping-select-{{$index}}"
+                            data-index="{{$index}}">
                             <option value="">
                                 {{lang 'cart.gift_wrapping.choose_type'}}
                             </option>
