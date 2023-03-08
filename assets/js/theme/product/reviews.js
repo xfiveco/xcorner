@@ -4,6 +4,7 @@ import forms from '../common/models/forms';
 import { safeString } from '../common/utils/safe-string';
 import { announceInputErrorMessage } from '../common/utils/form-utils';
 import q$, { parents } from '../global/selector';
+import trigger from '../common/utils/trigger';
 
 export default class {
     constructor({ $reviewForm, $context }) {
@@ -18,10 +19,10 @@ export default class {
         this.$reviewTabLink = q$('.js-product-view-review-tab-link', this.$context);
         this.$reviewsContent = q$('#product-reviews', this.$context);
         this.$reviewsContentList = q$('#product-reviews-content', this.$reviewsContent);
-        this.$collapsible = q$('[data-collapsible]', this.$reviewsContent);
+        this.$collapsible = q$('.js-collapsible', this.$reviewsContent);
 
         if (this.$context) {
-            collapsibleFactory('[data-collapsible]', { $context });
+            collapsibleFactory('.js-collapsible', { $context });
         } else {
             this.initLinkBind();
         }
@@ -37,7 +38,7 @@ export default class {
     initLinkBind() {
         const $productReviewLink = q$('#product-review-link');
 
-        $productReviewLink.getAttribute('href', `${$productReviewLink.getAttribute('href')}${window.location.search}#product-reviews`);
+        $productReviewLink.href = `${ $productReviewLink.href }${window.location.search}#product-reviews`;
         $productReviewLink.addEventListener('click', () => this.expandReviews());
     }
 
@@ -53,14 +54,14 @@ export default class {
         }
 
         // force collapse on page load
-        this.$collapsible.dispatchEvent(new Event(CollapsibleEvents.click));
+        trigger(this.$collapsible, CollapsibleEvents.click);
     }
 
     expandReviews() {
         this.$reviewTabLink.click();
 
-        if (!this.$reviewsContentList.hasClass('is-open')) {
-            this.$collapsible.dispatchEvent(new Event(CollapsibleEvents.click));
+        if (this.$reviewsContentList.classList.contains('is-open') === false) {
+            trigger(this.$collapsible, CollapsibleEvents.click);
         }
     }
 
@@ -72,11 +73,11 @@ export default class {
         const $prevLink = q$('.js-pagination-item-previous .js-pagination-link', this.$reviewsContent);
 
         if ($nextLink) {
-            $nextLink.setAttribute('href', `${$nextLink.getAttribute('href')} #product-reviews`);
+            $nextLink.href = `${ $nextLink.href } #product-reviews`;
         }
 
         if ($prevLink) {
-            $prevLink.setAttribute('href', `${$prevLink.getAttribute('href')} #product-reviews`);
+            $prevLink.href = `${ $prevLink.href } #product-reviews`;
         }
     }
 

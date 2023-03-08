@@ -9,7 +9,7 @@ export const CartPreviewEvents = {
 
 export default function (secureBaseUrl, cartId) {
     const loadingClass = 'is-loading';
-    const $cart = q$('[data-cart-preview]');
+    const $cart = q$('.js-cart-preview');
     const $cartDropdown = q$('#cart-preview-dropdown');
     const $cartLoading = document.createElement('div');
     $cartLoading.classList.add('js-loading-overlay');
