@@ -1,7 +1,7 @@
 export class VideoGallery {
     constructor($element) {
-        this.$player = $element.find('[data-video-player]');
-        this.$videos = $element.find('[data-video-item]');
+        this.$player = $element.find('.js-video-player');
+        this.$videos = $element.find('.js-video-item');
         this.currentVideo = {};
         this.bindEvents();
     }
