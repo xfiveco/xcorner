@@ -1,7 +1,7 @@
 // Import Swiper and modules
 import Swiper, { Navigation } from 'swiper';
-import 'swiper/scss';
-import 'swiper/scss/navigation';
+import 'swiper/swiper.scss';
+import 'swiper/modules/navigation/navigation.scss';
 
 const productCarouselParams = {
     direction: 'horizontal',
