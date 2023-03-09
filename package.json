@@ -1,9 +1,9 @@
 {
-  "name": "bigcommerce-cornerstone",
-  "description": "The BigCommerce reference theme for the Stencil platform",
-  "version": "6.8.0",
+  "name": "X-Corner",
+  "description": "The X-Corner BigCommerce Theme",
+  "version": "1.0.0",
   "private": true,
-  "author": "BigCommerce",
+  "author": "XFive.Co Pty Ltd",
   "license": "MIT",
   "dependencies": {
     "@bigcommerce/stencil-cli": "^6.0.0",
@@ -41,6 +41,7 @@
     "cli": "^1.0.1",
     "eslint": "^4.8.0",
     "eslint-config-airbnb": "^16.0.0",
+    "eslint-config-prettier": "^8.7.0",
     "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-jsx-a11y": "^6.4.1",
     "eslint-plugin-react": "^7.22.0",
@@ -56,6 +57,7 @@
     "lighthouse": "^8.5.1",
     "load-grunt-config": "^3.0.1",
     "lodash-webpack-plugin": "^0.11.6",
+    "prettier": "2.8.4",
     "stylelint": "^13.9.0",
     "stylelint-config-sass-guidelines": "^7.1.0",
     "stylelint-scss": "^3.18.0",
@@ -72,6 +74,7 @@
     "lighthouse": "npx lighthouse --config-path=lighthouse-config.js --quiet --output json --chrome-flags=\"--headless\" $URL | jq '.audits | map_values(.rawValue)'",
     "test": "npx jest",
     "stylelint": "npx stylelint **/*.scss",
-    "stylelint:fix": "npx stylelint --fix **/*.scss"
+    "stylelint:fix": "npx stylelint --fix **/*.scss",
+    "prettier": "prettier \"**/*.{json,md,scss,yaml,yml}\""
   }
 }
