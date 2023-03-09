@@ -2,7 +2,7 @@ import utils from '@bigcommerce/stencil-utils';
 import Review from '../product/reviews';
 import ProductDetails from '../common/product-details';
 import { defaultModal, ModalEvents } from './modal';
-import { initializeSwiperCarousel } from '../common/swiper-carousel';
+import { initializeProductSwiperCarousel, initializeCarouselSwiperCarousel } from '../common/swiper-carousel';
 import q$, { q$$ } from './selector';
 
 export default function (context) {
@@ -33,10 +33,17 @@ export default function (context) {
                 q$('#modal .js-dropdown-menu').addEventListener('opened.fndtn.dropdown', handleDropdownExpand);
                 modal.$content.querySelector('.js-product-view')?.classList.add('is-product-view-quick-view');
 
+                const $productCarousel = modal.$content.querySelector('.js-product-swiper');
                 const $carousel = modal.$content.querySelector('.js-swiper');
-                if ($carousel !== null) {
-                    initializeSwiperCarousel();
+
+                if ($productCarousel !== null) {
+                    initializeProductSwiperCarousel();
                 }
+
+                if ($carousel !== null) {
+                    initializeCarouselSwiperCarousel();
+                }
+
 
                 /* eslint-disable no-new */
                 new Review({ $context: modal.$content });
