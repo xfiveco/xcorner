@@ -3,9 +3,7 @@ import Swiper, { Navigation } from 'swiper';
 import 'swiper/scss';
 import 'swiper/scss/navigation';
 
-// Create a new Swiper instance
-const swiper = new Swiper('.js-swiper', {
-    // Install modules and set settings
+const productCarouselParams = {
     direction: 'horizontal',
     modules: [Navigation],
     allowSlideNext: true,
@@ -29,9 +27,38 @@ const swiper = new Swiper('.js-swiper', {
             slidesPerView: 3,
         },
     },
-});
+};
+
+const carouselParams = {
+    direction: 'horizontal',
+    modules: [Navigation],
+    allowSlideNext: true,
+    allowSlidePrev: true,
+    slidesPerView: 1,
+    speed: 500,
+    loop: true,
+    autoplay: {
+        delay: 3000,
+    },
+    navigation: {
+        nextEl: '.js-swiper-btn-next',
+        prevEl: '.js-swiper-btn-prev',
+    },
+};
+
+// Create a new Product Swiper instance
+const productSwiper = new Swiper('.js-product-swiper', productCarouselParams);
+
+// Create a new Carousel Swiper instance
+const carouselSwiper = new Swiper('.js-swiper', carouselParams);
 
 // Initiliaze Swiper instance
-export const initializeSwiperCarousel = () => {
-    swiper.initialize();
+export const initializeProductSwiperCarousel = () => {
+    productSwiper.initialize();
 };
+
+// Initiliaze Swiper instance
+export const initializeCarouselSwiperCarousel = () => {
+    carouselSwiper.initialize();
+};
+
