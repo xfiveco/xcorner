@@ -1,9 +1,9 @@
 {
-  "name": "bigcommerce-cornerstone",
-  "description": "The BigCommerce reference theme for the Stencil platform",
-  "version": "6.8.0",
+  "name": "X-Corner",
+  "description": "The X-Corner BigCommerce Theme",
+  "version": "1.0.0",
   "private": true,
-  "author": "BigCommerce",
+  "author": "XFive.Co Pty Ltd",
   "license": "MIT",
   "dependencies": {
     "@bigcommerce/stencil-cli": "^6.0.0",
@@ -74,6 +74,7 @@
     "lighthouse": "npx lighthouse --config-path=lighthouse-config.js --quiet --output json --chrome-flags=\"--headless\" $URL | jq '.audits | map_values(.rawValue)'",
     "test": "npx jest",
     "stylelint": "npx stylelint **/*.scss",
-    "stylelint:fix": "npx stylelint --fix **/*.scss"
+    "stylelint:fix": "npx stylelint --fix **/*.scss",
+    "prettier": "prettier \"**/*.{json,md,scss,yaml,yml}\""
   }
 }

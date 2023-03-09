@@ -1,6 +1,15 @@
 {
     "trailingComma": "es6",
+    "printWidth": 100,
     "tabWidth": 4,
     "semi": false,
-    "singleQuote": true
+    "singleQuote": true,
+    "overrides": [
+        {
+          "files": "*.json",
+          "options": {
+            "printWidth": 200
+          }
+        }
+      ]
 }
