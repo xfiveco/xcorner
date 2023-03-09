@@ -178,7 +178,7 @@ export class Collapsible {
         this.$toggle.addEventListener('click', this.onClicked);
 
         if (this.disabledMediaQueryList && this.disabledMediaQueryList.addEventListener) {
-            this.disabledMediaQueryList.addEventListener(this.onDisabledMediaQueryListMatch);
+            this.disabledMediaQueryList.addEventListener('change', this.onDisabledMediaQueryListMatch);
         }
     }
 
@@ -186,7 +186,7 @@ export class Collapsible {
         this.$toggle.removeEventListener('click', this.onClicked);
 
         if (this.disabledMediaQueryList && this.disabledMediaQueryList.removeEventListener) {
-            this.disabledMediaQueryList.removeEventListener(this.onDisabledMediaQueryListMatch);
+            this.disabledMediaQueryList.removeEventListener('change', this.onDisabledMediaQueryListMatch);
         }
     }
 

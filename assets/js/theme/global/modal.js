@@ -280,7 +280,7 @@ export class Modal {
  * @param {string} [options.size]
  * @returns {array}
  */
-export default function modalFactory(selector = '[data-reveal]', options = {}) {
+export default function modalFactory(selector = '.js-reveal', options = {}) {
     const $modals = q$$(selector, options.$context);
 
     const modals = $modals.map(element => {

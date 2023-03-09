@@ -1,12 +1,12 @@
 const revealCloseAttr = 'revealClose';
-const revealCloseSelector = `[data-${revealCloseAttr}]`;
-const revealSelector = '[data-reveal]';
+const revealCloseSelector = `.js-reveal-close`;
+const revealSelector = '.js-reveal';
 import q$, { q$$, parents } from './selector';
 
 class RevealClose {
     constructor($button) {
         this.$button = $button;
-        this.modalId = $($button).data(revealCloseAttr);
+        this.modalId = $button.dataset.revealCloseAttr;
 
         this.onClick = this.onClick.bind(this);
 
@@ -22,7 +22,7 @@ class RevealClose {
             $modal = parents(revealSelector, this.$button)[0];
         }
 
-        return $($modal).data('modalInstance');
+        return $modal.data['modalInstance'];
     }
 
     bindEvents() {
@@ -63,7 +63,7 @@ export default function revealCloseFactory(selector = revealCloseSelector, optio
     return $buttons.map(element => {
         const $button = element;
         const instanceKey = `${revealCloseAttr}Instance`;
-        const cachedButton = $($button).data(instanceKey);
+        const cachedButton = 'data' in $button ? $button.data[instanceKey] : null;
 
         if (cachedButton instanceof RevealClose) {
             return cachedButton;
@@ -71,7 +71,11 @@ export default function revealCloseFactory(selector = revealCloseSelector, optio
 
         const button = new RevealClose($button);
 
-        $($button).data(instanceKey, button);
+        if ('data' in $button === false) {
+            $button.data = {};
+        }
+
+        $button.data[instanceKey] = button;
 
         return button;
     });

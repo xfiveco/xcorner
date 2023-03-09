@@ -16,7 +16,7 @@ class Menu {
 
         // Init collapsible
         this.collapsibles = collapsibleFactory('[data-collapsible]', { $context: this.$menu });
-        this.collapsibleGroups = collapsibleGroupFactory($menu);
+        this.collapsibleGroups = collapsibleGroupFactory('#menu');
 
         // Auto-bind
         this.onMenuClick = this.onMenuClick.bind(this);

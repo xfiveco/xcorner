@@ -184,7 +184,7 @@ export default class ProductDetailsBase {
                 $value: q$('dd.js-product-upc', $scope),
             },
             quantity: {
-                $text: q$('.incrementTotal', $scope),
+                $text: q$('.js-form-input-increment-total', $scope),
                 $input: q$('[name=qty\\[\\]]', $scope),
             },
             $bulkPricing: q$('.js-product-view-info-bulk-pricing', $scope),

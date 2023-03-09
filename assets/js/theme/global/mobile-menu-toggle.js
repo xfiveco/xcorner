@@ -177,7 +177,7 @@ export class MobileMenuToggle {
 export default function mobileMenuToggleFactory(selector = `[data-${PLUGIN_KEY.SNAKE}]`, overrideOptions = {}) {
     const $toggle = q$(selector);
     const instanceKey = `${PLUGIN_KEY.CAMEL}Instance`;
-    const cachedMobileMenu = $toggle.data ? $toggle.data[instanceKey] : null;
+    const cachedMobileMenu = 'data' in $toggle ? $toggle.data[instanceKey] : null;
 
     if (cachedMobileMenu instanceof MobileMenuToggle) {
         return cachedMobileMenu;
