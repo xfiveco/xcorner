@@ -8,9 +8,9 @@ import isVisible from '../common/utils/is-visible';
 export default function () {
     const TOP_STYLING = 'top: 49px;';
     const $quickSearchResults = q$$('.js-quick-search-results');
-    const $quickSearchForms = q$$('[data-quick-search-form]');
+    const $quickSearchForms = q$$('.js-quick-search-form');
     const $quickSearchExpand = q$('#quick-search-expand');
-    const $searchQuery = $quickSearchForms.map($qsf => q$('[data-search-quick]', $qsf));
+    const $searchQuery = $quickSearchForms.map($qsf => q$('.js-search-quick', $qsf));
     const stencilDropDownExtendables = {
         hide: () => {
             $quickSearchExpand.setAttribute('aria-expanded', false);
@@ -52,16 +52,16 @@ export default function () {
 
             const $noResultsMessage = $quickSearchResultsCurrent.filter($el => $el.querySelector('.js-quick-search-message'));
             if ($noResultsMessage.length) {
-                $noResultsMessage.forEach($el => $el.setAttribute({
-                    role: 'status',
-                    'aria-live': 'polite',
-                }));
+                $noResultsMessage.forEach($el => {
+                    $el.setAttribute('role', 'status');
+                    $el.setAttribute('aria-live', 'polite');
+                });
             } else {
                 const $quickSearchAriaMessage = $quickSearchResultsCurrent.map($el => $el.nextElementSibling);
                 $noResultsMessage.forEach($nrm => $nrm.classList.add('u-hidden-visually'));
 
-                const predefinedText = $quickSearchAriaMessage[0].dataset.searchAriaMessagePredefinedText;
-                const itemsFoundCount = $quickSearchResultsCurrent[0].querySelectorAll('.js-product').length;
+                const predefinedText = $quickSearchAriaMessage[0]?.dataset.searchAriaMessagePredefinedText;
+                const itemsFoundCount = $quickSearchResultsCurrent[0]?.querySelectorAll('.js-product').length;
 
                 /* eslint-disable no-return-assign, no-param-reassign */
                 $quickSearchAriaMessage.forEach($el => ($el.textContent = `${itemsFoundCount} ${predefinedText} ${searchQuery}`));

@@ -26,11 +26,11 @@ export default class Account extends PageManager {
 
     onReady() {
         const $editAccountForm = classifyForm('form[data-edit-account-form]');
-        const $addressForm = classifyForm('form[data-address-form]');
+        const $addressForm = classifyForm('form.js-address-form');
         const $inboxForm = classifyForm('form[data-inbox-form]');
-        const $accountReturnForm = classifyForm('[data-account-return-form]');
-        const $paymentMethodForm = classifyForm('form[data-payment-method-form]');
-        const $reorderForm = classifyForm('[data-account-reorder-form]');
+        const $accountReturnForm = classifyForm('.js-account-return-form');
+        const $paymentMethodForm = classifyForm('form.js-payment-method-form');
+        const $reorderForm = classifyForm('.js-account-reorder-form');
         const $invoiceButton = $('[data-print-invoice]');
         const $bigCommerce = window.BigCommerce;
 
@@ -42,14 +42,14 @@ export default class Account extends PageManager {
         // Instantiates wish list JS
         Wishlist.load(this.context);
 
-        if ($editAccountForm.length) {
+        if ($editAccountForm) {
             this.registerEditAccountValidation($editAccountForm);
             if (this.$state.is('input')) {
                 insertStateHiddenField(this.$state);
             }
         }
 
-        if ($invoiceButton.length) {
+        if ($invoiceButton) {
             $invoiceButton.on('click', () => {
                 const left = window.screen.availWidth / 2 - 450;
                 const top = window.screen.availHeight / 2 - 320;
@@ -59,7 +59,7 @@ export default class Account extends PageManager {
             });
         }
 
-        if ($addressForm.length) {
+        if ($addressForm) {
             this.initAddressFormValidation($addressForm);
 
             if (this.$state?.tagName.toLowerCase() === 'input') {
@@ -67,19 +67,19 @@ export default class Account extends PageManager {
             }
         }
 
-        if ($inboxForm.length) {
+        if ($inboxForm) {
             this.registerInboxValidation($inboxForm);
         }
 
-        if ($accountReturnForm.length) {
+        if ($accountReturnForm) {
             this.initAccountReturnFormValidation($accountReturnForm);
         }
 
-        if ($paymentMethodForm.length) {
+        if ($paymentMethodForm) {
             this.initPaymentMethodFormValidation($paymentMethodForm);
         }
 
-        if ($reorderForm.length) {
+        if ($reorderForm) {
             this.initReorderForm($reorderForm);
         }
 
@@ -164,10 +164,10 @@ export default class Account extends PageManager {
 
     initAddressFormValidation($addressForm) {
         const validationModel = validation($addressForm, this.context);
-        const stateSelector = 'form[data-address-form] [data-field-type="State"]';
+        const stateSelector = 'form.js-address-form [data-field-type="State"]';
         const $stateElement = $(stateSelector);
         const addressValidator = nod({
-            submit: 'form[data-address-form] input[type="submit"]',
+            submit: 'form.js-address-form input[type="submit"]',
             tap: announceInputErrorMessage,
         });
 
@@ -252,7 +252,7 @@ export default class Account extends PageManager {
         $paymentMethodForm.find('#postal_code.js-form-field').attr('data-validation', `{ "type": "singleline", "label": "${this.context.postalCodeLabel}", "required": true, "maxlength": 0 }`);
 
         const validationModel = validation($paymentMethodForm, this.context);
-        const paymentMethodSelector = 'form[data-payment-method-form]';
+        const paymentMethodSelector = 'form.js-payment-method-form';
         const paymentMethodValidator = nod({
             submit: `${paymentMethodSelector} input[type="submit"]`,
             tap: announceInputErrorMessage,
