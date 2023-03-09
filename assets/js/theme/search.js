@@ -43,13 +43,13 @@ export default class Search extends CatalogPage {
         this.$facetedSearchContainer.removeClass('u-hidden-visually');
         this.$contentResultsContainer.addClass('u-hidden-visually');
 
-        $('[data-content-results-toggle]').removeClass('js-nav-bar-action-color-active');
-        $('[data-content-results-toggle]').addClass('js-nav-bar-action');
+        $('.js-content-results-toggle').removeClass('js-nav-bar-action-color-active');
+        $('.js-content-results-toggle').addClass('js-nav-bar-action');
 
-        $('[data-product-results-toggle]').removeClass('js-nav-bar-action');
-        $('[data-product-results-toggle]').addClass('js-nav-bar-action-color-active');
+        $('.js-product-results-toggle').removeClass('js-nav-bar-action');
+        $('.js-product-results-toggle').addClass('js-nav-bar-action-color-active');
 
-        this.activateTab($('[data-product-results-toggle]'));
+        this.activateTab($('.js-product-results-toggle'));
 
         if (!navigate) {
             return;
@@ -68,13 +68,13 @@ export default class Search extends CatalogPage {
         this.$productListingContainer.addClass('u-hidden-visually');
         this.$facetedSearchContainer.addClass('u-hidden-visually');
 
-        $('[data-product-results-toggle]').removeClass('js-nav-bar-action-color-active');
-        $('[data-product-results-toggle]').addClass('js-nav-bar-action');
+        $('.js-product-results-toggle').removeClass('js-nav-bar-action-color-active');
+        $('.js-product-results-toggle').addClass('js-nav-bar-action');
 
-        $('[data-content-results-toggle]').removeClass('js-nav-bar-action');
-        $('[data-content-results-toggle]').addClass('js-nav-bar-action-color-active');
+        $('.js-content-results-toggle').removeClass('js-nav-bar-action');
+        $('.js-content-results-toggle').addClass('js-nav-bar-action-color-active');
 
-        this.activateTab($('[data-content-results-toggle]'));
+        this.activateTab($('.js-content-results-toggle'));
 
         if (!navigate) {
             return;
@@ -89,7 +89,7 @@ export default class Search extends CatalogPage {
     }
 
     activateTab($tabToActivate) {
-        const $tabsCollection = $('[data-search-page-tabs]').find('[role="tab"]');
+        const $tabsCollection = $('.js-search-page-tabs').find('[role="tab"]');
 
         $tabsCollection.each((idx, tab) => {
             const $tab = $(tab);
@@ -111,7 +111,7 @@ export default class Search extends CatalogPage {
             || eventKey === rightArrowKey;
         if (!isLeftOrRightArrowKeydown) return;
 
-        const $tabsCollection = $('[data-search-page-tabs]').find('[role="tab"]');
+        const $tabsCollection = $('.js-search-page-tabs').find('[role="tab"]');
 
         const isActiveElementNotTab = $tabsCollection.index($(document.activeElement)) === -1;
         if (isActiveElementNotTab) return;
@@ -157,17 +157,17 @@ export default class Search extends CatalogPage {
         // Init collapsibles
         collapsibleFactory();
 
-        $('[data-product-results-toggle]').on('click', event => {
+        $('.js-product-results-toggle').on('click', event => {
             event.preventDefault();
             this.showProducts();
         });
 
-        $('[data-content-results-toggle]').on('click', event => {
+        $('.js-content-results-toggle').on('click', event => {
             event.preventDefault();
             this.showContent();
         });
 
-        $('[data-search-page-tabs]').on('keyup', this.onTabChangeWithArrows);
+        $('.js-search-page-tabs').on('keyup', this.onTabChangeWithArrows);
 
         if (this.$productListingContainer.find('li.product').length === 0 || url.query.section === 'content') {
             this.showContent(false);
