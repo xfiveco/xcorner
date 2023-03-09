@@ -20,7 +20,8 @@ function updateCounterNav(counter, $link, urls) {
             $link.classList.add('show');
         }
 
-        $link.setAttribute('href', `${urls.compare}/${counter.join('/')}`);
+        /* eslint-disable no-param-reassign */
+        $link.href = `${urls.compare}/${counter.join('/')}`;
 
         /* eslint-disable no-param-reassign */
         $link

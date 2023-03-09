@@ -1,6 +1,7 @@
 import PageManager from './page-manager';
 import { showAlertModal } from './global/modal';
 import compareProducts from './global/compare-products';
+import q$ from './global/selector';
 
 export default class Compare extends PageManager {
     onReady() {
@@ -8,7 +9,7 @@ export default class Compare extends PageManager {
 
         const message = this.context.compareRemoveMessage;
 
-        $('body').on('click', '[data-comparison-remove]', event => {
+        q$('.js-comparison-remove').addEventListener('click', event => {
             if (this.context.comparisons.length <= 2) {
                 showAlertModal(message);
                 event.preventDefault();
