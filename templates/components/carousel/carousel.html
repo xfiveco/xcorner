@@ -1,48 +1,26 @@
-<section class="js-hero-carousel"
-    data-slick='{
-        "arrows": {{arrows}},
-        "mobileFirst": true,
-        "slidesToShow": 1,
-        "slidesToScroll": 1,
-        "autoplay": true,
-        "autoplaySpeed": {{carousel.swap_frequency}},
-        "slide": "[data-hero-slide]"
-    }'
->
-    {{#each carousel.slides}}
-        {{#if button_text}}
-            <div data-hero-slide="{{@index}}">
-        {{else}}
-            <a href="{{url}}" data-hero-slide="{{@index}}" aria-label="{{#if this.alt_text.length '!=' 0}}{{this.alt_text}}{{else}}{{lang 'carousel.slide_number' slide_number=(add @index 1)}}{{/if}}">
-        {{/if}}
-                <div class="js-hero-carousel-slide{{#if ../theme_settings.homepage_stretch_carousel_images}} is-stretch{{/if}}{{#if @first}} is-first{{/if}}">
-                    {{#if @first}}
-                        {{> components/common/image
-                            image=stencil_image
-                            class="heroCarousel-image"
-                            fallback_size='1280w'
-                        }}
-                    {{else}}
-                        {{> components/common/image
-                            image=stencil_image
-                            class="heroCarousel-image"
-                            fallback_size='1280w'
-                        }}
-                    {{/if}}
-                    {{#or heading text button_text}}
-                        {{> components/carousel/content}}
-                    {{/or}}
-                </div>
-        {{#if button_text}}
+<section class="js-swiper">
+    <div class="swiper-wrapper">
+        {{#each carousel.slides}}
+            <div class="swiper-slide{{#if ../theme_settings.homepage_stretch_carousel_images}} is-stretch{{/if}}{{#if @first}} is-first{{/if}}">
+                {{#if @first}}
+                    {{> components/common/image
+                        image=stencil_image
+                        fallback_size='1280w'
+                    }}
+                {{else}}
+                    {{> components/common/image
+                        image=stencil_image
+                        fallback_size='1280w'
+                    }}
+                {{/if}}
+                {{#or heading text button_text}}
+                    {{> components/carousel/content}}
+                {{/or}}
             </div>
-        {{else}}
-            </a>
-        {{/if}}
-    {{/each}}
-    {{#if carousel.slides.length '>' 1}}
-        {{> components/carousel/content-announcement}}
-        {{#if play_pause_button}}
-            {{> components/carousel/play-pause-button}}
-        {{/if}}
-    {{/if}}
+        {{/each}}
+    </div>
+
+    
+    <div class="js-swiper-btn-prev">Previous</div>
+    <div class="js-swiper-btn-next">Next</div>
 </section>
