@@ -2,7 +2,7 @@ import utils from '@bigcommerce/stencil-utils';
 import Review from '../product/reviews';
 import ProductDetails from '../common/product-details';
 import { defaultModal, ModalEvents } from './modal';
-// import { setCarouselState, onSlickCarouselChange, onUserCarouselChange } from '../common/carousel'; // TODO: Update carousel implementation
+import { initializeSwiperCarousel } from '../common/swiper-carousel';
 import q$, { q$$ } from './selector';
 
 export default function (context) {
@@ -33,23 +33,10 @@ export default function (context) {
                 q$('#modal .js-dropdown-menu').addEventListener('opened.fndtn.dropdown', handleDropdownExpand);
                 modal.$content.querySelector('.js-product-view')?.classList.add('is-product-view-quick-view');
 
-                // const $carousel = modal.$content.querySelector('[data-slick]');
-                // if ($carousel !== null) {
-                //     $($carousel).on('init breakpoint swipe', setCarouselState);
-                //     $($carousel).on('click', '.slick-arrow, .slick-dots', setCarouselState);
-
-                //     $($carousel).on('init afterChange', (e, carouselObj) => onSlickCarouselChange(e, carouselObj, context));
-                //     $($carousel).on('click', '.slick-arrow, .slick-dots', $carousel, e => onUserCarouselChange(e, context));
-                //     $($carousel).on('swipe', (e, carouselObj) => onUserCarouselChange(e, context, carouselObj.$slider));
-
-                //     if (modal.$modal.classList.contains('open')) {
-                //         $($carousel).slick();
-                //     } else {
-                //         $(modal.$modal).one(ModalEvents.opened, () => {
-                //             if ($.contains(document, $carousel[0])) $($carousel).slick();
-                //         });
-                //     }
-                // }
+                const $carousel = modal.$content.querySelector('.js-swiper');
+                if ($carousel !== null) {
+                    initializeSwiperCarousel();
+                }
 
                 /* eslint-disable no-new */
                 new Review({ $context: modal.$content });
