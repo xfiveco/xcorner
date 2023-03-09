@@ -44,7 +44,7 @@ export default function toggleOption($element, show) {
 
     // move the option to the correct select element if required
     if (currentSelectElement.matches(':disabled') && show) {
-        const previousIndex = $element.data?.index;
+        const previousIndex = $element.dataset.index;
         const $elementNowAtPreviousIndex = selectElement.querySelectorAll('option')[previousIndex];
 
         if ($elementNowAtPreviousIndex) {
@@ -53,12 +53,8 @@ export default function toggleOption($element, show) {
             selectElement.append($element);
         }
     } else if (!currentSelectElement.matches(':disabled') && !show) {
-        if ('data' in $element === false) {
-            /* eslint-disable no-param-reassign */
-            $element.data = {};
-        }
-
-        $element.data.index = q$$('option', currentSelectElement).indexOf(this);
+        /* eslint-disable no-param-reassign */
+        $element.dataset.index = q$$('option', currentSelectElement).indexOf(this);
         disabledSelectElement.append($element);
     }
 

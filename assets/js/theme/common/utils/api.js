@@ -4,13 +4,12 @@
  * @returns FormData object
 */
 export const filterEmptyValuesFromForm = formData => {
+    const filteredForm = formData.entries().filter((_, value) => value !== '');
     const res = new FormData();
 
     try {
-        for (const [key, val] of formData) {
-            if (val !== '') {
-                res.append(key, val);
-            }
+        for (const [key, val] of filteredForm) {
+            res.append(key, val);
         }
     } catch (e) {
         console.log(e); // eslint-disable-line no-console

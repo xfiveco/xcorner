@@ -70,16 +70,16 @@ export default class StencilDropdown {
             }
         });
 
-        q$('[data-reveal]').addEventListener('open.fndtn.reveal', () => {
+        q$('.js-reveal').addEventListener('open.fndtn.reveal', () => {
             modalOpened = true;
         });
 
-        q$('[data-reveal]').addEventListener('close.fndtn.reveal', () => {
+        q$('.js-reveal').addEventListener('close.fndtn.reveal', () => {
             modalOpened = false;
         });
 
         /* eslint-disable no-unused-expressions */
-        q$('[data-drop-down-close]')?.addEventListener('click', () => {
+        q$('.js-drop-down-close')?.addEventListener('click', () => {
             modalOpened = false;
             this.hide($container);
         });
