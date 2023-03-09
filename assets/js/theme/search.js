@@ -43,11 +43,11 @@ export default class Search extends CatalogPage {
         this.$facetedSearchContainer.removeClass('u-hidden-visually');
         this.$contentResultsContainer.addClass('u-hidden-visually');
 
-        $('[data-content-results-toggle]').removeClass('navBar-action-color--active');
-        $('[data-content-results-toggle]').addClass('navBar-action');
+        $('[data-content-results-toggle]').removeClass('js-nav-bar-action-color-active');
+        $('[data-content-results-toggle]').addClass('js-nav-bar-action');
 
-        $('[data-product-results-toggle]').removeClass('navBar-action');
-        $('[data-product-results-toggle]').addClass('navBar-action-color--active');
+        $('[data-product-results-toggle]').removeClass('js-nav-bar-action');
+        $('[data-product-results-toggle]').addClass('js-nav-bar-action-color-active');
 
         this.activateTab($('[data-product-results-toggle]'));
 
@@ -68,11 +68,11 @@ export default class Search extends CatalogPage {
         this.$productListingContainer.addClass('u-hidden-visually');
         this.$facetedSearchContainer.addClass('u-hidden-visually');
 
-        $('[data-product-results-toggle]').removeClass('navBar-action-color--active');
-        $('[data-product-results-toggle]').addClass('navBar-action');
+        $('[data-product-results-toggle]').removeClass('js-nav-bar-action-color-active');
+        $('[data-product-results-toggle]').addClass('js-nav-bar-action');
 
-        $('[data-content-results-toggle]').removeClass('navBar-action');
-        $('[data-content-results-toggle]').addClass('navBar-action-color--active');
+        $('[data-content-results-toggle]').removeClass('js-nav-bar-action');
+        $('[data-content-results-toggle]').addClass('js-nav-bar-action-color-active');
 
         this.activateTab($('[data-content-results-toggle]'));
 
