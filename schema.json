@@ -1,200 +1,200 @@
 [
   {
-    "name": "i18n.Global",
+    "name": "Global",
     "settings": [
       {
         "type": "heading",
-        "content": "i18n.BackgroundAndLines"
+        "content": "BackgroundAndLines"
       },
       {
         "type": "heading",
-        "content": "i18n.BodyTextAndLinks"
+        "content": "BodyTextAndLinks"
       },
       {
         "type": "heading",
-        "content": "i18n.Headings"
+        "content": "Headings"
       },
       {
         "type": "heading",
-        "content": "i18n.LoadingIndicators"
+        "content": "LoadingIndicators"
       },
       {
         "type": "heading",
-        "content": "i18n.ImageLoading"
+        "content": "ImageLoading"
       },
       {
         "type": "paragraph",
-        "content": "i18n.CornerstoneDoesntLoadMostImages"
+        "content": "CornerstoneDoesntLoadMostImages"
       },
       {
         "type": "select",
         "id": "lazyload_mode",
         "force_reload": true,
-        "label": "i18n.LazyloadingMode",
+        "label": "LazyloadingMode",
         "options": [
           {
             "value": "lazyload",
-            "label": "i18n.Lazyload"
+            "label": "Lazyload"
           },
           {
             "value": "lazyload+lqip",
-            "label": "i18n.LazyloadWithLQIP"
+            "label": "LazyloadWithLQIP"
           },
           {
             "value": "disabled",
-            "label": "i18n.Disabled"
+            "label": "Disabled"
           }
         ]
       },
       {
         "type": "heading",
-        "content": "i18n.Pages"
+        "content": "Pages"
       },
       {
         "type": "checkbox",
-        "label": "i18n.HideBreadcrumbs",
+        "label": "HideBreadcrumbs",
         "force_reload": true,
         "id": "hide_breadcrumbs"
       },
       {
         "type": "checkbox",
-        "label": "i18n.HidePageHeading",
+        "label": "HidePageHeading",
         "force_reload": true,
         "id": "hide_page_heading"
       },
       {
         "type": "checkbox",
-        "label": "i18n.HideCategoryPageHeading",
+        "label": "HideCategoryPageHeading",
         "force_reload": true,
         "id": "hide_category_page_heading"
       },
       {
         "type": "checkbox",
-        "label": "i18n.HideBlogPageHeading",
+        "label": "HideBlogPageHeading",
         "force_reload": true,
         "id": "hide_blog_page_heading"
       },
       {
         "type": "checkbox",
-        "label": "i18n.HideContactUsPageHeading",
+        "label": "HideContactUsPageHeading",
         "force_reload": true,
         "id": "hide_contact_us_page_heading"
       },
       {
         "type": "heading",
-        "content": "i18n.Products"
+        "content": "Products"
       },
       {
         "type": "select",
         "id": "product_list_display_mode",
         "force_reload": true,
-        "label": "i18n.DisplayStyle",
+        "label": "DisplayStyle",
         "options": [
           {
             "value": "grid",
-            "label": "i18n.ShowProductsInAGrid"
+            "label": "ShowProductsInAGrid"
           },
           {
             "value": "list",
-            "label": "i18n.ShowProductsInAList"
+            "label": "ShowProductsInAList"
           }
         ]
       },
       {
         "type": "heading",
-        "content": "i18n.Blog"
+        "content": "Blog"
       },
       {
         "type": "imageDimension",
         "id": "blog_size",
         "force_reload": true,
-        "label": "i18n.SizeOfImages",
+        "label": "SizeOfImages",
         "options": [
           {
             "value": "190x250",
-            "label": "i18n.OptimizedForTheme"
+            "label": "OptimizedForTheme"
           },
           {
             "value": "custom",
-            "label": "i18n.SpecifyDimensions"
+            "label": "SpecifyDimensions"
           }
         ]
       },
       {
         "type": "heading",
-        "content": "i18n.Pricing"
+        "content": "Pricing"
       },
       {
         "type": "checkbox",
-        "label": "i18n.ShowPriceRangesForProducts",
+        "label": "ShowPriceRangesForProducts",
         "force_reload": true,
         "id": "price_ranges"
       },
       {
         "type": "heading",
-        "content": "i18n.PurchaseOptions"
+        "content": "PurchaseOptions"
       },
       {
         "type": "heading",
-        "content": "i18n.FormInputFields"
+        "content": "FormInputFields"
       }
     ]
   },
   {
-    "name": "i18n.HeaderAndFooter",
+    "name": "HeaderAndFooter",
     "settings": [
       {
         "type": "heading",
-        "content": "i18n.Header"
+        "content": "Header"
       },
       {
         "type": "heading",
-        "content": "i18n.Logo"
+        "content": "Logo"
       },
       {
         "type": "select",
-        "label": "i18n.LogoPosition",
+        "label": "LogoPosition",
         "id": "logo_position",
         "force_reload": true,
         "options": [
           {
             "value": "right",
-            "label": "i18n.Right"
+            "label": "Right"
           },
           {
             "value": "center",
-            "label": "i18n.Center"
+            "label": "Center"
           },
           {
             "value": "left",
-            "label": "i18n.Left"
+            "label": "Left"
           }
         ]
       },
       {
         "type": "imageDimension",
-        "label": "i18n.LogoImageSize",
+        "label": "LogoImageSize",
         "id": "logo_size",
         "description": "Please specify a maximum image size for desktop display. We'll automatically scale down the image for smaller devices.",
         "force_reload": true,
         "options": [
           {
             "value": "250x100",
-            "label": "i18n.OptimizedForTheme"
+            "label": "OptimizedForTheme"
           },
           {
             "value": "original",
-            "label": "i18n.OriginalAsUploaded"
+            "label": "OriginalAsUploaded"
           },
           {
             "value": "custom",
-            "label": "i18n.SpecifyDimensions"
+            "label": "SpecifyDimensions"
           }
         ]
       },
       {
         "type": "select",
-        "label": "i18n.LogoFontSize",
+        "label": "LogoFontSize",
         "id": "logo_fontSize",
         "options": [
           {
@@ -325,51 +325,51 @@
       },
       {
         "type": "heading",
-        "content": "i18n.UtilityNavigation"
+        "content": "UtilityNavigation"
       },
       {
         "type": "heading",
-        "content": "i18n.MainNavigation"
+        "content": "MainNavigation"
       },
       {
         "type": "checkbox",
-        "label": "i18n.HideLinksToWebPages",
+        "label": "HideLinksToWebPages",
         "force_reload": true,
         "id": "hide_content_navigation"
       },
       {
         "type": "select",
-        "label": "i18n.DropdownMenuDisplayMode",
+        "label": "DropdownMenuDisplayMode",
         "id": "navigation_design",
         "force_reload": true,
         "options": [
           {
             "value": "simple",
-            "label": "i18n.SimpleMenuDisplayDepthOf"
+            "label": "SimpleMenuDisplayDepthOf"
           },
           {
             "value": "alternate",
-            "label": "i18n.AlternateMaxMenuDisplayDepth"
+            "label": "AlternateMaxMenuDisplayDepth"
           }
         ]
       },
       {
         "type": "heading",
-        "content": "i18n.SocialMediaIcons"
+        "content": "SocialMediaIcons"
       },
       {
         "type": "paragraph",
-        "content": "i18n.SocialAccountsMustBeSet"
+        "content": "SocialAccountsMustBeSet"
       },
       {
         "type": "checkbox",
-        "label": "i18n.ShowSocialMediaIcons",
+        "label": "ShowSocialMediaIcons",
         "force_reload": true,
         "id": "social_icon_placement_top"
       },
       {
         "type": "select",
-        "label": "i18n.FooterPlacement",
+        "label": "FooterPlacement",
         "id": "social_icon_placement_bottom",
         "force_reload": true,
         "reference": "social_icon_placement_top",
@@ -377,142 +377,142 @@
         "options": [
           {
             "value": "bottom_none",
-            "label": "i18n.None"
+            "label": "None"
           },
           {
             "value": "bottom_right",
-            "label": "i18n.Right"
+            "label": "Right"
           },
           {
             "value": "bottom_left",
-            "label": "i18n.Left"
+            "label": "Left"
           }
         ]
       },
       {
         "type": "heading",
-        "content": "i18n.Footer"
+        "content": "Footer"
       },
       {
         "type": "heading",
-        "content": "i18n.DisplaySettings"
+        "content": "DisplaySettings"
       },
       {
         "type": "checkbox",
-        "label": "i18n.ShowPoweredByBigCommerce",
+        "label": "ShowPoweredByBigCommerce",
         "force_reload": true,
         "id": "show_powered_by"
       },
       {
         "type": "checkbox",
-        "label": "i18n.ShowBrandsInFooter",
+        "label": "ShowBrandsInFooter",
         "force_reload": true,
         "id": "shop_by_brand_show_footer"
       },
       {
         "type": "checkbox",
-        "label": "i18n.ShowCurrentYearAnd",
+        "label": "ShowCurrentYearAnd",
         "force_reload": true,
         "id": "show_copyright_footer"
       },
       {
         "type": "heading",
-        "content": "i18n.PaymentIcons"
+        "content": "PaymentIcons"
       },
       {
         "type": "checkbox",
-        "label": "i18n.ShowAmericanExpress",
+        "label": "ShowAmericanExpress",
         "force_reload": true,
         "id": "show_accept_amex"
       },
       {
         "type": "checkbox",
-        "label": "i18n.ShowDiscover",
+        "label": "ShowDiscover",
         "force_reload": true,
         "id": "show_accept_discover"
       },
       {
         "type": "checkbox",
-        "label": "i18n.ShowMastercard",
+        "label": "ShowMastercard",
         "force_reload": true,
         "id": "show_accept_mastercard"
       },
       {
         "type": "checkbox",
-        "label": "i18n.ShowPayPal",
+        "label": "ShowPayPal",
         "force_reload": true,
         "id": "show_accept_paypal"
       },
       {
         "type": "checkbox",
-        "label": "i18n.ShowVisa",
+        "label": "ShowVisa",
         "force_reload": true,
         "id": "show_accept_visa"
       },
       {
         "type": "checkbox",
-        "label": "i18n.ShowAmazonPay",
+        "label": "ShowAmazonPay",
         "force_reload": true,
         "id": "show_accept_amazonpay"
       },
       {
         "type": "checkbox",
-        "label": "i18n.ShowGooglePay",
+        "label": "ShowGooglePay",
         "force_reload": true,
         "id": "show_accept_googlepay"
       },
       {
         "type": "checkbox",
-        "label": "i18n.ShowKlarna",
+        "label": "ShowKlarna",
         "force_reload": true,
         "id": "show_accept_klarna"
       }
     ]
   },
   {
-    "name": "i18n.HomePage",
+    "name": "HomePage",
     "settings": [
       {
         "type": "heading",
-        "content": "i18n.Carousel"
+        "content": "Carousel"
       },
       {
         "type": "checkbox",
-        "label": "i18n.ShowCarousel",
+        "label": "ShowCarousel",
         "force_reload": true,
         "id": "homepage_show_carousel"
       },
       {
         "type": "checkbox",
-        "label": "i18n.ShowCarouselArrows",
+        "label": "ShowCarouselArrows",
         "force_reload": true,
         "id": "homepage_show_carousel_arrows"
       },
       {
         "type": "checkbox",
-        "label": "i18n.ShowCarouselPlayPauseButton",
+        "label": "ShowCarouselPlayPauseButton",
         "force_reload": true,
         "id": "homepage_show_carousel_play_pause_button"
       },
       {
         "type": "checkbox",
-        "label": "i18n.AllowImageToStretchOn",
+        "label": "AllowImageToStretchOn",
         "force_reload": true,
         "id": "homepage_stretch_carousel_images"
       },
       {
         "type": "heading",
-        "content": "i18n.Products"
+        "content": "Products"
       },
       {
         "type": "select",
-        "label": "i18n.NumberOfFeaturedProducts",
+        "label": "NumberOfFeaturedProducts",
         "id": "homepage_featured_products_count",
         "force_reload": true,
         "options": [
           {
             "value": 0,
-            "label": "i18n.Disable"
+            "label": "Disable"
           },
           {
             "value": 1,
@@ -566,13 +566,13 @@
       },
       {
         "type": "select",
-        "label": "i18n.NumberOfMostPopularProducts",
+        "label": "NumberOfMostPopularProducts",
         "id": "homepage_top_products_count",
         "force_reload": true,
         "options": [
           {
             "value": 0,
-            "label": "i18n.Disable"
+            "label": "Disable"
           },
           {
             "value": 1,
@@ -626,13 +626,13 @@
       },
       {
         "type": "select",
-        "label": "i18n.NumberOfNewProducts",
+        "label": "NumberOfNewProducts",
         "id": "homepage_new_products_count",
         "force_reload": true,
         "options": [
           {
             "value": 0,
-            "label": "i18n.Disable"
+            "label": "Disable"
           },
           {
             "value": 1,
@@ -687,39 +687,39 @@
     ]
   },
   {
-    "name": "i18n.Products",
+    "name": "Products",
     "settings": [
       {
         "type": "heading",
-        "content": "i18n.ProductSaleBadges"
+        "content": "ProductSaleBadges"
       },
       {
         "type": "select",
-        "label": "i18n.ShowProductSaleBadges",
+        "label": "ShowProductSaleBadges",
         "id": "product_sale_badges",
         "force_reload": true,
         "options": [
           {
             "value": "none",
-            "label": "i18n.None"
+            "label": "None"
           },
           {
             "value": "topleft",
-            "label": "i18n.TopLeft"
+            "label": "TopLeft"
           },
           {
             "value": "sash",
-            "label": "i18n.Diagonal"
+            "label": "Diagonal"
           },
           {
             "value": "burst",
-            "label": "i18n.Burst"
+            "label": "Burst"
           }
         ]
       },
       {
         "type": "text",
-        "label": "i18n.ProductSaleBadgeLabel",
+        "label": "ProductSaleBadgeLabel",
         "force_reload": true,
         "id": "pdp_sale_badge_label",
         "reference": "product_sale_badges",
@@ -727,7 +727,7 @@
       },
       {
         "type": "text",
-        "label": "i18n.ProductPriceLabelSale",
+        "label": "ProductPriceLabelSale",
         "force_reload": true,
         "id": "pdp_sale_price_label",
         "reference": "product_sale_badges",
@@ -735,7 +735,7 @@
       },
       {
         "type": "text",
-        "label": "i18n.ProductPriceLabelBeforeSale",
+        "label": "ProductPriceLabelBeforeSale",
         "force_reload": true,
         "id": "pdp_non_sale_price_label",
         "reference": "product_sale_badges",
@@ -743,7 +743,7 @@
       },
       {
         "type": "text",
-        "label": "i18n.ProductPriceLabelRetail",
+        "label": "ProductPriceLabelRetail",
         "force_reload": true,
         "id": "pdp_retail_price_label",
         "reference": "product_sale_badges",
@@ -751,7 +751,7 @@
       },
       {
         "type": "text",
-        "label": "i18n.ProductPriceLabel",
+        "label": "ProductPriceLabel",
         "force_reload": true,
         "id": "pdp_price_label",
         "reference": "product_sale_badges",
@@ -759,64 +759,64 @@
       },
       {
         "type": "paragraph",
-        "content": "i18n.TheProductPriceLabel",
+        "content": "TheProductPriceLabel",
         "reference": "product_sale_badges",
         "reference_default": "none"
       },
       {
         "type": "color",
-        "label": "i18n.BadgeTextColor",
+        "label": "BadgeTextColor",
         "id": "color_text_product_sale_badges",
         "reference": "product_sale_badges",
         "reference_default": "none"
       },
       {
         "type": "color",
-        "label": "i18n.BadgeColor",
+        "label": "BadgeColor",
         "id": "color_badge_product_sale_badges",
         "reference": "product_sale_badges",
         "reference_default": "none"
       },
       {
         "type": "color",
-        "label": "i18n.BadgeHoverColor",
+        "label": "BadgeHoverColor",
         "id": "color_hover_product_sale_badges",
         "reference": "product_sale_badges",
         "reference_default": "none"
       },
       {
         "type": "paragraph",
-        "content": "i18n.ForTextureSwatchesMaxDimensions",
+        "content": "ForTextureSwatchesMaxDimensions",
         "reference": "product_sale_badges",
         "reference_default": "none"
       },
       {
         "type": "select",
-        "label": "i18n.ShowProductSoldOutBadges",
+        "label": "ShowProductSoldOutBadges",
         "id": "product_sold_out_badges",
         "force_reload": true,
         "options": [
           {
             "value": "none",
-            "label": "i18n.None"
+            "label": "None"
           },
           {
             "value": "topleft",
-            "label": "i18n.TopLeft"
+            "label": "TopLeft"
           },
           {
             "value": "sash",
-            "label": "i18n.Diagonal"
+            "label": "Diagonal"
           },
           {
             "value": "burst",
-            "label": "i18n.Burst"
+            "label": "Burst"
           }
         ]
       },
       {
         "type": "text",
-        "label": "i18n.ProductSoldOutBadgeLabel",
+        "label": "ProductSoldOutBadgeLabel",
         "force_reload": true,
         "id": "pdp_sold_out_label",
         "reference": "product_sold_out_badges",
@@ -824,50 +824,50 @@
       },
       {
         "type": "color",
-        "label": "i18n.BadgeTextColor",
+        "label": "BadgeTextColor",
         "id": "color_text_product_sold_out_badges",
         "reference": "product_sold_out_badges",
         "reference_default": "none"
       },
       {
         "type": "color",
-        "label": "i18n.BadgeColor",
+        "label": "BadgeColor",
         "id": "color_badge_product_sold_out_badges",
         "reference": "product_sold_out_badges",
         "reference_default": "none"
       },
       {
         "type": "color",
-        "label": "i18n.BadgeHoverColor",
+        "label": "BadgeHoverColor",
         "id": "color_hover_product_sold_out_badges",
         "reference": "product_sold_out_badges",
         "reference_default": "none"
       },
       {
         "type": "heading",
-        "content": "i18n.DisplaySettings"
+        "content": "DisplaySettings"
       },
       {
         "type": "checkbox",
-        "label": "i18n.ShowQuickviewButtonOnProduct",
+        "label": "ShowQuickviewButtonOnProduct",
         "force_reload": true,
         "id": "show_product_quick_view"
       },
       {
         "type": "checkbox",
-        "label": "i18n.ShowProductDescriptionTabs",
+        "label": "ShowProductDescriptionTabs",
         "force_reload": true,
         "id": "show_product_details_tabs"
       },
       {
         "type": "checkbox",
-        "label": "i18n.ProductCustomFieldsInTabs",
+        "label": "ProductCustomFieldsInTabs",
         "force_reload": true,
         "id": "show_custom_fields_tabs"
       },
       {
         "type": "text",
-        "label": "i18n.ProductCustomFieldsTabLabel",
+        "label": "ProductCustomFieldsTabLabel",
         "force_reload": true,
         "reference": "show_custom_fields_tabs",
         "reference_default": false,
@@ -875,37 +875,37 @@
       },
       {
         "type": "checkbox",
-        "label": "i18n.ShowProductWeight",
+        "label": "ShowProductWeight",
         "force_reload": true,
         "id": "show_product_weight"
       },
       {
         "type": "checkbox",
-        "label": "i18n.ShowProductDimensions",
+        "label": "ShowProductDimensions",
         "force_reload": true,
         "id": "show_product_dimensions"
       },
       {
         "type": "checkbox",
-        "label": "i18n.ShowProductSwatchNames",
+        "label": "ShowProductSwatchNames",
         "force_reload": true,
         "id": "show_product_swatch_names"
       },
       {
         "type": "checkbox",
-        "label": "i18n.ShowShopByPriceIn",
+        "label": "ShowShopByPriceIn",
         "force_reload": true,
         "id": "shop_by_price_visibility"
       },
       {
         "type": "checkbox",
-        "label": "i18n.ShowProductReviews",
+        "label": "ShowProductReviews",
         "force_reload": true,
         "id": "show_product_reviews"
       },
       {
         "type": "select",
-        "label": "i18n.NumberOfProductReviews",
+        "label": "NumberOfProductReviews",
         "id": "product_page_reviews_count",
         "reference": "show_product_reviews",
         "reference_default": false,
@@ -963,17 +963,17 @@
       },
       {
         "type": "checkbox",
-        "label": "i18n.ShowQuickPaymentButtons",
+        "label": "ShowQuickPaymentButtons",
         "force_reload": true,
         "id": "show_quick_payment_buttons"
       },
       {
         "type": "heading",
-        "content": "i18n.NumberOfProductsDisplayed"
+        "content": "NumberOfProductsDisplayed"
       },
       {
         "type": "select",
-        "label": "i18n.CategoryPage",
+        "label": "CategoryPage",
         "id": "categorypage_products_per_page",
         "force_reload": true,
         "options": [
@@ -1013,7 +1013,7 @@
       },
       {
         "type": "select",
-        "label": "i18n.BrandPage",
+        "label": "BrandPage",
         "id": "brand_page_products_per_page",
         "force_reload": true,
         "options": [
@@ -1053,7 +1053,7 @@
       },
       {
         "type": "select",
-        "label": "i18n.SearchResultPage",
+        "label": "SearchResultPage",
         "id": "search_page_products_per_page",
         "force_reload": true,
         "options": [
@@ -1093,13 +1093,13 @@
       },
       {
         "type": "select",
-        "label": "i18n.ProductPageRelatedProducts",
+        "label": "ProductPageRelatedProducts",
         "id": "product_page_related_products_count",
         "force_reload": true,
         "options": [
           {
             "value": 0,
-            "label": "i18n.Disable"
+            "label": "Disable"
           },
           {
             "value": 1,
@@ -1153,13 +1153,13 @@
       },
       {
         "type": "select",
-        "label": "i18n.ProductPageCustomersAlsoViewed",
+        "label": "ProductPageCustomersAlsoViewed",
         "id": "product_page_similar_by_views_count",
         "force_reload": true,
         "options": [
           {
             "value": 0,
-            "label": "i18n.Disable"
+            "label": "Disable"
           },
           {
             "value": 1,
@@ -1213,181 +1213,181 @@
       },
       {
         "type": "heading",
-        "content": "i18n.ProductCards"
+        "content": "ProductCards"
       },
       {
         "type": "heading",
-        "content": "i18n.ProductCardsQuickSearch"
+        "content": "ProductCardsQuickSearch"
       },
       {
         "type": "heading",
-        "content": "i18n.ImageSizes"
+        "content": "ImageSizes"
       },
       {
         "type": "paragraph",
-        "content": "i18n.PleaseSpecifyAMaximumImage"
+        "content": "PleaseSpecifyAMaximumImage"
       },
       {
         "type": "imageDimension",
-        "label": "i18n.MainProductImages",
+        "label": "MainProductImages",
         "id": "product_size",
         "force_reload": true,
         "options": [
           {
             "value": "500x659",
-            "label": "i18n.OptimizedForTheme"
+            "label": "OptimizedForTheme"
           },
           {
             "value": "custom",
-            "label": "i18n.SpecifyDimensions"
+            "label": "SpecifyDimensions"
           }
         ]
       },
       {
         "type": "imageDimension",
-        "label": "i18n.ThumbnailImageInProductPage",
+        "label": "ThumbnailImageInProductPage",
         "id": "product_view_thumb_size",
         "force_reload": true,
         "options": [
           {
             "value": "50x50",
-            "label": "i18n.OptimizedForTheme"
+            "label": "OptimizedForTheme"
           },
           {
             "value": "custom",
-            "label": "i18n.SpecifyDimensions"
+            "label": "SpecifyDimensions"
           }
         ]
       },
       {
         "type": "imageDimension",
-        "label": "i18n.ThumbnailImageInCartAnd",
+        "label": "ThumbnailImageInCartAnd",
         "id": "product_thumb_size",
         "force_reload": true,
         "options": [
           {
             "value": "100x100",
-            "label": "i18n.OptimizedForTheme"
+            "label": "OptimizedForTheme"
           },
           {
             "value": "custom",
-            "label": "i18n.SpecifyDimensions"
+            "label": "SpecifyDimensions"
           }
         ]
       },
       {
         "type": "imageDimension",
-        "label": "i18n.ZoomedImage",
+        "label": "ZoomedImage",
         "id": "zoom_size",
         "force_reload": true,
         "options": [
           {
             "value": "1280x1280",
-            "label": "i18n.OptimizedForTheme"
+            "label": "OptimizedForTheme"
           },
           {
             "value": "custom",
-            "label": "i18n.SpecifyDimensions"
+            "label": "SpecifyDimensions"
           }
         ]
       },
       {
         "type": "imageDimension",
-        "label": "i18n.ImageInGalleryView",
+        "label": "ImageInGalleryView",
         "id": "product_gallery_size",
         "force_reload": true,
         "options": [
           {
             "value": "500x659",
-            "label": "i18n.OptimizedForTheme"
+            "label": "OptimizedForTheme"
           },
           {
             "value": "custom",
-            "label": "i18n.SpecifyDimensions"
+            "label": "SpecifyDimensions"
           }
         ]
       },
       {
         "type": "imageDimension",
-        "label": "i18n.BrandImageInGalleryView",
+        "label": "BrandImageInGalleryView",
         "id": "brand_size",
         "force_reload": true,
         "options": [
           {
             "value": "190x250",
-            "label": "i18n.OptimizedForTheme"
+            "label": "OptimizedForTheme"
           },
           {
             "value": "custom",
-            "label": "i18n.SpecifyDimensions"
+            "label": "SpecifyDimensions"
           }
         ]
       },
       {
-        "label": "i18n.ProductSwatchImages",
+        "label": "ProductSwatchImages",
         "type": "imageDimension",
         "id": "swatch_option_size",
         "force_reload": true,
         "options": [
           {
             "value": "22x22",
-            "label": "i18n.Standard"
+            "label": "Standard"
           },
           {
             "value": "custom",
-            "label": "i18n.SpecifyDimensions"
+            "label": "SpecifyDimensions"
           }
         ]
       }
     ]
   },
   {
-    "name": "i18n.CheckoutPage",
+    "name": "CheckoutPage",
     "enable": "ucoEnabled",
     "settings": [
       {
         "type": "heading",
-        "content": "i18n.Header"
+        "content": "Header"
       },
       {
         "type": "checkbox",
-        "label": "i18n.UseBackgroundImage",
+        "label": "UseBackgroundImage",
         "id": "optimized_checkout_show_background_image"
       },
       {
         "type": "imageDimension",
         "description": "Please specify a maximum image size for desktop display. We'll automatically scale down the image for smaller devices.",
-        "label": "i18n.HeaderImageSize",
+        "label": "HeaderImageSize",
         "reference": "optimized_checkout_background_image",
         "reference_default": "",
         "id": "optimized_checkout_background_image_size",
         "options": [
           {
             "value": "1000x400",
-            "label": "i18n.OptimizedForTheme"
+            "label": "OptimizedForTheme"
           },
           {
             "value": "custom",
-            "label": "i18n.SpecifyDimensions"
+            "label": "SpecifyDimensions"
           }
         ]
       },
       {
         "type": "heading",
-        "content": "i18n.Logo"
+        "content": "Logo"
       },
       {
         "type": "select",
-        "label": "i18n.LogoType",
+        "label": "LogoType",
         "id": "optimized_checkout_show_logo",
         "options": [
           {
             "value": "none",
-            "label": "i18n.Text"
+            "label": "Text"
           },
           {
             "value": "custom",
-            "label": "i18n.Image"
+            "label": "Image"
           }
         ]
       },
@@ -1402,147 +1402,147 @@
         "options": [
           {
             "value": "250x100",
-            "label": "i18n.OptimizedForTheme"
+            "label": "OptimizedForTheme"
           },
           {
             "value": "custom",
-            "label": "i18n.SpecifyDimensions"
+            "label": "SpecifyDimensions"
           }
         ]
       },
       {
         "type": "select",
-        "label": "i18n.LogoPosition",
+        "label": "LogoPosition",
         "id": "optimized_checkout_logo_position",
         "options": [
           {
             "value": "left",
-            "label": "i18n.Left"
+            "label": "Left"
           },
           {
             "value": "center",
-            "label": "i18n.Center"
+            "label": "Center"
           },
           {
             "value": "right",
-            "label": "i18n.Right"
+            "label": "Right"
           }
         ]
       },
       {
         "type": "heading",
-        "content": "i18n.DiscountBanner"
+        "content": "DiscountBanner"
       },
       {
         "type": "heading",
-        "content": "i18n.OrderSummaryBox"
+        "content": "OrderSummaryBox"
       },
       {
         "type": "heading",
-        "content": "i18n.CheckoutSteps"
+        "content": "CheckoutSteps"
       },
       {
         "type": "heading",
-        "content": "i18n.Headings"
+        "content": "Headings"
       },
       {
         "type": "heading",
-        "content": "i18n.Body"
+        "content": "Body"
       },
       {
         "type": "heading",
-        "content": "i18n.BodyTextAndLinks"
+        "content": "BodyTextAndLinks"
       },
       {
         "type": "font",
-        "label": "i18n.LinkFontFamily",
+        "label": "LinkFontFamily",
         "id": "optimized-checkout-link-font",
         "options": [
           {
-            "group": "i18n.OpenSans",
-            "label": "i18n.OpenSans",
+            "group": "OpenSans",
+            "label": "OpenSans",
             "value": "Google_Open+Sans_400"
           },
           {
-            "group": "i18n.OpenSans",
-            "label": "i18n.OpenSansBold",
+            "group": "OpenSans",
+            "label": "OpenSansBold",
             "value": "Google_Open+Sans_700"
           },
           {
-            "group": "i18n.Montserrat",
-            "label": "i18n.MontserratLight",
+            "group": "Montserrat",
+            "label": "MontserratLight",
             "value": "Google_Montserrat_400"
           },
           {
-            "group": "i18n.Montserrat",
-            "label": "i18n.Montserrat",
+            "group": "Montserrat",
+            "label": "Montserrat",
             "value": "Google_Montserrat_500"
           },
           {
-            "group": "i18n.Karla",
-            "label": "i18n.Karla",
+            "group": "Karla",
+            "label": "Karla",
             "value": "Google_Karla_400"
           },
           {
-            "group": "i18n.Roboto",
-            "label": "i18n.Roboto",
+            "group": "Roboto",
+            "label": "Roboto",
             "value": "Google_Roboto_400"
           },
           {
-            "group": "i18n.SourceSansPro",
-            "label": "i18n.SourceSansPro",
+            "group": "SourceSansPro",
+            "label": "SourceSansPro",
             "value": "Google_Source+Sans+Pro_400"
           },
           {
-            "group": "i18n.Volkhov",
-            "label": "i18n.Volkhov",
+            "group": "Volkhov",
+            "label": "Volkhov",
             "value": "Google_Volkhov_400"
           }
         ]
       },
       {
         "type": "color",
-        "label": "i18n.LinkColor",
+        "label": "LinkColor",
         "id": "optimized-checkout-link-color"
       },
       {
         "type": "color",
-        "label": "i18n.LinkHoverColor",
+        "label": "LinkHoverColor",
         "id": "optimized-checkout-link-hoverColor"
       },
       {
         "type": "heading",
-        "content": "i18n.PrimaryActionButton"
+        "content": "PrimaryActionButton"
       },
       {
         "type": "heading",
-        "content": "i18n.SecondaryActionButton"
+        "content": "SecondaryActionButton"
       },
       {
         "type": "heading",
-        "content": "i18n.FormInputFields1"
+        "content": "FormInputFields1"
       },
       {
         "type": "heading",
-        "content": "i18n.FormChecklist"
+        "content": "FormChecklist"
       },
       {
         "type": "heading",
-        "content": "i18n.LoadingToaster"
+        "content": "LoadingToaster"
       }
     ]
   },
   {
-    "name": "i18n.PaymentButtons",
+    "name": "PaymentButtons",
     "enable": "smartButtons",
     "settings": [
       {
         "type": "heading",
-        "content": "i18n.PaymentButtonsContainer"
+        "content": "PaymentButtonsContainer"
       },
       {
         "type": "select",
-        "label": "i18n.ButtonContainer",
+        "label": "ButtonContainer",
         "force_reload": true,
         "id": "payment_buttons_container",
         "options": [
@@ -1562,11 +1562,11 @@
       },
       {
         "type": "heading",
-        "content": "i18n.QuickPaymentButtons"
+        "content": "QuickPaymentButtons"
       },
       {
         "type": "select",
-        "label": "i18n.NumberOfButtonsAlwaysVisible",
+        "label": "NumberOfButtonsAlwaysVisible",
         "force_reload": true,
         "id": "payment_buttons_number_of_buttons",
         "options": [
@@ -1582,393 +1582,393 @@
       },
       {
         "type": "sort",
-        "label": "i18n.ProviderSortingOrderLabel",
+        "label": "ProviderSortingOrderLabel",
         "id": "payment_buttons_provider_sorting",
         "force_reload": true,
         "options": [
           {
             "value": "paypal",
-            "label": "i18n.PayPalProviderSortingLabel",
+            "label": "PayPalProviderSortingLabel",
             "enabledBy": "paypal"
           },
           {
             "value": "paypal-credit",
-            "label": "i18n.PayPalCreditProviderSortingLabel",
+            "label": "PayPalCreditProviderSortingLabel",
             "enabledBy": "paypal-credit"
           },
           {
             "value": "paypal-venmo",
-            "label": "i18n.PayPalVenmoProviderSortingLabel",
+            "label": "PayPalVenmoProviderSortingLabel",
             "enabledBy": "paypal-venmo"
           },
           {
             "value": "sepa",
-            "label": "i18n.PayPalSepaProviderSortingLabel",
+            "label": "PayPalSepaProviderSortingLabel",
             "enabledBy": "sepa"
           },
           {
             "value": "googlepay",
-            "label": "i18n.GooglepayProviderSortingLabel",
+            "label": "GooglepayProviderSortingLabel",
             "enabledBy": "googlepay"
           },
           {
             "value": "applepay",
-            "label": "i18n.ApplepayProviderSortingLabel",
+            "label": "ApplepayProviderSortingLabel",
             "enabledBy": "applepay"
           },
           {
             "value": "afterpay",
-            "label": "i18n.AfterpayProviderSortingLabel",
+            "label": "AfterpayProviderSortingLabel",
             "enabledBy": "afterpay"
           },
           {
             "value": "amazonpay",
-            "label": "i18n.AmazonProviderSortingLabel",
+            "label": "AmazonProviderSortingLabel",
             "enabledBy": "amazonpay"
           },
           {
             "value": "masterpass",
-            "label": "i18n.MasterpassProviderSortingLabel",
+            "label": "MasterpassProviderSortingLabel",
             "enabledBy": "masterpass"
           }
         ]
       },
       {
         "type": "heading",
-        "content": "i18n.PaypalAcceleratedCheckoutButton",
+        "content": "PaypalAcceleratedCheckoutButton",
         "enable": "payPalAcceleratedCheckoutEnabled"
       },
       {
         "type": "heading",
-        "content": "i18n.SmartPaypalButton",
+        "content": "SmartPaypalButton",
         "enable": "payPalProvidersEnabled"
       },
       {
         "type": "select",
-        "label": "i18n.ButtonShape",
+        "label": "ButtonShape",
         "id": "payment_buttons_paypal_shape",
         "enable": "payPalProvidersEnabled",
         "force_reload": true,
         "options": [
           {
             "value": "pill",
-            "label": "i18n.Pill"
+            "label": "Pill"
           },
           {
             "value": "rect",
-            "label": "i18n.Rectangle"
+            "label": "Rectangle"
           }
         ]
       },
       {
         "type": "select",
-        "label": "i18n.ButtonContent",
+        "label": "ButtonContent",
         "id": "payment_buttons_paypal_label",
         "enable": "payPalProvidersEnabled",
         "force_reload": true,
         "options": [
           {
             "value": "checkout",
-            "label": "i18n.PayPalCheckout"
+            "label": "PayPalCheckout"
           },
           {
             "value": "pay",
-            "label": "i18n.PayWithPayPal"
+            "label": "PayWithPayPal"
           },
           {
             "value": "buynow",
-            "label": "i18n.BuyNow"
+            "label": "BuyNow"
           },
           {
             "value": "paypal",
-            "label": "i18n.PayPal"
+            "label": "PayPal"
           }
         ]
       },
       {
         "type": "heading",
-        "content": "i18n.CheckoutPayPalButton",
+        "content": "CheckoutPayPalButton",
         "enable": "payPalProvidersEnabled"
       },
       {
         "type": "select",
-        "label": "i18n.ButtonShape",
+        "label": "ButtonShape",
         "id": "checkout_payment_buttons_paypal_shape",
         "enable": "payPalProvidersEnabled",
         "force_reload": true,
         "options": [
           {
             "value": "pill",
-            "label": "i18n.Pill"
+            "label": "Pill"
           },
           {
             "value": "rect",
-            "label": "i18n.Rectangle"
+            "label": "Rectangle"
           }
         ]
       },
       {
         "type": "select",
-        "label": "i18n.ButtonSize",
+        "label": "ButtonSize",
         "id": "checkout_payment_buttons_paypal_size",
         "enable": "payPalProvidersEnabled",
         "force_reload": true,
         "options": [
           {
             "value": "small",
-            "label": "i18n.Small"
+            "label": "Small"
           },
           {
             "value": "medium",
-            "label": "i18n.Medium"
+            "label": "Medium"
           },
           {
             "value": "large",
-            "label": "i18n.Large"
+            "label": "Large"
           }
         ]
       },
       {
         "type": "select",
-        "label": "i18n.ButtonContent",
+        "label": "ButtonContent",
         "id": "checkout_payment_buttons_paypal_label",
         "enable": "payPalProvidersEnabled",
         "force_reload": true,
         "options": [
           {
             "value": "checkout",
-            "label": "i18n.PayPalCheckout"
+            "label": "PayPalCheckout"
           },
           {
             "value": "pay",
-            "label": "i18n.PayWithPayPal"
+            "label": "PayWithPayPal"
           },
           {
             "value": "buynow",
-            "label": "i18n.BuyNow"
+            "label": "BuyNow"
           },
           {
             "value": "paypal",
-            "label": "i18n.PayPal"
+            "label": "PayPal"
           }
         ]
       },
       {
         "type": "heading",
-        "content": "i18n.GooglePaySettings",
+        "content": "GooglePaySettings",
         "enable": "googleProvidersEnabled"
       },
       {
         "type": "select",
-        "label": "i18n.ButtonColor",
+        "label": "ButtonColor",
         "id": "googlepay-button-color",
         "enable": "googleProvidersEnabled",
         "options": [
           {
             "value": "black",
-            "label": "i18n.BlackWhiteText"
+            "label": "BlackWhiteText"
           },
           {
             "value": "white",
-            "label": "i18n.WhiteBlackText"
+            "label": "WhiteBlackText"
           }
         ]
       },
       {
         "type": "heading",
-        "content": "i18n.ApplePaySettings",
+        "content": "ApplePaySettings",
         "enable": "appleProvidersEnabled"
       },
       {
         "type": "select",
-        "label": "i18n.ButtonColor",
+        "label": "ButtonColor",
         "id": "applePay-button",
         "enable": "appleProvidersEnabled",
         "options": [
           {
             "value": "black",
-            "label": "i18n.BlackWhiteText"
+            "label": "BlackWhiteText"
           },
           {
             "value": "white",
-            "label": "i18n.WhiteBlackText"
+            "label": "WhiteBlackText"
           },
           {
             "value": "white-border",
-            "label": "i18n.WhiteBlackTextWithBorder"
+            "label": "WhiteBlackTextWithBorder"
           }
         ]
       },
       {
         "type": "heading",
-        "content": "i18n.AfterPaySettings",
+        "content": "AfterPaySettings",
         "enable": "afterpayProvidersEnabled"
       },
       {
         "type": "select",
-        "label": "i18n.ButtonColor",
+        "label": "ButtonColor",
         "id": "afterpay-button-color",
         "enable": "afterpayProvidersEnabled",
         "options": [
           {
             "value": "black-mint",
-            "label": "i18n.BlackOnMintText"
+            "label": "BlackOnMintText"
           },
           {
             "value": "mint-black",
-            "label": "i18n.MintOnBlackText"
+            "label": "MintOnBlackText"
           },
           {
             "value": "white",
-            "label": "i18n.BlackWhiteText"
+            "label": "BlackWhiteText"
           },
           {
             "value": "black",
-            "label": "i18n.WhiteBlackText"
+            "label": "WhiteBlackText"
           }
         ]
       },
       {
         "type": "heading",
-        "content": "i18n.AmazonSettings",
+        "content": "AmazonSettings",
         "enable": "amazonProvidersEnabled"
       },
       {
         "type": "select",
-        "label": "i18n.ButtonColor",
+        "label": "ButtonColor",
         "id": "amazon-button-color",
         "enable": "amazonProvidersEnabled",
         "options": [
           {
             "value": "Gold",
-            "label": "i18n.Gold"
+            "label": "Gold"
           },
           {
             "value": "LightGray",
-            "label": "i18n.LightGray"
+            "label": "LightGray"
           },
           {
             "value": "DarkGray",
-            "label": "i18n.DarkGray"
+            "label": "DarkGray"
           }
         ]
       },
       {
         "type": "heading",
-        "content": "i18n.MasterpassSettings",
+        "content": "MasterpassSettings",
         "enable": "masterpassProvidersEnabled"
       },
       {
         "type": "select",
-        "label": "i18n.ButtonColor",
+        "label": "ButtonColor",
         "id": "masterpass-button-color",
         "enable": "masterpassProvidersEnabled",
         "options": [
           {
             "value": "black",
-            "label": "i18n.BlackWhiteText"
+            "label": "BlackWhiteText"
           },
           {
             "value": "white",
-            "label": "i18n.WhiteBlackText"
+            "label": "WhiteBlackText"
           }
         ]
       }
     ]
   },
   {
-    "name": "i18n.PaymentBanners",
+    "name": "PaymentBanners",
     "enable": "paymentBanners",
     "settings": [
       {
         "type": "paragraph",
-        "content": "i18n.BannersMessaging"
+        "content": "BannersMessaging"
       },
       {
         "type": "heading",
-        "content": "i18n.ProductPageBanner"
+        "content": "ProductPageBanner"
       },
       {
         "type": "select",
-        "label": "i18n.BannerStyleRatio",
+        "label": "BannerStyleRatio",
         "id": "payment_banners_product_details_page_ratio",
         "force_reload": true,
         "options": [
           {
             "value": "8x1",
-            "label": "i18n.8x1"
+            "label": "8x1"
           },
           {
             "value": "20x1",
-            "label": "i18n.20x1"
+            "label": "20x1"
           }
         ]
       },
       {
         "type": "heading",
-        "content": "i18n.HomePageBanner"
+        "content": "HomePageBanner"
       },
       {
         "type": "select",
-        "label": "i18n.BannerStyleRatio",
+        "label": "BannerStyleRatio",
         "id": "payment_banners_homepage_ratio",
         "force_reload": true,
         "options": [
           {
             "value": "8x1",
-            "label": "i18n.8x1"
+            "label": "8x1"
           },
           {
             "value": "20x1",
-            "label": "i18n.20x1"
+            "label": "20x1"
           }
         ]
       },
       {
         "type": "heading",
-        "content": "i18n.CartPageBanner"
+        "content": "CartPageBanner"
       },
       {
         "type": "select",
-        "label": "i18n.BannerStyleLogoPosition",
+        "label": "BannerStyleLogoPosition",
         "id": "payment_banners_cartpage_logo_position",
         "force_reload": true,
         "options": [
           {
             "value": "left",
-            "label": "i18n.left"
+            "label": "left"
           },
           {
             "value": "right",
-            "label": "i18n.right"
+            "label": "right"
           },
           {
             "value": "top",
-            "label": "i18n.top"
+            "label": "top"
           }
         ]
       },
       {
         "type": "select",
-        "label": "i18n.BannerStyleLogoType",
+        "label": "BannerStyleLogoType",
         "id": "payment_banners_cartpage_logo_type",
         "force_reload": true,
         "options": [
           {
             "value": "inline",
-            "label": "i18n.inline"
+            "label": "inline"
           },
           {
             "value": "primary",
-            "label": "i18n.primary"
+            "label": "primary"
           },
           {
             "value": "alternative",
-            "label": "i18n.alternative"
+            "label": "alternative"
           },
           {
             "value": "none",
-            "label": "i18n.none"
+            "label": "none"
           }
         ]
       }
