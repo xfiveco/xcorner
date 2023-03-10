@@ -972,10 +972,10 @@
     "page_builder": {
         "pdp_sale_badge_label": "Remisé !",
         "pdp_sold_out_label": "Épuisé",
-        "pdp-sale-price-label": "Maintenant :",
-        "pdp-non-sale-price-label": "Ancien prix :",
-        "pdp-retail-price-label": "Prix de vente conseillé :",
-        "pdp-custom-fields-tab-label": "Informations supplémentaires"
+        "pdp_sale_price_label": "Maintenant :",
+        "pdp_non_sale_price_label": "Ancien prix :",
+        "pdp_retail_price_label": "Prix de vente conseillé :",
+        "pdp_custom_fields_tab_label": "Informations supplémentaires"
     },
     "consent_manager": {
         "data_collection_warning": "Nous utilisons des cookies (et d'autres technologies similaires) pour recueillir des données afin d'améliorer votre expérience d'achat.",

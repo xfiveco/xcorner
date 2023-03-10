@@ -975,10 +975,10 @@
     "page_builder": {
         "pdp_sale_badge_label": "On Sale!",
         "pdp_sold_out_label": "Sold Out",
-        "pdp-sale-price-label": "Now:",
-        "pdp-non-sale-price-label": "Was:",
-        "pdp-retail-price-label": "MSRP:",
-        "pdp-custom-fields-tab-label": "Additional Information"
+        "pdp_sale_price_label": "Now:",
+        "pdp_non_sale_price_label": "Was:",
+        "pdp_retail_price_label": "MSRP:",
+        "pdp_custom_fields_tab_label": "Additional Information"
     },
     "consent_manager": {
         "data_collection_warning": "We use cookies (and other similar technologies) to collect data to improve your shopping experience.",

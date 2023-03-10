@@ -972,10 +972,10 @@
     "page_builder": {
         "pdp_sale_badge_label": "Rea!",
         "pdp_sold_out_label": "Utsåld",
-        "pdp-sale-price-label": "Nu:",
-        "pdp-non-sale-price-label": "Var:",
-        "pdp-retail-price-label": "Rekommenderat pris:",
-        "pdp-custom-fields-tab-label": "Ytterligare information"
+        "pdp_sale_price_label": "Nu:",
+        "pdp_non_sale_price_label": "Var:",
+        "pdp_retail_price_label": "Rekommenderat pris:",
+        "pdp_custom_fields_tab_label": "Ytterligare information"
     },
     "consent_manager": {
         "data_collection_warning": "Vi använder cookies (och annan liknande teknik) för att samla in data för att förbättra din shoppingupplevelse.",
