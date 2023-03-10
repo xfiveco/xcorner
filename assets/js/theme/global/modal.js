@@ -3,9 +3,9 @@ import trigger from '../common/utils/trigger';
 import q$, { q$$ } from './selector';
 
 const bodyActiveClass = 'has-active-modal';
-const loadingOverlayClass = 'is-loading-overlay';
+const loadingOverlayClass = 'js-loading-overlay';
 const modalBodyClass = 'js-modal-body';
-const modalContentClass = 'is-modal-content';
+const modalContentClass = 'js-modal-content';
 const modalCloseClass = 'js-modal-close';
 
 const SizeClasses = {
