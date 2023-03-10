@@ -4,6 +4,7 @@ import compareProducts from './global/compare-products';
 import FacetedSearch from './common/faceted-search';
 import { createTranslationDictionary } from '../theme/common/utils/translations-utils';
 import q$ from './global/selector';
+import trigger from './common/utils/trigger';
 
 export default class Brand extends CatalogPage {
     constructor(context) {
@@ -30,8 +31,8 @@ export default class Brand extends CatalogPage {
             price_max_not_entered: maxPriceNotEntered,
             price_invalid_value: onInvalidPrice,
         } = this.validationDictionary;
-        const $productListingContainer = $('#product-listing-container');
-        const $facetedSearchContainer = $('#faceted-search-container');
+        const $productListingContainer = q$('#product-listing-container');
+        const $facetedSearchContainer = q$('#faceted-search-container');
         const productsPerPage = this.context.brandProductsPerPage;
         const requestOptions = {
             template: {
@@ -50,14 +51,13 @@ export default class Brand extends CatalogPage {
         };
 
         this.facetedSearch = new FacetedSearch(requestOptions, (content) => {
-            $productListingContainer.html(content.productListing);
-            $facetedSearchContainer.html(content.sidebar);
+            $productListingContainer.innerHTML = content.productListing;
+            $facetedSearchContainer.innerHTML = content.sidebar;
 
-            $('body').triggerHandler('compare-reset');
+            trigger(q$('body'), 'compare-reset');
 
-            $('html, body').animate({
-                scrollTop: 0,
-            }, 100);
+            q$('html').scrollTop(0);
+            q$('body').scrollTop(0);
         }, {
             validationErrorMessages: {
                 onMinPriceError,

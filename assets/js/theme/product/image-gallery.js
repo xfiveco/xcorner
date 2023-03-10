@@ -1,4 +1,3 @@
-import 'easyzoom';
 import q$, { q$$ } from '../global/selector';
 
 export default class ImageGallery {
@@ -11,7 +10,6 @@ export default class ImageGallery {
 
     init() {
         this.bindEvents();
-        this.setImageZoom();
     }
 
     setMainImage(imgObj) {
@@ -26,7 +24,7 @@ export default class ImageGallery {
             this.savedImage = {
                 mainImageUrl: this.$mainImage.querySelector('img').src,
                 zoomImageUrl: this.$mainImage.dataset.zoomImage,
-                mainImageSrcset: this.$mainImage.querySelector('img').getAttribute('srcset'),
+                mainImageSrcset: this.$mainImage.querySelector('img')?.getAttribute('srcset'),
                 $selectedThumb: this.currentImage.$selectedThumb,
             };
         }
@@ -65,12 +63,6 @@ export default class ImageGallery {
     swapMainImage() {
         const isBrowserIE = navigator.userAgent.includes('Trident');
 
-        this.easyzoom.data('easyZoom').swap(
-            this.currentImage.mainImageUrl,
-            this.currentImage.zoomImageUrl,
-            this.currentImage.mainImageSrcset,
-        );
-
         this.$mainImage.dataset.zoomImage = this.currentImage.zoomImageUrl;
         this.$mainImageNested.alt = this.currentImage.mainImageAlt;
         this.$mainImageNested.title = this.currentImage.mainImageAlt;
@@ -89,26 +81,6 @@ export default class ImageGallery {
                 this.$mainImageNested.style[property] = fallbackStylesIE[property];
             }
         }
-    }
-
-    checkImage() {
-        const $imageContainer = q$('.js-product-view-image');
-        const { height: containerHeight, width: containerWidth } = $imageContainer.getBoundingClientRect();
-
-        const $image = this.easyzoom.data('easyZoom').$zoom;
-        const { width, height } = $image.getBoundingClientRect();
-
-        if (height < containerHeight || width < containerWidth) {
-            this.easyzoom.data('easyZoom').style.display = 'none';
-        }
-    }
-
-    setImageZoom() {
-        this.easyzoom = this.$mainImage.easyZoom({
-            onShow: () => this.checkImage(),
-            errorNotice: '',
-            loadingNotice: '',
-        });
     }
 
     bindEvents() {

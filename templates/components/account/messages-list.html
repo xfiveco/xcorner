@@ -4,21 +4,21 @@
 
 <ul>
     {{#each messages}}
-    <li class="{{#unless unread}} is-read{{/unless}}">
-        <time>
-            {{date}}
-        </time>
-        <div>
-            {{subject}}
-        </div>
-        <p>
-            {{#if is_reply}}
-                {{lang 'account.messages.merchant_said' store_name=../settings.store_name}}
-            {{else}}
-                {{lang 'account.messages.customer_said'}}
-            {{/if}}
-            {{message}}
-        </p>
-    </li>
+        <li class="js-account-list-item {{#unless unread}} is-read{{/unless}}">
+            <time>
+                {{date}}
+            </time>
+            <div>
+                {{subject}}
+            </div>
+            <p>
+                {{#if is_reply}}
+                    {{lang 'account.messages.merchant_said' store_name=../settings.store_name}}
+                {{else}}
+                    {{lang 'account.messages.customer_said'}}
+                {{/if}}
+                {{message}}
+            </p>
+        </li>
     {{/each}}
 </ul>

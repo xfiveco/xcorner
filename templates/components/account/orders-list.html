@@ -4,61 +4,61 @@
 
 <ul>
     {{#each orders}}
-    <li>
-        <div>
-            <div>
-                {{#if items.0.type '===' 'giftcertificate'}}
-                    <img src="{{cdn ../theme_settings.default_image_gift_certificate}}" alt="">
-                {{else}}
-                    {{> components/common/image
-                        image=image
-                        class="account-product-image"
-                        fallback_size=../theme_settings.product_thumb_size
-                        default_image=../theme_settings.default_image_product
-                    }}
-                {{/if}}
-            </div>
+        <li class="js-account-list-item">
             <div>
                 <div>
-                    <div>
-                        {{this.status}}
-                    </div>
-                    {{#if ../settings.returns_enabled}}
-                        {{#if this.return_url}}
-                            <a href="{{this.return_url}}">
-                                {{lang 'account.orders.return_items' }}
-                            </a>
-                        {{/if}}
+                    {{#if items.0.type '===' 'giftcertificate'}}
+                        <img src="{{cdn ../theme_settings.default_image_gift_certificate}}" alt="">
+                    {{else}}
+                        {{> components/common/image
+                            image=image
+                            class="account-product-image"
+                            fallback_size=../theme_settings.productthumb_size
+                            default_image=../theme_settings.default_image_product
+                        }}
                     {{/if}}
                 </div>
-                <p>
-                    <a href="{{this.details_url}}">
-                        {{lang 'account.orders.list.order_number' number=this.id}}
-                    </a>
-                </p>
-                <div>
-                    {{lang 'account.orders.list.product_details' num_products=this.items.length cost=this.total.formatted}}
-                </div>
                 <div>
                     <div>
                         <div>
-                            {{lang 'account.orders.order_placed' }}
+                            {{this.status}}
                         </div>
-                        <time>
-                            {{this.date}}
-                        </time>
+                        {{#if ../settings.returns_enabled}}
+                            {{#if this.return_url}}
+                                <a href="{{this.return_url}}">
+                                    {{lang 'account.orders.return_items' }}
+                                </a>
+                            {{/if}}
+                        {{/if}}
+                    </div>
+                    <p>
+                        <a href="{{this.details_url}}">
+                            {{lang 'account.orders.list.order_number' number=this.id}}
+                        </a>
+                    </p>
+                    <div>
+                        {{lang 'account.orders.list.product_details' num_products=this.items.length cost=this.total.formatted}}
                     </div>
                     <div>
                         <div>
-                            {{lang 'account.orders.last_update' }}
+                            <div>
+                                {{lang 'account.orders.order_placed' }}
+                            </div>
+                            <time>
+                                {{this.date}}
+                            </time>
                         </div>
-                        <time>
-                            {{this.last_update_date}}
-                        </time>
+                        <div>
+                            <div>
+                                {{lang 'account.orders.last_update' }}
+                            </div>
+                            <time>
+                                {{this.last_update_date}}
+                            </time>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </li>
+        </li>
     {{/each}}
 </ul>
