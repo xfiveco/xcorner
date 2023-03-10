@@ -67,10 +67,10 @@ class Menu {
  * @param {string} [selector]
  * @return {Menu}
  */
-export default function menuFactory(selector = `[data-${PLUGIN_KEY}]`) {
+export default function menuFactory(selector = '.js-menu') {
     const $menu = q$(selector);
     const instanceKey = `${PLUGIN_KEY}Instance`;
-    const cachedMenu = $menu.data ? $menu.data[instanceKey] : null;
+    const cachedMenu = 'data' in $menu ? $menu.data[instanceKey] : null;
 
     if (cachedMenu instanceof Menu) {
         return cachedMenu;
