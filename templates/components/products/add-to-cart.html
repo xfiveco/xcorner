@@ -1,7 +1,6 @@
 <div id="add-to-cart-wrapper" {{#unless product.can_purchase}}style="display: none"{{/unless}}>
     {{#if theme_settings.show_product_quantity_box}}
-        {{inject 'productQuantityErrorMessage'  (lang 'produc
-        ts.quantity_error_message')}}
+        {{inject 'productQuantityErrorMessage'  (lang 'products.quantity_error_message')}}
         <div class="js-form-field js-form-field-increments">
             <label for="qty[]">
                 {{lang 'products.quantity'}}

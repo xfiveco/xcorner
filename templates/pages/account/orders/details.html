@@ -81,46 +81,46 @@
             {{/if}}
 
             {{#if order.pickup_address}}
-            <section>
-                <div>
-                    {{lang 'account.orders.details.pickup'}}
-                </div>
-                {{#each order.pickup_address}}
-                    <dl>
-                        <dt>{{lang 'account.orders.details.pickup_method'}}</dt>
-                        <dd>{{sanitize pickup_method_display_name}}</dd>
-                    </dl>
+                <section>
+                    <div>
+                        {{lang 'account.orders.details.pickup'}}
+                    </div>
+                    {{#each order.pickup_address}}
+                        <dl>
+                            <dt>{{lang 'account.orders.details.pickup_method'}}</dt>
+                            <dd>{{sanitize pickup_method_display_name}}</dd>
+                        </dl>
 
-                    <ul>
-                        <li>
-                            <strong>{{{ sanitize location_name}}}</strong>
-                        </li>
-                        <li>{{{ sanitize location_line_1}}}</li>
-                        <li>{{{ sanitize location_line_2}}}</li>
-                        <li>{{{ sanitize location_city}}}, {{{ sanitize location_state}}}, {{{ sanitize location_zip}}}</li>
-                        <li>{{{ sanitize location_country_name}}}</li>
-                    </ul>
+                        <ul>
+                            <li>
+                                <strong>{{{ sanitize location_name}}}</strong>
+                            </li>
+                            <li>{{{ sanitize location_line_1}}}</li>
+                            <li>{{{ sanitize location_line_2}}}</li>
+                            <li>{{{ sanitize location_city}}}, {{{ sanitize location_state}}}, {{{ sanitize location_zip}}}</li>
+                            <li>{{{ sanitize location_country_name}}}</li>
+                        </ul>
 
-                    <dl>
-                        {{#if location_phone}}
-                            <dt>{{lang 'account.orders.details.phone'}}</dt>
-                            <dd>{{{ sanitize location_phone}}}</dd>
-                        {{/if}}
+                        <dl>
+                            {{#if location_phone}}
+                                <dt>{{lang 'account.orders.details.phone'}}</dt>
+                                <dd>{{{ sanitize location_phone}}}</dd>
+                            {{/if}}
 
-                        {{#if order.pickup_address.location_email}}
-                            <dt>{{lang 'account.orders.details.email'}}</dt>
-                            <dd>{{{ sanitize location_email}}}</dd>
-                        {{/if}}
-                    </dl>
+                            {{#if order.pickup_address.location_email}}
+                                <dt>{{lang 'account.orders.details.email'}}</dt>
+                                <dd>{{{ sanitize location_email}}}</dd>
+                            {{/if}}
+                        </dl>
 
-                    <ul>
-                        <li>
-                            <strong>{{{ lang 'account.orders.details.opening_hours'}}}</strong>
-                        </li>
-                        <li>{{{ sanitize collection_time_description}}}</li>
-                    </ul>
-                {{/each}}
-            </section>
+                        <ul>
+                            <li>
+                                <strong>{{{ lang 'account.orders.details.opening_hours'}}}</strong>
+                            </li>
+                            <li>{{{ sanitize collection_time_description}}}</li>
+                        </ul>
+                    {{/each}}
+                </section>
             {{else}}
                 {{#if order.has_multiple_shipping_addresses}}
                     <section>

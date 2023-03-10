@@ -2,17 +2,17 @@
     {{> components/common/modal/modal-close-btn additional_attr='data-drop-down-close'}}
     <ul{{#if settings.data_tag_enabled}} data-list-name="Quick Search Results"{{/if}}>
         {{#each product_results.products}}
-        <li class="js-product">
+            <li class="js-product">
                 {{> components/products/card
-                        settings=../settings
-                        alternate=true
-                        show_compare=../show_compare
-                        theme_settings=../theme_settings
-                        customer=../customer
-                        event="list"
-                        position=(add @index 1)
+                    settings=../settings
+                    alternate=true
+                    show_compare=../show_compare
+                    theme_settings=../theme_settings
+                    customer=../customer
+                    event="list"
+                    position=(add @index 1)
                 }}
-        </li>
+            </li>
         {{/each}}
     </ul>
 {{else}}

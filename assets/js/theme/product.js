@@ -9,6 +9,7 @@ import videoGallery from './product/video-gallery';
 import { classifyForm } from './common/utils/form-utils';
 import modalFactory from './global/modal';
 import q$, { q$$ } from './global/selector';
+import trigger from './common/utils/trigger';
 
 export default class Product extends PageManager {
     constructor(context) {
@@ -79,13 +80,13 @@ export default class Product extends PageManager {
 
     productReviewHandler() {
         if (this.url.indexOf('#write_review') !== -1) {
-            this.$reviewLink.trigger('click');
+            trigger(this.$reviewLink, 'click');
         }
     }
 
     bulkPricingHandler() {
         if (this.url.indexOf('#bulk_pricing') !== -1) {
-            this.$bulkPricingLink.trigger('click');
+            trigger(this.$bulkPricingLink, 'click');
         }
     }
 }

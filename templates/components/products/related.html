@@ -1,8 +1,11 @@
-<h4>{{lang 'products.related_products' }}</h4>
+<div>
+    {{lang 'products.related_products' }}
+</div>
+
 <ul class="js-product-list" {{#if settings.data_tag_enabled}} data-list-name="Related Products" {{/if}}>
     {{#each this}}
-    <li>
-        {{>components/products/card settings=../settings theme_settings=../theme_settings event="list" position=(add @index 1)}}
-    </li>
+        <li>
+            {{>components/products/card settings=../settings theme_settings=../theme_settings event="list" position=(add @index 1)}}
+        </li>
     {{/each}}
 </ul>

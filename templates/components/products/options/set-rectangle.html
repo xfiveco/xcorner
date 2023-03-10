@@ -25,23 +25,23 @@
     {{/unless}}
 
     {{#each this.values}}
-    <div>    
-        <input
-            class="{{#if selected}}js-default{{/if}}"
-            type="radio"
-            id="attribute_rectangle__{{../id}}_{{id}}"
-            name="attribute[{{../id}}]"
-            value="{{id}}"
-            {{#if selected}}
-                checked
-            {{/if}}
-            {{#if ../required}}
-                required
-            {{/if}}
-        >
-        <label for="attribute_rectangle__{{../id}}_{{id}}" data-product-attribute-value="{{id}}">
-            <span>{{this.label}}</span>
-        </label>
-    </div>
+        <div>    
+            <input
+                class="{{#if selected}}js-default{{/if}}"
+                type="radio"
+                id="attribute_rectangle__{{../id}}_{{id}}"
+                name="attribute[{{../id}}]"
+                value="{{id}}"
+                {{#if selected}}
+                    checked
+                {{/if}}
+                {{#if ../required}}
+                    required
+                {{/if}}
+            >
+            <label for="attribute_rectangle__{{../id}}_{{id}}" data-product-attribute-value="{{id}}">
+                <span>{{this.label}}</span>
+            </label>
+        </div>
     {{/each}}
 </div>

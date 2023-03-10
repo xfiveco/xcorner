@@ -25,6 +25,7 @@
         </div>
     {{/if}}
 {{/and}}
+
 {{#and price.price_range.min.with_tax price.price_range.max.with_tax}}
     {{!-- Never display the "non-sales price" if there is a price range to be shown, but we do want the element on the page --}}
     <div class="js-non-sale-price-with-tax" style="display: none;">
@@ -86,6 +87,7 @@
         </div>
     {{/if}}
 {{/and}}
+
 {{#and price.price_range.min.without_tax price.price_range.max.without_tax}}
     {{!-- Never display the "non-sales price" if there is a price range to be shown, but we do want the element on the page --}}
     <div class="js-non-sale-price-without-tax{{#if price.with_tax}} price-section-minor{{/if}}" style="display: none;">

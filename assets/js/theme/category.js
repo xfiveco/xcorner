@@ -20,13 +20,13 @@ export default class Category extends CatalogPage {
     makeShopByPriceFilterAccessible() {
         if (q$('.js-shop-by-price') === null) return;
 
-        const navListAction = q$('.js-nav-list-action');
+        q$$('.js-nav-list-action').forEach($navAction => {
+            if ($navAction.classList.contains('is-active')) {
+                $navAction.focus();
+            }
 
-        if (navListAction.classList.contains('is-active')) {
-            $('.js-nav-list-action.is-active').focus();
-        }
-
-        navListAction.addEventListener('click', () => this.setLiveRegionAttributes(q$('.js-price-filter-message'), 'status', 'assertive'));
+            $navAction.addEventListener('click', () => this.setLiveRegionAttributes(q$('.js-price-filter-message'), 'status', 'assertive'));
+        });
     }
 
     onReady() {

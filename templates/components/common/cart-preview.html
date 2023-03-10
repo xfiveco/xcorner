@@ -1,24 +1,24 @@
 <div>
-  <div>
-    {{#if cart.items.length}}
-        <ul>
-            {{#each (limit cart.items 4)}}
-                <li>
-                    <div>
-                        {{#if type '==' 'GiftCertificate'}}
-                            <img
-                                alt="GiftCertificate"
-                                title="GiftCertificate"
-                                src="{{cdn ../theme_settings.default_image_gift_certificate}}"
-                            >
-                        {{else}}
-                            {{> components/common/image 
-                                image=image 
-                                fallback_size=../theme_settings.product_thumb_size
-                                default_image=../theme_settings.default_image_product
-                            }}
-                        {{/if}}
-                    </div>
+    <div>
+        {{#if cart.items.length}}
+            <ul>
+                {{#each (limit cart.items 4)}}
+                    <li>
+                        <div>
+                            {{#if type '==' 'GiftCertificate'}}
+                                <img
+                                    alt="GiftCertificate"
+                                    title="GiftCertificate"
+                                    src="{{cdn ../theme_settings.default_image_gift_certificate}}"
+                                >
+                            {{else}}
+                                {{> components/common/image 
+                                    image=image 
+                                    fallback_size=../theme_settings.productthumb_size
+                                    default_image=../theme_settings.default_image_product
+                                }}
+                            {{/if}}
+                        </div>
                         <div>
                             <span>
                                 {{brand.name}}
@@ -49,6 +49,7 @@
                     </li>
                 {{/each}}
             </ul>
+
             <div>
                 {{#if cart.additional_checkout_buttons}}
                     <div data-cart-accelerated-checkout-buttons></div>

@@ -94,16 +94,16 @@ If you are making a change here or in price-range.html, you probably want to mak
         </div>
     {{/if}}
     {{#if page_type '===' 'product'}}
-         <div class="js-price-section-saving" {{#unless price.saved}}style="display: none;"{{/unless}}>
-                <span>
-                    {{lang 'products.you_save_opening_text'}}
-                </span>
-                <span class="js-product-price-saved">
-                    {{price.saved.formatted}}
-                </span>
-                <span>
-                    {{lang 'products.you_save_closing_bracket'}}
-                </span>
-         </div>
+        <div class="js-price-section-saving" {{#unless price.saved}}style="display: none;"{{/unless}}>
+            <span>
+                {{lang 'products.you_save_opening_text'}}
+            </span>
+            <span class="js-product-price-saved">
+                {{price.saved.formatted}}
+            </span>
+            <span>
+                {{lang 'products.you_save_closing_bracket'}}
+            </span>
+        </div>
     {{/if}}
 {{/and}}
