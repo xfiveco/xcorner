@@ -17,8 +17,8 @@
 
     {{#all product.custom_fields theme_settings.show_custom_fields_tabs}}
         <li class="js-tab">
-            <a href="#tab-{{dashcase (lowercase (sanitize theme_settings.pdp-custom-fields-tab-label))}}">
-                {{sanitize theme_settings.pdp-custom-fields-tab-label}}
+            <a href="#tab-{{dashcase (lowercase (sanitize theme_settings.pdp_custom_fields_tab_label))}}">
+                {{sanitize theme_settings.pdp_custom_fields_tab_label}}
             </a>
         </li>
     {{/all}}
@@ -46,11 +46,11 @@
     {{/if}}
 
     {{#all product.custom_fields theme_settings.show_custom_fields_tabs}}
-        <div id="tab-{{dashcase (lowercase (sanitize theme_settings.pdp-custom-fields-tab-label))}}">
-            <dl class="js-product-view-info">
-                {{> components/products/custom-fields }}
-            </dl>
-        </div>
+      <div id="tab-{{dashcase (lowercase (sanitize theme_settings.pdp_custom_fields_tab_label))}}">
+         <dl class="js-product-view-info">
+            {{> components/products/custom-fields }}
+         </dl>
+      </div>
     {{/all}}
 
     {{#all settings.show_product_reviews theme_settings.show_product_reviews}}
