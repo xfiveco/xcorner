@@ -11,6 +11,11 @@
         id="attribute_text_{{id}}" 
         name="attribute[{{this.id}}]" 
         value="{{this.prefill}}" 
-        {{#if required}}required{{/if}} 
-        {{#if max_length}}maxlength="{{max_length}}"{{/if}}>
+        {{#if required}}
+            required
+        {{/if}} 
+        {{#if max_length}}
+            maxlength="{{max_length}}"
+        {{/if}}
+    >
 </div>

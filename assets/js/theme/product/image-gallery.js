@@ -1,10 +1,11 @@
 import 'easyzoom';
+import q$, { q$$ } from '../global/selector';
 
 export default class ImageGallery {
     constructor($gallery) {
-        this.$mainImage = $gallery.find('.js-image-gallery-main');
-        this.$mainImageNested = $gallery.find('.js-main-image');
-        this.$selectableImages = $gallery.find('.js-image-gallery-item');
+        this.$mainImage = $gallery.querySelector('.js-image-gallery-main');
+        this.$mainImageNested = $gallery.querySelector('.js-main-image');
+        this.$selectableImages = q$$('.js-image-gallery-item', $gallery);
         this.currentImage = {};
     }
 
@@ -23,9 +24,9 @@ export default class ImageGallery {
     setAlternateImage(imgObj) {
         if (!this.savedImage) {
             this.savedImage = {
-                mainImageUrl: this.$mainImage.find('img').attr('src'),
-                zoomImageUrl: this.$mainImage.attr('data-zoom-image'),
-                mainImageSrcset: this.$mainImage.find('img').attr('srcset'),
+                mainImageUrl: this.$mainImage.querySelector('img').src,
+                zoomImageUrl: this.$mainImage.dataset.zoomImage,
+                mainImageSrcset: this.$mainImage.querySelector('img').getAttribute('srcset'),
                 $selectedThumb: this.currentImage.$selectedThumb,
             };
         }
@@ -41,21 +42,23 @@ export default class ImageGallery {
 
     selectNewImage(e) {
         e.preventDefault();
-        const $target = $(e.currentTarget);
+
+        const $target = e.currentTarget;
         const imgObj = {
-            mainImageUrl: $target.attr('data-image-gallery-new-image-url'),
-            zoomImageUrl: $target.attr('data-image-gallery-zoom-image-url'),
-            mainImageSrcset: $target.attr('data-image-gallery-new-image-srcset'),
+            mainImageUrl: $target.dataset.imageGalleryNewImageUrl,
+            zoomImageUrl: $target.dataset.imageGalleryZoomImageUrl,
+            mainImageSrcset: $target.dataset.imageGalleryNewImageSrcset,
             $selectedThumb: $target,
-            mainImageAlt: $target.children().first().attr('alt'),
+            mainImageAlt: $target.children.item(0).alt,
         };
         this.setMainImage(imgObj);
     }
 
     setActiveThumb() {
-        this.$selectableImages.removeClass('is-active');
+        this.$selectableImages.forEach($selectableImage => $selectableImage.classList.remove('is-active'));
+
         if (this.currentImage.$selectedThumb) {
-            this.currentImage.$selectedThumb.addClass('is-active');
+            this.currentImage.$selectedThumb.classList.add('is-active');
         }
     }
 
@@ -68,38 +71,35 @@ export default class ImageGallery {
             this.currentImage.mainImageSrcset,
         );
 
-        this.$mainImage.attr({
-            'data-zoom-image': this.currentImage.zoomImageUrl,
-        });
-        this.$mainImageNested.attr({
-            alt: this.currentImage.mainImageAlt,
-            title: this.currentImage.mainImageAlt,
-        });
+        this.$mainImage.dataset.zoomImage = this.currentImage.zoomImageUrl;
+        this.$mainImageNested.alt = this.currentImage.mainImageAlt;
+        this.$mainImageNested.title = this.currentImage.mainImageAlt;
 
         if (isBrowserIE) {
             const fallbackStylesIE = {
-                'background-image': `url(${this.currentImage.mainImageUrl})`,
-                'background-position': 'center',
-                'background-repeat': 'no-repeat',
-                'background-origin': 'content-box',
-                'background-size': 'contain',
+                backgroundImage: `url(${this.currentImage.mainImageUrl})`,
+                backgroundPosition: 'center',
+                backgroundRepeat: 'no-repeat',
+                backgroundOrigin: 'content-box',
+                backgroundSize: 'contain',
             };
 
-            this.$mainImageNested.css(fallbackStylesIE);
+            /* eslint-disable guard-for-in */
+            for (const property in fallbackStylesIE) {
+                this.$mainImageNested.style[property] = fallbackStylesIE[property];
+            }
         }
     }
 
     checkImage() {
-        const $imageContainer = $('.js-product-view-image');
-        const containerHeight = $imageContainer.height();
-        const containerWidth = $imageContainer.width();
+        const $imageContainer = q$('.js-product-view-image');
+        const { height: containerHeight, width: containerWidth } = $imageContainer.getBoundingClientRect();
 
         const $image = this.easyzoom.data('easyZoom').$zoom;
-        const height = $image.height();
-        const width = $image.width();
+        const { width, height } = $image.getBoundingClientRect();
 
         if (height < containerHeight || width < containerWidth) {
-            this.easyzoom.data('easyZoom').hide();
+            this.easyzoom.data('easyZoom').style.display = 'none';
         }
     }
 
@@ -112,6 +112,6 @@ export default class ImageGallery {
     }
 
     bindEvents() {
-        this.$selectableImages.on('click', this.selectNewImage.bind(this));
+        this.$selectableImages.forEach($selectableImage => $selectableImage.addEventListener('click', this.selectNewImage.bind(this)));
     }
 }

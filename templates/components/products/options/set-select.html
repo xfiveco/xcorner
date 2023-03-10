@@ -14,7 +14,10 @@
                 class="{{#if selected}}js-default{{/if}}"
                 data-product-attribute-value="{{id}}" 
                 value="{{id}}" 
-                {{#if selected}}selected{{/if}}>
+                {{#if selected}}
+                    selected
+                {{/if}}
+            >
                 {{label}}
             </option>
         {{/each}}

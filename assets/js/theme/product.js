@@ -8,19 +8,20 @@ import ProductDetails from './common/product-details';
 import videoGallery from './product/video-gallery';
 import { classifyForm } from './common/utils/form-utils';
 import modalFactory from './global/modal';
+import q$, { q$$ } from './global/selector';
 
 export default class Product extends PageManager {
     constructor(context) {
         super(context);
         this.url = window.location.href;
-        this.$reviewLink = $('[data-reveal-id="modal-review-form"]');
-        this.$bulkPricingLink = $('[data-reveal-id="modal-bulk-pricing"]');
-        this.reviewModal = modalFactory('#modal-review-form')[0];
+        this.$reviewLink = q$('[data-reveal-id="modal-review-form"]');
+        this.$bulkPricingLink = q$('[data-reveal-id="modal-bulk-pricing"]');
+        this.reviewModal = modalFactory('#modal-review-form');
     }
 
     onReady() {
         // Listen for foundation modal close events to sanitize URL after review.
-        $(document).on('close.fndtn.reveal', () => {
+        document.addEventListener('close.fndtn.reveal', () => {
             if (this.url.indexOf('#write_review') !== -1 && typeof window.history.replaceState === 'function') {
                 window.history.replaceState(null, document.title, window.location.pathname);
             }
@@ -31,7 +32,7 @@ export default class Product extends PageManager {
         // Init collapsible
         collapsibleFactory();
 
-        this.productDetails = new ProductDetails($('.js-product-view'), this.context, window.BCData.product_attributes);
+        this.productDetails = new ProductDetails(q$('.js-product-view'), this.context, window.BCData.product_attributes);
         this.productDetails.setProductVariant();
 
         videoGallery();
@@ -40,16 +41,16 @@ export default class Product extends PageManager {
 
         const $reviewForm = classifyForm('.js-write-review-form');
 
-        if ($reviewForm.length === 0) return;
+        if ($reviewForm === null) return;
 
         const review = new Review({ $reviewForm });
 
-        $('body').on('click', '[data-reveal-id="modal-review-form"]', () => {
+        q$('[data-reveal-id="modal-review-form"]').addEventListener('click', () => {
             validator = review.registerValidation(this.context);
             this.ariaDescribeReviewInputs($reviewForm);
         });
 
-        $reviewForm.on('submit', () => {
+        $reviewForm.addEventListener('submit', () => {
             if (validator) {
                 validator.performCheck();
                 return validator.areAll('valid');
@@ -62,12 +63,17 @@ export default class Product extends PageManager {
     }
 
     ariaDescribeReviewInputs($form) {
-        $form.find('.js-input').each((_, input) => {
-            const $input = $(input);
-            const msgSpanId = `${$input.attr('name')}-msg`;
+        q$$('.js-input', $form).forEach($input => {
+            const msgSpanId = `${$input.getAttribute('name')}-msg`;
 
-            $input.siblings('span').attr('id', msgSpanId);
-            $input.attr('aria-describedby', msgSpanId);
+            Array.from($input.parentNode.children)
+                .filter($sibling => $sibling.tagName.toLowerCase() === 'span')
+                .forEach($sibling => {
+                    /* eslint-disable no-param-reassign */
+                    $sibling.id = msgSpanId;
+                });
+
+            $input.setAttribute('aria-describedby', msgSpanId);
         });
     }
 

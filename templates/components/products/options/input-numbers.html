@@ -9,8 +9,13 @@
         class="js-form-input" 
         type="number" 
         id="attribute_number_{{id}}" 
-        {{#unless this.integer_only}}step="any"{{/unless}} 
+        {{#unless this.integer_only}}
+            step="any"
+        {{/unless}} 
         name="attribute[{{this.id}}]" 
         value="{{this.prefill}}" 
-        {{#if required}}required{{/if}}>
+        {{#if required}}
+            required
+        {{/if}}
+    >
 </div>

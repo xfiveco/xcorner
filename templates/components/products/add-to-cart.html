@@ -1,32 +1,43 @@
 <div id="add-to-cart-wrapper" {{#unless product.can_purchase}}style="display: none"{{/unless}}>
     {{#if theme_settings.show_product_quantity_box}}
-        {{inject 'productQuantityErrorMessage'  (lang 'products.quantity_error_message')}}
+        {{inject 'productQuantityErrorMessage'  (lang 'produc
+        ts.quantity_error_message')}}
         <div class="js-form-field js-form-field-increments">
-            <label for="qty[]">{{lang 'products.quantity'}}</label>
-                <div class="js-quantity-change">
-                    <button class="c-button button--icon" data-action="dec">
-                        <span class="u-hidden-visually">{{lang 'products.quantity_decrease' name=product.title}}</span>
-                        <svg>
-                            <use href="#icon-keyboard-arrow-down"/>
-                        </svg>
-                    </button>
-                    <input class="js-form-input js-form-input-increment-total"
-                           id="qty[]"
-                           name="qty[]"
-                           type="tel"
-                           value="{{#if product.min_purchase_quantity}}{{product.min_purchase_quantity}}{{else}}1{{/if}}"
-                           data-quantity-min="{{product.min_purchase_quantity}}"
-                           data-quantity-max="{{product.max_purchase_quantity}}"
-                           min="1"
-                           pattern="[0-9]*"
-                           aria-live="polite">
-                    <button class="c-button button--icon" data-action="inc">
-                        <span class="u-hidden-visually">{{lang 'products.quantity_increase' name=product.title}}</span>
-                        <svg>
-                            <use href="#icon-keyboard-arrow-up"/>
-                        </svg>
-                    </button>
-                </div>
+            <label for="qty[]">
+                {{lang 'products.quantity'}}
+            </label>
+
+            <div class="js-quantity-change">
+                <button class="c-button" data-action="dec">
+                    <span class="u-hidden-visually">
+                        {{lang 'products.quantity_decrease' name=product.title}}
+                    </span>
+                    <svg>
+                        <use href="#icon-keyboard-arrow-down"/>
+                    </svg>
+                </button>
+
+                <input class="js-form-input js-form-input-increment-total"
+                    id="qty[]"
+                    name="qty[]"
+                    type="tel"
+                    value="{{#if product.min_purchase_quantity}}{{product.min_purchase_quantity}}{{else}}1{{/if}}"
+                    data-quantity-min="{{product.min_purchase_quantity}}"
+                    data-quantity-max="{{product.max_purchase_quantity}}"
+                    min="1"
+                    pattern="[0-9]*"
+                    aria-live="polite"
+                >
+
+                <button class="c-button" data-action="inc">
+                    <span class="u-hidden-visually">
+                        {{lang 'products.quantity_increase' name=product.title}}
+                    </span>
+                    <svg>
+                        <use href="#icon-keyboard-arrow-up"/>
+                    </svg>
+                </button>
+            </div>
         </div>
     {{/if}}
 
@@ -38,6 +49,7 @@
         </div>
         <p class="js-alert-box-message"></p>
     </div>
+
     {{#or customer (unless settings.hide_price_from_guests)}}
         <div>
             <div>
@@ -46,11 +58,19 @@
                     data-wait-message="{{lang 'products.adding_to_cart'}}"
                     class="c-button c-button--primary"
                     type="submit"
-                    value="{{#if product.pre_order}}{{lang 'products.pre_order'}}{{else}}{{lang 'products.add_to_cart'}}{{/if}}">
-                    {{#if product.pre_order}}{{lang 'products.pre_order'}}{{else}}{{lang 'products.add_to_cart'}}{{/if}}
+                    value="{{#if product.pre_order}}{{lang 'products.pre_order'}}{{else}}{{lang 'products.add_to_cart'}}{{/if}}"
+                >
+                    {{#if product.pre_order}}
+                        {{lang 'products.pre_order'}}
+                    {{else}}
+                        {{lang 'products.add_to_cart'}}
+                    {{/if}}
                 </button>
-                <span>{{lang 'products.adding_to_cart'}} {{lang 'category.add_cart_announcement'}}</span>
+                <span>
+                    {{lang 'products.adding_to_cart'}} {{lang 'category.add_cart_announcement'}}
+                </span>
             </div>
+            
             {{#if this.with_wallet_buttons}}
                 <div class="js-add-to-cart-wallet-buttons">
                     {{> components/common/wallet-buttons}}

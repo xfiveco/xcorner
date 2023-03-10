@@ -18,12 +18,11 @@
             id="{{id}}_input"
             name="{{name}}"
             value="{{value}}"
-            class="js-form-input"
+            class="js-form-input js-input"
             aria-required="{{required}}"
             aria-labelledby="{{id}}"
             aria-live="polite"
             data-label="{{label}}"
-            data-input
         />
     </noscript>
 
@@ -40,7 +39,7 @@
         aria-live="polite"
         id="{{id}}_select"
         data-label="{{label}}"
-        data-input
+        class="js-input"
         {{#if private_id}}
             data-field-type="{{private_id}}"
         {{/if}}

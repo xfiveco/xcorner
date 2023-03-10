@@ -1,7 +1,9 @@
+import { q$$ } from '../global/selector';
+
 export class VideoGallery {
     constructor($element) {
-        this.$player = $element.find('.js-video-player');
-        this.$videos = $element.find('.js-video-item');
+        this.$player = $element.querySelector('.js-video-player');
+        this.$videos = q$$('.js-video-item', $element);
         this.currentVideo = {};
         this.bindEvents();
     }
@@ -9,10 +11,10 @@ export class VideoGallery {
     selectNewVideo(e) {
         e.preventDefault();
 
-        const $target = $(e.currentTarget);
+        const $target = e.currentTarget;
 
         this.currentVideo = {
-            id: $target.data('videoId'),
+            id: $target.dataset.videoId,
             $selectedThumb: $target,
         };
 
@@ -21,31 +23,35 @@ export class VideoGallery {
     }
 
     setMainVideo() {
-        this.$player.attr('src', `//www.youtube.com/embed/${this.currentVideo.id}`);
+        this.$player.src = `//www.youtube.com/embed/${this.currentVideo.id}`;
     }
 
     setActiveThumb() {
-        this.$videos.removeClass('is-active');
-        this.currentVideo.$selectedThumb.addClass('is-active');
+        this.$videos.classList.remove('is-active');
+        this.currentVideo.$selectedThumb.classList.add('is-active');
     }
 
     bindEvents() {
-        this.$videos.on('click', this.selectNewVideo.bind(this));
+        this.$videos.forEach($video => $video.addEventListener('click', this.selectNewVideo.bind(this)));
     }
 }
 
 export default function videoGallery() {
     const pluginKey = 'video-gallery';
-    const $videoGallery = $(`[data-${pluginKey}]`);
+    const $videoGallery = q$$(`[data-${pluginKey}]`);
 
-    $videoGallery.each((index, element) => {
-        const $el = $(element);
-        const isInitialized = $el.data(pluginKey) instanceof VideoGallery;
+    $videoGallery.forEach($el => {
+        const isInitialized = $el.data?.videoGallery instanceof VideoGallery;
 
         if (isInitialized) {
             return;
         }
 
-        $el.data(pluginKey, new VideoGallery($el));
+        if ('data' in $el === false) {
+            /* eslint-disable no-param-reassign */
+            $el.data = {};
+        }
+
+        $el.data.videoGallery = new VideoGallery($el);
     });
 }

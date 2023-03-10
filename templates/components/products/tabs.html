@@ -6,19 +6,22 @@
                 role="tab" 
                 tabindex="0" 
                 aria-selected="true" 
-                controls="tab-related">
+                controls="tab-related"
+            >
                 {{lang 'products.related_products'}}
             </a>
         </li>
     {{/if}}
+
     {{#if product.similar_by_views}}
-        <li class="js-tab {{#unless product.related_products}}is-active{{/unless}}" role="presentation">
+        <li class="js-tab{{#unless product.related_products}} is-active{{/unless}}" role="presentation">
             <a 
                 href="#tab-similar"
                 role="tab" 
                 tabindex="0" 
                 aria-selected="{{#if product.related_products}}false{{else}}true{{/if}}" 
-                controls="tab-similar">
+                controls="tab-similar"
+            >
                 {{lang 'products.similar_by_views'}}
             </a>
         </li>
@@ -26,27 +29,29 @@
 </ul>
 
 <div>
-{{#if product.related_products}}
-    <div 
-        role="tabpanel" 
-        aria-hidden="false" 
-        class="is-active" 
-        id="tab-related">
-        {{#if settings.data_tag_enabled}}
-            {{> components/products/carousel products=product.related_products columns=6 list="Related Products"}}
-        {{else}}
-            {{> components/products/carousel products=product.related_products columns=6}}
-        {{/if}}
-    </div>
-{{/if}}
+    {{#if product.related_products}}
+        <div 
+            role="tabpanel" 
+            aria-hidden="false" 
+            class="is-active" 
+            id="tab-related"
+        >
+            {{#if settings.data_tag_enabled}}
+                {{> components/products/carousel products=product.related_products columns=6 list="Related Products"}}
+            {{else}}
+                {{> components/products/carousel products=product.related_products columns=6}}
+            {{/if}}
+        </div>
+    {{/if}}
 
-{{#if product.similar_by_views}}
-    <div 
-        role="tabpanel"
-        aria-hidden="{{#if product.related_products}}true{{else}}false{{/if}}" 
-        class="{{#unless product.related_products}}is-active{{/unless}}" 
-        id="tab-similar">
-        {{> components/products/carousel products=product.similar_by_views columns=6 list="Customers Also Viewed"}}
-    </div>
-{{/if}}
+    {{#if product.similar_by_views}}
+        <div 
+            role="tabpanel"
+            aria-hidden="{{#if product.related_products}}true{{else}}false{{/if}}" 
+            class="{{#unless product.related_products}}is-active{{/unless}}" 
+            id="tab-similar"
+        >
+            {{> components/products/carousel products=product.similar_by_views columns=6 list="Customers Also Viewed"}}
+        </div>
+    {{/if}}
 </div>

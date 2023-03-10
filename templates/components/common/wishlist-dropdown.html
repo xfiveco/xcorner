@@ -1,4 +1,4 @@
-<form action="{{product.add_to_wishlist_url}}" data-wishlist-add method="post">
+<form action="{{product.add_to_wishlist_url}}" class="js-wishlist-add" method="post">
     <a 
         aria-controls="wishlist-dropdown"
         aria-expanded="false"
@@ -17,14 +17,13 @@
     <ul 
         aria-hidden="true" 
         class="js-dropdown-menu" 
-        data-dropdown-content 
         id="wishlist-dropdown"
     >
         {{#if customer.wishlists}}
             {{#each customer.wishlists}}
                 <li>
                     <button 
-                        class="c-button {{#if this.num_items '!==' '0'}}button--has-items{{/if}}"
+                        class="c-button{{#if this.num_items '!==' '0'}} button-has-items{{/if}}"
                         formaction="{{this.add_url}}&product_id={{../product.id}}"
                         type="submit"
                     >
@@ -41,7 +40,6 @@
         {{/if}}
         <li>
             <a 
-                data-wishlist 
                 class="c-button" 
                 href="/wishlist.php?action=addwishlist&product_id={{product.id}}"
             >

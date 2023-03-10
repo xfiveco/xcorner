@@ -1,45 +1,50 @@
 {{#if reviews.total}}
-<section id="product-reviews">
-    <h4>
-        {{lang 'products.reviews.header' total=reviews.total}}
-        {{#if theme_settings.show_product_reviews}}
-            <a class="js-toggle-link is-open" data-collapsible href="#product-reviews-content">
-                <span>
-                    {{lang 'products.reviews.hide'}}
-                </span>
-                <span>
-                    {{lang 'products.reviews.show'}}
-                </span>
-            </a>
-        {{/if}}
-    </h4>
-    <div class="is-open" id="product-reviews-content" aria-hidden="false">
-        <ul>
-            {{#each reviews.list}}
-            <li>
-                <article>
-                    <header>
-                        <span>
-                            {{> components/products/ratings rating=rating}}
-                            <span>{{ rating }}</span>
-                        </span>
-                        <h5>{{{ sanitize title }}}</h5>
-                        {{#if name}}
-                            <p>
-                                {{{lang 'products.reviews.post_on_by' date=date name=(sanitize name) }}}
-                            </p>
-                        {{else}}
-                            <p>
-                                {{lang 'products.reviews.post_on_by' date=date name=(lang 'products.reviews.anonymous_poster')}}
-                            </p>
-                        {{/if}}
-                    </header>
-                    <p>{{{ sanitize text }}}</p>
-                </article>
-            </li>
-            {{/each}}
-        </ul>
-        {{> components/common/paginator pagination.reviews reload=true}}
-    </div>
-</section>
+    <section id="product-reviews">
+        <div>
+            {{lang 'products.reviews.header' total=reviews.total}}
+
+            {{#if theme_settings.show_product_reviews}}
+                <a class="js-toggle-link is-open js-collapsible" href="#product-reviews-content">
+                    <span>
+                        {{lang 'products.reviews.hide'}}
+                    </span>
+                    <span>
+                        {{lang 'products.reviews.show'}}
+                    </span>
+                </a>
+            {{/if}}
+        </div>
+
+        <div class="is-open" id="product-reviews-content" aria-hidden="false">
+            <ul>
+                {{#each reviews.list}}
+                    <li>
+                        <article>
+                            <header>
+                                <span>
+                                    {{> components/products/ratings rating=rating}}
+                                    <span>{{ rating }}</span>
+                                </span>
+                                <div>{{{ sanitize title }}}</div>
+                                
+                                {{#if name}}
+                                    <p>
+                                        {{{lang 'products.reviews.post_on_by' date=date name=(sanitize name) }}}
+                                    </p>
+                                {{else}}
+                                    <p>
+                                        {{lang 'products.reviews.post_on_by' date=date name=(lang 'products.reviews.anonymous_poster')}}
+                                    </p>
+                                {{/if}}
+                            </header>
+
+                            <p>{{{ sanitize text }}}</p>
+                        </article>
+                    </li>
+                {{/each}}
+            </ul>
+            
+            {{> components/common/paginator pagination.reviews reload=true}}
+        </div>
+    </section>
 {{/if}}

@@ -9,34 +9,47 @@
         {{#for 1 12}}
             <option 
                 value="{{$index}}" 
-                {{#if ../selected_date.month '==' $index}}selected="selected"{{/if}}>
+                {{#if ../selected_date.month '==' $index}}
+                    selected="selected"
+                {{/if}}
+            >
                 {{lang (concat 'common.short_months.' $index)}}
             </option>
         {{/for}}
     </select>
+
     <select name="attribute[{{this.id}}][day]" {{#if required}}required{{/if}}>
         <option value="">{{lang 'common.day'}}</option>
         {{#for 1 31}}
             <option 
                 value="{{$index}}" 
-                {{#if ../selected_date.day '==' $index}}selected="selected"{{/if}}>
+                {{#if ../selected_date.day '==' $index}}
+                    selected="selected"
+                {{/if}}
+            >
                 {{$index}}
             </option>
         {{/for}}
     </select>
+
     <select name="attribute[{{this.id}}][year]" {{#if required}}required{{/if}}>
         <option value="">{{lang 'common.year'}}</option>
         {{#for earliest_year latest_year}}
             <option
                 value="{{$index}}" 
-                {{#if ../selected_date.year '==' $index}}selected="selected"{{/if}}>
+                {{#if ../selected_date.year '==' $index}}
+                    selected="selected"
+                {{/if}}
+            >
                 {{$index}}
             </option>
         {{/for}}
+
         {{#if earliest_year '==' latest_year}}
             <option 
                 value="{{earliest_year}}" 
-                selected="selected">
+                selected="selected"
+            >
                 {{earliest_year}}
             </option>
         {{/if}}

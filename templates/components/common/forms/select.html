@@ -12,20 +12,20 @@
             <small>{{lang 'common.required' }}</small>
         {{/if}}
     </label>
-    <select class="{{class}}"
-            id="{{id}}_select"
-            data-label="{{label}}"
-            data-input
-            aria-required="{{required}}"
-            aria-labelledby="{{id}}"
-            aria-live="polite"
-            name="{{name}}"
-            {{#if private_id}} 
-                data-field-type="{{private_id}}" 
-            {{/if}}
-            {{#if required}}
-                required
-            {{/if}}
+    <select 
+        class="{{class}} js-input"
+        id="{{id}}_select"
+        data-label="{{label}}"
+        aria-required="{{required}}"
+        aria-labelledby="{{id}}"
+        aria-live="polite"
+        name="{{name}}"
+        {{#if private_id}} 
+            data-field-type="{{private_id}}" 
+        {{/if}}
+        {{#if required}}
+            required
+        {{/if}}
     >
         {{#if options}}
             <option value="">{{chooseprefix}}</option>

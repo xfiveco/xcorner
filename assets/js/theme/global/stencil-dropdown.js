@@ -42,7 +42,7 @@ export default class StencilDropdown {
         let modalOpened = false;
 
         $dropDownTrigger.addEventListener('click', event => {
-            const $cart = q$('.is-open[data-cart-preview]');
+            const $cart = q$('.is-open.js-cart-preview');
 
             if ($cart) {
                 $cart.click();
@@ -70,16 +70,16 @@ export default class StencilDropdown {
             }
         });
 
-        q$('[data-reveal]').addEventListener('open.fndtn.reveal', () => {
+        q$('.js-reveal').addEventListener('open.fndtn.reveal', () => {
             modalOpened = true;
         });
 
-        q$('[data-reveal]').addEventListener('close.fndtn.reveal', () => {
+        q$('.js-reveal').addEventListener('close.fndtn.reveal', () => {
             modalOpened = false;
         });
 
         /* eslint-disable no-unused-expressions */
-        q$('[data-drop-down-close]')?.addEventListener('click', () => {
+        q$('.js-drop-down-close')?.addEventListener('click', () => {
             modalOpened = false;
             this.hide($container);
         });

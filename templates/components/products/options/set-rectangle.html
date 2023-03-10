@@ -1,4 +1,9 @@
-<div class="js-form-field" data-product-attribute="set-rectangle" role="radiogroup" aria-labelledby="rectangle-group-label">
+<div 
+    class="js-form-field" 
+    data-product-attribute="set-rectangle" 
+    role="radiogroup" 
+    aria-labelledby="rectangle-group-label"
+>
     <label id="rectangle-group-label">
         {{this.display_name}}:
         <span class="js-option-value"></span>
@@ -30,7 +35,9 @@
             {{#if selected}}
                 checked
             {{/if}}
-            {{#if ../required}}required{{/if}}
+            {{#if ../required}}
+                required
+            {{/if}}
         >
         <label for="attribute_rectangle__{{../id}}_{{id}}" data-product-attribute-value="{{id}}">
             <span>{{this.label}}</span>
