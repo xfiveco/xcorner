@@ -972,10 +972,10 @@
     "page_builder": {
         "pdp_sale_badge_label": "På udsalg!",
         "pdp_sold_out_label": "Udsolgt",
-        "pdp-sale-price-label": "Nu:",
-        "pdp-non-sale-price-label": "Var:",
-        "pdp-retail-price-label": "Producents anbefalede detailpris:",
-        "pdp-custom-fields-tab-label": "Yderligere oplysninger"
+        "pdp_sale_price_label": "Nu:",
+        "pdp_non_sale_price_label": "Var:",
+        "pdp_retail_price_label": "Producents anbefalede detailpris:",
+        "pdp_custom_fields_tab_label": "Yderligere oplysninger"
     },
     "consent_manager": {
         "data_collection_warning": "Vi bruger cookies (og andre lignende teknologier) til at indsamle oplysninger for at forbedre din shoppingoplevelse.",

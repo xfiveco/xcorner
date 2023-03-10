@@ -17,7 +17,7 @@ export default class ProductDetails extends ProductDetailsBase {
     constructor($scope, context, productAttributesData = {}) {
         super($scope, context);
 
-        this.$overlay = q$('.js-cart-item-add .js-loading-overlay');
+        this.$overlay = q$('.js-cart-item-add .is-loading-overlay');
         this.imageGallery = new ImageGallery(q$('.js-image-gallery', this.$scope));
         this.imageGallery.init();
         this.listenQuantityChange();
@@ -519,8 +519,8 @@ export default class ProductDetails extends ProductDetailsBase {
             const bannerUpdateHandler = () => {
                 const $productContainer = q$('#main-content > .js-container');
 
-                $productContainer.append('<div class="js-loading-overlay pdp-update"></div>');
-                q$('.js-loading-overlay.pdp-update', $productContainer).style.display = 'block';
+                $productContainer.append('<div class="is-loading-overlay pdp-update"></div>');
+                q$('.is-loading-overlay.pdp-update', $productContainer).style.display = 'block';
                 window.location.reload();
             };
 

@@ -144,6 +144,6 @@ export default class CartItemDetails extends ProductDetailsBase {
         super.updateProductAttributes(data);
 
         /* eslint-disable no-unused-expressions */
-        this.$scope?.querySelector('.js-modal-content')?.classList.remove('hide-content');
+        this.$scope?.querySelector('.is-modal-content')?.classList.remove('hide-content');
     }
 }

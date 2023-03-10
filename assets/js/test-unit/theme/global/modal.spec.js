@@ -19,8 +19,8 @@ describe.skip('Modal', () => {
                 <button class="modal-close" type="button">
                     <span aria-hidden="true">&#215;</span>
                 </button>
-                <div class="js-modal-content"></div>
-                <div class="js-loading-overlay"></div>
+                <div class="is-modal-content"></div>
+                <div class="is-loading-overlay"></div>
             </div>
         `);
 
@@ -128,7 +128,7 @@ describe.skip('Modal', () => {
             expect(modal.pending).toBeFalsy();
         });
 
-        describe('if template does not have `js-modal-content`', () => {
+        describe('if template does not have `is-modal-content`', () => {
             beforeEach(() => {
                 $element.remove();
                 $element = attachHtml(`
@@ -141,8 +141,8 @@ describe.skip('Modal', () => {
                 modal = modalFactory()[0];
             });
 
-            it('should create and attach `js-modal-content`', () => {
-                expect($('.js-modal-content', modal.$modal).get(0)).toBeDefined();
+            it('should create and attach `is-modal-content`', () => {
+                expect($('.is-modal-content', modal.$modal).get(0)).toBeDefined();
             });
 
             it('should transclude existing content', () => {

@@ -972,10 +972,10 @@
     "page_builder": {
         "pdp_sale_badge_label": "Em promoção!",
         "pdp_sold_out_label": "Sair",
-        "pdp-sale-price-label": "Agora:",
-        "pdp-non-sale-price-label": "Antes:",
-        "pdp-retail-price-label": "MSRP:",
-        "pdp-custom-fields-tab-label": "Outras informações"
+        "pdp_sale_price_label": "Agora:",
+        "pdp_non_sale_price_label": "Antes:",
+        "pdp_retail_price_label": "MSRP:",
+        "pdp_custom_fields_tab_label": "Outras informações"
     },
     "consent_manager": {
         "data_collection_warning": "Utilizamos cookies (e outras tecnologias semelhantes) para coletar dados para melhorar a sua experiência de compra.",

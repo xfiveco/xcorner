@@ -972,10 +972,10 @@
     "page_builder": {
         "pdp_sale_badge_label": "In saldo!",
         "pdp_sold_out_label": "Esaurito",
-        "pdp-sale-price-label": "Ora:",
-        "pdp-non-sale-price-label": "Prima:",
-        "pdp-retail-price-label": "Prezzo di listino:",
-        "pdp-custom-fields-tab-label": "Informazioni aggiuntive"
+        "pdp_sale_price_label": "Ora:",
+        "pdp_non_sale_price_label": "Prima:",
+        "pdp_retail_price_label": "Prezzo di listino:",
+        "pdp_custom_fields_tab_label": "Informazioni aggiuntive"
     },
     "consent_manager": {
         "data_collection_warning": "Utilizziamo i cookie (e tecnologie simili) per raccogliere dati con cui migliorare la tua esperienza di acquisto.",

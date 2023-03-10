@@ -2,8 +2,8 @@
     <div class="js-rrp-price-with-tax">
         <span>
             {{> components/products/price-label
-                label_value=theme_settings.pdp-retail-price-label
-                fallback=(lang "page_builder.pdp-retail-price-label")
+                label_value=theme_settings.pdp_retail_price_label
+                fallback=(lang "page_builder.pdp_retail_price_label")
             }}
         </span>
         <span class="js-product-rrp-with-tax">
@@ -15,8 +15,8 @@
         <div class="js-rrp-price-with-tax" style="display: none;">
             <span>
                 {{> components/products/price-label
-                    label_value=theme_settings.pdp-retail-price-label
-                    fallback=(lang "page_builder.pdp-retail-price-label")
+                    label_value=theme_settings.pdp_retail_price_label
+                    fallback=(lang "page_builder.pdp_retail_price_label")
                 }}
             </span>
             <span class="js-product-rrp-with-tax">
@@ -30,8 +30,8 @@
     <div class="js-non-sale-price-with-tax" style="display: none;">
         <span>
             {{> components/products/price-label
-                label_value=theme_settings.pdp-non-sale-price-label
-                fallback=(lang "page_builder.pdp-non-sale-price-label")
+                label_value=theme_settings.pdp_non_sale_price_label
+                fallback=(lang "page_builder.pdp_non_sale_price_label")
             }}
         </span>
         <span class="js-product-non-sale-price-with-tax">
@@ -40,12 +40,12 @@
     </div>
     <div>
         <span class="js-price-label">
-            {{theme_settings.pdp-price-label}}
+            {{theme_settings.pdp_price_label}}
         </span>
         <span class="js-price-now-label" style="display: none;">
             {{> components/products/price-label
-                label_value=theme_settings.pdp-sale-price-label
-                fallback=(lang "page_builder.pdp-sale-price-label")
+                label_value=theme_settings.pdp_sale_price_label
+                fallback=(lang "page_builder.pdp_sale_price_label")
             }}
         </span>
         <span class="js-product-price-with-tax">
@@ -63,8 +63,8 @@
     <div class="{{#if price.with_tax}}price-section-minor{{/if}}">
         <span>
             {{> components/products/price-label
-                label_value=theme_settings.pdp-retail-price-label
-                fallback=(lang "page_builder.pdp-retail-price-label")
+                label_value=theme_settings.pdp_retail_price_label
+                fallback=(lang "page_builder.pdp_retail_price_label")
             }}
         </span>
         <span class="js-product-rrp-price-without-tax">
@@ -76,8 +76,8 @@
         <div class="{{#if price.with_tax}}price-section-minor{{/if}}" style="display: none;">
             <span>
                 {{> components/products/price-label
-                    label_value=theme_settings.pdp-retail-price-label
-                    fallback=(lang "page_builder.pdp-retail-price-label")
+                    label_value=theme_settings.pdp_retail_price_label
+                    fallback=(lang "page_builder.pdp_retail_price_label")
                 }}
             </span>
             <span class="js-product-rrp-price-without-tax">
@@ -91,8 +91,8 @@
     <div class="js-non-sale-price-without-tax{{#if price.with_tax}} price-section-minor{{/if}}" style="display: none;">
         <span>
             {{> components/products/price-label
-                label_value=theme_settings.pdp-non-sale-price-label
-                fallback=(lang "page_builder.pdp-non-sale-price-label")
+                label_value=theme_settings.pdp_non_sale_price_label
+                fallback=(lang "page_builder.pdp_non_sale_price_label")
             }}
         </span>
         <span class="js-product-non-sale-price-without-tax">
@@ -101,12 +101,12 @@
     </div>
     <div class="{{#and price_range.min.with_tax price_range.max.with_tax}}price-section-minor{{/and}}">
         <span class="js-price-label">
-            {{theme_settings.pdp-price-label}}
+            {{theme_settings.pdp_price_label}}
         </span>
         <span class="js-price-now-label" style="display: none;">
             {{> components/products/price-label
-                label_value=theme_settings.pdp-sale-price-label
-                fallback=(lang "page_builder.pdp-sale-price-label")
+                label_value=theme_settings.pdp_sale_price_label
+                fallback=(lang "page_builder.pdp_sale_price_label")
             }}
         </span>
         <span class="js-product-price-without-tax">

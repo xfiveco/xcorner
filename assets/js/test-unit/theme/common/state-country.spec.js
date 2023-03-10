@@ -43,8 +43,8 @@ describe('StateCountry', () => {
         beforeEach(() => {
             $modalElement = $(`
                 <div id="alert-modal" class="modal modal--alert" data-reveal>
-                    <div class="js-modal-content"></div>
-                    <div class="js-loading-overlay"></div>
+                    <div class="is-modal-content"></div>
+                    <div class="is-loading-overlay"></div>
                 </div>
             `)
             $modalElement.appendTo(document.body);

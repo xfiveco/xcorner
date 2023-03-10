@@ -972,10 +972,10 @@
     "page_builder": {
         "pdp_sale_badge_label": "Afgeprijsd!",
         "pdp_sold_out_label": "Uitverkocht",
-        "pdp-sale-price-label": "Nu:",
-        "pdp-non-sale-price-label": "Was:",
-        "pdp-retail-price-label": "Adviesprijs:",
-        "pdp-custom-fields-tab-label": "Aanvullende informatie"
+        "pdp_sale_price_label": "Nu:",
+        "pdp_non_sale_price_label": "Was:",
+        "pdp_retail_price_label": "Adviesprijs:",
+        "pdp_custom_fields_tab_label": "Aanvullende informatie"
     },
     "consent_manager": {
         "data_collection_warning": "Wij gebruiken cookies (en andere soortgelijke technologieën) om gegevens te verzamelen en zo uw winkelervaring te verbeteren.",
