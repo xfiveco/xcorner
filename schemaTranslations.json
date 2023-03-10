@@ -1,5 +1,5 @@
 {
-  "Global": {
+  "i18n.Global": {
     "default": "Global",
     "fr": "global",
     "it": "globale",
@@ -16,7 +16,7 @@
     "no": "Global",
     "ko": "글로벌"
   },
-  "BackgroundAndLines": {
+  "i18n.BackgroundAndLines": {
     "default": "Background and lines",
     "fr": "Arrière-plan et lignes",
     "it": "Sfondo e linee",
@@ -33,7 +33,7 @@
     "no": "Bakgrunn og linjer",
     "ko": "배경과 선"
   },
-  "BodyTextAndLinks": {
+  "i18n.BodyTextAndLinks": {
     "default": "Body text and links",
     "fr": "Corps du texte et liens",
     "it": "Corpo del testo e link",
@@ -50,7 +50,7 @@
     "no": "Brødtekst og lenker",
     "ko": "본문 텍스트 및 링크"
   },
-  "Karla": {
+  "i18n.Karla": {
     "default": "Karla",
     "fr": "Karla",
     "it": "Karla",
@@ -67,7 +67,7 @@
     "no": "Karla",
     "ko": "Karla"
   },
-  "Roboto": {
+  "i18n.Roboto": {
     "default": "Roboto",
     "fr": "Roboto",
     "it": "Roboto",
@@ -84,7 +84,7 @@
     "no": "Roboto",
     "ko": "Roboto"
   },
-  "SourceSansPro": {
+  "i18n.SourceSansPro": {
     "default": "Source Sans Pro",
     "fr": "Source Sans Pro",
     "it": "Source Sans Pro",
@@ -101,7 +101,7 @@
     "no": "Source Sans Pro",
     "ko": "Source Sans Pro"
   },
-  "LinkColor": {
+  "i18n.LinkColor": {
     "default": "Link color",
     "fr": "Couleur du lien",
     "it": "Colore link",
@@ -118,7 +118,7 @@
     "no": "Lenkefarge",
     "ko": "링크 색상"
   },
-  "LinkHoverColor": {
+  "i18n.LinkHoverColor": {
     "default": "Link hover color",
     "fr": "Couleur du lien au survol",
     "it": "Colore al passaggio del mouse sul link",
@@ -135,7 +135,7 @@
     "no": "Lenkefarge (med peker over)",
     "ko": "링크 호버 색상"
   },
-  "Headings": {
+  "i18n.Headings": {
     "default": "Headings",
     "fr": "En-têtes",
     "it": "Intestazioni",
@@ -152,7 +152,7 @@
     "no": "Overskrifter",
     "ko": "제목"
   },
-  "MontserratLight": {
+  "i18n.MontserratLight": {
     "default": "Montserrat Light",
     "fr": "Montserrat Light",
     "it": "Montserrat Light",
@@ -169,7 +169,7 @@
     "no": "Montserrat Light",
     "ko": "Montserrat Light"
   },
-  "Montserrat": {
+  "i18n.Montserrat": {
     "default": "Montserrat",
     "fr": "Montserrat",
     "it": "Montserrat",
@@ -186,7 +186,7 @@
     "no": "Montserrat",
     "ko": "Montserrat Bold"
   },
-  "OpenSans": {
+  "i18n.OpenSans": {
     "default": "Open Sans",
     "fr": "Open Sans",
     "it": "Open Sans",
@@ -203,7 +203,7 @@
     "no": "Open Sans",
     "ko": "Open Sans"
   },
-  "OpenSansBold": {
+  "i18n.OpenSansBold": {
     "default": "Open Sans Bold",
     "fr": "Open Sans Bold",
     "it": "Open Sans Bold",
@@ -220,7 +220,7 @@
     "no": "Open Sans Bold",
     "ko": "Open Sans Bold"
   },
-  "Volkhov": {
+  "i18n.Volkhov": {
     "default": "Volkhov",
     "fr": "Volkhov",
     "it": "Volkhov",
@@ -237,7 +237,7 @@
     "no": "Volkhov",
     "ko": "Volkhov"
   },
-  "LoadingIndicators": {
+  "i18n.LoadingIndicators": {
     "default": "Loading indicators",
     "fr": "Indicateurs de chargement",
     "it": "Indicatori di caricamento",
@@ -254,7 +254,7 @@
     "no": "Innlastingsindikatorer",
     "ko": "로딩 인디케이터"
   },
-  "ImageLoading": {
+  "i18n.ImageLoading": {
     "default": "Image Loading",
     "fr": "Chargement de l'image",
     "it": "Caricamento dell'immagine",
@@ -271,7 +271,7 @@
     "no": "Bilde lastes inn",
     "ko": "이미지 로딩"
   },
-  "CornerstoneDoesntLoadMostImages": {
+  "i18n.CornerstoneDoesntLoadMostImages": {
     "default": "Cornerstone doesn’t load most images until the user scrolls to them on the screen. Enable \"Lazyloading with LQIP\" below if you prefer to show a preview image and replace it with a better quality version as the user scrolls. Select \"Disabled\" below to fully turn off this feature.",
     "fr": "Cornerstone ne charge l'ensemble des images que lorsque l'utilisateur les fait défiler à l'écran. Activez le mode « Lazyloading avec LQIP » ci-dessous si vous souhaitez afficher une image d'aperçu et la remplacer par une image de meilleure qualité lorsque l'utilisateur fait défiler l'écran. Sélectionnez « Désactivé » ci-dessous si vous ne souhaitez pas utiliser ce mode.",
     "it": "Cornerstone non carica la maggior parte delle immagini finché l'utente non fa scorrere la schermata. Attiva la modalità \"Lazy loading con LQIP\" qui sotto se preferisci mostrare un'anteprima dell'immagine e sostituirla con una versione di qualità migliore durante lo scorrimento. Per disattivare completamente questa funzionalità, seleziona \"Disattivato\" qui sotto.",
@@ -288,7 +288,7 @@
     "no": "Cornerstone laster ikke de fleste bilder før brukeren ruller til dem på skjermen. Aktiver «Lazyloading with LQIP» nedenfor hvis du foretrekker å vise et forhåndsvisningsbilde, og deretter erstatte det med en versjon av bedre kvalitet mens brukeren ruller. Velg «Deaktivert» nedenfor for å slå av denne funksjonen helt.",
     "ko": "Cornerstone은 사용자가 화면을 이미지가 있는 곳까지 스크롤할 때까지 대부분의 이미지를 로드하지 않습니다. 미리보기 이미지를 표시하고 사용자가 스크롤할 때 더 나은 품질의 이미지로 교체하려면 아래에서 \"LQIP를 사용한 지연 로딩\"을 활성화하십시오. 이 기능을 완전히 해제하려면 아래에서 \"사용 안 함\"을 선택하십시오."
   },
-  "LazyloadingMode": {
+  "i18n.LazyloadingMode": {
     "default": "Lazyloading Mode",
     "fr": "Mode Lazyloading",
     "it": "Modalità lazy loading",
@@ -305,7 +305,7 @@
     "no": "Lazyloading-modus",
     "ko": "지연 로딩 모드"
   },
-  "Lazyload": {
+  "i18n.Lazyload": {
     "default": "Lazyload",
     "fr": "Lazyload",
     "it": "Lazy loading",
@@ -322,7 +322,7 @@
     "no": "Lazyload",
     "ko": "지연 로딩 모드"
   },
-  "LazyloadWithLQIP": {
+  "i18n.LazyloadWithLQIP": {
     "default": "Lazyload with LQIP",
     "fr": "Lazyloading avec LQIP",
     "it": "Lazy loading con LQIP",
@@ -339,7 +339,7 @@
     "no": "Lazyload med LQIP",
     "ko": "LQIP를 사용한 지연 로딩"
   },
-  "Disabled": {
+  "i18n.Disabled": {
     "default": "Disabled",
     "fr": "Désactivé",
     "it": "Disattivato",
@@ -356,7 +356,7 @@
     "no": "Deaktivert",
     "ko": "비활성화 버튼"
   },
-  "Pages": {
+  "i18n.Pages": {
     "default": "Pages",
     "fr": "Pages",
     "it": "Pagine",
@@ -373,7 +373,7 @@
     "no": "Sider",
     "ko": "페이지"
   },
-  "HideBreadcrumbs": {
+  "i18n.HideBreadcrumbs": {
     "default": "Hide breadcrumbs",
     "fr": "Masquer le fil d'Ariane",
     "it": "Nascondi percorso di navigazione",
@@ -390,7 +390,7 @@
     "no": "Skjul navigasjonsbane",
     "ko": "탐색경로 숨기기"
   },
-  "HidePageHeading": {
+  "i18n.HidePageHeading": {
     "default": "Hide page heading",
     "fr": "Masquer l'en-tête de la page",
     "it": "Nascondi intestazione della pagina",
@@ -407,7 +407,7 @@
     "no": "Skjul sideoverskriften",
     "ko": "페이지 제목 숨기기"
   },
-  "HideCategoryPageHeading": {
+  "i18n.HideCategoryPageHeading": {
     "default": "Hide category page heading",
     "fr": "Masquer l'en-tête de la catégorie",
     "it": "Nascondi intestazione pagina della categoria",
@@ -424,7 +424,7 @@
     "no": "Skjul kategorisideoverskriften",
     "ko": "카테고리 페이지 제목 숨기기"
   },
-  "HideBlogPageHeading": {
+  "i18n.HideBlogPageHeading": {
     "default": "Hide blog page heading",
     "fr": "Masquer l'en-tête du blog",
     "it": "Nascondi intestazione pagina del blog",
@@ -441,7 +441,7 @@
     "no": "Skjul bloggsideoverskrift",
     "ko": "블로그 페이지 제목 숨기기"
   },
-  "HideContactUsPageHeading": {
+  "i18n.HideContactUsPageHeading": {
     "default": "Hide contact us page heading",
     "fr": "Masquer l'en-tête de la page de contact",
     "it": "Nascondi intestazione pagina contattaci",
@@ -458,7 +458,7 @@
     "no": "Skjul kontakt oss-sideoverskriften",
     "ko": "문의하기 페이지 제목 숨기기"
   },
-  "Products": {
+  "i18n.Products": {
     "default": "Products",
     "fr": "Produits",
     "it": "Prodotti",
@@ -475,7 +475,7 @@
     "no": "Produkter",
     "ko": "상품"
   },
-  "DisplayStyle": {
+  "i18n.DisplayStyle": {
     "default": "Display style",
     "fr": "Style d'affichage",
     "it": "Stile visualizzato",
@@ -492,7 +492,7 @@
     "no": "Visningsstil",
     "ko": "디스플레이 스타일"
   },
-  "ShowProductsInAGrid": {
+  "i18n.ShowProductsInAGrid": {
     "default": "Show products in a grid",
     "fr": "Afficher les produits dans une grille",
     "it": "Mostra prodotti in una griglia",
@@ -509,7 +509,7 @@
     "no": "Vis produkter i et rutenett",
     "ko": "그리드에 상품 표시"
   },
-  "ShowProductsInAList": {
+  "i18n.ShowProductsInAList": {
     "default": "Show products in a list",
     "fr": "Afficher les produits dans une liste",
     "it": "Mostra prodotti in un elenco",
@@ -526,7 +526,7 @@
     "no": "Vis produkter i en liste",
     "ko": "리스트에 상품 표시"
   },
-  "Blog": {
+  "i18n.Blog": {
     "default": "Blog",
     "fr": "Blog",
     "it": "Blog",
@@ -543,7 +543,7 @@
     "no": "blogg",
     "ko": "블로그"
   },
-  "SizeOfImages": {
+  "i18n.SizeOfImages": {
     "default": "Size of images",
     "fr": "Taille des images",
     "it": "Dimensione immagini",
@@ -560,7 +560,7 @@
     "no": "Størrelse på bilder",
     "ko": "이미지 크기"
   },
-  "OptimizedForTheme": {
+  "i18n.OptimizedForTheme": {
     "default": "Optimized for theme",
     "fr": "Optimisé pour le thème",
     "it": "Ottimizzato per il tema",
@@ -577,7 +577,7 @@
     "no": "Optimalisert for tema",
     "ko": "테마에 최적화"
   },
-  "SpecifyDimensions": {
+  "i18n.SpecifyDimensions": {
     "default": "Specify dimensions",
     "fr": "Spécifiez les dimensions",
     "it": "Specifica dimensioni",
@@ -594,7 +594,7 @@
     "no": "Angi dimensjoner",
     "ko": "치수 지정"
   },
-  "Pricing": {
+  "i18n.Pricing": {
     "default": "Pricing",
     "fr": "Tarification",
     "it": "Prezzi",
@@ -611,7 +611,7 @@
     "no": "Priser",
     "ko": "가격설정"
   },
-  "ShowPriceRangesForProducts": {
+  "i18n.ShowPriceRangesForProducts": {
     "default": "Show price ranges for products with variants. If disabled it will show the product price",
     "fr": "Afficher les fourchettes de prix pour les produits avec des variantes. Si cette option est désactivée, seul le prix du produit s'affichera.",
     "it": "Mostra le fasce di prezzo dei prodotti con varianti. Se disattivato, viene visualizzato il prezzo del prodotto",
@@ -628,7 +628,7 @@
     "no": "Vis prisklasser for produkter med varianter. Hvis deaktivert vises produktprisen",
     "ko": "상품 조합이 있는 상품의 가격 범위를 표시합니다. 비활성화하면 상품 가격이 표시됩니다"
   },
-  "PurchaseOptions": {
+  "i18n.PurchaseOptions": {
     "default": "Purchase options",
     "fr": "Options d'achat",
     "it": "Opzioni di acquisto",
@@ -645,7 +645,7 @@
     "no": "Kjøpsalternativer",
     "ko": "구매 옵션"
   },
-  "FormInputFields": {
+  "i18n.FormInputFields": {
     "default": "Form Input fields",
     "fr": "Champs de saisie sur le formulaire",
     "it": "Campi di input modulo",
@@ -662,7 +662,7 @@
     "no": "Skjemainndatafelt",
     "ko": "양식 입력 필드"
   },
-  "HeaderAndFooter": {
+  "i18n.HeaderAndFooter": {
     "default": "Header & Footer",
     "fr": "En-tête et pied de page",
     "it": "Intestazione e piè di pagina",
@@ -679,7 +679,7 @@
     "no": "Topptekst og bunntekst",
     "ko": "헤더 및 풋터"
   },
-  "Header": {
+  "i18n.Header": {
     "default": "Header",
     "fr": "En-tête",
     "it": "Intestazione",
@@ -696,7 +696,7 @@
     "no": "Overskrift",
     "ko": "헤더 텍스트"
   },
-  "Logo": {
+  "i18n.Logo": {
     "default": "Logo",
     "fr": "Logo",
     "it": "Logo",
@@ -713,7 +713,7 @@
     "no": "Logo",
     "ko": "심벌 마크"
   },
-  "LogoPosition": {
+  "i18n.LogoPosition": {
     "default": "Logo position",
     "fr": "Emplacement du logo",
     "it": "Posizione logo",
@@ -730,7 +730,7 @@
     "no": "Logoposisjon",
     "ko": "로고 위치"
   },
-  "Right": {
+  "i18n.Right": {
     "default": "Right",
     "fr": "Droite",
     "it": "a destra",
@@ -747,7 +747,7 @@
     "no": "Høyre",
     "ko": "오른쪽"
   },
-  "Center": {
+  "i18n.Center": {
     "default": "Center",
     "fr": "Milieu",
     "it": "Centrale",
@@ -764,7 +764,7 @@
     "no": "Sentrert",
     "ko": "가운데"
   },
-  "Left": {
+  "i18n.Left": {
     "default": "Left",
     "fr": "Gauche",
     "it": "a sinistra",
@@ -781,7 +781,7 @@
     "no": "Venstre",
     "ko": "왼쪽"
   },
-  "LogoImageSize": {
+  "i18n.LogoImageSize": {
     "default": "Logo image size",
     "fr": "Taille de l'image du logo",
     "it": "Dimensione immagine del logo",
@@ -798,7 +798,7 @@
     "no": "Bildestørrelse for logo",
     "ko": "로고 이미지 크기"
   },
-  "OriginalAsUploaded": {
+  "i18n.OriginalAsUploaded": {
     "default": "Original (as uploaded)",
     "fr": "Original (tel qu'il a été téléchargé)",
     "it": "Originale (come caricato)",
@@ -815,7 +815,7 @@
     "no": "Original (som lastet opp)",
     "ko": "원본(업로드된 대로)"
   },
-  "LogoFontSize": {
+  "i18n.LogoFontSize": {
     "default": "Logo font size",
     "fr": "Taille de la police du logo",
     "it": "Dimensione carattere del logo",
@@ -832,7 +832,7 @@
     "no": "Fontstørrelse for logo",
     "ko": "로고 글꼴 크기"
   },
-  "UtilityNavigation": {
+  "i18n.UtilityNavigation": {
     "default": "Utility navigation",
     "fr": "Menu de navigation",
     "it": "Navigazione utilità",
@@ -849,7 +849,7 @@
     "no": "Verktøynavigasjon",
     "ko": "유틸리티 탐색"
   },
-  "MainNavigation": {
+  "i18n.MainNavigation": {
     "default": "Main navigation",
     "fr": "Navigation principale",
     "it": "Navigazione principale",
@@ -866,7 +866,7 @@
     "no": "Hovednavigasjon",
     "ko": "기본 탐색"
   },
-  "HideLinksToWebPages": {
+  "i18n.HideLinksToWebPages": {
     "default": "Hide links to web pages",
     "fr": "Masquer les liens vers des pages Web",
     "it": "Nascondi link alle pagine web",
@@ -883,7 +883,7 @@
     "no": "Skjul lenker til nettsider",
     "ko": "웹 페이지에 대한 링크 숨기기"
   },
-  "DropdownMenuDisplayMode": {
+  "i18n.DropdownMenuDisplayMode": {
     "default": "Dropdown menu display mode",
     "fr": "Mode d'affichage du menu déroulant",
     "it": "Modalità di visualizzazione del menu a discesa",
@@ -900,7 +900,7 @@
     "no": "Kant på rullegardinmeny",
     "ko": "드롭다운 메뉴 표시 모드"
   },
-  "SimpleMenuDisplayDepthOf": {
+  "i18n.SimpleMenuDisplayDepthOf": {
     "default": "Simple (Menu display depth of 3)",
     "fr": "Simple (la profondeur d'affichage du menu est égale à 3)",
     "it": "Semplice (profondità di visualizzazione del menu pari a 3)",
@@ -917,7 +917,7 @@
     "no": "Enkel (menyvisningsdybde på 3)",
     "ko": "단순(메뉴 표시 깊이 3)"
   },
-  "AlternateMaxMenuDisplayDepth": {
+  "i18n.AlternateMaxMenuDisplayDepth": {
     "default": "Alternate (Max menu display depth)",
     "fr": "Alternatif (la profondeur d'affichage maximale du menu)",
     "it": "Alternativa (profondità massima di visualizzazione del menu)",
@@ -934,7 +934,7 @@
     "no": "Alternativ (maks menyvisningsdybde)",
     "ko": "대체(최대 메뉴 표시 깊이)"
   },
-  "SocialMediaIcons": {
+  "i18n.SocialMediaIcons": {
     "default": "Social media icons",
     "fr": "Icônes de médias sociaux",
     "it": "Icone social media",
@@ -951,7 +951,7 @@
     "no": "Ikoner for sosiale medier",
     "ko": "소셜 미디어 아이콘"
   },
-  "SocialAccountsMustBeSet": {
+  "i18n.SocialAccountsMustBeSet": {
     "default": "Social accounts must be set up to use this feature.",
     "fr": "Des comptes de médias sociaux doivent être configurés pour pouvoir utiliser cette fonctionnalité.",
     "it": "Per utilizzare questa funzionalità è necessario configurare gli account social.",
@@ -968,7 +968,7 @@
     "no": "Sosiale kontoer må konfigureres for å bruke denne funksjonen.",
     "ko": "이 기능을 사용하려면 소셜 계정을 설정해야 합니다."
   },
-  "ShowSocialMediaIcons": {
+  "i18n.ShowSocialMediaIcons": {
     "default": "Show social media icons",
     "fr": "Afficher les icônes de médias sociaux",
     "it": "Mostra icone dei social media",
@@ -985,7 +985,7 @@
     "no": "Vis ikoner for sosiale medier",
     "ko": "소셜 미디어 아이콘 표시"
   },
-  "FooterPlacement": {
+  "i18n.FooterPlacement": {
     "default": "Footer Placement",
     "fr": "Emplacement du pied de page",
     "it": "Posizione piè di pagina",
@@ -1002,7 +1002,7 @@
     "no": "Bunntekstplassering",
     "ko": "풋터 배치"
   },
-  "None": {
+  "i18n.None": {
     "default": "None",
     "fr": "Aucun",
     "it": "Nessuno",
@@ -1019,7 +1019,7 @@
     "no": "Ingen",
     "ko": "없음"
   },
-  "Footer": {
+  "i18n.Footer": {
     "default": "Footer",
     "fr": "Pied de page",
     "it": "Piè di pagina",
@@ -1036,7 +1036,7 @@
     "no": "Bunntekst",
     "ko": "바닥글"
   },
-  "DisplaySettings": {
+  "i18n.DisplaySettings": {
     "default": "Display settings",
     "fr": "Paramètres d'affichage",
     "it": "Impostazioni di visualizzazione",
@@ -1053,7 +1053,7 @@
     "no": "Visningsinnstillinger",
     "ko": "화면 설정"
   },
-  "ShowPoweredByBigCommerce": {
+  "i18n.ShowPoweredByBigCommerce": {
     "default": "Show \"Powered by BigCommerce\"",
     "fr": "Afficher « Optimisé par BigCommerce »",
     "it": "Mostra \"Con tecnologia BigCommerce\"",
@@ -1070,7 +1070,7 @@
     "no": "Vis «Powered by BigCommerce»",
     "ko": "\"Powered by BigCommerce\" 표시"
   },
-  "ShowBrandsInFooter": {
+  "i18n.ShowBrandsInFooter": {
     "default": "Show brands in footer",
     "fr": "Afficher les marques en pied de page",
     "it": "Mostra brand nel piè di pagina",
@@ -1087,7 +1087,7 @@
     "no": "Vis merker i bunntekst",
     "ko": "풋터에 브랜드 표시"
   },
-  "ShowCurrentYearAnd": {
+  "i18n.ShowCurrentYearAnd": {
     "default": "Show \"&copy;\", current year and store name",
     "fr": "Afficher « © », l'année actuelle et le nom de la boutique",
     "it": "Mostra \"©\", anno corrente e nome del negozio",
@@ -1104,7 +1104,7 @@
     "no": "Vis «{0};», gjeldende år og butikkens navn",
     "ko": "\"&copy;\", 현재 연도 및 스토어 이름 표시"
   },
-  "PaymentIcons": {
+  "i18n.PaymentIcons": {
     "default": "Payment icons",
     "fr": "Icônes de paiement",
     "it": "Icone di pagamento",
@@ -1121,7 +1121,7 @@
     "no": "Betalingsikoner",
     "ko": "결제 아이콘"
   },
-  "ShowAmericanExpress": {
+  "i18n.ShowAmericanExpress": {
     "default": "Show American Express",
     "fr": "Afficher American Express",
     "it": "Mostra American Express",
@@ -1138,7 +1138,7 @@
     "no": "Vis American Express",
     "ko": "American Express 표시"
   },
-  "ShowDiscover": {
+  "i18n.ShowDiscover": {
     "default": "Show Discover",
     "fr": "Afficher Discover",
     "it": "Mostra Discover",
@@ -1155,7 +1155,7 @@
     "no": "Vis Discover",
     "ko": "Discover 표시"
   },
-  "ShowMastercard": {
+  "i18n.ShowMastercard": {
     "default": "Show Mastercard",
     "fr": "Afficher Mastercard",
     "it": "Mostra Mastercard",
@@ -1172,7 +1172,7 @@
     "no": "Vis Mastercard",
     "ko": "Mastercard 표시"
   },
-  "ShowPayPal": {
+  "i18n.ShowPayPal": {
     "default": "Show PayPal",
     "fr": "Afficher PayPal",
     "it": "Mostra PayPal",
@@ -1189,7 +1189,7 @@
     "no": "Vis PayPal",
     "ko": "PayPal 표시"
   },
-  "ShowVisa": {
+  "i18n.ShowVisa": {
     "default": "Show Visa",
     "fr": "Afficher Visa",
     "it": "Mostra Visa",
@@ -1206,7 +1206,7 @@
     "no": "Vis Visa",
     "ko": "Visa 표시"
   },
-  "ShowAmazonPay": {
+  "i18n.ShowAmazonPay": {
     "default": "Show Amazon Pay",
     "fr": "Afficher Amazon Pay",
     "it": "Mostra Amazon Pay",
@@ -1223,7 +1223,7 @@
     "no": "Vis Amazon Pay",
     "ko": "Amazon Pay 표시"
   },
-  "ShowGooglePay": {
+  "i18n.ShowGooglePay": {
     "default": "Show Google Pay",
     "fr": "Afficher Google Pay",
     "it": "Mostra Google Pay",
@@ -1240,7 +1240,7 @@
     "no": "Vis Google Pay",
     "ko": "Google Pay 표시"
   },
-  "BlackWhiteText": {
+  "i18n.BlackWhiteText": {
     "default": "Black (white text)",
     "fr": "Noir (text blanc)",
     "it": "Nero (testo bianco)",
@@ -1257,7 +1257,7 @@
     "no": "Svart (hvit tekst)",
     "ko": "검정(흰색 텍스트)"
   },
-  "WhiteBlackText": {
+  "i18n.WhiteBlackText": {
     "default": "White (black text)",
     "fr": "Blanc (texte noir)",
     "it": "Bianco (testo nero)",
@@ -1274,7 +1274,7 @@
     "no": "Hvit (svart tekst)",
     "ko": "흰색(검정 텍스트)"
   },
-  "WhiteBlackTextWithBorder": {
+  "i18n.WhiteBlackTextWithBorder": {
     "default": "White (black text with border)",
     "fr": "Blanc (texte noir avec bordures)",
     "it": "Bianco (testo nero con bordo)",
@@ -1291,7 +1291,7 @@
     "no": "Hvit (svart tekst med kantlinje)",
     "ko": "흰색(테두리가 있는 검은색 텍스트)"
   },
-  "ShowKlarna": {
+  "i18n.ShowKlarna": {
     "default": "Show Klarna",
     "fr": "Afficher Klarna",
     "it": "Mostra Klarna",
@@ -1308,7 +1308,7 @@
     "no": "Vis Klarna",
     "ko": "Klarna 푯ㅣ"
   },
-  "Medium": {
+  "i18n.Medium": {
     "default": "Medium",
     "fr": "Moyen",
     "it": "Medio",
@@ -1325,7 +1325,7 @@
     "no": "Medium",
     "ko": "중"
   },
-  "Small": {
+  "i18n.Small": {
     "default": "Small",
     "fr": "Petit",
     "it": "Piccolo",
@@ -1342,7 +1342,7 @@
     "no": "Liten",
     "ko": "소"
   },
-  "HomePage": {
+  "i18n.HomePage": {
     "default": "Home Page",
     "fr": "Page d'accueil",
     "it": "Homepage",
@@ -1359,7 +1359,7 @@
     "no": "Hjemmeside",
     "ko": "홈페이지"
   },
-  "Carousel": {
+  "i18n.Carousel": {
     "default": "Carousel",
     "fr": "Carrousel",
     "it": "Carosello",
@@ -1376,7 +1376,7 @@
     "no": "Karusell",
     "ko": "캐러셀"
   },
-  "ShowCarousel": {
+  "i18n.ShowCarousel": {
     "default": "Show carousel",
     "fr": "Afficher le carrousel",
     "it": "Mostra carosello",
@@ -1393,7 +1393,7 @@
     "no": "Vis karusell",
     "ko": "캐러셀 표시"
   },
-  "ShowCarouselArrows": {
+  "i18n.ShowCarouselArrows": {
     "default": "Show carousel arrows",
     "fr": "Afficher les flèches du carrousel",
     "it": "Mostra frecce carosello",
@@ -1410,7 +1410,7 @@
     "no": "Vis karusellpiler",
     "ko": "캐러셀 화살표 표시"
   },
-  "ShowCarouselPlayPauseButton": {
+  "i18n.ShowCarouselPlayPauseButton": {
     "default": "Show carousel Play/Pause button",
     "fr": "Afficher le bouton Lecture/Pause du carrousel",
     "it": "Mostra pulsante Riproduci/Pausa carosello",
@@ -1427,7 +1427,7 @@
     "no": "Vis karusell Spill av / Pause-knapp",
     "ko": "캐러셀 재생/일시정지 버튼 표시"
   },
-  "AllowImageToStretchOn": {
+  "i18n.AllowImageToStretchOn": {
     "default": "Allow image to stretch on large screens",
     "fr": "Activer l'étirement des images sur les grands écrans",
     "it": "Consenti allungamento dell'immagine su schermi grandi",
@@ -1444,7 +1444,7 @@
     "no": "La bildet strekke seg på store skjermer",
     "ko": "이미지가 큰 화면에서 늘어나도록 허용"
   },
-  "NumberOfFeaturedProducts": {
+  "i18n.NumberOfFeaturedProducts": {
     "default": "Number of featured products",
     "fr": "Nombre de produits en vedette",
     "it": "Numero prodotti in primo piano",
@@ -1461,7 +1461,7 @@
     "no": "Antall fremhevede produkter",
     "ko": "추천 상품 수"
   },
-  "Disable": {
+  "i18n.Disable": {
     "default": "Disable",
     "fr": "Désactiver",
     "it": "Disattiva",
@@ -1478,7 +1478,7 @@
     "no": "Deaktiver",
     "ko": "비활성화 버튼"
   },
-  "NumberOfMostPopularProducts": {
+  "i18n.NumberOfMostPopularProducts": {
     "default": "Number of most popular products",
     "fr": "Nombre de produits les plus populaires",
     "it": "Numero prodotti più popolari",
@@ -1495,7 +1495,7 @@
     "no": "Antall mest populære produkter",
     "ko": "가장 인기있는 상품 수"
   },
-  "NumberOfNewProducts": {
+  "i18n.NumberOfNewProducts": {
     "default": "Number of new products",
     "fr": "Nombre de nouveaux produits",
     "it": "Numero nuovi prodotti",
@@ -1512,7 +1512,7 @@
     "no": "Antall nye produkter",
     "ko": "최신상품 수"
   },
-  "ProductSaleBadges": {
+  "i18n.ProductSaleBadges": {
     "default": "Product sale badges",
     "fr": "Badges de produit remisé",
     "it": "Badge prodotti in offerta",
@@ -1529,7 +1529,7 @@
     "no": "Produktsalgsmerker",
     "ko": "상품 판매 중 배지"
   },
-  "ShowProductSaleBadges": {
+  "i18n.ShowProductSaleBadges": {
     "default": "Show product sale badges",
     "fr": "Afficher les badges de produit remisé",
     "it": "Mostra badge prodotti in offerta",
@@ -1546,7 +1546,7 @@
     "no": "Vis produktsalgsmerker",
     "ko": "상품 판매 중 배지 표시"
   },
-  "ShowProductSoldOutBadges": {
+  "i18n.ShowProductSoldOutBadges": {
     "default": "Show product sold-out badges",
     "fr": "Afficher les badges de produit épuisé",
     "it": "Mostra badge prodotti esauriti",
@@ -1563,7 +1563,7 @@
     "no": "Vis utsolgt produkt-merker",
     "ko": "품절 상품 배지 표시"
   },
-  "TopLeft": {
+  "i18n.TopLeft": {
     "default": "Top Left",
     "fr": "Partie supérieure gauche",
     "it": "In alto a sinistra",
@@ -1580,7 +1580,7 @@
     "no": "Øverst til venstre",
     "ko": "왼쪽 상단"
   },
-  "Diagonal": {
+  "i18n.Diagonal": {
     "default": "Diagonal",
     "fr": "En diagonale",
     "it": "Diagonale",
@@ -1597,7 +1597,7 @@
     "no": "Diagonal",
     "ko": "대각선"
   },
-  "Burst": {
+  "i18n.Burst": {
     "default": "Burst",
     "fr": "Rafale",
     "it": "Burst",
@@ -1614,7 +1614,7 @@
     "no": "Burst",
     "ko": "버스트"
   },
-  "ProductSaleBadgeLabel": {
+  "i18n.ProductSaleBadgeLabel": {
     "default": "Product sale badge label",
     "fr": "Libellé du badge pour les produits remisés",
     "it": "Etichetta prodotti in offerta",
@@ -1631,7 +1631,7 @@
     "no": "Etikett for produktsalgsmerke",
     "ko": "상품 판매 중 배지 라벨"
   },
-  "ProductSoldOutBadgeLabel": {
+  "i18n.ProductSoldOutBadgeLabel": {
     "default": "Product sold out badge label",
     "fr": "Libellé du badge pour les produits épuisés",
     "it": "Etichetta badge prodotti esauriti",
@@ -1648,7 +1648,7 @@
     "no": "Etikett for utsolgt produkt-merke",
     "ko": "품절 상품 배지 라벨"
   },
-  "ProductPriceLabelSale": {
+  "i18n.ProductPriceLabelSale": {
     "default": "Product price label (sale)",
     "fr": "Étiquette de prix du produit (remisé)",
     "it": "Etichetta prezzo prodotto (vendita)",
@@ -1665,7 +1665,7 @@
     "no": "Produktprisetikett (salg)",
     "ko": "상품 가격 라벨(판매 중)"
   },
-  "ProductPriceLabelBeforeSale": {
+  "i18n.ProductPriceLabelBeforeSale": {
     "default": "Product price label (before sale)",
     "fr": "Étiquette de prix du produit (non remisé)",
     "it": "Etichetta prezzo prodotto (prima della vendita)",
@@ -1682,7 +1682,7 @@
     "no": "Produktprisetikett (før salg)",
     "ko": "상품 가격 라벨(판매 전)"
   },
-  "ProductPriceLabelRetail": {
+  "i18n.ProductPriceLabelRetail": {
     "default": "Product price label (retail)",
     "fr": "Étiquette de prix du produit (vente au détail)",
     "it": "Etichetta prezzo prodotto (al dettaglio)",
@@ -1699,7 +1699,7 @@
     "no": "Produktprisetikett (detaljhandel)",
     "ko": "상품 가격 라벨(소매)"
   },
-  "ProductPriceLabel": {
+  "i18n.ProductPriceLabel": {
     "default": "Product price label",
     "fr": "Étiquette de prix du produit",
     "it": "Etichetta prezzo prodotto",
@@ -1716,7 +1716,7 @@
     "no": "Produktprisetikett",
     "ko": "상품 가격 라벨(판매 중)"
   },
-  "TheProductPriceLabel": {
+  "i18n.TheProductPriceLabel": {
     "default": "* the 'Product price label' is displayed when there is not a sale price.",
     "fr": "* L'étiquette de prix du produit s'affiche lorsque le prix n'est pas remisé.",
     "it": "* Quando non c'è il prezzo di vendita, viene visualizzata l'etichetta del prezzo del prodotto.",
@@ -1733,7 +1733,7 @@
     "no": "* 'Produktprisetiketten' vises når det ikke er noen salgspris.",
     "ko": "* 세일가가 없을 경우 '상품가격라벨'이 표시됩니다."
   },
-  "BadgeTextColor": {
+  "i18n.BadgeTextColor": {
     "default": "Badge text color",
     "fr": "Couleur du texte du badge",
     "it": "Colore testo del badge",
@@ -1750,7 +1750,7 @@
     "no": "Merkets tekstfarge",
     "ko": "배지 텍스트 색상"
   },
-  "BadgeColor": {
+  "i18n.BadgeColor": {
     "default": "Badge color",
     "fr": "Couleur du badge",
     "it": "Colore badge",
@@ -1767,7 +1767,7 @@
     "no": "Merkets farge",
     "ko": "배지 색상"
   },
-  "BadgeHoverColor": {
+  "i18n.BadgeHoverColor": {
     "default": "Badge hover color",
     "fr": "Couleur du badge au survol",
     "it": "Colore badge al passaggio del mouse",
@@ -1784,7 +1784,7 @@
     "no": "Merkets farge (med peker over)",
     "ko": "배지 호버 색상"
   },
-  "ForTextureSwatchesMaxDimensions": {
+  "i18n.ForTextureSwatchesMaxDimensions": {
     "default": "*For texture swatches, max dimensions are 150x150.",
     "fr": "* Les dimensions maximales des échantillons de texture sont de 150 × 150.",
     "it": "* Le dimensioni massime delle immagini delle opzioni del prodotto sono 150x150.",
@@ -1801,7 +1801,7 @@
     "no": "*For teksturfargekart er maksimale dimensjoner 150 x 150.",
     "ko": "*텍스처 견본의 경우 최대 크기는 150x150입니다."
   },
-  "ShowQuickviewButtonOnProduct": {
+  "i18n.ShowQuickviewButtonOnProduct": {
     "default": "Show quickview button on product cards",
     "fr": "Afficher le bouton d'aperçu rapide sur les fiches produit",
     "it": "Mostra pulsante di visualizzazione rapida sulle schede prodotto",
@@ -1818,7 +1818,7 @@
     "no": "Vis hurtigvisningsknapp på produktkort",
     "ko": "상품 카드에 빠른 보기 버튼 표시"
   },
-  "ShowProductDescriptionTabs": {
+  "i18n.ShowProductDescriptionTabs": {
     "default": "Show product description tabs",
     "fr": "Afficher les onglets de description du produit",
     "it": "Mostra schede descrizione prodotto",
@@ -1835,7 +1835,7 @@
     "no": "Vis produktbeskrivelsesfaner",
     "ko": "상품 설명 탭 표시"
   },
-  "ProductCustomFieldsInTabs": {
+  "i18n.ProductCustomFieldsInTabs": {
     "default": "Product custom fields in tabs",
     "fr": "Champs personnalisés dans les onglets",
     "it": "Campi prodotto personalizzati nelle schede",
@@ -1852,7 +1852,7 @@
     "no": "Egendefinerte produktfelter i faner",
     "ko": "탭의 상품 커스텀 필드"
   },
-  "ProductCustomFieldsTabLabel": {
+  "i18n.ProductCustomFieldsTabLabel": {
     "default": "Product custom fields tab label",
     "fr": "Libellé de l'onglet des champs personnalisés du produit",
     "it": "Etichetta scheda campi prodotto personalizzati",
@@ -1869,7 +1869,7 @@
     "no": "Etikett for egendefinerte felter for produkt",
     "ko": "상품 커스텀 필드 탭 라벨"
   },
-  "ShowProductWeight": {
+  "i18n.ShowProductWeight": {
     "default": "Show product weight",
     "fr": "Afficher le poids du produit",
     "it": "Mostra peso del prodotto",
@@ -1886,7 +1886,7 @@
     "no": "Vis produktvekt",
     "ko": "상품 무게 표시"
   },
-  "ShowProductDimensions": {
+  "i18n.ShowProductDimensions": {
     "default": "Show product dimensions",
     "fr": "Afficher les dimensions du produit",
     "it": "Mostra dimensioni del prodotto",
@@ -1903,7 +1903,7 @@
     "no": "Vis produktdimensjoner",
     "ko": "상품 치수 표시"
   },
-  "ShowProductSwatchNames": {
+  "i18n.ShowProductSwatchNames": {
     "default": "Show product swatch names",
     "fr": "Afficher les noms de l'échantillon de produit",
     "it": "Mostra nomi opzioni del prodotto",
@@ -1920,7 +1920,7 @@
     "no": "Vis produktprøvenavn",
     "ko": "상품 스와치 이름 표시"
   },
-  "ShowShopByPriceIn": {
+  "i18n.ShowShopByPriceIn": {
     "default": "Show \"Shop by Price\" in filters",
     "fr": "Afficher « Rechercher par prix » dans les filtres",
     "it": "Mostra \"Acquista per prezzo\" nei filtri",
@@ -1937,7 +1937,7 @@
     "no": "Vis «Kjøp etter pris» i filtre",
     "ko": "필터에 \"가격별 쇼핑\" 표시"
   },
-  "ShowProductReviews": {
+  "i18n.ShowProductReviews": {
     "default": "Show product reviews",
     "fr": "Afficher les avis sur les produits",
     "it": "Mostra recensioni prodotto",
@@ -1954,7 +1954,7 @@
     "no": "Vis produktanmeldelser",
     "ko": "상품 리뷰 표시"
   },
-  "NumberOfProductReviews": {
+  "i18n.NumberOfProductReviews": {
     "default": "Number of product reviews",
     "fr": "Nombre d'avis sur le produit",
     "it": "Numero recensioni prodotto",
@@ -1971,7 +1971,7 @@
     "no": "Antall produktanmeldelser",
     "ko": "상품 리뷰 수"
   },
-  "NumberOfProductsDisplayed": {
+  "i18n.NumberOfProductsDisplayed": {
     "default": "Number of products displayed",
     "fr": "Nombre de produits affichés",
     "it": "Numero prodotti visualizzati",
@@ -1988,7 +1988,7 @@
     "no": "Antall produkter som vises",
     "ko": "표시된 상품 수"
   },
-  "CategoryPage": {
+  "i18n.CategoryPage": {
     "default": "Category page",
     "fr": "Page de la catégorie",
     "it": "Pagina categoria",
@@ -2005,7 +2005,7 @@
     "no": "Kategoriside",
     "ko": "카테고리 페이지"
   },
-  "BrandPage": {
+  "i18n.BrandPage": {
     "default": "Brand page",
     "fr": "Page de la marque",
     "it": "Pagina brand",
@@ -2022,7 +2022,7 @@
     "no": "Merkeside",
     "ko": "브랜드 페이지"
   },
-  "SearchResultPage": {
+  "i18n.SearchResultPage": {
     "default": "Search result page",
     "fr": "Page de résultats de recherche",
     "it": "Pagina dei risultati di ricerca",
@@ -2039,7 +2039,7 @@
     "no": "Søkeresultatside",
     "ko": "검색 결과 페이지"
   },
-  "ProductPageRelatedProducts": {
+  "i18n.ProductPageRelatedProducts": {
     "default": "Product page (related products)",
     "fr": "Page du produit (produits associés)",
     "it": "Pagina prodotto (prodotti simili)",
@@ -2056,7 +2056,7 @@
     "no": "Produktside (relaterte produkter)",
     "ko": "상품 페이지(연관 상품)"
   },
-  "ProductPageCustomersAlsoViewed": {
+  "i18n.ProductPageCustomersAlsoViewed": {
     "default": "Product page (customers also viewed products)",
     "fr": "Page du produit (les clients ont également consulté)",
     "it": "Pagina prodotto (altri prodotti visualizzati dai clienti)",
@@ -2073,7 +2073,7 @@
     "no": "Produktside (kunder så også på produkter)",
     "ko": "상품 페이지(고객도 상품을 열람)"
   },
-  "ProductCards": {
+  "i18n.ProductCards": {
     "default": "Product cards",
     "fr": "Fiches produit",
     "it": "Schede prodotto",
@@ -2090,7 +2090,7 @@
     "no": "Produktkort",
     "ko": "상품 카드"
   },
-  "ProductCardsQuickSearch": {
+  "i18n.ProductCardsQuickSearch": {
     "default": "Product cards (quick search)",
     "fr": "Fiches produit (recherche rapide)",
     "it": "Schede prodotto (ricerca rapida)",
@@ -2107,7 +2107,7 @@
     "no": "Produktkort (hurtigsøk)",
     "ko": "상품 카드(빠른 검색)"
   },
-  "ImageSizes": {
+  "i18n.ImageSizes": {
     "default": "Image sizes",
     "fr": "Tailles des images",
     "it": "Dimensioni immagine",
@@ -2124,7 +2124,7 @@
     "no": "Bildestørrelser",
     "ko": "이미지 크기"
   },
-  "PleaseSpecifyAMaximumImage": {
+  "i18n.PleaseSpecifyAMaximumImage": {
     "default": "Please specify a maximum image size for desktop display. We'll automatically scale down the image for smaller devices.",
     "fr": "Veuillez définir une taille d'image maximale pour l'affichage sur ordinateur. Nous diminuerons automatiquement la taille de l'image pour les appareils plus petits.",
     "it": "Specifica la dimensione massima dell'immagine da visualizzare sul desktop. L'immagine verrà ridimensionata automaticamente per i dispositivi più piccoli.",
@@ -2141,7 +2141,7 @@
     "no": "Spesifiser en maksimal bildestørrelse for skrivebordsvisning. Vi skalerer automatisk ned bildet for mindre enheter.",
     "ko": "데스크탑 디스플레이의 최대 이미지 크기를 지정하십시오. 더 작은 장치의 이미지는 자동으로 축소됩니다."
   },
-  "MainProductImages": {
+  "i18n.MainProductImages": {
     "default": "Main product images",
     "fr": "Images principales du produit",
     "it": "Immagini prodotto principali",
@@ -2158,7 +2158,7 @@
     "no": "Hovedproduktbilder",
     "ko": "주요 상품 이미지"
   },
-  "ThumbnailImageInProductPage": {
+  "i18n.ThumbnailImageInProductPage": {
     "default": "Thumbnail image in product page",
     "fr": "Image miniature sur les pages produit",
     "it": "Immagine miniatura nella pagina prodotto",
@@ -2175,7 +2175,7 @@
     "no": "Miniatyrbilde på produktsiden",
     "ko": "상품 페이지의 썸네일 이미지"
   },
-  "ThumbnailImageInCartAnd": {
+  "i18n.ThumbnailImageInCartAnd": {
     "default": "Thumbnail image in cart and other pages",
     "fr": "Image miniature dans le panier et d'autres pages",
     "it": "Immagine miniatura nel carrello e in altre pagine",
@@ -2192,7 +2192,7 @@
     "no": "Miniatyrbilde i handlekurven og på andre sider",
     "ko": "장바구니 및 기타 페이지의 썸네일 이미지"
   },
-  "ZoomedImage": {
+  "i18n.ZoomedImage": {
     "default": "Zoomed image",
     "fr": "Image agrandie",
     "it": "Immagine ingrandita",
@@ -2209,7 +2209,7 @@
     "no": "Zoomet bilde",
     "ko": "확대 이미지"
   },
-  "ImageInGalleryView": {
+  "i18n.ImageInGalleryView": {
     "default": "Image in gallery view",
     "fr": "Aperçu de l'image dans la galerie",
     "it": "Immagini in vista galleria",
@@ -2226,7 +2226,7 @@
     "no": "Bilde i gallerivisning",
     "ko": "갤러리 뷰의 이미지"
   },
-  "BrandImageInGalleryView": {
+  "i18n.BrandImageInGalleryView": {
     "default": "Brand image in gallery view",
     "fr": "Aperçu de l'image de marque dans la galerie",
     "it": "Immagine marchio in vista galleria",
@@ -2243,7 +2243,7 @@
     "no": "Merkebilde i gallerivisning",
     "ko": "갤러리 뷰의 브랜드 이미지"
   },
-  "ProductSwatchImages": {
+  "i18n.ProductSwatchImages": {
     "default": "Product swatch images",
     "fr": "Images swatch du produit",
     "it": "Immagini opzioni prodotto",
@@ -2260,7 +2260,7 @@
     "no": "Produktprøvebilder",
     "ko": "상품 스와치 이미지"
   },
-  "Standard": {
+  "i18n.Standard": {
     "default": "Standard",
     "fr": "Standard",
     "it": "Standard",
@@ -2277,7 +2277,7 @@
     "no": "Standard",
     "ko": "Standard"
   },
-  "PrimaryActionButton": {
+  "i18n.PrimaryActionButton": {
     "default": "Primary action button",
     "fr": "Bouton d'action principale",
     "it": "Pulsante azione principale",
@@ -2294,7 +2294,7 @@
     "no": "Primær handlingsknapp",
     "ko": "기본 작업 버튼"
   },
-  "SecondaryActionButton": {
+  "i18n.SecondaryActionButton": {
     "default": "Secondary action button",
     "fr": "Bouton d'action secondaire",
     "it": "Pulsante azione secondaria",
@@ -2311,7 +2311,7 @@
     "no": "Sekundær handlingsknapp",
     "ko": "2차 작업 버튼"
   },
-  "CheckoutPage": {
+  "i18n.CheckoutPage": {
     "default": "Checkout Page",
     "fr": "Page de paiement",
     "it": "Pagina di checkout",
@@ -2328,7 +2328,7 @@
     "no": "Betalingsside",
     "ko": "체크아웃 페이지"
   },
-  "UseBackgroundImage": {
+  "i18n.UseBackgroundImage": {
     "default": "Use background image",
     "fr": "Utiliser une image d'arrière-plan",
     "it": "Usa immagine di sfondo",
@@ -2345,7 +2345,7 @@
     "no": "Bruk bakgrunnsbilde",
     "ko": "배경 이미지 사용"
   },
-  "HeaderImageSize": {
+  "i18n.HeaderImageSize": {
     "default": "Header image size",
     "fr": "Taille de l'image d'en-tête",
     "it": "Dimensione immagine intestazione",
@@ -2362,7 +2362,7 @@
     "no": "Størrelse på topptekstbilde",
     "ko": "헤더 이미지 크기"
   },
-  "LogoType": {
+  "i18n.LogoType": {
     "default": "Logo type",
     "fr": "Type de logo",
     "it": "Tipo di logo",
@@ -2379,7 +2379,7 @@
     "no": "Logotype",
     "ko": "로고 타입"
   },
-  "Text": {
+  "i18n.Text": {
     "default": "Text",
     "fr": "Texte",
     "it": "Testo",
@@ -2396,7 +2396,7 @@
     "no": "Tekst",
     "ko": "텍스트"
   },
-  "Image": {
+  "i18n.Image": {
     "default": "Text",
     "fr": "Texte",
     "it": "Testo",
@@ -2413,7 +2413,7 @@
     "no": "Tekst",
     "ko": "텍스트"
   },
-  "DiscountBanner": {
+  "i18n.DiscountBanner": {
     "default": "Discount banner",
     "fr": "Bannière annonçant une réduction",
     "it": "Banner promozionale",
@@ -2430,7 +2430,7 @@
     "no": "Rabattbanner",
     "ko": "할인 배너"
   },
-  "OrderSummaryBox": {
+  "i18n.OrderSummaryBox": {
     "default": "Order summary box",
     "fr": "Encadré de récapitulatif de la commande",
     "it": "Casella di riepilogo ordine",
@@ -2447,7 +2447,7 @@
     "no": "Boks for bestillingssammendrag",
     "ko": "주문 요약 상자"
   },
-  "CheckoutSteps": {
+  "i18n.CheckoutSteps": {
     "default": "Checkout steps",
     "fr": "Étapes de paiement",
     "it": "Procedura di checkout",
@@ -2464,7 +2464,7 @@
     "no": "Betalingstrinn",
     "ko": "결제 단계"
   },
-  "Body": {
+  "i18n.Body": {
     "default": "Body",
     "fr": "Corps",
     "it": "Corpo del testo",
@@ -2481,7 +2481,7 @@
     "no": "Hovedtekst",
     "ko": "본문"
   },
-  "LinkFontFamily": {
+  "i18n.LinkFontFamily": {
     "default": "Link font family",
     "fr": "Famille de polices du lien",
     "it": "Famiglia caratteri link",
@@ -2498,7 +2498,7 @@
     "no": "Font for lenke",
     "ko": "링크 글꼴 모음"
   },
-  "FormInputFields1": {
+  "i18n.FormInputFields1": {
     "default": "Form input fields",
     "fr": "Champs de saisie sur le formulaire",
     "it": "Campi di input modulo",
@@ -2515,7 +2515,7 @@
     "no": "Skjemainndatafelter",
     "ko": "양식 입력 필드"
   },
-  "FormChecklist": {
+  "i18n.FormChecklist": {
     "default": "Form checklist",
     "fr": "Liste de contrôle du formulaire",
     "it": "Elenco di controllo modulo",
@@ -2532,7 +2532,7 @@
     "no": "Skjema-sjekkliste",
     "ko": "체크리스트 양식"
   },
-  "LoadingToaster": {
+  "i18n.LoadingToaster": {
     "default": "Loading toaster",
     "fr": "Chargement avec effet toaster",
     "it": "Notifica di caricamento in corso",
@@ -2549,7 +2549,7 @@
     "no": "Laster inn toaster",
     "ko": "로딩 토스터"
   },
-  "PaymentButtons": {
+  "i18n.PaymentButtons": {
     "default": "Payment Buttons",
     "fr": "Boutons de paiement",
     "it": "Pulsanti di pagamento",
@@ -2566,7 +2566,7 @@
     "no": "Betalingsknapper",
     "ko": "결제 버튼"
   },
-  "ButtonContainer": {
+  "i18n.ButtonContainer": {
     "default": "Button Container",
     "fr": "Conteneur de bouton",
     "it": "Contenitore pulsante",
@@ -2583,7 +2583,7 @@
     "no": "Knappbeholder",
     "ko": "버튼 컨테이너"
   },
-  "ButtonColor": {
+  "i18n.ButtonColor": {
     "default": "Button color",
     "fr": "Couleur du bouton",
     "it": "Colore del pulsante",
@@ -2600,7 +2600,7 @@
     "no": "Knappfarge",
     "ko": "버튼 색상"
   },
-  "Gold": {
+  "i18n.Gold": {
     "default": "Gold",
     "fr": "Or",
     "it": "Oro",
@@ -2617,7 +2617,7 @@
     "no": "Gull",
     "ko": "골드"
   },
-  "ButtonShape": {
+  "i18n.ButtonShape": {
     "default": "Button shape",
     "fr": "Forme du bouton",
     "it": "Forma pulsante",
@@ -2634,7 +2634,7 @@
     "no": "Knappform",
     "ko": "버튼 모양"
   },
-  "Pill": {
+  "i18n.Pill": {
     "default": "Pill",
     "fr": "Pilule",
     "it": "Tondeggiante",
@@ -2651,7 +2651,7 @@
     "no": "Pille",
     "ko": "알약모양"
   },
-  "Rectangle": {
+  "i18n.Rectangle": {
     "default": "Rectangle",
     "fr": "Rectangle",
     "it": "Rettangolo",
@@ -2668,7 +2668,7 @@
     "no": "Rektangel",
     "ko": "직사각형 모양"
   },
-  "ButtonSize": {
+  "i18n.ButtonSize": {
     "default": "Button size",
     "fr": "Taille du bouton",
     "it": "Dimensione pulsante",
@@ -2685,7 +2685,7 @@
     "no": "Knappstørrelse",
     "ko": "버튼 크기"
   },
-  "Large": {
+  "i18n.Large": {
     "default": "Large",
     "fr": "Grand",
     "it": "Grande",
@@ -2702,7 +2702,7 @@
     "no": "Stor",
     "ko": "대"
   },
-  "ButtonContent": {
+  "i18n.ButtonContent": {
     "default": "Button content",
     "fr": "Contenu du bouton",
     "it": "Contenuto pulsante",
@@ -2719,7 +2719,7 @@
     "no": "Knappinnhold",
     "ko": "버튼 내용"
   },
-  "PaypalAcceleratedCheckoutButton": {
+  "i18n.PaypalAcceleratedCheckoutButton": {
     "default": "Paypal Accelerated Checkout button",
     "fr": "Bouton du paiement accéléré PayPal",
     "it": "Pulsante di checkout accelerato Paypal",
@@ -2736,7 +2736,7 @@
     "no": "Paypal Accelerated Checkout-knapp",
     "ko": "PayPal 빠른 결제 버튼"
   },
-  "SmartPaypalButton": {
+  "i18n.SmartPaypalButton": {
     "default": "PayPal Button",
     "fr": "Bouton PayPal",
     "it": "Pulsante PayPal",
@@ -2753,7 +2753,7 @@
     "no": "PayPal-knapp",
     "ko": "스마트 PayPal 버튼"
   },
-  "PayPalCheckout": {
+  "i18n.PayPalCheckout": {
     "default": "PayPal Checkout",
     "fr": "PayPal Checkout",
     "it": "PayPal Checkout",
@@ -2770,7 +2770,7 @@
     "no": "PayPal-betaling",
     "ko": "PayPal 체크아웃"
   },
-  "PayWithPayPal": {
+  "i18n.PayWithPayPal": {
     "default": "Pay with PayPal",
     "fr": "Payer avec PayPal",
     "it": "Paga con PayPal",
@@ -2787,7 +2787,7 @@
     "no": "Betal med PayPal",
     "ko": "PayPal로 결제"
   },
-  "BuyNow": {
+  "i18n.BuyNow": {
     "default": "Buy Now",
     "fr": "ACHETER MAINTENANT",
     "it": "ACQUISTA ORA",
@@ -2804,7 +2804,7 @@
     "no": "KJØP NÅ",
     "ko": "지금 구매"
   },
-  "PayPal": {
+  "i18n.PayPal": {
     "default": "PayPal",
     "fr": "PayPal",
     "it": "PayPal",
@@ -2821,7 +2821,7 @@
     "no": "PayPal",
     "ko": "PayPal 표시"
   },
-  "CheckoutPayPalButton": {
+  "i18n.CheckoutPayPalButton": {
     "default": "PayPal Button on checkout page",
     "fr": "Bouton PayPal sur la page de paiement",
     "it": "Pulsante PayPal sulla pagina di checkout",
@@ -2838,7 +2838,7 @@
     "no": "PayPal-knapp på betalingssiden",
     "ko": "PayPal 체크아웃"
   },
-  "ProductPageBanner": {
+  "i18n.ProductPageBanner": {
     "default": "Product page banner",
     "fr": "Bannière de la page produit",
     "it": "Banner pagina prodotto",
@@ -2855,7 +2855,7 @@
     "no": "Produktsidebanner",
     "ko": "상품 페이지 배너"
   },
-  "BannerStyleRatio": {
+  "i18n.BannerStyleRatio": {
     "default": "Banner style ratio",
     "fr": "Format du style de la bannière",
     "it": "Proporzione del banner",
@@ -2872,7 +2872,7 @@
     "no": "Forhold på bannerstil",
     "ko": "배너 스타일 비율"
   },
-  "8x1": {
+  "i18n.8x1": {
     "default": "8x1",
     "fr": "8x1",
     "it": "8x1",
@@ -2889,7 +2889,7 @@
     "no": "8x1",
     "ko": "8x1"
   },
-  "20x1": {
+  "i18n.20x1": {
     "default": "20x1",
     "fr": "20x1",
     "it": "20x1",
@@ -2906,7 +2906,7 @@
     "no": "20x1",
     "ko": "20x1"
   },
-  "HomePageBanner": {
+  "i18n.HomePageBanner": {
     "default": "Home page banner",
     "fr": "Bannière de la page d'accueil",
     "it": "Banner dell'homepage",
@@ -2923,7 +2923,7 @@
     "no": "Hjemmesidebanner",
     "ko": "홈페이지 배너"
   },
-  "BannerStyleLogoPosition": {
+  "i18n.BannerStyleLogoPosition": {
     "default": "Banner style logo position",
     "fr": "Position du logo du style de la bannière",
     "it": "Posizione logo del banner",
@@ -2940,7 +2940,7 @@
     "no": "Plassering av logo i bannerstil",
     "ko": "배너 스타일 로고 위치"
   },
-  "left": {
+  "i18n.left": {
     "default": "Left",
     "fr": "Gauche",
     "it": "a sinistra",
@@ -2957,7 +2957,7 @@
     "no": "Venstre",
     "ko": "왼쪽"
   },
-  "right": {
+  "i18n.right": {
     "default": "Right",
     "fr": "Droite",
     "it": "a destra",
@@ -2974,7 +2974,7 @@
     "no": "Høyre",
     "ko": "오른쪽"
   },
-  "top": {
+  "i18n.top": {
     "default": "Top",
     "fr": "Haut",
     "it": "in alto",
@@ -2991,7 +2991,7 @@
     "no": "Topp",
     "ko": "상단"
   },
-  "BannerStyleLogoType": {
+  "i18n.BannerStyleLogoType": {
     "default": "Banner style logo type",
     "fr": "Type de logo du style de la bannière",
     "it": "Tipo di logo del banner",
@@ -3008,7 +3008,7 @@
     "no": "Logotype i bannerstil",
     "ko": "배너 스타일 로고 타입"
   },
-  "inline": {
+  "i18n.inline": {
     "default": "Inline",
     "fr": "En ligne",
     "it": "In linea",
@@ -3025,7 +3025,7 @@
     "no": "På linje",
     "ko": "인라인"
   },
-  "alternative": {
+  "i18n.alternative": {
     "default": "Alternative",
     "fr": "Alternatif",
     "it": "Alternativo",
@@ -3042,7 +3042,7 @@
     "no": "Alternativ",
     "ko": "대체"
   },
-  "none": {
+  "i18n.none": {
     "default": "None",
     "fr": "Aucun",
     "it": "Nessuno",
@@ -3059,7 +3059,7 @@
     "no": "Ingen",
     "ko": "없음"
   },
-  "PaymentBanners": {
+  "i18n.PaymentBanners": {
     "default": "Payment Banners",
     "fr": "Bannières de paiement",
     "it": "Banner di pagamento",
@@ -3076,7 +3076,7 @@
     "no": "Betalingsbannere",
     "ko": "결제 배너"
   },
-  "CartPageBanner": {
+  "i18n.CartPageBanner": {
     "default": "Cart page banner",
     "fr": "Bannière de la page du panier",
     "it": "Banner della pagina carrello",
@@ -3093,7 +3093,7 @@
     "no": "Handlekurvbanner",
     "ko": "장바구니 페이지 배너"
   },
-  "primary": {
+  "i18n.primary": {
     "default": "Primary",
     "fr": "Principal",
     "it": "Principale",
@@ -3110,7 +3110,7 @@
     "no": "Primær",
     "ko": "기본"
   },
-  "BannersMessaging": {
+  "i18n.BannersMessaging": {
     "default": "Please note that in order for the changes to apply, you need navigate to the PayPal Settings in BC Control Panel, disable an appropriate messaging banner(s), click \"Save\" button, enable the banner again and click \"Save\" button again",
     "fr": "Pour que les modifications soient prises en compte, veuillez noter que vous devez accéder aux paramètres de PayPal dans le panneau de configuration de BigCommerce, désactiver une ou plusieurs bannières affichant un message approprié, cliquer sur « Enregistrer », réactiver la bannière, puis cliquer à nouveau sur « Enregistrer ».",
     "it": "Tieni presente che, per applicare le modifiche, devi andare alle Impostazioni PayPal nel Pannello di controllo BC, disattivare il banner di messaggistica desiderato, fare clic sul pulsante \"Salva\", riattivare il banner e fare di nuovo clic sul pulsante \"Salva\"",
@@ -3127,7 +3127,7 @@
     "no": "Vær oppmerksom på at for at endringene skal gjelde, må du navigere til PayPal-innstillingene i BC-kontrollpanelen, deaktivere passende meldingsbannere, klikke på «Lagre»-knappen, aktivere banneret igjen, og klikke på «Lagre»-knappen igjen",
     "ko": "변경 사항을 적용하려면 BC 제어판의 PayPal 설정으로 이동하여 적절한 메시징 배너를 비활성화하고 \"저장\" 버튼을 클릭하고 배너를 다시 활성화한 후 \"저장\" 버튼을 다시 클릭해야 합니다"
   },
-  "PaymentButtonsContainer": {
+  "i18n.PaymentButtonsContainer": {
     "default": "Buttons Container Size",
     "fr": "Taille conteneur de boutons",
     "it": "Dimensioni contenitore pulsante",
@@ -3144,7 +3144,7 @@
     "no": "Størrelse på knappbeholder",
     "ko": "버튼 컨테이너 크기"
   },
-  "AfterPaySettings": {
+  "i18n.AfterPaySettings": {
     "default": "After Pay Button",
     "fr": "Bouton Afterpay",
     "it": "Pulsante Afterpay",
@@ -3161,7 +3161,7 @@
     "no": "Afterpay-knappen",
     "ko": "스마트 PayPal 버튼"
   },
-  "ApplePaySettings": {
+  "i18n.ApplePaySettings": {
     "default": "Apple Pay Button",
     "fr": "Bouton Apple Pay",
     "it": "Pulsante Apple Pay",
@@ -3178,7 +3178,7 @@
     "no": "Apple Pay-knapp",
     "ko": "Apple Pay 색상"
   },
-  "BlackOnMintText": {
+  "i18n.BlackOnMintText": {
     "default": "Black on Mint",
     "fr": "Noir sur couleur menthe",
     "it": "Nero su verde menta",
@@ -3195,7 +3195,7 @@
     "no": "Svart på mint",
     "ko": "민트색 바탕에 검정색"
   },
-  "MintOnBlackText": {
+  "i18n.MintOnBlackText": {
     "default": "Mint on Black",
     "fr": "Couleur menthe sur noir",
     "it": "Verde menta su nero",
@@ -3212,7 +3212,7 @@
     "no": "Mint på svart",
     "ko": "검정색 바탕에 민트색"
   },
-  "AmazonSettings": {
+  "i18n.AmazonSettings": {
     "default": "Amazon Button",
     "fr": "Bouton Amazon",
     "it": "Pulsante Amazon",
@@ -3229,7 +3229,7 @@
     "no": "Amazon-knapp",
     "ko": "결제 버튼"
   },
-  "LightGray": {
+  "i18n.LightGray": {
     "default": "Light Gray",
     "fr": "Gris clair",
     "it": "Grigio chiaro",
@@ -3246,7 +3246,7 @@
     "no": "Lysegrå",
     "ko": "연회색"
   },
-  "DarkGray": {
+  "i18n.DarkGray": {
     "default": "Dark Gray",
     "fr": "Gris foncé",
     "it": "Grigio scuro",
@@ -3263,7 +3263,7 @@
     "no": "Mørkegrå",
     "ko": "그레이"
   },
-  "GooglePaySettings": {
+  "i18n.GooglePaySettings": {
     "default": "Google Pay Button",
     "fr": "Bouton Google Pay",
     "it": "Pulsante Google Pay",
@@ -3280,7 +3280,7 @@
     "no": "Google Pay-knapp",
     "ko": "Google Pay 표시"
   },
-  "MasterpassSettings": {
+  "i18n.MasterpassSettings": {
     "default": "Masterpass Button",
     "fr": "Bouton Masterpass",
     "it": "Pulsante Masterpass",
@@ -3297,7 +3297,7 @@
     "no": "Masterpass-knapp",
     "ko": "스마트 PayPal 버튼"
   },
-  "ShowQuickPaymentButtons": {
+  "i18n.ShowQuickPaymentButtons": {
     "default": "Show quick payment buttons",
     "fr": "Afficher les boutons de paiement rapide",
     "it": "Mostra i pulsanti di pagamento rapido",
@@ -3314,7 +3314,7 @@
     "no": "Vis hurtigbetalingsknapper",
     "ko": "결제 버튼"
   },
-  "QuickPaymentButtons": {
+  "i18n.QuickPaymentButtons": {
     "default": "Quick payment buttons on product page",
     "fr": "Boutons de paiement rapide sur la page produit",
     "it": "Pulsanti di pagamento rapido sulla pagina del prodotto",
@@ -3331,7 +3331,7 @@
     "no": "Raske betalingsknapper på produktsiden",
     "ko": "상품 카드에 빠른 보기 버튼 표시"
   },
-  "NumberOfButtonsAlwaysVisible": {
+  "i18n.NumberOfButtonsAlwaysVisible": {
     "default": "Number of buttons always visible",
     "fr": "Nombre de boutons toujours visibles",
     "it": "Numero di pulsanti sempre visibili",
@@ -3348,7 +3348,7 @@
     "no": "Antall knapper som alltid er synlige",
     "ko": "표시된 상품 수"
   },
-  "ProviderSortingOrderLabel": {
+  "i18n.ProviderSortingOrderLabel": {
     "default": "Sort Order",
     "fr": "Ordre de tri",
     "it": "Ordinamento",
@@ -3365,7 +3365,7 @@
     "no": "Sorteringsrekkefølge",
     "ko": "상자 테두리"
   },
-  "PayPalProviderSortingLabel": {
+  "i18n.PayPalProviderSortingLabel": {
     "default": "PayPal",
     "fr": "PayPal",
     "it": "PayPal",
@@ -3382,7 +3382,7 @@
     "no": "PayPal",
     "ko": "PayPal 표시"
   },
-  "PayPalCreditProviderSortingLabel": {
+  "i18n.PayPalCreditProviderSortingLabel": {
     "default": "Pay Later",
     "fr": "Payer plus tard",
     "it": "Paga più tardi",
@@ -3399,7 +3399,7 @@
     "no": "Betal senere",
     "ko": "나중에 결제"
   },
-  "PayPalVenmoProviderSortingLabel": {
+  "i18n.PayPalVenmoProviderSortingLabel": {
     "default": "Venmo",
     "fr": "Venmo",
     "it": "Venmo",
@@ -3416,7 +3416,7 @@
     "no": "Venmo",
     "ko": "Venmo"
   },
-  "PayPalSepaProviderSortingLabel": {
+  "i18n.PayPalSepaProviderSortingLabel": {
     "default": "SEPA",
     "fr": "SEPA",
     "it": "SEPA",
@@ -3433,7 +3433,7 @@
     "no": "SEPA",
     "ko": "SEPA"
   },
-  "GooglepayProviderSortingLabel": {
+  "i18n.GooglepayProviderSortingLabel": {
     "default": "Google Pay",
     "fr": "Google Pay",
     "it": "Google Pay",
@@ -3450,7 +3450,7 @@
     "no": "Google Pay",
     "ko": "Google Pay 표시"
   },
-  "ApplepayProviderSortingLabel": {
+  "i18n.ApplepayProviderSortingLabel": {
     "default": "Apple Pay",
     "fr": "Apple Pay",
     "it": "Apple Pay",
@@ -3467,7 +3467,7 @@
     "no": "Apple Pay",
     "ko": "Apple Pay 색상"
   },
-  "AfterpayProviderSortingLabel": {
+  "i18n.AfterpayProviderSortingLabel": {
     "default": "After Pay",
     "fr": "Afterpay",
     "it": "Afterpay",
@@ -3484,7 +3484,7 @@
     "no": "Afterpay",
     "ko": "After Pay"
   },
-  "AmazonProviderSortingLabel": {
+  "i18n.AmazonProviderSortingLabel": {
     "default": "Amazon Pay",
     "fr": "Amazon Pay",
     "it": "Amazon Pay",
@@ -3501,7 +3501,7 @@
     "no": "Amazon Pay",
     "ko": "Amazon Pay 표시"
   },
-  "MasterpassProviderSortingLabel": {
+  "i18n.MasterpassProviderSortingLabel": {
     "default": "Masterpass",
     "fr": "Masterpass",
     "it": "Masterpass",
