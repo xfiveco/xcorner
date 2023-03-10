@@ -1349,149 +1349,24 @@
         "content": "i18n.PrimaryActionButton"
       },
       {
-        "type": "color",
-        "label": "i18n.ButtonTextColor",
-        "id": "button--primary-color"
-      },
-      {
-        "type": "color",
-        "label": "i18n.ButtonTextHoverColor",
-        "id": "button--primary-colorHover"
-      },
-      {
-        "type": "color",
-        "label": "i18n.ButtonTextActiveColor",
-        "id": "button--primary-colorActive"
-      },
-      {
-        "type": "color",
-        "label": "i18n.ButtonBackground",
-        "id": "button--primary-backgroundColor"
-      },
-      {
-        "type": "color",
-        "label": "i18n.ButtonBackgroundHover",
-        "id": "button--primary-backgroundColorHover"
-      },
-      {
-        "type": "color",
-        "label": "i18n.ButtonBackgroundActive",
-        "id": "button--primary-backgroundColorActive"
-      },
-      {
         "type": "heading",
         "content": "i18n.SecondaryActionButton"
-      },
-      {
-        "type": "color",
-        "label": "i18n.ButtonTextColor",
-        "id": "button--default-color"
-      },
-      {
-        "type": "color",
-        "label": "i18n.ButtonTextHoverColor",
-        "id": "button--default-colorHover"
-      },
-      {
-        "type": "color",
-        "label": "i18n.ButtonTextActiveColor",
-        "id": "button--default-colorActive"
-      },
-      {
-        "type": "color",
-        "label": "i18n.ButtonBorder",
-        "id": "button--default-borderColor"
-      },
-      {
-        "type": "color",
-        "label": "i18n.ButtonBorderHover",
-        "id": "button--default-borderColorHover"
-      },
-      {
-        "type": "color",
-        "label": "i18n.ButtonBorderActive",
-        "id": "button--default-borderColorActive"
       },
       {
         "type": "heading",
         "content": "i18n.TertiaryActionButton"
       },
       {
-        "type": "color",
-        "label": "i18n.ButtonBackground",
-        "id": "select-bg-color"
-      },
-      {
-        "type": "color",
-        "label": "i18n.ButtonArrowIcon",
-        "id": "select-arrow-color"
-      },
-      {
         "type": "heading",
         "content": "i18n.DisabledButton"
-      },
-      {
-        "type": "color",
-        "label": "i18n.ButtonTextColor",
-        "id": "button--disabled-color"
-      },
-      {
-        "type": "color",
-        "label": "i18n.ButtonBackground",
-        "id": "button--disabled-backgroundColor"
-      },
-      {
-        "type": "color",
-        "label": "i18n.ButtonBorder",
-        "id": "button--disabled-borderColor"
       },
       {
         "type": "heading",
         "content": "i18n.Icons"
       },
       {
-        "type": "color",
-        "label": "i18n.SocialMediaIcon",
-        "id": "icon-color"
-      },
-      {
-        "type": "color",
-        "label": "i18n.SocialMediaIconHover",
-        "id": "icon-color-hover"
-      },
-      {
-        "type": "color",
-        "label": "i18n.StarReviewIconFull",
-        "id": "icon-ratingFull"
-      },
-      {
-        "type": "color",
-        "label": "i18n.StarReviewIconEmpty",
-        "id": "icon-ratingEmpty"
-      },
-      {
-        "type": "color",
-        "label": "i18n.IncreasedecreaseButtonIcon",
-        "id": "button--icon-svg-color"
-      },
-      {
         "type": "heading",
         "content": "i18n.CheckboxesAndRadioButtons"
-      },
-      {
-        "type": "color",
-        "label": "i18n.CheckboxAndRadioIcon",
-        "id": "checkRadio-color"
-      },
-      {
-        "type": "color",
-        "label": "i18n.ButtonBackground",
-        "id": "checkRadio-backgroundColor"
-      },
-      {
-        "type": "color",
-        "label": "i18n.ButtonBorder",
-        "id": "checkRadio-borderColor"
       }
     ]
   },
