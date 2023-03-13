@@ -1,4 +1,5 @@
 import { CollapsibleEvents } from '../common/collapsible';
+import { q$$ } from '../global/selector';
 
 const PLUGIN_KEY = 'collapsible-group';
 
@@ -27,13 +28,13 @@ export class CollapsibleGroup {
     }
 
     bindEvents() {
-        this.$component.on(CollapsibleEvents.open, this.onCollapsibleOpen);
-        this.$component.on(CollapsibleEvents.close, this.onCollapsibleClose);
+        this.$component.addEventListener(CollapsibleEvents.open, this.onCollapsibleOpen);
+        this.$component.addEventListener(CollapsibleEvents.close, this.onCollapsibleClose);
     }
 
     unbindEvents() {
-        this.$component.off(CollapsibleEvents.open, this.onCollapsibleOpen);
-        this.$component.off(CollapsibleEvents.close, this.onCollapsibleClose);
+        this.$component.removeEventListener(CollapsibleEvents.open, this.onCollapsibleOpen);
+        this.$component.removeEventListener(CollapsibleEvents.close, this.onCollapsibleClose);
     }
 
     onCollapsibleOpen(event, collapsibleInstance) {
@@ -63,12 +64,11 @@ export class CollapsibleGroup {
  * @return {Array} array of CollapsibleGroup instances
  */
 export default function collapsibleGroupFactory(selector = `[data-${PLUGIN_KEY}]`, options = {}) {
-    const $groups = $(selector, options.$context);
+    const $groups = q$$(selector, options.$context);
     const instanceKey = `${PLUGIN_KEY}Instance`;
 
-    return $groups.map((index, element) => {
-        const $group = $(element);
-        const cachedGroup = $group.data(instanceKey);
+    return $groups.map($group => {
+        const cachedGroup = 'data' in $group ? $group.data[instanceKey] : null;
 
         if (cachedGroup instanceof CollapsibleGroup) {
             return cachedGroup;
@@ -76,8 +76,13 @@ export default function collapsibleGroupFactory(selector = `[data-${PLUGIN_KEY}]
 
         const group = new CollapsibleGroup($group);
 
-        $group.data(instanceKey, group);
+        if ('data' in $group === false) {
+            /* eslint-disable no-param-reassign */
+            $group.data = {};
+        }
+
+        $group.data[instanceKey] = group;
 
         return group;
-    }).toArray();
+    });
 }

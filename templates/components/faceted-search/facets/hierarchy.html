@@ -15,10 +15,9 @@
                     <li class="js-nav-list-item">
                         <a
                             href="{{url}}"
-                            class="{{#if selected }} is-selected{{/if}}{{#if has_sub_categories}} has-children{{/if}}"
+                            class="{{#if selected }} is-selected{{/if}}{{#if has_sub_categories}} has-children{{/if}} js-faceted-search-facet"
                             rel="nofollow"
                             data-id="{{id}}"
-                            data-faceted-search-facet
                         >
                             {{{sanitize title}}}
                             {{#if ../show_product_counts}}

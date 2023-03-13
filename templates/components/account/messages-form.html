@@ -1,15 +1,18 @@
 {{#if customer.inbox.orders}}
-    <h2>
+    <div>
         {{lang 'forms.inbox.send_message'}}
-    </h2>
-    <form data-inbox-form action="{{urls.account.send_message}}" method="post">
+    </div>
+
+    <form class="js-inbox-form" action="{{urls.account.send_message}}" method="post">
         {{inject 'enterOrderNum' (lang 'forms.validate.account.inbox.order')}}
         {{inject 'enterSubject' (lang 'forms.validate.account.inbox.subject')}}
         {{inject 'enterMessage' (lang 'forms.validate.account.inbox.message')}}
         <div>
             <label for="message_order_id">
                 {{lang 'forms.inbox.order' }}
-                <small>{{lang 'common.required' }}</small>
+                <small>
+                    {{lang 'common.required' }}
+                </small>
             </label>
             <select name="message_order_id" id="message_order_id">
                 {{#each customer.inbox.orders}}
@@ -24,21 +27,32 @@
                 {{lang 'forms.inbox.subject' }}
                 <small>{{lang 'common.required' }}</small>
             </label>
-            <input type="text" class="js-form-input" name="message_subject" id="message_subject">
+            <input 
+                type="text" 
+                class="js-form-input" 
+                name="message_subject" 
+                id="message_subject"
+            >
         </div>
         <div>
-            <label class="form-label" for="message_content">
+            <label for="message_content">
                 {{lang 'forms.inbox.message' }}
-                <small>{{lang 'common.required' }}</small>
+                <small>
+                    {{lang 'common.required' }}
+                </small>
             </label>
             <textarea class="js-form-input" name="message_content" id="message_content" rows="7"></textarea>
         </div>
         <div>
-            <input class="c-button c-button--primary" type="submit" value="{{lang 'forms.inbox.submit_value' }}">
+            <button class="c-button c-button--primary" type="submit">
+                {{lang 'forms.inbox.submit_value' }}
+            </button> 
             <button>
                 {{lang 'forms.inbox.submit_value' }}
             </button>
-            <input class="c-button" type="reset" value="{{lang 'forms.inbox.clear_value' }}">
+            <button class="c-button" type="reset">
+                {{lang 'forms.inbox.clear_value' }}
+            </button> 
         </div>
     </form>
 {{else}}

@@ -20,7 +20,7 @@ export default function (secureBaseUrl, cartId) {
 
     q$('body').addEventListener('cart-quantity-update', event => {
         const quantity = event.detail;
-        $cart.setAttribute('aria-label', (_, prevValue) => prevValue.replace(/\d+/, quantity));
+        $cart.setAttribute('aria-label', $cart.getAttribute('aria-label').replace(/\d+/, quantity));
 
         if (!quantity) {
             $cart.classList.add('is-nav-user-item-cart-hidden');

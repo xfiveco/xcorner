@@ -15,105 +15,105 @@
                 {{/if}}
             {{/each}}
         {{/if}}
-    <li>
-        <div>
+
+        <li class="js-account-list-item">
             <div>
-                {{#if show_reorder}}
-                    <input type="checkbox" id="account-product-id-{{order_product_id}}" value="{{order_product_id}}">
-                    <label for="account-product-id-{{order_product_id}}">
-                        <span class="u-hidden-visually">
-                            {{!-- todo: make this translatable --}}
-                            Checkbox {{order_product_id}} label
-                        </span>
-                    </label>
-                {{/if}}
-            </div>
-            <figure>
-                {{#if type '===' 'giftcertificate'}}
-                    <img src="{{cdn ../theme_settings.default_image_gift_certificate}}" alt="">
-                {{else}}
-                    {{> components/common/image
-                        image=image
-                        class="account-product-image"
-                        fallback_size=../theme_settings.product_thumb_size
-                        default_image=../theme_settings.default_image_product
-                    }}
-                {{/if}}
-                {{#unless refunded}}
-                    {{#if download_url}}
-                        <a href="{{download_url}}" class="c-button c-button--primary">
-                            <span class="u-hidden-visually">
-                                {{lang 'account.orders.details.download_items'}}
-                            </span>
-                            <svg>
-                                <use href="#icon-arrow-down"></use>
-                            </svg>
-                        </a>
-                    {{/if}}
-                {{/unless}}
-            </figure>
-            <div>
-                <span>
-                    {{price.formatted}}
-                </span>
                 <div>
-                    {{quantity}} &#215; {{name}}
+                    {{#if show_reorder}}
+                        <input type="checkbox" id="account-product-id-{{order_product_id}}" value="{{order_product_id}}">
+                        <label for="account-product-id-{{order_product_id}}">
+                            <span class="u-hidden-visually">
+                                {{!-- todo: make this translatable --}}
+                                Checkbox {{order_product_id}} label
+                            </span>
+                        </label>
+                    {{/if}}
                 </div>
-                {{#if brand}}
+                <figure>
+                    {{#if type '===' 'giftcertificate'}}
+                        <img src="{{cdn ../theme_settings.default_image_gift_certificate}}" alt="">
+                    {{else}}
+                        {{> components/common/image
+                            image=image
+                            fallback_size=../theme_settings.productthumb_size
+                            default_image=../theme_settings.default_image_product
+                        }}
+                    {{/if}}
+                    {{#unless refunded}}
+                        {{#if download_url}}
+                            <a href="{{download_url}}" class="c-button c-button--primary">
+                                <span class="u-hidden-visually">
+                                    {{lang 'account.orders.details.download_items'}}
+                                </span>
+                                <svg>
+                                    <use href="#icon-arrow-down"></use>
+                                </svg>
+                            </a>
+                        {{/if}}
+                    {{/unless}}
+                </figure>
+                <div>
+                    <span>
+                        {{price.formatted}}
+                    </span>
                     <div>
-                        {{brand.name}}
+                        {{quantity}} &#215; {{name}}
                     </div>
-                {{/if}}
-                {{#if options}}
-                    <dl>
-                        {{#each options}}
+                    {{#if brand}}
+                        <div>
+                            {{brand.name}}
+                        </div>
+                    {{/if}}
+                    {{#if options}}
+                        <dl>
+                            {{#each options}}
+                                <dt>
+                                    {{name}}:
+                                </dt>
+                                <dd>
+                                    {{> components/common/product-options}}
+                                </dd>
+                            {{/each}}
+                        </dl>
+                    {{/if}}
+                    {{#if gift_wrapping_name}}
+                        <dl>
                             <dt>
-                                {{name}}:
+                                {{lang 'account.orders.gift_wrapping'}}
                             </dt>
                             <dd>
-                                {{> components/common/product-options}}
+                                {{gift_wrapping_name}}
                             </dd>
-                        {{/each}}
-                    </dl>
-                {{/if}}
-                {{#if gift_wrapping_name}}
-                    <dl>
-                        <dt>
-                            {{lang 'account.orders.gift_wrapping'}}
-                        </dt>
-                        <dd>
-                            {{gift_wrapping_name}}
-                        </dd>
-                    </dl>
-                {{/if}}
-                {{#if event_date}}
-                    <dl>
-                        <dt>
-                            {{event_date.name}}:
-                        </dt>
-                        <dd>
-                            {{event_date.date}}
-                        </dd>
-                    </dl>
-                {{/if}}
-                {{#if refunded}}
-                    <p>
-                        {{lang 'account.orders.refunded_quantity' qty=refunded_qty}}
-                    </p>
-                {{else}}
-                    {{#if refunded_qty}}
+                        </dl>
+                    {{/if}}
+                    {{#if event_date}}
+                        <dl>
+                            <dt>
+                                {{event_date.name}}:
+                            </dt>
+                            <dd>
+                                {{event_date.date}}
+                            </dd>
+                        </dl>
+                    {{/if}}
+                    {{#if refunded}}
                         <p>
                             {{lang 'account.orders.refunded_quantity' qty=refunded_qty}}
                         </p>
+                    {{else}}
+                        {{#if refunded_qty}}
+                            <p>
+                                {{lang 'account.orders.refunded_quantity' qty=refunded_qty}}
+                            </p>
+                        {{/if}}
                     {{/if}}
-                {{/if}}
-                {{#if reorder_message}}
-                    <p>
-                        {{{reorder_message}}}
-                    </p>
-                {{/if}}
+                    {{#if reorder_message}}
+                        <p>
+                            {{{reorder_message}}}
+                        </p>
+                    {{/if}}
+                </div>
             </div>
-        </div>
-    </li>
+        </li>
     {{/each}}
 </ul>

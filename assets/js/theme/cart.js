@@ -142,7 +142,7 @@ export default class Cart extends PageManager {
         utils.api.productAttributes.configureInCart(itemId, options, (err, response) => {
             modal.updateContent(response.content);
             const optionChangeHandler = () => {
-                const $productOptionsContainer = q$('[data-product-attributes-wrapper]', this.$modal);
+                const $productOptionsContainer = q$('.js-product-attributes-wrapper', this.$modal);
                 const modalBodyReservedHeight = $productOptionsContainer?.getBoundingClientRect().height;
 
                 if ($productOptionsContainer && modalBodyReservedHeight) {

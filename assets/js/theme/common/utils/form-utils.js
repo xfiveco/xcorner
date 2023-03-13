@@ -107,7 +107,7 @@ export function classifyForm(formSelector, options = {}) {
  * @return {string}
  */
 function getFieldId($field) {
-    const fieldId = $field.getAttribute('name').match(/(\[.*\])/);
+    const fieldId = $field.name.match(/(\[.*\])/);
 
     if (fieldId && fieldId.length !== 0) {
         return fieldId[0];

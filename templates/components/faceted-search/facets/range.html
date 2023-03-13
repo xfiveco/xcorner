@@ -3,9 +3,8 @@
 
     <div id="facets-{{dashcase facet}}" class="{{#unless start_collapsed}} is-open{{/unless}}">
         <form 
-            class="js-facets-search-range-form"
+            class="js-facets-search-range-form js-faceted-search-range" 
             method="get" 
-            data-faceted-search-range 
             novalidate
         >
             <input type="hidden" name="search_query" value="{{search_query}}">

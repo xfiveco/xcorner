@@ -45,3 +45,30 @@ export function parents(selector, $context) {
 
     return elements;
 }
+
+/**
+ * Native implementation of jQuery.prev()
+ *
+ * @param {DOMElement} $currentElement
+ * @param {String} selector
+ * @returns DOMElement | null
+ */
+export function prev($currentElement = null, selector) {
+    if ($currentElement === null) {
+        return null;
+    }
+
+    let $element = $currentElement.previousElementSibling;
+
+    while ($element !== null) {
+        const $found = $element.matches(selector) ? $element : null;
+
+        if ($found) {
+            return $found;
+        }
+
+        $element = $element.previousElementSibling;
+    }
+
+    return null;
+}

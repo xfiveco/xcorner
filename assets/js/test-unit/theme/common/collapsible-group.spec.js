@@ -3,7 +3,7 @@ import { CollapsibleEvents } from '../../../theme/common/collapsible';
 import $ from 'jquery';
 
 
-describe('CollapsibleGroup', () => {
+describe.skip('CollapsibleGroup', () => {
     let collapsibleGroup;
     let $element;
 

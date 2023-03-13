@@ -15,14 +15,13 @@
                     <li class="js-nav-list-item">
                         <a
                             href="{{url}}"
-                            class="{{#if selected}} is-selected{{/if}}"
+                            class="{{#if selected}} is-selected{{/if}} js-faceted-search-facet"
                             rel="nofollow"
-                            data-faceted-search-facet>
+                        >
                             {{{sanitize title}}}
                             {{#if ../show_product_counts}}
                                 <span>({{count}})</span>
                             {{/if}}
-
                             <svg aria-hidden="true">
                                 <use href="#icon-close"/>
                             </svg>

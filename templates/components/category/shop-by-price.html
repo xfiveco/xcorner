@@ -5,14 +5,21 @@
         </div>
         <ul>
             {{#each shop_by_price}}
-            <li>
-                <a{{#if selected }} class="is-active js-nav-list-action" role="status" aria-live="assertive"{{/if}} href="{{url}}">
-                   {{lang 'category.filter_price_range'}} {{low.formatted}} - {{high.formatted}}
-                </a>
-                <span class="u-hidden-visually js-price-filter-message">
-                    {{lang 'category.filter_select_announcement'}}
-                </span>
-            </li>
+                <li>
+                    <a
+                        {{#if selected }} 
+                            class="is-active js-nav-list-action" 
+                            role="status" 
+                            aria-live="assertive"
+                        {{/if}} 
+                        href="{{url}}"
+                    >
+                        {{lang 'category.filter_price_range'}} {{low.formatted}} - {{high.formatted}}
+                    </a>
+                    <span class="u-hidden-visually js-price-filter-message">
+                        {{lang 'category.filter_select_announcement'}}
+                    </span>
+                </li>
             {{/each}}
 
             {{#any shop_by_price selected=true}}

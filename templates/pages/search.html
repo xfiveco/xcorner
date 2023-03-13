@@ -34,7 +34,8 @@ product_results:
                     aria-controls="product-listing-container" 
                     id="search-results-product-count" 
                     class="js-nav-bar-action js-product-results-toggle" 
-                    href="{{forms.search.product_url}}">
+                    href="{{forms.search.product_url}}"
+                >
                     {{>components/search/product-count}}
                 </a>
             </li>
@@ -116,12 +117,12 @@ product_results:
                             <div>{{lang 'forms.search.categories'}}</div>
                             <ul>
                                 {{#each category_results}}
-                                <li>
-                                    {{#each this}}
-                                        <a href="{{url}}">{{name}}</a>
-                                        {{#unless @last}} > {{/unless}}
-                                    {{/each}}
-                                </li>
+                                    <li>
+                                        {{#each this}}
+                                            <a href="{{url}}">{{name}}</a>
+                                            {{#unless @last}} > {{/unless}}
+                                        {{/each}}
+                                    </li>
                                 {{/each}}
                             </ul>
                         </div>

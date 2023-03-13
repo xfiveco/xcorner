@@ -9,7 +9,7 @@ const PLUGIN_KEY = {
 };
 
 function optionsFromData($element) {
-    const mobileMenuId = $element.dataset[PLUGIN_KEY.CAMEL];
+    const mobileMenuId = $element.dataset.mobileMenuToggle;
 
     return {
         menuSelector: mobileMenuId && `#${mobileMenuId}`,
@@ -49,7 +49,7 @@ export class MobileMenuToggle {
         this.bindEvents();
 
         // Assign DOM attributes
-        this.$toggle.setAttribute('aria-controls', this.$menu.getAttribute('id'));
+        this.$toggle.setAttribute('aria-controls', this.$menu.id);
 
         // Hide by default
         this.hide();
@@ -67,8 +67,8 @@ export class MobileMenuToggle {
             this.$subMenus.forEach($subMenu => $subMenu.addEventListener('click', this.onSubMenuClick));
         }
 
-        if (this.mediumMediaQueryList && this.mediumMediaQueryList.addListener) {
-            this.mediumMediaQueryList.addListener(this.onMediumMediaQueryMatch);
+        if (this.mediumMediaQueryList && this.mediumMediaQueryList.addEventListener) {
+            this.mediumMediaQueryList.addEventListener('change', this.onMediumMediaQueryMatch);
         }
     }
 
@@ -76,8 +76,8 @@ export class MobileMenuToggle {
         this.$toggle.removeEventListener('click', this.onToggleClick);
         this.$header.removeEventListener(CartPreviewEvents.open, this.onCartPreviewOpen);
 
-        if (this.mediumMediaQueryList && this.mediumMediaQueryList.addListener) {
-            this.mediumMediaQueryList.removeListener(this.onMediumMediaQueryMatch);
+        if (this.mediumMediaQueryList && this.mediumMediaQueryList.addEventListener) {
+            this.mediumMediaQueryList.addEventListener('change', this.onMediumMediaQueryMatch);
         }
     }
 
@@ -177,7 +177,7 @@ export class MobileMenuToggle {
 export default function mobileMenuToggleFactory(selector = `[data-${PLUGIN_KEY.SNAKE}]`, overrideOptions = {}) {
     const $toggle = q$(selector);
     const instanceKey = `${PLUGIN_KEY.CAMEL}Instance`;
-    const cachedMobileMenu = $toggle.data ? $toggle.data[instanceKey] : null;
+    const cachedMobileMenu = 'data' in $toggle ? $toggle.data[instanceKey] : null;
 
     if (cachedMobileMenu instanceof MobileMenuToggle) {
         return cachedMobileMenu;

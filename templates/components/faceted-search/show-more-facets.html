@@ -16,17 +16,16 @@
                     <li class="js-nav-list-item">
                         <a
                             href="{{url}}"
-                            class="js-nav-list-action{{#if selected}} is-active{{/if}}"
+                            class="js-nav-list-action{{#if selected}} is-active {{/if}} js-faceted-search-facet"
                             rel="nofollow"
                             data-id="{{id}}"
-                            data-faceted-search-facet
                         >
                             {{{title}}}
                             {{#if ../show_product_counts}}
                                 {{#if count}}
                                     <span>
                                         ({{count}})
-                                        </span>
+                                    </span>
                                 {{/if}}
                             {{/if}}
                         </a>

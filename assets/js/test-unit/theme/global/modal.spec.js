@@ -1,6 +1,5 @@
 import modalFactory, { ModalEvents } from '../../../theme/global/modal';
 import $ from 'jquery';
-import '../../../theme/global/jquery-migrate';
 
 function attachHtml(html) {
     const $element = $(html);

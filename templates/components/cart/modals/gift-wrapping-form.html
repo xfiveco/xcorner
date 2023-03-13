@@ -1,8 +1,8 @@
 <div>
     <div class="js-modal-header-title">{{lang 'cart.gift_wrapping.title'}}</div>
 </div>
-<div class="is-modal-body">
 
+<div class="js-modal-body">
     {{#if quantity '>' 1}}
         <p>{{lang 'cart.gift_wrapping.choose_how'}}</p>
     {{/if}}
@@ -10,15 +10,16 @@
     <form class="form" action="{{urls.cart}}" method="post">
         <input type="hidden" name="action" value="save_giftwrapping">
         <input type="hidden" name="item_id" value="{{item_id}}">
-        <fieldset class="js-form-fieldset">
 
+        <fieldset class="js-form-fieldset">
             <div class="js-form-field" {{#if quantity '===' 1}}style="display:none"{{/if}}>
                 <input 
                     type="radio" 
                     name="giftwraptype"
                     id="gift-wrapping-radio-same" 
                     checked="checked" 
-                    value="same">
+                    value="same"
+                >
                 <label for="gift-wrapping-radio-same">
                     {{lang 'cart.gift_wrapping.option_same'}}
                 </label>
@@ -27,7 +28,8 @@
                     type="radio" 
                     name="giftwraptype" 
                     id="gift-wrapping-radio-all"
-                    value="different">
+                    value="different"
+                >
                 <label for="gift-wrapping-radio-all">
                     {{lang 'cart.gift_wrapping.option_different'}}
                 </label>
@@ -49,12 +51,20 @@
                             {{/if}}
                         {{/each}}
                     </label>
-                    <select class="js-gift-wrapping-select" name="giftwrapping[all]" id="gift-wrapping-select-same"  data-index="all">
-                        <option value="">{{lang 'cart.gift_wrapping.choose_type'}}</option>
+                    <select 
+                        class="js-gift-wrapping-select" 
+                        name="giftwrapping[all]" 
+                        id="gift-wrapping-select-same" 
+                        data-index="all"
+                    >
+                        <option value="">
+                            {{lang 'cart.gift_wrapping.choose_type'}}
+                        </option>
                         {{#each gift_wrappings}}
                             <option 
                                 {{#if selected}}selected{{/if}} 
                                 value="{{id}}" 
+                            >
                                 {{name}} - ({{price.formatted}})
                             </option>
                         {{/each}}
@@ -97,14 +107,16 @@
                             class="js-gift-wrapping-select" 
                             name="giftwrapping[{{$index}}]" 
                             id="gift-wrapping-select-{{$index}}"
-                            data-index="{{$index}}">
+                            data-index="{{$index}}"
+                        >
                             <option value="">
                                 {{lang 'cart.gift_wrapping.choose_type'}}
                             </option>
                             {{#each gift_wrappings}}
                                 <option 
                                     {{#if selected}}selected{{/if}} 
-                                    value="{{id}}">
+                                    value="{{id}}"
+                                >
                                     {{name}} - ({{price.formatted}})
                                 </option>
                             {{/each}}
@@ -130,7 +142,8 @@
         <div>
             <button 
                 class="c-button c-button--primary" 
-                type="submit">
+                type="submit"
+            >
                 {{lang 'common.form_submit'}}
             </button>
         </div>

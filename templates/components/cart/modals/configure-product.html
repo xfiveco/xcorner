@@ -7,7 +7,7 @@
         {{lang 'cart.reconfigure_product' name=product_name}}
     </div>
 </div>
-<div class="is-modal-body js-product-option-change">
+<div class="js-modal-body js-product-option-change">
     <div class="js-alert-message-box" hidden>
         {{> components/common/alert/alert-info}}
     </div>
@@ -16,15 +16,16 @@
         <input type="hidden" name="action" value="EditProductFieldsInCart">
         <input type="hidden" name="item_id" value="{{quote_item_id}}">
         <div class="js-product-attributes-wrapper">
-        {{#each options}}
-            {{{dynamicComponent 'components/products/options'}}}
-        {{/each}}
+            {{#each options}}
+                {{{dynamicComponent 'components/products/options'}}}
+            {{/each}}
         </div>
         <div>
             <button 
                 class="c-button c-button--primary" 
                 type="submit"
-                value="{{lang 'common.save'}}">
+                value="{{lang 'common.save'}}"
+            >
                 {{lang 'common.save'}}
             </button>
         </div>
