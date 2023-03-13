@@ -38,6 +38,8 @@ function makeStateRequired(stateElement, context) {
 /**
  * If a country with states is the default, a select will be sent,
  * In this case we need to be able to switch to an input field and hide the required field
+ * 
+ * @param {HTMLElement} stateElement
  */
 function makeStateOptional(stateElement) {
     /* eslint-disable no-param-reassign */
@@ -89,7 +91,6 @@ function addOptions(statesArray, $selectElement, options) {
 }
 
 /**
- *
  * @param {HTMLElement} stateElement
  * @param {Object} context
  * @param {Object} options

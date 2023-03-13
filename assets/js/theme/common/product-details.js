@@ -17,7 +17,7 @@ export default class ProductDetails extends ProductDetailsBase {
     constructor($scope, context, productAttributesData = {}) {
         super($scope, context);
 
-        this.$overlay = q$('.js-cart-item-add .is-loading-overlay');
+        this.$overlay = q$('.js-cart-item-add .js-loading-overlay');
         this.imageGallery = new ImageGallery(q$('.js-image-gallery', this.$scope));
         this.imageGallery.init();
         this.listenQuantityChange();
@@ -26,7 +26,7 @@ export default class ProductDetails extends ProductDetailsBase {
         this.swatchGroupIdList = q$$('[id^="swatchGroup"]').map($group => $group.id);
         this.storeInitMessagesForSwatches();
 
-        const $form = q$('form.js-cart-item-add', $scope);
+        const $form = q$('.js-cart-item-add', $scope);
 
         if ($form.checkValidity()) {
             this.updateProductDetailsData();
@@ -35,7 +35,7 @@ export default class ProductDetails extends ProductDetailsBase {
         }
 
         this.addToCartValidator = nod({
-            submit: $form.querySelector('button#form-action-add-to-cart'),
+            submit: $form.querySelector('.js-form-action-add-to-cart'),
             tap: announceInputErrorMessage,
         });
 
@@ -69,7 +69,7 @@ export default class ProductDetails extends ProductDetailsBase {
                 $swatch.addEventListener('change', ({ target }) => {
                     const swatchGroupElement = target.parentNode.parentNode;
 
-                    this.showSwatchNameOnOption($(target), $(swatchGroupElement));
+                    this.showSwatchNameOnOption(target, swatchGroupElement);
                 });
 
                 const $swatchGroupElement = $swatch.parentNode.parentNode;
@@ -105,7 +105,7 @@ export default class ProductDetails extends ProductDetailsBase {
 
         $productOptionsElement.style.display = 'block';
 
-        this.previewModal = modalFactory('#preview-modal');
+        this.previewModal = modalFactory('.js-preview-modal');
     }
 
     registerAddToCartValidation() {
@@ -248,9 +248,8 @@ export default class ProductDetails extends ProductDetailsBase {
     }
 
     /**
-     *
      * Handle product options changes
-     *
+     * @param {Event} event
      */
     productOptionsChanged(event) {
         const $changedOption = event.target;
@@ -280,6 +279,8 @@ export default class ProductDetails extends ProductDetailsBase {
     /**
      * if this setting is enabled in Page Builder
      * show name for swatch option
+     * @param {HTMLElement} $swatch
+     * @param {HTMLElement} $swatchGroup
      */
     showSwatchNameOnOption($swatch, $swatchGroup) {
         const swatchName = $swatch.getAttribute('aria-label');
@@ -291,15 +292,28 @@ export default class ProductDetails extends ProductDetailsBase {
         this.setLiveRegionAttributes($swatchOptionMessage, 'status', 'assertive');
     }
 
+    /**
+     * @param {HTMLElement} $element
+     * @param {string} roleType
+     * @param {string} ariaLiveStatus
+     * @memberof ProductDetails
+     */
     setLiveRegionAttributes($element, roleType, ariaLiveStatus) {
         $element.setAttribute('role', roleType);
         $element.setAttribute('aria-live', ariaLiveStatus);
     }
 
+    /**
+     * @param {HTMLElement} $element
+     * @returns {Boolean}
+     */
     checkIsQuickViewChild($element) {
         return !!parents('.js-quick-view', $element).length;
     }
 
+    /**
+     * @param {Object} image
+     */
     showProductImage(image) {
         if (isPlainObject(image)) {
             const zoomImageUrl = utils.tools.imageSrcset.getSrcset(
@@ -341,9 +355,7 @@ export default class ProductDetails extends ProductDetailsBase {
     }
 
     /**
-     *
      * Handle action when the shopper clicks on + / - for quantity
-     *
      */
     listenQuantityChange() {
         q$('.js-quantity-change button', this.$scope).addEventListener('click', event => {
@@ -388,12 +400,13 @@ export default class ProductDetails extends ProductDetailsBase {
     }
 
     /**
-     *
      * Add a product to cart
      *
+     * @param {Event} event
+     * @param {HTMLFormElement} form
      */
     addProductToCart(event, form) {
-        const $addToCartBtn = q$('#form-action-add-to-cart', event.target);
+        const $addToCartBtn = q$('.js-form-action-add-to-cart', event.target);
         const originalBtnVal = $addToCartBtn.value;
         const waitMessage = $addToCartBtn.dataset.waitMessage;
 
@@ -515,12 +528,12 @@ export default class ProductDetails extends ProductDetailsBase {
             const quantity = $cartQuantity.dataset.cartQuantity || 0;
             const $promotionBanner = q$('.js-promotion-banner');
             const $backToShopppingBtn = q$('.js-preview-cart-checkout > .js-reveal-close');
-            const $modalCloseBtn = q$('#preview-modal > .modal-close');
+            const $modalCloseBtn = q$('.js-preview-modal > .modal-close');
             const bannerUpdateHandler = () => {
-                const $productContainer = q$('#main-content > .js-container');
+                const $productContainer = q$('#main-content > .js-container');  // #main-content is for jumping into that section in the page
 
-                $productContainer.append('<div class="is-loading-overlay pdp-update"></div>');
-                q$('.is-loading-overlay.pdp-update', $productContainer).style.display = 'block';
+                $productContainer.append('<div class="js-loading-overlay js-pdp-update"></div>');
+                q$('.js-loading-overlay.js-pdp-update', $productContainer).style.display = 'block';
                 window.location.reload();
             };
 
@@ -548,7 +561,7 @@ export default class ProductDetails extends ProductDetailsBase {
     }
 
     updateProductDetailsData() {
-        const $form = q$('form.js-cart-item-add');
+        const $form = q$('.js-cart-item-add');
         const formDataItems = new FormData($form);
 
         const productDetails = {};

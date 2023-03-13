@@ -8,7 +8,7 @@ export default class CartItemDetails extends ProductDetailsBase {
     constructor($scope, context, productAttributesData = {}) {
         super($scope, context);
 
-        const $form = q$('#cart-edit-product-fields-form', this.$scope);
+        const $form = q$('.js-cart-edit-product-fields-form', this.$scope);
         const $productOptionsElement = q$('.js-product-attributes-wrapper', $form);
         const hasOptions = $productOptionsElement.innerHTML.trim().length;
         const hasDefaultOptions = !!$productOptionsElement.querySelector('.js-default');
@@ -126,7 +126,7 @@ export default class CartItemDetails extends ProductDetailsBase {
 
         if (productVariant) {
             productVariant = productVariant === 'unsatisfied' ? '' : productVariant;
-            if (view.getAttribute('data-event-type')) {
+            if (view.dataset.eventType) {
                 view.dataset.productVariant = productVariant;
             } else {
                 const productName = view.innerHTML.match(/'(.*?)'/)[1];
@@ -144,6 +144,6 @@ export default class CartItemDetails extends ProductDetailsBase {
         super.updateProductAttributes(data);
 
         /* eslint-disable no-unused-expressions */
-        this.$scope?.querySelector('.is-modal-content')?.classList.remove('hide-content');
+        this.$scope?.querySelector('.js-modal-content')?.classList.remove('hide-content');
     }
 }

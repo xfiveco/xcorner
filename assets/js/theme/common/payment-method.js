@@ -103,7 +103,7 @@ export const storeInstrument = ({
 export const Formatters = {
     /**
      * Sets up a format for credit card number
-     * @param field
+     * @param {HTMLElement} field
      */
     setCreditCardNumberFormat: field => {
         if (field) {
@@ -116,17 +116,17 @@ export const Formatters = {
 
     /**
      * Sets up a format for expiration date
-     * @param field
+     * @param {HTMLElement} field
      */
     setExpirationFormat: field => {
         if (field) {
-            field.addEventListener('keyup', ({ target, which }) => {
+            field.addEventListener('keyup', ({ target, code }) => {
                 const refTarget = target;
-                if (which === 8 && /.*(\/)$/.test(target.value)) {
+                if (code.toLowerCase() === 'backspace' && /.*(\/)$/.test(target.value)) {
                     refTarget.value = target.value.slice(0, -1);
                 } else if (target.value.length > 4) {
                     refTarget.value = target.value.slice(0, 5);
-                } else if (which !== 8) {
+                } else if (code.toLowerCase() !== 'backspace') {
                     refTarget.value = target.value
                         .replace(/^([1-9]\/|[2-9])$/g, '0$1/')
                         .replace(/^(0[1-9]|1[0-2])$/g, '$1/')

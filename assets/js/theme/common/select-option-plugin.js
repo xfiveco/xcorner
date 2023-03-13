@@ -4,11 +4,8 @@ import { q$$ } from '../global/selector';
  * Visually hides the option from user by moving option to an invisible
  * and disabled select placeholder element.
  *
- * $element approach is required rather than simply hiding the option because
- * hidden option can still be included when serializeArray() is called and
- * cause wrong value to be submitted.
- * (eg. if you have option 1, 2, 3 and 2 is hidden, when you select 3,
- * serializeArray() will use the value of 2 instead of 3)
+ * @param {HTMLElement} $element
+ * @param {Boolean} show
  */
 export default function toggleOption($element, show) {
     const currentSelectElement = $element.closest('select'); // the select containing this

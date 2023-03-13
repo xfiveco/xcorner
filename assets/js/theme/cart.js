@@ -19,7 +19,7 @@ export default class Cart extends PageManager {
         this.$cartMessages = q$('.js-cart-status');
         this.$cartTotals = q$('.js-cart-totals');
         this.$cartAdditionalCheckoutBtns = q$('.js-cart-additional-checkout-buttons');
-        this.$overlay = q$('.js-cart .is-loading-overlay');
+        this.$overlay = q$('.js-cart .js-loading-overlay');
         this.$overlay.style.display = 'none'; // TODO: temporary until roper pulls in his cart components
         this.$activeCartItemId = null;
         this.$activeCartItemBtnAction = null;
@@ -137,7 +137,7 @@ export default class Cart extends PageManager {
 
         modal.open();
         /* eslint-disable no-unused-expressions */
-        this.$modal.querySelector('.is-modal-content')?.classList.add('hide-content');
+        this.$modal.querySelector('.js-modal-content')?.classList.add('hide-content');
 
         utils.api.productAttributes.configureInCart(itemId, options, (err, response) => {
             modal.updateContent(response.content);

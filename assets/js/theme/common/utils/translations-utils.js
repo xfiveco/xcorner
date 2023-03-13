@@ -1,5 +1,7 @@
 const TRANSLATIONS = 'translations';
+
 const isTranslationDictionaryNotEmpty = (dictionary) => !!Object.keys(dictionary[TRANSLATIONS]).length;
+
 const chooseActiveDictionary = (...dictionaryJsonList) => {
     for (let i = 0; i < dictionaryJsonList.length; i++) {
         const dictionary = JSON.parse(dictionaryJsonList[i]);

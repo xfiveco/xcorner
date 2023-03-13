@@ -1,8 +1,9 @@
 // Import Swiper and modules
 import Swiper, { Navigation } from 'swiper';
 
-import 'swiper/swiper.scss';
-import 'swiper/modules/navigation/navigation.scss';
+/* eslint-disable import/no-unresolved, import/extensions */
+import 'swiper/scss';
+import 'swiper/scss/navigation';
 
 const productCarouselParams = {
     direction: 'horizontal',
@@ -62,4 +63,3 @@ export const initializeProductSwiperCarousel = () => {
 export const initializeCarouselSwiperCarousel = () => {
     carouselSwiper.initialize();
 };
-

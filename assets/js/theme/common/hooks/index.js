@@ -1,6 +1,4 @@
 import CartHooks from './cart';
-import CookieHooks from './cookie';
-import CurrencySelectorHooks from './currency-selector';
 import ProductHooks from './product';
 import SearchHooks from './search';
 import FacetedSearchHooks from './faceted-search';
@@ -10,8 +8,6 @@ const internals = {};
 
 internals.classes = {
     cart: new CartHooks(),
-    cookie: new CookieHooks(),
-    currency: new CurrencySelectorHooks(),
     product: new ProductHooks(),
     search: new SearchHooks(),
     faceted: new FacetedSearchHooks(),
