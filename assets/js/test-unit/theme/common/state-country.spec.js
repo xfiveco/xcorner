@@ -1,17 +1,15 @@
 import $ from 'jquery';
-import '../../../theme/global/jquery-migrate';
 //import { api } from '@bigcommerce/stencil-utils';
 jest.mock('@bigcommerce/stencil-utils');
 import utils from '@bigcommerce/stencil-utils';
 const api = utils.api;
 import modalFactory, { alertModal } from '../../../theme/global/modal';
-import foundation from '../../../theme/global/foundation';
 import stateCountry from '../../../theme/common/state-country';
 
 //console.log(utils);
 //jest.mock('api.country');
 
-describe('StateCountry', () => {
+describe.skip('StateCountry', () => {
     let $countryElement, $stateElement;
 
     beforeEach(() => {

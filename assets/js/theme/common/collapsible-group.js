@@ -77,6 +77,7 @@ export default function collapsibleGroupFactory(selector = `[data-${PLUGIN_KEY}]
         const group = new CollapsibleGroup($group);
 
         if ('data' in $group === false) {
+            /* eslint-disable no-param-reassign */
             $group.data = {};
         }
 

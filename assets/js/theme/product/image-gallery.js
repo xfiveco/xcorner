@@ -1,4 +1,4 @@
-import q$, { q$$ } from '../global/selector';
+import { q$$ } from '../global/selector';
 
 export default class ImageGallery {
     constructor($gallery) {

@@ -40,6 +40,7 @@ export default class Search extends CatalogPage {
 
     showProducts(navigate = true) {
         this.$productListingContainer.classList.remove('u-hidden-visually');
+        /* eslint-disable no-unused-expressions */
         this.$facetedSearchContainer?.classList.remove('u-hidden-visually');
         this.$contentResultsContainer.classList.add('u-hidden-visually');
 
@@ -199,7 +200,7 @@ export default class Search extends CatalogPage {
                 $input.name = 'category[]';
                 $input.value = categoryId;
                 
-                $searchForm.append(input);
+                $searchForm.append($input);
             }
         });
 

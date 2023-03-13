@@ -21,8 +21,7 @@ class RevealClose {
         } else {
             $modal = parents(revealSelector, this.$button)[0];
         }
-
-        return $modal.data['modalInstance'];
+        return $modal.data.modalInstance;
     }
 
     bindEvents() {

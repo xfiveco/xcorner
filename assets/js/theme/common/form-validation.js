@@ -123,6 +123,7 @@ function buildValidation($validateableElement, errorMessage) {
     } else if (validation.required && (validation.type === 'checkboxselect' || validation.type === 'radioselect')) {
         fieldValidations.push(buildRequiredCheckboxValidation(validation, $validateableElement, errorMessage));
     } else {
+        /* eslint-disable no-inner-declarations */
         function handleElements($element) {
             const $inputElement = $element;
             const tagName = $inputElement.tagName;
