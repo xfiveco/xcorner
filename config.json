@@ -151,16 +151,7 @@
     "payment_buttons_number_of_buttons": 1,
     "payment_buttons_provider_sorting": []
   },
-  "read_only_files": [
-    "/assets/scss/components/citadel",
-    "/assets/scss/components/foundation",
-    "/assets/scss/components/vendor",
-    "/assets/scss/settings/citadel",
-    "/assets/scss/settings/foundation",
-    "/assets/scss/settings/normalize",
-    "/assets/scss/settings/vendor",
-    "/assets/scss/vendor"
-  ],
+  "read_only_files": [],
   "resources": {
     "cart": false,
     "bulk_discount_rates": false,
