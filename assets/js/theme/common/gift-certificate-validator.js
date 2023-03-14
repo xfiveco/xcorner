@@ -1,3 +1,8 @@
+/**
+ * @export
+ * @param {string} cert
+ * @returns {Boolean}
+ */
 export default function (cert) {
     if (typeof cert !== 'string' || cert.length === 0) {
         return false;

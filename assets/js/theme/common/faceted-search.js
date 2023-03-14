@@ -12,8 +12,7 @@ import trigger from './utils/trigger';
 
 
 const defaultOptions = {
-    accordionToggleSelector:
-        '.js-facets-search-wrapper .js-accordion-navigation, .js-facets-search-wrapper .js-facets-search-toggle',
+    accordionToggleSelector: '.js-facets-search-wrapper .js-accordion-navigation, .js-facets-search-wrapper .js-facets-search-toggle',
     blockerSelector: '.js-facets-search-wrapper .js-blocker',
     clearFacetSelector: '.js-facets-search-wrapper .js-facets-search-clear',
     componentSelector: '.js-facets-search-nav-list',
@@ -23,8 +22,8 @@ const defaultOptions = {
     priceRangeFormSelector: '.js-facets-search-range-form',
     priceRangeMaxPriceSelector: '.js-facets-search-range-form [name=max_price]',
     priceRangeMinPriceSelector: '.js-facets-search-range-form [name=min_price]',
-    showMoreToggleSelector: '.js-facets-search-wrapper .accordion-content .toggleLink',
-    facetedSearchFilterItems: '.js-facets-search-wrapper-filterItems .form-input',
+    showMoreToggleSelector: '.js-facets-search-wrapper .js-accordion-content .js-toggle-link',
+    facetedSearchFilterItems: '.js-facets-search-wrapper-filterItems .js-form-input',
     modal: modalFactory('#modal'),
     modalOpen: false,
 };
@@ -106,6 +105,9 @@ class FacetedSearch {
     }
 
     // Public methods
+    /**
+     * @param {string} content
+     */
     refreshView(content) {
         if (content) {
             this.callback(content);
@@ -140,6 +142,9 @@ class FacetedSearch {
         });
     }
 
+    /**
+     * @param {HTMLElement} $navList
+     */
     expandFacetItems($navList) {
         const id = $navList.id;
 
@@ -147,6 +152,9 @@ class FacetedSearch {
         this.collapsedFacetItems = _.without(this.collapsedFacetItems, id);
     }
 
+    /**
+     * @param {HTMLElement} $navList
+     */
     collapseFacetItems($navList) {
         const id = $navList.id;
         const hasMoreResults = $navList.dataset.hasMoreResults;
@@ -158,6 +166,10 @@ class FacetedSearch {
         }
     }
 
+    /**
+     * @param {HTMLElement} $navList
+     * @returns {boolean}
+     */
     toggleFacetItems($navList) {
         const id = $navList.id;
 
@@ -173,6 +185,10 @@ class FacetedSearch {
         return false;
     }
 
+    /**
+     * @param {HTMLElement} $navList
+     * @returns {boolean}
+     */
     getMoreFacetResults($navList) {
         const facet = $navList.dataset.facet;
         const facetUrl = urlUtils.getUrl();
@@ -199,6 +215,9 @@ class FacetedSearch {
         return false;
     }
 
+    /**
+     * @param {Event} event
+     */
     filterFacetItems(event) {
         const $items = q$$('.js-nav-list-item');
         const query = event.currentTarget.value.toLowerCase();
@@ -215,6 +234,9 @@ class FacetedSearch {
         });
     }
 
+    /**
+     * @param {HTMLElement} $accordionToggle
+     */
     expandFacet($accordionToggle) {
         const collapsible = $accordionToggle.data?.collapsibleInstance;
 
@@ -222,6 +244,9 @@ class FacetedSearch {
         collapsible?.open();
     }
 
+    /**
+     * @param {HTMLElement} $accordionToggle
+     */
     collapseFacet($accordionToggle) {
         const collapsible = $accordionToggle.data?.collapsibleInstance;
 
@@ -363,6 +388,9 @@ class FacetedSearch {
         hooks.off('sort-by-submitted', this.onSortBySubmit);
     }
 
+    /**
+     * @param {Event} event
+     */
     onClearFacet(event) {
         const $link = event.currentTarget;
         const url = $link.href;
@@ -374,6 +402,9 @@ class FacetedSearch {
         urlUtils.goToUrl(url);
     }
 
+    /**
+     * @param {Event} event
+     */
     onToggleClick(event) {
         const $toggle = event.currentTarget;
         const $navList = q$($toggle.href);
@@ -385,6 +416,10 @@ class FacetedSearch {
         this.toggleFacetItems($navList);
     }
 
+    /**
+     * @param {Event} event
+     * @param {HTMLElement} currentTarget
+     */
     onFacetClick(event, currentTarget) {
         const $link = currentTarget;
         const url = $link.href;
@@ -401,6 +436,10 @@ class FacetedSearch {
         }
     }
 
+    /**
+     * @param {Event} event
+     * @param {HTMLElement} currentTarget
+     */
     onSortBySubmit(event, currentTarget) {
         event.preventDefault();
 
@@ -415,6 +454,10 @@ class FacetedSearch {
         urlUtils.goToUrl(new URL(`${ url.origin }${ url.pathname }?${ urlQuery }`));
     }
 
+    /**
+     * @param {Event} event
+     * @param {HTMLElement} currentTarget
+     */
     onRangeSubmit(event, currentTarget) {
         event.preventDefault();
 
@@ -437,6 +480,9 @@ class FacetedSearch {
         this.updateView();
     }
 
+    /**
+     * @param {Event} event 
+     */
     onAccordionToggle(event) {
         const $accordionToggle = event.currentTarget;
         const collapsible = $accordionToggle.data.collapsibleInstance;

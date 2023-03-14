@@ -20,7 +20,7 @@ export const filterEmptyValuesFromForm = formData => {
 
 /**
  * https://stackoverflow.com/questions/49672992/ajax-request-fails-when-sending-formdata-including-empty-file-input-in-safari
- * Safari browser with jquery 3.3.1 has an issue uploading empty file parameters. This function removes any empty files from the form params
+ * Safari browser. This function removes any empty files from the form params
  * @param formData: FormData object
  * @returns FormData object
  */

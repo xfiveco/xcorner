@@ -1,7 +1,3 @@
-/*
- * Remember to update /assets/scss/settings/global/screensizes/screensizes.scss
- * if you decide to change breakpoint values
- */
 const breakpointSizes = {
     large: 1261,
     medium: 801,

@@ -16,6 +16,10 @@ const CollapsibleState = {
     open: 'open',
 };
 
+/**
+ * @param {string} id 
+ * @returns {string}
+ */
 function prependHash(id) {
     if (id && id.indexOf('#') === 0) {
         return id;
@@ -28,6 +32,10 @@ function prependHash(id) {
     return `#${id}`;
 }
 
+/**
+ * @param {HTMLElement} $element 
+ * @returns {object}
+ */
 function optionsFromData($element) {
     return {
         disabledBreakpoint: $element.dataset.collapsibleDisabledBreakpoint,
@@ -102,6 +110,9 @@ export class Collapsible {
         return !this.isCollapsed;
     }
 
+    /**
+     * @param {string} disabled
+     */
     set disabled(disabled) {
         this._disabled = disabled;
 
@@ -112,10 +123,17 @@ export class Collapsible {
         }
     }
 
+    /**
+     * @returns {string}
+     */
     get disabled() {
         return this._disabled;
     }
 
+    /**
+     * @param {HTMLElement} $toggle 
+     * @returns {string}
+     */
     _getToggleAriaLabelText($toggle) {
         const $textToggleChildren = Array.from($toggle.children).filter(child => child.textContent.trim());
         const $ariaLabelTarget = $textToggleChildren.length ? $textToggleChildren[0] : $toggle;
@@ -157,6 +175,11 @@ export class Collapsible {
         }
     }
 
+    /**
+     * @param {string} state 
+     * @param  {...any} args 
+     * @returns {any|undefined}
+     */
     toggleByState(state, ...args) {
         switch (state) {
         case CollapsibleState.open:
@@ -170,6 +193,10 @@ export class Collapsible {
         }
     }
 
+    /**
+     * @param {object} collapsibleInstance 
+     * @returns {object}
+     */
     hasCollapsible(collapsibleInstance) {
         return this.$target.contains(collapsibleInstance.$target);
     }
@@ -190,6 +217,9 @@ export class Collapsible {
         }
     }
 
+    /**
+     * @param {Event} event 
+     */
     onClicked(event) {
         if (this.disabled) {
             return;

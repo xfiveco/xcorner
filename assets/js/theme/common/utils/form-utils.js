@@ -82,9 +82,9 @@ function classifyInput(input, formFieldClass) {
  * <div class="js-form-field js-form-field-input js-form-field-input-text">...</div>
  * <div class="js-form-field js-form-field-select">...</div>
  *
- * @param {string|object} formSelector - selector or element
+ * @param {string} formSelector - selector
  * @param {object} options
- * @return {DOMElement} Element itself
+ * @return {HTMLElement} Element itself
  */
 export function classifyForm(formSelector, options = {}) {
     const $form = q$(formSelector);
@@ -103,7 +103,7 @@ export function classifyForm(formSelector, options = {}) {
 
 /**
  * Get id from given field
- * @param {object} $field JQuery field object
+ * @param {HTMLElement} $field Field object
  * @return {string}
  */
 function getFieldId($field) {
@@ -118,7 +118,7 @@ function getFieldId($field) {
 
 /**
  * Insert hidden field after State/Province field
- * @param {object} $stateField JQuery field object
+ * @param {HTMLElement} $stateField Field object
  */
 function insertStateHiddenField($stateField) {
     const fieldId = getFieldId($stateField);
@@ -128,7 +128,7 @@ function insertStateHiddenField($stateField) {
 
 /**
  * Announce form input error message by screen reader
- * @param {params.element} dom input element where checking is happened
+ * @param {params.element} HTMLElement input element where checking is happened
  * @param {params.result} result of validation check
  */
 function announceInputErrorMessage({ element, result }) {
@@ -309,6 +309,7 @@ const Validators = {
      * Sets up a new validation when the form is dirty
      * @param validator
      * @param field
+     * @param errorText
      */
     setStateCountryValidation: (validator, field, errorText) => {
         if (field) {

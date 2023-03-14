@@ -3,8 +3,8 @@ import { q$$ } from '../global/selector';
 
 /**
  * Validate that the given date for the day/month/year select inputs is within potential range
- * @param $formField
- * @param validation
+ * @param {HTMLElement} $formField
+ * @param {String} validation
  * @returns {{selector: string, triggeredBy: string, validate: Function, errorMessage: string}}
  */
 function buildDateValidation($formField, validation, requiredMessage) {
@@ -53,9 +53,10 @@ function buildDateValidation($formField, validation, requiredMessage) {
 /**
  * We validate checkboxes separately from single input fields, as they must have at least one checked option
  * from many different inputs
- * @param $formField
- * @param validation
- * @param errorText provides error validation message
+ * @param {HTMLElement} $formField
+ * @param {String} validation
+ * @param {String} errorText provides error validation message
+ * @returns {object}
  */
 function buildRequiredCheckboxValidation(validation, $formField, errorText) {
     const formFieldId = $formField.id;
@@ -82,6 +83,12 @@ function buildRequiredCheckboxValidation(validation, $formField, errorText) {
     };
 }
 
+/**
+ * @param {string} validation
+ * @param {string} selector
+ * @param {string} errorText
+ * @returns {object}
+ */
 function buildRequiredValidation(validation, selector, errorText) {
     return {
         selector,
@@ -92,6 +99,11 @@ function buildRequiredValidation(validation, selector, errorText) {
     };
 }
 
+/**
+ * @param {string} validation
+ * @param {string} formFieldSelector
+ * @returns {object}
+ */
 function buildNumberRangeValidation(validation, formFieldSelector) {
     const invalidMessage = `The value for ${validation.label} must be between ${validation.min} and ${validation.max}.`;
     const min = Number(validation.min);
@@ -108,7 +120,11 @@ function buildNumberRangeValidation(validation, formFieldSelector) {
     };
 }
 
-
+/**
+ * @param {HTMLElement} $validateableElement
+ * @param {string} errorMessage
+ * @returns {Array<object>}
+ */
 function buildValidation($validateableElement, errorMessage) {
     const validation = $validateableElement.dataset.validation;
     const fieldValidations = [];
@@ -148,9 +164,9 @@ function buildValidation($validateableElement, errorMessage) {
 
 /**
  * Builds the validation model for dynamic forms
- * @param $form
- * @param context provides access for error messages on required fields validation
- * @returns {Array}
+ * @param {HTMLElement} $form
+ * @param {object} context provides access for error messages on required fields validation
+ * @returns {Array<object>}
  */
 export default function ($form, context) {
     let validationsToPerform = [];

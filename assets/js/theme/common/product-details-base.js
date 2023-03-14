@@ -16,7 +16,7 @@ const optionsTypesMap = {
     SET_RECTANGLE: 'set-rectangle',
     SET_RADIO: 'set-radio',
     SWATCH: 'swatch',
-    PRODUCT_LIST: 'js-product-list',
+    PRODUCT_LIST: '.js-product-list',
 };
 
 export function optionChangeDecorator(areDefaultOtionsSet) {
@@ -135,7 +135,7 @@ export default class ProductDetailsBase {
      * Since $productView can be dynamically inserted using render_with,
      * We have to retrieve the respective elements
      *
-     * @param $scope
+     * @param {HTMLElement} $scope
      */
     getViewModel($scope) {
         return {
@@ -169,19 +169,19 @@ export default class ProductDetailsBase {
             },
             $weight: q$('.js-product-view-info [data-product-weight]', $scope),
             $increments: q$('.js-form-field-increments :input', $scope),
-            $addToCart: q$('#form-action-add-to-cart', $scope),
+            $addToCart: q$('.js-form-action-add-to-cart', $scope),
             $wishlistVariation: q$('.js-wishlist-add [name="variation_id"]', $scope),
             stock: {
                 $container: q$('.js-form-field-stock', $scope),
                 $input: q$('.js-product-stock', $scope),
             },
             sku: {
-                $label: q$('dt.js-sku-label', $scope),
-                $value: q$('dd.js-product-sku', $scope),
+                $label: q$('.js-sku-label', $scope),
+                $value: q$('.js-product-sku', $scope),
             },
             upc: {
-                $label: q$('dt.js-upc-label', $scope),
-                $value: q$('dd.js-product-upc', $scope),
+                $label: q$('.js-upc-label', $scope),
+                $value: q$('.js-product-upc', $scope),
             },
             quantity: {
                 $text: q$('.js-form-input-increment-total', $scope),
@@ -194,7 +194,7 @@ export default class ProductDetailsBase {
 
     /**
      * Hide the pricing elements that will show up only when the price exists in API
-     * @param viewModel
+     * @param {Object} viewModel
      */
     clearPricingNotFound(viewModel) {
         viewModel.rrpWithTax.$div.style.display = 'none';
@@ -277,7 +277,8 @@ export default class ProductDetailsBase {
 
     /**
      * Update the view of price, messages, SKU and stock options when a product option changes
-     * @param  {Object} data Product attribute data
+     * @param  {Object} viewModel Product attribute data
+     * @param  {Object} price
      */
     updatePriceView(viewModel, price) {
         this.clearPricingNotFound(viewModel);
@@ -344,6 +345,10 @@ export default class ProductDetailsBase {
         }
     }
 
+    /**
+     * Enables/disables by purchasable and instock
+     * @param {Object} data 
+     */
     updateDefaultAttributesForOOS(data) {
         const viewModel = this.getViewModel(this.$scope);
         if (!data.purchasable || !data.instock) {
@@ -355,10 +360,18 @@ export default class ProductDetailsBase {
         }
     }
 
+    /**
+     * @param {Object} data
+     */
     updateWalletButtonsView(data) {
         this.toggleWalletButtonsVisibility(data.purchasable && data.instock);
     }
 
+    /**
+     * Set wallet button visibility
+     *
+     * @param {Boolean} shouldShow 
+     */
     toggleWalletButtonsVisibility(shouldShow) {
         const viewModel = this.getViewModel(this.$scope);
 
@@ -369,6 +382,13 @@ export default class ProductDetailsBase {
         }
     }
 
+    /**
+     * Enables selected attribute
+     *
+     * @param {HTMLElement} $attribute
+     * @param {string} behavior
+     * @param {string} outOfStockMessage
+     */
     enableAttribute($attribute, behavior, outOfStockMessage) {
         if (this.getAttributeType($attribute) === 'set-select') {
             return this.enableSelectOptionAttribute($attribute, behavior, outOfStockMessage);
@@ -381,6 +401,13 @@ export default class ProductDetailsBase {
         }
     }
 
+    /**
+     * Disables selected attributed
+     *
+     * @param {HTMLElement} $attribute
+     * @param {string} behavior
+     * @param {string} outOfStockMessage
+     */
     disableAttribute($attribute, behavior, outOfStockMessage) {
         if (this.getAttributeType($attribute) === 'set-select') {
             return this.disableSelectOptionAttribute($attribute, behavior, outOfStockMessage);
@@ -393,12 +420,26 @@ export default class ProductDetailsBase {
         }
     }
 
+    /**
+     * Gets attribuet from parent
+     *
+     * @param {HTMLElement} $attribute
+     * @returns {Object|null}
+     * @memberof ProductDetailsBase
+     */
     getAttributeType($attribute) {
         const $parent = $attribute.closest('[data-product-attribute]');
 
         return $parent ? $parent.dataset.productAttribute : null;
     }
 
+    /**
+     * Disables Select option attribute
+     *
+     * @param {HTMLElement} $attribute
+     * @param {string} behavior
+     * @param {string} outOfStockMessage
+     */
     disableSelectOptionAttribute($attribute, behavior, outOfStockMessage) {
         const $select = $attribute.parentNode;
 
@@ -414,6 +455,13 @@ export default class ProductDetailsBase {
         }
     }
 
+    /**
+     * Enables select option attribute
+     *
+     * @param {HTMLElement} $attribute
+     * @param {string} behavior
+     * @param {string} outOfStockMessage
+     */
     enableSelectOptionAttribute($attribute, behavior, outOfStockMessage) {
         if (behavior === 'hide_option') {
             toggleOption($attribute, true);
