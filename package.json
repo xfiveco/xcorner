@@ -75,6 +75,10 @@
   "scripts": {
     "build": "npx webpack --config webpack.prod.js",
     "buildDev": "npx webpack --config webpack.dev.js",
+    "createComponent": "node scripts/create-component.js",
+    "createUtility": "node scripts/create-utility.js",
+    "addTemplate": "node scripts/add-template.js",
+    "addCode": "node scripts/add-code.js",
     "lighthouse": "npx lighthouse --config-path=lighthouse-config.js --quiet --output json --chrome-flags=\"--headless\" $URL | jq '.audits | map_values(.rawValue)'",
     "test": "npx jest",
     "stylelint": "npx stylelint **/*.scss",
