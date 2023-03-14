@@ -1,4 +1,4 @@
-import { q$$ } from '../global/selector';
+import { q$$ } from '../global/selector'
 
 /**
  * Visually hides the option from user by moving option to an invisible
@@ -8,53 +8,53 @@ import { q$$ } from '../global/selector';
  * @param {Boolean} show
  */
 export default function toggleOption($element, show) {
-    const currentSelectElement = $element.closest('select'); // the select containing this
-    let disabledSelectElement; // the disabled select element
-    let selectElement; // the real select element
+    const currentSelectElement = $element.closest('select') // the select containing this
+    let disabledSelectElement // the disabled select element
+    let selectElement // the real select element
 
     if (currentSelectElement.matches(':disabled')) {
-        disabledSelectElement = currentSelectElement;
-        selectElement = disabledSelectElement.data?.linkedSelectElement;
+        disabledSelectElement = currentSelectElement
+        selectElement = disabledSelectElement.data?.linkedSelectElement
     } else {
-        selectElement = currentSelectElement;
-        disabledSelectElement = currentSelectElement.data?.linkedSelectElement;
+        selectElement = currentSelectElement
+        disabledSelectElement = currentSelectElement.data?.linkedSelectElement
 
         if (!disabledSelectElement) {
-            const $select = document.createElement('select');
-            $select.setAttribute('disabled', true);
-            $select.style.display = 'none';
-            $select.setAttribute('name', currentSelectElement.getAttribute('name'));
-            $select.data = { linkedSelectElement: selectElement };
+            const $select = document.createElement('select')
+            $select.setAttribute('disabled', true)
+            $select.style.display = 'none'
+            $select.setAttribute('name', currentSelectElement.getAttribute('name'))
+            $select.data = { linkedSelectElement: selectElement }
 
-            selectElement.after($select);
+            selectElement.after($select)
 
             if ('data' in selectElement === false) {
-                selectElement.data = {};
+                selectElement.data = {}
             }
 
-            selectElement.data.linkedSelectElement = disabledSelectElement;
+            selectElement.data.linkedSelectElement = disabledSelectElement
         }
     }
 
     // save the selected option
-    const selectedOption = selectElement.querySelector('option:checked');
+    const selectedOption = selectElement.querySelector('option:checked')
 
     // move the option to the correct select element if required
     if (currentSelectElement.matches(':disabled') && show) {
-        const previousIndex = $element.dataset.index;
-        const $elementNowAtPreviousIndex = selectElement.querySelectorAll('option')[previousIndex];
+        const previousIndex = $element.dataset.index
+        const $elementNowAtPreviousIndex = selectElement.querySelectorAll('option')[previousIndex]
 
         if ($elementNowAtPreviousIndex) {
-            $element.insertBefore($elementNowAtPreviousIndex);
+            $element.insertBefore($elementNowAtPreviousIndex)
         } else {
-            selectElement.append($element);
+            selectElement.append($element)
         }
     } else if (!currentSelectElement.matches(':disabled') && !show) {
         /* eslint-disable no-param-reassign */
-        $element.dataset.index = q$$('option', currentSelectElement).indexOf(this);
-        disabledSelectElement.append($element);
+        $element.dataset.index = q$$('option', currentSelectElement).indexOf(this)
+        disabledSelectElement.append($element)
     }
 
     // make sure the option is still selected
-    selectedOption.setAttribute('selected', true);
+    selectedOption.setAttribute('selected', true)
 }

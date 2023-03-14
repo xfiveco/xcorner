@@ -1,18 +1,18 @@
-import { isBrowserIE } from './ie-helpers';
+import { isBrowserIE } from './ie-helpers'
 
 const bannerUtils = {
     dispatchProductBannerEvent: (productAttributes) => {
-        if (!productAttributes.price || isBrowserIE) return;
+        if (!productAttributes.price || isBrowserIE) return
 
-        let price = 0;
+        let price = 0
 
         if (!productAttributes.price.price_range) {
             if (productAttributes.price.without_tax) {
-                price = productAttributes.price.without_tax.value;
+                price = productAttributes.price.without_tax.value
             }
 
             if (productAttributes.price.with_tax) {
-                price = productAttributes.price.with_tax.value;
+                price = productAttributes.price.with_tax.value
             }
         }
 
@@ -20,10 +20,10 @@ const bannerUtils = {
             detail: {
                 amount: price,
             },
-        });
+        })
 
-        window.dispatchEvent(evt);
+        window.dispatchEvent(evt)
     },
-};
+}
 
-export default bannerUtils;
+export default bannerUtils

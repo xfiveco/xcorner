@@ -1,13 +1,9 @@
-import _ from 'lodash';
-import nod from '../nod';
-import forms from '../models/forms';
-import q$, { parents, q$$ } from '../../global/selector';
+import _ from 'lodash'
+import nod from '../nod'
+import forms from '../models/forms'
+import q$, { parents, q$$ } from '../../global/selector'
 
-const inputTagNames = [
-    'input',
-    'select',
-    'textarea',
-];
+const inputTagNames = ['input', 'select', 'textarea']
 
 /**
  * Set up Object with Error Messages on Password Validation. Please use messages in mentioned order
@@ -22,8 +18,7 @@ export const createPasswordValidationErrorTextObject = (empty, confirm, mismatch
     onConfirmPasswordErrorText: confirm,
     onMismatchPasswordErrorText: mismatch,
     onNotValidPasswordErrorText: invalid,
-});
-
+})
 
 /**
  * Apply class name to an input element on its type
@@ -32,35 +27,35 @@ export const createPasswordValidationErrorTextObject = (empty, confirm, mismatch
  * @return {object} Element itself
  */
 function classifyInput(input, formFieldClass) {
-    const $input = input;
-    const $formField = parents(`.${formFieldClass}`, $input)[0];
+    const $input = input
+    const $formField = parents(`.${formFieldClass}`, $input)[0]
 
     if (!$formField) {
-        return null;
+        return null
     }
 
-    const tagName = $input.tagName.toLowerCase();
+    const tagName = $input.tagName.toLowerCase()
 
-    let className = `${formFieldClass}-${tagName}`;
-    let specificClassName;
+    let className = `${formFieldClass}-${tagName}`
+    let specificClassName
 
     // Input can be text/checkbox/radio etc...
     if (tagName === 'input') {
-        const inputType = $input.getAttribute('type');
+        const inputType = $input.getAttribute('type')
 
         if (['radio', 'checkbox', 'submit'].includes(inputType)) {
             // ie: .form-field-checkbox, .form-field-radio
-            className = `${formFieldClass}-${_.kebabCase(inputType)}`;
+            className = `${formFieldClass}-${_.kebabCase(inputType)}`
         } else {
             // ie: .form-field-input .form-field-inputText
-            specificClassName = `${className}-${_.kebabCase(inputType)}`;
+            specificClassName = `${className}-${_.kebabCase(inputType)}`
         }
     }
 
     // Apply class modifier
-    $formField.classList.add(className, specificClassName);
+    $formField.classList.add(className, specificClassName)
 
-    return $formField;
+    return $formField
 }
 
 /**
@@ -76,7 +71,7 @@ function classifyInput(input, formFieldClass) {
  *     </div>
  * </form>
  *
- * classifyForm('#form', { formFieldClass: 'js-form-field' });
+ * classifyForm('#form', { formFieldClass: 'js-form-field' })
  *
  * // After
  * <div class="js-form-field js-form-field-input js-form-field-input-text">...</div>
@@ -87,18 +82,18 @@ function classifyInput(input, formFieldClass) {
  * @return {HTMLElement} Element itself
  */
 export function classifyForm(formSelector, options = {}) {
-    const $form = q$(formSelector);
-    const $inputs = q$$(inputTagNames.join(', '), $form);
+    const $form = q$(formSelector)
+    const $inputs = q$$(inputTagNames.join(', '), $form)
 
     // Obtain options
-    const { formFieldClass = 'js-form-field' } = options;
+    const { formFieldClass = 'js-form-field' } = options
 
     // Classify each input in a form
-    $inputs.forEach($input => {
-        classifyInput($input, formFieldClass);
-    });
+    $inputs.forEach(($input) => {
+        classifyInput($input, formFieldClass)
+    })
 
-    return $form;
+    return $form
 }
 
 /**
@@ -107,13 +102,13 @@ export function classifyForm(formSelector, options = {}) {
  * @return {string}
  */
 function getFieldId($field) {
-    const fieldId = $field.name.match(/(\[.*\])/);
+    const fieldId = $field.name.match(/(\[.*\])/)
 
     if (fieldId && fieldId.length !== 0) {
-        return fieldId[0];
+        return fieldId[0]
     }
 
-    return '';
+    return ''
 }
 
 /**
@@ -121,9 +116,12 @@ function getFieldId($field) {
  * @param {HTMLElement} $stateField Field object
  */
 function insertStateHiddenField($stateField) {
-    const fieldId = getFieldId($stateField);
+    const fieldId = getFieldId($stateField)
 
-    $stateField.insertAdjacentHTML('beforeend', `<input type='hidden' name='FormFieldIsText${ fieldId }' value='1' />`);
+    $stateField.insertAdjacentHTML(
+        'beforeend',
+        `<input type='hidden' name='FormFieldIsText${fieldId}' value='1' />`,
+    )
 }
 
 /**
@@ -133,18 +131,18 @@ function insertStateHiddenField($stateField) {
  */
 function announceInputErrorMessage({ element, result }) {
     if (result) {
-        return;
+        return
     }
 
-    const activeInputContainer = element.parentNode;
+    const activeInputContainer = element.parentNode
     // the reason for using span tag is nod-validate lib
     // which does not add error message class while initialising form.
     // specific class is added since it can be multiple spans
-    const $errorMessage = activeInputContainer.querySelector('.js-form-inline-message');
+    const $errorMessage = activeInputContainer.querySelector('.js-form-inline-message')
 
     if ($errorMessage) {
         if (!$errorMessage.getAttribute('role')) {
-            $errorMessage.setAttribute('role', 'alert');
+            $errorMessage.setAttribute('role', 'alert')
         }
     }
 }
@@ -161,12 +159,12 @@ const Validators = {
             validator.add({
                 selector: field,
                 validate: (cb, val) => {
-                    const result = forms.email(val);
+                    const result = forms.email(val)
 
-                    cb(result);
+                    cb(result)
                 },
                 errorMessage: errorText,
-            });
+            })
         }
     },
 
@@ -179,65 +177,76 @@ const Validators = {
      * @param {object} errorTextsObject
      * @param isOptional
      */
-    setPasswordValidation: (validator, passwordSelector, password2Selector, requirements, {
-        onEmptyPasswordErrorText, onConfirmPasswordErrorText, onMismatchPasswordErrorText, onNotValidPasswordErrorText,
-    }, isOptional) => {
-        const $password = q$(passwordSelector);
+    setPasswordValidation: (
+        validator,
+        passwordSelector,
+        password2Selector,
+        requirements,
+        {
+            onEmptyPasswordErrorText,
+            onConfirmPasswordErrorText,
+            onMismatchPasswordErrorText,
+            onNotValidPasswordErrorText,
+        },
+        isOptional,
+    ) => {
+        const $password = q$(passwordSelector)
         const passwordValidations = [
             {
                 selector: passwordSelector,
                 validate: (cb, val) => {
-                    const result = val.length;
+                    const result = val.length
 
                     if (isOptional) {
-                        return cb(true);
+                        return cb(true)
                     }
 
-                    cb(result);
+                    cb(result)
                 },
                 errorMessage: onEmptyPasswordErrorText,
             },
             {
                 selector: passwordSelector,
                 validate: (cb, val) => {
-                    const result = val.match(new RegExp(requirements.alpha))
-                        && val.match(new RegExp(requirements.numeric))
-                        && val.length >= requirements.minlength;
+                    const result =
+                        val.match(new RegExp(requirements.alpha)) &&
+                        val.match(new RegExp(requirements.numeric)) &&
+                        val.length >= requirements.minlength
 
                     // If optional and nothing entered, it is valid
                     if (isOptional && val.length === 0) {
-                        return cb(true);
+                        return cb(true)
                     }
 
-                    cb(result);
+                    cb(result)
                 },
                 errorMessage: onNotValidPasswordErrorText,
             },
             {
                 selector: password2Selector,
                 validate: (cb, val) => {
-                    const result = val.length;
+                    const result = val.length
 
                     if (isOptional) {
-                        return cb(true);
+                        return cb(true)
                     }
 
-                    cb(result);
+                    cb(result)
                 },
                 errorMessage: onConfirmPasswordErrorText,
             },
             {
                 selector: password2Selector,
                 validate: (cb, val) => {
-                    const result = val === $password.value;
+                    const result = val === $password.value
 
-                    cb(result);
+                    cb(result)
                 },
                 errorMessage: onMismatchPasswordErrorText,
             },
-        ];
+        ]
 
-        validator.add(passwordValidations);
+        validator.add(passwordValidations)
     },
 
     /**
@@ -257,52 +266,58 @@ const Validators = {
             formSelector,
             maxPriceSelector,
             minPriceSelector,
-        } = selectors;
+        } = selectors
 
         // eslint-disable-next-line object-curly-newline
-        const { onMinPriceError, onMaxPriceError, minPriceNotEntered, maxPriceNotEntered, onInvalidPrice } = priceValidationErrorTexts;
+        const {
+            onMinPriceError,
+            onMaxPriceError,
+            minPriceNotEntered,
+            maxPriceNotEntered,
+            onInvalidPrice,
+        } = priceValidationErrorTexts
 
         validator.configure({
             form: formSelector,
             preventSubmit: true,
             successClass: '_', // KLUDGE: Don't apply success class
-        });
+        })
 
         validator.add({
             errorMessage: onMinPriceError,
             selector: minPriceSelector,
             validate: `min-max:${minPriceSelector}:${maxPriceSelector}`,
-        });
+        })
 
         validator.add({
             errorMessage: onMaxPriceError,
             selector: maxPriceSelector,
             validate: `min-max:${minPriceSelector}:${maxPriceSelector}`,
-        });
+        })
 
         validator.add({
             errorMessage: maxPriceNotEntered,
             selector: maxPriceSelector,
             validate: 'presence',
-        });
+        })
 
         validator.add({
             errorMessage: minPriceNotEntered,
             selector: minPriceSelector,
             validate: 'presence',
-        });
+        })
 
         validator.add({
             errorMessage: onInvalidPrice,
             selector: [minPriceSelector, maxPriceSelector],
             validate: 'min-number:0',
-        });
+        })
 
         validator.setMessageOptions({
             selector: [minPriceSelector, maxPriceSelector],
             parent: fieldsetSelector,
             errorSpan: errorSelector,
-        });
+        })
     },
 
     /**
@@ -317,7 +332,7 @@ const Validators = {
                 selector: field,
                 validate: 'presence',
                 errorMessage: errorText,
-            });
+            })
         }
     },
 
@@ -326,14 +341,14 @@ const Validators = {
      * @param field
      */
     cleanUpStateValidation: (field) => {
-        const $fieldClassElement = q$((`[data-type="${field.dataset.fieldType}"]`));
+        const $fieldClassElement = q$(`[data-type="${field.dataset.fieldType}"]`)
 
         Object.keys(nod.classes).forEach((value) => {
             if ($fieldClassElement.classList.contains(nod.classes[value])) {
-                $fieldClassElement.classList.remove(nod.classes[value]);
+                $fieldClassElement.classList.remove(nod.classes[value])
             }
-        });
+        })
     },
-};
+}
 
-export { Validators, insertStateHiddenField, announceInputErrorMessage };
+export { Validators, insertStateHiddenField, announceInputErrorMessage }

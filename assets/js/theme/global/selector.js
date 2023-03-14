@@ -7,7 +7,7 @@
  * @returns $DOMElement
  */
 export default function q$(selector, $context = null) {
-    return ($context || document).querySelector(selector);
+    return ($context || document).querySelector(selector)
 }
 
 /**
@@ -19,7 +19,7 @@ export default function q$(selector, $context = null) {
  * @returns Array[DOMElement]
  */
 export function q$$(selector, $context = null) {
-    return Array.from(($context || document).querySelectorAll(selector));
+    return Array.from(($context || document).querySelectorAll(selector))
 }
 
 /**
@@ -32,18 +32,18 @@ export function q$$(selector, $context = null) {
  * @returns Array<DOMElement>
  */
 export function parents(selector, $context) {
-    const elements = [];
-    let elem = $context;
-    const ishaveselector = selector !== undefined;
+    const elements = []
+    let elem = $context
+    const ishaveselector = selector !== undefined
 
     /* eslint-disable no-cond-assign */
     while ((elem = elem.parentElement) !== null) {
         if (!ishaveselector || elem.matches(selector)) {
-            elements.push(elem);
+            elements.push(elem)
         }
     }
 
-    return elements;
+    return elements
 }
 
 /**
@@ -55,20 +55,20 @@ export function parents(selector, $context) {
  */
 export function prev($currentElement = null, selector) {
     if ($currentElement === null) {
-        return null;
+        return null
     }
 
-    let $element = $currentElement.previousElementSibling;
+    let $element = $currentElement.previousElementSibling
 
     while ($element !== null) {
-        const $found = $element.matches(selector) ? $element : null;
+        const $found = $element.matches(selector) ? $element : null
 
         if ($found) {
-            return $found;
+            return $found
         }
 
-        $element = $element.previousElementSibling;
+        $element = $element.previousElementSibling
     }
 
-    return null;
+    return null
 }

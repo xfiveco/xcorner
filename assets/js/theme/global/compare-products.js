@@ -1,73 +1,71 @@
-import trigger from '../common/utils/trigger';
-import { showAlertModal } from './modal';
-import q$, { q$$ } from './selector';
+import trigger from '../common/utils/trigger'
+import { showAlertModal } from './modal'
+import q$, { q$$ } from './selector'
 
 function decrementCounter(counter, item) {
-    const index = counter.indexOf(item);
+    const index = counter.indexOf(item)
 
     if (index > -1) {
-        counter.splice(index, 1);
+        counter.splice(index, 1)
     }
 }
 
 function incrementCounter(counter, item) {
-    counter.push(item);
+    counter.push(item)
 }
 
 function updateCounterNav(counter, $link, urls) {
     if (counter.length !== 0) {
         if (!($link.offsetWidth > 0 && $link.offsetHeight > 0)) {
-            $link.classList.add('show');
+            $link.classList.add('show')
         }
 
         /* eslint-disable no-param-reassign */
-        $link.href = `${urls.compare}/${counter.join('/')}`;
+        $link.href = `${urls.compare}/${counter.join('/')}`
 
         /* eslint-disable no-param-reassign */
-        $link
-            .querySelector('span.js-count-pill')
-            .innerHTML = counter.length;
+        $link.querySelector('span.js-count-pill').innerHTML = counter.length
     } else {
-        $link.classList.remove('show');
+        $link.classList.remove('show')
     }
 }
 
 export default function ({ noCompareMessage, urls }) {
-    let compareCounter = [];
+    let compareCounter = []
 
-    const $compareLink = q$('a.js-compare-nav');
+    const $compareLink = q$('a.js-compare-nav')
 
     q$('body').addEventListener('compare-reset', () => {
-        const $checked = q$$('input[name="products\[\]"]:checked', q$('body'));
+        const $checked = q$$('input[name="products[]"]:checked', q$('body'))
 
-        compareCounter = $checked.length ? $checked.map(element => element.value) : [];
-        updateCounterNav(compareCounter, $compareLink, urls);
-    });
+        compareCounter = $checked.length ? $checked.map((element) => element.value) : []
+        updateCounterNav(compareCounter, $compareLink, urls)
+    })
 
-    trigger(q$('body'), 'compare-reset');
+    trigger(q$('body'), 'compare-reset')
 
     /* eslint-disable no-unused-expressions */
-    q$$('[data-compare-id]').forEach($compare => {
-        $compare.addEventListener('click', event => {
-            const product = event.currentTarget.value;
-            const $clickedCompareLink = q$('a.js-compare-nav');
+    q$$('[data-compare-id]').forEach(($compare) => {
+        $compare.addEventListener('click', (event) => {
+            const product = event.currentTarget.value
+            const $clickedCompareLink = q$('a.js-compare-nav')
 
             if (event.currentTarget.checked) {
-                incrementCounter(compareCounter, product);
+                incrementCounter(compareCounter, product)
             } else {
-                decrementCounter(compareCounter, product);
+                decrementCounter(compareCounter, product)
             }
 
-            updateCounterNav(compareCounter, $clickedCompareLink, urls);
-        });
-    });
+            updateCounterNav(compareCounter, $clickedCompareLink, urls)
+        })
+    })
 
     q$('a.js-compare-nav').addEventListener('click', () => {
-        const $clickedCheckedInput = q$$('input[name="products\[\]"]:checked', q$('body'));
+        const $clickedCheckedInput = q$$('input[name="products[]"]:checked', q$('body'))
 
         if ($clickedCheckedInput.length <= 1) {
-            showAlertModal(noCompareMessage);
-            return false;
+            showAlertModal(noCompareMessage)
+            return false
         }
-    });
+    })
 }

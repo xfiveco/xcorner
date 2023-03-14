@@ -1,9 +1,9 @@
 // Import Swiper and modules
-import Swiper, { Navigation } from 'swiper';
+import Swiper, { Navigation } from 'swiper'
 
 /* eslint-disable import/no-unresolved, import/extensions */
-import 'swiper/scss';
-import 'swiper/scss/navigation';
+import 'swiper/scss'
+import 'swiper/scss/navigation'
 /* eslint-enable import/no-unresolved, import/extensions */
 
 const productCarouselParams = {
@@ -30,7 +30,7 @@ const productCarouselParams = {
             slidesPerView: 3,
         },
     },
-};
+}
 
 const carouselParams = {
     direction: 'horizontal',
@@ -47,20 +47,20 @@ const carouselParams = {
         nextEl: '.js-swiper-btn-next',
         prevEl: '.js-swiper-btn-prev',
     },
-};
+}
 
 // Create a new Product Swiper instance
-const productSwiper = new Swiper('.js-product-swiper', productCarouselParams);
+const productSwiper = new Swiper('.js-product-swiper', productCarouselParams)
 
 // Create a new Carousel Swiper instance
-const carouselSwiper = new Swiper('.js-swiper', carouselParams);
+const carouselSwiper = new Swiper('.js-swiper', carouselParams)
 
 // Initiliaze Swiper instance
 export const initializeProductSwiperCarousel = () => {
-    productSwiper.initialize();
-};
+    productSwiper.initialize()
+}
 
 // Initiliaze Swiper instance
 export const initializeCarouselSwiperCarousel = () => {
-    carouselSwiper.initialize();
-};
+    carouselSwiper.initialize()
+}
