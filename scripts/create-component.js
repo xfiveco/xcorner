@@ -1,6 +1,6 @@
 const fs =  require('node:fs');
 
-const PATH = './assets/scss/components/';
+const PATH = './assets/scss/components';
 
 const [, , componentName] = process.argv;
 
