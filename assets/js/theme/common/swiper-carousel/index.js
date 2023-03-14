@@ -4,6 +4,7 @@ import Swiper, { Navigation } from 'swiper';
 /* eslint-disable import/no-unresolved, import/extensions */
 import 'swiper/scss';
 import 'swiper/scss/navigation';
+/* eslint-enable import/no-unresolved, import/extensions */
 
 const productCarouselParams = {
     direction: 'horizontal',

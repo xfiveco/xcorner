@@ -12,7 +12,7 @@ footer {
     @include bp(medium) {
         section {
             display: grid;
-            gap: remCalc(10.5);
+            gap: remcalc(10.5);
             grid-template-columns: 1fr 1fr 1fr auto;
         }
     }

@@ -3,7 +3,7 @@
 // ==========================================================================
 
 @function bp-val($name) {
-    @if type-of($name) == "number" {
+    @if type-of($name) == 'number' {
         @return $name;
     }
 
@@ -25,6 +25,7 @@
     }
 
     $next-key: nth($breakpoint-names, $n + 1);
+
     @return map-get($breakpoints, $next-key);
 }
 
@@ -45,7 +46,7 @@
 }
 
 @mixin bp-only($name) {
-    @if type-of($name) == "number" {
+    @if type-of($name) == 'number' {
         @error "#{$name} should be breakpoint name";
     }
 

@@ -63,7 +63,7 @@
     "lodash-webpack-plugin": "^0.11.6",
     "prettier": "2.8.4",
     "stylelint": "^13.9.0",
-    "stylelint-config-sass-guidelines": "^7.1.0",
+    "stylelint-config-chisel": "^1.0.0",
     "stylelint-scss": "^3.18.0",
     "time-grunt": "^1.2.2",
     "url": "^0.11.0",
