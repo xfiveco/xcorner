@@ -1,2 +1,4 @@
 # Ignore artifacts:
 /assets/dist
+
+*.json
