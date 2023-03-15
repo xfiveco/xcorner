@@ -9,10 +9,10 @@ import q$ from './global/selector'
 
 export default class Auth extends PageManager {
     constructor(context) {
-        super(context)
-        this.validationDictionary = createTranslationDictionary(context)
-        this.formCreateSelector = 'form.js-create-account-form'
-        this.recaptcha = q$('.g-recaptcha iframe[src]')
+        super(context);
+        this.validationDictionary = createTranslationDictionary(context);
+        this.formCreateSelector = '.js-create-account-form';
+        this.recaptcha = q$('.g-recaptcha iframe[src]');
     }
 
     registerLoginValidation($loginForm) {
