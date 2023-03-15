@@ -21,7 +21,7 @@ export default class ShippingEstimator {
     initFormValidation() {
         const shippingEstimatorAlert = q$('.js-shipping-quotes')
 
-        this.shippingEstimator = 'form.js-shipping-estimator'
+        this.shippingEstimator = '.js-shipping-estimator';
         this.shippingValidator = nod({
             submit: `${this.shippingEstimator} .js-shipping-estimate-submit`,
             tap: announceInputErrorMessage,

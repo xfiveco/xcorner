@@ -14,7 +14,7 @@ describe.skip('Modal', () => {
 
     beforeEach(() => {
         $element = attachHtml(`
-            <div id="modal" class="modal" data-reveal>
+            <div class="js-modal" data-reveal>
                 <button class="modal-close" type="button">
                     <span aria-hidden="true">&#215;</span>
                 </button>
@@ -131,7 +131,7 @@ describe.skip('Modal', () => {
             beforeEach(() => {
                 $element.remove();
                 $element = attachHtml(`
-                    <div id="modal" class="modal" data-reveal>
+                    <div class="js-modal" data-reveal>
                         <div class="modal-header"></div>
                         <div class="js-modal-body"></div>
                     </div>

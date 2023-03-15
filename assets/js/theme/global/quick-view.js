@@ -34,7 +34,7 @@ export default function func(context) {
 
                 modal.updateContent(response)
 
-                q$('#modal .js-dropdown-menu').addEventListener('opened.fndtn.dropdown', handleDropdownExpand)
+                q$('.js-modal .js-dropdown-menu').addEventListener('opened.fndtn.dropdown', handleDropdownExpand)
                 modal.$content.querySelector('.js-product-view')?.classList.add('is-product-view-quick-view')
 
                 const $productCarousel = modal.$content.querySelector('.js-product-swiper')

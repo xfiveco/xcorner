@@ -24,7 +24,9 @@ function updateCounterNav(counter, $link, urls) {
         $link.href = `${urls.compare}/${counter.join('/')}`
 
         /* eslint-disable no-param-reassign */
-        $link.querySelector('span.js-count-pill').innerHTML = counter.length
+        $link
+            .querySelector('.js-count-pill')
+            .innerHTML = counter.length;
     } else {
         $link.classList.remove('show')
     }

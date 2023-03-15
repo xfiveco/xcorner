@@ -310,14 +310,14 @@ export default function modalFactory(selector = '.js-reveal', options = {}) {
  * Return the default page modal
  */
 export function defaultModal() {
-    return modalFactory('#modal')
+    return modalFactory('.js-modal');
 }
 
 /*
  * Return the default alert modal
  */
 export function alertModal() {
-    return modalFactory('#alert-modal')
+    return modalFactory('.js-alert-modal');
 }
 
 /*

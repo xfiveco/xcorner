@@ -36,9 +36,9 @@ export default class {
      * The browser jumps to the review page and should expand the reviews section
      */
     initLinkBind() {
-        const $productReviewLink = q$('#product-review-link')
+        const $productReviewLink = q$('.js-product-review-link')
 
-        $productReviewLink.href = `${$productReviewLink.href}${window.location.search}#product-reviews`
+        $productReviewLink.href = `${$productReviewLink.href}${window.location.search}.#product-reviews`
         $productReviewLink.addEventListener('click', () => this.expandReviews())
     }
 

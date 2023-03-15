@@ -45,10 +45,10 @@ export default class GiftCertificate extends PageManager {
             },
         }
 
-        const $purchaseForm = q$('#gift-certificate-form')
+        const $purchaseForm = q$('.js-gift-certificate-form')
         const $customAmounts = $purchaseForm?.querySelector('input[name="certificate_amount"]')
         const purchaseValidator = nod({
-            submit: '#gift-certificate-form [type="submit"]',
+            submit: '.js-gift-certificate-form [type="submit"]',
             delay: 300,
             tap: announceInputErrorMessage,
         })
@@ -71,7 +71,7 @@ export default class GiftCertificate extends PageManager {
             }
 
             purchaseValidator.add({
-                selector: '#gift-certificate-form input[name="certificate_amount"]',
+                selector: '.js-gift-certificate-form input[name="certificate_amount"]',
                 validate: (cb, val) => {
                     const numberVal = Number(val)
 
@@ -87,7 +87,7 @@ export default class GiftCertificate extends PageManager {
 
         purchaseValidator.add([
             {
-                selector: '#gift-certificate-form input[name="to_name"]',
+                selector: '.js-gift-certificate-form input[name="to_name"]',
                 validate: (cb, val) => {
                     const result = purchaseModel.recipientName(val)
 
@@ -96,7 +96,7 @@ export default class GiftCertificate extends PageManager {
                 errorMessage: this.context.toName,
             },
             {
-                selector: '#gift-certificate-form input[name="to_email"]',
+                selector: '.js-gift-certificate-form input[name="to_email"]',
                 validate: (cb, val) => {
                     const result = purchaseModel.recipientEmail(val)
 
@@ -105,7 +105,7 @@ export default class GiftCertificate extends PageManager {
                 errorMessage: this.context.toEmail,
             },
             {
-                selector: '#gift-certificate-form input[name="from_name"]',
+                selector: '.js-gift-certificate-form input[name="from_name"]',
                 validate: (cb, val) => {
                     const result = purchaseModel.senderName(val)
 
@@ -114,7 +114,7 @@ export default class GiftCertificate extends PageManager {
                 errorMessage: this.context.fromName,
             },
             {
-                selector: '#gift-certificate-form input[name="from_email"]',
+                selector: '.js-gift-certificate-form input[name="from_email"]',
                 validate: (cb, val) => {
                     const result = purchaseModel.senderEmail(val)
 
@@ -123,8 +123,8 @@ export default class GiftCertificate extends PageManager {
                 errorMessage: this.context.fromEmail,
             },
             {
-                selector: '#gift-certificate-form input[name="certificate_theme"]:first-of-type',
-                triggeredBy: '#gift-certificate-form input[name="certificate_theme"]',
+                selector: '.js-gift-certificate-form input[name="certificate_theme"]:first-of-type',
+                triggeredBy: '.js-gift-certificate-form input[name="certificate_theme"]',
                 validate: (cb) => {
                     const val = $purchaseForm.querySelector('input[name="certificate_theme"]:checked')?.value
 
@@ -133,7 +133,7 @@ export default class GiftCertificate extends PageManager {
                 errorMessage: this.context.certTheme,
             },
             {
-                selector: '#gift-certificate-form input[name="agree"]',
+                selector: '.js-gift-certificate-form input[name="agree"]',
                 validate: (cb) => {
                     const val = $purchaseForm.querySelector('input[name="agree"]').checked
 
@@ -142,7 +142,7 @@ export default class GiftCertificate extends PageManager {
                 errorMessage: this.context.agreeToTerms,
             },
             {
-                selector: '#gift-certificate-form input[name="agree2"]',
+                selector: '.js-gift-certificate-form input[name="agree2"]',
                 validate: (cb) => {
                     const val = $purchaseForm.querySelector('input[name="agree2"]').checked
 
