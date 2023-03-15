@@ -1,4 +1,4 @@
-import BaseHooks from './base';
+import BaseHooks from './base'
 
 export default class extends BaseHooks {
     /**
@@ -6,14 +6,14 @@ export default class extends BaseHooks {
      */
     constructor() {
         // call parent
-        super();
+        super()
 
-        this.quickSearch();
+        this.quickSearch()
     }
 
     quickSearch() {
         this.subscribe('input', '.js-search-quick', (event, target) => {
-            this.emit('search-quick', event, target);
-        });
+            this.emit('search-quick', event, target)
+        })
     }
 }

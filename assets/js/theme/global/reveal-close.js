@@ -1,44 +1,44 @@
-const revealCloseAttr = 'revealClose';
-const revealCloseSelector = `.js-reveal-close`;
-const revealSelector = '.js-reveal';
-import q$, { q$$, parents } from './selector';
+const revealCloseAttr = 'revealClose'
+const revealCloseSelector = `.js-reveal-close`
+const revealSelector = '.js-reveal'
+import q$, { q$$, parents } from './selector'
 
 class RevealClose {
     constructor($button) {
-        this.$button = $button;
-        this.modalId = $button.dataset.revealCloseAttr;
+        this.$button = $button
+        this.modalId = $button.dataset.revealCloseAttr
 
-        this.onClick = this.onClick.bind(this);
+        this.onClick = this.onClick.bind(this)
 
-        this.bindEvents();
+        this.bindEvents()
     }
 
     get modal() {
-        let $modal;
+        let $modal
 
         if (this.modalId) {
-            $modal = q$(`#${this.modalId}`);
+            $modal = q$(`#${this.modalId}`)
         } else {
-            $modal = parents(revealSelector, this.$button)[0];
+            $modal = parents(revealSelector, this.$button)[0]
         }
-        return $modal.data.modalInstance;
+        return $modal.data.modalInstance
     }
 
     bindEvents() {
-        this.$button.addEventListener('click', this.onClick);
+        this.$button.addEventListener('click', this.onClick)
     }
 
     unbindEvents() {
-        this.$button.removeEventListener('click', this.onClick);
+        this.$button.removeEventListener('click', this.onClick)
     }
 
     onClick(event) {
-        const { modal } = this;
+        const { modal } = this
 
         if (modal) {
-            event.preventDefault();
+            event.preventDefault()
 
-            modal.close();
+            modal.close()
         }
     }
 }
@@ -57,25 +57,25 @@ class RevealClose {
  * <button data-reveal-close="helloModal">Continue</button>
  */
 export default function revealCloseFactory(selector = revealCloseSelector, options = {}) {
-    const $buttons = q$$(selector, options.$context);
+    const $buttons = q$$(selector, options.$context)
 
-    return $buttons.map(element => {
-        const $button = element;
-        const instanceKey = `${revealCloseAttr}Instance`;
-        const cachedButton = 'data' in $button ? $button.data[instanceKey] : null;
+    return $buttons.map((element) => {
+        const $button = element
+        const instanceKey = `${revealCloseAttr}Instance`
+        const cachedButton = 'data' in $button ? $button.data[instanceKey] : null
 
         if (cachedButton instanceof RevealClose) {
-            return cachedButton;
+            return cachedButton
         }
 
-        const button = new RevealClose($button);
+        const button = new RevealClose($button)
 
         if ('data' in $button === false) {
-            $button.data = {};
+            $button.data = {}
         }
 
-        $button.data[instanceKey] = button;
+        $button.data[instanceKey] = button
 
-        return button;
-    });
+        return button
+    })
 }

@@ -1,4 +1,4 @@
-import BaseHooks from './base';
+import BaseHooks from './base'
 
 export default class extends BaseHooks {
     /**
@@ -6,18 +6,18 @@ export default class extends BaseHooks {
      */
     constructor() {
         // call parent
-        super();
+        super()
 
-        this.searchEvents();
+        this.searchEvents()
     }
 
     searchEvents() {
         this.subscribe('click', '.js-faceted-search-facet', (event, target) => {
-            this.emit('faceted-search-facet-clicked', event, target);
-        });
+            this.emit('faceted-search-facet-clicked', event, target)
+        })
 
         this.subscribe('submit', '.js-faceted-search-range', (event, target) => {
-            this.emit('faceted-search-range-submitted', event, target);
-        });
+            this.emit('faceted-search-range-submitted', event, target)
+        })
     }
 }

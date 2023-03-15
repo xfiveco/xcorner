@@ -1,35 +1,35 @@
-import trigger from './trigger';
+import trigger from './trigger'
 
 const urlUtils = {
     getUrl: () => `${window.location.pathname}${window.location.search}`,
 
     goToUrl: (url) => {
-        window.history.pushState({}, document.title, url);
-        trigger(window, 'statechange');
+        window.history.pushState({}, document.title, url)
+        trigger(window, 'statechange')
     },
 
     replaceParams: (url, params) => {
-        const parsed = urlUtils.parse(url);
-        const urlQuery = new URLSearchParams(parsed.searchParams);
-        let param;
+        const parsed = urlUtils.parse(url)
+        const urlQuery = new URLSearchParams(parsed.searchParams)
+        let param
 
         // Let the formatter use the query object to build the new url
-        parsed.search = null;
+        parsed.search = null
 
         for (param in params) {
             if (params.hasOwnProperty(param)) {
-                urlQuery.set(param, params[param]);
+                urlQuery.set(param, params[param])
             }
         }
 
-        urlUtils.goToUrl(new URL(`${ parsed.origin }${ parsed.pathname }?${ urlQuery }`));
+        urlUtils.goToUrl(new URL(`${parsed.origin}${parsed.pathname}?${urlQuery}`))
     },
 
     parse: (urlString) => {
-        const url = new URL(urlString);
+        const url = new URL(urlString)
 
-        return url;
+        return url
     },
-};
+}
 
-export default urlUtils;
+export default urlUtils

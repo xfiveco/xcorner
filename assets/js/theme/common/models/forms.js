@@ -1,7 +1,7 @@
 const forms = {
     email(value) {
-        const re = /^\S+@\S+\.\S+/;
-        return re.test(value);
+        const re = /^\S+@\S+\.\S+/
+        return re.test(value)
     },
 
     /**
@@ -10,7 +10,7 @@ const forms = {
      * @returns {boolean}
      */
     password(value) {
-        return this.notEmpty(value);
+        return this.notEmpty(value)
     },
 
     /**
@@ -20,7 +20,7 @@ const forms = {
      *
      */
     notEmpty(value) {
-        return value.length > 0;
+        return value.length > 0
     },
 
     /**
@@ -30,8 +30,8 @@ const forms = {
      *
      */
     numbersOnly(value) {
-        const re = /^\d+$/;
-        return re.test(value);
+        const re = /^\d+$/
+        return re.test(value)
     },
 
     /**
@@ -42,10 +42,10 @@ const forms = {
      *
      */
     validateIncreaseAgainstMaxBoundary(value, max) {
-        const raise = value + 1;
+        const raise = value + 1
 
-        if (!max || raise <= max) return raise;
-        return value;
+        if (!max || raise <= max) return raise
+        return value
     },
 
     /**
@@ -56,11 +56,11 @@ const forms = {
      *
      */
     validateDecreaseAgainstMinBoundary(value, min) {
-        const decline = value - 1;
+        const decline = value - 1
 
-        if (!min || decline >= min) return decline;
-        return value;
+        if (!min || decline >= min) return decline
+        return value
     },
-};
+}
 
-export default forms;
+export default forms

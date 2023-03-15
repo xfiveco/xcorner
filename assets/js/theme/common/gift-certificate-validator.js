@@ -3,11 +3,11 @@
  * @param {string} cert
  * @returns {Boolean}
  */
-export default function (cert) {
+export default function checkCert(cert) {
     if (typeof cert !== 'string' || cert.length === 0) {
-        return false;
+        return false
     }
 
     // Add any custom gift certificate validation logic here
-    return true;
+    return true
 }

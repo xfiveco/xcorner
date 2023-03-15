@@ -1,9 +1,9 @@
-import Wishlist from '../wishlist';
-import { initRadioOptions } from './aria';
-import toggleOption from './select-option-plugin';
-import q$, { q$$ } from '../global/selector';
-import trigger from './utils/trigger';
-import isVisible from './utils/is-visible';
+import Wishlist from '../wishlist'
+import { initRadioOptions } from './aria'
+import toggleOption from './select-option-plugin'
+import q$, { q$$ } from '../global/selector'
+import trigger from './utils/trigger'
+import isVisible from './utils/is-visible'
 
 const optionsTypesMap = {
     INPUT_FILE: 'input-file',
@@ -17,46 +17,47 @@ const optionsTypesMap = {
     SET_RADIO: 'set-radio',
     SWATCH: 'swatch',
     PRODUCT_LIST: '.js-product-list',
-};
+}
 
 export function optionChangeDecorator(areDefaultOtionsSet) {
     return (err, response) => {
-        const attributesData = response.data || {};
-        const attributesContent = response.content || {};
+        const attributesData = response.data || {}
+        const attributesContent = response.content || {}
 
-        this.updateProductAttributes(attributesData);
+        this.updateProductAttributes(attributesData)
         if (areDefaultOtionsSet) {
-            this.updateView(attributesData, attributesContent);
+            this.updateView(attributesData, attributesContent)
         } else {
-            this.updateDefaultAttributesForOOS(attributesData);
+            this.updateDefaultAttributesForOOS(attributesData)
         }
-    };
+    }
 }
 
 export default class ProductDetailsBase {
     constructor($scope, context) {
-        this.$scope = $scope;
-        this.context = context;
-        this.initRadioAttributes();
-        Wishlist.load(this.context);
-        this.getTabRequests();
+        this.$scope = $scope
+        this.context = context
+        this.initRadioAttributes()
+        Wishlist.load(this.context)
+        this.getTabRequests()
 
-        q$$('[data-product-attribute]').forEach(value => {
-            const type = value.dataset.productAttribute;
+        q$$('[data-product-attribute]').forEach((value) => {
+            const type = value.dataset.productAttribute
 
-            this._makeProductVariantAccessible(value, type);
-        });
+            this._makeProductVariantAccessible(value, type)
+        })
     }
 
     _makeProductVariantAccessible(variantDomNode, variantType) {
         switch (variantType) {
-        case optionsTypesMap.SET_RADIO:
-        case optionsTypesMap.SWATCH: {
-            initRadioOptions(q$(variantDomNode), '[type=radio]');
-            break;
-        }
+            case optionsTypesMap.SET_RADIO:
+            case optionsTypesMap.SWATCH: {
+                initRadioOptions(q$(variantDomNode), '[type=radio]')
+                break
+            }
 
-        default: break;
+            default:
+                break
         }
     }
 
@@ -64,26 +65,26 @@ export default class ProductDetailsBase {
      * Allow radio buttons to get deselected
      */
     initRadioAttributes() {
-        q$$('[data-product-attribute] input[type="radio"]', this.$scope).forEach($radio => {
+        q$$('[data-product-attribute] input[type="radio"]', this.$scope).forEach(($radio) => {
             // Only bind to click once
             if ($radio.dataset.state !== undefined) {
                 $radio.addEventListener('click', () => {
                     if ($radio.dataset.state === true) {
                         /* eslint-disable no-param-reassign */
-                        $radio.checked = false;
-                        $radio.dataset.state = false;
+                        $radio.checked = false
+                        $radio.dataset.state = false
 
-                        trigger($radio, 'change');
+                        trigger($radio, 'change')
                     } else {
-                        $radio.dataset.state = true;
+                        $radio.dataset.state = true
                     }
 
-                    this.initRadioAttributes();
-                });
+                    this.initRadioAttributes()
+                })
             }
 
-            $radio.dataset.state = $radio.checked;
-        });
+            $radio.dataset.state = $radio.checked
+        })
     }
 
     /**
@@ -91,23 +92,23 @@ export default class ProductDetailsBase {
      * @param  {Object} data Product attribute data
      */
     updateProductAttributes(data) {
-        const behavior = data.out_of_stock_behavior;
-        const inStockIds = data.in_stock_attributes;
-        const outOfStockMessage = ` (${data.out_of_stock_message})`;
+        const behavior = data.out_of_stock_behavior
+        const inStockIds = data.in_stock_attributes
+        const outOfStockMessage = ` (${data.out_of_stock_message})`
 
         if (behavior !== 'hide_option' && behavior !== 'label_option') {
-            return;
+            return
         }
 
-        q$$('[data-product-attribute-value]', this.$scope).forEach($attribute => {
-            const attrId = parseInt($attribute.dataset.productAttributeValue, 10);
+        q$$('[data-product-attribute-value]', this.$scope).forEach(($attribute) => {
+            const attrId = parseInt($attribute.dataset.productAttributeValue, 10)
 
             if (inStockIds.indexOf(attrId) !== -1) {
-                this.enableAttribute($attribute, behavior, outOfStockMessage);
+                this.enableAttribute($attribute, behavior, outOfStockMessage)
             } else {
-                this.disableAttribute($attribute, behavior, outOfStockMessage);
+                this.disableAttribute($attribute, behavior, outOfStockMessage)
             }
-        });
+        })
     }
 
     /**
@@ -115,18 +116,18 @@ export default class ProductDetailsBase {
      */
     getTabRequests() {
         if (window.location.hash && window.location.hash.indexOf('#tab-') === 0) {
-            const $activeTab = q$$('.js-tabs').filter($tab => $tab.matches(`[href='${window.location.hash}']`));
-            const $tabContent = q$(`${window.location.hash}`);
+            const $activeTab = q$$('.js-tabs').filter(($tab) => $tab.matches(`[href='${window.location.hash}']`))
+            const $tabContent = q$(`${window.location.hash}`)
 
             if ($activeTab.length > 0) {
-                const $tab = $activeTab[0].querySelector('.js-tab');
+                const $tab = $activeTab[0].querySelector('.js-tab')
 
-                $tab.addClass.classList.removeClass('is-active');
-                $tab.matches(`[href='${window.location.hash}']`);
-                $tab.classList.add('is-active');
+                $tab.addClass.classList.removeClass('is-active')
+                $tab.matches(`[href='${window.location.hash}']`)
+                $tab.classList.add('is-active')
 
-                $tabContent.classList.add('is-active');
-                $tabContent.children.forEach($child => $child.classList.remove('is-active'));
+                $tabContent.classList.add('is-active')
+                $tabContent.children.forEach(($child) => $child.classList.remove('is-active'))
             }
         }
     }
@@ -189,7 +190,7 @@ export default class ProductDetailsBase {
             },
             $bulkPricing: q$('.js-product-view-info-bulk-pricing', $scope),
             $walletButtons: q$('.js-add-to-cart-wallet-buttons', $scope),
-        };
+        }
     }
 
     /**
@@ -197,13 +198,13 @@ export default class ProductDetailsBase {
      * @param {Object} viewModel
      */
     clearPricingNotFound(viewModel) {
-        viewModel.rrpWithTax.$div.style.display = 'none';
-        viewModel.rrpWithoutTax.$div.style.display = 'none';
-        viewModel.nonSaleWithTax.$div.style.display = 'none';
-        viewModel.nonSaleWithoutTax.$div.style.display = 'none';
-        viewModel.priceSaved.$div.style.display = 'none';
-        viewModel.priceNowLabel.$span.style.display = 'none';
-        viewModel.priceLabel.$span.style.display = 'none';
+        viewModel.rrpWithTax.$div.style.display = 'none'
+        viewModel.rrpWithoutTax.$div.style.display = 'none'
+        viewModel.nonSaleWithTax.$div.style.display = 'none'
+        viewModel.nonSaleWithoutTax.$div.style.display = 'none'
+        viewModel.priceSaved.$div.style.display = 'none'
+        viewModel.priceNowLabel.$span.style.display = 'none'
+        viewModel.priceLabel.$span.style.display = 'none'
     }
 
     /**
@@ -211,67 +212,67 @@ export default class ProductDetailsBase {
      * @param  {Object} data Product attribute data
      */
     updateView(data, content = null) {
-        const viewModel = this.getViewModel(this.$scope);
+        const viewModel = this.getViewModel(this.$scope)
 
-        this.showMessageBox(data.stock_message || data.purchasing_message);
+        this.showMessageBox(data.stock_message || data.purchasing_message)
 
         if (data.price instanceof Object) {
-            this.updatePriceView(viewModel, data.price);
+            this.updatePriceView(viewModel, data.price)
         }
 
         if (data.weight instanceof Object) {
-            viewModel.$weight.innerHTML = data.weight.formatted;
+            viewModel.$weight.innerHTML = data.weight.formatted
         }
 
         // Set variation_id if it exists for adding to wishlist
         if (data.variantId) {
-            viewModel.$wishlistVariation.value = data.variantId;
+            viewModel.$wishlistVariation.value = data.variantId
         }
 
         // If SKU is available
         if (data.sku) {
-            viewModel.sku.$value.textContent = data.sku;
-            viewModel.sku.$label.style.display = 'block';
+            viewModel.sku.$value.textContent = data.sku
+            viewModel.sku.$label.style.display = 'block'
         } else {
-            viewModel.sku.$label.style.display = 'none';
-            viewModel.sku.$value.textContent = '';
+            viewModel.sku.$label.style.display = 'none'
+            viewModel.sku.$value.textContent = ''
         }
 
         // If UPC is available
         if (data.upc) {
-            viewModel.upc.$value.textContent = data.upc;
-            viewModel.upc.$label.style.display = 'block';
+            viewModel.upc.$value.textContent = data.upc
+            viewModel.upc.$label.style.display = 'block'
         } else {
-            viewModel.upc.$label.style.display = 'none';
-            viewModel.upc.$value.textContent = '';
+            viewModel.upc.$label.style.display = 'none'
+            viewModel.upc.$value.textContent = ''
         }
 
         // if stock view is on (CP settings)
         if (viewModel.stock.$container && typeof data.stock === 'number') {
             // if the stock container is hidden, show
-            viewModel.stock.$container.classList.remove('u-hidden-visually');
+            viewModel.stock.$container.classList.remove('u-hidden-visually')
 
-            viewModel.stock.$input.textContent = data.stock;
+            viewModel.stock.$input.textContent = data.stock
         } else {
             /* eslint-disable no-unused-expressions */
-            viewModel.stock.$container?.classList.add('u-hidden-visually');
-            viewModel.stock.$input.textConent = data.stock;
+            viewModel.stock.$container?.classList.add('u-hidden-visually')
+            viewModel.stock.$input.textConent = data.stock
         }
 
-        this.updateDefaultAttributesForOOS(data);
-        this.updateWalletButtonsView(data);
+        this.updateDefaultAttributesForOOS(data)
+        this.updateWalletButtonsView(data)
 
         // If Bulk Pricing rendered HTML is available
         if (data.bulk_discount_rates && content) {
-            viewModel.$bulkPricing.innerHTML = content;
-        } else if (typeof (data.bulk_discount_rates) !== 'undefined') {
-            viewModel.$bulkPricing.innerHTML = '';
+            viewModel.$bulkPricing.innerHTML = content
+        } else if (typeof data.bulk_discount_rates !== 'undefined') {
+            viewModel.$bulkPricing.innerHTML = ''
         }
 
-        const addToCartWrapper = q$('#add-to-cart-wrapper');
+        const addToCartWrapper = q$('#add-to-cart-wrapper')
 
         if (isVisible(addToCartWrapper) === false && data.purchasable) {
-            addToCartWrapper.style.display = 'block';
+            addToCartWrapper.style.display = 'block'
         }
     }
 
@@ -281,51 +282,51 @@ export default class ProductDetailsBase {
      * @param  {Object} price
      */
     updatePriceView(viewModel, price) {
-        this.clearPricingNotFound(viewModel);
+        this.clearPricingNotFound(viewModel)
 
         if (price.with_tax) {
-            const updatedPrice = price.price_range ?
-                `${price.price_range.min.with_tax.formatted} - ${price.price_range.max.with_tax.formatted}`
-                : price.with_tax.formatted;
-            viewModel.priceLabel.$span.style.display = 'block';
-            viewModel.$priceWithTax.innerHTML = updatedPrice;
+            const updatedPrice = price.price_range
+                ? `${price.price_range.min.with_tax.formatted} - ${price.price_range.max.with_tax.formatted}`
+                : price.with_tax.formatted
+            viewModel.priceLabel.$span.style.display = 'block'
+            viewModel.$priceWithTax.innerHTML = updatedPrice
         }
 
         if (price.without_tax) {
-            const updatedPrice = price.price_range ?
-                `${price.price_range.min.without_tax.formatted} - ${price.price_range.max.without_tax.formatted}`
-                : price.without_tax.formatted;
-            viewModel.priceLabel.$span.style.display = 'block';
-            viewModel.$priceWithoutTax.innerHTML = updatedPrice;
+            const updatedPrice = price.price_range
+                ? `${price.price_range.min.without_tax.formatted} - ${price.price_range.max.without_tax.formatted}`
+                : price.without_tax.formatted
+            viewModel.priceLabel.$span.style.display = 'block'
+            viewModel.$priceWithoutTax.innerHTML = updatedPrice
         }
 
         if (price.rrp_with_tax) {
-            viewModel.rrpWithTax.$div.style.display = 'block';
-            viewModel.rrpWithTax.$span.innerHTML = price.rrp_with_tax.formatted;
+            viewModel.rrpWithTax.$div.style.display = 'block'
+            viewModel.rrpWithTax.$span.innerHTML = price.rrp_with_tax.formatted
         }
 
         if (price.rrp_without_tax) {
-            viewModel.rrpWithoutTax.$div.style.display = 'block';
-            viewModel.rrpWithoutTax.$span.innerHTML = price.rrp_without_tax.formatted;
+            viewModel.rrpWithoutTax.$div.style.display = 'block'
+            viewModel.rrpWithoutTax.$span.innerHTML = price.rrp_without_tax.formatted
         }
 
         if (price.saved) {
-            viewModel.priceSaved.$div.style.display = 'block';
-            viewModel.priceSaved.$span.innerHTML = price.saved.formatted;
+            viewModel.priceSaved.$div.style.display = 'block'
+            viewModel.priceSaved.$span.innerHTML = price.saved.formatted
         }
 
         if (price.non_sale_price_with_tax) {
-            viewModel.priceLabel.$span.style.display = 'none';
-            viewModel.nonSaleWithTax.$div.style.display = 'block';
-            viewModel.priceNowLabel.$span.style.display = 'block';
-            viewModel.nonSaleWithTax.$span.innerHTML = price.non_sale_price_with_tax.formatted;
+            viewModel.priceLabel.$span.style.display = 'none'
+            viewModel.nonSaleWithTax.$div.style.display = 'block'
+            viewModel.priceNowLabel.$span.style.display = 'block'
+            viewModel.nonSaleWithTax.$span.innerHTML = price.non_sale_price_with_tax.formatted
         }
 
         if (price.non_sale_price_without_tax) {
-            viewModel.priceLabel.$span.style.display = 'none';
-            viewModel.nonSaleWithoutTax.$div.style.display = 'block';
-            viewModel.priceNowLabel.$span.style.display = 'block';
-            viewModel.nonSaleWithoutTax.$span.innerHTML = price.non_sale_price_without_tax.formatted;
+            viewModel.priceLabel.$span.style.display = 'none'
+            viewModel.nonSaleWithoutTax.$div.style.display = 'block'
+            viewModel.priceNowLabel.$span.style.display = 'block'
+            viewModel.nonSaleWithoutTax.$span.innerHTML = price.non_sale_price_without_tax.formatted
         }
     }
 
@@ -335,28 +336,28 @@ export default class ProductDetailsBase {
      * @param  {String} message
      */
     showMessageBox(message) {
-        const $messageBox = q$('.js-product-attributes-message');
+        const $messageBox = q$('.js-product-attributes-message')
 
         if (message) {
-            q$('.js-alert-box-message', $messageBox).textContent = message;
-            $messageBox.style.display = 'block';
+            q$('.js-alert-box-message', $messageBox).textContent = message
+            $messageBox.style.display = 'block'
         } else {
-            $messageBox.style.display = 'none';
+            $messageBox.style.display = 'none'
         }
     }
 
     /**
      * Enables/disables by purchasable and instock
-     * @param {Object} data 
+     * @param {Object} data
      */
     updateDefaultAttributesForOOS(data) {
-        const viewModel = this.getViewModel(this.$scope);
+        const viewModel = this.getViewModel(this.$scope)
         if (!data.purchasable || !data.instock) {
-            viewModel.$addToCart.disabled = true;
-            viewModel.$increments.disabled = true;
+            viewModel.$addToCart.disabled = true
+            viewModel.$increments.disabled = true
         } else {
-            viewModel.$addToCart.disabled = false;
-            viewModel.$increments.disabled = false;
+            viewModel.$addToCart.disabled = false
+            viewModel.$increments.disabled = false
         }
     }
 
@@ -364,21 +365,21 @@ export default class ProductDetailsBase {
      * @param {Object} data
      */
     updateWalletButtonsView(data) {
-        this.toggleWalletButtonsVisibility(data.purchasable && data.instock);
+        this.toggleWalletButtonsVisibility(data.purchasable && data.instock)
     }
 
     /**
      * Set wallet button visibility
      *
-     * @param {Boolean} shouldShow 
+     * @param {Boolean} shouldShow
      */
     toggleWalletButtonsVisibility(shouldShow) {
-        const viewModel = this.getViewModel(this.$scope);
+        const viewModel = this.getViewModel(this.$scope)
 
         if (shouldShow) {
-            viewModel.$walletButtons.style.display = 'block';
+            viewModel.$walletButtons.style.display = 'block'
         } else {
-            viewModel.$walletButtons.style.display = 'none';
+            viewModel.$walletButtons.style.display = 'none'
         }
     }
 
@@ -391,13 +392,13 @@ export default class ProductDetailsBase {
      */
     enableAttribute($attribute, behavior, outOfStockMessage) {
         if (this.getAttributeType($attribute) === 'set-select') {
-            return this.enableSelectOptionAttribute($attribute, behavior, outOfStockMessage);
+            return this.enableSelectOptionAttribute($attribute, behavior, outOfStockMessage)
         }
 
         if (behavior === 'hide_option') {
-            $attribute.style.display = 'block';
+            $attribute.style.display = 'block'
         } else {
-            $attribute.classList.remove('unavailable');
+            $attribute.classList.remove('unavailable')
         }
     }
 
@@ -410,13 +411,13 @@ export default class ProductDetailsBase {
      */
     disableAttribute($attribute, behavior, outOfStockMessage) {
         if (this.getAttributeType($attribute) === 'set-select') {
-            return this.disableSelectOptionAttribute($attribute, behavior, outOfStockMessage);
+            return this.disableSelectOptionAttribute($attribute, behavior, outOfStockMessage)
         }
 
         if (behavior === 'hide_option') {
-            $attribute.style.display = 'none';
+            $attribute.style.display = 'none'
         } else {
-            $attribute.classList.add('unavailable');
+            $attribute.classList.add('unavailable')
         }
     }
 
@@ -428,9 +429,9 @@ export default class ProductDetailsBase {
      * @memberof ProductDetailsBase
      */
     getAttributeType($attribute) {
-        const $parent = $attribute.closest('[data-product-attribute]');
+        const $parent = $attribute.closest('[data-product-attribute]')
 
-        return $parent ? $parent.dataset.productAttribute : null;
+        return $parent ? $parent.dataset.productAttribute : null
     }
 
     /**
@@ -441,17 +442,17 @@ export default class ProductDetailsBase {
      * @param {string} outOfStockMessage
      */
     disableSelectOptionAttribute($attribute, behavior, outOfStockMessage) {
-        const $select = $attribute.parentNode;
+        const $select = $attribute.parentNode
 
         if (behavior === 'hide_option') {
-            toggleOption($attribute, false);
+            toggleOption($attribute, false)
             // If the attribute is the selected option in a select dropdown, select the first option (MERC-639)
             if ($select.value === $attribute.value) {
-                $select[0].selectedIndex = 0;
+                $select[0].selectedIndex = 0
             }
         } else {
-            $attribute.disabled = 'disabled';
-            $attribute.innerHTML = $attribute.innerHTML.replace(outOfStockMessage, '') + outOfStockMessage;
+            $attribute.disabled = 'disabled'
+            $attribute.innerHTML = $attribute.innerHTML.replace(outOfStockMessage, '') + outOfStockMessage
         }
     }
 
@@ -464,10 +465,10 @@ export default class ProductDetailsBase {
      */
     enableSelectOptionAttribute($attribute, behavior, outOfStockMessage) {
         if (behavior === 'hide_option') {
-            toggleOption($attribute, true);
+            toggleOption($attribute, true)
         } else {
-            $attribute.disabled = false;
-            $attribute.innerHTML = $attribute.innerHTML.replace(outOfStockMessage, '');
+            $attribute.disabled = false
+            $attribute.innerHTML = $attribute.innerHTML.replace(outOfStockMessage, '')
         }
     }
 }

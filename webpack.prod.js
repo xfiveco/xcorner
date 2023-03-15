@@ -1,5 +1,6 @@
+/* eslint-disable */
 const { merge } = require('webpack-merge'),
-      commonConfig = require('./webpack.common.js');
+    commonConfig = require('./webpack.common.js')
 
 module.exports = merge(commonConfig, {
     devtool: 'source-map',
@@ -7,4 +8,4 @@ module.exports = merge(commonConfig, {
     optimization: {
         emitOnErrors: false,
     },
-});
+})
