@@ -43,9 +43,8 @@
         {{/if}}
         <li>
             <button 
-                class="js-nav-user-action"
+                class="js-nav-user-action js-quick-search-expand"
                 type="button"
-                id="quick-search-expand"
                 data-search="quick-search"
                 aria-controls="quick-search"
                 aria-label="{{lang 'common.search'}}"
@@ -113,13 +112,12 @@
             </a>
 
             <div 
-                class="js-dropdown-menu" 
-                id="cart-preview-dropdown"
+                class="js-dropdown-menu js-cart-preview-dropdown"
                 aria-hidden="true"
             ></div>
         </li>
     </ul>
-    <div id="quick-search" aria-hidden="true" class="js-prevent-quick-search-close">
+    <div aria-hidden="true" class="js-prevent-quick-search-close js-quick-search">
         {{> components/common/quick-search name='nav-quick-search'}}
     </div>
 </nav>

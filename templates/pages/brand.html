@@ -31,11 +31,11 @@ brand:
 {{{region name="brand_below_header"}}}
 
 <div>
-    <aside id="faceted-search-container">
+    <aside class="js-faceted-search-container">
         {{> components/brand/sidebar}}
     </aside>
 
-    <div id="product-listing-container">
+    <div class="js-product-listing-container">
         {{#if brand.search_error }}
             <p>{{lang 'search.errorMessage'}}</p>
         {{else}}

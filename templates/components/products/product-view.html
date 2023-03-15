@@ -126,7 +126,7 @@
                     {{> components/products/ratings rating=product.rating}}
 
                     {{#if product.num_reviews '>' 0}}
-                        <a href="{{product.url}}{{#if is_ajax}}#product-reviews{{/if}}" id="product-review-link">
+                        <a href="{{product.url}}{{#if is_ajax}}#product-reviews{{/if}}" class="js-product-review-link">
                             {{lang 'products.reviews.link_to_review' total=product.num_reviews}}
                         </a>
                     {{else}}
