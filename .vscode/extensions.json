@@ -1,6 +1,5 @@
 {
     "recommendations": [
-        "esbenp.prettier-vscode",
-        "mfeckies.handlebars-formatter"
+        "esbenp.prettier-vscode"
     ]
 }
