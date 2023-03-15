@@ -1,15 +1,14 @@
-import { api } from '@bigcommerce/stencil-utils';
-import hooks from './hooks';
-import _ from 'lodash';
-import urlUtils from './utils/url-utils';
-import modalFactory from '../global/modal';
-import collapsibleFactory from './collapsible';
-import { Validators } from './utils/form-utils';
-import nod from './nod';
-import q$, { q$$ } from '../global/selector';
-import isVisible from './utils/is-visible';
-import trigger from './utils/trigger';
-
+import { api } from '@bigcommerce/stencil-utils'
+import _ from 'lodash'
+import hooks from './hooks'
+import urlUtils from './utils/url-utils'
+import modalFactory from '../global/modal'
+import collapsibleFactory from './collapsible'
+import { Validators } from './utils/form-utils'
+import nod from './nod'
+import q$, { q$$ } from '../global/selector'
+import isVisible from './utils/is-visible'
+import trigger from './utils/trigger'
 
 const defaultOptions = {
     accordionToggleSelector: '.js-facets-search-wrapper .js-accordion-navigation, .js-facets-search-wrapper .js-facets-search-toggle',
@@ -26,7 +25,7 @@ const defaultOptions = {
     facetedSearchFilterItems: '.js-facets-search-wrapper-filterItems .js-form-input',
     modal: modalFactory('#modal'),
     modalOpen: false,
-};
+}
 
 /**
  * Faceted search view component
@@ -54,54 +53,53 @@ class FacetedSearch {
      */
     constructor(requestOptions, callback, options) {
         // Private properties
-        this.requestOptions = requestOptions;
-        this.callback = callback;
-        this.options = _.extend({}, defaultOptions, options);
-        this.collapsedFacets = [];
-        this.collapsedFacetItems = [];
+        this.requestOptions = requestOptions
+        this.callback = callback
+        this.options = _.extend({}, defaultOptions, options)
+        this.collapsedFacets = []
+        this.collapsedFacetItems = []
 
         // Init collapsibles
-        collapsibleFactory();
+        collapsibleFactory()
 
         // Init price validator
-        this.initPriceValidator();
+        this.initPriceValidator()
 
         // Show limited items by default
-        q$$(this.options.facetNavListSelector).forEach($navList => {
-            this.collapseFacetItems($navList);
-        });
+        q$$(this.options.facetNavListSelector).forEach(($navList) => {
+            this.collapseFacetItems($navList)
+        })
 
         // Mark initially collapsed accordions
-        this.options.accordionToggleSelector.split(', ')
-            .forEach(accordionSelector => {
-                q$$(accordionSelector).forEach($accordionToggle => {
-                    const collapsible = $accordionToggle.data?.collapsibleInstance;
+        this.options.accordionToggleSelector.split(', ').forEach((accordionSelector) => {
+            q$$(accordionSelector).forEach(($accordionToggle) => {
+                const collapsible = $accordionToggle.data?.collapsibleInstance
 
-                    if (collapsible?.isCollapsed) {
-                        this.collapsedFacets.push(collapsible.targetId);
-                    }
-                });
-            });
+                if (collapsible?.isCollapsed) {
+                    this.collapsedFacets.push(collapsible.targetId)
+                }
+            })
+        })
 
         // Collapse all facets if initially hidden
         // NOTE: Need to execute after Collapsible gets bootstrapped
         setTimeout(() => {
             if (isVisible(q$(this.options.componentSelector)) === false) {
-                this.collapseAllFacets();
+                this.collapseAllFacets()
             }
-        });
+        })
 
         // Observe user events
-        this.onStateChange = this.onStateChange.bind(this);
-        this.onToggleClick = this.onToggleClick.bind(this);
-        this.onAccordionToggle = this.onAccordionToggle.bind(this);
-        this.onClearFacet = this.onClearFacet.bind(this);
-        this.onFacetClick = this.onFacetClick.bind(this);
-        this.onRangeSubmit = this.onRangeSubmit.bind(this);
-        this.onSortBySubmit = this.onSortBySubmit.bind(this);
-        this.filterFacetItems = this.filterFacetItems.bind(this);
+        this.onStateChange = this.onStateChange.bind(this)
+        this.onToggleClick = this.onToggleClick.bind(this)
+        this.onAccordionToggle = this.onAccordionToggle.bind(this)
+        this.onClearFacet = this.onClearFacet.bind(this)
+        this.onFacetClick = this.onFacetClick.bind(this)
+        this.onRangeSubmit = this.onRangeSubmit.bind(this)
+        this.onSortBySubmit = this.onSortBySubmit.bind(this)
+        this.filterFacetItems = this.filterFacetItems.bind(this)
 
-        this.bindEvents();
+        this.bindEvents()
     }
 
     // Public methods
@@ -110,59 +108,59 @@ class FacetedSearch {
      */
     refreshView(content) {
         if (content) {
-            this.callback(content);
+            this.callback(content)
         }
 
         // Init collapsibles
-        collapsibleFactory();
+        collapsibleFactory()
 
         // Init price validator
-        this.initPriceValidator();
+        this.initPriceValidator()
 
         // Restore view state
-        this.restoreCollapsedFacets();
-        this.restoreCollapsedFacetItems();
+        this.restoreCollapsedFacets()
+        this.restoreCollapsedFacetItems()
 
         // Bind events
-        this.bindEvents();
+        this.bindEvents()
     }
 
     updateView() {
-        q$(this.options.blockerSelector).style.display = 'block';
+        q$(this.options.blockerSelector).style.display = 'block'
 
         api.getPage(urlUtils.getUrl(), this.requestOptions, (err, content) => {
-            q$(this.options.blockerSelector).style.display = 'none';
+            q$(this.options.blockerSelector).style.display = 'none'
 
             if (err) {
-                throw new Error(err);
+                throw new Error(err)
             }
 
             // Refresh view with new content
-            this.refreshView(content);
-        });
+            this.refreshView(content)
+        })
     }
 
     /**
      * @param {HTMLElement} $navList
      */
     expandFacetItems($navList) {
-        const id = $navList.id;
+        const id = $navList.id
 
         // Remove
-        this.collapsedFacetItems = _.without(this.collapsedFacetItems, id);
+        this.collapsedFacetItems = _.without(this.collapsedFacetItems, id)
     }
 
     /**
      * @param {HTMLElement} $navList
      */
     collapseFacetItems($navList) {
-        const id = $navList.id;
-        const hasMoreResults = $navList.dataset.hasMoreResults;
+        const id = $navList.id
+        const hasMoreResults = $navList.dataset.hasMoreResults
 
         if (hasMoreResults) {
-            this.collapsedFacetItems = _.union(this.collapsedFacetItems, [id]);
+            this.collapsedFacetItems = _.union(this.collapsedFacetItems, [id])
         } else {
-            this.collapsedFacetItems = _.without(this.collapsedFacetItems, id);
+            this.collapsedFacetItems = _.without(this.collapsedFacetItems, id)
         }
     }
 
@@ -171,18 +169,18 @@ class FacetedSearch {
      * @returns {boolean}
      */
     toggleFacetItems($navList) {
-        const id = $navList.id;
+        const id = $navList.id
 
         // Toggle depending on `collapsed` flag
         if (this.collapsedFacetItems.includes(id)) {
-            this.getMoreFacetResults($navList);
+            this.getMoreFacetResults($navList)
 
-            return true;
+            return true
         }
 
-        this.collapseFacetItems($navList);
+        this.collapseFacetItems($navList)
 
-        return false;
+        return false
     }
 
     /**
@@ -190,230 +188,228 @@ class FacetedSearch {
      * @returns {boolean}
      */
     getMoreFacetResults($navList) {
-        const facet = $navList.dataset.facet;
-        const facetUrl = urlUtils.getUrl();
+        const facet = $navList.dataset.facet
+        const facetUrl = urlUtils.getUrl()
 
         if (this.requestOptions.showMore) {
-            api.getPage(facetUrl, {
-                template: this.requestOptions.showMore,
-                params: {
-                    list_all: facet,
+            api.getPage(
+                facetUrl,
+                {
+                    template: this.requestOptions.showMore,
+                    params: {
+                        list_all: facet,
+                    },
                 },
-            }, (err, response) => {
-                if (err) {
-                    throw new Error(err);
-                }
+                (err, response) => {
+                    if (err) {
+                        throw new Error(err)
+                    }
 
-                this.options.modal.open();
-                this.options.modalOpen = true;
-                this.options.modal.updateContent(response);
-            });
+                    this.options.modal.open()
+                    this.options.modalOpen = true
+                    this.options.modal.updateContent(response)
+                },
+            )
         }
 
-        this.collapseFacetItems($navList);
+        this.collapseFacetItems($navList)
 
-        return false;
+        return false
     }
 
     /**
      * @param {Event} event
      */
     filterFacetItems(event) {
-        const $items = q$$('.js-nav-list-item');
-        const query = event.currentTarget.value.toLowerCase();
+        const $items = q$$('.js-nav-list-item')
+        const query = event.currentTarget.value.toLowerCase()
 
-        $items.forEach($element => {
-            const text = $element.textContent.toLowerCase();
+        $items.forEach(($element) => {
+            const text = $element.textContent.toLowerCase()
 
             if (text.indexOf(query) !== -1) {
                 /* eslint-disable no-param-reassign */
-                $element.style.display = 'block';
+                $element.style.display = 'block'
             } else {
-                $element.style.display = 'none';
+                $element.style.display = 'none'
             }
-        });
+        })
     }
 
     /**
      * @param {HTMLElement} $accordionToggle
      */
     expandFacet($accordionToggle) {
-        const collapsible = $accordionToggle.data?.collapsibleInstance;
+        const collapsible = $accordionToggle.data?.collapsibleInstance
 
         /* eslint-disable no-unused-expressions */
-        collapsible?.open();
+        collapsible?.open()
     }
 
     /**
      * @param {HTMLElement} $accordionToggle
      */
     collapseFacet($accordionToggle) {
-        const collapsible = $accordionToggle.data?.collapsibleInstance;
+        const collapsible = $accordionToggle.data?.collapsibleInstance
 
-        collapsible.close();
+        collapsible.close()
     }
 
     collapseAllFacets() {
-        this.options.accordionToggleSelector.split(', ')
-            .forEach(accordionSelector => {
-                q$$(accordionSelector).forEach($accordionToggle => {
-                    this.collapseFacet($accordionToggle);
-                });
-            });
+        this.options.accordionToggleSelector.split(', ').forEach((accordionSelector) => {
+            q$$(accordionSelector).forEach(($accordionToggle) => {
+                this.collapseFacet($accordionToggle)
+            })
+        })
     }
 
     expandAllFacets() {
-        this.options.accordionToggleSelector.split(', ')
-            .forEach(accordionSelector => {
-                q$$(accordionSelector).forEach($accordionToggle => {
-                    this.expandFacet($accordionToggle);
-                });
-            });
+        this.options.accordionToggleSelector.split(', ').forEach((accordionSelector) => {
+            q$$(accordionSelector).forEach(($accordionToggle) => {
+                this.expandFacet($accordionToggle)
+            })
+        })
     }
 
     // Private methods
     initPriceValidator() {
         if (q$$(this.options.priceRangeFormSelector).length === 0) {
-            return;
+            return
         }
 
-        const validator = nod();
+        const validator = nod()
         const selectors = {
             errorSelector: this.options.priceRangeErrorSelector,
             fieldsetSelector: this.options.priceRangeFieldsetSelector,
             formSelector: this.options.priceRangeFormSelector,
             maxPriceSelector: this.options.priceRangeMaxPriceSelector,
             minPriceSelector: this.options.priceRangeMinPriceSelector,
-        };
+        }
 
-        Validators.setMinMaxPriceValidation(validator, selectors, this.options.validationErrorMessages);
+        Validators.setMinMaxPriceValidation(validator, selectors, this.options.validationErrorMessages)
 
-        this.priceRangeValidator = validator;
+        this.priceRangeValidator = validator
     }
 
     restoreCollapsedFacetItems() {
-        const $navLists = q$$(this.options.facetNavListSelector);
+        const $navLists = q$$(this.options.facetNavListSelector)
 
         // Restore collapsed state for each facet
-        $navLists.forEach($navList => {
-            const id = $navList.id;
-            const shouldCollapse = this.collapsedFacetItems.includes(id);
+        $navLists.forEach(($navList) => {
+            const id = $navList.id
+            const shouldCollapse = this.collapsedFacetItems.includes(id)
 
             if (shouldCollapse) {
-                this.collapseFacetItems($navList);
+                this.collapseFacetItems($navList)
             } else {
-                this.expandFacetItems($navList);
+                this.expandFacetItems($navList)
             }
-        });
+        })
     }
 
     restoreCollapsedFacets() {
-        this.options.accordionToggleSelector.split(', ')
-            .forEach(accordionSelector => {
-                q$$(accordionSelector).forEach($accordionToggle => {
-                    const collapsible = $accordionToggle.data?.collapsibleInstance;
-                    const id = collapsible.targetId;
-                    const shouldCollapse = this.collapsedFacets.includes(id);
+        this.options.accordionToggleSelector.split(', ').forEach((accordionSelector) => {
+            q$$(accordionSelector).forEach(($accordionToggle) => {
+                const collapsible = $accordionToggle.data?.collapsibleInstance
+                const id = collapsible.targetId
+                const shouldCollapse = this.collapsedFacets.includes(id)
 
-                    if (shouldCollapse) {
-                        this.collapseFacet($accordionToggle);
-                    } else {
-                        this.expandFacet($accordionToggle);
-                    }
-                });
-            });
+                if (shouldCollapse) {
+                    this.collapseFacet($accordionToggle)
+                } else {
+                    this.expandFacet($accordionToggle)
+                }
+            })
+        })
     }
 
     bindEvents() {
         // Clean-up
-        this.unbindEvents();
+        this.unbindEvents()
 
         // DOM events
-        window.addEventListener('statechange', this.onStateChange);
-        window.addEventListener('popstate', this.onPopState);
+        window.addEventListener('statechange', this.onStateChange)
+        window.addEventListener('popstate', this.onPopState)
 
-        q$$(this.options.showMoreToggleSelector).forEach($toggle => {
-            $toggle.addEventListener('click', this.onToggleClick);
-        });
+        q$$(this.options.showMoreToggleSelector).forEach(($toggle) => {
+            $toggle.addEventListener('click', this.onToggleClick)
+        })
 
-        this.options.accordionToggleSelector.split(', ')
-            .forEach(accordionSelector => {
-                q$$(accordionSelector).forEach($accordionToggle => {
-                    $accordionToggle.addEventListener('toggle.collapsible', this.onAccordionToggle);
-                });
-            });
+        this.options.accordionToggleSelector.split(', ').forEach((accordionSelector) => {
+            q$$(accordionSelector).forEach(($accordionToggle) => {
+                $accordionToggle.addEventListener('toggle.collapsible', this.onAccordionToggle)
+            })
+        })
 
-        q$$(this.options.facetedSearchFilterItems).forEach($item => {
-            $item.addEventListener('keyup', this.filterFacetItems);
-        });
+        q$$(this.options.facetedSearchFilterItems).forEach(($item) => {
+            $item.addEventListener('keyup', this.filterFacetItems)
+        })
 
-        q$$(this.options.clearFacetSelector).forEach($clear => {
-            $clear.addEventListener('click', this.onClearFacet);
-        });
+        q$$(this.options.clearFacetSelector).forEach(($clear) => {
+            $clear.addEventListener('click', this.onClearFacet)
+        })
 
         // Hooks
-        hooks.on('faceted-search-facet-clicked', this.onFacetClick);
-        hooks.on('faceted-search-range-submitted', this.onRangeSubmit);
-        hooks.on('sort-by-submitted', this.onSortBySubmit);
+        hooks.on('faceted-search-facet-clicked', this.onFacetClick)
+        hooks.on('faceted-search-range-submitted', this.onRangeSubmit)
+        hooks.on('sort-by-submitted', this.onSortBySubmit)
     }
 
     unbindEvents() {
         // DOM events
-        window.removeEventListener('statechange', this.onStateChange);
-        window.removeEventListener('popstate', this.onPopState);
+        window.removeEventListener('statechange', this.onStateChange)
+        window.removeEventListener('popstate', this.onPopState)
 
-        q$$(this.options.showMoreToggleSelector).forEach($toggle => {
-            $toggle.removeEventListener('click', this.onToggleClick);
-        });
+        q$$(this.options.showMoreToggleSelector).forEach(($toggle) => {
+            $toggle.removeEventListener('click', this.onToggleClick)
+        })
 
+        this.options.accordionToggleSelector.split(', ').forEach((accordionSelector) => {
+            q$$(accordionSelector).forEach(($accordionToggle) => {
+                $accordionToggle.removeEventListener('toggle.collapsible', this.onAccordionToggle)
+            })
+        })
 
-        this.options.accordionToggleSelector.split(', ')
-            .forEach(accordionSelector => {
-                q$$(accordionSelector).forEach($accordionToggle => {
-                    $accordionToggle.removeEventListener('toggle.collapsible', this.onAccordionToggle);
-                });
-            });
+        q$$(this.options.facetedSearchFilterItems).forEach(($item) => {
+            $item.removeEventListener('keyup', this.filterFacetItems)
+        })
 
-        q$$(this.options.facetedSearchFilterItems).forEach($item => {
-            $item.removeEventListener('keyup', this.filterFacetItems);
-        });
-
-        q$$(this.options.clearFacetSelector).forEach($clear => {
-            $clear.removeEventListener('click', this.onClearFacet);
-        });
+        q$$(this.options.clearFacetSelector).forEach(($clear) => {
+            $clear.removeEventListener('click', this.onClearFacet)
+        })
 
         // Hooks
-        hooks.off('faceted-search-facet-clicked', this.onFacetClick);
-        hooks.off('faceted-search-range-submitted', this.onRangeSubmit);
-        hooks.off('sort-by-submitted', this.onSortBySubmit);
+        hooks.off('faceted-search-facet-clicked', this.onFacetClick)
+        hooks.off('faceted-search-range-submitted', this.onRangeSubmit)
+        hooks.off('sort-by-submitted', this.onSortBySubmit)
     }
 
     /**
      * @param {Event} event
      */
     onClearFacet(event) {
-        const $link = event.currentTarget;
-        const url = $link.href;
+        const $link = event.currentTarget
+        const url = $link.href
 
-        event.preventDefault();
-        event.stopPropagation();
+        event.preventDefault()
+        event.stopPropagation()
 
         // Update URL
-        urlUtils.goToUrl(url);
+        urlUtils.goToUrl(url)
     }
 
     /**
      * @param {Event} event
      */
     onToggleClick(event) {
-        const $toggle = event.currentTarget;
-        const $navList = q$($toggle.href);
+        const $toggle = event.currentTarget
+        const $navList = q$($toggle.href)
 
         // Prevent default
-        event.preventDefault();
+        event.preventDefault()
 
         // Toggle visible items
-        this.toggleFacetItems($navList);
+        this.toggleFacetItems($navList)
     }
 
     /**
@@ -421,18 +417,18 @@ class FacetedSearch {
      * @param {HTMLElement} currentTarget
      */
     onFacetClick(event, currentTarget) {
-        const $link = currentTarget;
-        const url = $link.href;
+        const $link = currentTarget
+        const url = $link.href
 
-        event.preventDefault();
+        event.preventDefault()
 
-        $link.classList.toggle('is-selected');
+        $link.classList.toggle('is-selected')
 
         // Update URL
-        urlUtils.goToUrl(url);
+        urlUtils.goToUrl(url)
 
         if (this.options.modalOpen) {
-            this.options.modal.close();
+            this.options.modal.close()
         }
     }
 
@@ -441,17 +437,17 @@ class FacetedSearch {
      * @param {HTMLElement} currentTarget
      */
     onSortBySubmit(event, currentTarget) {
-        event.preventDefault();
+        event.preventDefault()
 
-        const url = urlUtils.parse(window.location.href);
-        const queryParams = new URLSearchParams(new FormData(currentTarget));
-        const urlQuery = new URLSearchParams(url.searchParams);
+        const url = urlUtils.parse(window.location.href)
+        const queryParams = new URLSearchParams(new FormData(currentTarget))
+        const urlQuery = new URLSearchParams(url.searchParams)
 
         for (const [key, value] of queryParams) {
-            urlQuery.set(key, value);
+            urlQuery.set(key, value)
         }
 
-        urlUtils.goToUrl(new URL(`${ url.origin }${ url.pathname }?${ urlQuery }`));
+        urlUtils.goToUrl(new URL(`${url.origin}${url.pathname}?${urlQuery}`))
     }
 
     /**
@@ -459,57 +455,57 @@ class FacetedSearch {
      * @param {HTMLElement} currentTarget
      */
     onRangeSubmit(event, currentTarget) {
-        event.preventDefault();
+        event.preventDefault()
 
         if (!this.priceRangeValidator.areAll(nod.constants.VALID)) {
-            return;
+            return
         }
 
-        const url = urlUtils.parse(window.location.href);
-        const queryParams = new URLSearchParams(new FormData(currentTarget));
-        const urlQuery = new URLSearchParams(url.searchParams);
+        const url = urlUtils.parse(window.location.href)
+        const queryParams = new URLSearchParams(new FormData(currentTarget))
+        const urlQuery = new URLSearchParams(url.searchParams)
 
         for (const [key, value] of queryParams) {
-            urlQuery.set(key, value);
+            urlQuery.set(key, value)
         }
 
-        urlUtils.goToUrl(new URL(`${ url.origin }${ url.pathname }?${ urlQuery }`));
+        urlUtils.goToUrl(new URL(`${url.origin}${url.pathname}?${urlQuery}`))
     }
 
     onStateChange() {
-        this.updateView();
+        this.updateView()
     }
 
     /**
-     * @param {Event} event 
+     * @param {Event} event
      */
     onAccordionToggle(event) {
-        const $accordionToggle = event.currentTarget;
-        const collapsible = $accordionToggle.data.collapsibleInstance;
-        const id = collapsible.targetId;
+        const $accordionToggle = event.currentTarget
+        const collapsible = $accordionToggle.data.collapsibleInstance
+        const id = collapsible.targetId
 
         if (collapsible.isCollapsed) {
-            this.collapsedFacets = _.union(this.collapsedFacets, [id]);
+            this.collapsedFacets = _.union(this.collapsedFacets, [id])
         } else {
-            this.collapsedFacets = _.without(this.collapsedFacets, id);
+            this.collapsedFacets = _.without(this.collapsedFacets, id)
         }
     }
 
     onPopState() {
-        const currentUrl = window.location.href;
-        const searchParams = new URLSearchParams(currentUrl);
+        const currentUrl = window.location.href
+        const searchParams = new URLSearchParams(currentUrl)
 
         // If searchParams does not contain a page value then modify url query string to have page=1
         if (!searchParams.has('page')) {
-            const linkUrl = q$('.js-pagination-link').href;
-            const re = /page=[0-9]+/i;
-            const updatedLinkUrl = linkUrl.replace(re, 'page=1');
+            const linkUrl = q$('.js-pagination-link').href
+            const re = /page=[0-9]+/i
+            const updatedLinkUrl = linkUrl.replace(re, 'page=1')
 
-            window.history.replaceState({}, document.title, updatedLinkUrl);
+            window.history.replaceState({}, document.title, updatedLinkUrl)
         }
 
-        trigger(window, 'statechange');
+        trigger(window, 'statechange')
     }
 }
 
-export default FacetedSearch;
+export default FacetedSearch

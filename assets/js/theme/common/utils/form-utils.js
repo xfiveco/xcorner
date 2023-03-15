@@ -118,10 +118,7 @@ function getFieldId($field) {
 function insertStateHiddenField($stateField) {
     const fieldId = getFieldId($stateField)
 
-    $stateField.insertAdjacentHTML(
-        'beforeend',
-        `<input type='hidden' name='FormFieldIsText${fieldId}' value='1' />`,
-    )
+    $stateField.insertAdjacentHTML('beforeend', `<input type='hidden' name='FormFieldIsText${fieldId}' value='1' />`)
 }
 
 /**
@@ -182,12 +179,7 @@ const Validators = {
         passwordSelector,
         password2Selector,
         requirements,
-        {
-            onEmptyPasswordErrorText,
-            onConfirmPasswordErrorText,
-            onMismatchPasswordErrorText,
-            onNotValidPasswordErrorText,
-        },
+        { onEmptyPasswordErrorText, onConfirmPasswordErrorText, onMismatchPasswordErrorText, onNotValidPasswordErrorText },
         isOptional,
     ) => {
         const $password = q$(passwordSelector)
@@ -260,22 +252,10 @@ const Validators = {
      * @param {string} selectors.minPriceSelector
      */
     setMinMaxPriceValidation: (validator, selectors, priceValidationErrorTexts = {}) => {
-        const {
-            errorSelector,
-            fieldsetSelector,
-            formSelector,
-            maxPriceSelector,
-            minPriceSelector,
-        } = selectors
+        const { errorSelector, fieldsetSelector, formSelector, maxPriceSelector, minPriceSelector } = selectors
 
         // eslint-disable-next-line object-curly-newline
-        const {
-            onMinPriceError,
-            onMaxPriceError,
-            minPriceNotEntered,
-            maxPriceNotEntered,
-            onInvalidPrice,
-        } = priceValidationErrorTexts
+        const { onMinPriceError, onMaxPriceError, minPriceNotEntered, maxPriceNotEntered, onInvalidPrice } = priceValidationErrorTexts
 
         validator.configure({
             form: formSelector,

@@ -1,25 +1,25 @@
-import hooks from './common/hooks';
-import CatalogPage from './catalog';
-import compareProducts from './global/compare-products';
-import FacetedSearch from './common/faceted-search';
-import { createTranslationDictionary } from '../theme/common/utils/translations-utils';
-import q$ from './global/selector';
-import trigger from './common/utils/trigger';
+import hooks from './common/hooks'
+import CatalogPage from './catalog'
+import compareProducts from './global/compare-products'
+import FacetedSearch from './common/faceted-search'
+import { createTranslationDictionary } from './common/utils/translations-utils'
+import q$ from './global/selector'
+import trigger from './common/utils/trigger'
 
 export default class Brand extends CatalogPage {
     constructor(context) {
-        super(context);
-        this.validationDictionary = createTranslationDictionary(context);
+        super(context)
+        this.validationDictionary = createTranslationDictionary(context)
     }
 
     onReady() {
-        compareProducts(this.context);
+        compareProducts(this.context)
 
         if (q$('#faceted-search') !== null) {
-            this.initFacetedSearch();
+            this.initFacetedSearch()
         } else {
-            this.onSortBySubmit = this.onSortBySubmit.bind(this);
-            hooks.on('sort-by-submitted', this.onSortBySubmit);
+            this.onSortBySubmit = this.onSortBySubmit.bind(this)
+            hooks.on('sort-by-submitted', this.onSortBySubmit)
         }
     }
 
@@ -30,10 +30,10 @@ export default class Brand extends CatalogPage {
             price_min_not_entered: minPriceNotEntered,
             price_max_not_entered: maxPriceNotEntered,
             price_invalid_value: onInvalidPrice,
-        } = this.validationDictionary;
-        const $productListingContainer = q$('#product-listing-container');
-        const $facetedSearchContainer = q$('#faceted-search-container');
-        const productsPerPage = this.context.brandProductsPerPage;
+        } = this.validationDictionary
+        const $productListingContainer = q$('#product-listing-container')
+        const $facetedSearchContainer = q$('#faceted-search-container')
+        const productsPerPage = this.context.brandProductsPerPage
         const requestOptions = {
             template: {
                 productListing: 'brand/product-listing',
@@ -48,24 +48,28 @@ export default class Brand extends CatalogPage {
                 },
             },
             showMore: 'brand/show-more',
-        };
+        }
 
-        this.facetedSearch = new FacetedSearch(requestOptions, (content) => {
-            $productListingContainer.innerHTML = content.productListing;
-            $facetedSearchContainer.innerHTML = content.sidebar;
+        this.facetedSearch = new FacetedSearch(
+            requestOptions,
+            (content) => {
+                $productListingContainer.innerHTML = content.productListing
+                $facetedSearchContainer.innerHTML = content.sidebar
 
-            trigger(q$('body'), 'compare-reset');
+                trigger(q$('body'), 'compare-reset')
 
-            q$('html').scrollTop(0);
-            q$('body').scrollTop(0);
-        }, {
-            validationErrorMessages: {
-                onMinPriceError,
-                onMaxPriceError,
-                minPriceNotEntered,
-                maxPriceNotEntered,
-                onInvalidPrice,
+                q$('html').scrollTop(0)
+                q$('body').scrollTop(0)
             },
-        });
+            {
+                validationErrorMessages: {
+                    onMinPriceError,
+                    onMaxPriceError,
+                    minPriceNotEntered,
+                    maxPriceNotEntered,
+                    onInvalidPrice,
+                },
+            },
+        )
     }
 }

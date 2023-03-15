@@ -32,9 +32,7 @@ export class VideoGallery {
     }
 
     bindEvents() {
-        this.$videos.forEach(($video) =>
-            $video.addEventListener('click', this.selectNewVideo.bind(this)),
-        )
+        this.$videos.forEach(($video) => $video.addEventListener('click', this.selectNewVideo.bind(this)))
     }
 }
 

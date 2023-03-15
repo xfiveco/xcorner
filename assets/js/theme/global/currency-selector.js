@@ -4,7 +4,7 @@ import q$, { q$$ } from './selector'
 
 let currencySelectorCalled = false
 
-export default function (cartId) {
+export default function exportChangeCurrency(cartId) {
     if (!cartId) return
 
     if (!currencySelectorCalled) {
@@ -52,19 +52,11 @@ export default function (cartId) {
                         showCancelButton: true,
                         $preModalFocusedEl,
                         onConfirm: () => {
-                            changeCurrency(
-                                event.target.dataset.cartCurrencySwitchUrl,
-                                event.target.dataset.currencyCode,
-                                currencySessionSwitcher,
-                            )
+                            changeCurrency(event.target.dataset.cartCurrencySwitchUrl, event.target.dataset.currencyCode, currencySessionSwitcher)
                         },
                     })
                 } else {
-                    changeCurrency(
-                        event.target.dataset.cartCurrencySwitchUrl,
-                        event.target.dataset.currencyCode,
-                        currencySessionSwitcher,
-                    )
+                    changeCurrency(event.target.dataset.cartCurrencySwitchUrl, event.target.dataset.currencyCode, currencySessionSwitcher)
                 }
             })
         })

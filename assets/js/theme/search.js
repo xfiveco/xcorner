@@ -175,18 +175,13 @@ export default class Search extends CatalogPage {
 
         q$('.js-search-page-tabs').addEventListener('keyup', this.onTabChangeWithArrows)
 
-        if (
-            this.$productListingContainer.querySelectorAll('li.js-product').length === 0 ||
-            url.searchParams.get('section') === 'content'
-        ) {
+        if (this.$productListingContainer.querySelectorAll('li.js-product').length === 0 || url.searchParams.get('section') === 'content') {
             this.showContent(false)
         } else {
             this.showProducts(false)
         }
 
-        const validator = this.initValidation($searchForm).bindValidation(
-            $searchForm.querySelector('#search_query_adv'),
-        )
+        const validator = this.initValidation($searchForm).bindValidation($searchForm.querySelector('#search_query_adv'))
 
         this.context.categoryTree.forEach((node) => {
             treeData.push(this.formatCategoryTreeForJSTree(node))
@@ -232,8 +227,7 @@ export default class Search extends CatalogPage {
                 prefix: 'category',
             },
             headers: {
-                'x-xsrf-token':
-                    window.BCData && window.BCData.csrf_token ? window.BCData.csrf_token : '',
+                'x-xsrf-token': window.BCData && window.BCData.csrf_token ? window.BCData.csrf_token : '',
             },
         })
             .then((data) => data.json())
@@ -275,13 +269,7 @@ export default class Search extends CatalogPage {
 
     initFacetedSearch() {
         // eslint-disable-next-line object-curly-newline
-        const {
-            onMinPriceError,
-            onMaxPriceError,
-            minPriceNotEntered,
-            maxPriceNotEntered,
-            onInvalidPrice,
-        } = this.context
+        const { onMinPriceError, onMaxPriceError, minPriceNotEntered, maxPriceNotEntered, onInvalidPrice } = this.context
         const $productListingContainer = q$('#product-listing-container')
         const $contentListingContainer = q$('#search-results-content')
         const $facetedSearchContainer = q$('#faceted-search-container')

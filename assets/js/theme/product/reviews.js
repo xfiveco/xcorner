@@ -70,10 +70,7 @@ export default class {
      */
     injectPaginationLink() {
         const $nextLink = q$('.js-pagination-item-next .js-pagination-link', this.$reviewsContent)
-        const $prevLink = q$(
-            '.js-pagination-item-previous .js-pagination-link',
-            this.$reviewsContent,
-        )
+        const $prevLink = q$('.js-pagination-item-previous .js-pagination-link', this.$reviewsContent)
 
         if ($nextLink) {
             $nextLink.href = `${$nextLink.href} #product-reviews`

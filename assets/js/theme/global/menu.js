@@ -12,9 +12,7 @@ class Menu {
     constructor($menu) {
         this.$menu = $menu
         this.$body = q$('body')
-        this.hasMaxMenuDisplayDepth = this.$body
-            .querySelector('.js-nav-pages-list')
-            ?.classList.contains('js-nav-pages-list-depth-max')
+        this.hasMaxMenuDisplayDepth = this.$body.querySelector('.js-nav-pages-list')?.classList.contains('js-nav-pages-list-depth-max')
 
         // Init collapsible
         this.collapsibles = collapsibleFactory('[data-collapsible]', { $context: this.$menu })

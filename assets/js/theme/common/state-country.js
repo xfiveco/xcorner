@@ -58,9 +58,7 @@ function makeStateOptional(stateElement) {
     if ($newElement !== null) {
         insertStateHiddenField($newElement)
 
-        $newElement.previousElementSibling
-            .querySelector('small')
-            .style.display = 'none'
+        $newElement.previousElementSibling.querySelector('small').style.display = 'none'
     }
 
     return $newElement
@@ -82,11 +80,7 @@ function addOptions(statesArray, $selectElement, options) {
             if (options.useIdForStates) {
                 container.push(`<option value="${stateObj.id}">${stateObj.name}</option>`)
             } else {
-                container.push(
-                    `<option value="${stateObj.name}">${
-                        stateObj.label ? stateObj.label : stateObj.name
-                    }</option>`,
-                )
+                container.push(`<option value="${stateObj.name}">${stateObj.label ? stateObj.label : stateObj.name}</option>`)
             }
         })
 
@@ -100,7 +94,7 @@ function addOptions(statesArray, $selectElement, options) {
  * @param {Object} options
  * @param {Function} callback
  */
-export default function (stateElement, context = {}, options, callback) {
+export default function getStates(stateElement, context = {}, options, callback) {
     /**
      * Backwards compatible for three parameters instead of four
      *

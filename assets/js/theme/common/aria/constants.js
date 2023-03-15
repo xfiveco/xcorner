@@ -5,4 +5,4 @@ export const ariaKeyCodes = {
     UP: 38,
     RIGHT: 39,
     DOWN: 40,
-};
+}

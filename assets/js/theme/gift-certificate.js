@@ -81,11 +81,7 @@ export default class GiftCertificate extends PageManager {
 
                     cb(numberVal >= min && numberVal <= max)
                 },
-                errorMessage: insertFormattedAmountsIntoErrorMessage(
-                    this.validationDictionary.certificate_amount_range,
-                    minFormatted,
-                    maxFormatted,
-                ),
+                errorMessage: insertFormattedAmountsIntoErrorMessage(this.validationDictionary.certificate_amount_range, minFormatted, maxFormatted),
             })
         }
 
@@ -130,9 +126,7 @@ export default class GiftCertificate extends PageManager {
                 selector: '#gift-certificate-form input[name="certificate_theme"]:first-of-type',
                 triggeredBy: '#gift-certificate-form input[name="certificate_theme"]',
                 validate: (cb) => {
-                    const val = $purchaseForm.querySelector(
-                        'input[name="certificate_theme"]:checked',
-                    )?.value
+                    const val = $purchaseForm.querySelector('input[name="certificate_theme"]:checked')?.value
 
                     cb(typeof val === 'string')
                 },
@@ -189,9 +183,7 @@ export default class GiftCertificate extends PageManager {
             }
 
             const modal = defaultModal()
-            const previewUrl = `${event.currentTarget.dataset.previewUrl}&${new URLSearchParams(
-                new FormData($purchaseForm),
-            )}`
+            const previewUrl = `${event.currentTarget.dataset.previewUrl}&${new URLSearchParams(new FormData($purchaseForm))}`
 
             modal.open()
 

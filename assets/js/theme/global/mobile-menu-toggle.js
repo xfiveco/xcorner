@@ -25,14 +25,7 @@ function optionsFromData($element) {
  * @param {Object} [options.scrollViewSelector]
  */
 export class MobileMenuToggle {
-    constructor(
-        $toggle,
-        {
-            headerSelector = '.js-header',
-            menuSelector = '#menu',
-            scrollViewSelector = '.js-nav-pages',
-        } = {},
-    ) {
+    constructor($toggle, { headerSelector = '.js-header', menuSelector = '#menu', scrollViewSelector = '.js-nav-pages' } = {}) {
         this.$body = q$('body')
         this.$menu = q$(menuSelector)
         this.$navList = q$('.js-nav-pages-list.js-nav-pages-list-depth-max')
@@ -67,9 +60,7 @@ export class MobileMenuToggle {
         this.$header.addEventListener(CartPreviewEvents.open, this.onCartPreviewOpen)
 
         if (this.$subMenus && this.$subMenus.length) {
-            this.$subMenus.forEach(($subMenu) =>
-                $subMenu.addEventListener('click', this.onSubMenuClick),
-            )
+            this.$subMenus.forEach(($subMenu) => $subMenu.addEventListener('click', this.onSubMenuClick))
         }
 
         if (this.mediumMediaQueryList && this.mediumMediaQueryList.addEventListener) {
@@ -144,10 +135,7 @@ export class MobileMenuToggle {
     onSubMenuClick(event) {
         const $closestAction = event.target.closest('.js-nav-pages-action')
         const $parentSiblings = Array.from($closestAction.parentNode.children)
-        const $parentAction = q$$(
-            '.js-nav-pages-action',
-            $closestAction.closest('.js-nav-page-sub-menu-horizontal'),
-        )
+        const $parentAction = q$$('.js-nav-pages-action', $closestAction.closest('.js-nav-page-sub-menu-horizontal'))
 
         if (this.$subMenus && this.$subMenus.length) {
             if (this.$subMenus.some(($subMenu) => $subMenu.classList.contains('is-open'))) {
@@ -182,10 +170,7 @@ export class MobileMenuToggle {
  * @param {Object} [options.scrollViewSelector]
  * @return {MobileMenuToggle}
  */
-export default function mobileMenuToggleFactory(
-    selector = `[data-${PLUGIN_KEY.SNAKE}]`,
-    overrideOptions = {},
-) {
+export default function mobileMenuToggleFactory(selector = `[data-${PLUGIN_KEY.SNAKE}]`, overrideOptions = {}) {
     const $toggle = q$(selector)
     const instanceKey = `${PLUGIN_KEY.CAMEL}Instance`
     const cachedMobileMenu = 'data' in $toggle ? $toggle.data[instanceKey] : null

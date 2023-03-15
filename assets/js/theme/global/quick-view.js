@@ -3,12 +3,9 @@ import Review from '../product/reviews'
 import ProductDetails from '../common/product-details'
 import { defaultModal, ModalEvents } from './modal'
 import q$, { q$$ } from './selector'
-import {
-    initializeProductSwiperCarousel,
-    initializeCarouselSwiperCarousel,
-} from '../common/swiper-carousel'
+import { initializeProductSwiperCarousel, initializeCarouselSwiperCarousel } from '../common/swiper-carousel'
 
-export default function (context) {
+export default function func(context) {
     const modal = defaultModal()
 
     /* eslint-disable no-unused-expressions */
@@ -19,60 +16,43 @@ export default function (context) {
             const productId = event.currentTarget.dataset.productId
             const handleDropdownExpand = ({ currentTarget }) => {
                 const $dropdownMenu = currentTarget
-                const dropdownBtnHeight =
-                    $dropdownMenu.previousElementSibling.getBoundingClientRect().height
+                const dropdownBtnHeight = $dropdownMenu.previousElementSibling.getBoundingClientRect().height
 
                 $dropdownMenu.style.top = dropdownBtnHeight
 
                 return modal.$modal.addEventListener(
                     ModalEvents.close,
-                    () =>
-                        $dropdownMenu.removeEventListener(
-                            'opened.fndtn.dropdown',
-                            handleDropdownExpand,
-                        ),
+                    () => $dropdownMenu.removeEventListener('opened.fndtn.dropdown', handleDropdownExpand),
                     { once: true },
                 )
             }
 
             modal.open({ size: 'large' })
 
-            utils.api.product.getById(
-                productId,
-                { template: 'products/quick-view' },
-                (err, response) => {
-                    if (err) return
+            utils.api.product.getById(productId, { template: 'products/quick-view' }, (err, response) => {
+                if (err) return
 
-                    modal.updateContent(response)
+                modal.updateContent(response)
 
-                    q$('#modal .js-dropdown-menu').addEventListener(
-                        'opened.fndtn.dropdown',
-                        handleDropdownExpand,
-                    )
-                    modal.$content
-                        .querySelector('.js-product-view')
-                        ?.classList.add('is-product-view-quick-view')
+                q$('#modal .js-dropdown-menu').addEventListener('opened.fndtn.dropdown', handleDropdownExpand)
+                modal.$content.querySelector('.js-product-view')?.classList.add('is-product-view-quick-view')
 
-                    const $productCarousel = modal.$content.querySelector('.js-product-swiper')
-                    const $carousel = modal.$content.querySelector('.js-swiper')
+                const $productCarousel = modal.$content.querySelector('.js-product-swiper')
+                const $carousel = modal.$content.querySelector('.js-swiper')
 
-                    if ($productCarousel !== null) {
-                        initializeProductSwiperCarousel()
-                    }
+                if ($productCarousel !== null) {
+                    initializeProductSwiperCarousel()
+                }
 
-                    if ($carousel !== null) {
-                        initializeCarouselSwiperCarousel()
-                    }
+                if ($carousel !== null) {
+                    initializeCarouselSwiperCarousel()
+                }
 
-                    /* eslint-disable no-new */
-                    new Review({ $context: modal.$content })
+                /* eslint-disable no-new */
+                new Review({ $context: modal.$content })
 
-                    return new ProductDetails(
-                        modal.$content.querySelector('.js-quick-view'),
-                        context,
-                    )
-                },
-            )
+                return new ProductDetails(modal.$content.querySelector('.js-quick-view'), context)
+            })
         })
     })
 }

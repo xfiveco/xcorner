@@ -53,9 +53,7 @@ export default class ImageGallery {
     }
 
     setActiveThumb() {
-        this.$selectableImages.forEach(($selectableImage) =>
-            $selectableImage.classList.remove('is-active'),
-        )
+        this.$selectableImages.forEach(($selectableImage) => $selectableImage.classList.remove('is-active'))
 
         if (this.currentImage.$selectedThumb) {
             this.currentImage.$selectedThumb.classList.add('is-active')
@@ -86,8 +84,6 @@ export default class ImageGallery {
     }
 
     bindEvents() {
-        this.$selectableImages.forEach(($selectableImage) =>
-            $selectableImage.addEventListener('click', this.selectNewImage.bind(this)),
-        )
+        this.$selectableImages.forEach(($selectableImage) => $selectableImage.addEventListener('click', this.selectNewImage.bind(this)))
     }
 }

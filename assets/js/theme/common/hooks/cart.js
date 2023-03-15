@@ -1,4 +1,4 @@
-import BaseHooks from './base';
+import BaseHooks from './base'
 
 export default class extends BaseHooks {
     /**
@@ -6,14 +6,14 @@ export default class extends BaseHooks {
      */
     constructor() {
         // call parent
-        super();
+        super()
 
-        this.itemAdd();
+        this.itemAdd()
     }
 
     itemAdd() {
         this.subscribe('submit', '.js-cart-item-add', (event, target) => {
-            this.emit('cart-item-add', event, target);
-        });
+            this.emit('cart-item-add', event, target)
+        })
     }
 }

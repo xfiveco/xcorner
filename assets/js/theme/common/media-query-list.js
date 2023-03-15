@@ -2,7 +2,7 @@ const breakpointSizes = {
     large: 1261,
     medium: 801,
     small: 551,
-};
+}
 
 /**
  * Create MediaQueryList using breakpoint name
@@ -11,12 +11,12 @@ const breakpointSizes = {
  */
 export default function mediaQueryListFactory(breakpointName) {
     if (!breakpointName || !window.matchMedia) {
-        return null;
+        return null
     }
 
-    const breakpoint = breakpointSizes[breakpointName];
-    const mediaQuery = `(min-width: ${breakpoint}px)`;
-    const mediaQueryList = window.matchMedia(mediaQuery);
+    const breakpoint = breakpointSizes[breakpointName]
+    const mediaQuery = `(min-width: ${breakpoint}px)`
+    const mediaQueryList = window.matchMedia(mediaQuery)
 
-    return mediaQueryList;
+    return mediaQueryList
 }

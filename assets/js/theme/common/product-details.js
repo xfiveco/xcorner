@@ -114,14 +114,16 @@ export default class ProductDetails extends ProductDetailsBase {
     }
 
     registerAddToCartValidation() {
-        this.addToCartValidator.add([{
-            selector: '.js-quantity-change > .js-form-input-increment-total',
-            validate: (cb, val) => {
-                const result = forms.numbersOnly(val)
-                cb(result)
+        this.addToCartValidator.add([
+            {
+                selector: '.js-quantity-change > .js-form-input-increment-total',
+                validate: (cb, val) => {
+                    const result = forms.numbersOnly(val)
+                    cb(result)
+                },
+                errorMessage: this.context.productQuantityErrorMessage,
             },
-            errorMessage: this.context.productQuantityErrorMessage,
-        }])
+        ])
 
         return this.addToCartValidator
     }
@@ -140,13 +142,17 @@ export default class ProductDetails extends ProductDetailsBase {
         const unsatisfiedRequiredFields = []
         const options = []
 
-        q$$('[data-product-attribute]').forEach(value => {
+        q$$('[data-product-attribute]').forEach((value) => {
             const optionLabel = value.children[0].innerText
             const optionTitle = optionLabel.split(':')[0].trim()
             const required = optionLabel.toLowerCase().includes('required')
             const type = value.dataset.productAttribute
 
-            if ((type === 'input-file' || type === 'input-text' || type === 'input-number') && value.querySelector('input').value === '' && required) {
+            if (
+                (type === 'input-file' || type === 'input-text' || type === 'input-number') &&
+                value.querySelector('input').value === '' &&
+                required
+            ) {
                 unsatisfiedRequiredFields.push(value)
             }
 
@@ -159,7 +165,8 @@ export default class ProductDetails extends ProductDetailsBase {
 
                 if (isSatisfied) {
                     const dateString = Array.from(value.querySelectorAll('select'))
-                        .map(x => x.value).join('-')
+                        .map((x) => x.value)
+                        .join('-')
                     options.push(`${optionTitle}:${dateString}`)
 
                     return
@@ -191,7 +198,7 @@ export default class ProductDetails extends ProductDetailsBase {
                 if (checked) {
                     const getSelectedOptionLabel = () => {
                         const productVariantslist = convertIntoArray(value.children)
-                        const matchLabelForCheckedInput = inpt => inpt.dataset.productAttributeValue === checked.value
+                        const matchLabelForCheckedInput = (inpt) => inpt.dataset.productAttributeValue === checked.value
                         return productVariantslist.filter(matchLabelForCheckedInput)[0]
                     }
                     if (type === 'set-rectangle' || type === 'set-radio' || type === 'js-product-list') {
@@ -266,19 +273,24 @@ export default class ProductDetails extends ProductDetailsBase {
             return
         }
 
-        utils.api.productAttributes.optionChange(productId, Object.fromEntries(new FormData($form)), 'products/bulk-discount-rates', (err, response) => {
-            const productAttributesData = response.data || {}
-            const productAttributesContent = response.content || {}
-            this.updateProductAttributes(productAttributesData)
-            this.updateView(productAttributesData, productAttributesContent)
-            this.updateProductDetailsData()
-            bannerUtils.dispatchProductBannerEvent(productAttributesData)
+        utils.api.productAttributes.optionChange(
+            productId,
+            Object.fromEntries(new FormData($form)),
+            'products/bulk-discount-rates',
+            (err, response) => {
+                const productAttributesData = response.data || {}
+                const productAttributesContent = response.content || {}
+                this.updateProductAttributes(productAttributesData)
+                this.updateView(productAttributesData, productAttributesContent)
+                this.updateProductDetailsData()
+                bannerUtils.dispatchProductBannerEvent(productAttributesData)
 
-            if (!this.checkIsQuickViewChild($form)) {
-                const $context = parents('.js-product-view', $form)[0].querySelector('.js-product-view-info')
-                modalFactory('.js-reveal', { $context })
-            }
-        })
+                if (!this.checkIsQuickViewChild($form)) {
+                    const $context = parents('.js-product-view', $form)[0].querySelector('.js-product-view-info')
+                    modalFactory('.js-reveal', { $context })
+                }
+            },
+        )
     }
 
     /**
@@ -363,7 +375,7 @@ export default class ProductDetails extends ProductDetailsBase {
      * Handle action when the shopper clicks on + / - for quantity
      */
     listenQuantityChange() {
-        q$('.js-quantity-change button', this.$scope).addEventListener('click', event => {
+        q$('.js-quantity-change button', this.$scope).addEventListener('click', (event) => {
             event.preventDefault()
             const $target = event.currentTarget
             const viewModel = this.getViewModel(this.$scope)
@@ -390,7 +402,7 @@ export default class ProductDetails extends ProductDetailsBase {
         })
 
         // Prevent triggering quantity change when pressing enter
-        q$('.js-form-input-increment-total', this.$scope).addEventListener('keypress', event => {
+        q$('.js-form-input-increment-total', this.$scope).addEventListener('keypress', (event) => {
             // If the browser supports event.which, then use event.which, otherwise use event.keyCode
             const x = event.which || event.keyCode
             if (x === 13) {
@@ -535,7 +547,7 @@ export default class ProductDetails extends ProductDetailsBase {
             const $backToShopppingBtn = q$('.js-preview-cart-checkout > .js-reveal-close')
             const $modalCloseBtn = q$('.js-preview-modal > .modal-close')
             const bannerUpdateHandler = () => {
-                const $productContainer = q$('#main-content > .js-container')  // #main-content is for jumping into that section in the page
+                const $productContainer = q$('#main-content > .js-container') // #main-content is for jumping into that section in the page
 
                 $productContainer.append('<div class="js-loading-overlay js-pdp-update"></div>')
                 q$('.js-loading-overlay.js-pdp-update', $productContainer).style.display = 'block'
@@ -592,9 +604,11 @@ export default class ProductDetails extends ProductDetailsBase {
             }
         }
 
-        document.dispatchEvent(new CustomEvent('onproductupdate', {
-            bubbles: true,
-            detail: { productDetails },
-        }))
+        document.dispatchEvent(
+            new CustomEvent('onproductupdate', {
+                bubbles: true,
+                detail: { productDetails },
+            }),
+        )
     }
 }

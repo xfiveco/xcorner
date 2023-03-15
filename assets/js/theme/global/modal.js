@@ -224,9 +224,7 @@ export class Modal {
                 allowOutsideClick: true,
                 fallbackFocus: () => {
                     const fallbackNode =
-                        this.$preModalFocusedEl && this.$preModalFocusedEl !== null
-                            ? this.$preModalFocusedEl
-                            : q$('.js-header-logo-link')
+                        this.$preModalFocusedEl && this.$preModalFocusedEl !== null ? this.$preModalFocusedEl : q$('.js-header-logo-link')
 
                     return fallbackNode
                 },

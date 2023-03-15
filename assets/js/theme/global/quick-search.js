@@ -5,7 +5,7 @@ import StencilDropDown from './stencil-dropdown'
 import q$, { q$$ } from './selector'
 import isVisible from '../common/utils/is-visible'
 
-export default function () {
+export default function doQuickSearch() {
     const TOP_STYLING = 'top: 49px'
     const $quickSearchResults = q$$('.js-quick-search-results')
     const $quickSearchForms = q$$('.js-quick-search-form')
@@ -30,10 +30,7 @@ export default function () {
         // If the target element has this data tag or one of it's parents, do not close the search results
         // We have to specify `.modal-background` because of limitations around Foundation Reveal not allowing
         // any modification to the background element.
-        if (
-            e.target.closest('.js-modal-background') === null &&
-            e.target.closest('.js-prevent-quick-search-close') === null
-        ) {
+        if (e.target.closest('.js-modal-background') === null && e.target.closest('.js-prevent-quick-search-close') === null) {
             stencilDropDown.hide($container)
         }
     }
@@ -41,56 +38,39 @@ export default function () {
     // stagger searching for 1200ms after last input
     const debounceWaitTime = 1200
     const doSearch = _.debounce((searchQuery) => {
-        utils.api.search.search(
-            searchQuery,
-            { template: 'search/quick-results' },
-            (err, response) => {
-                if (err) {
-                    return false
-                }
+        utils.api.search.search(searchQuery, { template: 'search/quick-results' }, (err, response) => {
+            if (err) {
+                return false
+            }
 
-                $quickSearchResults.forEach(($qsr) => {
-                    /* eslint-disable no-param-reassign */
-                    $qsr.innerHTML = response
+            $quickSearchResults.forEach(($qsr) => {
+                /* eslint-disable no-param-reassign */
+                $qsr.innerHTML = response
+            })
+
+            const $quickSearchResultsCurrent = $quickSearchResults.filter(($qsr) => isVisible($qsr))
+
+            const $noResultsMessage = $quickSearchResultsCurrent.filter(($el) => $el.querySelector('.js-quick-search-message'))
+            if ($noResultsMessage.length) {
+                $noResultsMessage.forEach(($el) => {
+                    $el.setAttribute('role', 'status')
+                    $el.setAttribute('aria-live', 'polite')
                 })
+            } else {
+                const $quickSearchAriaMessage = $quickSearchResultsCurrent.map(($el) => $el.nextElementSibling)
+                $noResultsMessage.forEach(($nrm) => $nrm.classList.add('u-hidden-visually'))
 
-                const $quickSearchResultsCurrent = $quickSearchResults.filter(($qsr) =>
-                    isVisible($qsr),
-                )
+                const predefinedText = $quickSearchAriaMessage[0]?.dataset.searchAriaMessagePredefinedText
+                const itemsFoundCount = $quickSearchResultsCurrent[0]?.querySelectorAll('.js-product').length
 
-                const $noResultsMessage = $quickSearchResultsCurrent.filter(($el) =>
-                    $el.querySelector('.js-quick-search-message'),
-                )
-                if ($noResultsMessage.length) {
-                    $noResultsMessage.forEach(($el) => {
-                        $el.setAttribute('role', 'status')
-                        $el.setAttribute('aria-live', 'polite')
-                    })
-                } else {
-                    const $quickSearchAriaMessage = $quickSearchResultsCurrent.map(
-                        ($el) => $el.nextElementSibling,
-                    )
-                    $noResultsMessage.forEach(($nrm) => $nrm.classList.add('u-hidden-visually'))
+                /* eslint-disable no-return-assign, no-param-reassign */
+                $quickSearchAriaMessage.forEach(($el) => ($el.textContent = `${itemsFoundCount} ${predefinedText} ${searchQuery}`))
 
-                    const predefinedText =
-                        $quickSearchAriaMessage[0]?.dataset.searchAriaMessagePredefinedText
-                    const itemsFoundCount =
-                        $quickSearchResultsCurrent[0]?.querySelectorAll('.js-product').length
-
-                    /* eslint-disable no-return-assign, no-param-reassign */
-                    $quickSearchAriaMessage.forEach(
-                        ($el) =>
-                            ($el.textContent = `${itemsFoundCount} ${predefinedText} ${searchQuery}`),
-                    )
-
-                    setTimeout(() => {
-                        $quickSearchAriaMessage.forEach(($el) =>
-                            $el.classList.remove('u-hidden-visually'),
-                        )
-                    }, 100)
-                }
-            },
-        )
+                setTimeout(() => {
+                    $quickSearchAriaMessage.forEach(($el) => $el.classList.remove('u-hidden-visually'))
+                }, 100)
+            }
+        })
     }, debounceWaitTime)
 
     hooks.on('search-quick', (event, currentTarget) => {

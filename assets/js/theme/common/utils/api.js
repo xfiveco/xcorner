@@ -2,8 +2,8 @@
  * This function removes any empty string values from the formData
  * @param formData: FormData object
  * @returns FormData object
-*/
-export const filterEmptyValuesFromForm = formData => {
+ */
+export const filterEmptyValuesFromForm = (formData) => {
     const filteredForm = formData.entries().filter(([, value]) => value !== '')
     const res = new FormData()
 
@@ -24,7 +24,7 @@ export const filterEmptyValuesFromForm = formData => {
  * @param formData: FormData object
  * @returns FormData object
  */
-export const filterEmptyFilesFromForm = formData => {
+export const filterEmptyFilesFromForm = (formData) => {
     const res = new FormData()
 
     try {
@@ -45,4 +45,4 @@ export const filterEmptyFilesFromForm = formData => {
  * @param formData: FormData object
  * @returns FormData object
  */
-export const normalizeFormData = formData => filterEmptyValuesFromForm(filterEmptyFilesFromForm(formData))
+export const normalizeFormData = (formData) => filterEmptyValuesFromForm(filterEmptyFilesFromForm(formData))

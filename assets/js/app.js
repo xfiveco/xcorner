@@ -1,10 +1,10 @@
-__webpack_public_path__ = window.__webpack_public_path__; // eslint-disable-line
+__webpack_public_path__ = window.__webpack_public_path__ // eslint-disable-line
 
-import Global from './theme/global';
+import Global from './theme/global'
 
-const getAccount = () => import('./theme/account');
-const getLogin = () => import('./theme/auth');
-const noop = null;
+const getAccount = () => import('./theme/account')
+const getLogin = () => import('./theme/auth')
+const noop = null
 
 const pageClasses = {
     404: noop,
@@ -50,9 +50,9 @@ const pageClasses = {
     sitemap: noop,
     wishlist: () => import('./theme/wishlist'),
     wishlists: () => import('./theme/wishlist'),
-};
+}
 
-const customClasses = {};
+const customClasses = {}
 
 /**
  * This function gets added to the global window and then called
@@ -62,35 +62,35 @@ const customClasses = {};
  * @returns {*}
  */
 window.stencilBootstrap = function stencilBootstrap(pageType, contextJSON = null, loadGlobal = true) {
-    const context = JSON.parse(contextJSON || '{}');
+    const context = JSON.parse(contextJSON || '{}')
 
     return {
         load() {
             // Load globals
             if (loadGlobal) {
-                Global.load(context);
+                Global.load(context)
             }
 
-            const importPromises = [];
+            const importPromises = []
 
             // Find the appropriate page loader based on pageType
-            const pageClassImporter = pageClasses[pageType];
+            const pageClassImporter = pageClasses[pageType]
             if (typeof pageClassImporter === 'function') {
-                importPromises.push(pageClassImporter());
+                importPromises.push(pageClassImporter())
             }
 
             // See if there is a page class default for a custom template
-            const customTemplateImporter = customClasses[context.template];
+            const customTemplateImporter = customClasses[context.template]
             if (typeof customTemplateImporter === 'function') {
-                importPromises.push(customTemplateImporter());
+                importPromises.push(customTemplateImporter())
             }
 
             // Wait for imports to resolve, then call load() on them
-            Promise.all(importPromises).then(imports => {
-                imports.forEach(imported => {
-                    imported.default.load(context);
-                });
-            });
+            Promise.all(importPromises).then((imports) => {
+                imports.forEach((imported) => {
+                    imported.default.load(context)
+                })
+            })
         },
-    };
-};
+    }
+}

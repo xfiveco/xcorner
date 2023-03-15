@@ -41,7 +41,7 @@ export default class ProductDetailsBase {
         Wishlist.load(this.context)
         this.getTabRequests()
 
-        q$$('[data-product-attribute]').forEach(value => {
+        q$$('[data-product-attribute]').forEach((value) => {
             const type = value.dataset.productAttribute
 
             this._makeProductVariantAccessible(value, type)
@@ -50,13 +50,14 @@ export default class ProductDetailsBase {
 
     _makeProductVariantAccessible(variantDomNode, variantType) {
         switch (variantType) {
-        case optionsTypesMap.SET_RADIO:
-        case optionsTypesMap.SWATCH: {
-            initRadioOptions(q$(variantDomNode), '[type=radio]')
-            break
-        }
+            case optionsTypesMap.SET_RADIO:
+            case optionsTypesMap.SWATCH: {
+                initRadioOptions(q$(variantDomNode), '[type=radio]')
+                break
+            }
 
-        default: break
+            default:
+                break
         }
     }
 
@@ -64,7 +65,7 @@ export default class ProductDetailsBase {
      * Allow radio buttons to get deselected
      */
     initRadioAttributes() {
-        q$$('[data-product-attribute] input[type="radio"]', this.$scope).forEach($radio => {
+        q$$('[data-product-attribute] input[type="radio"]', this.$scope).forEach(($radio) => {
             // Only bind to click once
             if ($radio.dataset.state !== undefined) {
                 $radio.addEventListener('click', () => {
@@ -99,7 +100,7 @@ export default class ProductDetailsBase {
             return
         }
 
-        q$$('[data-product-attribute-value]', this.$scope).forEach($attribute => {
+        q$$('[data-product-attribute-value]', this.$scope).forEach(($attribute) => {
             const attrId = parseInt($attribute.dataset.productAttributeValue, 10)
 
             if (inStockIds.indexOf(attrId) !== -1) {
@@ -115,7 +116,7 @@ export default class ProductDetailsBase {
      */
     getTabRequests() {
         if (window.location.hash && window.location.hash.indexOf('#tab-') === 0) {
-            const $activeTab = q$$('.js-tabs').filter($tab => $tab.matches(`[href='${window.location.hash}']`))
+            const $activeTab = q$$('.js-tabs').filter(($tab) => $tab.matches(`[href='${window.location.hash}']`))
             const $tabContent = q$(`${window.location.hash}`)
 
             if ($activeTab.length > 0) {
@@ -126,7 +127,7 @@ export default class ProductDetailsBase {
                 $tab.classList.add('is-active')
 
                 $tabContent.classList.add('is-active')
-                $tabContent.children.forEach($child => $child.classList.remove('is-active'))
+                $tabContent.children.forEach(($child) => $child.classList.remove('is-active'))
             }
         }
     }
@@ -264,7 +265,7 @@ export default class ProductDetailsBase {
         // If Bulk Pricing rendered HTML is available
         if (data.bulk_discount_rates && content) {
             viewModel.$bulkPricing.innerHTML = content
-        } else if (typeof (data.bulk_discount_rates) !== 'undefined') {
+        } else if (typeof data.bulk_discount_rates !== 'undefined') {
             viewModel.$bulkPricing.innerHTML = ''
         }
 
@@ -284,16 +285,16 @@ export default class ProductDetailsBase {
         this.clearPricingNotFound(viewModel)
 
         if (price.with_tax) {
-            const updatedPrice = price.price_range ?
-                `${price.price_range.min.with_tax.formatted} - ${price.price_range.max.with_tax.formatted}`
+            const updatedPrice = price.price_range
+                ? `${price.price_range.min.with_tax.formatted} - ${price.price_range.max.with_tax.formatted}`
                 : price.with_tax.formatted
             viewModel.priceLabel.$span.style.display = 'block'
             viewModel.$priceWithTax.innerHTML = updatedPrice
         }
 
         if (price.without_tax) {
-            const updatedPrice = price.price_range ?
-                `${price.price_range.min.without_tax.formatted} - ${price.price_range.max.without_tax.formatted}`
+            const updatedPrice = price.price_range
+                ? `${price.price_range.min.without_tax.formatted} - ${price.price_range.max.without_tax.formatted}`
                 : price.without_tax.formatted
             viewModel.priceLabel.$span.style.display = 'block'
             viewModel.$priceWithoutTax.innerHTML = updatedPrice
@@ -347,7 +348,7 @@ export default class ProductDetailsBase {
 
     /**
      * Enables/disables by purchasable and instock
-     * @param {Object} data 
+     * @param {Object} data
      */
     updateDefaultAttributesForOOS(data) {
         const viewModel = this.getViewModel(this.$scope)
@@ -370,7 +371,7 @@ export default class ProductDetailsBase {
     /**
      * Set wallet button visibility
      *
-     * @param {Boolean} shouldShow 
+     * @param {Boolean} shouldShow
      */
     toggleWalletButtonsVisibility(shouldShow) {
         const viewModel = this.getViewModel(this.$scope)
