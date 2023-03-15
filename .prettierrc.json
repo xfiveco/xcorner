@@ -5,15 +5,5 @@
     "semi": false,
     "singleQuote": true,
     "bracketSameLine": false,
-    "singleAttributePerLine": true,
-    "overrides": [
-        {
-            "files": [
-                "*.html"
-            ],
-            "options": {
-                "singleQuote": false
-            }
-        }
-    ]   
+    "singleAttributePerLine": true
 }
