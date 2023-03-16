@@ -1,61 +1,61 @@
-# Cornerstone
-![tests](https://github.com/bigcommerce/cornerstone/workflows/Theme%20Bundling%20Test/badge.svg?branch=master)
+# xCorner
 
-Stencil's Cornerstone theme is the building block for BigCommerce theme developers to get started quickly developing premium quality themes on the BigCommerce platform.
-
-### Stencil Utils
-[Stencil-utils](https://github.com/bigcommerce/stencil-utils) is our supporting library for our events and remote interactions.
+Xfive stencil's Cornerstone theme for BigCommerce theme developers.
 
 ## JS API
+
+---
+
 When writing theme JavaScript (JS) there is an API in place for running JS on a per page basis. To properly write JS for your theme, the following page types are available to you:
 
-* "pages/account/addresses"
-* "pages/account/add-address"
-* "pages/account/add-return"
-* "pages/account/add-wishlist"
-* "pages/account/recent-items"
-* "pages/account/download-item"
-* "pages/account/edit"
-* "pages/account/return-saved"
-* "pages/account/returns"
-* "pages/account/payment-methods"
-* "pages/auth/login"
-* "pages/auth/account-created"
-* "pages/auth/create-account"
-* "pages/auth/new-password"
-* "pages/blog"
-* "pages/blog-post"
-* "pages/brand"
-* "pages/brands"
-* "pages/cart"
-* "pages/category"
-* "pages/compare"
-* "pages/errors"
-* "pages/gift-certificate/purchase"
-* "pages/gift-certificate/balance"
-* "pages/gift-certificate/redeem"
-* "global"
-* "pages/home"
-* "pages/order-complete"
-* "pages/page"
-* "pages/product"
-* "pages/search"
-* "pages/sitemap"
-* "pages/subscribed"
-* "pages/account/wishlist-details"
-* "pages/account/wishlists"
+-   "pages/account/addresses"
+-   "pages/account/add-address"
+-   "pages/account/add-return"
+-   "pages/account/add-wishlist"
+-   "pages/account/recent-items"
+-   "pages/account/download-item"
+-   "pages/account/edit"
+-   "pages/account/return-saved"
+-   "pages/account/returns"
+-   "pages/account/payment-methods"
+-   "pages/auth/login"
+-   "pages/auth/account-created"
+-   "pages/auth/create-account"
+-   "pages/auth/new-password"
+-   "pages/blog"
+-   "pages/blog-post"
+-   "pages/brand"
+-   "pages/brands"
+-   "pages/cart"
+-   "pages/category"
+-   "pages/compare"
+-   "pages/errors"
+-   "pages/gift-certificate/purchase"
+-   "pages/gift-certificate/balance"
+-   "pages/gift-certificate/redeem"
+-   "global"
+-   "pages/home"
+-   "pages/order-complete"
+-   "pages/page"
+-   "pages/product"
+-   "pages/search"
+-   "pages/sitemap"
+-   "pages/subscribed"
+-   "pages/account/wishlist-details"
+-   "pages/account/wishlists"
 
 These page types will correspond to the pages within your theme. Each one of these page types map to an ES6 module that extends the base `PageManager` abstract class.
 
 ```javascript
-    export default class Auth extends PageManager {
-        constructor() {
-            // Set up code goes here; attach to internals and use internals as you would 'this'
-        }
+export default class Auth extends PageManager {
+    constructor() {
+        // Set up code goes here; attach to internals and use internals as you would 'this'
     }
+}
 ```
 
 ### JS Template Context Injection
+
 Occasionally you may need to use dynamic data from the template context within your client-side theme application code.
 
 Two helpers are provided to help achieve this.
@@ -74,10 +74,10 @@ For example, to setup the product name in your client-side app, you can do the f
 {{inject "myProductName" product.title}}
 
 <script>
-// Note the lack of quotes around the jsContext handlebars helper, it becomes a string automatically.
-var jsContext = JSON.parse({{jsContext}}); // jsContext would output "{\"myProductName\": \"Sample Product\"}" which can feed directly into your JavaScript
+    // Note the lack of quotes around the jsContext handlebars helper, it becomes a string automatically.
+    var jsContext = JSON.parse({{jsContext}}); // jsContext would output "{\"myProductName\": \"Sample Product\"}" which can feed directly into your JavaScript
 
-console.log(jsContext.myProductName); // Will output: Sample Product
+    console.log(jsContext.myProductName); // Will output: Sample Product
 </script>
 ```
 
@@ -85,16 +85,10 @@ You can compose your JSON object across multiple pages to create a different set
 
 The stencil theme makes the jsContext available on both the active page scoped and global PageManager objects as `this.context`.
 
-## Polyfilling via Feature Detection
-Cornerstone implements [this strategy](https://philipwalton.com/articles/loading-polyfills-only-when-needed/) for polyfilling.
-
-In `templates/components/common/polyfill-script.html` there is a simple feature detection script which can be extended to detect any recent JS features you intend to use in your theme code.
-
-If any one of the conditions is not met, an additional blocking JS bundle configured in `assets/js/polyfills.js` will be loaded to polyfill modern JS features before the main bundle executes. 
-
-This intentionally prioritizes the experience of the 90%+ of shoppers who are on modern browsers in terms of performance, while maintaining compatibility (at the expense of additional JS download+parse for the polyfills) for users on legacy browsers.
-
 ## Static assets
+
+---
+
 Some static assets in the Stencil theme are handled with Grunt if required. This
 means you have some dependencies on grunt and npm. To get started:
 
@@ -110,12 +104,12 @@ and run:
 npm install
 ```
 
-Note: package-lock.json file was generated by Node version 10 and npm version 6.11.3. The app supports Node 10 as well as multiple versions of npm, but we should always use those versions when updating package-lock.json, unless it is decided to upgrade those, and in this case the readme should be updated as well. If using a different version for node OR npm, please delete the package-lock.json file prior to installing node packages and also prior to pushing to github.
+Note: package-lock.json file was generated by Node version 14 and npm version 6.14.17. The app supports Node 10 as well as multiple versions of npm, but we should always use those versions when updating package-lock.json, unless it is decided to upgrade those, and in this case the readme should be updated as well. If using a different version for node OR npm, please delete the package-lock.json file prior to installing node packages and also prior to pushing to github.
 
-If updating or adding a dependency, please double check that you are working on Node version 10 and npm version 6.11.3 and run ```npm update <package_name>```  or ```npm install <package_name>``` (avoid running npm install for updating a package). After updating the package, please make sure that the changes in the package-lock.json reflect only the updated/new package prior to pushing the changes to github.
-
+If updating or adding a dependency, please double check that you are working on Node version 14 and npm version 6.14.17 and run `npm update <package_name>` or `npm install <package_name>` (avoid running npm install for updating a package). After updating the package, please make sure that the changes in the package-lock.json reflect only the updated/new package prior to pushing the changes to github.
 
 ### Icons
+
 Icons are delivered via a single SVG sprite, which is embedded on the page in
 `templates/layout/base.html`. It is generated via a grunt task `grunt svgstore`.
 
@@ -132,6 +126,43 @@ with `icon-` prepended. e.g. `xlink:href="#icon-facebook"`.
 
 Simply add your new icon SVG file to the icons folder, and run `grunt svgstore`,
 or just `grunt`.
+
+## Features
+
+---
+
+### Naked templates
+
+We cleaned all template files for a trully customizable canvas.
+
+### Style guide
+
+On the SASS side, we got rid of all legacy styling which sometimes forced us to use `!import` early when starting a new theme project. In contrast, we're now using [ITCSS](https://www.xfive.co/blog/itcss-scalable-maintainable-css-architecture/) methodology which helps to organize our styling rules from broad to specific in scope.
+
+Since we mostly add new component and utility SCSS rules, we created a couple of small scripts which can be run as `npm run createComponent <component-name>` and `npm run createUtility <utility-name>` which create the scss file inside `asstes/scss` and adds a new line inside the corresponding `_components.scss` or `_utilities.scss` file for importing the new SCSS rule.
+
+All code linters follow [Chisel](https://github.com/xfiveco/generator-chisel) conventions.
+
+### Swiper
+
+Here, we're using [Swiper](https://swiperjs.com/) which is a library agnostic carrousel implementation.
+
+### No more jQuery
+
+This theme tries to be as close to the browser as possible, and so, we replace jQuery with native function calls, leaving its use to very special use cases like the file tree in Search page.
+
+Since there are some niceties from jQuery like `#parents()` or `#trigger()`, we extracted these as native equivalents in the following files:
+
+-   `assets/js/theme/global/selector.js`: here we have `$()` as a shorthand for `document.querySelector`. We have `$$()` as a shorthand for `document.querySelectorAll` but it returns a proper Array, so we can use `filter`, `map`, etc. `parents()` to select a HTMLElement which satisfies the selector provided and `prev()` which tries to get the previous HTMLElement that matches the selector if provided.
+-   `assets/js/theme/global/toggle.js`: the `toggle()` function hides or shows the HTMLElement based on current visibility.
+-   `assets/js/theme/common/utils/trigger.js`: the `trigger()` function dispatches an event or custom event depending if details are provided using browser native function calls.
+-   `assets/js/theme/common/utils/is-visible.js`: here we have a native equivalent of `jQuery#is(':visible')`.
+
+Along with jQuery, Foundation is gone, we recommend using newer ways to work with layouts and native component implementations.
+
+### Utility scripts
+
+We recommend creating new (custom) templates and JS files inside `templates/components/custom` and `assets/js/theme/custom` respectively. To make this step a little easier, we created a script for creating a custom template script running `npm run addTemplate <template-name>` and another for creating a JS file running `npm run addCode <javascript-name>`.
 
 #### License
 
