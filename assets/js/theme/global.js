@@ -7,7 +7,7 @@ import menu from './global/menu'
 import quickView from './global/quick-view'
 import cartPreview from './global/cart-preview'
 import privacyCookieNotification from './global/cookieNotification'
-// import carousel from './common/carousel'
+import carousel from './common/carousel'
 import svgInjector from './global/svg-injector'
 
 export default class Global extends PageManager {
@@ -17,7 +17,7 @@ export default class Global extends PageManager {
         quickSearch()
         currencySelector(cartId)
         quickView(this.context)
-        // carousel(this.context) TODO: Update Carousel implementation
+        carousel(this.context)
         menu()
         mobileMenuToggle()
         privacyCookieNotification()

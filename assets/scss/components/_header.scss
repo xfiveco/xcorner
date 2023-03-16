@@ -1,3 +1,27 @@
 /* ==========================================================================
    #HEADER
    ========================================================================== */
+
+.c-header {
+    @include container();
+
+    display: flex;
+    flex-direction: column;
+}
+
+.c-header > nav {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+}
+
+.c-header > nav ul {
+    @include list-bare();
+}
+
+.c-header > nav .has-dropdown + ul {
+    display: none;
+}
+
+.c-header > nav .has-dropdown.is-open + ul {
+    display: block;
+}

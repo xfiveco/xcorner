@@ -1,0 +1,27 @@
+
+/* ==========================================================================
+   #MODAL
+   ========================================================================== */
+
+.c-modal {
+    display: none;
+    position: relative;
+}
+
+.c-modal.is-open {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.411);
+    z-index: 10;
+    overflow-y: auto;
+}
+
+.c-modal.is-open > button {
+    position: absolute;
+    top: rem-calc(10px);
+    right: rem-calc(10px);
+}

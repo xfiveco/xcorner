@@ -375,7 +375,7 @@ export default class ProductDetails extends ProductDetailsBase {
      * Handle action when the shopper clicks on + / - for quantity
      */
     listenQuantityChange() {
-        q$('.js-quantity-change button', this.$scope).addEventListener('click', (event) => {
+        q$('.js-quantity-change button', this.$scope)?.addEventListener('click', (event) => {
             event.preventDefault()
             const $target = event.currentTarget
             const viewModel = this.getViewModel(this.$scope)
@@ -402,7 +402,7 @@ export default class ProductDetails extends ProductDetailsBase {
         })
 
         // Prevent triggering quantity change when pressing enter
-        q$('.js-form-input-increment-total', this.$scope).addEventListener('keypress', (event) => {
+        q$('.js-form-input-increment-total', this.$scope)?.addEventListener('keypress', (event) => {
             // If the browser supports event.which, then use event.which, otherwise use event.keyCode
             const x = event.which || event.keyCode
             if (x === 13) {
@@ -411,7 +411,7 @@ export default class ProductDetails extends ProductDetailsBase {
             }
         })
 
-        q$('.js-form-input-increment-total', this.$scope).addEventListener('keyup', () => {
+        q$('.js-form-input-increment-total', this.$scope)?.addEventListener('keyup', () => {
             this.updateProductDetailsData()
         })
     }
