@@ -18,7 +18,7 @@ product_results:
 {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
 <section>
     {{#if forms.search.query}}
-        <div id="search-results-heading">
+        <div class="js-search-results-heading">
             {{>components/search/heading}}
         </div>
     {{/if}}
@@ -31,9 +31,8 @@ product_results:
                 <a 
                     aria-describedby="search-tabs-widget-description"
                     role="tab" 
-                    aria-controls="product-listing-container" 
-                    id="search-results-product-count" 
-                    class="js-nav-bar-action js-product-results-toggle" 
+                    aria-controls="product-listing-container"
+                    class="js-nav-bar-action js-product-results-toggle js-search-results-product-count" 
                     href="{{forms.search.product_url}}"
                 >
                     {{>components/search/product-count}}
@@ -43,9 +42,8 @@ product_results:
                 <a 
                     aria-describedby="search-tabs-widget-description" 
                     role="tab" 
-                    aria-controls="search-results-content" 
-                    id="search-results-content-count" 
-                    class="js-nav-bar-action js-content-results-toggle" 
+                    aria-controls="search-results-content"
+                    class="js-nav-bar-action js-content-results-toggle js-search-results-content-count" 
                     href="{{forms.search.content_url}}">
                     {{>components/search/content-count}}
                 </a>
@@ -78,8 +76,7 @@ product_results:
 <section>
     {{#if product_results.faceted_search_enabled}}
         <aside 
-            class="{{#if forms.search.section '!=' 'product'}}u-hidden-visually{{/if}}" 
-            id="faceted-search-container"
+            class="js-faceted-search-container {{#if forms.search.section '!=' 'product'}}u-hidden-visually{{/if}}" 
         >
             {{> components/faceted-search/index product_results}}
         </aside>
@@ -154,7 +151,7 @@ product_results:
 
         <div 
             role="tabpanel" 
-            id="search-results-content" 
+            class="js-search-results-content"
             aria-labelledby="search-results-content-count" 
             {{#if forms.search.section '!=' 'content'}}class="u-hidden-visually"{{/if}}
         >
@@ -163,9 +160,8 @@ product_results:
 
         <div 
             role="tabpanel" 
-            id="product-listing-container" 
+            class="js-product-listing-container {{#if forms.search.section '!=' 'product'}}u-hidden-visually{{/if}}"
             aria-labelledby="search-results-product-count" 
-            {{#if forms.search.section '!=' 'product'}}class="u-hidden-visually"{{/if}}
         >
             {{> components/search/product-listing}}
         </div>

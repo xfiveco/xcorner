@@ -11,7 +11,7 @@ export default class Auth extends PageManager {
     constructor(context) {
         super(context)
         this.validationDictionary = createTranslationDictionary(context)
-        this.formCreateSelector = 'form.js-create-account-form'
+        this.formCreateSelector = '.js-create-account-form'
         this.recaptcha = q$('.g-recaptcha iframe[src]')
     }
 

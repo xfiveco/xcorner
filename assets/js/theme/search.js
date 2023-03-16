@@ -56,7 +56,7 @@ export default class Search extends CatalogPage {
             return
         }
 
-        const searchData = q$('#search-results-product-count span').dataset
+        const searchData = q$('.js-search-results-product-count span').dataset
         const url =
             searchData.count > 0
                 ? searchData.url
@@ -84,7 +84,7 @@ export default class Search extends CatalogPage {
             return
         }
 
-        const searchData = q$('#search-results-content-count span').dataset
+        const searchData = q$('.js-search-results-content-count span').dataset
         const url =
             searchData.count > 0
                 ? searchData.url
@@ -148,9 +148,9 @@ export default class Search extends CatalogPage {
         const $categoryTreeContainer = $searchForm.querySelector('.js-search-category-tree')
         const url = new URL(window.location.href)
         const treeData = []
-        this.$productListingContainer = q$('#product-listing-container')
-        this.$facetedSearchContainer = q$('#faceted-search-container')
-        this.$contentResultsContainer = q$('#search-results-content')
+        this.$productListingContainer = q$('.js-product-listing-container')
+        this.$facetedSearchContainer = q$('.js-faceted-search-container')
+        this.$contentResultsContainer = q$('.js-search-results-content')
 
         // Init faceted search
         if (q$('#faceted-search') !== null) {
@@ -270,12 +270,12 @@ export default class Search extends CatalogPage {
     initFacetedSearch() {
         // eslint-disable-next-line object-curly-newline
         const { onMinPriceError, onMaxPriceError, minPriceNotEntered, maxPriceNotEntered, onInvalidPrice } = this.context
-        const $productListingContainer = q$('#product-listing-container')
-        const $contentListingContainer = q$('#search-results-content')
-        const $facetedSearchContainer = q$('#faceted-search-container')
-        const $searchHeading = q$('#search-results-heading')
-        const $searchCount = q$('#search-results-product-count')
-        const $contentCount = q$('#search-results-content-count')
+        const $productListingContainer = q$('.js-product-listing-container')
+        const $contentListingContainer = q$('.js-search-results-content')
+        const $facetedSearchContainer = q$('.js-faceted-search-container')
+        const $searchHeading = q$('.js-search-results-heading')
+        const $searchCount = q$('.js-search-results-product-count')
+        const $contentCount = q$('.js-search-results-content-count')
         const productsPerPage = this.context.searchProductsPerPage
         const requestOptions = {
             template: {

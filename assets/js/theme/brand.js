@@ -31,8 +31,8 @@ export default class Brand extends CatalogPage {
             price_max_not_entered: maxPriceNotEntered,
             price_invalid_value: onInvalidPrice,
         } = this.validationDictionary
-        const $productListingContainer = q$('#product-listing-container')
-        const $facetedSearchContainer = q$('#faceted-search-container')
+        const $productListingContainer = q$('.js-product-listing-container')
+        const $facetedSearchContainer = q$('.js-faceted-search-container')
         const productsPerPage = this.context.brandProductsPerPage
         const requestOptions = {
             template: {

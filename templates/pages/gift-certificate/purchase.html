@@ -12,7 +12,7 @@
         {{> components/common/alert/alert-error this}}
     {{/each}}
 
-    <form method="post" id="gift-certificate-form" action="{{forms.gift_certificate.action}}">
+    <form method="post" class="js-gift-certificate-form" action="{{forms.gift_certificate.action}}">
         {{#if forms.gift_certificate.cart_item_id}}
             <input type="hidden" name="cartitemid" value="{{forms.gift_certificate.cart_item_id}}">
         {{/if}}

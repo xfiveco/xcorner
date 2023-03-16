@@ -131,7 +131,7 @@ export default class Cart extends PageManager {
         const modal = defaultModal()
 
         if (this.$modal === null) {
-            this.$modal = q$('#modal')
+            this.$modal = q$('.js-modal')
         }
 
         const options = {

@@ -5,11 +5,11 @@ import StencilDropDown from './stencil-dropdown'
 import q$, { q$$ } from './selector'
 import isVisible from '../common/utils/is-visible'
 
-export default function doQuickSearch() {
-    const TOP_STYLING = 'top: 49px'
+export default function () {
+    const TOP_STYLING = 'top: 49px;'
     const $quickSearchResults = q$$('.js-quick-search-results')
     const $quickSearchForms = q$$('.js-quick-search-form')
-    const $quickSearchExpand = q$('#quick-search-expand')
+    const $quickSearchExpand = q$('.js-quick-search-expand')
     const $searchQuery = $quickSearchForms.map(($qsf) => q$('.js-search-quick', $qsf))
     const stencilDropDownExtendables = {
         hide: () => {
@@ -24,7 +24,7 @@ export default function doQuickSearch() {
     }
 
     const stencilDropDown = new StencilDropDown(stencilDropDownExtendables)
-    stencilDropDown.bind(q$('[data-search="quick-search"]'), q$('#quick-search'), TOP_STYLING)
+    stencilDropDown.bind(q$('[data-search="quick-search"]'), q$('.js-quick-search'), TOP_STYLING)
 
     stencilDropDownExtendables.onBodyClick = (e, $container) => {
         // If the target element has this data tag or one of it's parents, do not close the search results

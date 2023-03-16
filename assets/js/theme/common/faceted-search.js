@@ -23,7 +23,7 @@ const defaultOptions = {
     priceRangeMinPriceSelector: '.js-facets-search-range-form [name=min_price]',
     showMoreToggleSelector: '.js-facets-search-wrapper .js-accordion-content .js-toggle-link',
     facetedSearchFilterItems: '.js-facets-search-wrapper-filterItems .js-form-input',
-    modal: modalFactory('#modal'),
+    modal: modalFactory('.js-modal'),
     modalOpen: false,
 }
 

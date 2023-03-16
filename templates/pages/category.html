@@ -35,16 +35,16 @@ category:
 
 <div>
     {{#if category.faceted_search_enabled}}
-        <aside class="js-faceted-search-container" id="faceted-search-container">
+        <aside class="js-faceted-search-container">
             {{> components/category/sidebar}}
         </aside>
     {{else if category.subcategories}}
-        <aside class="js-faceted-search-container" id="faceted-search-container">
+        <aside class="js-faceted-search-container">
             {{> components/category/sidebar}}
         </aside>
     {{else if category.shop_by_price}}
         {{#if theme_settings.shop_by_price_visibility}}
-             <aside class="js-faceted-search-container" id="faceted-search-container">
+             <aside class="js-faceted-search-container">
                 {{> components/category/sidebar}}
             </aside>
         {{else if category.subcategories}}
@@ -60,7 +60,7 @@ category:
         {{/if}}
     {{/if}}
 
-    <div class="js-product-listing-container" id="product-listing-container">
+    <div class="js-product-listing-container">
         {{> components/category/product-listing}}
     
         {{{region name="category_below_content"}}}

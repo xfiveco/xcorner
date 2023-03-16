@@ -40,7 +40,7 @@ describe.skip('StateCountry', () => {
 
         beforeEach(() => {
             $modalElement = $(`
-                <div id="alert-modal" class="modal modal--alert" data-reveal>
+                <div class="modal modal--alert js-alert-modal" data-reveal>
                     <div class="is-modal-content"></div>
                     <div class="is-loading-overlay"></div>
                 </div>
