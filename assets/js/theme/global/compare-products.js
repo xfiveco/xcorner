@@ -24,9 +24,7 @@ function updateCounterNav(counter, $link, urls) {
         $link.href = `${urls.compare}/${counter.join('/')}`
 
         /* eslint-disable no-param-reassign */
-        $link
-            .querySelector('.js-count-pill')
-            .innerHTML = counter.length;
+        $link.querySelector('.js-count-pill').innerHTML = counter.length
     } else {
         $link.classList.remove('show')
     }
@@ -35,7 +33,7 @@ function updateCounterNav(counter, $link, urls) {
 export default function ({ noCompareMessage, urls }) {
     let compareCounter = []
 
-    const $compareLink = q$('.js-compare-nav');
+    const $compareLink = q$('.js-compare-nav')
 
     q$('body').addEventListener('compare-reset', () => {
         const $checked = q$$('input[name="products[]"]:checked', q$('body'))
@@ -47,10 +45,10 @@ export default function ({ noCompareMessage, urls }) {
     trigger(q$('body'), 'compare-reset')
 
     /* eslint-disable no-unused-expressions */
-    q$$('[data-compare-id]').forEach($compare => {
-        $compare.addEventListener('click', event => {
-            const product = event.currentTarget.value;
-            const $clickedCompareLink = q$('.js-compare-nav');
+    q$$('[data-compare-id]').forEach(($compare) => {
+        $compare.addEventListener('click', (event) => {
+            const product = event.currentTarget.value
+            const $clickedCompareLink = q$('.js-compare-nav')
 
             if (event.currentTarget.checked) {
                 incrementCounter(compareCounter, product)
@@ -63,7 +61,7 @@ export default function ({ noCompareMessage, urls }) {
     })
 
     q$('.js-compare-nav').addEventListener('click', () => {
-        const $clickedCheckedInput = q$$('input[name="products\[\]"]:checked', q$('body'));
+        const $clickedCheckedInput = q$$('input[name="products[]"]:checked', q$('body'))
 
         if ($clickedCheckedInput.length <= 1) {
             showAlertModal(noCompareMessage)

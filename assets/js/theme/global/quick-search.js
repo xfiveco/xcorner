@@ -6,11 +6,11 @@ import q$, { q$$ } from './selector'
 import isVisible from '../common/utils/is-visible'
 
 export default function () {
-    const TOP_STYLING = 'top: 49px;';
-    const $quickSearchResults = q$$('.js-quick-search-results');
-    const $quickSearchForms = q$$('.js-quick-search-form');
-    const $quickSearchExpand = q$('.js-quick-search-expand');
-    const $searchQuery = $quickSearchForms.map($qsf => q$('.js-search-quick', $qsf));
+    const TOP_STYLING = 'top: 49px;'
+    const $quickSearchResults = q$$('.js-quick-search-results')
+    const $quickSearchForms = q$$('.js-quick-search-form')
+    const $quickSearchExpand = q$('.js-quick-search-expand')
+    const $searchQuery = $quickSearchForms.map(($qsf) => q$('.js-search-quick', $qsf))
     const stencilDropDownExtendables = {
         hide: () => {
             $quickSearchExpand.setAttribute('aria-expanded', false)
@@ -23,8 +23,8 @@ export default function () {
         },
     }
 
-    const stencilDropDown = new StencilDropDown(stencilDropDownExtendables);
-    stencilDropDown.bind(q$('[data-search="quick-search"]'), q$('.js-quick-search'), TOP_STYLING);
+    const stencilDropDown = new StencilDropDown(stencilDropDownExtendables)
+    stencilDropDown.bind(q$('[data-search="quick-search"]'), q$('.js-quick-search'), TOP_STYLING)
 
     stencilDropDownExtendables.onBodyClick = (e, $container) => {
         // If the target element has this data tag or one of it's parents, do not close the search results

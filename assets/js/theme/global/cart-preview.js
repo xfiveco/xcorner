@@ -8,11 +8,11 @@ export const CartPreviewEvents = {
 }
 
 export default function (secureBaseUrl, cartId) {
-    const loadingClass = 'is-loading';
-    const $cart = q$('.js-cart-preview');
-    const $cartDropdown = q$('.js-cart-preview-dropdown');
-    const $cartLoading = document.createElement('div');
-    $cartLoading.classList.add('js-loading-overlay');
+    const loadingClass = 'is-loading'
+    const $cart = q$('.js-cart-preview')
+    const $cartDropdown = q$('.js-cart-preview-dropdown')
+    const $cartLoading = document.createElement('div')
+    $cartLoading.classList.add('js-loading-overlay')
 
     if (window.ApplePaySession) {
         $cartDropdown.classList.add('js-apple-pay-supported')
