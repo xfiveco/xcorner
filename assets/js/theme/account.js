@@ -26,14 +26,14 @@ export default class Account extends PageManager {
     }
 
     onReady() {
-        const $editAccountForm = classifyForm('.js-edit-account-form');
-        const $addressForm = classifyForm('.js-address-form');
-        const $inboxForm = classifyForm('.js-inbox-form');
-        const $accountReturnForm = classifyForm('.js-account-return-form');
-        const $paymentMethodForm = classifyForm('.js-payment-method-form');
-        const $reorderForm = classifyForm('.js-account-reorder-form');
-        const $invoiceButton = q$('[data-print-invoice]');
-        const $bigCommerce = window.BigCommerce;
+        const $editAccountForm = classifyForm('.js-edit-account-form')
+        const $addressForm = classifyForm('.js-address-form')
+        const $inboxForm = classifyForm('.js-inbox-form')
+        const $accountReturnForm = classifyForm('.js-account-return-form')
+        const $paymentMethodForm = classifyForm('.js-payment-method-form')
+        const $reorderForm = classifyForm('.js-account-reorder-form')
+        const $invoiceButton = q$('[data-print-invoice]')
+        const $bigCommerce = window.BigCommerce
 
         compareProducts(this.context)
 
@@ -164,9 +164,9 @@ export default class Account extends PageManager {
     }
 
     initAddressFormValidation($addressForm) {
-        const validationModel = validation($addressForm, this.context);
-        const stateSelector = '.js-address-form [data-field-type="State"]';
-        const $stateElement = q$(stateSelector);
+        const validationModel = validation($addressForm, this.context)
+        const stateSelector = '.js-address-form [data-field-type="State"]'
+        const $stateElement = q$(stateSelector)
         const addressValidator = nod({
             submit: '.js-address-form [type="submit"]',
             tap: announceInputErrorMessage,
@@ -271,8 +271,8 @@ export default class Account extends PageManager {
             '#postal_code.js-form-field',
         ).dataset.validation = `{ "type": "singleline", "label": "${this.context.postalCodeLabel}", "required": true, "maxlength": 0 }`
 
-        const validationModel = validation($paymentMethodForm, this.context);
-        const paymentMethodSelector = '.js-payment-method-form';
+        const validationModel = validation($paymentMethodForm, this.context)
+        const paymentMethodSelector = '.js-payment-method-form'
         const paymentMethodValidator = nod({
             submit: `${paymentMethodSelector} [type="submit"]`,
             tap: announceInputErrorMessage,
@@ -366,8 +366,8 @@ export default class Account extends PageManager {
     }
 
     registerEditAccountValidation($editAccountForm) {
-        const validationModel = validation($editAccountForm, this.context);
-        const formEditSelector = '.js-edit-account-form';
+        const validationModel = validation($editAccountForm, this.context)
+        const formEditSelector = '.js-edit-account-form'
         const editValidator = nod({
             submit: '${formEditSelector} [type="submit"]',
             delay: 900,
