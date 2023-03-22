@@ -4,8 +4,6 @@ Xfive stencil's Cornerstone theme for BigCommerce theme developers.
 
 ## JS API
 
----
-
 When writing theme JavaScript (JS) there is an API in place for running JS on a per page basis. To properly write JS for your theme, the following page types are available to you:
 
 -   "pages/account/addresses"
