@@ -137,7 +137,7 @@ We cleaned all template files for a trully customizable canvas.
 
 ### Style guide
 
-On the SASS side, we got rid of all legacy styling which sometimes forced us to use `!import` early when starting a new theme project. In contrast, we're now using [ITCSS](https://www.xfive.co/blog/itcss-scalable-maintainable-css-architecture/) methodology which helps to organize our styling rules from broad to specific in scope.
+On the SASS side, we got rid of all legacy styling which sometimes forced us to use `!important` early when starting a new theme project. In contrast, we're now using [ITCSS](https://www.xfive.co/blog/itcss-scalable-maintainable-css-architecture/) methodology which helps to organize our styling rules from broad to specific in scope.
 
 Since we mostly add new component and utility SCSS rules, we created a couple of small scripts which can be run as `npm run createComponent <component-name>` and `npm run createUtility <utility-name>` which create the scss file inside `asstes/scss` and adds a new line inside the corresponding `_components.scss` or `_utilities.scss` file for importing the new SCSS rule.
 
