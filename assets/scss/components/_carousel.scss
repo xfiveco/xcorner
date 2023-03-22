@@ -1,0 +1,21 @@
+
+/* ==========================================================================
+   #CAROUSEL
+   ========================================================================== */
+
+.c-carousel {
+    @include container();
+
+    overflow-x: hidden;
+}
+
+.c-carousel > div:last-child {
+    display: flex;
+    justify-content: space-between;
+}
+
+.c-carousel > div:last-child > div {
+    border: solid 1px #aaa;
+    padding: rem-calc(10px);
+    cursor: pointer;
+}

@@ -53,8 +53,10 @@ export default class {
             return
         }
 
-        // force collapse on page load
-        trigger(this.$collapsible, CollapsibleEvents.click)
+        if (this.$collapsible) {
+            // force collapse on page load
+            trigger(this.$collapsible, CollapsibleEvents.click)
+        }
     }
 
     expandReviews() {

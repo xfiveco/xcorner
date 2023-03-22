@@ -1,17 +1,24 @@
-<div>
-    {{lang 'products.featured' }}
-</div>
+<section class="js-featured-swiper c-carousel">
+    <div>
+        {{lang 'products.featured' }}
+    </div>
 
-<ul
-    class="{{ columns }}"
-    data-product-type="featured"
-    {{#if settings.data_tag_enabled}} 
-        data-list-name="Featured Products" 
-    {{/if}}
->    
-    {{#each products}}
-        <li class="js-product">
-            {{>components/products/card settings=../settings theme_settings=../theme_settings customer=../customer event="list" position=(add @index 1)}}
-        </li>
-    {{/each}}
-</ul>
+    <ul
+        class="swiper-wrapper {{ columns }}"
+        data-product-type="featured"
+        {{#if settings.data_tag_enabled}} 
+            data-list-name="Featured Products" 
+        {{/if}}
+    >    
+        {{#each products}}
+            <li class="js-product swiper-slide">
+                {{>components/products/card settings=../settings theme_settings=../theme_settings customer=../customer event="list" position=(add @index 1)}}
+            </li>
+        {{/each}}
+    </ul>
+
+    <div>
+        <div class="js-swiper-btn-prev">Previous</div>
+        <div class="js-swiper-btn-next">Next</div>
+    </div>
+</section>

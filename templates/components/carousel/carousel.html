@@ -1,4 +1,4 @@
-<section class="js-swiper">
+<section class="js-home-swiper c-carousel">
     <div class="swiper-wrapper">
         {{#each carousel.slides}}
             <div class="swiper-slide{{#if ../theme_settings.homepage_stretch_carousel_images}} is-stretch{{/if}}{{#if @first}} is-first{{/if}}">
@@ -20,6 +20,8 @@
         {{/each}}
     </div>
 
-    <div class="js-swiper-btn-prev">Previous</div>
-    <div class="js-swiper-btn-next">Next</div>
+    <div>
+        <div class="js-swiper-btn-prev">Previous</div>
+        <div class="js-swiper-btn-next">Next</div>
+    </div>
 </section>

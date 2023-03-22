@@ -1,0 +1,15 @@
+
+/* ==========================================================================
+   #BREADCRUMBS
+   ========================================================================== */
+
+.c-breadcrumbs {
+    @include container();
+}
+
+.c-breadcrumbs ol {
+    @include list-bare();
+
+    display: flex;
+    gap: rem-calc(10px);
+}

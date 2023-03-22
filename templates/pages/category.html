@@ -26,14 +26,16 @@ category:
     }}
 {{/if}}
 
-{{#unless theme_settings.hide_category_page_heading }}
-    <h1>{{category.name}}</h1>
-    {{{region name="category_below_header"}}}
-{{/unless}}
+<div class="u-container">
+    {{#unless theme_settings.hide_category_page_heading }}
+        <h1>{{category.name}}</h1>
+        {{{region name="category_below_header"}}}
+    {{/unless}}
 
-{{{category.description}}}
+    {{{category.description}}}
+</div>
 
-<div>
+<div class="c-category">
     {{#if category.faceted_search_enabled}}
         <aside class="js-faceted-search-container">
             {{> components/category/sidebar}}

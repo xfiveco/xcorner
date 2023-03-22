@@ -1,0 +1,17 @@
+// ==========================================================================
+// #CONTAINER
+// ==========================================================================
+
+@mixin container() {
+    width: 100%;
+    max-width: rem-calc(1200px);
+    padding-left: rem-calc(10px);
+    padding-right: rem-calc(10px);
+    margin-left: auto;
+    margin-right: auto;
+    
+    @include bp(medium) {
+        padding-left: 0;
+        padding-right: 0;
+    }
+}

@@ -1,0 +1,35 @@
+
+/* ==========================================================================
+   #MENU
+   ========================================================================== */
+
+.c-menu {
+    
+}
+
+.c-menu > nav {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: rem-calc(10px);
+}
+
+.c-menu > nav ul {
+    @include list-bare();
+}
+
+.c-menu > nav > div {
+    grid-column: span 2;
+}
+
+.c-menu > nav > ul {
+    display: flex;
+    gap: rem-calc(10px);
+}
+
+.c-menu .has-sub-menu + div {
+    display: none;
+}
+
+.c-menu .has-sub-menu.is-open + div {
+    display: block;
+}
