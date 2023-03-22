@@ -85,8 +85,6 @@ The stencil theme makes the jsContext available on both the active page scoped a
 
 ## Static assets
 
----
-
 Some static assets in the Stencil theme are handled with Grunt if required. This
 means you have some dependencies on grunt and npm. To get started:
 
@@ -127,8 +125,6 @@ or just `grunt`.
 
 ## Features
 
----
-
 ### Naked templates
 
 We cleaned all template files for a trully customizable canvas.
@@ -161,6 +157,10 @@ Along with jQuery, Foundation is gone, we recommend using newer ways to work wit
 ### Utility scripts
 
 We recommend creating new (custom) templates and JS files inside `templates/components/custom` and `assets/js/theme/custom` respectively. To make this step a little easier, we created a script for creating a custom template script running `npm run addTemplate <template-name>` and another for creating a JS file running `npm run addCode <javascript-name>`.
+
+### Thank you
+
+This starter theme is heavily based on the [Cornerstone](https://github.com/bigcommerce/cornerstone) theme done by [BigCommerce](https://sweetydeals.com/) team & contributors. Our sincere grettings 🙏♥️ goes to everyone who contributed to [Cornerstone](https://github.com/bigcommerce/cornerstone) in the past.
 
 #### License
 
