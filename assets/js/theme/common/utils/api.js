@@ -4,7 +4,7 @@
  * @returns FormData object
  */
 export const filterEmptyValuesFromForm = (formData) => {
-    const filteredForm = formData.entries().filter(([, value]) => value !== '')
+    const filteredForm = Array.from(formData.entries()).filter(([, value]) => value !== '')
     const res = new FormData()
 
     try {

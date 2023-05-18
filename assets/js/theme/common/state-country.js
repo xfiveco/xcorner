@@ -109,7 +109,7 @@ export default function getStates(stateElement, context = {}, options, callback)
         /* eslint-enable no-param-reassign */
     }
 
-    q$('select[data-field-type="Country"]').addEventListener('change', (event) => {
+    q$('select[data-field-type="Country"]')?.addEventListener('change', (event) => {
         const countryName = event.currentTarget.value
 
         if (countryName === '') {

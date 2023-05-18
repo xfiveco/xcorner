@@ -38,6 +38,10 @@ export default class {
     initLinkBind() {
         const $productReviewLink = q$('.js-product-review-link')
 
+        if ($productReviewLink === null) {
+            return
+        }
+
         $productReviewLink.href = `${$productReviewLink.href}${window.location.search}.#product-reviews`
         $productReviewLink.addEventListener('click', () => this.expandReviews())
     }
