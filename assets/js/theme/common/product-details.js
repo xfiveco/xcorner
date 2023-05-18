@@ -316,8 +316,12 @@ export default class ProductDetails extends ProductDetailsBase {
      * @memberof ProductDetails
      */
     setLiveRegionAttributes($element, roleType, ariaLiveStatus) {
-        $element.setAttribute('role', roleType)
-        $element.setAttribute('aria-live', ariaLiveStatus)
+        try {
+            $element.setAttribute('role', roleType)
+            $element.setAttribute('aria-live', ariaLiveStatus)
+        } catch (error) {
+            /* NOOP */
+        }
     }
 
     /**
