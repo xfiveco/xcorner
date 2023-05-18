@@ -27,8 +27,10 @@ class Menu {
     }
 
     collapseAll() {
-        this.collapsibles.forEach((collapsible) => collapsible.close())
-        this.collapsibleGroups.forEach((group) => group.close())
+        if (this.collapsibles !== undefined && this.collapsibleGroups !== undefined) {
+            this.collapsibles.forEach((collapsible) => collapsible.close())
+            this.collapsibleGroups.forEach((group) => group.close())
+        }
     }
 
     collapseNeighbors($neighbors) {
