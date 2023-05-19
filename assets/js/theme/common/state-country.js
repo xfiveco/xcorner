@@ -1,5 +1,5 @@
 import utils from '@bigcommerce/stencil-utils'
-import _ from 'lodash'
+import { isEmpty } from 'lodash'
 import { insertStateHiddenField } from './utils/form-utils'
 import { showAlertModal } from '../global/modal'
 import q$, { q$$ } from '../global/selector'
@@ -75,7 +75,7 @@ function addOptions(statesArray, $selectElement, options) {
 
     container.push(`<option value="">${statesArray.prefix}</option>`)
 
-    if (!_.isEmpty($selectElement)) {
+    if (!isEmpty($selectElement)) {
         statesArray.states.forEach((stateObj) => {
             if (options.useIdForStates) {
                 container.push(`<option value="${stateObj.id}">${stateObj.name}</option>`)
@@ -124,7 +124,7 @@ export default function getStates(stateElement, context = {}, options, callback)
 
             const $currentInput = q$('[data-field-type="State"]')
 
-            if (!_.isEmpty(response.data.states)) {
+            if (!isEmpty(response.data.states)) {
                 // The element may have been replaced with a select, reselect it
                 const $selectElement = makeStateRequired($currentInput, context)
 

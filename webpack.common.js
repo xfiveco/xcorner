@@ -2,7 +2,6 @@
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const path = require('path')
-const webpack = require('webpack')
 
 // Common configuration, with extensions in webpack.dev.js and webpack.prod.js.
 module.exports = {
@@ -10,20 +9,12 @@ module.exports = {
     context: __dirname,
     entry: {
         main: './assets/js/app.js',
-        head_async: ['lazysizes'],
     },
     module: {
         rules: [
             {
                 test: /\.(sass|css|scss)$/,
                 use: ['style-loader', 'css-loader', 'sass-loader'],
-            },
-            {
-                test: require.resolve('jquery'),
-                loader: 'expose-loader',
-                options: {
-                    exposes: ['$'],
-                },
             },
         ],
     },
@@ -42,12 +33,6 @@ module.exports = {
             cleanOnceBeforeBuildPatterns: ['assets/dist'],
             verbose: false,
             watch: false,
-        }),
-        new webpack.ProvidePlugin({
-            // Provide jquery automatically without explicit import
-            $: 'jquery',
-            jQuery: 'jquery',
-            'window.jQuery': 'jquery',
         }),
         new BundleAnalyzerPlugin({
             analyzerMode: 'static',

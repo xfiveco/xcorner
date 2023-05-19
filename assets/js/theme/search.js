@@ -1,3 +1,5 @@
+import * as $ from 'jquery'
+import 'jstree'
 import hooks from './common/hooks'
 import CatalogPage from './catalog'
 import FacetedSearch from './common/faceted-search'
@@ -5,7 +7,6 @@ import { announceInputErrorMessage } from './common/utils/form-utils'
 import compareProducts from './global/compare-products'
 import urlUtils from './common/utils/url-utils'
 import collapsibleFactory from './common/collapsible'
-import 'jstree'
 import nod from './common/nod'
 import q$, { q$$ } from './global/selector'
 import trigger from './common/utils/trigger'
@@ -44,11 +45,11 @@ export default class Search extends CatalogPage {
         this.$facetedSearchContainer?.classList.remove('u-hidden-visually')
         this.$contentResultsContainer.classList.add('u-hidden-visually')
 
-        $('.js-content-results-toggle').classList.remove('js-nav-bar-action-color-active')
-        $('.js-content-results-toggle').classList.add('js-nav-bar-action')
+        q$('.js-content-results-toggle').classList.remove('js-nav-bar-action-color-active')
+        q$('.js-content-results-toggle').classList.add('js-nav-bar-action')
 
-        $('.js-product-results-toggle').classList.remove('js-nav-bar-action')
-        $('.js-product-results-toggle').classList.add('js-nav-bar-action-color-active')
+        q$('.js-product-results-toggle').classList.remove('js-nav-bar-action')
+        q$('.js-product-results-toggle').classList.add('js-nav-bar-action-color-active')
 
         this.activateTab(q$('.js-product-results-toggle'))
 

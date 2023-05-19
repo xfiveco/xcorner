@@ -5,6 +5,7 @@
   "private": true,
   "author": "XFive.Co Pty Ltd",
   "license": "MIT",
+  "sideEffects": false,
   "dependencies": {
     "@bigcommerce/stencil-cli": "^6.0.0",
     "@bigcommerce/stencil-utils": "6.13.0",

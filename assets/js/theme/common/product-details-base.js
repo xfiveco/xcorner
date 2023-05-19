@@ -52,7 +52,7 @@ export default class ProductDetailsBase {
         switch (variantType) {
             case optionsTypesMap.SET_RADIO:
             case optionsTypesMap.SWATCH: {
-                initRadioOptions(q$(variantDomNode), '[type=radio]')
+                initRadioOptions(variantDomNode, '[type=radio]')
                 break
             }
 
@@ -169,7 +169,7 @@ export default class ProductDetailsBase {
                 $span: q$('.js-price-label', $scope),
             },
             $weight: q$('.js-product-view-info [data-product-weight]', $scope),
-            $increments: q$('.js-form-field-increments :input', $scope),
+            $increments: q$('.js-form-field-increments input', $scope),
             $addToCart: q$('.js-form-action-add-to-cart', $scope),
             $wishlistVariation: q$('.js-wishlist-add [name="variation_id"]', $scope),
             stock: {
@@ -198,13 +198,33 @@ export default class ProductDetailsBase {
      * @param {Object} viewModel
      */
     clearPricingNotFound(viewModel) {
-        viewModel.rrpWithTax.$div.style.display = 'none'
-        viewModel.rrpWithoutTax.$div.style.display = 'none'
-        viewModel.nonSaleWithTax.$div.style.display = 'none'
-        viewModel.nonSaleWithoutTax.$div.style.display = 'none'
-        viewModel.priceSaved.$div.style.display = 'none'
-        viewModel.priceNowLabel.$span.style.display = 'none'
-        viewModel.priceLabel.$span.style.display = 'none'
+        if (viewModel.rrpWithTax && viewModel.rrpWithTax.$div) {
+            viewModel.rrpWithTax.$div.style.display = 'none'
+        }
+
+        if (viewModel.rrpWithoutTax && viewModel.rrpWithoutTax.$div) {
+            viewModel.rrpWithoutTax.$div.style.display = 'none'
+        }
+
+        if (viewModel.nonSaleWithTax && viewModel.nonSaleWithTax.$div) {
+            viewModel.nonSaleWithTax.$div.style.display = 'none'
+        }
+
+        if (viewModel.nonSaleWithoutTax && viewModel.nonSaleWithoutTax.$div) {
+            viewModel.nonSaleWithoutTax.$div.style.display = 'none'
+        }
+
+        if (viewModel.priceSaved && viewModel.priceSaved.$div) {
+            viewModel.priceSaved.$div.style.display = 'none'
+        }
+
+        if (viewModel.priceNowLabel && viewModel.priceNowLabel.$span) {
+            viewModel.priceNowLabel.$span.style.display = 'none'
+        }
+
+        if (viewModel.priceLabel) {
+            viewModel.priceLabel.$span.style.display = 'none'
+        }
     }
 
     /**
@@ -263,7 +283,7 @@ export default class ProductDetailsBase {
         this.updateWalletButtonsView(data)
 
         // If Bulk Pricing rendered HTML is available
-        if (data.bulk_discount_rates && content) {
+        if (data.bulk_discount_rates && content && typeof content !== 'object') {
             viewModel.$bulkPricing.innerHTML = content
         } else if (typeof data.bulk_discount_rates !== 'undefined') {
             viewModel.$bulkPricing.innerHTML = ''
@@ -354,10 +374,16 @@ export default class ProductDetailsBase {
         const viewModel = this.getViewModel(this.$scope)
         if (!data.purchasable || !data.instock) {
             viewModel.$addToCart.disabled = true
-            viewModel.$increments.disabled = true
+
+            if (viewModel.$increments) {
+                viewModel.$increments.disabled = true
+            }
         } else {
             viewModel.$addToCart.disabled = false
-            viewModel.$increments.disabled = false
+
+            if (viewModel.$increments) {
+                viewModel.$increments.disabled = false
+            }
         }
     }
 

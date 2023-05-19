@@ -1,5 +1,5 @@
 import { api } from '@bigcommerce/stencil-utils'
-import _ from 'lodash'
+import { extend, without, union } from 'lodash'
 import hooks from './hooks'
 import urlUtils from './utils/url-utils'
 import modalFactory from '../global/modal'
@@ -55,7 +55,7 @@ class FacetedSearch {
         // Private properties
         this.requestOptions = requestOptions
         this.callback = callback
-        this.options = _.extend({}, defaultOptions, options)
+        this.options = extend({}, defaultOptions, options)
         this.collapsedFacets = []
         this.collapsedFacetItems = []
 
@@ -147,7 +147,7 @@ class FacetedSearch {
         const id = $navList.id
 
         // Remove
-        this.collapsedFacetItems = _.without(this.collapsedFacetItems, id)
+        this.collapsedFacetItems = without(this.collapsedFacetItems, id)
     }
 
     /**
@@ -158,9 +158,9 @@ class FacetedSearch {
         const hasMoreResults = $navList.dataset.hasMoreResults
 
         if (hasMoreResults) {
-            this.collapsedFacetItems = _.union(this.collapsedFacetItems, [id])
+            this.collapsedFacetItems = union(this.collapsedFacetItems, [id])
         } else {
-            this.collapsedFacetItems = _.without(this.collapsedFacetItems, id)
+            this.collapsedFacetItems = without(this.collapsedFacetItems, id)
         }
     }
 
@@ -485,9 +485,9 @@ class FacetedSearch {
         const id = collapsible.targetId
 
         if (collapsible.isCollapsed) {
-            this.collapsedFacets = _.union(this.collapsedFacets, [id])
+            this.collapsedFacets = union(this.collapsedFacets, [id])
         } else {
-            this.collapsedFacets = _.without(this.collapsedFacets, id)
+            this.collapsedFacets = without(this.collapsedFacets, id)
         }
     }
 

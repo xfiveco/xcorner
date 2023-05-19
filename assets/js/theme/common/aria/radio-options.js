@@ -62,7 +62,9 @@ const handleItemKeyDown = (itemCollection) => (e) => {
 }
 
 export default ($container, itemSelector) => {
-    const $itemCollection = q$$($container, itemSelector)
+    const $itemCollection = q$$(itemSelector, $container)
 
-    $container.addEventListener('keydown', itemSelector, handleItemKeyDown($itemCollection))
+    $itemCollection.forEach(($item) => {
+        $item.addEventListener('keydown', handleItemKeyDown($itemCollection))
+    })
 }

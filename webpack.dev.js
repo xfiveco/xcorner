@@ -8,4 +8,7 @@ module.exports = merge(commonConfig, {
     performance: {
         hints: false,
     },
+    optimization: {
+        usedExports: true,
+    },
 })
