@@ -34,7 +34,7 @@ export default function startSwiper(context) {
         modules: [Navigation],
         allowSlideNext: true,
         allowSlidePrev: true,
-        slidesPerView: 1,
+        slidesPerView: 3,
         speed: 500,
         loop: true,
         autoplay: {
