@@ -20,7 +20,11 @@ export default class Cart extends PageManager {
         this.$cartTotals = q$('.js-cart-totals')
         this.$cartAdditionalCheckoutBtns = q$('.js-cart-additional-checkout-buttons')
         this.$overlay = q$('.js-cart .js-loading-overlay')
-        this.$overlay.style.display = 'none' // TODO: temporary until roper pulls in his cart components
+
+        if (this.$overlay) {
+            this.$overlay.style.display = 'none'
+        }
+
         this.$activeCartItemId = null
         this.$activeCartItemBtnAction = null
 
@@ -247,7 +251,7 @@ export default class Cart extends PageManager {
         let preVal
 
         // cart update
-        q$('.js-cart-update', this.$cartContent).addEventListener('click', (event) => {
+        q$('.js-cart-update', this.$cartContent)?.addEventListener('click', (event) => {
             const $target = event.currentTarget
 
             event.preventDefault()
@@ -304,7 +308,7 @@ export default class Cart extends PageManager {
         const $couponForm = q$('.js-coupon-form')
         const $codeInput = q$('[name="couponcode"]', $couponForm)
 
-        q$('.js-coupon-code-add').addEventListener('click', (event) => {
+        q$('.js-coupon-code-add')?.addEventListener('click', (event) => {
             event.preventDefault()
 
             /* eslint-disable no-param-reassign */
@@ -314,7 +318,7 @@ export default class Cart extends PageManager {
             trigger($codeInput, 'focus')
         })
 
-        q$('.js-coupon-code-cancel').addEventListener('click', (event) => {
+        q$('.js-coupon-code-cancel')?.addEventListener('click', (event) => {
             event.preventDefault()
 
             $couponContainer.style.display = 'none'
@@ -322,7 +326,7 @@ export default class Cart extends PageManager {
             q$('.js-coupon-code-add').style.display = 'block'
         })
 
-        $couponForm.addEventListener('submit', (event) => {
+        $couponForm?.addEventListener('submit', (event) => {
             const code = $codeInput.value
 
             event.preventDefault()

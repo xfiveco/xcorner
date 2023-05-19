@@ -63,7 +63,7 @@ export default class ProductDetails extends ProductDetailsBase {
         })
 
         if (context.showSwatchNames) {
-            this.$swatchOptionMessage.classList.remove('u-hidden-visually')
+            this.$swatchOptionMessage?.classList.remove('u-hidden-visually')
 
             $productSwatchGroup.forEach(($swatch) => {
                 $swatch.addEventListener('change', ({ target }) => {
@@ -316,8 +316,12 @@ export default class ProductDetails extends ProductDetailsBase {
      * @memberof ProductDetails
      */
     setLiveRegionAttributes($element, roleType, ariaLiveStatus) {
-        $element.setAttribute('role', roleType)
-        $element.setAttribute('aria-live', ariaLiveStatus)
+        try {
+            $element.setAttribute('role', roleType)
+            $element.setAttribute('aria-live', ariaLiveStatus)
+        } catch (error) {
+            /* NOOP */
+        }
     }
 
     /**
@@ -435,20 +439,24 @@ export default class ProductDetails extends ProductDetailsBase {
         // Prevent default
         event.preventDefault()
 
-        $addToCartBtn.value = waitMessage
+        $addToCartBtn.textContent = waitMessage
         $addToCartBtn.disabled = true
 
-        this.$overlay.style.display = 'block'
+        if (this.$overlay) {
+            this.$overlay.style.display = 'block'
+        }
 
         // Add item to cart
         utils.api.cart.itemAdd(normalizeFormData(new FormData(form)), (err, response) => {
             currencySelector(response.data.cart_id)
             const errorMessage = err || response.data.error
 
-            $addToCartBtn.value = originalBtnVal
+            $addToCartBtn.textContent = originalBtnVal
             $addToCartBtn.disabled = false
 
-            this.$overlay.style.display = 'none'
+            if (this.$overlay) {
+                this.$overlay.style.display = 'none'
+            }
 
             // Guard statement
             if (errorMessage) {
@@ -477,7 +485,10 @@ export default class ProductDetails extends ProductDetailsBase {
 
                 this.updateCartContent(this.previewModal, response.data.cart_item.id)
             } else {
-                this.$overlay.style.display = 'block'
+                if (this.$overlay) {
+                    this.$overlay.style.display = 'block'
+                }
+
                 // if no modal, redirect to the cart page
                 this.redirectTo(response.data.cart_item.cart_url || this.context.urls.cart)
             }

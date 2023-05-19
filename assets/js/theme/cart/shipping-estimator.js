@@ -27,7 +27,7 @@ export default class ShippingEstimator {
             tap: announceInputErrorMessage,
         })
 
-        q$('.js-shipping-estimate-submit', this.$element).addEventListener('click', (event) => {
+        q$('.js-shipping-estimate-submit', this.$element)?.addEventListener('click', (event) => {
             // estimator error messages are being injected in html as a result
             // of user submit; clearing and adding role on submit provides
             // regular announcement of these error messages
@@ -166,7 +166,7 @@ export default class ShippingEstimator {
 
         collapsibleFactory()
 
-        $estimatorForm.addEventListener('submit', (event) => {
+        $estimatorForm?.addEventListener('submit', (event) => {
             const params = {
                 country_id: q$('[name="shipping-country"]', $estimatorForm).value,
                 state_id: q$('[name="shipping-state"]', $estimatorForm).value,
@@ -192,7 +192,7 @@ export default class ShippingEstimator {
             })
         })
 
-        q$('.js-shipping-estimate-show').addEventListener('click', (event) => {
+        q$('.js-shipping-estimate-show')?.addEventListener('click', (event) => {
             event.preventDefault()
 
             this.toggleEstimatorFormState(event.currentTarget, '.js-shipping-estimate-show-btn-name', $estimatorContainer)
