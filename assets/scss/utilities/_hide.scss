@@ -26,3 +26,11 @@
         display: block;
     }
 }
+
+.u-hidden\@medium {
+    display: block;
+
+    @include bp(medium) {
+        display: none;
+    }
+}
