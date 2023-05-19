@@ -1,4 +1,4 @@
-<div class="js-product-view u-container"
+<div class="js-product-view u-container c-product"
     {{#if settings.data_tag_enabled}}
         data-event-type="product"
         data-entity-id="{{product.id}}"
@@ -30,7 +30,7 @@
         {{/if}}
     {{/each}}
 
-    <section class="js-product-view-images js-image-gallery">
+    <section class="js-product-view-images js-image-gallery c-product__gallery">
         {{!--
             Note that these image sizes are coupled to image sizes used in /assets/js/theme/common/product-details.js
             for variant/rule image replacement
@@ -66,14 +66,7 @@
             </div>
         </figure>
 
-        <ul class="js-product-view-thumbnails"{{#gt product.images.length 5}} data-slick='{
-                "infinite": false,
-                "mobileFirst": true,
-                "dots": false,
-                "accessibility": false,
-                "slidesToShow": 5,
-                "slidesToScroll": 5
-            }'{{/gt}}>
+        <ul class="o-list-bare c-product__thumbs js-product-view-thumbnails">
             {{#each product.images}}
                 <li>
                     <a
@@ -93,8 +86,7 @@
         </ul>
     </section>
 
-    <section>
-        <div>
+    <section class="c-product__info">
             <h1 class="js-product-view-title">
                 {{product.title}}
             </h1>
@@ -257,10 +249,6 @@
                     {{> components/products/custom-fields }}
                 {{/if}}
             </dl>
-        </div>
-    </section>
-
-    <section>
         <div>
             {{#if product.release_date }}
                 <p>{{product.release_date}}</p>
@@ -307,13 +295,13 @@
         {{> components/common/share url=product.url}}
     </section>
 
-    <article>
+    <section class="c-product__tabs">
         {{#if theme_settings.show_product_details_tabs}}
             {{> components/products/description-tabs}}
         {{else}}
             {{> components/products/description}}
         {{/if}}
-    </article>
+    </section>
 </div>
 
 <div class="js-preview-modal is-modal-large js-reveal c-modal">

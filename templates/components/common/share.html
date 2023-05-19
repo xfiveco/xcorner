@@ -1,103 +1,101 @@
 {{#if settings.add_this.buttons}}
     {{assignVar 'encodedUrl' (encodeURI url)}}
     {{assignVar 'encodedTitle' (encodeURI head.title)}}
-    <div>
-        <ul>
-            {{#each settings.add_this.buttons}}
-                <li>
-                    {{#if service '===' 'facebook'}}
-                        <a 
-                            title="{{{capitalize service}}}"
-                            href="https://facebook.com/sharer/sharer.php?u={{getVar 'encodedUrl'}}"
-                            target="_blank"
-                            rel="noopener"
-                            {{{annotation}}}
-                        >
-                            <span>
-                                {{{capitalize service}}}
-                            </span>
-                            <svg>
-                                <use href="#icon-facebook"/>
-                            </svg>
-                        </a>
-                    {{else if service '===' 'email'}}
-                        <a
-                            title="{{{capitalize service}}}"
-                            href="mailto:?subject={{getVar 'encodedTitle'}}&amp;body={{getVar 'encodedUrl'}}"
-                            target="_self"
-                            rel="noopener"
-                            {{{annotation}}}
-                        >
-                            <span>
-                                {{{capitalize service}}}
-                            </span>
-                            <svg>
-                                <use href="#icon-envelope"/>
-                            </svg>
-                        </a>
-                    {{else if service '===' 'print'}}
-                        <a
-                            title="{{{capitalize service}}}"
-                            onclick="window.print();return false;"
-                            {{{annotation}}}
-                        >
-                            <span>
-                                {{{capitalize service}}}
-                            </span>
-                            <svg>
-                                <use href="#icon-print"/>
-                            </svg>
-                        </a>
-                    {{else if service '===' 'twitter'}}
-                        <a
-                            href="https://twitter.com/intent/tweet/?text={{getVar 'encodedTitle'}}&amp;url={{getVar 'encodedUrl'}}"
-                            target="_blank"
-                            rel="noopener"
-                            title="{{{capitalize service}}}"
-                            {{{annotation}}}
-                        >
-                            <span>
-                                {{{capitalize service}}}
-                            </span>
-                            <svg>
-                                <use href="#icon-twitter"/>
-                            </svg>
-                        </a>
-                    {{else if service '===' 'linkedin'}}
-                        <a
-                            title="{{{capitalize service}}}"
-                            href="https://www.linkedin.com/shareArticle?mini=true&amp;url={{getVar 'encodedUrl'}}&amp;title={{getVar 'encodedTitle'}}&amp;summary={{getVar 'encodedTitle'}}&amp;source={{getVar 'encodedUrl'}}"
-                            target="_blank"
-                            rel="noopener"
-                            {{{annotation}}}
-                        >
-                            <span>
-                                {{{capitalize service}}}
-                            </span>
-                            <svg>
-                                <use href="#icon-linkedin"/>
-                            </svg>
-                        </a>
-                    {{else if service '===' 'pinterest'}}
-                        <a
-                            title="{{{capitalize service}}}"
-                            href="https://pinterest.com/pin/create/button/?url={{getVar 'encodedUrl'}}&amp;media={{getImageSrcset ../product.main_image (cdn ../theme_settings.default_image_product) 1x=../theme_settings.zoom_size}}&amp;description={{getVar 'encodedTitle'}}"
-                            target="_blank"
-                            rel="noopener"
-                            {{{annotation}}}
-                        >
-                            <span>
-                                {{{capitalize service}}}
-                            </span>
-                            <svg>
-                                <use href="#icon-pinterest"/>
-                            </svg>
-                        </a>
-                    {{/if}}
-                </li>
-            {{/each}}
-        </ul>
-    </div>
+    <ul class="o-list-bare">
+        {{#each settings.add_this.buttons}}
+            <li>
+                {{#if service '===' 'facebook'}}
+                    <a
+                        title="{{{capitalize service}}}"
+                        href="https://facebook.com/sharer/sharer.php?u={{getVar 'encodedUrl'}}"
+                        target="_blank"
+                        rel="noopener"
+                        {{{annotation}}}
+                    >
+                        <span>
+                            {{{capitalize service}}}
+                        </span>
+                        <svg>
+                            <use href="#icon-facebook"/>
+                        </svg>
+                    </a>
+                {{else if service '===' 'email'}}
+                    <a
+                        title="{{{capitalize service}}}"
+                        href="mailto:?subject={{getVar 'encodedTitle'}}&amp;body={{getVar 'encodedUrl'}}"
+                        target="_self"
+                        rel="noopener"
+                        {{{annotation}}}
+                    >
+                        <span>
+                            {{{capitalize service}}}
+                        </span>
+                        <svg>
+                            <use href="#icon-envelope"/>
+                        </svg>
+                    </a>
+                {{else if service '===' 'print'}}
+                    <a
+                        title="{{{capitalize service}}}"
+                        onclick="window.print();return false;"
+                        {{{annotation}}}
+                    >
+                        <span>
+                            {{{capitalize service}}}
+                        </span>
+                        <svg>
+                            <use href="#icon-print"/>
+                        </svg>
+                    </a>
+                {{else if service '===' 'twitter'}}
+                    <a
+                        href="https://twitter.com/intent/tweet/?text={{getVar 'encodedTitle'}}&amp;url={{getVar 'encodedUrl'}}"
+                        target="_blank"
+                        rel="noopener"
+                        title="{{{capitalize service}}}"
+                        {{{annotation}}}
+                    >
+                        <span>
+                            {{{capitalize service}}}
+                        </span>
+                        <svg>
+                            <use href="#icon-twitter"/>
+                        </svg>
+                    </a>
+                {{else if service '===' 'linkedin'}}
+                    <a
+                        title="{{{capitalize service}}}"
+                        href="https://www.linkedin.com/shareArticle?mini=true&amp;url={{getVar 'encodedUrl'}}&amp;title={{getVar 'encodedTitle'}}&amp;summary={{getVar 'encodedTitle'}}&amp;source={{getVar 'encodedUrl'}}"
+                        target="_blank"
+                        rel="noopener"
+                        {{{annotation}}}
+                    >
+                        <span>
+                            {{{capitalize service}}}
+                        </span>
+                        <svg>
+                            <use href="#icon-linkedin"/>
+                        </svg>
+                    </a>
+                {{else if service '===' 'pinterest'}}
+                    <a
+                        title="{{{capitalize service}}}"
+                        href="https://pinterest.com/pin/create/button/?url={{getVar 'encodedUrl'}}&amp;media={{getImageSrcset ../product.main_image (cdn ../theme_settings.default_image_product) 1x=../theme_settings.zoom_size}}&amp;description={{getVar 'encodedTitle'}}"
+                        target="_blank"
+                        rel="noopener"
+                        {{{annotation}}}
+                    >
+                        <span>
+                            {{{capitalize service}}}
+                        </span>
+                        <svg>
+                            <use href="#icon-pinterest"/>
+                        </svg>
+                    </a>
+                {{/if}}
+            </li>
+        {{/each}}
+    </ul>
 {{/if}}
 
 {{#if settings.facebook_like_button.enabled}}
