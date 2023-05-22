@@ -49,22 +49,24 @@ product_results:
                 </a>
             </li>
             {{#unless product_results.faceted_search_enabled}}
-                <li>
-                    <a 
-                        class="js-nav-bar-action js-toggle-link" 
-                        data-collapsible="advanced-search-content" 
-                        href="#" 
-                        aria-controls="advanced-search-content" 
-                        aria-expanded="false"
-                    >
-                        <span>
-                            {{lang 'forms.search.hide'}}
-                        </span>
-                        <span>
-                            {{lang 'forms.search.show'}}
-                        </span>
-                    </a>
-                </li>
+                {{#if false}}
+                    <li>
+                        <a 
+                            class="js-nav-bar-action js-toggle-link" 
+                            data-collapsible="advanced-search-content" 
+                            href="#" 
+                            aria-controls="advanced-search-content" 
+                            aria-expanded="false"
+                        >
+                            <span>
+                                {{lang 'forms.search.hide'}}
+                            </span>
+                            <span>
+                                {{lang 'forms.search.show'}}
+                            </span>
+                        </a>
+                    </li>
+                {{/if}}
             {{/unless}}
         </ul>
     </nav>
