@@ -1,5 +1,3 @@
-import * as $ from 'jquery'
-import 'jstree'
 import hooks from './common/hooks'
 import CatalogPage from './catalog'
 import FacetedSearch from './common/faceted-search'
@@ -146,7 +144,7 @@ export default class Search extends CatalogPage {
         this.arrangeFocusOnSortBy()
 
         const $searchForm = q$('.js-advanced-search-form')
-        const $categoryTreeContainer = $searchForm.querySelector('.js-search-category-tree')
+        // const $categoryTreeContainer = $searchForm.querySelector('.js-search-category-tree')
         const url = new URL(window.location.href)
         const treeData = []
         this.$productListingContainer = q$('.js-product-listing-container')
@@ -189,10 +187,11 @@ export default class Search extends CatalogPage {
         })
 
         this.categoryTreeData = treeData
-        this.createCategoryTree($categoryTreeContainer)
+        // this.createCategoryTree($categoryTreeContainer)
 
         $searchForm.addEventListener('submit', (event) => {
-            const selectedCategoryIds = $categoryTreeContainer.jstree().get_selected()
+            // TODO: Add a jquer free jstree
+            // const selectedCategoryIds = $categoryTreeContainer.jstree().get_selected()
 
             if (!validator.check()) {
                 return event.preventDefault()
@@ -200,14 +199,14 @@ export default class Search extends CatalogPage {
 
             $searchForm.querySelector('input[name="category[]"]').remove()
 
-            for (const categoryId of selectedCategoryIds) {
-                const $input = document.createElement('input')
-                $input.type = 'hidden'
-                $input.name = 'category[]'
-                $input.value = categoryId
+            // for (const categoryId of selectedCategoryIds) {
+            //     const $input = document.createElement('input')
+            //     $input.type = 'hidden'
+            //     $input.name = 'category[]'
+            //     $input.value = categoryId
 
-                $searchForm.append($input)
-            }
+            //     $searchForm.append($input)
+            // }
         })
 
         const $searchResultsMessage = document.createElement('p')
@@ -243,30 +242,30 @@ export default class Search extends CatalogPage {
             })
     }
 
-    createCategoryTree($container) {
-        const treeOptions = {
-            core: {
-                data: (node, cb) => {
-                    // Root node
-                    if (node.id === '#') {
-                        cb(this.categoryTreeData)
-                    } else {
-                        // Lazy loaded children
-                        this.loadTreeNodes(node, cb)
-                    }
-                },
-                themes: {
-                    icons: true,
-                },
-            },
-            checkbox: {
-                three_state: false,
-            },
-            plugins: ['checkbox'],
-        }
+    // createCategoryTree($container) {
+    //     const treeOptions = {
+    //         core: {
+    //             data: (node, cb) => {
+    //                 // Root node
+    //                 if (node.id === '#') {
+    //                     cb(this.categoryTreeData)
+    //                 } else {
+    //                     // Lazy loaded children
+    //                     this.loadTreeNodes(node, cb)
+    //                 }
+    //             },
+    //             themes: {
+    //                 icons: true,
+    //             },
+    //         },
+    //         checkbox: {
+    //             three_state: false,
+    //         },
+    //         plugins: ['checkbox'],
+    //     }
 
-        $($container).jstree(treeOptions)
-    }
+    // $($container).jstree(treeOptions)  TODO: replace with a jQuery free jsTree
+    // }
 
     initFacetedSearch() {
         // eslint-disable-next-line object-curly-newline

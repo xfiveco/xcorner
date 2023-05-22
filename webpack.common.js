@@ -1,5 +1,6 @@
 /* eslint-disabled */
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
+const LodashModuleReplacementPlugin = require('lodash-webpack-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const path = require('path')
 
@@ -34,6 +35,12 @@ module.exports = {
             verbose: false,
             watch: false,
         }),
+        new LodashModuleReplacementPlugin({
+            collections: true,
+            currying: true,
+            placeholders: true,
+            shorthands: true,
+        }),
         new BundleAnalyzerPlugin({
             analyzerMode: 'static',
             openAnalyzer: false,
@@ -41,9 +48,5 @@ module.exports = {
     ],
     resolve: {
         fallback: { url: require.resolve('url/') },
-        alias: {
-            jquery: path.resolve(__dirname, 'node_modules/jquery/dist/jquery.min.js'),
-            jstree: path.resolve(__dirname, 'node_modules/jstree/dist/jstree.min.js'),
-        },
     },
 }
