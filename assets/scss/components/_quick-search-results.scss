@@ -1,0 +1,21 @@
+
+/* ==========================================================================
+   #QUICK-SEARCH-RESULTS
+   ========================================================================== */
+
+.c-quick-search-results {
+    position: relative;
+
+    > button {
+        position: absolute;
+        top: 1.05rem;
+        right: 0.75rem;
+    }
+
+    > ul {
+        display: grid !important;
+        padding-top: 3rem !important;
+        grid-template-columns: repeat(4, 1fr) !important;
+        gap: 1.5rem !important;
+    }
+}
