@@ -28,13 +28,13 @@ class Menu {
 
     collapseAll() {
         if (this.collapsibles !== undefined && this.collapsibleGroups !== undefined) {
-            if ('forEach' in this.collapsibles === true) {
+            if ('forEach' in this.collapsibles) {
                 this.collapsibles.forEach((collapsible) => collapsible.close())
             } else {
                 this.collapsibles.close()
             }
 
-            if ('forEach' in this.collapsibleGroups === true) {
+            if ('forEach' in this.collapsibleGroups) {
                 this.collapsibleGroups.forEach((group) => group.close())
             } else {
                 this.collapsibleGroups.close()
@@ -45,7 +45,11 @@ class Menu {
     collapseNeighbors($neighbors) {
         const $collapsibles = collapsibleFactory('[data-collapsible]', { $context: $neighbors })
 
-        $collapsibles.forEach(($collapsible) => $collapsible.close())
+        if ('forEach' in this.collapsibles) {
+            $collapsibles.forEach(($collapsible) => $collapsible.close())
+        } else {
+            $collapsibles.close()
+        }
     }
 
     bindEvents() {

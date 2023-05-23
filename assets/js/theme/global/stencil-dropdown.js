@@ -20,6 +20,7 @@ export default class StencilDropdown {
         }
 
         $dropDown.classList.remove('is-open', 'f-open-dropdown')
+        $dropDown.classList.add('u-hidden')
         $dropDown.setAttribute('aria-hidden', 'true')
     }
 
@@ -29,7 +30,8 @@ export default class StencilDropdown {
             $dropDown.setAttribute('aria-hidden', 'false')
         }
 
-        $dropDown.addClass.add('is-open', 'f-open-dropdown')
+        $dropDown.classList.add('is-open', 'f-open-dropdown')
+        $dropDown.classList.remove('u-hidden')
         $dropDown.setAttribute('aria-hidden', 'false')
 
         // callback "show"
