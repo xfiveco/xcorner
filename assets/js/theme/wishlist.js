@@ -3,6 +3,7 @@ import PageManager from './page-manager'
 import { wishlistPaginatorHelper } from './common/utils/pagination-utils'
 import { announceInputErrorMessage } from './common/utils/form-utils'
 import q$, { q$$ } from './global/selector'
+import toggle from './custom/toggle'
 
 export default class WishList extends PageManager {
     constructor(context) {
@@ -70,6 +71,11 @@ export default class WishList extends PageManager {
 
         if ($addWishListForm) {
             this.registerAddWishListValidation($addWishListForm)
+        }
+
+        const $addWishListDropdownButton = q$('.js-dropdown-menu-button')
+        if ($addWishListDropdownButton !== null) {
+            toggle('.js-dropdown-menu-button', { update: ['this', '#wishlist-dropdown'] })
         }
 
         this.wishlistDeleteConfirm()
