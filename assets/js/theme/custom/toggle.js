@@ -12,6 +12,20 @@ function updateAttributes($element) {
     // If the attribute doesn't exists, it defaults to false which is desirable
     const ariaExpanded = $element.getAttribute('aria-expanded') === 'true'
     $element.setAttribute('aria-expanded', !ariaExpanded)
+
+    /* eslint-disable no-param-reassign */
+    if ('hasUHidden' in $element.dataset) {
+        $element.classList.add('u-hidden')
+        delete $element.dataset.hasUHidden
+
+        return
+    }
+
+    if ($element.classList.contains('u-hidden')) {
+        $element.classList.remove('u-hidden')
+        $element.dataset.hasUHidden = true
+    }
+    /* eslint-enable no-param-reassign */
 }
 
 /**
