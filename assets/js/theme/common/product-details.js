@@ -12,6 +12,7 @@ import bannerUtils from './utils/banner-utils'
 import currencySelector from '../global/currency-selector'
 import q$, { q$$, parents } from '../global/selector'
 import trigger from './utils/trigger'
+import addToCartWithModal from '../custom/add-to-cart-modal'
 
 export default class ProductDetails extends ProductDetailsBase {
     constructor($scope, context, productAttributesData = {}) {
@@ -111,6 +112,8 @@ export default class ProductDetails extends ProductDetailsBase {
         $productOptionsElement.style.display = 'block'
 
         this.previewModal = modalFactory('.js-preview-modal')
+
+        addToCartWithModal('[data-button-type="add-cart"]', this.previewModal)
     }
 
     registerAddToCartValidation() {
