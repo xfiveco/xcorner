@@ -4,11 +4,31 @@
    ========================================================================== */
 
 .c-wishlist-dropdown {
+    position: relative;
+
     > ul {
         display: none;
 
         &.is-open {
+            background-color: $color-white;
+            border: solid 1px;
             display: block;
+            position: absolute;
+            top: calc(100% - 1rem);
+
+            > li {
+                margin-bottom: 0;
+            }
+
+            .c-button {
+                border: none;
+                margin-bottom: 0;
+            }
         }
+    }
+
+    .c-button {
+        align-items: center;
+        display: inline-flex;
     }
 }
