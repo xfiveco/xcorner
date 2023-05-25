@@ -41,5 +41,12 @@ blog:
         {{/if}}
         {{{region name="home_below_new_products"}}}
     </div>
+
+    <div class="js-preview-modal is-modal-large js-reveal c-modal">
+        {{> components/common/modal/modal-close-btn }}
+
+        <div class="js-modal-content"></div>
+        <div class="js-loading-overlay"></div>
+    </div>
 {{/partial}}
 {{> layout/base}}

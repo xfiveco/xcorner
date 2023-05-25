@@ -113,7 +113,7 @@ export default class ProductDetails extends ProductDetailsBase {
 
         this.previewModal = modalFactory('.js-preview-modal')
 
-        addToCartWithModal('[data-button-type="add-cart"]', this.previewModal)
+        addToCartWithModal('[data-button-type="add-cart"]', this.context, this.previewModal)
     }
 
     registerAddToCartValidation() {

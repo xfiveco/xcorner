@@ -5,9 +5,10 @@ import q$, { q$$ } from '../global/selector'
 import trigger from '../common/utils/trigger'
 
 class AddToCartWithModal {
-    constructor($addToCartButtons, previewModal) {
+    constructor($addToCartButtons, context, previewModal) {
         this.$addToCartButtons = $addToCartButtons
         this.previewModal = previewModal
+        this.context = context
 
         this.init()
     }
@@ -78,7 +79,10 @@ class AddToCartWithModal {
                 window.location.reload()
             }
 
-            $cartCounter.classList.add('cart-count-positive')
+            if ($cartCounter) {
+                $cartCounter.classList.add('cart-count-positive')
+            }
+
             trigger($body, 'cart-quantity-update', quantity)
 
             if (onComplete) {
@@ -90,6 +94,30 @@ class AddToCartWithModal {
                 $modalCloseBtn.addEventListener('click', bannerUpdateHandler)
             }
         })
+    }
+
+    /**
+     * Get cart contents
+     *
+     * @param {String} cartItemId
+     * @param {Function} onComplete
+     */
+    getCartContent(cartItemId, onComplete) {
+        const options = {
+            template: 'cart/preview',
+            params: {
+                suggest: cartItemId,
+            },
+            config: {
+                cart: {
+                    suggestions: {
+                        limit: 4,
+                    },
+                },
+            },
+        }
+
+        utils.api.cart.getContent(options, onComplete)
     }
 
     /**
@@ -118,12 +146,12 @@ class AddToCartWithModal {
     }
 }
 
-export default function addToCartWithModal(buttonsSelector) {
+export default function addToCartWithModal(buttonsSelector, context, previewModal) {
     const $addToCartButtons = q$$(buttonsSelector)
     if ($addToCartButtons.length === 0) {
         return
     }
 
     /* eslint-disable no-new */
-    new AddToCartWithModal($addToCartButtons)
+    new AddToCartWithModal($addToCartButtons, context, previewModal)
 }
