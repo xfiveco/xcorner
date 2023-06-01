@@ -31,7 +31,7 @@ const pageClasses = {
     compare: () => import('./theme/compare'),
     createaccount: getLogin,
     createaccount_thanks: getLogin,
-    default: noop,
+    default: () => import('./theme/home'),
     editaccount: getAccount,
     error: noop,
     forgotpassword: getLogin,
