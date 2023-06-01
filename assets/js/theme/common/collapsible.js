@@ -1,4 +1,4 @@
-import _ from 'lodash'
+import { extend } from 'lodash'
 import mediaQueryListFactory from './media-query-list'
 import q$, { q$$ } from '../global/selector'
 import isVisible from './utils/is-visible'
@@ -261,7 +261,7 @@ export default function collapsibleFactory(selector = '[data-collapsible]', over
 
         const targetId = prependHash($toggle.dataset.collapsible || $toggle.dataset.collapsibleTarget || $toggle.href)
 
-        const options = _.extend(optionsFromData($toggle), overrideOptions)
+        const options = extend(optionsFromData($toggle), overrideOptions)
         const collapsible = new Collapsible($toggle, q$(targetId, overrideOptions.$context), options)
 
         if ('data' in $toggle === false) {

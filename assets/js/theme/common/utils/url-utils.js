@@ -4,8 +4,12 @@ const urlUtils = {
     getUrl: () => `${window.location.pathname}${window.location.search}`,
 
     goToUrl: (url) => {
-        window.history.pushState({}, document.title, url)
-        trigger(window, 'statechange')
+        try {
+            window.history.pushState({}, document.title, url)
+            trigger(window, 'statechange')
+        } catch (error) {
+            /* NOOP */
+        }
     },
 
     replaceParams: (url, params) => {

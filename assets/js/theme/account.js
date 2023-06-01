@@ -1,4 +1,4 @@
-import _ from 'lodash'
+import { find } from 'lodash'
 import PageManager from './page-manager'
 import nod from './common/nod'
 import Wishlist from './wishlist'
@@ -342,8 +342,8 @@ export default class Account extends PageManager {
                 const data = Object.fromEntries(new FormData($paymentMethodForm).entries())
 
                 // Assign country and state code
-                const country = _.find(this.context.countries, ({ value }) => value === data.country)
-                const state = country && _.find(country.states, ({ value }) => value === data.state)
+                const country = find(this.context.countries, ({ value }) => value === data.country)
+                const state = country && find(country.states, ({ value }) => value === data.state)
                 data.country_code = country ? country.code : data.country
                 data.state_or_province_code = state ? state.code : data.state
 

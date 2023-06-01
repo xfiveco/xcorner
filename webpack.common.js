@@ -1,8 +1,8 @@
 /* eslint-disabled */
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
+const LodashModuleReplacementPlugin = require('lodash-webpack-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const path = require('path')
-const webpack = require('webpack')
 
 // Common configuration, with extensions in webpack.dev.js and webpack.prod.js.
 module.exports = {
@@ -10,20 +10,12 @@ module.exports = {
     context: __dirname,
     entry: {
         main: './assets/js/app.js',
-        head_async: ['lazysizes'],
     },
     module: {
         rules: [
             {
                 test: /\.(sass|css|scss)$/,
                 use: ['style-loader', 'css-loader', 'sass-loader'],
-            },
-            {
-                test: require.resolve('jquery'),
-                loader: 'expose-loader',
-                options: {
-                    exposes: ['$'],
-                },
             },
         ],
     },
@@ -43,11 +35,11 @@ module.exports = {
             verbose: false,
             watch: false,
         }),
-        new webpack.ProvidePlugin({
-            // Provide jquery automatically without explicit import
-            $: 'jquery',
-            jQuery: 'jquery',
-            'window.jQuery': 'jquery',
+        new LodashModuleReplacementPlugin({
+            collections: true,
+            currying: true,
+            placeholders: true,
+            shorthands: true,
         }),
         new BundleAnalyzerPlugin({
             analyzerMode: 'static',
@@ -56,9 +48,5 @@ module.exports = {
     ],
     resolve: {
         fallback: { url: require.resolve('url/') },
-        alias: {
-            jquery: path.resolve(__dirname, 'node_modules/jquery/dist/jquery.min.js'),
-            jstree: path.resolve(__dirname, 'node_modules/jstree/dist/jstree.min.js'),
-        },
     },
 }

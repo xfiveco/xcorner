@@ -5,7 +5,6 @@ import { announceInputErrorMessage } from './common/utils/form-utils'
 import compareProducts from './global/compare-products'
 import urlUtils from './common/utils/url-utils'
 import collapsibleFactory from './common/collapsible'
-import 'jstree'
 import nod from './common/nod'
 import q$, { q$$ } from './global/selector'
 import trigger from './common/utils/trigger'
@@ -44,11 +43,11 @@ export default class Search extends CatalogPage {
         this.$facetedSearchContainer?.classList.remove('u-hidden-visually')
         this.$contentResultsContainer.classList.add('u-hidden-visually')
 
-        $('.js-content-results-toggle').classList.remove('js-nav-bar-action-color-active')
-        $('.js-content-results-toggle').classList.add('js-nav-bar-action')
+        q$('.js-content-results-toggle').classList.remove('js-nav-bar-action-color-active')
+        q$('.js-content-results-toggle').classList.add('js-nav-bar-action')
 
-        $('.js-product-results-toggle').classList.remove('js-nav-bar-action')
-        $('.js-product-results-toggle').classList.add('js-nav-bar-action-color-active')
+        q$('.js-product-results-toggle').classList.remove('js-nav-bar-action')
+        q$('.js-product-results-toggle').classList.add('js-nav-bar-action-color-active')
 
         this.activateTab(q$('.js-product-results-toggle'))
 
@@ -145,7 +144,7 @@ export default class Search extends CatalogPage {
         this.arrangeFocusOnSortBy()
 
         const $searchForm = q$('.js-advanced-search-form')
-        const $categoryTreeContainer = $searchForm.querySelector('.js-search-category-tree')
+        // const $categoryTreeContainer = $searchForm.querySelector('.js-search-category-tree')
         const url = new URL(window.location.href)
         const treeData = []
         this.$productListingContainer = q$('.js-product-listing-container')
@@ -188,10 +187,11 @@ export default class Search extends CatalogPage {
         })
 
         this.categoryTreeData = treeData
-        this.createCategoryTree($categoryTreeContainer)
+        // this.createCategoryTree($categoryTreeContainer)
 
         $searchForm.addEventListener('submit', (event) => {
-            const selectedCategoryIds = $categoryTreeContainer.jstree().get_selected()
+            // TODO: Add a jquer free jstree
+            // const selectedCategoryIds = $categoryTreeContainer.jstree().get_selected()
 
             if (!validator.check()) {
                 return event.preventDefault()
@@ -199,14 +199,14 @@ export default class Search extends CatalogPage {
 
             $searchForm.querySelector('input[name="category[]"]').remove()
 
-            for (const categoryId of selectedCategoryIds) {
-                const $input = document.createElement('input')
-                $input.type = 'hidden'
-                $input.name = 'category[]'
-                $input.value = categoryId
+            // for (const categoryId of selectedCategoryIds) {
+            //     const $input = document.createElement('input')
+            //     $input.type = 'hidden'
+            //     $input.name = 'category[]'
+            //     $input.value = categoryId
 
-                $searchForm.append($input)
-            }
+            //     $searchForm.append($input)
+            // }
         })
 
         const $searchResultsMessage = document.createElement('p')
@@ -242,30 +242,30 @@ export default class Search extends CatalogPage {
             })
     }
 
-    createCategoryTree($container) {
-        const treeOptions = {
-            core: {
-                data: (node, cb) => {
-                    // Root node
-                    if (node.id === '#') {
-                        cb(this.categoryTreeData)
-                    } else {
-                        // Lazy loaded children
-                        this.loadTreeNodes(node, cb)
-                    }
-                },
-                themes: {
-                    icons: true,
-                },
-            },
-            checkbox: {
-                three_state: false,
-            },
-            plugins: ['checkbox'],
-        }
+    // createCategoryTree($container) {
+    //     const treeOptions = {
+    //         core: {
+    //             data: (node, cb) => {
+    //                 // Root node
+    //                 if (node.id === '#') {
+    //                     cb(this.categoryTreeData)
+    //                 } else {
+    //                     // Lazy loaded children
+    //                     this.loadTreeNodes(node, cb)
+    //                 }
+    //             },
+    //             themes: {
+    //                 icons: true,
+    //             },
+    //         },
+    //         checkbox: {
+    //             three_state: false,
+    //         },
+    //         plugins: ['checkbox'],
+    //     }
 
-        $($container).jstree(treeOptions)
-    }
+    // $($container).jstree(treeOptions)  TODO: replace with a jQuery free jsTree
+    // }
 
     initFacetedSearch() {
         // eslint-disable-next-line object-curly-newline

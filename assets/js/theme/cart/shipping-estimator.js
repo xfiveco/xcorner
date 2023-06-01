@@ -147,7 +147,7 @@ export default class ShippingEstimator {
     toggleEstimatorFormState($toggleButton, buttonSelector, $toggleContainer) {
         const changeAttributesOnToggle = (selectorToActivate) => {
             $toggleButton.setAttribute('aria-labelledby', selectorToActivate)
-            q$(buttonSelector).textContent = $(`#${selectorToActivate}`).textContent
+            q$(buttonSelector).textContent = q$(`#${selectorToActivate}`).textContent
         }
 
         if (!this.isEstimatorFormOpened) {

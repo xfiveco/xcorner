@@ -1,4 +1,4 @@
-import _ from 'lodash'
+import { extend } from 'lodash'
 import mediaQueryListFactory from '../common/media-query-list'
 import { CartPreviewEvents } from './cart-preview'
 import q$, { q$$ } from './selector'
@@ -179,7 +179,7 @@ export default function mobileMenuToggleFactory(selector = `[data-${PLUGIN_KEY.S
         return cachedMobileMenu
     }
 
-    const options = _.extend(optionsFromData($toggle), overrideOptions)
+    const options = extend(optionsFromData($toggle), overrideOptions)
     const mobileMenu = new MobileMenuToggle($toggle, options)
 
     if ('data' in $toggle === false) {

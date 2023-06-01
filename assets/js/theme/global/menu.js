@@ -28,8 +28,17 @@ class Menu {
 
     collapseAll() {
         if (this.collapsibles !== undefined && this.collapsibleGroups !== undefined) {
-            this.collapsibles.forEach((collapsible) => collapsible.close())
-            this.collapsibleGroups.forEach((group) => group.close())
+            if ('forEach' in this.collapsibles === true) {
+                this.collapsibles.forEach((collapsible) => collapsible.close())
+            } else {
+                this.collapsibles.close()
+            }
+
+            if ('forEach' in this.collapsibleGroups === true) {
+                this.collapsibleGroups.forEach((group) => group.close())
+            } else {
+                this.collapsibleGroups.close()
+            }
         }
     }
 

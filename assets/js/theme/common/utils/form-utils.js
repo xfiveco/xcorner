@@ -1,4 +1,4 @@
-import _ from 'lodash'
+import { kebabCase } from 'lodash'
 import nod from '../nod'
 import forms from '../models/forms'
 import q$, { parents, q$$ } from '../../global/selector'
@@ -45,10 +45,10 @@ function classifyInput(input, formFieldClass) {
 
         if (['radio', 'checkbox', 'submit'].includes(inputType)) {
             // ie: .form-field-checkbox, .form-field-radio
-            className = `${formFieldClass}-${_.kebabCase(inputType)}`
+            className = `${formFieldClass}-${kebabCase(inputType)}`
         } else {
             // ie: .form-field-input .form-field-inputText
-            specificClassName = `${className}-${_.kebabCase(inputType)}`
+            specificClassName = `${className}-${kebabCase(inputType)}`
         }
     }
 

@@ -48,7 +48,7 @@ export default class Category extends CatalogPage {
         }
 
         /* eslint-disable no-unused-expressions */
-        q$('.js-action-reset')?.addEventListener('click', () => this.setLiveRegionsAttributes(q$('.js-price-reset-message'), 'status', 'polite'))
+        q$('.js-action-reset')?.addEventListener('click', () => this.setLiveRegionAttributes(q$('.js-price-reset-message'), 'status', 'polite'))
 
         this.ariaNotifyNoProducts()
     }

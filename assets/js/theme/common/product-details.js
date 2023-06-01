@@ -130,9 +130,9 @@ export default class ProductDetails extends ProductDetailsBase {
 
     storeInitMessagesForSwatches() {
         if (this.swatchGroupIdList.length && isEmpty(this.swatchInitMessageStorage)) {
-            this.swatchGroupIdList.each((_, swatchGroupId) => {
+            this.swatchGroupIdList.forEach((swatchGroupId) => {
                 if (!this.swatchInitMessageStorage[swatchGroupId]) {
-                    this.swatchInitMessageStorage[swatchGroupId] = q$(`#${swatchGroupId} ~ .swatch-option-message`).textContent.trim()
+                    this.swatchInitMessageStorage[swatchGroupId] = q$(`#${swatchGroupId} ~ .swatch-option-message`)?.textContent.trim()
                 }
             })
         }
@@ -242,6 +242,11 @@ export default class ProductDetails extends ProductDetailsBase {
             } else {
                 const productName = $view.querySelector('.js-product-view-title').innerText.replace(/"/g, '\\$&')
                 const card = q$(`[data-name="${productName}"]`)
+
+                if (card === null) {
+                    return
+                }
+
                 card.dataset.productVariant = productVariant
             }
         }
@@ -269,7 +274,7 @@ export default class ProductDetails extends ProductDetailsBase {
         const productId = q$('[name="product_id"]', $form).value
 
         // Do not trigger an ajax request if it's a file or if the browser doesn't support FormData
-        if ($changedOption.attr('type') === 'file' || window.FormData === undefined) {
+        if ($changedOption.type === 'file' || window.FormData === undefined) {
             return
         }
 
@@ -305,8 +310,11 @@ export default class ProductDetails extends ProductDetailsBase {
         const $swatchOptionMessage = q$(`#${activeSwatchGroupId} ~ .swatch-option-message`)
 
         q$('.js-option-value', $swatchGroup).textContent = swatchName
-        $swatchOptionMessage.textContent = `${this.swatchInitMessageStorage[activeSwatchGroupId]} ${swatchName}`
-        this.setLiveRegionAttributes($swatchOptionMessage, 'status', 'assertive')
+
+        if (this.$swatchOptionMessage) {
+            $swatchOptionMessage.textContent = `${this.swatchInitMessageStorage[activeSwatchGroupId]} ${swatchName}`
+            this.setLiveRegionAttributes($swatchOptionMessage, 'status', 'assertive')
+        }
     }
 
     /**
@@ -565,7 +573,10 @@ export default class ProductDetails extends ProductDetailsBase {
                 window.location.reload()
             }
 
-            $cartCounter.classList.add('cart-count-positive')
+            if ($cartCounter) {
+                $cartCounter.classList.add('cart-count-positive')
+            }
+
             trigger($body, 'cart-quantity-update', quantity)
 
             if (onComplete) {

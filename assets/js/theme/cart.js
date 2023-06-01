@@ -220,12 +220,22 @@ export default class Cart extends PageManager {
         }
 
         utils.api.cart.getContent(options, (err, response) => {
+            if (!response) {
+                return
+            }
+
             this.$cartContent.innerHTML = response.content
             this.$cartTotals.innerHTML = response.totals
             this.$cartMessages.innerHTML = response.statusMessages
-            this.$cartAdditionalCheckoutBtns.innerHTML = response.additionalCheckoutButtons
 
-            $cartPageTitle.replaceWith(response.pageTitle)
+            if (this.$cartAdditionalCheckoutBtns) {
+                this.$cartAdditionalCheckoutBtns.innerHTML = response.additionalCheckoutButtons
+            }
+
+            const $template = document.createElement('template')
+            $template.innerHTML = response.pageTitle
+            $cartPageTitle.replaceWith($template.content.cloneNode(true))
+
             this.bindEvents()
             this.$overlay.style.display = 'none'
 

@@ -1,11 +1,11 @@
-import _ from 'lodash'
+import { debounce } from 'lodash'
 import utils from '@bigcommerce/stencil-utils'
 import hooks from '../common/hooks'
 import StencilDropDown from './stencil-dropdown'
 import q$, { q$$ } from './selector'
 import isVisible from '../common/utils/is-visible'
 
-export default function () {
+export default function doQuickSearch() {
     const TOP_STYLING = 'top: 49px;'
     const $quickSearchResults = q$$('.js-quick-search-results')
     const $quickSearchForms = q$$('.js-quick-search-form')
@@ -37,7 +37,7 @@ export default function () {
 
     // stagger searching for 1200ms after last input
     const debounceWaitTime = 1200
-    const doSearch = _.debounce((searchQuery) => {
+    const doSearch = debounce((searchQuery) => {
         utils.api.search.search(searchQuery, { template: 'search/quick-results' }, (err, response) => {
             if (err) {
                 return false
