@@ -1,0 +1,40 @@
+
+/* ==========================================================================
+   #QUICK-SEARCH
+   ========================================================================== */
+
+.c-quick-search {
+    align-items: center;
+    background-color: $color-gray-e5;
+    display: flex;
+    justify-content: center;
+    margin-left: calc(50% - 50vw);
+    padding: 3rem;
+    width: 100vw;
+
+    > div {
+        width: 100%;
+        max-width: 1024px;
+        margin-inline: auto;
+    }
+
+    #nav-quick-search {
+        appearance: none;
+        background-color: $color-white;
+        border-color: $color-gray-c;
+        border-style: solid;
+        border-width: 1px;
+        border-radius: 4px;
+        color: $color-gray-6;
+        display: block;
+        font-family: inherit;
+        font-size: 20px;
+        font-smoothing: antialiased;
+        height: unset;
+        margin: 0 auto;
+        max-width: 30rem;
+        padding: 0.75rem 1rem;
+        transition: border-color .1s ease-out;
+        width: 100%;
+    }
+}
