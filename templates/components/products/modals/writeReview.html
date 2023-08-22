@@ -1,4 +1,4 @@
-<div id="js-modal-review-form" class="js-reveal u-hidden">
+<div id="modal-review-form" class="js-reveal u-hidden">
     {{inject 'reviewRating' (lang 'forms.validate.reviews.rating')}}
     {{inject 'reviewSubject' (lang 'forms.validate.reviews.title')}}
     {{inject 'reviewComment' (lang 'forms.validate.reviews.comment')}}
@@ -7,7 +7,15 @@
         <div class="js-modal-header-title">
             {{lang 'products.reviews.write_a_review'}}
         </div>
-        {{> components/common/modal/modal-close-btn}}
+        <button 
+            class="js-modal-review-close"
+            type="button"
+            title="{{lang 'common.close'}}"
+            {{additional_attr}}
+        >
+            <span class="u-hidden-visually">{{lang 'common.close'}}</span>
+            <span aria-hidden="true">&#215;</span>
+        </button>
     </div>
     <div class="js-modal-body">
         <div>

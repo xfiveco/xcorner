@@ -10,6 +10,7 @@ import { classifyForm } from './common/utils/form-utils'
 import modalFactory from './global/modal'
 import q$, { q$$ } from './global/selector'
 import trigger from './common/utils/trigger'
+import toggle from './custom/toggle'
 
 export default class Product extends PageManager {
     constructor(context) {
@@ -45,6 +46,9 @@ export default class Product extends PageManager {
         if ($reviewForm === null) return
 
         const review = new Review({ $reviewForm })
+
+        toggle('[data-reveal-id="modal-review-form"]', { update: ['#modal-review-form'] })
+        toggle('#modal-review-form .js-modal-review-close', { update: ['#modal-review-form'] })
 
         q$('[data-reveal-id="modal-review-form"]').addEventListener('click', () => {
             validator = review.registerValidation(this.context)

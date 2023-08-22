@@ -129,10 +129,11 @@
                 {{/if}}
                 {{#if settings.show_product_reviews}}
                     <a 
-                        href="{{product.url}}{{#if is_ajax}}#write_review{{/if}}"
-                        {{#unless is_ajax}}
+                        {{#if is_ajax}}
+                            href="{{product.url}}#write_review"
+                        {{else}}
                             data-reveal-id="modal-review-form"
-                        {{/unless}}
+                        {{/if}}
                         role="button"
                     >
                        {{lang 'products.reviews.new'}}
