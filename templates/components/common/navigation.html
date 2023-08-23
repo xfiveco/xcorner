@@ -1,13 +1,13 @@
-<nav>
+<nav class="ml-auto mt-2 px-8">
     {{#or customer (unless settings.hide_price_from_guests)}}
         {{> components/common/currency-selector}}
     {{/or}}
 
-    <ul>
+    <ul class="flex gap-4">
         {{#if customer.store_credit.value '>' 0}}
             <li>
                 <a 
-                    class="js-nav-user-action"
+                    class="js-nav-user-action font-bold uppercase"
                     data-dropdown="store-credit-dropdown"
                     data-options="align:bottom"
                     href="{{urls.cart}}"
@@ -28,7 +28,7 @@
         {{/if}}
         <li>
             <a 
-                class="js-nav-user-action js-compare-nav"
+                class="js-nav-user-action js-compare-nav font-bold uppercase"
                 href="{{urls.compare}}"
                 aria-label="{{lang 'common.compare'}}"
             >
@@ -43,7 +43,7 @@
         {{/if}}
         <li>
             <button 
-                class="js-nav-user-action js-quick-search-expand"
+                class="js-nav-user-action js-quick-search-expand font-bold uppercase"
                 type="button"
                 data-search="quick-search"
                 aria-controls="quick-search"
@@ -55,7 +55,7 @@
         {{#if settings.gift_certificates_enabled}}
             <li>
                 <a 
-                    class="js-nav-user-action"
+                    class="js-nav-user-action font-bold uppercase"
                     href="{{urls.gift_certificate.purchase}}"
                     aria-label="{{lang 'common.gift_cert'}}"
                 >
@@ -66,14 +66,14 @@
         <li>
             {{#if customer}}
                 <a  
-                    class="js-nav-user-action"
+                    class="js-nav-user-action font-bold uppercase"
                     href="{{urls.account.index}}"
                     aria-label="{{lang 'common.account'}}"
                 >
                     {{lang 'common.account'}}
                 </a>
                 <a 
-                    class="js-nav-user-action"
+                    class="js-nav-user-action font-bold uppercase"
                     href="{{urls.auth.logout}}"
                     aria-label="{{lang 'common.logout'}}"
                 >
@@ -81,7 +81,7 @@
                 </a>
             {{else}}
                 <a 
-                    class="js-nav-user-action"
+                    class="js-nav-user-action font-bold uppercase"
                     href="{{urls.auth.login}}"
                     aria-label="{{lang 'common.login'}}"
                 >
@@ -90,7 +90,7 @@
                 {{#if settings.account_creation_enabled}}
                     <span>{{lang 'common.or'}}</span>
                     <a 
-                        class="js-nav-user-action"
+                        class="js-nav-user-action font-bold uppercase"
                         href="{{urls.auth.create_account}}"
                         aria-label="{{lang 'common.sign_up'}}"
                     >
@@ -101,7 +101,7 @@
         </li>
         <li>
             <a 
-                class="js-nav-user-action js-cart-preview"
+                class="js-nav-user-action js-cart-preview font-bold uppercase"
                 data-dropdown="cart-preview-dropdown"
                 data-options="align:right"
                 href="{{urls.cart}}"
@@ -117,7 +117,7 @@
             ></div>
         </li>
     </ul>
-    <div aria-hidden="true" class="c-quick-search u-hidden js-prevent-quick-search-close js-quick-search">
+    <div aria-hidden="true" class="c-quick-search js-prevent-quick-search-close hidden js-quick-search">
         {{> components/common/quick-search name='nav-quick-search'}}
     </div>
 </nav>

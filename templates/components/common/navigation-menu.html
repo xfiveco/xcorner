@@ -1,8 +1,8 @@
-<nav class="js-nav-pages">
-    <div class="u-hidden@medium">
+<nav class="js-nav-pages flex flex-col">
+    <div class="md:hidden">
         {{> components/common/quick-search name='nav-menu-quick-search'}}
     </div>
-    <ul class="js-nav-pages-list{{#if theme_settings.navigation_design '!==' 'simple'}} js-nav-pages-list-depth-max{{/if}}">
+    <ul class="js-nav-pages-list{{#if theme_settings.navigation_design '!==' 'simple'}} js-nav-pages-list-depth-max{{/if}} mx-auto flex gap-4 items-center">
         {{#each categories}}
             <li>
                 {{#if ../theme_settings.navigation_design '===' 'simple'}}
@@ -17,7 +17,7 @@
             {{#each pages}}
                 <li>
                     <a 
-                        class="js-nav-pages-action{{#if name '==' ../page.title}} active-page{{/if}}"
+                        class="js-nav-pages-action{{#if name '==' ../page.title}} active-page{{/if}} font-bold uppercase py-4"
                         href="{{url}}"
                         aria-label="{{name}}"
                     >
@@ -31,7 +31,7 @@
         {{#if currency_selector.currencies.length '>' 1}}
             <li>
                 <a 
-                    class="js-nav-pages-action has-sub-menu"
+                    class="js-nav-pages-action has-sub-menu font-bold uppercase flex items-center gap-2 py-4"
                     href="#"
                     data-collapsible="nav-pages-currency"
                     aria-controls="nav-pages-currency"
@@ -39,7 +39,7 @@
                     aria-label="{{lang 'common.currency' code=currency_selector.active_currency_code}}"
                 >
                     {{lang 'common.currency' code=currency_selector.active_currency_code}}
-                    <svg>
+                    <svg class="w-4 h-4">
                         <use href="#icon-chevron-down"></use>
                     </svg>
                 </a>
@@ -48,7 +48,7 @@
                         {{#each currency_selector.currencies}}
                             <li>
                                 <a 
-                                    class="js-nav-pages-action"
+                                    class="js-nav-pages-action font-bold uppercase"
                                     href="{{{switch_url}}}"
                                     aria-label="{{name}}"
                                     data-currency-code="{{{code}}}"
@@ -72,7 +72,7 @@
         {{#if settings.gift_certificates_enabled}}
             <li>
                 <a 
-                    class="js-nav-pages-action"
+                    class="js-nav-pages-action font-bold uppercase py-4"
                     href="{{urls.gift_certificate.purchase}}"
                     aria-label="{{lang 'common.gift_cert'}}"
                 >
@@ -82,7 +82,7 @@
         {{/if}}
         {{#if customer.store_credit.value '>' 0}}
             <li>
-                <a class="js-nav-pages-action">
+                <a class="js-nav-pages-action font-bold uppercase py-4">
                     {{lang 'common.store_credit_overview' credit=customer.store_credit.formatted}}
                 </a>
             </li>
@@ -90,7 +90,7 @@
         {{#if theme_settings.product_list_display_mode '==' 'list'}}
             <li>
                 <a 
-                    class="js-nav-pages-action js-compare-nav"
+                    class="js-nav-pages-action js-compare-nav font-bold uppercase py-4"
                     href="{{urls.compare}}"
                     aria-label="{{lang 'common.compare'}}"
                 >
@@ -102,7 +102,7 @@
         {{#if customer}}
             <li>
                 <a 
-                    class="js-nav-pages-action has-sub-menu"
+                    class="js-nav-pages-action has-sub-menu font-bold uppercase"
                     href="{{urls.account.index}}"
                     data-collapsible="nav-pages-account"
                     aria-label="{{lang 'common.account'}}"
@@ -112,7 +112,7 @@
                         <use href="#icon-chevron-down" />
                     </svg>
                 </a>
-                <div id="nav-pages-account" aria-hidden="true" tabindex="-1">
+                <div id="nav-pages-account" aria-hidden="true" tabindex="-1" class="hidden">
                     <ul>
                         <li>
                             <a 
@@ -195,7 +195,7 @@
             </li>
             <li>
                 <a 
-                    class="js-nav-pages-action"
+                    class="js-nav-pages-action font-bold uppercase"
                     href="{{urls.auth.logout}}"
                     aria-label="{{lang 'common.logout'}}"
                 >
@@ -203,9 +203,9 @@
                 </a>
             </li>
         {{else}}
-            <li>
+            <li class="md:hidden">
                 <a 
-                    class="js-nav-pages-action"
+                    class="js-nav-pages-action font-bold uppercase"
                     href="{{urls.auth.login}}"
                     aria-label="{{lang 'common.login'}}"
                 >
@@ -214,7 +214,7 @@
                 {{#if settings.account_creation_enabled}}
                     {{lang 'common.or'}}
                     <a 
-                        class="js-nav-pages-action"
+                        class="js-nav-pages-action font-bold uppercase"
                         href="{{urls.auth.create_account}}"
                         aria-label="{{lang 'common.sign_up'}}"
                     >

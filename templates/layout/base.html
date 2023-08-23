@@ -25,6 +25,8 @@
         </script>
 
         {{{stylesheet '/assets/css/theme.css'}}}
+        <link href="/assets/css/theme.css" rel="stylesheet" />
+        {{!-- <link href="{{cdn 'assets/css/theme.css'}}" rel="stylesheet" /> --}}
 
         {{{head.scripts}}}
 
@@ -43,7 +45,7 @@
         {{~inject 'carouselContentAnnounceMessage' (lang 'carousel.content_announce_message')}}
     </head>
     <body>
-        <svg data-src="{{cdn 'img/icon-sprite.svg'}}" class="u-hidden"></svg>
+        <svg data-src="{{cdn 'img/icon-sprite.svg'}}" class="hidden"></svg>
 
         {{> components/common/header }}
         {{> components/common/body }}

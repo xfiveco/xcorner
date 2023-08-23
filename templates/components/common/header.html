@@ -1,4 +1,4 @@
-<a class="u-hidden-visually" href="#main-content">
+<a class="hidden" href="#main-content">
     {{lang 'header.skip_to_main'}}
 </a>
 {{#if banners.top}}
@@ -19,13 +19,13 @@
     </div>
 {{/if}}
 
-<header class="js-header c-header" role="banner">
-    <a class="u-hidden@medium" href="#" data-mobile-menu-toggle="menu">
+<header class="js-header c-header flex flex-col" role="banner">
+    <a class="md:hidden" href="#" data-mobile-menu-toggle="menu">
         <span>Toggle menu</span>
     </a>
     {{> components/common/navigation}}
 
-    <div>
+    <div class="flex items-center justify-center h-50">
         {{> components/common/store-logo}}
     </div>
     <div id="menu" class="js-menu c-menu">

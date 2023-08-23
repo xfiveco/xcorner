@@ -2,8 +2,7 @@ import Swiper, { Navigation } from 'swiper'
 import q$ from '../global/selector'
 
 /* eslint-disable import/no-unresolved, import/extensions */
-import 'swiper/scss'
-import 'swiper/scss/navigation'
+
 /* eslint-enable import/no-unresolved, import/extensions */
 
 export default function startSwiper(context) {

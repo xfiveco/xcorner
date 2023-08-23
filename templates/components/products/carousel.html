@@ -1,11 +1,13 @@
-<section class="js-product-swiper c-carousel">
-    <div class="swiper-wrapper">
+{{> components/custom/web-components/xslider-component }}
+
+<section class="c-carousel">
+    <xslider-component desktop-columns="1">
         {{#each products}}
-            <div class="swiper-slide">
+            <div id="Slide-{{ @index }}">
                 {{> components/products/card settings=../settings theme_settings=../theme_settings customer=../customer event="list" position=(add @index 1)}}
             </div>
         {{/each}}
-    </div>
+    </xslider-component>
     
     {{#if products.length '>' 1}}
         {{> components/carousel/content-announcement}}

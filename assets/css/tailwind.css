@@ -1,0 +1,8 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.c-header > nav .has-dropdown.is-open + ul,
+.c-menu .has-sub-menu.is-open + div {
+    @apply block;
+}
