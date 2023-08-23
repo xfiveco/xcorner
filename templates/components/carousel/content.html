@@ -1,16 +1,16 @@
-<div class="{{#and (if heading '==' false) (if text '==' false)}} is-empty{{/and}} absolute top-1/3 left-1/3 max-w-[50%] bg-white bg-opacity-30">
+<div class="{{#and (if heading '==' false) (if text '==' false)}} is-empty{{/and}} absolute top-1/3 left-1/3 max-w-[50%] bg-white bg-opacity-20 flex flex-col justify-center items-center py-8 px-10 backdrop-blur">
     {{#if heading}}
-        <div>
+        <div class="font-bold text-3xl mb-4">
             {{{heading}}}
         </div>
     {{/if}}
     {{#if text}}
-        <div>
+        <div class="mb-4">
             {{{text}}}
         </div>
     {{/if}}
     {{#if button_text}}
-        <a href="{{url}}" aria-label="{{#if this.alt_text.length '!=' 0}}{{this.alt_text}}{{else}}{{lang 'carousel.slide_number' slide_number=(add @index 1)}}{{/if}}, {{button_text}}" class="c-button c-button--primary button--large">
+        <a href="{{url}}" aria-label="{{#if this.alt_text.length '!=' 0}}{{this.alt_text}}{{else}}{{lang 'carousel.slide_number' slide_number=(add @index 1)}}{{/if}}, {{button_text}}" class="c-button c-button--primary button--large border border-black py-1 px-3 cursor-pointer bg-black text-white hover:bg-transparent hover:text-black text-center">
             {{{button_text}}}
         </a>
     {{/if}}
