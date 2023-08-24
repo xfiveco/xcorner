@@ -1,30 +1,29 @@
-{{> components/custom/web-components/xslider-component }}
+<link href="/assets/css/swiper-bundle.min.css" rel="stylesheet" />
 
-<section class="c-carousel">
-    <xslider-component desktop-columns="1" class="block max-w-[62.5rem] mx-auto relative">
-        <ul class="flex">
-            {{#each carousel.slides}}
-                <li id="Slide-{{ @index }}" class="w-full shrink-0 relative">
-                    {{#if @first}}
-                        {{> components/common/image
-                            image=stencil_image
-                            fallback_size='1280w'
-                        }}
-                    {{else}}
-                        {{> components/common/image
-                            image=stencil_image
-                            fallback_size='1280w'
-                        }}
-                    {{/if}}
-                    {{#or heading text button_text}}
-                        {{> components/carousel/content}}
-                    {{/or}}
-                </li>
-            {{/each}}
-        </ul>
-        <div class="absolute top-1/2 w-full flex justify-between">
-            <div class="slider-button--prev border border-black py-1 px-3 cursor-pointer hover:bg-black hover:text-white">Previous</div>
-            <div class="slider-button--next ml-auto border border-black py-1 px-3 cursor-pointer hover:bg-black hover:text-white">Next</div>
-        </div>
-    </xslider-component>
+<section class="js-home-swiper c-carousel relative max-w-[70rem] mx-auto overflow-hidden">
+    <div class="swiper-wrapper">
+        {{#each carousel.slides}}
+            <div class="swiper-slide{{#if ../theme_settings.homepage_stretch_carousel_images}} is-stretch{{/if}}{{#if @first}} is-first{{/if}}">
+                {{#if @first}}
+                    {{> components/common/image
+                        image=stencil_image
+                        fallback_size='1280w'
+                    }}
+                {{else}}
+                    {{> components/common/image
+                        image=stencil_image
+                        fallback_size='1280w'
+                    }}
+                {{/if}}
+                {{#or heading text button_text}}
+                    {{> components/carousel/content}}
+                {{/or}}
+            </div>
+        {{/each}}
+    </div>
+
+    <div class="absolute top-1/2 w-full flex justify-between z-10">
+        <div class="js-swiper-btn-prev border border-black py-1 px-3 cursor-pointer hover:bg-black hover:text-white">Previous</div>
+        <div class="js-swiper-btn-next ml-auto border border-black py-1 px-3 cursor-pointer hover:bg-black hover:text-white">Next</div>
+    </div>
 </section>

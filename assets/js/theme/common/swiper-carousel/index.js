@@ -1,10 +1,6 @@
 // Import Swiper and modules
 import Swiper, { Navigation } from 'swiper'
 
-/* eslint-disable import/no-unresolved, import/extensions */
-
-/* eslint-enable import/no-unresolved, import/extensions */
-
 const productCarouselParams = {
     direction: 'horizontal',
     modules: [Navigation],
