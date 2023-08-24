@@ -39,6 +39,12 @@ export default function doQuickSearch() {
     // stagger searching for 1200ms after last input
     const debounceWaitTime = 1200
     const doSearch = debounce((searchQuery) => {
+        $quickSearchResults
+            .filter(($qsr) => isVisible($qsr))
+            .map(($el) => $el.nextElementSibling)
+            // eslint-disable-next-line no-return-assign, no-param-reassign
+            .forEach(($el) => ($el.textContent = 'Searching...'))
+
         utils.api.search.search(searchQuery, { template: 'search/quick-results' }, (err, response) => {
             if (err) {
                 return false

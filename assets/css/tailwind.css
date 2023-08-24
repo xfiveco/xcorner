@@ -15,8 +15,13 @@
     width: 1px !important;
 }
 
+.c-header.is-open,
 .c-header > nav .has-dropdown.is-open + ul,
 #menu > nav > div.is-open,
 .c-menu .has-sub-menu.is-open + div {
     @apply block;
+}
+
+.c-header.is-open {
+    @apply fixed inset-0 z-50 overflow-y-auto bg-white bg-opacity-20 backdrop-blur;
 }

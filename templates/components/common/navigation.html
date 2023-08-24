@@ -1,4 +1,4 @@
-<nav class="ml-auto mt-2 px-8">
+<nav class="hidden md:block ml-auto mt-2 px-8">
     {{#or customer (unless settings.hide_price_from_guests)}}
         {{> components/common/currency-selector}}
     {{/or}}
