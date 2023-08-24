@@ -1,5 +1,4 @@
 <article
-    {{#if alternate}}class="card-alternate"{{/if}}
     data-test="card-{{id}}"
     {{#if settings.data_tag_enabled}}
         data-event-type="{{event}}"
@@ -26,8 +25,9 @@
                 {{lang 'common.login_for_pricing'}}
             {{/or}}"
     {{/if}}
+    class="{{#if alternate}}card-alternate {{/if}}flex flex-col shadow-sm hover:shadow-lg hover:scale-105 group bg-white h-full"
 >
-    <figure>
+    <figure class="p-4 relative">
         {{#if stock_level '===' 0}}
             {{#if theme_settings.pdp_sold_out_label '===' ''}}
                 {{> components/products/product-badge
@@ -76,21 +76,21 @@
             </div>
         </a>
 
-        <figcaption>
-            <div>
+        <figcaption class="absolute inset-0 hidden group-hover:block">
+            <div class="h-full flex flex-col justify-center items-center gap-4 bg-white bg-opacity-20 backdrop-blur p-4">
                 {{#unless hide_product_quick_view}}
                     {{#if theme_settings.show_product_quick_view}}
                         {{#if settings.data_tag_enabled}}
                             <button 
                                 type="button" 
-                                class="c-button js-quick-view" 
+                                class="c-button js-quick-view border border-black py-1 px-3 cursor-pointer text-black hover:bg-black hover:text-white text-center w-full" 
                                 data-event-type="product-click" 
                                 data-product-id="{{id}}"
                             >
                                 {{lang 'products.quick_view'}}
                             </button>
                         {{else}}
-                            <button type="button" class="c-button js-quick-view" data-product-id="{{id}}">
+                            <button type="button" class="c-button js-quick-view border border-black py-1 px-3 cursor-pointer text-black hover:bg-black hover:text-white text-center w-full" data-product-id="{{id}}">
                                 {{lang 'products.quick_view'}}
                             </button>
                         {{/if}}
@@ -113,7 +113,7 @@
                         <a 
                             href="{{url}}" 
                             data-event-type="product-click" 
-                            class="c-button" 
+                            class="c-button border border-black py-1 px-3 cursor-pointer text-black hover:bg-black hover:text-white text-center w-full" 
                             data-product-id="{{id}}"
                         >
                             {{lang 'products.choose_options'}}
@@ -123,7 +123,7 @@
                         <a 
                             href="{{pre_order_add_to_cart_url}}" 
                             data-event-type="product-click" 
-                            class="c-button"
+                            class="c-button border border-black py-1 px-3 cursor-pointer text-black hover:bg-black hover:text-white text-center w-full"
                         >
                             {{lang 'products.pre_order'}}
                         </a>
@@ -133,31 +133,31 @@
                             href="{{add_to_cart_url}}" 
                             data-event-type="product-click" 
                             data-button-type="add-cart" 
-                            class="c-button"
+                            class="c-button border border-black py-1 px-3 cursor-pointer text-black hover:bg-black hover:text-white text-center w-full"
                         >
                             {{lang 'products.add_to_cart'}}
                         </a>
-                        <span class="u-hidden">
+                        <span class="hidden">
                             {{lang 'category.add_cart_announcement'}}
                         </span>
                     {{/if}}
                     {{#if out_of_stock_message }}
-                        <a href="{{url}}" data-event-type="product-click" class="c-button button--small card-figcaption-button" data-product-id="{{id}}">{{out_of_stock_message}}</a>
+                        <a href="{{url}}" data-event-type="product-click" class="c-button button--small card-figcaption-button border border-black py-1 px-3 cursor-pointer text-black hover:bg-black hover:text-white text-center w-full" data-product-id="{{id}}">{{out_of_stock_message}}</a>
                     {{/if}}
                 {{/if}}
             </div>
         </figcaption>
     </figure>
-    <div>
+    <div class="p-4 flex-grow flex flex-col">
         {{#and rating show_rating}}
-            <p data-test-info-type="productRating">
+            <p data-test-info-type="productRating" class="pt-0">
                 <span>
                     {{> components/products/ratings rating_target=name rating=rating}}
                 </span>
             </p>
         {{/and}}
         {{#if brand.name}}
-            <p data-test-info-type="brandName">
+            <p data-test-info-type="brandName" class="pt-0">
                 {{brand.name}}
             </p>
         {{/if}}
@@ -168,12 +168,13 @@
                 {{#if settings.data_tag_enabled}} 
                     data-event-type="product-click" 
                 {{/if}}
+                class="text-sm"
             >
                 {{name}}
             </a>
         </div>
 
-        <div data-test-info-type="price">
+        <div data-test-info-type="price" class="mt-auto">
             {{#or customer (unless settings.hide_price_from_guests)}}
                 {{> components/products/price price=price}}
             {{else}}

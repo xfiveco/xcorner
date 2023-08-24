@@ -4,6 +4,7 @@ import hooks from '../common/hooks'
 import StencilDropDown from './stencil-dropdown'
 import q$, { q$$ } from './selector'
 import isVisible from '../common/utils/is-visible'
+import toggle from '../custom/toggle'
 
 export default function doQuickSearch() {
     const TOP_STYLING = 'top: 49px;'
@@ -46,6 +47,9 @@ export default function doQuickSearch() {
             $quickSearchResults.forEach(($qsr) => {
                 /* eslint-disable no-param-reassign */
                 $qsr.innerHTML = response
+                if ($qsr.classList.contains('hidden')) {
+                    $qsr.classList.remove('hidden')
+                }
             })
 
             const $quickSearchResultsCurrent = $quickSearchResults.filter(($qsr) => isVisible($qsr))
@@ -99,5 +103,19 @@ export default function doQuickSearch() {
 
             window.location.href = `${searchUrl}?search_query=${encodeURIComponent(searchQuery)}`
         })
+    })
+
+    const $jsQuickSearchExpand = q$('.js-quick-search-expand')
+    if ($jsQuickSearchExpand === null) {
+        return
+    }
+
+    if ('hastoggle' in $jsQuickSearchExpand.dataset) {
+        return
+    }
+
+    $jsQuickSearchExpand.dataset.hastoggle = true
+    toggle('.js-quick-search-expand', {
+        update: ['#menu > nav > div:first-child'],
     })
 }

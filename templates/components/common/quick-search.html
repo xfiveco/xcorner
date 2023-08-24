@@ -1,11 +1,11 @@
-<div class="js-container">
-    <form onsubmit="return false" data-url="{{urls.search}}" class="js-quick-search-form">
+<div class="js-container flex flex-wrap justify-center py-6 relative">
+    <form onsubmit="return false" data-url="{{urls.search}}" class="js-quick-search-form w-full max-w-[70rem]">
         <div class="js-form-field">
             <label class="u-hidden-visually" for="{{name}}">
                 {{lang "search.quick_search.input_label"}}
             </label>
             <input 
-                class="js-form-input js-search-quick"
+                class="js-form-input js-search-quick w-full"
                 name="{{name}}"
                 id="{{name}}"
                 data-error-message="{{lang 'search.error.empty_field'}}"
@@ -14,10 +14,11 @@
             >
         </div>
     </form>
-    <section class="c-quick-search-results js-quick-search-results" data-bind="html: results"></section>
+    <section class="c-quick-search-results js-quick-search-results w-full max-w-[70rem] p-6 bg-white bg-opacity-20 backdrop-blur absolute top-full z-20 shadow-sm hidden" data-bind="html: results"></section>
     <p 
         role="status"
         aria-live="polite"
         data-search-aria-message-predefined-text="{{{lang 'search.results.quick_count_live'}}}"
+        class="w-full max-w-[70rem] py-6"
     ></p>
 </div>

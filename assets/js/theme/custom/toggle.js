@@ -15,14 +15,14 @@ function updateAttributes($element) {
 
     /* eslint-disable no-param-reassign */
     if ('hasUHidden' in $element.dataset) {
-        $element.classList.add('u-hidden')
+        $element.classList.add('hidden')
         delete $element.dataset.hasUHidden
 
         return
     }
 
-    if ($element.classList.contains('u-hidden')) {
-        $element.classList.remove('u-hidden')
+    if ($element.classList.contains('hidden')) {
+        $element.classList.remove('hidden')
         $element.dataset.hasUHidden = true
     }
     /* eslint-enable no-param-reassign */
