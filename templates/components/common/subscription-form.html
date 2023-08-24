@@ -1,7 +1,7 @@
-<div>
+<div class="mb-4 font-bold">
     {{lang 'newsletter.subscribe'}}
 </div>
-<p>
+<p class="mb-4">
     {{lang 'newsletter.subscribe_intro'}}
 </p>
 
@@ -15,7 +15,7 @@
         </label>
         <div>
             <input 
-                class="js-form-input c-input"
+                class="js-form-input c-input w-full"
                 id="nl_email"
                 name="nl_email"
                 type="email"
@@ -25,7 +25,19 @@
                 aria-required="true"
                 required
             >
-            <button class="c-button c-button--primary" type="submit">
+            <button 
+                class="
+                    c-button c-button--primary 
+                    block
+                    py-1 px-3 
+                    mt-2
+                    border border-black 
+                    cursor-pointer 
+                    bg-black hover:bg-transparent 
+                    text-white hover:text-black
+                "
+                type="submit"
+            >
                 {{lang 'newsletter.subscribe_submit'}}
             </button>
         </div>

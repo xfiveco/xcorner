@@ -18,11 +18,11 @@
     {{/if}}
 {{/if}}
 
-<footer role="contentinfo">
+<footer role="contentinfo" class="flex justify-center pt-8 pb-20 shadow-inner">
     <div class="u-hidden-visually">
         {{lang 'footer.title'}}
     </div>
-    <div class="o-container">
+    <div class="o-container flex flex-col justify-center gap-2 max-w-[70rem] w-full">
         {{#if theme_settings.social_icon_placement_bottom '!==' 'bottom_none'}}
             <article data-section-type="footer-web-pages">
                 <div>
@@ -33,19 +33,19 @@
             </article>
         {{/if}}
 
-        <section>
+        <section class="flex justify-between">
             <article data-section-type="footer-web-pages">
-                <div>
+                <div class="mb-4 font-bold">
                     {{lang 'footer.navigate'}}
                 </div>
                 <ul>
                     {{#each pages}}
                         <li>
-                            <a href="{{url}}">{{name}}</a>
+                            <a href="{{url}}" class="hover:underline">{{name}}</a>
                         </li>
                     {{/each}}
                     <li>
-                        <a href="{{urls.sitemap}}">
+                        <a href="{{urls.sitemap}}" class="hover:underline">
                             {{lang 'sitemap.page_title'}}
                         </a>
                     </li>
@@ -53,13 +53,13 @@
             </article>
 
             <article data-section-type="footer-categories">
-                <div>
+                <div class="mb-4 font-bold">
                     {{lang 'footer.categories'}}
                 </div>
                 <ul>
                     {{#each categories}}
                         <li>
-                            <a href="{{url}}">{{name}}</a>
+                            <a href="{{url}}" class="hover:underline">{{name}}</a>
                         </li>
                     {{/each}}
                 </ul>
@@ -67,17 +67,17 @@
 
             {{#and theme_settings.shop_by_brand_show_footer shop_by_brand.length}}
                 <article data-section-type="footer-brands">
-                    <div>
+                    <div class="mb-4 font-bold">
                         {{lang 'footer.brands'}}
                     </div>
                     <ul>
                         {{#each shop_by_brand}}
                             <li>
-                                <a href="{{url}}">{{name}}</a>
+                                <a href="{{url}}" class="hover:underline">{{name}}</a>
                             </li>
                         {{/each}}
                         <li>
-                            <a href="{{urls.brands}}">
+                            <a href="{{urls.brands}}" class="hover:underline">
                                 {{lang 'common.view_all'}}
                             </a>
                         </li>
@@ -87,7 +87,7 @@
 
             {{#if settings.address}}
                 <article data-section-type="store-info">
-                    <div>
+                    <div class="mb-4 font-bold">
                         {{lang 'footer.info'}}
                     </div>
                     <address>
@@ -117,15 +117,15 @@
             </div>
         {{/if}}
         {{#if theme_settings.show_powered_by}}
-            <div>
+            <div class="text-sm text-slate-400 mt-8">
                 <p>
-                    {{lang 'footer.powered_by'}} <a href="https://www.bigcommerce.com?utm_source=merchant&amp;utm_medium=poweredbyBC" rel="nofollow">BigCommerce</a>
+                    {{lang 'footer.powered_by'}} <a href="https://www.bigcommerce.com?utm_source=merchant&amp;utm_medium=poweredbyBC" rel="nofollow" class="hover:text-black hover:underline">BigCommerce</a>
                 </p>
             </div>
         {{/if}}
         {{#if theme_settings.show_copyright_footer}}
-            <div>
-                <p>
+            <div class="text-sm text-slate-400">
+                <p class="my-0">
                     &copy; {{moment format="YYYY"}} {{settings.store_name}} 
                 </p>
             </div>
