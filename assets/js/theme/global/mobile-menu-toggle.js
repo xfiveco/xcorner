@@ -92,6 +92,9 @@ export class MobileMenuToggle {
         this.$toggle.setAttribute('aria-expanded', true)
 
         this.$menu.classList.add('is-open')
+        if (this.$menu.classList.contains('hidden')) {
+            this.$menu.classList.remove('hidden')
+        }
 
         this.$header.classList.add('is-open')
         this.$scrollView.scrollIntoView(true)
@@ -106,6 +109,8 @@ export class MobileMenuToggle {
         this.$toggle.setAttribute('aria-expanded', false)
 
         this.$menu.classList.remove('is-open')
+        this.$menu.classList.add('hidden')
+
         this.$header.classList.remove('is-open')
 
         this.resetSubMenus()

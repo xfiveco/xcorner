@@ -1,6 +1,11 @@
 {{#if children}}
     <a 
-        class="js-nav-pages-action has-sub-menu{{#if is_active}} is-active{{/if}} font-bold uppercase flex gap-2 items-center cursor-pointer py-4"
+        class="js-nav-pages-action has-sub-menu{{#if is_active}} is-active{{/if}} 
+            flex justify-between md:justify-start gap-1 items-center 
+            w-screen md:w-auto 
+            px-[5vw] md:px-0 py-2 md:py-4 
+            font-bold uppercase 
+            cursor-pointer"
         href="{{url}}"
         data-collapsible="nav-pages-{{id}}"
     >
@@ -16,7 +21,7 @@
         tabindex="-1"
         class="hidden relative"
     >
-        <ul class="space-y-3 absolute top-full p-3 bg-white w-max left-0 z-10">
+        <ul class="space-y-3 md:absolute top-full py-1 px-[5vw] md:p-3 md:bg-white w-max left-0 z-10">
             <li>
                 <a 
                     class="js-nav-pages-action hover:underline cursor-pointer"
@@ -74,7 +79,7 @@
     </div>
 {{else}}
     <a 
-        class="js-nav-pages-action{{#if is_active}} is-active{{/if}} font-bold uppercase py-4"
+        class="js-nav-pages-action{{#if is_active}} is-active{{/if}} font-bold uppercase py-1 md:py-4 w-screen md:w-auto px-[5vw] md:px-0 flex"
         href="{{url}}"
         aria-label="{{name}}"
     >

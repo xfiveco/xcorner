@@ -6,7 +6,7 @@ import q$, { q$$ } from './selector'
 import isVisible from '../common/utils/is-visible'
 import toggle from '../custom/toggle'
 
-export default function doQuickSearch() {
+export default function doQuickSearch(context) {
     const TOP_STYLING = 'top: 49px;'
     const $quickSearchResults = q$$('.js-quick-search-results')
     const $quickSearchForms = q$$('.js-quick-search-form')
@@ -40,7 +40,6 @@ export default function doQuickSearch() {
     const debounceWaitTime = 1200
     const doSearch = debounce((searchQuery) => {
         $quickSearchResults
-            .filter(($qsr) => isVisible($qsr))
             .map(($el) => $el.nextElementSibling)
             // eslint-disable-next-line no-return-assign, no-param-reassign
             .forEach(($el) => ($el.textContent = 'Searching...'))
@@ -57,6 +56,7 @@ export default function doQuickSearch() {
                     $qsr.classList.remove('hidden')
                 }
             })
+            ;(() => import('./quick-view').then((quickView) => quickView.default(context)))()
 
             const $quickSearchResultsCurrent = $quickSearchResults.filter(($qsr) => isVisible($qsr))
 
@@ -108,6 +108,14 @@ export default function doQuickSearch() {
             }
 
             window.location.href = `${searchUrl}?search_query=${encodeURIComponent(searchQuery)}`
+        })
+    })
+
+    $quickSearchResults.forEach(($qsr) => {
+        $qsr.addEventListener('click', ({ target }) => {
+            if (target.classList.contains('js-modal-close')) {
+                $qsr.classList.add('hidden')
+            }
         })
     })
 

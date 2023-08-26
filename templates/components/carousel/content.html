@@ -1,4 +1,10 @@
-<div class="{{#and (if heading '==' false) (if text '==' false)}} is-empty{{/and}} absolute top-1/3 left-1/3 max-w-[50%] bg-white bg-opacity-20 flex flex-col justify-center items-center py-8 px-10 backdrop-blur">
+<div class="{{#and (if heading '==' false) (if text '==' false)}} is-empty{{/and}} 
+    md:absolute top-1/3 left-1/3 
+    md:max-w-[50%] 
+    flex flex-col justify-center items-center 
+    py-8 px-10 
+    bg-white md:bg-opacity-20 md:backdrop-blur"
+>
     {{#if heading}}
         <div class="font-bold text-3xl mb-4">
             {{{heading}}}

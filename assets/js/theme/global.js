@@ -13,7 +13,7 @@ export default class Global extends PageManager {
         ;(() => import('./global/cart-preview').then((cartPreview) => cartPreview.default(secureBaseUrl, cartId)))()
 
         // Quick Search
-        ;(() => import('./global/quick-search').then((quickSearch) => quickSearch.default()))()
+        ;(() => import('./global/quick-search').then((quickSearch) => quickSearch.default(this.context)))()
 
         // Currency Selector
         ;(() => import('./global/currency-selector').then((currencySelector) => currencySelector.default(cartId)))()
