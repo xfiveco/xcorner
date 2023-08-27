@@ -18,7 +18,7 @@
     {{/if}}
 {{/if}}
 
-<footer role="contentinfo" class="flex justify-center pt-8 pb-20 shadow-inner">
+<footer role="contentinfo" class="flex justify-center pt-8 pb-20 shadow-inner px-[5vw]">
     <div class="u-hidden-visually">
         {{lang 'footer.title'}}
     </div>
@@ -33,8 +33,8 @@
             </article>
         {{/if}}
 
-        <section class="flex justify-between">
-            <article data-section-type="footer-web-pages">
+        <section class="flex flex-col md:flex-row justify-center md:justify-between text-center md:text-left">
+            <article data-section-type="footer-web-pages" class="mt-8 md:mt-0">
                 <div class="mb-4 font-bold">
                     {{lang 'footer.navigate'}}
                 </div>
@@ -52,7 +52,7 @@
                 </ul>
             </article>
 
-            <article data-section-type="footer-categories">
+            <article data-section-type="footer-categories" class="mt-8 md:mt-0">
                 <div class="mb-4 font-bold">
                     {{lang 'footer.categories'}}
                 </div>
@@ -66,7 +66,7 @@
             </article>
 
             {{#and theme_settings.shop_by_brand_show_footer shop_by_brand.length}}
-                <article data-section-type="footer-brands">
+                <article data-section-type="footer-brands" class="mt-8 md:mt-0">
                     <div class="mb-4 font-bold">
                         {{lang 'footer.brands'}}
                     </div>
@@ -86,7 +86,7 @@
             {{/and}}
 
             {{#if settings.address}}
-                <article data-section-type="store-info">
+                <article data-section-type="store-info" class="mt-8 md:mt-0">
                     <div class="mb-4 font-bold">
                         {{lang 'footer.info'}}
                     </div>
@@ -101,7 +101,7 @@
                 </article>
             {{/if}}
 
-            <article data-section-type="newsletter-subscription">
+            <article data-section-type="newsletter-subscription" class="mt-8 md:mt-0">
                 {{#if settings.show_newsletter_box}}
                     {{> components/common/subscription-form}}
                 {{/if}}
@@ -117,14 +117,14 @@
             </div>
         {{/if}}
         {{#if theme_settings.show_powered_by}}
-            <div class="text-sm text-slate-400 mt-10">
+            <div class="text-sm text-slate-400 mt-14 md:mt-10 text-center md:text-left">
                 <p>
                     {{lang 'footer.powered_by'}} <a href="https://www.bigcommerce.com?utm_source=merchant&amp;utm_medium=poweredbyBC" rel="nofollow" class="hover:text-black hover:underline">BigCommerce</a>
                 </p>
             </div>
         {{/if}}
         {{#if theme_settings.show_copyright_footer}}
-            <div class="text-sm text-slate-400">
+            <div class="text-sm text-slate-400 text-center md:text-left">
                 <p class="my-0">
                     &copy; {{moment format="YYYY"}} {{settings.store_name}} 
                 </p>
