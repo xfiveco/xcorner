@@ -885,16 +885,8 @@ select {
   margin-bottom: 1rem;
 }
 
-.mb-8 {
-  margin-bottom: 2rem;
-}
-
 .ml-auto {
   margin-left: auto;
-}
-
-.mt-10 {
-  margin-top: 2.5rem;
 }
 
 .mt-14 {
@@ -923,6 +915,14 @@ select {
 
 .mt-auto {
   margin-top: auto;
+}
+
+.mb-6 {
+  margin-bottom: 1.5rem;
+}
+
+.mt-4 {
+  margin-top: 1rem;
 }
 
 .block {
@@ -979,6 +979,14 @@ select {
 
 .max-w-desktop {
   max-width: var(--max-w-desktop, 70rem);
+}
+
+.max-w-xl {
+  max-width: 36rem;
+}
+
+.max-w-md {
+  max-width: 28rem;
 }
 
 .flex-grow {
@@ -1435,10 +1443,6 @@ select {
   .md\:py-4 {
     padding-top: 1rem;
     padding-bottom: 1rem;
-  }
-
-  .md\:text-left {
-    text-align: left;
   }
 
   .md\:backdrop-blur {

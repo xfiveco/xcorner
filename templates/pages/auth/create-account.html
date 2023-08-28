@@ -1,13 +1,13 @@
 {{inject 'passwordRequirements' settings.password_requirements}}
 {{inject 'recaptchaTitle' (lang 'create_account.recaptcha_title')}}
 {{#partial "page"}}
-    {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
+    <div class="shadow-inner py-4 max-w-desktop mx-auto p-4 my-8">
+        {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
 
-    <h1>
-        {{lang 'create_account.heading' }}
-    </h1>
+        <h1 class="font-bold text-3xl py-4">
+            {{lang 'create_account.heading' }}
+        </h1>
 
-    <div>
         <div>
             {{#if forms.create_account.error}}
                 {{> components/common/alert/alert-error forms.create_account.error}}
@@ -15,10 +15,10 @@
             {{#if settings.account_creation_enabled}}
                 <form 
                     action="{{urls.auth.save_new_account}}" 
-                    class="js-create-account-form"
+                    class="js-create-account-form max-w-md"
                     method="post"
                 >
-                    <div>
+                    <div class="mb-6">
                         {{#each forms.create_account.account_fields }}
                             {{{dynamicComponent 'components/common/forms'}}}
                         {{/each}}
@@ -30,7 +30,7 @@
                     </div>
                     {{{ forms.create_account.recaptcha.markup}}}
                     <div>
-                        <button type="submit" class="c-button c-button--primary">
+                        <button type="submit" class="c-button c-button--primary block border border-black py-1 px-3 mt-4 cursor-pointer bg-black text-white hover:bg-transparent hover:text-black text-center w-full md:w-auto">
                             {{lang 'forms.create_account.submit_value' }}
                         </button> 
                     </div>
