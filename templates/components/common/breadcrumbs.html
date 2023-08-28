@@ -10,7 +10,7 @@
                             aria-current="page"
                         {{/if}}
                     >
-                        <span>{{name}}</span>
+                        <span>{{name}} {{#unless @last}}&nbsp;&nbsp;&nbsp;/{{/unless}}</span>
                     </a>
                 </li>
             {{/each}}
