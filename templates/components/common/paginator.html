@@ -1,13 +1,13 @@
-<nav aria-label="pagination">
-    <ul class="js-pagination-list">
+<nav aria-label="pagination" class="mt-6">
+    <ul class="js-pagination-list flex justify-center gap-4">
         {{#if previous}}
             <li class="js-pagination-item-previous">
                 <a 
-                    class="js-pagination-link js-faceted-search-facet"
+                    class="js-pagination-link js-faceted-search-facet flex items-center hover:underline"
                     href="{{previous}}"
                     aria-label="{{lang 'common.previous'}}"
                 >
-                    <svg>
+                    <svg class="w-4 h-4">
                         <use href="#icon-chevron-left"></use>
                     </svg>
                     {{lang 'common.previous'}}
@@ -18,11 +18,11 @@
         {{#each links}}
             <li 
                 {{#if this.number '==' ../current}}
-                    class="is-current"
+                    class="is-current font-bold"
                 {{/if}}
             >
                 <a 
-                    class="js-pagination-link js-faceted-search-facet js-pagination-current-page-link"
+                    class="js-pagination-link js-faceted-search-facet js-pagination-current-page-link hover:underline"
                     href="{{this.url}}"
                     {{#if this.number '==' ../current}}
                         aria-current="page"
@@ -41,12 +41,13 @@
                         {{#unless reload}}
                             js-faceted-search-facet
                         {{/unless}}
+                        flex items-center hover:underline
                     "
                     href="{{next}}"
                     aria-label="{{lang 'common.next'}}"
                 >
                     {{lang 'common.next'}}
-                    <svg>
+                    <svg class="w-4 h-4">
                         <use href="#icon-chevron-right"></use>
                     </svg>
                 </a>

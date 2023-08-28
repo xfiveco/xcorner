@@ -872,9 +872,18 @@ select {
   margin-bottom: 0px;
 }
 
+.my-10 {
+  margin-top: 2.5rem;
+  margin-bottom: 2.5rem;
+}
+
 .my-8 {
   margin-top: 2rem;
   margin-bottom: 2rem;
+}
+
+.mb-10 {
+  margin-bottom: 2.5rem;
 }
 
 .mb-14 {
@@ -895,6 +904,10 @@ select {
 
 .ml-auto {
   margin-left: auto;
+}
+
+.mt-10 {
+  margin-top: 2.5rem;
 }
 
 .mt-14 {
@@ -929,14 +942,6 @@ select {
   margin-top: auto;
 }
 
-.mb-10 {
-  margin-bottom: 2.5rem;
-}
-
-.mt-10 {
-  margin-top: 2.5rem;
-}
-
 .block {
   display: block;
 }
@@ -963,12 +968,20 @@ select {
   height: 100%;
 }
 
+.max-h-\[500px\] {
+  max-height: 500px;
+}
+
 .max-h-\[90vh\] {
   max-height: 90vh;
 }
 
 .w-4 {
   width: 1rem;
+}
+
+.w-72 {
+  width: 18rem;
 }
 
 .w-full {
@@ -995,6 +1008,11 @@ select {
 
 .max-w-md {
   max-width: 28rem;
+}
+
+.shrink-0 {
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
 }
 
 .flex-grow {
@@ -1025,6 +1043,13 @@ select {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+}
+
+.flex-col-reverse {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: reverse;
+      -ms-flex-direction: column-reverse;
+          flex-direction: column-reverse;
 }
 
 .flex-wrap {
@@ -1076,6 +1101,10 @@ select {
   gap: 1rem;
 }
 
+.gap-8 {
+  gap: 2rem;
+}
+
 .space-y-3 > :not([hidden]) ~ :not([hidden]) {
   --tw-space-y-reverse: 0;
   margin-top: calc(0.75rem * calc(1 - var(--tw-space-y-reverse)));
@@ -1086,12 +1115,6 @@ select {
   --tw-divide-y-reverse: 0;
   border-top-width: calc(1px * calc(1 - var(--tw-divide-y-reverse)));
   border-bottom-width: calc(1px * var(--tw-divide-y-reverse));
-}
-
-.divide-x-2 > :not([hidden]) ~ :not([hidden]) {
-  --tw-divide-x-reverse: 0;
-  border-right-width: calc(2px * var(--tw-divide-x-reverse));
-  border-left-width: calc(2px * calc(1 - var(--tw-divide-x-reverse)));
 }
 
 .overflow-hidden {
@@ -1151,6 +1174,11 @@ select {
 
 .bg-opacity-20 {
   --tw-bg-opacity: 0.2;
+}
+
+.object-cover {
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 .p-4 {
@@ -1365,6 +1393,34 @@ select {
           backdrop-filter: var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);
 }
 
+.js-accordion-navigation + div {
+  display: none;
+}
+
+.js-accordion-navigation.is-open + div {
+  display: block;
+}
+
+.js-accordion-navigation > span > svg:last-child {
+  display: none;
+}
+
+.js-accordion-navigation.is-open > span > svg:first-child {
+  display: none;
+}
+
+.js-accordion-navigation.is-open > span > svg:last-child {
+  display: block;
+}
+
+.js-facets-search-nav-list [id^="facets-"] {
+  display: none;
+}
+
+.js-facets-search-nav-list [id^="facets-"].is-open {
+  display: block;
+}
+
 .hover\:scale-105:hover {
   --tw-scale-x: 1.05;
   --tw-scale-y: 1.05;
@@ -1419,6 +1475,10 @@ select {
     display: block;
   }
 
+  .md\:grid {
+    display: grid;
+  }
+
   .md\:hidden {
     display: none;
   }
@@ -1433,6 +1493,14 @@ select {
 
   .md\:max-w-\[50\%\] {
     max-width: 50%;
+  }
+
+  .md\:grid-cols-2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .md\:grid-cols-3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
   .md\:grid-cols-4 {
@@ -1470,6 +1538,10 @@ select {
             justify-content: space-between;
   }
 
+  .md\:gap-10 {
+    gap: 2.5rem;
+  }
+
   .md\:gap-4 {
     gap: 1rem;
   }
@@ -1478,6 +1550,11 @@ select {
     --tw-divide-y-reverse: 0;
     border-top-width: calc(0px * calc(1 - var(--tw-divide-y-reverse)));
     border-bottom-width: calc(0px * var(--tw-divide-y-reverse));
+  }
+
+  .md\:bg-black {
+    --tw-bg-opacity: 1;
+    background-color: rgb(0 0 0 / var(--tw-bg-opacity));
   }
 
   .md\:bg-white {
@@ -1501,6 +1578,15 @@ select {
   .md\:py-4 {
     padding-top: 1rem;
     padding-bottom: 1rem;
+  }
+
+  .md\:pt-6 {
+    padding-top: 1.5rem;
+  }
+
+  .md\:text-white {
+    --tw-text-opacity: 1;
+    color: rgb(255 255 255 / var(--tw-text-opacity));
   }
 
   .md\:backdrop-blur {

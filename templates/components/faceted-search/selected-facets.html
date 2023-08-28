@@ -1,5 +1,5 @@
 <div>
-    <div>
+    <div class="font-semibold text-xl">
         {{lang 'search.faceted.selected.title'}}
     </div>
     {{#if items}}
@@ -9,14 +9,14 @@
                     <a 
                         href="{{url}}"
                         rel="nofollow"
-                        class="js-faceted-search-facet"
+                        class="js-faceted-search-facet flex items-center justify-between"
                     >
                         {{#if facet '===' 'rating'}}
                             {{lang 'search.faceted.selected.rating-label' rating=title}}
                         {{else}}
                             {{{sanitize title}}}
                         {{/if}}
-                        <svg>
+                        <svg class="w-4 h-4">
                             <use href="#icon-close" />
                         </svg>
                     </a>

@@ -1,4 +1,4 @@
-<ul>
+<ul class="grid grid-cols-2 md:grid-cols-3 gap-4">
     {{#each products}}
         <li class="js-product">
             {{>components/products/card settings=../settings show_compare=../show_compare show_rating=../settings.show_product_rating theme_settings=../theme_settings customer=../customer event=../event position=(add @index 1)}}

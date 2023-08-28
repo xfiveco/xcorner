@@ -4,17 +4,18 @@
     {{else}}
       aria-label="{{lang 'products.reviews.rating_aria_label' rating_target='Product' current_rating=rating max_rating=5}}"
     {{/if}}
+    class="flex"
 >
     {{#for 1 5}}
         {{#if ../this.rating '>=' $index}}
             <span>
-                <svg>
+                <svg class="w-4 h-4">
                     <use href="#icon-star" />
                 </svg>
             </span>
         {{else}}
             <span>
-                <svg>
+                <svg class="w-4 h-4">
                     <use href="#icon-star" />
                 </svg>
             </span>

@@ -31,3 +31,33 @@
 .c-header.is-open {
     @apply fixed inset-0 z-50 overflow-y-auto bg-white bg-opacity-20 backdrop-blur;
 }
+
+
+.js-accordion-navigation + div {
+    @apply hidden;
+}
+
+.js-accordion-navigation.is-open + div {
+    @apply block;
+}
+
+.js-accordion-navigation > span > svg:last-child {
+    @apply hidden;
+}
+
+
+.js-accordion-navigation.is-open > span > svg:first-child {
+    @apply hidden;
+}
+
+.js-accordion-navigation.is-open > span > svg:last-child {
+    @apply block;
+}
+
+.js-facets-search-nav-list [id^="facets-"] {
+    @apply hidden;
+}
+
+.js-facets-search-nav-list [id^="facets-"].is-open {
+    @apply block;
+}
