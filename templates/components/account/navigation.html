@@ -1,47 +1,47 @@
-<nav>
-    <ul>
-        <li class="{{#if account_page '===' 'orders'}} is-active{{/if}}">
+<nav class="mx-auto mt-2 mb-10">
+    <ul class="flex flex-col md:flex-row md:justify-center gap-2 md:gap-4 cursor-pointer">
+        <li class="{{#if account_page '===' 'orders'}} is-active font-semibold{{/if}}">
             <a href="{{urls.account.orders.all}}">
                 {{lang 'account.nav.orders'}}
             </a>
         </li>
         {{#if settings.returns_enabled}}
-            <li class="{{#if account_page '===' 'returns'}} is-active{{/if}}">
+            <li class="{{#if account_page '===' 'returns'}} is-active font-semibold{{/if}}">
                 <a href="{{urls.account.returns}}">
                     {{lang 'account.nav.returns'}}
                 </a>
             </li>
         {{/if}}
-        <li class="{{#if account_page '===' 'messages'}} is-active{{/if}}">
+        <li class="{{#if account_page '===' 'messages'}} is-active font-semibold{{/if}}">
             <a href="{{urls.account.inbox}}">
                 {{lang 'account.nav.messages' num_new_messages=customer.num_new_messages}}
             </a>
         </li>
-        <li class="{{#if account_page '===' 'addresses'}} is-active{{/if}}">
+        <li class="{{#if account_page '===' 'addresses'}} is-active font-semibold{{/if}}">
             <a href="{{urls.account.addresses}}">
                 {{lang 'account.nav.addresses'}}
             </a>
         </li>
         {{#if settings.show_payment_methods}}
-            <li class="{{#if account_page '===' 'payment_methods'}} is-active{{/if}}">
+            <li class="{{#if account_page '===' 'payment_methods'}} is-active font-semibold{{/if}}">
                 <a href="{{urls.account.payment_methods.all}}">
                     {{lang 'account.nav.payment_methods'}}
                 </a>
             </li>
         {{/if}}
         {{#if settings.show_wishlist}}
-            <li class="{{#if account_page '===' 'wishlists'}} is-active{{/if}}">
+            <li class="{{#if account_page '===' 'wishlists'}} is-active font-semibold{{/if}}">
                 <a href="{{urls.account.wishlists.all}}">
                     {{lang 'account.nav.wishlists'}}
                 </a>
             </li>
         {{/if}}
-        <li class="{{#if account_page '===' 'recent_items'}} is-active{{/if}}">
+        <li class="{{#if account_page '===' 'recent_items'}} is-active font-semibold{{/if}}">
             <a href="{{urls.account.recent_items}}">
                 {{lang 'account.nav.recently_viewed'}}
             </a>
         </li>
-        <li class="{{#if account_page '===' 'settings'}} is-active{{/if}}">
+        <li class="{{#if account_page '===' 'settings'}} is-active font-semibold{{/if}}">
             <a href="{{urls.account.details}}">
                 {{lang 'account.nav.settings'}}
             </a>
