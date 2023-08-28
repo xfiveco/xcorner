@@ -1,13 +1,13 @@
 {{#partial "page"}}
-    <section>
+    <section class="shadow-inner py-4 max-w-desktop mx-auto p-4 mt-8 mb-14">
         <div>
-            <h1>
+            <h1 class="font-bold text-3xl py-4">
                 {{lang 'create_account.created.heading'}}
             </h1>
             <p>
                 {{lang 'create_account.created.intro' store_name=settings.store_name email=customer.email}}
             </p>
-            <a class="c-button c-button--primary" href="{{create_account.continue_url}}">
+            <a class="c-button c-button--primary block md:w-96 border border-black py-1 px-3 mt-9 cursor-pointer bg-black text-white hover:bg-transparent hover:text-black text-center" href="{{create_account.continue_url}}">
                 {{lang 'create_account.created.continue'}}
             </a>
         </div>

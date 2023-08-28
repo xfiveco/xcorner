@@ -177,7 +177,7 @@ export default class Auth extends PageManager {
         event.preventDefault()
 
         setTimeout(() => {
-            let $current = q$('.js-form-inline-message:first').previousElementSibling
+            let $current = q$('.js-form-inline-message')?.previousElementSibling
 
             while (!!$current && $current.tagName.toLowerCase() !== 'input') {
                 $current = $current.previousElementSibling

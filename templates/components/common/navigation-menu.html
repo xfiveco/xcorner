@@ -1,11 +1,10 @@
-<nav class="js-nav-pages flex flex-col">
+<nav class="js-nav-pages flex flex-col md:flex-row mx-auto justify-center gap-4">
     <div class="md:hidden w-full max-w-[90vw] mx-auto">
         {{> components/common/quick-search name='nav-menu-quick-search'}}
     </div>
     <ul class="js-nav-pages-list{{#if theme_settings.navigation_design '!==' 'simple'}} js-nav-pages-list-depth-max{{/if}} 
         w-full md:w-auto 
         flex md:gap-4 flex-col md:flex-row items-start md:items-center
-        mx-auto 
         divide-y md:divide-y-0"
     >
         {{#each categories}}
@@ -37,7 +36,10 @@
             {{/each}}
         {{/unless}}
     </ul>
-    <ul>
+    <ul class="w-full md:w-auto 
+        flex md:gap-4 flex-col md:flex-row items-start md:items-center
+        relative
+        divide-y md:divide-y-0">
         {{#if currency_selector.currencies.length '>' 1}}
             <li>
                 <a 
@@ -58,11 +60,11 @@
                     </svg>
                 </a>
                 <div id="nav-pages-currency" aria-hidden="true" tabindex="-1">
-                    <ul>
+                    <ul class="space-y-3 md:absolute top-full py-1 px-[5vw] md:p-3 md:bg-white md:bg-opacity-20 md:backdrop-blur w-max left-0 z-10">
                         {{#each currency_selector.currencies}}
                             <li>
                                 <a 
-                                    class="js-nav-pages-action font-bold uppercase"
+                                    class="js-nav-pages-action font-bold uppercase hover:underline cursor-pointer"
                                     href="{{{switch_url}}}"
                                     aria-label="{{name}}"
                                     data-currency-code="{{{code}}}"
@@ -129,7 +131,8 @@
         {{#if customer}}
             <li>
                 <a 
-                    class="js-nav-pages-action has-sub-menuflex justify-between md:justify-start gap-1 items-center 
+                    class="js-nav-pages-action has-sub-menu
+                        flex justify-between md:justify-start gap-1 items-center 
                         w-screen md:w-auto 
                         px-[5vw] md:px-0 py-2 md:py-4 
                         font-bold uppercase 
@@ -139,15 +142,15 @@
                     aria-label="{{lang 'common.account'}}"
                 >
                     {{lang 'common.account'}}
-                    <svg>
+                    <svg class="w-4 h-4">
                         <use href="#icon-chevron-down" />
                     </svg>
                 </a>
                 <div id="nav-pages-account" aria-hidden="true" tabindex="-1" class="hidden">
-                    <ul>
+                    <ul class="space-y-3 md:absolute top-full py-1 px-[5vw] md:p-3 md:bg-white w-max left-0 z-10 md:bg-opacity-20 md:backdrop-blur">
                         <li>
                             <a 
-                                class="js-nav-pages-action"
+                                class="js-nav-pages-action hover:underline cursor-pointer"
                                 href="{{urls.account.orders.all}}"
                                 aria-label="{{lang 'account.nav.orders'}}"
                             >
@@ -157,7 +160,7 @@
                         {{#if settings.returns_enabled}}
                             <li>
                                 <a 
-                                    class="js-nav-pages-action"
+                                    class="js-nav-pages-action hover:underline cursor-pointer"
                                     href="{{urls.account.returns}}"
                                     aria-label="{{lang 'account.nav.returns'}}"
                                 >
@@ -167,7 +170,7 @@
                         {{/if}}
                         <li>
                             <a 
-                                class="js-nav-pages-action"
+                                class="js-nav-pages-action hover:underline cursor-pointer"
                                 href="{{urls.account.inbox}}"
                                 aria-label="{{lang 'account.mobile_nav.messages'}}"
                             >
@@ -176,7 +179,7 @@
                         </li>
                         <li>
                             <a 
-                                class="js-nav-pages-action"
+                                class="js-nav-pages-action hover:underline cursor-pointer"
                                 href="{{urls.account.addresses}}"
                                 aria-label="{{lang 'account.nav.addresses'}}"
                             >
@@ -186,7 +189,7 @@
                         {{#if settings.show_payment_methods}}
                             <li>
                                 <a 
-                                    class="js-nav-pages-action"
+                                    class="js-nav-pages-action hover:underline cursor-pointer"
                                     href="{{urls.account.payment_methods.all}}"
                                     aria-label="{{lang 'account.nav.payment_methods'}}"
                                 >
@@ -196,7 +199,7 @@
                         {{/if}}
                         <li>
                             <a 
-                                class="js-nav-pages-action"
+                                class="js-nav-pages-action hover:underline cursor-pointer"
                                 href="{{urls.account.wishlists.all}}"
                                 aria-label="{{lang 'account.mobile_nav.wishlists'}}"
                             >
@@ -205,7 +208,7 @@
                         </li>
                         <li>
                             <a 
-                                class="js-nav-pages-action"
+                                class="js-nav-pages-action hover:underline cursor-pointer"
                                 href="{{urls.account.recent_items}}"
                                 aria-label="{{lang 'account.nav.recently_viewed'}}"
                             >
@@ -214,7 +217,7 @@
                         </li>
                         <li>
                             <a 
-                                class="js-nav-pages-action"
+                                class="js-nav-pages-action hover:underline cursor-pointer"
                                 href="{{urls.account.details}}"
                                 aria-label="{{lang 'account.nav.settings'}}"
                             >
