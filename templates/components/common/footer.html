@@ -33,7 +33,7 @@
             </article>
         {{/if}}
 
-        <section class="flex flex-col md:flex-row justify-center md:justify-between text-center md:text-left">
+        <section class="flex flex-col md:flex-row justify-center md:justify-between">
             <article data-section-type="footer-web-pages" class="mt-8 md:mt-0">
                 <div class="mb-4 font-bold">
                     {{lang 'footer.navigate'}}
@@ -117,14 +117,14 @@
             </div>
         {{/if}}
         {{#if theme_settings.show_powered_by}}
-            <div class="text-sm text-slate-400 mt-14 md:mt-10 text-center md:text-left">
+            <div class="text-sm text-slate-400 mt-14 md:mt-10">
                 <p>
                     {{lang 'footer.powered_by'}} <a href="https://www.bigcommerce.com?utm_source=merchant&amp;utm_medium=poweredbyBC" rel="nofollow" class="hover:text-black hover:underline">BigCommerce</a>
                 </p>
             </div>
         {{/if}}
         {{#if theme_settings.show_copyright_footer}}
-            <div class="text-sm text-slate-400 text-center md:text-left">
+            <div class="text-sm text-slate-400">
                 <p class="my-0">
                     &copy; {{moment format="YYYY"}} {{settings.store_name}} 
                 </p>
