@@ -3,7 +3,7 @@ module.exports = {
     content: ['./templates/**/*.html'],
     theme: {
         extend: {
-            spacing: {
+            maxWidth: {
                 desktop: 'var(--max-w-desktop, 70rem)',
             },
         },

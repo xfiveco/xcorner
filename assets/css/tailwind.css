@@ -2,8 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-    --max-w-desktop: 70rem;
+@layer base {
+    :root {
+        --max-w-desktop: 70rem;
+    }
 }
 
 .u-hidden-visually {

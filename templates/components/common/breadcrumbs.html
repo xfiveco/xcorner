@@ -1,10 +1,11 @@
 <nav aria-label="Breadcrumb" class="c-breadcrumbs">
-    <ol>
+    <ol class="flex gap-4">
         {{#unless theme_settings.hide_breadcrumbs }}
             {{#each breadcrumbs}}
-                <li class="{{#if @last}}is-active{{/if}}">
+                <li class="text-sm text-slate-600 {{#if @last}}is-active text-black font-bold{{/if}}">
                     <a 
                         href="{{url}}"
+                        class="hover:underline"
                         {{#if @last}}
                             aria-current="page"
                         {{/if}}
