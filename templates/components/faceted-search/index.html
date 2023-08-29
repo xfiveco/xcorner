@@ -31,7 +31,7 @@
     </a>
     {{#any facets visible=true}}
         <div id="facets-search-nav-list" class="js-facets-search-nav-list">
-            <div>
+            <div class="divide-y-1">
                 {{#each facets}}
                     {{#if visible}}
                         {{{dynamicComponent 'components/faceted-search/facets'}}}

@@ -1,4 +1,4 @@
-<div>
+<div class="mb-2">
     <div class="font-semibold text-xl">
         {{lang 'search.faceted.selected.title'}}
     </div>
@@ -27,7 +27,7 @@
         <p>{{lang 'search.faceted.selected.no-filters'}}</p>
     {{/if}}
     {{#if remove_all_url}}
-        <a href="{{remove_all_url}}" class="js-faceted-search-facet">
+        <a href="{{remove_all_url}}" class="js-faceted-search-facet underline">
             {{lang 'search.faceted.selected.clear-all'}}
         </a>
     {{/if}}

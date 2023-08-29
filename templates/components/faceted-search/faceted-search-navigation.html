@@ -2,7 +2,7 @@
     <button 
         type="button"
         class="js-accordion-navigation{{#unless start_collapsed}} is-open{{/unless}}
-            flex justify-between items-center w-full font-bold"
+            flex justify-between items-center w-full pt-1.5 pb-1 font-bold hover:bg-black hover:text-white"
         data-collapsible="#facets-{{dashcase facet}}"
         aria-label="{{lang 'search.faceted.toggleSection' title=title}}"
     >
@@ -11,17 +11,29 @@
         </span>
 
         <span>
-            <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512" class="w-4 h-4">
+            <svg 
+                xmlns="http://www.w3.org/2000/svg" 
+                height="1em" 
+                viewBox="0 0 448 512" 
+                class="w-4 h-4"
+                fill="currentColor"
+            >
                 <path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"/>
             </svg>
-            <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512" class="w-4 h-4">
+            <svg 
+                xmlns="http://www.w3.org/2000/svg" 
+                height="1em" 
+                viewBox="0 0 448 512" 
+                class="w-4 h-4"
+                fill="currentColor"
+            >
                 <path d="M432 256c0 17.7-14.3 32-32 32L48 288c-17.7 0-32-14.3-32-32s14.3-32 32-32l352 0c17.7 0 32 14.3 32 32z"/>
             </svg>
         </span>
     </button>
     
     {{#if selected}}
-        <a href="{{remove_url}}" class="js-facets-search-clear js-faceted-search-facet">
+        <a href="{{remove_url}}" class="js-facets-search-clear js-faceted-search-facet underline">
             {{lang 'search.faceted.clear'}}
         </a>
     {{/if}}

@@ -1,5 +1,5 @@
 {{#if items}}
-    <div>
+    <div class="pb-2 border border-transparent border-b-black">
         {{> components/faceted-search/faceted-search-navigation}}
 
         <div 
@@ -15,15 +15,15 @@
                     <li class="js-nav-list-item">
                         <a
                             href="{{url}}"
-                            class="{{#if selected}} is-selected{{/if}} js-faceted-search-facet"
+                            class="{{#if selected}} is-selected before:content-['☑']{{else}} before:content-['⬜']{{/if}} js-faceted-search-facet before:mr-1 flex items-center w-full hover:underline cursor-pointer"
                             rel="nofollow"
                         >
                             {{{sanitize title}}}
                             {{#if ../show_product_counts}}
                                 <span>({{count}})</span>
                             {{/if}}
-                            <svg aria-hidden="true">
-                                <use href="#icon-close"/>
+                            <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 384 512" class="hidden w-4 h-4 ml-auto">
+                                <path d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z"/>
                             </svg>
                         </a>
                     </li>
@@ -31,7 +31,7 @@
             </ul>
 
             {{#if show_more_toggle}}
-                <a href="#list-{{dashcase facet}}" role="button" class="js-toggle-link">
+                <a href="#list-{{dashcase facet}}" role="button" class="js-toggle-link underline">
                     {{lang 'search.faceted.show-more'}}
                 </a>
             {{/if}}

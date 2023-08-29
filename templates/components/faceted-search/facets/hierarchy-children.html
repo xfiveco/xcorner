@@ -1,9 +1,9 @@
-<ul>
+<ul class="pl-2">
     {{#each this}}
         <li class="js-nav-list-item">
             <a
                 href="{{url}}"
-                class="js-nav-list-action{{#if selected}} is-selected{{/if}}{{#if has_sub_categories}} has-children{{/if}} js-faceted-search-facet"
+                class="js-nav-list-action{{#if selected}} is-selected{{/if}}{{#if has_sub_categories}} has-children{{/if}} js-faceted-search-facet flex items-center hover:underline"
                 rel="nofollow"
                 data-id="{{id}}"
             >

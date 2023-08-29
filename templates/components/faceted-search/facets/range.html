@@ -1,4 +1,4 @@
-<div>
+<div class="pb-2 border border-transparent border-b-black">
     {{> components/faceted-search/faceted-search-navigation}}
 
     <div id="facets-{{dashcase facet}}" class="{{#unless start_collapsed}} is-open{{/unless}}">
@@ -11,14 +11,14 @@
             {{#if this.sort}}
                 <input type="hidden" name="sort" value="{{this.sort}}">
             {{/if}}
-            <fieldset class="js-form-fieldset">
-                <div>
+            <fieldset class="js-form-fieldset pb-2">
+                <div class="grid grid-cols-3 gap-1 items-end">
                     <div class="js-form-field">
                         <input
                             name="min_price"
                             placeholder="{{lang 'search.faceted.range.min-placeholder'}}"
                             min="0"
-                            class="js-form-input"
+                            class="js-form-input w-full"
                             type="number"
                             value="{{min_price}}"
                             required
@@ -30,7 +30,7 @@
                             name="max_price"
                             placeholder="{{lang 'search.faceted.range.max-placeholder'}}"
                             min="0"
-                            class="js-form-input"
+                            class="js-form-input w-full"
                             type="number"
                             value="{{max_price}}"
                             required
@@ -38,13 +38,13 @@
                     </div>
 
                     <div class="js-form-field">
-                        <button class="c-button button--small border border-black py-1 px-3 cursor-pointer md:bg-black md:text-white text-center" type="submit">
+                        <button class="c-button button--small border border-black py-1 px-3 cursor-pointer hover:bg-black hover:text-white text-center w-full" type="submit">
                             {{lang 'search.faceted.range.update'}}
                         </button>
                     </div>
                 </div>
 
-                <div class="js-inline-message"></div>
+                <div class="js-inline-message my-2"></div>
             </fieldset>
         </form>
     </div>
