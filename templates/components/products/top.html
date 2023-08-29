@@ -1,24 +1,11 @@
-<section class="c-carousel js-top-swiper">
-    <h2 class="u-text-center">
+<section class="relative max-w-desktop mx-auto my-8">
+    <h2 class="u-text-center text-3xl mb-3">
         {{lang 'products.top' }}
     </h2>
 
-    <ul 
-        class="swiper-wrapper {{ columns }}" 
-        data-product-type="top_sellers"  
-        {{#if settings.data_tag_enabled}} 
-            data-list-name="Most Popular Products" 
-        {{/if}}
-    >
-        {{#each products}}
-            <li class="js-product swiper-slide">
-                {{>components/products/card settings=../settings theme_settings=../theme_settings customer=../customer event="list" position=(add @index 1)}}
-            </li>
-        {{/each}}
-    </ul>
-
-    <div>
-        <div class="js-swiper-btn-prev">Previous</div>
-        <div class="js-swiper-btn-next">Next</div>
-    </div>
+    {{#if settings.data_tag_enabled}}
+        {{> components/products/carousel products=products list="Most Popular Products"}}
+    {{else}}
+        {{> components/products/carousel products=products}}
+    {{/if}}
 </section>
