@@ -37,9 +37,9 @@
             id="tab-related"
         >
             {{#if settings.data_tag_enabled}}
-                {{> components/products/carousel products=product.related_products columns=6 list="Related Products"}}
+                {{> components/products/carousel products=product.related_products list="Related Products"}}
             {{else}}
-                {{> components/products/carousel products=product.related_products columns=6}}
+                {{> components/products/carousel products=product.related_products }}
             {{/if}}
         </div>
     {{/if}}
@@ -51,7 +51,7 @@
             class="{{#unless product.related_products}}is-active{{/unless}}" 
             id="tab-similar"
         >
-            {{> components/products/carousel products=product.similar_by_views columns=6 list="Customers Also Viewed"}}
+            {{> components/products/carousel products=product.similar_by_views list="Customers Also Viewed"}}
         </div>
     {{/if}}
 </div>
