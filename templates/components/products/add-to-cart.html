@@ -11,8 +11,8 @@
                     <span class="u-hidden-visually">
                         {{lang 'products.quantity_decrease' name=product.title}}
                     </span>
-                    <svg>
-                        <use href="#icon-keyboard-arrow-down"/>
+                    <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 384 512">
+                        <path d="M169.4 470.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 370.8 224 64c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 306.7L54.6 265.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"/>
                     </svg>
                 </button>
 
@@ -32,8 +32,8 @@
                     <span class="u-hidden-visually">
                         {{lang 'products.quantity_increase' name=product.title}}
                     </span>
-                    <svg>
-                        <use href="#icon-keyboard-arrow-up"/>
+                    <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 384 512">
+                        <path d="M214.6 41.4c-12.5-12.5-32.8-12.5-45.3 0l-160 160c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 141.2V448c0 17.7 14.3 32 32 32s32-14.3 32-32V141.2L329.4 246.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-160-160z"/>
                     </svg>
                 </button>
             </div>
@@ -42,8 +42,8 @@
 
     <div class="js-product-attributes-message" style="display:none">
         <div>
-            <svg>
-                <use xlink:href="#icon-error" />
+            <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512">
+                <path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zm0-384c13.3 0 24 10.7 24 24V264c0 13.3-10.7 24-24 24s-24-10.7-24-24V152c0-13.3 10.7-24 24-24zM224 352a32 32 0 1 1 64 0 32 32 0 1 1 -64 0z"/>
             </svg>
         </div>
         <p class="js-alert-box-message"></p>
@@ -54,7 +54,7 @@
             <div>
                 <button
                     data-wait-message="{{lang 'products.adding_to_cart'}}"
-                    class="c-button c-button--primary js-form-action-add-to-cart"
+                    class="c-button c-button--primary js-form-action-add-to-cart border border-black py-1 px-3 cursor-pointer bg-black text-white hover:bg-transparent hover:text-black text-center w-full md:w-auto md:min-w-[50%]"
                     type="submit"
                     value="{{#if product.pre_order}}{{lang 'products.pre_order'}}{{else}}{{lang 'products.add_to_cart'}}{{/if}}"
                 >

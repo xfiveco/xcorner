@@ -1,41 +1,11 @@
-<ul class="js-tabs" role="tablist">
-    {{#if product.related_products}}
-        <li class="js-tab is-active" role="presentation">
-            <a 
-                href="#tab-related" 
-                role="tab" 
-                tabindex="0" 
-                aria-selected="true" 
-                controls="tab-related"
-            >
-                {{lang 'products.related_products'}}
-            </a>
-        </li>
-    {{/if}}
-
-    {{#if product.similar_by_views}}
-        <li class="js-tab{{#unless product.related_products}} is-active{{/unless}}" role="presentation">
-            <a 
-                href="#tab-similar"
-                role="tab" 
-                tabindex="0" 
-                aria-selected="{{#if product.related_products}}false{{else}}true{{/if}}" 
-                controls="tab-similar"
-            >
-                {{lang 'products.similar_by_views'}}
-            </a>
-        </li>
-    {{/if}}
-</ul>
-
 <div>
     {{#if product.related_products}}
         <div 
-            role="tabpanel" 
-            aria-hidden="false" 
-            class="is-active" 
+            class="mb-8" 
             id="tab-related"
         >
+            <strong class="font-bold text-xl mb-4">{{lang 'products.related_products'}}</strong>
+
             {{#if settings.data_tag_enabled}}
                 {{> components/products/carousel products=product.related_products list="Related Products"}}
             {{else}}
@@ -46,11 +16,11 @@
 
     {{#if product.similar_by_views}}
         <div 
-            role="tabpanel"
-            aria-hidden="{{#if product.related_products}}true{{else}}false{{/if}}" 
-            class="{{#unless product.related_products}}is-active{{/unless}}" 
+            class="mb-8" 
             id="tab-similar"
         >
+            <strong class="font-bold text-xl mb-4">{{lang 'products.similar_by_views'}}</strong>
+
             {{> components/products/carousel products=product.similar_by_views list="Customers Also Viewed"}}
         </div>
     {{/if}}

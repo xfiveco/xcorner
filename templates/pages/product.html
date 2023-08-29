@@ -12,7 +12,7 @@ product:
 {{inject 'productId' product.id}}
 
 {{#partial "page"}}
-
+<div class="shadow-inner py-4 max-w-desktop mx-auto p-4 my-8">
     {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
 
     {{#each product.shipping_messages}}
@@ -34,7 +34,9 @@ product:
 
         {{> components/products/tabs}}
     </div>
+</div>
 
-    {{> components/products/schema}}
+{{> components/products/schema}}
+
 {{/partial}}
 {{> layout/base}}

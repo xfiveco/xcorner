@@ -1,7 +1,7 @@
-<ul class="js-tabs">
+<ul class="js-tabs flex gap-2">
     {{#if product.description}}
         <li class="js-tab is-active">
-            <a href="#tab-description">
+            <a href="#tab-description" class="font-bold hover:underline uppercase">
                 {{lang 'products.description'}}
             </a>
         </li>
@@ -9,7 +9,7 @@
 
     {{#if product.warranty}}
         <li class="js-tab {{#unless product.description}}is-active{{/unless}}">
-            <a href="#tab-warranty">
+            <a href="#tab-warranty" class="font-bold hover:underline uppercase">
                 {{lang 'products.warranty'}}
             </a>
         </li>
@@ -17,7 +17,7 @@
 
     {{#all product.custom_fields theme_settings.show_custom_fields_tabs}}
         <li class="js-tab">
-            <a href="#tab-{{dashcase (lowercase (sanitize theme_settings.pdp_custom_fields_tab_label))}}">
+            <a href="#tab-{{dashcase (lowercase (sanitize theme_settings.pdp_custom_fields_tab_label))}}" class="font-bold hover:underline uppercase">
                 {{sanitize theme_settings.pdp_custom_fields_tab_label}}
             </a>
         </li>
@@ -25,7 +25,7 @@
 
     {{#all settings.show_product_reviews theme_settings.show_product_reviews product.reviews.total}}
         <li class="js-tab">
-            <a class="js-product-view-review-tab-link" href="#tab-reviews">
+            <a class="js-product-view-review-tab-link font-bold hover:underline uppercase" href="#tab-reviews">
                 {{lang 'products.reviews.header' total=product.reviews.total}}
             </a>
         </li>

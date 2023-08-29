@@ -1,10 +1,10 @@
 <link href="/assets/css/swiper-bundle.min.css" rel="stylesheet" />
 
-<section class="relative max-w-desktop mx-auto my-12">
+<section class="relative max-w-desktop mx-auto mt-4 mb-12">
     <div class="js-products-swiper overflow-hidden w-11/12 lg:w-10/12 mx-auto pb-8 px-4">
         <div class="swiper-wrapper">
             {{#each products}}
-                <div id="Slide-{{ @index }}" class="swiper-slide shrink-0">
+                <div id="Slide-{{ @index }}" class="swiper-slide shrink-0 !h-auto">
                     {{> components/products/card settings=../settings theme_settings=../theme_settings customer=../customer event="list" position=(add @index 1)}}
                 </div>
             {{/each}}

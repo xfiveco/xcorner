@@ -1,4 +1,4 @@
-<div class="js-product-view u-container c-product"
+<div class="js-product-view u-container c-product grid md:grid-cols-product mt-8 md:gap-8"
     {{#if settings.data_tag_enabled}}
         data-event-type="product"
         data-entity-id="{{product.id}}"
@@ -30,7 +30,7 @@
         {{/if}}
     {{/each}}
 
-    <section class="js-product-view-images js-image-gallery c-product__gallery">
+    <section class="js-product-view-images js-image-gallery c-product__gallery relative">
         {{!--
             Note that these image sizes are coupled to image sizes used in /assets/js/theme/common/product-details.js
             for variant/rule image replacement
@@ -39,7 +39,7 @@
             {{> components/carousel/content-announcement}}
         {{/if}}
 
-        <figure class="js-product-view-image js-image-gallery-main"
+        <figure class="js-product-view-image js-image-gallery-main shadow-inner mb-4 p-2"
             {{#if product.main_image}}
                 data-zoom-image="{{getImageSrcset product.main_image (cdn theme_settings.default_image_product) 1x=theme_settings.zoom_size }}"
             {{/if}}
@@ -66,7 +66,7 @@
             </div>
         </figure>
 
-        <ul class="o-list-bare c-product__thumbs js-product-view-thumbnails">
+        <ul class="o-list-bare c-product__thumbs js-product-view-thumbnails grid grid-cols-4 p-2 gap-4 shadow-inner">
             {{#each product.images}}
                 <li>
                     <a
@@ -87,7 +87,7 @@
     </section>
 
     <section class="c-product__info">
-            <h1 class="js-product-view-title">
+            <h1 class="js-product-view-title font-bold text-3xl py-4">
                 {{product.title}}
             </h1>
             
@@ -104,7 +104,7 @@
                 </p>
             {{/if}}
             
-            <div>
+            <div class="font-bold text-md">
                 {{#or customer (unless settings.hide_price_from_guests)}}
                     {{> components/products/price price=product.price}}
                 {{else}}
@@ -113,7 +113,7 @@
             </div>
             {{{region name="product_below_price"}}}
             
-            <div>
+            <div class="flex gap-4 items-center my-4">
                 {{#if settings.show_product_rating}}
                     {{> components/products/ratings rating=product.rating}}
 
@@ -147,14 +147,14 @@
             {{product.detail_messages}}
 
             <dl class="js-product-view-info">
-                <dt class="js-sku-label"{{#unless product.sku}} style="display: none;"{{/unless}}>
+                <dt class="js-sku-label font-bold text-sm"{{#unless product.sku}} style="display: none;"{{/unless}}>
                     {{lang 'products.sku'}}
                 </dt>
                 <dd class="js-product-sku">
                     {{product.sku}}
                 </dd>
                 
-                <dt class="js-upc-label"{{#unless product.upc}} style="display: none;"{{/unless}}>
+                <dt class="js-upc-label font-bold text-sm"{{#unless product.upc}} style="display: none;"{{/unless}}>
                     {{lang 'products.upc'}}
                 </dt>
                 <dd class="js-product-upc">
@@ -162,24 +162,24 @@
                 </dd>
                 
                 {{#if product.condition}}
-                    <dt>{{lang 'products.condition'}}</dt>
+                    <dt class="font-bold text-sm">{{lang 'products.condition'}}</dt>
                     <dd>{{product.condition}}</dd>
                 {{/if}}
                 
                 {{#if product.availability}}
-                    <dt>{{lang 'products.availability'}}</dt>
+                    <dt class="font-bold text-sm">{{lang 'products.availability'}}</dt>
                     <dd>{{product.availability}}</dd>
                 {{/if}}
                 
                 {{#all product.weight theme_settings.show_product_weight}}
-                    <dt>{{lang 'products.weight'}}</dt>
+                    <dt class="font-bold text-sm">{{lang 'products.weight'}}</dt>
                     <dd class="js-product-weight">
                         {{product.weight}}
                     </dd>
                 {{/all}}
 
                 {{#all product.width product.height product.depth theme_settings.show_product_dimensions}}
-                    <dt>{{lang 'products.width'}}</dt>
+                    <dt class="font-bold text-sm">{{lang 'products.width'}}</dt>
                     <dd>
                         {{product.width}}
                         {{#if settings.measurements.length '==' 'Centimeters'}}
@@ -189,7 +189,7 @@
                         {{/if}}
                     </dd>
                     
-                    <dt>{{lang 'products.height'}}</dt>
+                    <dt class="font-bold text-sm">{{lang 'products.height'}}</dt>
                     <dd>
                         {{product.height}}
                         {{#if settings.measurements.length '==' 'Centimeters'}}
@@ -199,7 +199,7 @@
                         {{/if}}
                     </dd>
 
-                    <dt>{{lang 'products.depth'}}</dt>
+                    <dt class="font-bold text-sm">{{lang 'products.depth'}}</dt>
                     <dd>
                         {{product.depth}}
                         {{#if settings.measurements.length '==' 'Centimeters'}}
@@ -211,30 +211,30 @@
                 {{/all}}
 
                 {{#if product.min_purchase_quantity}}
-                    <dt>{{lang 'products.min_purchase_quantity'}}</dt>
+                    <dt class="font-bold text-sm">{{lang 'products.min_purchase_quantity'}}</dt>
                     <dd>{{lang 'products.purchase_units' quantity=product.min_purchase_quantity}}</dd>
                 {{/if}}
 
                 {{#if product.max_purchase_quantity}}
-                    <dt>{{lang 'products.max_purchase_quantity'}}</dt>
+                    <dt class="font-bold text-sm">{{lang 'products.max_purchase_quantity'}}</dt>
                     <dd>{{lang 'products.purchase_units' quantity=product.max_purchase_quantity}}</dd>
                 {{/if}}
                 
                 {{#if product.gift_wrapping_available}}
-                    <dt>{{lang 'products.gift_wrapping'}}</dt>
+                    <dt class="font-bold text-sm">{{lang 'products.gift_wrapping'}}</dt>
                     <dd>{{lang 'products.gift_wrapping_available'}}</dd>
                 {{/if}}
                 
                 {{#if product.shipping}}
                     {{#if product.shipping.calculated}}
-                        <dt>{{lang 'products.shipping'}}</dt>
+                        <dt class="font-bold text-sm">{{lang 'products.shipping'}}</dt>
                         <dd>{{lang 'products.shipping_calculated'}}</dd>
                     {{else}}
                         {{#if product.shipping.price.value '===' 0}}
-                            <dt>{{lang 'products.shipping'}}</dt>
+                            <dt class="font-bold text-sm">{{lang 'products.shipping'}}</dt>
                             <dd>{{lang 'products.shipping_free'}}</dd>
                         {{else}}
-                            <dt>{{lang 'products.shipping'}}</dt>
+                            <dt class="font-bold text-sm">{{lang 'products.shipping'}}</dt>
                             <dd>{{lang 'products.shipping_fixed' amount=product.shipping.price.formatted}}</dd>
                         {{/if}}
                     {{/if}}
@@ -256,7 +256,7 @@
             {{/if}}
 
             <form 
-                class="js-cart-item-add" 
+                class="js-cart-item-add my-4" 
                 method="post" 
                 action="{{product.cart_url}}" 
                 enctype="multipart/form-data"
@@ -296,7 +296,7 @@
         {{> components/common/share url=product.url}}
     </section>
 
-    <section class="c-product__tabs">
+    <section class="c-product__tabs md:col-span-2 mt-4 mb-8">
         {{#if theme_settings.show_product_details_tabs}}
             {{> components/products/description-tabs}}
         {{else}}
@@ -305,7 +305,7 @@
     </section>
 </div>
 
-<div class="js-preview-modal is-modal-large js-reveal c-modal">
+<div class="js-preview-modal is-modal-large js-reveal c-modal hidden">
     {{> components/common/modal/modal-close-btn }}
 
     <div class="js-modal-content"></div>

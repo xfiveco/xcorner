@@ -1,7 +1,7 @@
 {{#if settings.add_this.buttons}}
     {{assignVar 'encodedUrl' (encodeURI url)}}
     {{assignVar 'encodedTitle' (encodeURI head.title)}}
-    <ul class="o-list-bare">
+    <ul class="o-list-bare flex gap-4 items-center mt-16">
         {{#each settings.add_this.buttons}}
             <li>
                 {{#if service '===' 'facebook'}}
@@ -11,11 +11,12 @@
                         target="_blank"
                         rel="noopener"
                         {{{annotation}}}
+                        class="hover:backdrop-invert"
                     >
-                        <span>
+                        <span class="u-hidden-visually">
                             {{{capitalize service}}}
                         </span>
-                        <svg>
+                        <svg class="w-8 h-8">
                             <use href="#icon-facebook"/>
                         </svg>
                     </a>
@@ -26,11 +27,12 @@
                         target="_self"
                         rel="noopener"
                         {{{annotation}}}
+                        class="hover:backdrop-invert"
                     >
-                        <span>
+                        <span class="u-hidden-visually">
                             {{{capitalize service}}}
                         </span>
-                        <svg>
+                        <svg class="w-8 h-8">
                             <use href="#icon-envelope"/>
                         </svg>
                     </a>
@@ -39,11 +41,12 @@
                         title="{{{capitalize service}}}"
                         onclick="window.print();return false;"
                         {{{annotation}}}
+                        class="hover:backdrop-invert"
                     >
-                        <span>
+                        <span class="u-hidden-visually">
                             {{{capitalize service}}}
                         </span>
-                        <svg>
+                        <svg class="w-8 h-8">
                             <use href="#icon-print"/>
                         </svg>
                     </a>
@@ -54,11 +57,12 @@
                         rel="noopener"
                         title="{{{capitalize service}}}"
                         {{{annotation}}}
+                        class="hover:backdrop-invert"
                     >
-                        <span>
+                        <span class="u-hidden-visually">
                             {{{capitalize service}}}
                         </span>
-                        <svg>
+                        <svg class="w-8 h-8">
                             <use href="#icon-twitter"/>
                         </svg>
                     </a>
@@ -69,11 +73,12 @@
                         target="_blank"
                         rel="noopener"
                         {{{annotation}}}
+                        class="hover:backdrop-invert"
                     >
-                        <span>
+                        <span class="u-hidden-visually">
                             {{{capitalize service}}}
                         </span>
-                        <svg>
+                        <svg class="w-8 h-8">
                             <use href="#icon-linkedin"/>
                         </svg>
                     </a>
@@ -84,11 +89,12 @@
                         target="_blank"
                         rel="noopener"
                         {{{annotation}}}
+                        class="hover:backdrop-invert"
                     >
-                        <span>
+                        <span class="u-hidden-visually">
                             {{{capitalize service}}}
                         </span>
-                        <svg>
+                        <svg class="w-8 h-8">
                             <use href="#icon-pinterest"/>
                         </svg>
                     </a>
