@@ -104,7 +104,7 @@
                 </p>
             {{/if}}
             
-            <div class="font-bold text-md">
+            <div class="font-bold text-lg">
                 {{#or customer (unless settings.hide_price_from_guests)}}
                     {{> components/products/price price=product.price}}
                 {{else}}
@@ -296,7 +296,7 @@
         {{> components/common/share url=product.url}}
     </section>
 
-    <section class="c-product__tabs md:col-span-2 mt-4 mb-8">
+    <section class="c-product__tabs md:col-span-2 my-8">
         {{#if theme_settings.show_product_details_tabs}}
             {{> components/products/description-tabs}}
         {{else}}

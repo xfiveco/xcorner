@@ -1,11 +1,11 @@
 <div 
-    class="js-form-field" 
+    class="js-form-field flex flex-wrap items-center gap-2 mt-2 mb-4" 
     data-product-attribute="set-rectangle" 
     role="radiogroup" 
     aria-labelledby="rectangle-group-label"
 >
-    <label id="rectangle-group-label">
-        {{this.display_name}}:
+    <label id="rectangle-group-label" class="w-full">
+        <span class="font font-bold uppercase">{{this.display_name}}:</span>
         <span class="js-option-value"></span>
 
         {{> components/common/requireness-msg}}
@@ -23,11 +23,11 @@
             <span>{{lang 'products.none'}}</span>
         </label>
     {{/unless}}
-
+   
     {{#each this.values}}
-        <div>    
+        <div class="shadow-current flex items-center">    
             <input
-                class="{{#if selected}}js-default{{/if}}"
+                class="{{#if selected}}js-default{{/if}} mr-2"
                 type="radio"
                 id="attribute_rectangle__{{../id}}_{{id}}"
                 name="attribute[{{../id}}]"

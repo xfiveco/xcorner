@@ -40,14 +40,12 @@ function processChange($processElement, target, update, callbacks) {
     update.forEach((updateSelector) => {
         if (updateSelector === 'this') {
             updateAttributes($processElement)
+        } else {
+            const $elements = document.querySelectorAll(updateSelector)
 
-            return
-        }
-
-        const $elements = document.querySelectorAll(updateSelector)
-
-        if ($elements.length) {
-            $elements.forEach(($element) => updateAttributes($element))
+            if ($elements.length) {
+                $elements.forEach(($element) => updateAttributes($element))
+            }
         }
     })
 
@@ -61,7 +59,7 @@ function processChange($processElement, target, update, callbacks) {
  * @returns {boolean}
  */
 function isLinkWithAddress($element) {
-    return $element.tagName.toLowerCase() === 'a' && $element.href !== '' && $element.href !== '#'
+    return $element.tagName.toLowerCase() === 'a' && $element.href !== '' && $element.getAttribute('href') !== '#'
 }
 
 /**

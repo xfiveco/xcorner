@@ -5,6 +5,7 @@ import { safeString } from '../common/utils/safe-string'
 import { announceInputErrorMessage } from '../common/utils/form-utils'
 import q$, { parents } from '../global/selector'
 import trigger from '../common/utils/trigger'
+import toggle from '../custom/toggle'
 
 export default class {
     constructor({ $reviewForm, $context }) {
@@ -29,6 +30,10 @@ export default class {
 
         this.injectPaginationLink()
         this.setupReviews()
+
+        toggle('[href="#product-reviews-content"].js-toggle-link', {
+            update: ['this', '#product-reviews-content'],
+        })
     }
 
     /**
@@ -64,7 +69,7 @@ export default class {
     }
 
     expandReviews() {
-        this.$reviewTabLink.click()
+        this.$reviewTabLink?.click()
 
         if (this.$reviewsContentList.classList.contains('is-open') === false) {
             trigger(this.$collapsible, CollapsibleEvents.click)

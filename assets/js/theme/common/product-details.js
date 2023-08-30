@@ -68,12 +68,14 @@ export default class ProductDetails extends ProductDetailsBase {
 
             $productSwatchGroup.forEach(($swatch) => {
                 $swatch.addEventListener('change', ({ target }) => {
-                    const swatchGroupElement = target.parentNode.parentNode
+                    const swatchGroupElement = target.parentNode.parentNode.parentNode
 
+                    q$('.shadow-lg', swatchGroupElement)?.classList.remove('shadow-lg')
+                    target.parentNode.classList.add('shadow-md')
                     this.showSwatchNameOnOption(target, swatchGroupElement)
                 })
 
-                const $swatchGroupElement = $swatch.parentNode.parentNode
+                const $swatchGroupElement = $swatch.parentNode.parentNode.parentNode
 
                 if ($swatch.checked) this.showSwatchNameOnOption($swatch, $swatchGroupElement)
             })

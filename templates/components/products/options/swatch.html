@@ -5,12 +5,13 @@
     aria-labelledby="swatchGroup_{{id}}"
 >
     <label id="swatchGroup_{{id}}">
-        {{this.display_name}}:
+        <span class="font font-bold uppercase">{{this.display_name}}:</span>
+        
         <span class="js-option-value"></span>
 
         {{> components/common/requireness-msg}}
     </label>
-    <span>
+    <span class="u-hidden-visually">
         {{ lang 'products.swatch_option_announcement' swatch_name=this.display_name}}
     </span>
 
@@ -30,46 +31,48 @@
         </label>
     {{/unless}}
 
-    {{#each this.values}}
-        <div>
-            <input
-                class="{{#if selected}}js-default{{/if}}"
-                type="radio"
-                name="attribute[{{../id}}]"
-                value="{{id}}"
-                id="attribute_swatch_{{../id}}_{{id}}"
-                {{#if selected}}
-                    checked
-                {{/if}}
-                {{#if ../required}}
-                    required
-                {{/if}}
-                aria-label="{{this.label}}"
-            >
-            <label for="attribute_swatch_{{../id}}_{{id}}" data-product-attribute-value="{{id}}">
-                {{#if image}}
-                    <span title="{{this.label}}" style="background-image: url('{{getImage image "swatch_option_size"}}');"></span>
-                {{/if}}
-                {{#if data.[2]}}
-                    <span title="{{this.label}}" style="background-color: #{{data.[0]}}"></span>
-                    <span title="{{this.label}}" style="background-color: #{{data.[1]}}"></span>
-                    <span title="{{this.label}}" style="background-color: #{{data.[2]}}"></span>
-                {{else}}
-                    {{#if data.[1]}}
-                        <span title="{{this.label}}" style="background-color: #{{data.[0]}}"></span>
-                        <span title="{{this.label}}" style="background-color: #{{data.[1]}}"></span>
+    <div class="flex flex-wrap gap-2 mt-2 mb-4">
+        {{#each this.values}}
+            <div class="sahdow-current">
+                <input
+                    class="{{#if selected}}js-default{{/if}} hidden"
+                    type="radio"
+                    name="attribute[{{../id}}]"
+                    value="{{id}}"
+                    id="attribute_swatch_{{../id}}_{{id}}"
+                    {{#if selected}}
+                        checked
+                    {{/if}}
+                    {{#if ../required}}
+                        required
+                    {{/if}}
+                    aria-label="{{this.label}}"
+                >
+                <label for="attribute_swatch_{{../id}}_{{id}}" data-product-attribute-value="{{id}}" class="flex items-center gap-2 cursor-pointer">
+                    {{#if image}}
+                        <span title="{{this.label}}" style="background-image: url('{{getImage image "swatch_option_size"}}');" class="inline-block w-6 h-6"></span>
+                    {{/if}}
+                    {{#if data.[2]}}
+                        <span title="{{this.label}}" style="background-color: #{{data.[0]}}" class="inline-block w-6 h-6"></span>
+                        <span title="{{this.label}}" style="background-color: #{{data.[1]}}" class="inline-block w-6 h-6"></span>
+                        <span title="{{this.label}}" style="background-color: #{{data.[2]}}" class="inline-block w-6 h-6"></span>
                     {{else}}
-                        {{#if data.[0]}}
-                            <span title="{{this.label}}" style="background-color: #{{data.[0]}}"></span>
+                        {{#if data.[1]}}
+                            <span title="{{this.label}}" style="background-color: #{{data.[0]}}" class="inline-block w-6 h-6"></span>
+                            <span title="{{this.label}}" style="background-color: #{{data.[1]}}" class="inline-block w-6 h-6"></span>
+                        {{else}}
+                            {{#if data.[0]}}
+                                <span title="{{this.label}}" style="background-color: #{{data.[0]}}" class="inline-block w-6 h-6"></span>
+                            {{/if}}
                         {{/if}}
                     {{/if}}
-                {{/if}}
-                {{#if pattern}}
-                    <span>
-                        <span style="background-image: url('{{getImage image 'core-swatch'}}');"></span>
-                    </span>
-                {{/if}}
-            </label>
-        </div>
-    {{/each}}
+                    {{#if pattern}}
+                        <span>
+                            <span style="background-image: url('{{getImage image 'core-swatch'}}');" class="inline-block w-6 h-6"></span>
+                        </span>
+                    {{/if}}
+                </label>
+            </div>
+        {{/each}}
+    </div>
 </div>

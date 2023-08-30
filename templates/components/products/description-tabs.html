@@ -22,14 +22,6 @@
             </a>
         </li>
     {{/all}}
-
-    {{#all settings.show_product_reviews theme_settings.show_product_reviews product.reviews.total}}
-        <li class="js-tab">
-            <a class="js-product-view-review-tab-link font-bold hover:underline uppercase" href="#tab-reviews">
-                {{lang 'products.reviews.header' total=product.reviews.total}}
-            </a>
-        </li>
-    {{/all}}
 </ul>
 
 <div>
@@ -54,7 +46,7 @@
     {{/all}}
 
     {{#all settings.show_product_reviews theme_settings.show_product_reviews}}
-       <div id="tab-reviews">
+       <div class="mt-4">
            {{> components/products/reviews reviews=product.reviews product=product urls=urls}}
        </div>
     {{/all}}

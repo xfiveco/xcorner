@@ -61,3 +61,23 @@
 .js-facets-search-nav-list [id^="facets-"].is-open {
     @apply block;
 }
+
+[href="#product-reviews-content"].js-toggle-link > span:first-child {
+    @apply hidden;
+}
+
+[href="#product-reviews-content"].js-toggle-link.is-open > span:first-child {
+    @apply inline;
+}
+
+[href="#product-reviews-content"].js-toggle-link.is-open > span:last-child {
+    @apply hidden;
+}
+
+#product-reviews-content {
+    @apply hidden;
+}
+
+#product-reviews-content.is-open {
+    @apply block;
+}

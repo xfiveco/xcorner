@@ -1,6 +1,6 @@
 {{#if reviews.total}}
     <section id="product-reviews">
-        <div>
+        <div class="flex items-center justify-between">
             {{lang 'products.reviews.header' total=reviews.total}}
 
             {{#if theme_settings.show_product_reviews}}
@@ -15,30 +15,30 @@
             {{/if}}
         </div>
 
-        <div class="is-open" id="product-reviews-content" aria-hidden="false">
+        <div class="is-open mt-4" id="product-reviews-content" aria-hidden="false">
             <ul>
                 {{#each reviews.list}}
                     <li>
                         <article>
                             <header>
-                                <span>
+                                <span class="flex gap-2 items-center">
                                     {{> components/products/ratings rating=rating}}
-                                    <span>{{ rating }}</span>
+                                    <span>{{ rating }}/5</span>
                                 </span>
-                                <div>{{{ sanitize title }}}</div>
+                                <div class="font-bold text-lg">{{{ sanitize title }}}</div>
                                 
                                 {{#if name}}
-                                    <p>
+                                    <p class="font-italic text-sm">
                                         {{{lang 'products.reviews.post_on_by' date=date name=(sanitize name) }}}
                                     </p>
                                 {{else}}
-                                    <p>
+                                    <p class="font-italic text-sm">
                                         {{lang 'products.reviews.post_on_by' date=date name=(lang 'products.reviews.anonymous_poster')}}
                                     </p>
                                 {{/if}}
                             </header>
 
-                            <p>{{{ sanitize text }}}</p>
+                            <p class="my-4">{{{ sanitize text }}}</p>
                         </article>
                     </li>
                 {{/each}}

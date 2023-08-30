@@ -1,4 +1,5 @@
 import q$ from './selector'
+import isVisible from '../common/utils/is-visible'
 
 export default class StencilDropdown {
     constructor(extendables) {
@@ -10,6 +11,10 @@ export default class StencilDropdown {
      * @param style
      */
     hide($dropDown, style) {
+        if (isVisible($dropDown) === false) {
+            return
+        }
+
         if (style) {
             $dropDown.setAttribute('style', style)
         }
@@ -25,6 +30,10 @@ export default class StencilDropdown {
     }
 
     show($dropDown, event, style) {
+        if (isVisible($dropDown) === false) {
+            return
+        }
+
         if (style) {
             $dropDown.setAttribute('style', style)
             $dropDown.setAttribute('aria-hidden', 'false')
