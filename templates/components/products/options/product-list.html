@@ -4,17 +4,17 @@
     role="radiogroup" 
     aria-labelledby="product-list-label"
 >
-    <label id="product-list-label">
-        {{display_name}}:
+    <label id="product-list-label" class="block mb-2">
+        <span class="font font-bold uppercase">{{display_name}}:</span>
         <span class="js-option-value"></span>
 
         {{> components/common/requireness-msg}}
     </label>
 
     {{#if values.0.image}}
-        <ul>
+        <ul class="mt-2 mb-4">
             {{#unless required}}
-                <li>
+                <li class="flex gap-2 items-center">
                     <input
                         type="radio"
                         name="attribute[{{id}}]"
@@ -30,16 +30,16 @@
                 </li>
             {{/unless}}
             {{#each values}}
-                <li data-product-attribute-value="{{id}}">
+                <li data-product-attribute-value="{{id}}" class="flex gap-2 items-center">
                     {{#if image}}
                         <figure>
                             {{> components/common/image
                                 image=image
-                                class=""
+                                class="w-6 h-6"
                             }}
                         </figure>
                     {{/if}}
-                    <div>
+                    <div class="flex items-center gap-2">
                         <input
                             class="{{#if selected}}js-default{{/if}}"
                             type="radio"

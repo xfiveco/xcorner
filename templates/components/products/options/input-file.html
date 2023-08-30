@@ -1,6 +1,6 @@
 <div class="js-form-field" data-product-attribute="input-file">
-    <label for="attribute_file_{{id}}">
-        {{ this.display_name }}:
+    <label for="attribute_file_{{id}}" class="block">
+        <span class="font font-bold uppercase">{{ this.display_name }}:</span>
 
         {{> components/common/requireness-msg}}
     </label>
@@ -24,7 +24,8 @@
             >
         </label>
     {{/if}}
-    <p>
+
+    <p class="mb-4 ,t-2">
         {{#if file_size}}
             {{lang 'products.max_filesize'}}
             <strong>

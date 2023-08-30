@@ -1,6 +1,6 @@
-<div class="js-form-field" data-product-attribute="date">
-    <label {{#if style}}style="{{style}}" {{/if}}>
-        {{this.display_name}}:
+<div class="js-form-field flex items-center flex-wrap gap-2 mb-4" data-product-attribute="date">
+    <label {{#if style}}style="{{style}}" {{/if}} class="w-full mb-2">
+        <span class="font font-bold uppercase">{{this.display_name}}:</span>
 
         {{> components/common/requireness-msg}}
     </label>

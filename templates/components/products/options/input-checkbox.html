@@ -1,11 +1,12 @@
 <div class="js-form-field" data-product-attribute="input-checkbox">
     <label>
-        {{display_name}}:
+        <span class="font font-bold uppercase">{{display_name}}:</span>
 
         {{> components/common/requireness-msg}}
     </label>
     <input type="hidden" name="attribute[{{id}}]" value="{{noValue}}" />
-    <div>
+
+    <div class="mt-2 mb-4">
         <input
             class="{{#if checked}}js-default{{/if}}"
             type="checkbox"
@@ -20,7 +21,7 @@
             {{/if}}
         >
 
-        <label class="form-label {{class}}" for="attribute-check-{{id}}">
+        <label class="form-label {{class}} ml-2" for="attribute-check-{{id}}">
             {{label}}
         </label>
     </div>

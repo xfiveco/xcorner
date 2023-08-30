@@ -1,12 +1,12 @@
 <div class="js-form-field" data-product-attribute="input-text">
-    <label for="attribute_text_{{id}}">
-        {{ this.display_name }}:
+    <label for="attribute_text_{{id}}" class="block">
+        <span class="font font-bold uppercase">{{ this.display_name }}:</span>
 
         {{> components/common/requireness-msg}}
     </label>
 
     <input 
-        class="js-form-input" 
+        class="js-form-input mt-2 mb-4" 
         type="text" 
         id="attribute_text_{{id}}" 
         name="attribute[{{this.id}}]" 

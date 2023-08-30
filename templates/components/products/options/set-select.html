@@ -1,11 +1,11 @@
 <div class="js-form-field" data-product-attribute="set-select">
-    <label for="attribute_select_{{id}}">
-        {{ this.display_name }}:
+    <label for="attribute_select_{{id}}" class="block">
+        <span class="font font-bold uppercase">{{ this.display_name }}:</span>
 
         {{> components/common/requireness-msg}}
     </label>
 
-    <select name="attribute[{{this.id}}]" id="attribute_select_{{id}}" {{#if required}}required{{/if}}>
+    <select name="attribute[{{this.id}}]" class="mt-2 mb-4" id="attribute_select_{{id}}" {{#if required}}required{{/if}}>
         <option value="">
             {{lang 'products.choose_options'}}
         </option>
