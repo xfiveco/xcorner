@@ -4,8 +4,8 @@
     role="radiogroup" 
     aria-labelledby="radio-group-label-{{id}}"
 >
-    <label id="radio-group-label-{{id}}">
-        {{ this.display_name }}:
+    <label id="radio-group-label-{{id}}" class="block">
+        <span class="font font-bold uppercase">{{ this.display_name }}:</span>
 
         {{> components/common/requireness-msg}}
     </label>
@@ -37,7 +37,7 @@
                 required
             {{/if}}
         >
-        <label data-product-attribute-value="{{id}}" for="attribute_radio_{{../id}}_{{id}}">
+        <label data-product-attribute-value="{{id}}" for="attribute_radio_{{../id}}_{{id}}" class="my-4 ml-2 mr-4">
             {{this.label}}
         </label>
     {{/each}}

@@ -3,7 +3,7 @@
     {{inject 'reviewSubject' (lang 'forms.validate.reviews.title')}}
     {{inject 'reviewComment' (lang 'forms.validate.reviews.comment')}}
     {{inject 'reviewEmail' (lang 'forms.validate.common.email_address')}}
-    <div class="max-w-desktop relative bg-white pl-8">
+    <div class="max-w-desktop relative pl-8">
         <div class="js-modal-header-title font-bold text-2xl py-4">
             {{lang 'products.reviews.write_a_review'}}
         </div>
@@ -17,7 +17,7 @@
             <span aria-hidden="true">&#215;</span>
         </button>
     </div>
-    <div class="js-modal-body max-w-desktop max-h-[90vh] bg-white flex flex-col md:flex-row gap-8 p-8 overflow-y-auto">
+    <div class="js-modal-body max-w-desktop max-h-[90vh] flex flex-col md:flex-row gap-8 p-8 overflow-y-auto">
         <div class="h-auto pb-8">
             <div class="max-h-[90%] mb-4">
                 {{> components/common/image
