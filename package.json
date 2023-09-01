@@ -85,6 +85,7 @@
     "stylelint": "npx stylelint **/*.scss",
     "stylelint:fix": "npx stylelint --fix **/*.scss",
     "tailwind": "npx tailwindcss -i ./assets/css/tailwind.css -o ./assets/css/theme.css --watch --poll",
+    "tailwindCheckout": "npx tailwindcss -i ./assets/css/tailwindCheckout.css -o ./assets/css/optimized-checkout.css --watch --poll",
     "prettier": "prettier \"**/*.{json,md,scss,yaml,yml}\"",
     "prepare": "husky install"
   },

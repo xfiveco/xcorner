@@ -1,0 +1,34 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    :root {
+        --max-w-desktop: 70rem;
+    }
+}
+
+.u-hidden-visually {
+    border: 0 !important;
+    clip: rect(0 0 0 0) !important;
+    clip-path: inset(50%) !important;
+    height: 1px !important;
+    margin: -1px !important;
+    overflow: hidden !important;
+    padding: 0 !important;
+    position: absolute !important;
+    white-space: nowrap !important;
+    width: 1px !important;
+}
+
+header > div {
+    @apply max-w-desktop mx-auto text-center my-8 pl-11;
+}
+
+.optimizedCheckout-contentPrimary {
+    @apply max-w-desktop mx-auto;
+}
+
+,button--primary {
+    @apply bg-black text-white hover:bg-white hover:text-black text-center rounded-none !important;
+}
