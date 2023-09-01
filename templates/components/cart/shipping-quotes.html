@@ -12,7 +12,7 @@
                 <ul>
                     {{#each quotes.shipping_methods}}
                         <li>
-                            <dl>
+                            <dl class="flex gap-3">
                                 <dt>
                                     <input 
                                         id="shipping-quote-{{type}}-{{id}}" 
@@ -24,7 +24,7 @@
                                         {{provider_name}}
                                     </label>
                                 </dt>
-                                <dd>
+                                <dd class="m-0">
                                     <label for="shipping-quote-{{type}}-{{id}}">
                                         <b>{{cost.formatted}}</b>
                                     </label>
@@ -85,7 +85,7 @@
             </div>
         {{/if}}
         <button 
-            class="c-button c-button--primary js-select-shipping-quote" 
+            class="js-select-shipping-quote bg-transparent text-black border-2 border-black hover:bg-black hover:text-white px-2 py-1" 
             type="submit" 
             value="{{lang 'cart.checkout.update'}}"
         >

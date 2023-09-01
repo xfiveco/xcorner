@@ -1,20 +1,20 @@
 <div>
-    <button class="js-coupon-code-add">
+    <button class="js-coupon-code-add bg-transparent text-black border-2 border-black hover:bg-black hover:text-white px-2 py-1">
         {{lang 'cart.coupons.add_coupon'}}
     </button>
     
-    <button class="js-coupon-code-cancel" style="display: none;">
+    <button class="js-coupon-code-cancel bg-transparent text-black border-2 border-black hover:bg-black hover:text-white px-2 py-1" style="display: none;">
         {{lang 'cart.coupons.cancel'}}
     </button>
 </div>
 
-<div class="js-coupon-code" style="display: none;">
-    <form class="js-coupon-form" method="post" action="{{urls.cart}}">
-        <label for="couponcode">
+<div class="js-coupon-code w-full" style="display: none;">
+    <form class="js-coupon-form flex items-center gap-3" method="post" action="{{urls.cart}}">
+        <label for="couponcode" class="x-hidden">
             {{lang 'cart.coupons.coupon_code'}}
         </label>
         <input 
-            class="js-form-input" 
+            class="js-form-input grow" 
             data-error="{{lang 'cart.coupons.empty_error'}}" 
             id="couponcode" 
             type="text" 
@@ -24,7 +24,7 @@
         >
 
         <button 
-            class="c-button c-button--primary" 
+            class="bg-black text-white border-2 border-black hover:bg-transparent hover:text-black px-2 py-1" 
             type="submit"
         >
             {{lang 'cart.coupons.button'}}

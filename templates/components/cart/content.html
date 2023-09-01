@@ -1,130 +1,133 @@
-<div data-cart-quantity="{{cart.quantity}}">
-    <div>
-        <div>{{lang 'cart.checkout.item'}}</div>
-        <div>{{lang 'cart.checkout.price'}}</div>
-        <div>{{lang 'cart.checkout.quantity'}}</div>
-        <div>{{lang 'cart.checkout.total'}}</div>
+<div data-cart-quantity="{{cart.quantity}}" class="max-w-desktop mx-auto my-8 px-5">
+    <div class="gap-3 mb-5 hidden md:flex md:justify-between">
+        <div class="w-5/12 text-center font-semibold">{{lang 'cart.checkout.item'}}</div>
+        <div class="w-2/12 text-center font-semibold">{{lang 'cart.checkout.price'}}</div>
+        <div class="w-2/12 text-center font-semibold">{{lang 'cart.checkout.quantity'}}</div>
+        <div class="w-2/12 text-right font-semibold">{{lang 'cart.checkout.total'}}</div>
     </div>
-    <div>
+    <div class="flex flex-col gap-3">
         {{#each cart.items}}
-            <div class="js-item-row">
-                <div>
-                    {{#if type '==' 'GiftCertificate'}}
-                        <img
-                            src="{{cdn ../theme_settings.default_image_gift_certificate}}"
-                            alt="{{lang 'cart.gift_certificates.gift_certificate'}}"
-                            title="{{lang 'cart.gift_certificates.gift_certificate'}}"
-                        >
-                    {{else}}
-                        {{> components/common/image
-                            image=image
-                            fallback_size=../theme_settings.product_thumb_size
-                            default_image=../theme_settings.default_image_product
-                        }}
-                    {{/if}}
-                </div>
-                <div>
-                    {{#if brand.name}}
-                        <p>{{brand.name}}</p>
-                    {{/if}}
-                    <div>
-                        <a href="{{url}}">
-                            {{name}}
-                        </a>
-                    </div>
-                    {{#if release_date}}
-                        <p>({{release_date}})</p>
-                    {{/if}}
-
-                    {{#if options}}
-                        <dl>
-                            {{#each options}}
-                                <dt>{{name}}:</dt>
-                                <dd>
-                                    {{#if is_file}}
-                                        <a href="/viewfile.php?attributeId={{id}}&cartitem={{../id}}">
-                                            {{value}}
-                                        </a>
-                                    {{else}}
-                                        {{> components/common/product-options}}
-                                    {{/if}}
-                                </dd>
-                            {{/each}}
-                        </dl>
-
-                        <a 
-                            href="#"
-                            data-item-edit="{{id}}"
-                            data-product-id="{{product_id}}"
-                            aria-label="{{lang 'products.change_product_options' name=name}}"
-                        >
-                            {{lang 'common.change'}}
-                        </a>
-                    {{/if}}
-
-                    {{#if type '==' 'GiftCertificate'}}
-                        <a 
-                            href="{{edit_url}}"
-                            aria-label="{{lang 'cart.gift_certificates.change_gift_certificate' certificate_name=name}}"
-                        >
-                            {{lang 'common.change'}}
-                        </a>
-                    {{/if}}
-
-                    {{> components/cart/item-giftwrap this}}
-                    
-                    {{#if event_date}}
-                        <dl>
-                            <dt>
-                                {{event_date.name}}
-                            </dt>
-                            <dd>
-                                {{event_date.date}}
-                            </dd>
-                        </dl>
-                    {{/if}}
-                </div>
-
-                <div>
-                    <span>{{lang 'cart.checkout.price'}}</span>
-                    
-                    {{#or ../customer (unless ../settings.hide_price_from_guests) (if type '==' 'GiftCertificate')}}
-                        <span class="{{#if price_discounted}}price-discounted{{/if}}">
-                            {{price.formatted}}
-                        </span>
-                        
-                        {{#if price_discounted}}
-                            <span>
-                                {{price_discounted.formatted}}
-                            </span>
+            <div class="js-item-row md:gap-x-3 flex md:justify-between gap-y-4 items-center md:items-center flex-wrap border-b border-gray-200 md:flex-row pb-3 last:border-0">
+                <div class="md:w-5/12 flex items-center gap-3 w-full">
+                    <div class="w-28 h-28 lg:w-40 lg:h-40 flex-shrink-0">
+                        {{#if type '==' 'GiftCertificate'}}
+                            <img
+                                src="{{cdn ../theme_settings.default_image_gift_certificate}}"
+                                alt="{{lang 'cart.gift_certificates.gift_certificate'}}"
+                                title="{{lang 'cart.gift_certificates.gift_certificate'}}"
+                            >
+                        {{else}}
+                            {{> components/common/image
+                                image=image
+                                fallback_size=../theme_settings.product_thumb_size
+                                default_image=../theme_settings.default_image_product
+                            }}
                         {{/if}}
-                    {{else}}
-                        {{> components/common/login-for-pricing}}
-                    {{/or}}
+                    </div>
+                    <div>
+                        {{#if brand.name}}
+                            <p class="mb-2">{{brand.name}}</p>
+                        {{/if}}
+                        <div>
+                            <a href="{{url}}">
+                                {{name}}
+                            </a>
+                        </div>
+                        {{#if release_date}}
+                            <p>({{release_date}})</p>
+                        {{/if}}
+
+                        {{#if options}}
+                            <dl>
+                                {{#each options}}
+                                    <dt>{{name}}:</dt>
+                                    <dd>
+                                        {{#if is_file}}
+                                            <a href="/viewfile.php?attributeId={{id}}&cartitem={{../id}}">
+                                                {{value}}
+                                            </a>
+                                        {{else}}
+                                            {{> components/common/product-options}}
+                                        {{/if}}
+                                    </dd>
+                                {{/each}}
+                            </dl>
+
+                            <a 
+                                href="#"
+                                data-item-edit="{{id}}"
+                                data-product-id="{{product_id}}"
+                                aria-label="{{lang 'products.change_product_options' name=name}}"
+                            >
+                                {{lang 'common.change'}}
+                            </a>
+                        {{/if}}
+
+                        {{#if type '==' 'GiftCertificate'}}
+                            <a 
+                                href="{{edit_url}}"
+                                aria-label="{{lang 'cart.gift_certificates.change_gift_certificate' certificate_name=name}}"
+                            >
+                                {{lang 'common.change'}}
+                            </a>
+                        {{/if}}
+
+                        {{> components/cart/item-giftwrap this}}
+                        
+                        {{#if event_date}}
+                            <dl>
+                                <dt>
+                                    {{event_date.name}}
+                                </dt>
+                                <dd>
+                                    {{event_date.date}}
+                                </dd>
+                            </dl>
+                        {{/if}}
+                    </div>
                 </div>
 
-                <div>
-                    <label for="qty-{{id}}">
+                <div class="w-full xs:w-2/5 sm:w-1/3 md:w-2/12 text-center flex sm:flex-col gap-3 md:flex md:justify-center sm:items-center">
+                    <span class="shrink-0 font-semibold text-right md:x-hidden">{{lang 'cart.checkout.price'}}</span>
+                    
+                    <div>
+                        {{#or ../customer (unless ../settings.hide_price_from_guests) (if type '==' 'GiftCertificate')}}
+                            <span class="{{#if price_discounted}}price-discounted{{/if}}">
+                                {{price.formatted}}
+                            </span>
+                            
+                            {{#if price_discounted}}
+                                <span>
+                                    {{price_discounted.formatted}}
+                                </span>
+                            {{/if}}
+                        {{else}}
+                            {{> components/common/login-for-pricing}}
+                        {{/or}}
+                    </div>
+                </div>
+
+                <div class="w-full xs:w-1/2 sm:w-1/3 md:w-2/12 text-center flex sm:flex-col gap-3 items-center sm:items-center">
+                    <label for="qty-{{id}}" class="shrink-0 font-semibold text-right md:x-hidden">
                         {{lang 'products.quantity'}}
                     </label>
                     
-                    <div>
+                    <div class="flex items-center gap-3 sm:justify-center">
                         {{#if can_modify}}
                             <button 
-                                class="c-button js-cart-update"
+                                class="js-cart-update w-12 border-2 border-black hover:bg-black hover:text-white flex items-center content-center p-1 box-content flex-grow-0 basis-0"
                                 data-cart-itemid="{{id}}"
                                 data-action="dec"
                             >
                                 <span class="u-hidden-visually">
                                     {{lang 'products.quantity_decrease' name=name}}
                                 </span>
-                                <svg>
-                                    <use href="#icon-keyboard-arrow-down" />
-                                </svg>
+                                {{> components/common/icon name="keyboard-arrow-down"  }}
                             </button>
                         {{/if}}
+
                         <input 
-                            class="js-form-input js-form-input-increment-total js-cart-item-qty-input"
+                            class="js-form-input js-form-input-increment-total js-cart-item-qty-input w-16 text-center border-0"
                             id="qty-{{id}}"
                             name="qty-{{id}}"
                             type="tel"
@@ -138,55 +141,60 @@
                             data-cart-itemid="{{id}}"
                             data-action="manualQtyChange"
                             aria-label="{{name}}"
-                            aria-live="polite"{{#unless can_modify}} disabled{{/unless}}>
+                            aria-live="polite"{{#unless can_modify}} disabled{{/unless}}
+                            class=""
+                        />
+                        
                         {{#if can_modify}}
                             <button 
-                                class="c-button js-cart-update"
+                                class="js-cart-update w-12 border-2 border-black hover:bg-black hover:text-white flex items-center content-center p-1 box-content flex-grow-0 basis-0"
                                 data-cart-itemid="{{id}}"
                                 data-action="inc"
                             >
                                 <span class="u-hidden-visually">
                                     {{lang 'products.quantity_increase' name=name}}
                                 </span>
-                                <svg>
-                                    <use href="#icon-keyboard-arrow-up" />
-                                </svg>
+                                {{> components/common/icon name="keyboard-arrow-up"}}
                             </button>
                         {{/if}}
                     </div>
                 </div>
 
-                <div>
-                    <span>
+                <div class="w-full sm:w-1/3 md:w-2/12 md:text-right flex sm:flex-col items-start gap-3 md:justify-end sm:items-center md:items-end">
+                    <span class="shrink-0 text-right font-semibold md:x-hidden">
                         {{lang 'cart.checkout.total'}}
                     </span>
 
-                    {{#or ../customer (unless ../settings.hide_price_from_guests) (if type '==' 'GiftCertificate')}}
-                        <strong class="{{#if total_discounted}}price-discounted{{/if}}">
-                            {{total.formatted}}
-                        </strong>
-                        
-                        {{#if total_discounted}}
-                            <strong>
-                                {{total_discounted.formatted}}
-                            </strong>
-                        {{/if}}
-                    {{else}}
-                        --
-                    {{/or}}
-                    {{#or can_modify (if type '==' 'GiftCertificate')}}
-                        <button 
-                            class="js-cart-remove"
-                            data-cart-itemid="{{id}}"
-                            data-confirm-delete="{{lang 'cart.confirm_delete'}}"
-                            aria-label="{{lang 'cart.remove_item' name=name}}"
-                        >
-                            <svg>
-                                <use href="#icon-close"></use>
-                            </svg>
-                        </button>
-                    {{/or}}
-                </td>
+                    <div class="flex gap-2 items-center">
+                        <div>
+                            {{#or ../customer (unless ../settings.hide_price_from_guests) (if type '==' 'GiftCertificate')}}
+                                <strong class="{{#if total_discounted}}price-discounted{{/if}}">
+                                    {{total.formatted}}
+                                </strong>
+                                
+                                {{#if total_discounted}}
+                                    <strong>
+                                        {{total_discounted.formatted}}
+                                    </strong>
+                                {{/if}}
+                            {{else}}
+                                --
+                            {{/or}}
+                        </div>
+                        <div>
+                            {{#or can_modify (if type '==' 'GiftCertificate')}}
+                                <button 
+                                    class="js-cart-remove text-red-600 text-sm "
+                                    data-cart-itemid="{{id}}"
+                                    data-confirm-delete="{{lang 'cart.confirm_delete'}}"
+                                    aria-label="{{lang 'cart.remove_item' name=name}}"
+                                >
+                                    {{> components/common/icon name="close"  }}
+                                </button>
+                            {{/or}}
+                        </div>
+                    </div>
+                </div>
             </div>
         {{/each}}
     </div>
