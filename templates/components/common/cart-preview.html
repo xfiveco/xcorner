@@ -1,10 +1,10 @@
-<div>
+<div class="absolute top-full right-0 pt-8 pb-6 px-4 bg-white bg-opacity-20 backdrop-blur w-screen max-w-xs shadow-md z-10">
     <div>
         {{#if cart.items.length}}
             <ul>
                 {{#each (limit cart.items 4)}}
-                    <li>
-                        <div>
+                    <li class="flex gap-4 mb-2">
+                        <div class="w-[20%] shrink-0">
                             {{#if type '==' 'GiftCertificate'}}
                                 <img
                                     alt="GiftCertificate"
@@ -20,17 +20,17 @@
                             {{/if}}
                         </div>
                         <div>
-                            <span>
+                            <span class="text-md">
                                 {{brand.name}}
                             </span>
 
                             <div>
-                                <a href="{{url}}" alt="{{name}}" title="{{name}}">
+                                <a href="{{url}}" alt="{{name}}" title="{{name}}" class="hover:underline">
                                     {{name}}
                                 </a>
                             </div>
 
-                            <span>
+                            <span class="font-bold">
                                 {{#if quantity '>' 1}}
                                     {{quantity}} &times;
                                 {{/if}}
@@ -50,7 +50,7 @@
                 {{/each}}
             </ul>
 
-            <div>
+            <div class="pt-6 flex gap-3 items-center justify-between">
                 {{#if cart.additional_checkout_buttons}}
                     <div data-cart-accelerated-checkout-buttons></div>
                 {{/if}}
@@ -58,7 +58,7 @@
                     <div>
                         <a
                             href="{{urls.checkout.single_address}}"
-                            class="c-button c-button--primary"
+                            class="c-button c-button--primary border border-black py-1 px-3 cursor-pointer hover:bg-black hover:text-white text-center"
                             data-primary-checkout-now-action
                         >
                             {{lang 'cart.preview.checkout_now'}}
@@ -67,7 +67,7 @@
                 {{/if}}
 
                 <div>
-                    <a href="{{urls.cart}}" class="c-button">
+                    <a href="{{urls.cart}}" class="c-button border border-black py-1 px-3 cursor-pointer hover:bg-black hover:text-white text-center">
                         {{lang 'cart.preview.view_cart'}}
                     </a>
                 </div>
