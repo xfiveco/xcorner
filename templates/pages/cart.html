@@ -22,53 +22,55 @@ cart: true
                 {{> components/cart/content}}
             </div>
 
-            <div class="js-cart-totals">
+            <div class="js-cart-totals bg-gray-200 pt-10">
                 {{> components/cart/totals}}
             </div>
 
-            {{{region name="cart_below_totals"}}}
+            <div class="bg-gray-200 pt-4 pb-10">
+                <div class="max-w-desktop px-4 mx-auto">
+                    {{{region name="cart_below_totals"}}}
 
-            {{#or customer (unless settings.hide_price_from_guests)}}
-                {{#if cart.additional_checkout_buttons}}
-                    <div></div>
-                {{/if}}
+                    <div class="flex flex-wrap justify-end gap-3">
+                        {{#or customer (unless settings.hide_price_from_guests)}}
+                            {{#if cart.additional_checkout_buttons}}
+                                <div></div>
+                            {{/if}}
 
-                {{#if cart.show_primary_checkout_button}}
-                    <div>
-                        <a
-                            class="c-button c-button--primary"
-                            href="{{urls.checkout.single_address}}"
-                            title="{{lang 'cart.checkout.title'}}"
-                        >
-                            {{lang 'cart.checkout.button'}}
-                        </a>
-                        {{#if cart.show_multiple_address_shipping}}
-                            <a href="{{urls.checkout.multiple_address}}">
-                                {{lang 'cart.preview.checkout_multiple'}}
-                            </a>
-                        {{/if}}
-                    </div>
-                {{else}}
-                    <div>
-                        <a class="c-button" href="{{urls.home}}" title="{{lang 'cart.continue_shopping'}}">
-                            {{lang 'cart.continue_shopping'}}
-                        </a>
-                    </div>
-                {{/if}}
+                            {{#if cart.show_primary_checkout_button}}
+                                <div>
+                                    <a
+                                        class="block bg-black text-white border-2 border-black hover:bg-transparent hover:text-black px-4 py-2 no-underline"
+                                        href="{{urls.checkout.single_address}}"
+                                        title="{{lang 'cart.checkout.title'}}"
+                                    >
+                                        {{lang 'cart.checkout.button'}}
+                                    </a>
+                                    {{#if cart.show_multiple_address_shipping}}
+                                        <a href="{{urls.checkout.multiple_address}}">
+                                            {{lang 'cart.preview.checkout_multiple'}}
+                                        </a>
+                                    {{/if}}
+                                </div>
+                            {{else}}
+                                <div>
+                                    <a class="block bg-transparent text-black border-2 border-black hover:bg-black hover:text-white px-4 py-2 no-underline" href="{{urls.home}}" title="{{lang 'cart.continue_shopping'}}">
+                                        {{lang 'cart.continue_shopping'}}
+                                    </a>
+                                </div>
+                            {{/if}}
 
-                {{#if cart.additional_checkout_buttons}}
-                    <div class="js-cart-additional-checkout-buttons">
-                        {{> components/cart/additional-checkout-buttons}}
+                        {{else}}
+                            <div>
+                                <a class="block bg-transparent text-black border-2 border-black hover:bg-black hover:text-white px-4 py-2 no-underline" href="{{urls.auth.login}}" title="{{lang 'cart.login_to_checkout'}}">
+                                    {{lang 'cart.login_to_checkout'}}
+                                </a>
+                            </div>
+                        {{/or}}
                     </div>
-                {{/if}}
-            {{else}}
-                <div>
-                    <a class="c-button" href="{{urls.auth.login}}" title="{{lang 'cart.login_to_checkout'}}">
-                        {{lang 'cart.login_to_checkout'}}
-                    </a>
+
                 </div>
-            {{/or}}
 
+            </div>
         {{else}}
             <div tabindex="0">
                 {{lang 'cart.checkout.empty_cart'}}

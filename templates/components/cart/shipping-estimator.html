@@ -13,7 +13,7 @@
     <div>
         <button 
             data-collapsible="add-shipping" 
-            class="js-shipping-estimate-show" 
+            class="js-shipping-estimate-show bg-transparent text-black border-2 border-black hover:bg-black hover:text-white px-2 py-1" 
             aria-labelledby="estimator-add"
         >
             <span class="js-shipping-estimate-show-btn-name">
@@ -29,92 +29,100 @@
     </div>
 {{/if}}
 
-<div id="add-shipping" class="js-shipping-estimator u-hidden-visually">
+<div id="add-shipping" class="js-shipping-estimator u-hidden-visually w-full">
     <form class="js-estimator-form js-shipping-estimator">
-        <dl>
-            <dt>
-                <label for="shipping-country">
-                    {{lang 'cart.shipping_estimator.select_a_country'}}
-                </label>
-            </dt>
-
-            <dd>
-                <select id="shipping-country" name="shipping-country" data-field-type="Country">
-                    <option>
+        <dl class="flex flex-col gap-3">
+            <div class="flex gap-3 items-center flex-wrap">
+                <dt class="basis-1/2 xs:basis-1/4">
+                    <label for="shipping-country">
                         {{lang 'cart.shipping_estimator.select_a_country'}}
-                    </option>
-                    
-                    {{#each countries}}
-                        <option value="{{id}}" {{#if selected}}selected="selected"{{/if}}>
-                            {{name}}
-                        </option>
-                    {{/each}}
-                </select>
-            </dd>
+                    </label>
+                </dt>
 
-            <dt>
-                <label for="shipping-state">
-                    {{lang 'cart.shipping_estimator.select_a_state'}}
-                </label>
-            </dt>
-
-            <dd>
-                {{#if states.length}}
-                    <select id="shipping-state" name="shipping-state" data-field-type="State">
+                <dd class="m-0 flex grow xs:basis-2/4">
+                    <select id="shipping-country" name="shipping-country" data-field-type="Country" class="w-full">
                         <option>
-                            {{lang 'cart.shipping_estimator.select_a_state'}}
+                            {{lang 'cart.shipping_estimator.select_a_country'}}
                         </option>
                         
-                        {{#each states}}
+                        {{#each countries}}
                             <option value="{{id}}" {{#if selected}}selected="selected"{{/if}}>
                                 {{name}}
                             </option>
                         {{/each}}
                     </select>
-                {{else}}
+                </dd>
+            </div>
+
+            <div class="flex gap-3 items-center flex-wrap">
+                <dt class="basis-1/2 xs:basis-1/4">
+                    <label for="shipping-state">
+                        {{lang 'cart.shipping_estimator.select_a_state'}}
+                    </label>
+                </dt>
+
+                <dd class="m-0 flex grow xs:basis-2/4">
+                    {{#if states.length}}
+                        <select id="shipping-state" name="shipping-state" data-field-type="State" class="w-full">
+                            <option>
+                                {{lang 'cart.shipping_estimator.select_a_state'}}
+                            </option>
+                            
+                            {{#each states}}
+                                <option value="{{id}}" {{#if selected}}selected="selected"{{/if}}>
+                                    {{name}}
+                                </option>
+                            {{/each}}
+                        </select>
+                    {{else}}
+                        <input 
+                            class="js-form-input w-full" 
+                            type="text" 
+                            id="shipping-state" 
+                            name="shipping-state" 
+                            data-field-type="State" 
+                            placeholder="{{lang 'cart.shipping_estimator.select_a_state'}}"
+                        >
+                    {{/if}}
+                </dd>
+            </div>
+
+            <div class="flex gap-3 items-center flex-wrap">
+                <dt class="basis-1/2 xs:basis-1/4">
+                    <label for="shipping-city">
+                        {{lang 'cart.shipping_estimator.suburb_city'}}
+                    </label>
+                </dt>
+                <dd class="m-0 flex grow xs:basis-2/4">
                     <input 
-                        class="js-form-input" 
-                        type="text" 
-                        id="shipping-state" 
-                        name="shipping-state" 
-                        data-field-type="State" 
-                        placeholder="{{lang 'cart.shipping_estimator.select_a_state'}}"
+                        class="js-form-input w-full" 
+                        type="text" id="shipping-city" 
+                        name="shipping-city" 
+                        value="{{selected_city}}" 
+                        placeholder="{{lang 'cart.shipping_estimator.suburb_city'}}"
                     >
-                {{/if}}
-            </dd>
+                </dd>
+            </div>
 
-            <dt>
-                <label for="shipping-city">
-                    {{lang 'cart.shipping_estimator.suburb_city'}}
-                </label>
-            </dt>
-            <dd>
-                <input 
-                    class="js-form-input" 
-                    type="text" id="shipping-city" 
-                    name="shipping-city" 
-                    value="{{selected_city}}" 
-                    placeholder="{{lang 'cart.shipping_estimator.suburb_city'}}"
-                >
-            </dd>
-
-            <dt>
-                <label for="shipping-zip">
-                    {{lang 'cart.shipping_estimator.zip_postal_code'}}
-                </label>
-            </dt>
-            <dd>
-                <input 
-                    class="js-form-input" 
-                    type="text" 
-                    id="shipping-zip" 
-                    name="shipping-zip" 
-                    value="{{selected_zip}}" 
-                    placeholder="{{lang 'cart.shipping_estimator.zip_postal_code'}}"
-                >
-            </dd>
+            <div class="flex gap-3 items-center flex-wrap">
+                <dt class="basis-1/2 xs:basis-1/4">
+                    <label for="shipping-zip">
+                        {{lang 'cart.shipping_estimator.zip_postal_code'}}
+                    </label>
+                </dt>
+                <dd class="m-0 flex grow xs:basis-2/4">
+                    <input 
+                        class="js-form-input w-full" 
+                        type="text" 
+                        id="shipping-zip" 
+                        name="shipping-zip" 
+                        value="{{selected_zip}}" 
+                        placeholder="{{lang 'cart.shipping_estimator.zip_postal_code'}}"
+                    >
+                </dd>
+            </div>
             
-            <button class="c-button c-button--primary js-shipping-estimate-submit">
+            <button class="js-shipping-estimate-submit bg-black text-white border-2 border-black hover:bg-transparent hover:text-black px-2 py-1 mt-4">
                 {{lang 'cart.shipping_estimator.estimate_shipping'}}
             </button>
         </dl>
