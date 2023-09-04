@@ -29,6 +29,73 @@ header > div {
     @apply max-w-desktop mx-auto;
 }
 
-,button--primary {
+a,
+a:hover,
+a:focus {
+    @apply text-black outline-black outline-offset-2;
+}
+
+#checkout-app input:active,
+#checkout-app input:focus,
+button:active,
+button:focus {
+    @apply outline-double outline-offset-2 outline-black border-black !important;
+
+    box-shadow: none !important;
+}
+
+.button {
+    @apply border-black shadow-none !important;
+}
+
+.button:active,
+.button:focus {
+    @apply  bg-white text-black  border-black shadow-none !important;
+}
+
+.button--primary {
     @apply bg-black text-white hover:bg-white hover:text-black text-center rounded-none !important;
+}
+
+.button--tertiary {
+    @apply border border-black text-black bg-transparent hover:bg-black hover:text-white rounded-none hover:border-black; 
+}
+
+
+button.button--action {
+    @apply bg-black text-white hover:bg-white hover:text-black border-black text-center rounded-none hover:border-black !important;
+}
+
+button.button--action:disabled {
+    @apply bg-white border-gray-300 text-gray-300 !important;
+}
+
+.form-body input {
+    @apply border-gray-200;
+}
+
+.form-checkbox:checked + .form-label::before, 
+.form-radio:checked + .form-label::before {
+    @apply bg-black border-black;
+}
+
+.form-checkbox:focus+.form-label::before, .form-radio:focus+.form-label::before {
+    @apply border-black shadow-none;
+}
+
+.form-checklist-checkbox:focus~.form-label {
+    @apply shadow-black;
+}
+
+.form-checklist-checkbox:checked~.form-label::before {
+    @apply border-black;
+}
+
+.form-checklist-checkbox:checked~.form-label::after {
+    @apply bg-black;
+}
+
+.form-checkbox:focus+.form-label::before, .form-radio:focus+.form-label::before,
+.form-checkbox:active+.form-label::before, .form-radio:active+.form-label::before {
+    @apply outline-double outline-offset-2 outline-black !important;
 }
