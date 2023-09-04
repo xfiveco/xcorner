@@ -29,6 +29,22 @@ header > div {
     @apply max-w-desktop mx-auto;
 }
 
-,button--primary {
+.button--primary {
     @apply bg-black text-white hover:bg-white hover:text-black text-center rounded-none !important;
+}
+
+.button--tertiary {
+    @apply border border-black text-black bg-transparent hover:bg-black hover:text-white rounded-none hover:border-black; 
+}
+
+.form-body input {
+    @apply border-gray-200;
+}
+
+button.button--action {
+    @apply bg-black text-white hover:bg-white hover:text-black border-black text-center rounded-none hover:border-black;
+}
+
+button.button--action:disabled {
+    @apply bg-white border-gray-300 text-gray-300;
 }
