@@ -1,8 +1,8 @@
-<div>
+<div class="font-bold">
     {{lang 'account.orders.details.order_contents'}}
 </div>
 
-<ul>
+<ul class="my-4">
     {{#each order.items}}
         {{#if shipping_rows.length}}
             {{#each shipping_rows}}
@@ -29,7 +29,7 @@
                         </label>
                     {{/if}}
                 </div>
-                <figure>
+                <figure class="w-48">
                     {{#if type '===' 'giftcertificate'}}
                         <img src="{{cdn ../theme_settings.default_image_gift_certificate}}" alt="">
                     {{else}}
@@ -41,7 +41,7 @@
                     {{/if}}
                     {{#unless refunded}}
                         {{#if download_url}}
-                            <a href="{{download_url}}" class="c-button c-button--primary">
+                            <a href="{{download_url}}" class="c-button c-button--primary underline">
                                 <span class="u-hidden-visually">
                                     {{lang 'account.orders.details.download_items'}}
                                 </span>
@@ -53,10 +53,10 @@
                     {{/unless}}
                 </figure>
                 <div>
-                    <span>
+                    <span class="font-bold">
                         {{price.formatted}}
                     </span>
-                    <div>
+                    <div class="mb-4">
                         {{quantity}} &#215; {{name}}
                     </div>
                     {{#if brand}}
@@ -65,7 +65,7 @@
                         </div>
                     {{/if}}
                     {{#if options}}
-                        <dl>
+                        <dl class="grid grid-cols-2 gap-2">
                             {{#each options}}
                                 <dt>
                                     {{name}}:
@@ -77,7 +77,7 @@
                         </dl>
                     {{/if}}
                     {{#if gift_wrapping_name}}
-                        <dl>
+                        <dl class="grid grid-cols-2 gap-2">
                             <dt>
                                 {{lang 'account.orders.gift_wrapping'}}
                             </dt>
@@ -87,7 +87,7 @@
                         </dl>
                     {{/if}}
                     {{#if event_date}}
-                        <dl>
+                        <dl class="grid grid-cols-2 gap-2">
                             <dt>
                                 {{event_date.name}}:
                             </dt>

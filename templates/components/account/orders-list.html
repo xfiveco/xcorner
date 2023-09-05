@@ -1,12 +1,12 @@
-<div>
+<div class="font-bold">
     {{lang 'account.orders.heading' }}
 </div>
 
-<ul>
+<ul class="flex flex-col gap-4">
     {{#each orders}}
         <li class="js-account-list-item">
-            <div>
-                <div>
+            <div class="flex gap-4">
+                <div class="max-w-sm">
                     {{#if items.0.type '===' 'giftcertificate'}}
                         <img src="{{cdn ../theme_settings.default_image_gift_certificate}}" alt="">
                     {{else}}
@@ -19,12 +19,12 @@
                 </div>
                 <div>
                     <div>
-                        <div>
+                        <div class="italic">
                             {{this.status}}
                         </div>
                         {{#if ../settings.returns_enabled}}
                             {{#if this.return_url}}
-                                <a href="{{this.return_url}}">
+                                <a href="{{this.return_url}}" class="underline">
                                     {{lang 'account.orders.return_items' }}
                                 </a>
                             {{/if}}
@@ -40,7 +40,7 @@
                     </div>
                     <div>
                         <div>
-                            <div>
+                            <div class="uppercase text-xs mt-4">
                                 {{lang 'account.orders.order_placed' }}
                             </div>
                             <time>
@@ -48,7 +48,7 @@
                             </time>
                         </div>
                         <div>
-                            <div>
+                            <div class="uppercase text-xs mt-4">
                                 {{lang 'account.orders.last_update' }}
                             </div>
                             <time>

@@ -1,14 +1,14 @@
-<div>
+<div class="font-bold">
     {{lang 'account.messages.heading' }}
 </div>
 
-<ul>
+<ul class="flex gap-4">
     {{#each messages}}
-        <li class="js-account-list-item {{#unless unread}} is-read{{/unless}}">
-            <time>
+        <li class="js-account-list-item {{#unless unread}} is-read{{/unless}} max-w-1/3">
+            <time class="italic">
                 {{date}}
             </time>
-            <div>
+            <div class="mb-4">
                 {{subject}}
             </div>
             <p>

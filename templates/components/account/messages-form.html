@@ -1,5 +1,5 @@
 {{#if customer.inbox.orders}}
-    <div>
+    <div class="font-bold mt-4">
         {{lang 'forms.inbox.send_message'}}
     </div>
 
@@ -7,8 +7,8 @@
         {{inject 'enterOrderNum' (lang 'forms.validate.account.inbox.order')}}
         {{inject 'enterSubject' (lang 'forms.validate.account.inbox.subject')}}
         {{inject 'enterMessage' (lang 'forms.validate.account.inbox.message')}}
-        <div>
-            <label for="message_order_id">
+        <div class="my-4">
+            <label for="message_order_id" class="block">
                 {{lang 'forms.inbox.order' }}
                 <small>
                     {{lang 'common.required' }}
@@ -22,8 +22,8 @@
                 {{/each}}
             </select>
         </div>
-        <div>
-            <label for="message_subject">
+        <div class="my-4">
+            <label for="message_subject" class="block">
                 {{lang 'forms.inbox.subject' }}
                 <small>{{lang 'common.required' }}</small>
             </label>
@@ -34,8 +34,8 @@
                 id="message_subject"
             >
         </div>
-        <div>
-            <label for="message_content">
+        <div class="my-4">
+            <label for="message_content" class="block">
                 {{lang 'forms.inbox.message' }}
                 <small>
                     {{lang 'common.required' }}
@@ -43,14 +43,14 @@
             </label>
             <textarea class="js-form-input" name="message_content" id="message_content" rows="7"></textarea>
         </div>
-        <div>
-            <button class="c-button c-button--primary" type="submit">
+        <div class="my-4 flex items-center gap-4 ">
+            <button class="c-button c-button--primary border border-black py-1 px-3 cursor-pointer bg-black text-white hover:bg-transparent hover:text-black text-center" type="submit">
                 {{lang 'forms.inbox.submit_value' }}
             </button> 
-            <button>
+            <button class="border border-black py-1 px-3 cursor-pointer hover:bg-black hover:text-white  text-center">
                 {{lang 'forms.inbox.submit_value' }}
             </button>
-            <button class="c-button" type="reset">
+            <button class="c-button border border-black py-1 px-3 cursor-pointer hover:bg-black hover:text-white  text-center" type="reset">
                 {{lang 'forms.inbox.clear_value' }}
             </button> 
         </div>

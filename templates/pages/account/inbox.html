@@ -1,25 +1,26 @@
 {{#partial "page"}}
+<div class="shadow-inner py-4 max-w-desktop mx-auto p-4 my-8">
+    {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
 
-{{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
+    <h1 class="font-bold text-3xl py-4">
+        {{lang 'account.messages.heading' }}
+    </h1>
 
-<div>
-    {{lang 'account.messages.heading' }}
-</div>
+    {{> components/account/navigation account_page='messages'}}
 
-{{> components/account/navigation account_page='messages'}}
-
-<div>
     <div>
-        <section>
-            {{#if forms.inbox.error}}
-                {{> components/common/alert/alert-error forms.inbox.error}}
-            {{/if}}
-            {{#if forms.inbox.success}}
-                {{> components/common/alert/alert-success forms.inbox.success}}
-            {{/if}}
-            {{> components/account/messages-list messages=customer.inbox.messages}}
-            {{> components/account/messages-form}}
-        </section>
+        <div>
+            <section>
+                {{#if forms.inbox.error}}
+                    {{> components/common/alert/alert-error forms.inbox.error}}
+                {{/if}}
+                {{#if forms.inbox.success}}
+                    {{> components/common/alert/alert-success forms.inbox.success}}
+                {{/if}}
+                {{> components/account/messages-list messages=customer.inbox.messages}}
+                {{> components/account/messages-form}}
+            </section>
+        </div>
     </div>
 </div>
 

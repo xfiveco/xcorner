@@ -36,7 +36,7 @@
       "account_payment_methods_v2"
     ]
   },
-  "css_compiler": "scss",
+  "css_compiler": "css",
   "autoprefixer_cascade": true,
   "autoprefixer_browsers": [
     "> 1%",
