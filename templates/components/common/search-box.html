@@ -4,14 +4,14 @@
             <label class="u-hidden-visually" for="search_query_adv">
                 {{lang 'search.results.form_label'}}
             </label>
-            <div>
+            <div class="flex gap-3 items-center justify-center">
                 <input 
-                    class="js-form-input" 
+                    class="js-form-input focus:outline-double focus:outline-offset-2 focus:outline-black shadow-black" 
                     id="search_query_adv" 
                     name="search_query_adv" 
                     value="{{forms.search.query}}"
                 >
-                <button class="c-button c-button--primary" type="submit">
+                <button class="bg-black text-white hover:bg-white hover:text-black border-2 border-black px-3 py-2 text-center rounded-none focus:outline-double focus:outline-offset-2 focus:outline-black" type="submit">
                     {{lang 'search.results.form_button_text'}}
                 </button> 
             </div>

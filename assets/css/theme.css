@@ -859,6 +859,10 @@ select {
   top: 33.333333%;
 }
 
+.top-2 {
+  top: 0.5rem;
+}
+
 .top-4 {
   top: 1rem;
 }
@@ -869,10 +873,6 @@ select {
 
 .top-full {
   top: 100%;
-}
-
-.top-2 {
-  top: 0.5rem;
 }
 
 .z-10 {
@@ -961,6 +961,10 @@ select {
   margin-bottom: 2rem;
 }
 
+.mb-auto {
+  margin-bottom: auto;
+}
+
 .ml-2 {
   margin-left: 0.5rem;
 }
@@ -1015,10 +1019,6 @@ select {
 
 .mt-auto {
   margin-top: auto;
-}
-
-.mb-auto {
-  margin-bottom: auto;
 }
 
 .box-content {
@@ -1359,6 +1359,10 @@ select {
 
 .scroll-smooth {
   scroll-behavior: smooth;
+}
+
+.rounded-none {
+  border-radius: 0px;
 }
 
 .border {
@@ -1752,6 +1756,11 @@ select {
           box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 
+.shadow-black {
+  --tw-shadow-color: #000;
+  --tw-shadow: var(--tw-shadow-colored);
+}
+
 .shadow-current {
   --tw-shadow-color: currentColor;
   --tw-shadow: var(--tw-shadow-colored);
@@ -1897,6 +1906,11 @@ select {
   background-color: transparent;
 }
 
+.hover\:bg-white:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+}
+
 .hover\:text-black:hover {
   --tw-text-opacity: 1;
   color: rgb(0 0 0 / var(--tw-text-opacity));
@@ -1922,6 +1936,18 @@ select {
   --tw-backdrop-invert: invert(100%);
   -webkit-backdrop-filter: var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);
           backdrop-filter: var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);
+}
+
+.focus\:outline-double:focus {
+  outline-style: double;
+}
+
+.focus\:outline-offset-2:focus {
+  outline-offset: 2px;
+}
+
+.focus\:outline-black:focus {
+  outline-color: #000;
 }
 
 @media (min-width: 460px) {
@@ -2168,6 +2194,11 @@ select {
 
   .md\:text-right {
     text-align: right;
+  }
+
+  .md\:text-5xl {
+    font-size: 3rem;
+    line-height: 1;
   }
 
   .md\:backdrop-blur {
