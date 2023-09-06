@@ -1,6 +1,8 @@
 {{#partial "page"}}
-    {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
-    {{> components/blog/post post=blog.post show_tags=true is_blog_post=true}}
+    <div class="max-w-desktop px-2 md:px-4 my-4 mx-auto">
+        {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
+        {{> components/blog/post post=blog.post show_tags=true is_blog_post=true}}
+    </div>
 {{/partial}}
 
 {{> layout/base}}

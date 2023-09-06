@@ -15,10 +15,11 @@ blog:
 {{/partial}}
 
 {{#partial "page"}}
-    {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
-    <section>
+    <section class="max-w-4xl px-2 md:px-4 mx-auto my-8">
+        {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
+        
         {{#unless theme_settings.hide_blog_page_heading }}
-            <h1>
+            <h1 class="text-5xl my-6 text-center">
                 {{ blog.name }}
             </h1>
         {{/unless}}

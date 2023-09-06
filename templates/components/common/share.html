@@ -1,9 +1,9 @@
 {{#if settings.add_this.buttons}}
     {{assignVar 'encodedUrl' (encodeURI url)}}
     {{assignVar 'encodedTitle' (encodeURI head.title)}}
-    <ul class="o-list-bare flex gap-4 items-center mt-16">
+    <ul class="flex items-center mt-16 -mx-2 text-xl">
         {{#each settings.add_this.buttons}}
-            <li>
+            <li class="">
                 {{#if service '===' 'facebook'}}
                     <a
                         title="{{{capitalize service}}}"
@@ -11,14 +11,12 @@
                         target="_blank"
                         rel="noopener"
                         {{{annotation}}}
-                        class="hover:backdrop-invert"
+                        class="hover:text-sky-500 mx-2 block"
                     >
                         <span class="u-hidden-visually">
                             {{{capitalize service}}}
                         </span>
-                        <svg class="w-8 h-8">
-                            <use href="#icon-facebook"/>
-                        </svg>
+                        {{> components/common/icon name="facebook" }}
                     </a>
                 {{else if service '===' 'email'}}
                     <a
@@ -27,28 +25,24 @@
                         target="_self"
                         rel="noopener"
                         {{{annotation}}}
-                        class="hover:backdrop-invert"
+                        class="hover:text-sky-500 mx-2 block"
                     >
                         <span class="u-hidden-visually">
                             {{{capitalize service}}}
                         </span>
-                        <svg class="w-8 h-8">
-                            <use href="#icon-envelope"/>
-                        </svg>
+                        {{> components/common/icon name="envelope" }}
                     </a>
                 {{else if service '===' 'print'}}
                     <a
                         title="{{{capitalize service}}}"
                         onclick="window.print();return false;"
                         {{{annotation}}}
-                        class="hover:backdrop-invert"
+                        class="hover:text-sky-500 mx-2 block"
                     >
                         <span class="u-hidden-visually">
                             {{{capitalize service}}}
                         </span>
-                        <svg class="w-8 h-8">
-                            <use href="#icon-print"/>
-                        </svg>
+                        {{> components/common/icon name="print" }}
                     </a>
                 {{else if service '===' 'twitter'}}
                     <a
@@ -57,14 +51,12 @@
                         rel="noopener"
                         title="{{{capitalize service}}}"
                         {{{annotation}}}
-                        class="hover:backdrop-invert"
+                        class="hover:text-sky-500 mx-2 block"
                     >
                         <span class="u-hidden-visually">
                             {{{capitalize service}}}
                         </span>
-                        <svg class="w-8 h-8">
-                            <use href="#icon-twitter"/>
-                        </svg>
+                        {{> components/common/icon name="twitter" }}
                     </a>
                 {{else if service '===' 'linkedin'}}
                     <a
@@ -73,14 +65,12 @@
                         target="_blank"
                         rel="noopener"
                         {{{annotation}}}
-                        class="hover:backdrop-invert"
+                        class="hover:text-sky-500 mx-2 block"
                     >
                         <span class="u-hidden-visually">
                             {{{capitalize service}}}
                         </span>
-                        <svg class="w-8 h-8">
-                            <use href="#icon-linkedin"/>
-                        </svg>
+                        {{> components/common/icon name="linkedin" }}
                     </a>
                 {{else if service '===' 'pinterest'}}
                     <a
@@ -89,14 +79,12 @@
                         target="_blank"
                         rel="noopener"
                         {{{annotation}}}
-                        class="hover:backdrop-invert"
+                        class="hover:text-sky-500 mx-2 block"
                     >
                         <span class="u-hidden-visually">
                             {{{capitalize service}}}
                         </span>
-                        <svg class="w-8 h-8">
-                            <use href="#icon-pinterest"/>
-                        </svg>
+                        {{> components/common/icon name="pinterest" }}
                     </a>
                 {{/if}}
             </li>
