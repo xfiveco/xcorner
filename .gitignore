@@ -7,6 +7,7 @@ assets/css-artifacts
 assets/js/bundle.js
 assets/dist
 vendor/bundle
+coverage
 .bundle
 *.js.map
 *.zip
