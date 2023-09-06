@@ -2,3 +2,6 @@
 /assets/dist
 stencil.conf.js
 webpack.conf.js
+temp_scss
+widgets
+widget-builder

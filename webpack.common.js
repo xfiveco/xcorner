@@ -11,7 +11,14 @@ module.exports = {
     entry: {
         main: './assets/js/app.js',
     },
-    module: {},
+    module: {
+        rules: [
+            {
+                test: /\.(sass|css|scss)$/,
+                use: ['style-loader', 'css-loader', 'sass-loader'],
+            },
+        ],
+    },
     output: {
         chunkFilename: 'theme-bundle.chunk.[name].js',
         filename: 'theme-bundle.[name].js',

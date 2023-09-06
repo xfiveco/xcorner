@@ -1,6 +1,6 @@
 {
   "name": "X-Corner",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "template_engine": "handlebars_v4",
   "meta": {
     "price": 0,
@@ -36,7 +36,7 @@
       "account_payment_methods_v2"
     ]
   },
-  "css_compiler": "css",
+  "css_compiler": "scss",
   "autoprefixer_cascade": true,
   "autoprefixer_browsers": [
     "> 1%",
