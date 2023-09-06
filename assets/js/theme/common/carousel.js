@@ -50,7 +50,7 @@ export default function startSwiper(context) {
     const topCarousel = q$(selectors.swipers.top)
     const newCarousel = q$(selectors.swipers.new)
 
-    if (q$(selectors.home) !== null) {
+    if (q$(selectors.swipers.home) !== null) {
         const homeCarouselParams = {
             direction: 'horizontal',
             modules: [Navigation],
@@ -63,13 +63,13 @@ export default function startSwiper(context) {
                 delay: 3000,
             },
             navigation: {
-                nextEl: selectors.buttons.next,
-                prevEl: selectors.buttons.prev,
+                nextEl: q$(`${selectors.swipers.home} ${selectors.buttons.next}`),
+                prevEl: q$(`${selectors.swipers.home} ${selectors.buttons.prev}`),
             },
         }
 
         /* eslint-disable no-new */
-        new Swiper(selectors.home, homeCarouselParams)
+        new Swiper(selectors.swipers.home, homeCarouselParams)
     }
 
     const defaultParams = {
@@ -104,12 +104,12 @@ export default function startSwiper(context) {
     }
 
     if (featuredCarousel !== null) {
-        new Swiper(selectors.featured, Object.assign(defaultParams))
+        new Swiper(selectors.swipers.featured, Object.assign(defaultParams))
     }
 
     if (topCarousel !== null) {
         new Swiper(
-            selectors.top,
+            selectors.swipers.top,
             Object.assign(defaultParams, {
                 navigation: { ...getButtonsParams(topCarousel) },
             }),
@@ -118,7 +118,7 @@ export default function startSwiper(context) {
 
     if (newCarousel !== null) {
         new Swiper(
-            selectors.new,
+            selectors.swipers.new,
             Object.assign(defaultParams, {
                 navigation: { ...getButtonsParams(newCarousel) },
             }),
