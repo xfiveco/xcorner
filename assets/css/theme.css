@@ -871,6 +871,18 @@ select {
   top: 100%;
 }
 
+.top-0 {
+  top: 0px;
+}
+
+.right-2 {
+  right: 0.5rem;
+}
+
+.top-2 {
+  top: 0.5rem;
+}
+
 .z-10 {
   z-index: 10;
 }
@@ -1011,6 +1023,10 @@ select {
 
 .mt-auto {
   margin-top: auto;
+}
+
+.mb-auto {
+  margin-bottom: auto;
 }
 
 .box-content {
