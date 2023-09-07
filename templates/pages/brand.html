@@ -14,40 +14,44 @@ brand:
 {{/partial}}
 
 {{#partial "page"}}
-{{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
-{{#if brand.image}}
-    <div>
-        {{> components/common/image
-            image=brand.image
-            fallback_size=theme_settings.thumb_size
-        }}
-    </div>
-{{/if}}
-
-<h1>
-    {{brand.name}}
-</h1>
-
-{{{region name="brand_below_header"}}}
-
-<div>
-    <aside class="js-faceted-search-container">
-        {{> components/brand/sidebar}}
-    </aside>
-
-    <div class="js-product-listing-container">
-        {{#if brand.search_error }}
-            <p>{{lang 'search.errorMessage'}}</p>
-        {{else}}
-            {{#if brand.products}}
-                {{> components/brand/product-listing}}
-            {{else}}
-                <p>{{lang 'brands.no_products'}}</p>
-            {{/if}}
-            {{{region name="brand_below_content"}}}
+<section class="shadow-inner">
+    <div class="py-4 max-w-desktop mx-auto p-4 my-8">
+        {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
+        {{#if brand.image}}
+            <div>
+                {{> components/common/image
+                    image=brand.image
+                    fallback_size=theme_settings.thumb_size
+                }}
+            </div>
         {{/if}}
+
+        <h1 class="font-bold text-3xl py-4">
+            {{brand.name}}
+        </h1>
+
+        {{{region name="brand_below_header"}}}
+
+        <div class="my-8 flex flex-col md:flex-row gap-8">
+            <aside class="js-faceted-search-container md:w-72 shrink-0">
+                {{> components/brand/sidebar}}
+            </aside>
+
+            <div class="js-product-listing-container">
+                {{#if brand.search_error }}
+                    <p>{{lang 'search.errorMessage'}}</p>
+                {{else}}
+                    {{#if brand.products}}
+                        {{> components/brand/product-listing}}
+                    {{else}}
+                        <p>{{lang 'brands.no_products'}}</p>
+                    {{/if}}
+                    {{{region name="brand_below_content"}}}
+                {{/if}}
+            </div>
+        </div>
     </div>
-</div>
+</section>
 
 {{/partial}}
 {{> layout/base}}

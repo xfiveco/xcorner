@@ -1,14 +1,14 @@
 {{#partial "page"}}
-<h1>{{lang 'sitemap.page_title'}}</h1>
+<h1 class="font-bold text-3xl py-4">{{lang 'sitemap.page_title'}}</h1>
 
 <ul>
     {{#each sitemap}}
         <li>
-            <h2>{{label}}</h2>
+            <h2 class="font-bold mt-6 mb-4">{{label}}</h2>
             <ul>
                 {{#each body}}
                     <li>
-                        <a href="{{url}}">{{label}}</a>
+                        <a href="{{url}}" class="underline cursor-pointer">{{label}}</a>
                         {{#if children}}
                             <ul>
                             {{#each children}}
@@ -20,7 +20,7 @@
                 {{/each}}
                 {{#if show_all_link}}
                     <li>
-                        <a href="{{subsection_url}}">
+                        <a href="{{subsection_url}}" class="underline cursor-pointer">
                             {{lang 'sitemap.show_all_link'}}
                         </a>
                     </li>

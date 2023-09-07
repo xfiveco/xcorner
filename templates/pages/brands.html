@@ -4,41 +4,43 @@ brands:
 
 {{#partial "page"}}
 
-{{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
+<section class="shadow-inner">
+    <div class="py-4 max-w-desktop mx-auto p-4 my-8">
+        {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
 
-<section>
-    <h1>
-        {{lang 'brand.label'}}
-    </h1>
-    
-    {{{region name="brands_below_header"}}}
-    
-    <ul>
-        {{#each brands}}
-            <li>
-                <article>
-                    <figure>
-                        <a aria-label="{{name}}" href="{{url}}">
-                            <div>
-                                {{> components/common/image
-                                    image=image
-                                    class="card-image"
-                                    fallback_size=../theme_settings.brand_size
-                                    default_image=../theme_settings.default_image_brand
-                                }}
-                            </div>
-                        </a>
-                    </figure>
-                    <div>
-                        <a href="{{url}}">{{name}}</a>
-                    </div>
-                </article>
-            </li>
-        {{/each}}
-    </ul>
-    {{> components/common/paginator pagination.brands}}
+        <h1 class="font-bold text-3xl py-4">
+            {{lang 'brand.label'}}
+        </h1>
+        
+        {{{region name="brands_below_header"}}}
+        
+        <ul class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8">
+            {{#each brands}}
+                <li>
+                    <article class="text-center">
+                        <figure class="mb-4">
+                            <a aria-label="{{name}}" href="{{url}}">
+                                <div class="flex justify-center">
+                                    {{> components/common/image
+                                        image=image
+                                        class="card-image"
+                                        fallback_size=../theme_settings.brand_size
+                                        default_image=../theme_settings.default_image_brand
+                                    }}
+                                </div>
+                            </a>
+                        </figure>
+                        <div>
+                            <a href="{{url}}">{{name}}</a>
+                        </div>
+                    </article>
+                </li>
+            {{/each}}
+        </ul>
+        {{> components/common/paginator pagination.brands}}
 
-    {{{region name="brands_below_content"}}}
+        {{{region name="brands_below_content"}}}
+    </div>
 </section>
 {{/partial}}
 {{> layout/base}}

@@ -1,207 +1,212 @@
 {{#partial "page"}}
-{{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
+<section class="shadow-inner">
+    <div class="py-4 max-w-desktop mx-auto p-4 my-8">
+        {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
 
-<h1>
-    {{lang 'gift_certificate.heading' }}
-</h1>
+        <h1 class="font-bold text-3xl py-4">
+            {{lang 'gift_certificate.heading' }}
+        </h1>
 
-{{> components/gift-certificate/navigation gift_page='purchase'}}
+        {{> components/gift-certificate/navigation gift_page='purchase'}}
 
-<div>
-    {{#each forms.gift_certificate.errors}}
-        {{> components/common/alert/alert-error this}}
-    {{/each}}
+        <div class="mt-8">
+            {{#each forms.gift_certificate.errors}}
+                {{> components/common/alert/alert-error this}}
+            {{/each}}
 
-    <form method="post" class="js-gift-certificate-form" action="{{forms.gift_certificate.action}}">
-        {{#if forms.gift_certificate.cart_item_id}}
-            <input type="hidden" name="cartitemid" value="{{forms.gift_certificate.cart_item_id}}">
-        {{/if}}
+            <form method="post" class="js-gift-certificate-form md:max-w-1/3" action="{{forms.gift_certificate.action}}">
+                {{#if forms.gift_certificate.cart_item_id}}
+                    <input type="hidden" name="cartitemid" value="{{forms.gift_certificate.cart_item_id}}">
+                {{/if}}
 
-        <div>
-            <div class="js-form-field">
-                <label for="from_name">
-                    {{lang 'forms.gift_certificate.purchase.from_name' }}
-                    <small>
-                        {{lang 'common.required' }}
-                    </small>
-                </label>
-                <input 
-                    type="text" 
-                    class="js-form-input" 
-                    name="from_name" 
-                    id="from_name" 
-                    value="{{forms.gift_certificate.values.from_name}}"
-                >
-            </div>
-            <div class="js-form-field">
-                <label for="from_email">
-                    {{lang 'forms.gift_certificate.purchase.from_email' }}
-                    <small>
-                        {{lang 'common.required' }}
-                    </small>
-                </label>
-                <input 
-                    type="text" 
-                    class="js-form-input" 
-                    name="from_email" 
-                    id="from_email" 
-                    value="{{forms.gift_certificate.values.from_email}}"
-                >
-            </div>
-        </div>
-        <div>
-            <div class="js-form-field">
-                <label for="to_name">
-                    {{lang 'forms.gift_certificate.purchase.to_name' }}
-                    <small>
-                        {{lang 'common.required' }}
-                    </small>
-                </label>
-                <input 
-                    type="text" 
-                    class="js-form-input" 
-                    name="to_name" 
-                    id="to_name" 
-                    value="{{forms.gift_certificate.values.to_name}}"
-                >
-            </div>
-            <div class="js-form-field">
-                <label for="to_email">
-                    {{lang 'forms.gift_certificate.purchase.to_email' }}
-                    <small>
-                        {{lang 'common.required' }}
-                    </small>
-                </label>
-                <input 
-                    type="text" 
-                    class="js-form-input" 
-                    name="to_email" 
-                    id="to_email" 
-                    value="{{forms.gift_certificate.values.to_email}}"
-                >
-            </div>
-        </div>
-        <div>
-            <fieldset class="js-form-fieldset">
-                {{#if forms.gift_certificate.can_use_custom_amount }}
+                <div class="my-6">
                     <div class="js-form-field">
-                        <label for="certificate_amount">
-                            {{lang 'forms.gift_certificate.purchase.amount' }}
+                        <label for="from_name">
+                            {{lang 'forms.gift_certificate.purchase.from_name' }}
                             <small>
                                 {{lang 'common.required' }}
                             </small>
                         </label>
                         <input 
                             type="text" 
-                            data-min="{{forms.gift_certificate.minimum.value}}" 
-                            data-max="{{forms.gift_certificate.maximum.value}}" 
-                            data-min-formatted="{{forms.gift_certificate.minimum.formatted}}" 
-                            data-max-formatted="{{forms.gift_certificate.maximum.formatted}}" 
-                            class="js-form-input" 
-                            name="certificate_amount" 
-                            id="certificate_amount" 
-                            value="{{forms.gift_certificate.values.amount.value}}"
+                            class="js-form-input w-full my-2" 
+                            name="from_name" 
+                            id="from_name" 
+                            value="{{forms.gift_certificate.values.from_name}}"
                         >
                     </div>
-                {{else}}
                     <div class="js-form-field">
-                        <label for="selected_amount">
-                            {{lang 'forms.gift_certificate.purchase.amount' }}
+                        <label for="from_email">
+                            {{lang 'forms.gift_certificate.purchase.from_email' }}
                             <small>
                                 {{lang 'common.required' }}
                             </small>
                         </label>
-                        <select name="selected_amount" id="selected_amount">
-                            {{#each forms.gift_certificate.amount_options}}
-                                <option value="{{value}}">
-                                    {{formatted}}
-                                </option>
-                            {{/each}}
-                        </select>
-                    </div>
-                {{/if}}
-                {{#if forms.gift_certificate.expires_in_days }}
-                    <div class="js-form-field">
-                        <input type="checkbox" name="agree" id="agree">
-                        <label for="agree">
-                            {{lang 'forms.gift_certificate.purchase.agree' days=forms.gift_certificate.expires_in_days}}
-                        </label>
-                    </div>
-                {{/if}}
-                <div class="js-form-field">
-                    <input 
-                        type="checkbox"
-                        name="agree2" 
-                        id="agree2"
-                        {{#if forms.gift_certificate.editing}} 
-                            checked
-                        {{/if}}
-                    >
-                    <label for="agree2">
-                        {{lang 'forms.gift_certificate.purchase.agree2' }}
-                    </label>
-                </div>
-            </fieldset>
-            <fieldset class="js-form-fieldset">
-                <div class="js-form-field">
-                    <label for="message">
-                        {{lang 'forms.gift_certificate.purchase.message' }}
-                    </label>
-                    <textarea class="js-form-input" name="message" id="message" rows="8" >
-                        {{forms.gift_certificate.values.message}}
-                    </textarea>
-                </div>
-                <label>
-                    {{lang 'forms.gift_certificate.purchase.theme' }}
-                    <small>
-                        {{lang 'common.required' }}
-                    </small>
-                </label>
-                <div class="js-form-field">
-                    {{#each forms.gift_certificate.themes}}
                         <input 
-                            type="radio" 
-                            name="certificate_theme" 
-                            id="theme_{{this.value}}" 
-                            value="{{this.value}}"
-                            {{#if this.value '==' ../forms.gift_certificate.values.theme}} 
-                                checked
-                            {{/if}}
+                            type="text" 
+                            class="js-form-input w-full my-2" 
+                            name="from_email" 
+                            id="from_email" 
+                            value="{{forms.gift_certificate.values.from_email}}"
                         >
-                        <label for="theme_{{this.value}}">
-                            {{this.display}}
-                        </label>
-                    {{/each}}
+                    </div>
                 </div>
-            </fieldset>
-        </div>
-        <div>
-            {{inject 'previewError' (lang 'forms.gift_certificate.purchase.preview_error')}}
-            {{inject 'enterAmount' (lang 'forms.validate.gift.amount')}}
-            {{inject 'toName' (lang 'forms.validate.gift.to_name')}}
-            {{inject 'toEmail' (lang 'forms.validate.gift.to_email')}}
-            {{inject 'fromName' (lang 'forms.validate.gift.from_name')}}
-            {{inject 'fromEmail' (lang 'forms.validate.gift.from_email')}}
-            {{inject 'certTheme' (lang 'forms.validate.gift.cert_theme')}}
-            {{inject 'agreeToTerms' (lang 'forms.validate.gift.agree_terms')}}
-            <button
-                id="gift-certificate-preview"
-                class="c-button"
-                type="submit"
-                data-preview-url="{{forms.gift_certificate.preview}}"
-            >
-                {{lang 'forms.gift_certificate.purchase.preview' }}
-            </button>
+                <div class="my-6">
+                    <div class="js-form-field">
+                        <label for="to_name">
+                            {{lang 'forms.gift_certificate.purchase.to_name' }}
+                            <small>
+                                {{lang 'common.required' }}
+                            </small>
+                        </label>
+                        <input 
+                            type="text" 
+                            class="js-form-input w-full my-2" 
+                            name="to_name" 
+                            id="to_name" 
+                            value="{{forms.gift_certificate.values.to_name}}"
+                        >
+                    </div>
+                    <div class="js-form-field">
+                        <label for="to_email">
+                            {{lang 'forms.gift_certificate.purchase.to_email' }}
+                            <small>
+                                {{lang 'common.required' }}
+                            </small>
+                        </label>
+                        <input 
+                            type="text" 
+                            class="js-form-input w-full my-2" 
+                            name="to_email" 
+                            id="to_email" 
+                            value="{{forms.gift_certificate.values.to_email}}"
+                        >
+                    </div>
+                </div>
+                <div class="my-6">
+                    <fieldset class="js-form-fieldset">
+                        {{#if forms.gift_certificate.can_use_custom_amount }}
+                            <div class="js-form-field">
+                                <label for="certificate_amount">
+                                    {{lang 'forms.gift_certificate.purchase.amount' }}
+                                    <small>
+                                        {{lang 'common.required' }}
+                                    </small>
+                                </label>
+                                <input 
+                                    type="text" 
+                                    data-min="{{forms.gift_certificate.minimum.value}}" 
+                                    data-max="{{forms.gift_certificate.maximum.value}}" 
+                                    data-min-formatted="{{forms.gift_certificate.minimum.formatted}}" 
+                                    data-max-formatted="{{forms.gift_certificate.maximum.formatted}}" 
+                                    class="js-form-input w-full my-2" 
+                                    name="certificate_amount" 
+                                    id="certificate_amount" 
+                                    value="{{forms.gift_certificate.values.amount.value}}"
+                                >
+                            </div>
+                        {{else}}
+                            <div class="js-form-field">
+                                <label for="selected_amount">
+                                    {{lang 'forms.gift_certificate.purchase.amount' }}
+                                    <small>
+                                        {{lang 'common.required' }}
+                                    </small>
+                                </label>
+                                <select name="selected_amount" id="selected_amount" class="w-full my-2">
+                                    {{#each forms.gift_certificate.amount_options}}
+                                        <option value="{{value}}">
+                                            {{formatted}}
+                                        </option>
+                                    {{/each}}
+                                </select>
+                            </div>
+                        {{/if}}
+                        {{#if forms.gift_certificate.expires_in_days }}
+                            <div class="js-form-field my-2">
+                                <input type="checkbox" name="agree" id="agree">
+                                <label for="agree">
+                                    {{lang 'forms.gift_certificate.purchase.agree' days=forms.gift_certificate.expires_in_days}}
+                                </label>
+                            </div>
+                        {{/if}}
+                        <div class="js-form-field my-2">
+                            <input 
+                                type="checkbox"
+                                name="agree2" 
+                                id="agree2"
+                                {{#if forms.gift_certificate.editing}} 
+                                    checked
+                                {{/if}}
+                            >
+                            <label for="agree2">
+                                {{lang 'forms.gift_certificate.purchase.agree2' }}
+                            </label>
+                        </div>
+                    </fieldset>
+                    <fieldset class="js-form-fieldset">
+                        <div class="js-form-field">
+                            <label for="message">
+                                {{lang 'forms.gift_certificate.purchase.message' }}
+                            </label>
+                            <textarea class="js-form-input w-full my-2" name="message" id="message" rows="8" >
+                                {{forms.gift_certificate.values.message}}
+                            </textarea>
+                        </div>
+                        <label>
+                            {{lang 'forms.gift_certificate.purchase.theme' }}
+                            <small>
+                                {{lang 'common.required' }}
+                            </small>
+                        </label>
+                        <div class="js-form-field flex flex-col md:flex-row gap-4">
+                            {{#each forms.gift_certificate.themes}}
+                                <input 
+                                    type="radio" 
+                                    name="certificate_theme" 
+                                    id="theme_{{this.value}}" 
+                                    value="{{this.value}}"
+                                    {{#if this.value '==' ../forms.gift_certificate.values.theme}} 
+                                        checked
+                                    {{/if}}
+                                >
+                                <label for="theme_{{this.value}}">
+                                    {{this.display}}
+                                </label>
+                            {{/each}}
+                        </div>
+                    </fieldset>
+                </div>
+                <div class="flex flex-col md:flex-row gap-4 my-4">
+                    {{inject 'previewError' (lang 'forms.gift_certificate.purchase.preview_error')}}
+                    {{inject 'enterAmount' (lang 'forms.validate.gift.amount')}}
+                    {{inject 'toName' (lang 'forms.validate.gift.to_name')}}
+                    {{inject 'toEmail' (lang 'forms.validate.gift.to_email')}}
+                    {{inject 'fromName' (lang 'forms.validate.gift.from_name')}}
+                    {{inject 'fromEmail' (lang 'forms.validate.gift.from_email')}}
+                    {{inject 'certTheme' (lang 'forms.validate.gift.cert_theme')}}
+                    {{inject 'agreeToTerms' (lang 'forms.validate.gift.agree_terms')}}
+                    <button
+                        id="gift-certificate-preview"
+                        class="c-button border border-black py-1 px-3 cursor-pointer bg-black text-white hover:bg-transparent hover:text-black text-center"
+                        type="submit"
+                        data-preview-url="{{forms.gift_certificate.preview}}"
+                    >
+                        {{lang 'forms.gift_certificate.purchase.preview' }}
+                    </button>
 
-            <button
-                id="gift-certificate-submit"
-                class="c-button c-button--primary"
-                type="submit"
-            >
-                {{lang 'forms.gift_certificate.purchase.submit_value' }}
-            </button>
+                    <button
+                        id="gift-certificate-submit"
+                        class="c-button c-button--primary border border-black py-1 px-3 cursor-pointer bg-black text-white hover:bg-transparent hover:text-black text-center"
+                        type="submit"
+                    >
+                        {{lang 'forms.gift_certificate.purchase.submit_value' }}
+                    </button>
+                </div>
+            </form>
         </div>
-    </form>
-</div>
+    </div>
+</section>
+
 {{/partial}}
 {{> layout/base}}

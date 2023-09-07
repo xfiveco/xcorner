@@ -15,61 +15,63 @@ category:
 {{/partial}}
 
 {{#partial "page"}}
-<div class="shadow-inner py-4 max-w-desktop mx-auto p-4 my-8 relative">
-    {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
+<div class="shadow-inner">
+    <div class="py-4 max-w-desktop mx-auto p-4 my-8 relative">
+        {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
 
-    <div class="flex flex-col-reverse md:grid md:grid-cols-2 md:gap-10 my-10">
-        <div class="u-container shrink-0">
-            {{#unless theme_settings.hide_category_page_heading }}
-                <h1 class="font-bold text-3xl py-4">{{category.name}}</h1>
-                {{{region name="category_below_header"}}}
-            {{/unless}}
+        <div class="flex flex-col-reverse md:grid md:grid-cols-2 md:gap-10 my-10">
+            <div class="u-container shrink-0">
+                {{#unless theme_settings.hide_category_page_heading }}
+                    <h1 class="font-bold text-3xl py-4">{{category.name}}</h1>
+                    {{{region name="category_below_header"}}}
+                {{/unless}}
 
-            {{{category.description}}}
+                {{{category.description}}}
+            </div>
+
+            {{#if category.image}}
+                <div class="md:pt-6">
+                    {{> components/common/image
+                        image=category.image
+                        fallback_size=theme_settings.zoom_size
+                        class="category-header-image w-full object-cover max-h-[500px]"
+                    }}
+                </div>
+            {{/if}}
         </div>
 
-        {{#if category.image}}
-            <div class="md:pt-6">
-                {{> components/common/image
-                    image=category.image
-                    fallback_size=theme_settings.zoom_size
-                    class="category-header-image w-full object-cover max-h-[500px]"
-                }}
-            </div>
-        {{/if}}
-    </div>
-
-    <div class="c-category flex flex-col md:flex-row gap-8">
-        {{#if category.faceted_search_enabled}}
-            <aside class="js-faceted-search-container md:w-72 shrink-0">
-                {{> components/category/sidebar}}
-            </aside>
-        {{else if category.subcategories}}
-            <aside class="js-faceted-search-container md:w-72 shrink-0">
-                {{> components/category/sidebar}}
-            </aside>
-        {{else if category.shop_by_price}}
-            {{#if theme_settings.shop_by_price_visibility}}
+        <div class="c-category flex flex-col md:flex-row gap-8">
+            {{#if category.faceted_search_enabled}}
                 <aside class="js-faceted-search-container md:w-72 shrink-0">
                     {{> components/category/sidebar}}
                 </aside>
             {{else if category.subcategories}}
-                <aside class="md:w-72 shrink-0">
+                <aside class="js-faceted-search-container md:w-72 shrink-0">
                     {{> components/category/sidebar}}
                 </aside>
             {{else if category.shop_by_price}}
                 {{#if theme_settings.shop_by_price_visibility}}
+                    <aside class="js-faceted-search-container md:w-72 shrink-0">
+                        {{> components/category/sidebar}}
+                    </aside>
+                {{else if category.subcategories}}
                     <aside class="md:w-72 shrink-0">
                         {{> components/category/sidebar}}
                     </aside>
+                {{else if category.shop_by_price}}
+                    {{#if theme_settings.shop_by_price_visibility}}
+                        <aside class="md:w-72 shrink-0">
+                            {{> components/category/sidebar}}
+                        </aside>
+                    {{/if}}
                 {{/if}}
             {{/if}}
-        {{/if}}
 
-        <div class="js-product-listing-container">
-            {{> components/category/product-listing}}
-        
-            {{{region name="category_below_content"}}}
+            <div class="js-product-listing-container">
+                {{> components/category/product-listing}}
+            
+                {{{region name="category_below_content"}}}
+            </div>
         </div>
     </div>
 </div>

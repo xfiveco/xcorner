@@ -1,27 +1,31 @@
 {{#partial "page"}}
-{{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
+<section class="shadow-inner">
+    <div class="py-4 max-w-desktop mx-auto p-4 my-8">
+        {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
 
-<h1>
-    {{lang 'gift_certificate.heading' }}
-</h1>
+        <h1 class="font-bold text-3xl py-4">
+            {{lang 'gift_certificate.heading' }}
+        </h1>
 
-{{> components/gift-certificate/navigation gift_page='redeem'}}
+        {{> components/gift-certificate/navigation gift_page='redeem'}}
 
-<div>
-    <div>
-        {{lang 'gift_certificate.redeem.heading'}}
+        <div>
+            <div>
+                {{lang 'gift_certificate.redeem.heading'}}
+            </div>
+
+            <p>
+                <strong>{{lang 'gift_certificate.redeem.intro' store_name=settings.store_name }}</strong>
+            </p>
+            
+            <ol>
+                <li>{{lang 'gift_certificate.redeem.item1' }}</li>
+                <li>{{lang 'gift_certificate.redeem.item2' }}</li>
+                <li>{{{lang 'gift_certificate.redeem.item3' cart_url=urls.cart }}}</li>
+                <li>{{lang 'gift_certificate.redeem.item4' }}</li>
+            </ol>
+        </div>
     </div>
-
-    <p>
-        <strong>{{lang 'gift_certificate.redeem.intro' store_name=settings.store_name }}</strong>
-    </p>
-    
-    <ol>
-        <li>{{lang 'gift_certificate.redeem.item1' }}</li>
-        <li>{{lang 'gift_certificate.redeem.item2' }}</li>
-        <li>{{{lang 'gift_certificate.redeem.item3' cart_url=urls.cart }}}</li>
-        <li>{{lang 'gift_certificate.redeem.item4' }}</li>
-    </ol>
-</div>
+</section>
 {{/partial}}
 {{> layout/base}}

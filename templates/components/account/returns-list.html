@@ -1,8 +1,8 @@
-<div>
+<div class="font-bold">
     {{lang 'account.returns.heading'}}
 </div>
 
-<ul>
+<ul class="grid grid-cols-2 md:grid-cols-4 gap-4">
     {{#each returns}}
         <li class="js-account-list-item">
             <div>
@@ -44,15 +44,15 @@
                     {{/if}}
                 </div>
 
-                <div>
+                <div class="mt-2">
                     {{lang 'account.returns.list.return_number' id=id}}
                 </div>
                 <div>
-                    {{lang 'account.returns.list.product_details' num_products=quantity}} <a href="{{product.url}}">{{product.name}}</a>
+                    {{lang 'account.returns.list.product_details' num_products=quantity}} <a href="{{product.url}}" class="underline">{{product.name}}</a>
                 </div>
 
                 {{#if product.options}}
-                    <dl>
+                    <dl class="grid grid-cols-2 gap-2 md:w-1/3">
                         {{#each product.options}}
                             <dt>
                                 {{name}}:
@@ -65,7 +65,7 @@
                 {{/if}}
 
                 <div>
-                    <div>
+                    <div class="flex gap-2">
                         <div>
                             {{lang 'account.returns.date_requested'}}
                         </div>
@@ -73,7 +73,7 @@
                             {{date_requested}}
                         </span>
                     </div>
-                    <div>
+                    <div class="flex gap-2">
                         <div>
                             {{lang 'account.returns.action'}}
                         </div>
@@ -81,14 +81,14 @@
                             {{action}}
                         </span>
                     </div>
-                    <div>
+                    <div class="flex gap-2">
                         <div>
                             {{lang 'account.returns.reason'}}
                         </div>
                         <span>{{reason}}</span>
                     </div>
                     {{#if comments}}
-                        <div>
+                        <div class="flex gap-2">
                             <div>
                                 {{lang 'account.returns.comments'}}
                             </div>

@@ -1,51 +1,54 @@
 {{#partial "page"}}
+<section class="shadow-inner">
+    <div class="py-4 max-w-desktop mx-auto p-4 my-8">
+        {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
 
-{{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
+        <h1 class="font-bold text-3xl py-4">
+            {{lang 'gift_certificate.heading' }}
+        </h1>
 
-<h1>
-    {{lang 'gift_certificate.heading' }}
-</h1>
+        {{> components/gift-certificate/navigation gift_page='balance'}}
 
-{{> components/gift-certificate/navigation gift_page='balance'}}
-
-<div>
-    <div>
-        {{lang 'gift_certificate.balance.heading'}}
-    </div>
-
-    <p>
-        <strong>{{lang 'gift_certificate.balance.intro' }}</strong>
-    </p>
-
-    {{#if gift_certificate}}
-        {{#if gift_certificate.error}}
-            {{> components/common/alert/alert-error gift_certificate.error}}
-        {{else}}
+        <div class="mt-8">
             <div>
-                {{gift_certificate.balance.formatted}}
+                {{lang 'gift_certificate.balance.heading'}}
             </div>
-            
-            <div>
-                {{gift_certificate.code}}
-            </div>
-        {{/if}}
-    {{/if}}
 
-    <form id="gift-certificate-balance" method="get">
-        <input type="hidden" name="action" value="balance">
-        <div class="js-form-field">
-            <label for="giftcertificatecode">
-                {{lang 'forms.gift_certificate.balance.code' }}
-            </label>
-            <div>
-                <input class="js-form-input" id="giftcertificatecode" name="giftcertificatecode">
-                
-                <button type="submit" class="c-button c-button--primary">
-                    {{lang 'forms.gift_certificate.balance.submit_value' }}
-                </button> 
-            </div>
+            <p>
+                <strong>{{lang 'gift_certificate.balance.intro' }}</strong>
+            </p>
+
+            {{#if gift_certificate}}
+                {{#if gift_certificate.error}}
+                    {{> components/common/alert/alert-error gift_certificate.error}}
+                {{else}}
+                    <div>
+                        {{gift_certificate.balance.formatted}}
+                    </div>
+                    
+                    <div>
+                        {{gift_certificate.code}}
+                    </div>
+                {{/if}}
+            {{/if}}
+
+            <form id="gift-certificate-balance" method="get" class="my-8 md:max-w-1/3">
+                <input type="hidden" name="action" value="balance">
+                <div class="js-form-field">
+                    <label for="giftcertificatecode">
+                        {{lang 'forms.gift_certificate.balance.code' }}
+                    </label>
+                    <div>
+                        <input class="js-form-input w-full my-2" id="giftcertificatecode" name="giftcertificatecode">
+                        
+                        <button type="submit" class="c-button c-button--primary border border-black py-1 px-3 cursor-pointer bg-black text-white hover:bg-transparent hover:text-black text-center">
+                            {{lang 'forms.gift_certificate.balance.submit_value' }}
+                        </button> 
+                    </div>
+                </div>
+            </form>
         </div>
-    </form>
-</div>
+    </div>
+</section>
 {{/partial}}
 {{> layout/base}}

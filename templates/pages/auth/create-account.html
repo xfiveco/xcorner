@@ -1,7 +1,8 @@
 {{inject 'passwordRequirements' settings.password_requirements}}
 {{inject 'recaptchaTitle' (lang 'create_account.recaptcha_title')}}
 {{#partial "page"}}
-    <div class="shadow-inner py-4 max-w-desktop mx-auto p-4 my-8">
+<div class="shadow-inner">
+    <div class="py-4 max-w-desktop mx-auto p-4 my-8">
         {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
 
         <h1 class="font-bold text-3xl py-4">
@@ -38,5 +39,6 @@
             {{/if}}
         </div>
     </div>
+</div>
 {{/partial}}
 {{> layout/base}}
