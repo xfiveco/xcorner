@@ -2,187 +2,197 @@
 {{inject 'comparisons' comparisons}}
 {{inject 'compareRemoveMessage' (lang 'compare.no_remove')}}
 
-{{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
+<div class="shadow-inner py-4 max-w-desktop mx-auto p-4 my-8">
+    {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
 
-<h1>
-    {{lang 'compare.header' products=comparisons.length}}
-</h1>
+    <h1 class="font-bold text-3xl py-4">
+        {{lang 'compare.header' products=comparisons.length}}
+    </h1>
 
-<div>
     <div>
-        {{#each comparisons}}
-            <div>
-                <article>
-                    <figure>
-                        <a 
-                            aria-label="{{name}}" 
-                            href="{{url}}" 
-                            {{#if settings.data_tag_enabled}} 
-                                data-event-type="product-click" 
-                            {{/if}}
-                        >
-                            <div>
-                                {{> components/common/image
-                                    image=image
-                                    fallback_size=../theme_settings.product_size
-                                    default_image=../theme_settings.default_image_product
-                                }}
-                            </div>
-                        </a>
-                        <a 
-                            class="js-comparison-remove" 
-                            href="{{#if remove_url}}{{remove_url}}{{else}}#{{/if}}"
-                        >
-                            <svg>
-                                <use href="#icon-close"></use>
-                            </svg>
-                        </a>
-                    </figure>
-                    <div>
-                        {{#if brand.name}}
-                            <p>
-                                <a href="{{brand.url}}">
-                                    {{ brand.name }}
-                                </a>
-                            </p>
-                        {{/if}}
-                        <div>
-                            <a href="{{url}}">
-                                {{ name }}
+        <div class="grid md:grid-cols-4 gap-4 mt-8 mb-4">
+            {{#each comparisons}}
+                <div class="shadow-md">
+                    <article class="relative flex flex-col h-full">
+                        <figure>
+                            <a 
+                                aria-label="{{name}}" 
+                                href="{{url}}" 
+                                {{#if settings.data_tag_enabled}} 
+                                    data-event-type="product-click" 
+                                {{/if}}
+                            >
+                                <div>
+                                    {{> components/common/image
+                                        image=image
+                                        fallback_size=../theme_settings.product_size
+                                        default_image=../theme_settings.default_image_product
+                                    }}
+                                </div>
                             </a>
-                        </div>
-                        {{#or ../customer (unless ../settings.hide_price_from_guests)}}
-                            {{#if price_range}}
-                                {{> components/products/price-range}}
-                            {{else}}
-                                {{> components/products/price price=price}}
+                            <a 
+                                class="js-comparison-remove absolute top-2 right-4 cursor-pointer" 
+                                href="{{#if remove_url}}{{get 'pathname' (urlParse remove_url)}}{{else}}#{{/if}}"
+                            >
+                                <svg class="w-4 h-4">
+                                    <use href="#icon-close"></use>
+                                </svg>
+                            </a>
+                        </figure>
+                        <div class="flex flex-col p-4 grow">
+                            {{#if brand.name}}
+                                <p>
+                                    <a href="{{brand.url}}">
+                                        {{ brand.name }}
+                                    </a>
+                                </p>
                             {{/if}}
-                        {{else}}
-                            {{> components/common/login-for-pricing}}
-                        {{/or}}
-                    </div>
-                </article>
-            </div>
-        {{/each}}
-    </div>
-    <div>
-        {{#each comparisons}}
-            <div>
-                {{#if show_cart_action}}
-                    {{#if has_options}}
-                        <a 
-                            href="{{url}}" 
-                            {{#if settings.data_tag_enabled}} 
-                                data-event-type="product-click" 
-                            {{/if}} 
-                            class="c-button c-button--primary" 
-                            data-product-id="{{id}}"
-                        >
-                            {{lang 'products.choose_options'}}
-                        </a>
-                    {{/if}}
-                    {{#if pre_order}}
-                        <a 
-                            href="{{url}}" 
-                            {{#if settings.data_tag_enabled}} 
-                                data-event-type="product-click" 
-                            {{/if}} 
-                            class="c-button c-button--primary" 
-                            data-product-id="{{id}}"
-                        >
-                            {{lang 'products.pre_order'}}
-                        </a>
-                    {{/if}}
-                    {{#if add_to_cart_url}}
-                        <a 
-                            href="{{add_to_cart_url}}" 
-                            {{#if settings.data_tag_enabled}} 
-                                data-event-type="product-click" 
-                            {{/if}} 
-                            class="c-button c-button--primary" 
-                            data-product-id="{{id}}"
-                        >
-                            {{lang 'products.add_to_cart'}}
-                        </a>
-                    {{/if}}
-                    {{#if out_of_stock_message}}
-                        <a href="{{url}}" class="c-button c-button--primary" data-product-id="{{id}}">
-                            {{out_of_stock_message}}
-                        </a>
-                    {{/if}}
-                {{/if}}
-            </div>
-        {{/each}}
-    </div>
-    <div>
-        <div>
-            <span>
-                {{lang 'products.description'}}
-            </span>
+                            <div class="mb-auto">
+                                <a href="{{url}}">
+                                    {{ name }}
+                                </a>
+                            </div>
+                            {{#or ../customer (unless ../settings.hide_price_from_guests)}}
+                                {{#if price_range}}
+                                    {{> components/products/price-range}}
+                                {{else}}
+                                    {{> components/products/price price=price}}
+                                {{/if}}
+                            {{else}}
+                                {{> components/common/login-for-pricing}}
+                            {{/or}}
+                        </div>
+                    </article>
+                </div>
+            {{/each}}
         </div>
-        {{#each comparisons}}
-            <div>
-                {{{ summary }}}
-            </div>
-        {{/each}}
-    </div>
-
-    {{#if settings.show_product_rating}}
-        <div>
-            <div>
-                <span>
-                    {{lang 'products.reviews.rating_label'}}
-                </span>
-            </div>
+        <div class="grid md:grid-cols-4 gap-4 my-4">
             {{#each comparisons}}
                 <div>
-                    {{#if rating}}
-                        {{> components/products/ratings rating=rating}}
-                    {{else}}
-                        {{lang 'products.reviews.no_reviews'}}
+                    {{#if show_cart_action}}
+                        {{#if has_options}}
+                            <a 
+                                href="{{url}}" 
+                                {{#if settings.data_tag_enabled}} 
+                                    data-event-type="product-click" 
+                                {{/if}} 
+                                class="c-button c-button--primary button--large border border-black py-1 px-3 cursor-pointer bg-black text-white hover:bg-transparent hover:text-black text-center" 
+                                data-product-id="{{id}}"
+                            >
+                                {{lang 'products.choose_options'}}
+                            </a>
+                        {{/if}}
+                        {{#if pre_order}}
+                            <a 
+                                href="{{url}}" 
+                                {{#if settings.data_tag_enabled}} 
+                                    data-event-type="product-click" 
+                                {{/if}} 
+                                class="c-button c-button--primary button--large border border-black py-1 px-3 cursor-pointer bg-black text-white hover:bg-transparent hover:text-black text-center" 
+                                data-product-id="{{id}}"
+                            >
+                                {{lang 'products.pre_order'}}
+                            </a>
+                        {{/if}}
+                        {{#if add_to_cart_url}}
+                            <a 
+                                href="{{add_to_cart_url}}" 
+                                {{#if settings.data_tag_enabled}} 
+                                    data-event-type="product-click" 
+                                {{/if}} 
+                                class="c-button c-button--primary button--large border border-black py-1 px-3 cursor-pointer bg-black text-white hover:bg-transparent hover:text-black text-center" 
+                                data-product-id="{{id}}"
+                            >
+                                {{lang 'products.add_to_cart'}}
+                            </a>
+                        {{/if}}
+                        {{#if out_of_stock_message}}
+                            <a href="{{url}}" class="c-button c-button--primary button--large border border-black py-1 px-3 cursor-pointer bg-black text-white hover:bg-transparent hover:text-black text-center" data-product-id="{{id}}">
+                                {{out_of_stock_message}}
+                            </a>
+                        {{/if}}
                     {{/if}}
                 </div>
             {{/each}}
         </div>
-    {{/if}}
+        <div class="my-4">
+            <div class="font-bold">
+                <span>
+                    {{lang 'products.description'}}
+                </span>
+            </div>
+            <div class="grid md:grid-cols-4 gap-4 mb-4">
+                {{#each comparisons}}
+                    <div>
+                        {{{ summary }}}
+                    </div>
+                {{/each}}
+            </div>
+        </div>
 
-    <div>
-        <div>
-            <span>
-                {{lang 'products.availability'}}
-            </span>
-        </div>
-        {{#each comparisons}}
+        {{#if settings.show_product_rating}}
             <div>
-                {{#if availability}}
-                    {{ availability }}
-                {{else}}
-                    {{lang 'common.not_applicable'}}
-                {{/if}}
+                <div class="font-bold">
+                    <span>
+                        {{lang 'products.reviews.rating_label'}}
+                    </span>
+                </div>
+                <div class="grid md:grid-cols-4 gap-4 mb-4">
+                    {{#each comparisons}}
+                        <div>
+                            {{#if rating}}
+                                {{> components/products/ratings rating=rating}}
+                            {{else}}
+                                {{lang 'products.reviews.no_reviews'}}
+                            {{/if}}
+                        </div>
+                    {{/each}}
+                </div>
             </div>
-        {{/each}}
-    </div>
-    <div>
+        {{/if}}
+
         <div>
-            <span>
-                {{lang 'common.other_details'}}
-            </span>
-        </div>
-        {{#each comparisons}}
-            <div>
-                {{#if custom_fields}}
-                    <ul>
-                        {{#each custom_fields}}
-                            <li>
-                                {{name}}: {{{value}}}
-                            </li>
-                        {{/each}}
-                    </ul>
-                {{else}}
-                    {{lang 'common.not_applicable'}}
-                {{/if}}
+            <div class="font-bold">
+                <span>
+                    {{lang 'products.availability'}}
+                </span>
             </div>
-        {{/each}}
+            <div class="grid md:grid-cols-4 gap-4 mb-4">
+                {{#each comparisons}}
+                    <div>
+                        {{#if availability}}
+                            {{ availability }}
+                        {{else}}
+                            {{lang 'common.not_applicable'}}
+                        {{/if}}
+                    </div>
+                {{/each}}
+            </div>
+        </div>
+        <div>
+            <div class="font-bold">
+                <span>
+                    {{lang 'common.other_details'}}
+                </span>
+            </div>
+            <div class="grid md:grid-cols-4 gap-4 mb-4">
+                {{#each comparisons}}
+                    <div>
+                        {{#if custom_fields}}
+                            <ul>
+                                {{#each custom_fields}}
+                                    <li>
+                                        {{name}}: {{{value}}}
+                                    </li>
+                                {{/each}}
+                            </ul>
+                        {{else}}
+                            {{lang 'common.not_applicable'}}
+                        {{/if}}
+                    </div>
+                {{/each}}
+            </div>
+        </div>
     </div>
 </div>
 
