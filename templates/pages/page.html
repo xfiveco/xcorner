@@ -1,54 +1,56 @@
 {{#partial "page"}}
 
-{{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
+<section class="shadow-inner">
+    <div class="py-4 max-w-desktop mx-auto p-4 my-8">
+        {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
 
-<section>
-    {{#unless theme_settings.hide_page_heading }}
-        <h1>
-            {{ page.title }}
-        </h1>
-    {{/unless}}
+        {{#unless theme_settings.hide_page_heading }}
+            <h1 class="font-bold text-3xl py-4">
+                {{ page.title }}
+            </h1>
+        {{/unless}}
 
-    {{#if page.sub_pages}}
-        <nav>
+        {{#if page.sub_pages}}
+            <nav class="border-b border-b-slate-500 mb-4 pb-4">
+                <ul>
+                    {{#each page.sub_pages}}
+                        <li>
+                            <a class="js-nav-bar-action underline cursor-pointer" href="{{url}}">
+                                {{title}}
+                            </a>
+                        </li>
+                    {{/each}}
+                </ul>
+            </nav>
+        {{/if}}
+
+        {{{region name="page_builder_content"}}}
+
+        <div class="relative">
+            {{#replace '%%Syndicate%%' page.content}}
+                {{> components/page/rss_feed}}
+            {{else}}
+                <p>
+                    {{{page.content}}}
+                </p>
+            {{/replace}}
+        </div>
+
+        {{#if page.feed}}
             <ul>
-                {{#each page.sub_pages}}
+                {{#each page.feed}}
                     <li>
-                        <a class="js-nav-bar-action" href="{{url}}">
-                            {{title}}
-                        </a>
+                        <div>
+                            <a href="{{url}}" target="_blank" class="underline cursor-pointer">
+                                {{title}}
+                            </a>
+                        </div>
+                        <p>{{content}}</p>
                     </li>
                 {{/each}}
             </ul>
-        </nav>
-    {{/if}}
-
-    {{{region name="page_builder_content"}}}
-
-    <div>
-        {{#replace '%%Syndicate%%' page.content}}
-            {{> components/page/rss_feed}}
-        {{else}}
-            <p>
-                {{{page.content}}}
-            </p>
-        {{/replace}}
+        {{/if}}
     </div>
-
-    {{#if page.feed}}
-        <ul>
-            {{#each page.feed}}
-                <li>
-                    <div>
-                        <a href="{{url}}" target="_blank">
-                            {{title}}
-                        </a>
-                    </div>
-                    <p>{{content}}</p>
-                </li>
-            {{/each}}
-        </ul>
-    {{/if}}
 </section>
 
 {{/partial}}
