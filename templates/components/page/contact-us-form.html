@@ -1,4 +1,4 @@
-<form action="{{urls.contact_us_submit}}" method="post" class="js-contact-form">
+<form action="{{urls.contact_us_submit}}" method="post" class="js-contact-form max-w-2xl flex flex-col gap-3">
     {{inject 'contactEmail' (lang 'forms.validate.contact.email_address')}}
     {{inject 'contactQuestion' (lang 'forms.validate.contact.question')}}
 
@@ -10,14 +10,14 @@
 
     <input type="hidden" name="page_id" value="{{forms.contact.page_id}}">
     
-    <div>
+    <div class="grid xs:grid-cols-2 gap-3">
         {{#if forms.contact.name}}
-            <div class="js-form-field">
-                <label for="contact_fullname">
+            <div class="js-form-field flex gap-2 items-start flex-col">
+                <label for="contact_fullname" class="w-full flex justify-between items-center text-sm text-gray-500">
                     {{lang 'forms.contact_us.full_name'}}
                 </label>
                 <input 
-                    class="js-form-input" 
+                    class="js-form-input w-full" 
                     type="text" 
                     id="contact_fullname" 
                     name="contact_fullname" 
@@ -27,12 +27,12 @@
         {{/if}}
 
         {{#if forms.contact.phone}}
-            <div class="js-form-field">
-                <label for="contact_phone">
+            <div class="js-form-field flex gap-2 items-start flex-col">
+                <label for="contact_phone" class="w-full flex justify-between items-center text-sm text-gray-500">
                     {{lang 'forms.contact_us.phone'}}
                 </label>
                 <input 
-                    class="js-form-input" 
+                    class="js-form-input w-full" 
                     type="text" 
                     id="contact_phone" 
                     name="contact_phone" 
@@ -41,15 +41,15 @@
             </div>
         {{/if}}
 
-        <div class="js-form-field">
-            <label for="contact_email">
+        <div class="js-form-field flex gap-2 items-start flex-col">
+            <label for="contact_email" class="w-full flex justify-between items-center text-sm text-gray-500">
                 {{lang 'forms.contact_us.email'}}
                 <small>
                     {{lang 'common.required' }}
                 </small>
             </label>
             <input 
-                class="js-form-input" 
+                class="js-form-input w-full" 
                 type="text" 
                 id="contact_email" 
                 name="contact_email" 
@@ -58,12 +58,12 @@
         </div>
 
         {{#if forms.contact.order}}
-            <div class="js-form-field">
-                <label for="contact_orderno">
+            <div class="js-form-field flex gap-2 items-start flex-col">
+                <label for="contact_orderno" class="w-full flex justify-between items-center text-sm text-gray-500">
                     {{lang 'forms.contact_us.order'}}
                 </label>
                 <input 
-                    class="js-form-input" 
+                    class="js-form-input w-full" 
                     type="text" 
                     id="contact_orderno" 
                     name="contact_orderno"
@@ -72,12 +72,12 @@
         {{/if}}
 
         {{#if forms.contact.company}}
-            <div class="js-form-field">
-                <label for="contact_companyname">
+            <div class="js-form-field flex gap-2 items-start flex-col">
+                <label for="contact_companyname" class="w-full flex justify-between items-center text-sm text-gray-500">
                     {{lang 'forms.contact_us.company'}}
                 </label>
                 <input 
-                    class="js-form-input" 
+                    class="js-form-input w-full" 
                     type="text" 
                     id="contact_companyname" 
                     name="contact_companyname"
@@ -86,12 +86,12 @@
         {{/if}}
 
         {{#if forms.contact.rma}}
-            <div class="js-form-field">
-                <label for="contact_rma">
+            <div class="js-form-field flex gap-2 items-start flex-col">
+                <label for="contact_rma" class="w-full flex justify-between items-center text-sm text-gray-500">
                     {{lang 'forms.contact_us.rma'}}
                 </label>
                 <input 
-                    class="js-form-input" 
+                    class="js-form-input w-full" 
                     type="text" 
                     id="contact_rma" 
                     name="contact_rma"
@@ -100,8 +100,8 @@
         {{/if}}
     </div>
 
-    <div class="js-form-field">
-        <label for="contact_question">
+    <div class="js-form-field flex gap-2 items-start flex-col">
+        <label for="contact_question" class="w-full flex justify-between items-center text-sm text-gray-500">
             {{lang 'forms.contact_us.question'}}
             <small>
                 {{lang 'common.required' }}
@@ -112,12 +112,12 @@
             id="contact_question" 
             rows="5" 
             cols="50" 
-            class="js-form-input"
+            class="js-form-input w-full"
         ></textarea>
     </div>
     {{#if forms.contact.manualcaptcha}}
-        <div class="js-form-field">
-            <label for="{{forms.contact.manualcaptcha.name}}">
+        <div class="js-form-field flex gap-2 items-start flex-col">
+            <label for="{{forms.contact.manualcaptcha.name}}" class="w-full flex justify-between items-center text-sm text-gray-500">
                 {{lang 'forms.contact_us.manual_captcha_instruction'}}
                 <small>
                     {{lang 'common.required' }}
@@ -128,7 +128,7 @@
                     {{forms.contact.manualcaptcha.question}}
                 </span>
                 <input 
-                    class="js-form-input" 
+                    class="js-form-input w-full" 
                     type="text" 
                     id="{{forms.contact.manualcaptcha.name}}" 
                     name="{{forms.contact.manualcaptcha.name}}" 
@@ -141,7 +141,7 @@
     {{/if}}
     {{{forms.contact.recaptcha.markup}}}
     <div>
-        <button class="c-button c-button--primary" type="submit">
+        <button class="border border-black py-2 px-4 cursor-pointer bg-black text-white hover:bg-transparent hover:text-black text-center" type="submit">
             {{lang 'forms.contact_us.submit' }}
         </button> 
     </div>

@@ -34,6 +34,9 @@ module.exports = {
                     'white-space': 'nowrap',
                     width: '1px',
                 },
+                '.js-inline-message': {
+                    color: '#dc2626',
+                },
             })
         }),
     ],

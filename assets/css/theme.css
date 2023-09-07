@@ -871,18 +871,6 @@ select {
   top: 100%;
 }
 
-.top-0 {
-  top: 0px;
-}
-
-.right-2 {
-  right: 0.5rem;
-}
-
-.top-2 {
-  top: 0.5rem;
-}
-
 .z-10 {
   z-index: 10;
 }
@@ -1025,10 +1013,6 @@ select {
   margin-top: auto;
 }
 
-.mb-auto {
-  margin-bottom: auto;
-}
-
 .box-content {
   -webkit-box-sizing: content-box;
           box-sizing: content-box;
@@ -1160,6 +1144,10 @@ select {
 
 .w-screen {
   width: 100vw;
+}
+
+.max-w-2xl {
+  max-width: 42rem;
 }
 
 .max-w-\[90vw\] {
@@ -1685,6 +1673,11 @@ select {
   color: rgb(0 0 0 / var(--tw-text-opacity));
 }
 
+.text-gray-500 {
+  --tw-text-opacity: 1;
+  color: rgb(107 114 128 / var(--tw-text-opacity));
+}
+
 .text-red-600 {
   --tw-text-opacity: 1;
   color: rgb(220 38 38 / var(--tw-text-opacity));
@@ -1774,6 +1767,10 @@ select {
   position: absolute;
   white-space: nowrap;
   width: 1px;
+}
+
+.js-inline-message {
+  color: #dc2626;
 }
 
 .u-hidden-visually {
@@ -1936,6 +1933,10 @@ select {
   .xs\:basis-2\/4 {
     -ms-flex-preferred-size: 50%;
         flex-basis: 50%;
+  }
+
+  .xs\:grid-cols-2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
