@@ -543,7 +543,7 @@
             "rma": "RMA Number",
             "question": "Comments/Questions",
             "submit": "Submit Form",
-            "successful": "We've received your feedback and will respond shortly if required. <a href=\"{shopPath}\">Continue</a>.",
+            "successful": "We've received your feedback and will respond shortly if required. <a class='underline underline-offset-4' href=\"{shopPath}\">Continue</a>.",
             "manual_captcha_instruction": "Please answer the question below for additional verification."
         },
         "create_account": {
