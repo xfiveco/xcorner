@@ -1,17 +1,20 @@
 {{#partial "page"}}
 
-<div>
-    <section class="max-w-desktop mx-auto p-4 my-8 flex flex-col gap-4"> 
-        <h1 class="text-3xl md:text-5xl font-bold text-center">
-            {{lang 'page_not_found.page_heading'}}
-        </h1>
-        
-        <p class="text-center">
-            {{lang 'page_not_found.message'}}
-        </p>
+<div class="shadow-inner">
+    <div class="py-4 max-w-desktop mx-auto p-4 my-8 relative">
+        <section class="flex flex-col gap-4"> 
+            {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
+            <h1 class="text-3xl md:text-5xl font-bold text-center">
+                {{lang 'page_not_found.page_heading'}}
+            </h1>
+            
+            <p class="text-center">
+                {{lang 'page_not_found.message'}}
+            </p>
 
-        {{> components/common/search-box}}
-    </section>
+            {{> components/common/search-box}}
+        </section>
+    </div>
 </div>
 
 {{/partial}}
