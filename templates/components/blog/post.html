@@ -1,7 +1,7 @@
-<article>
+<article class="my-6 pb-6 border-b-2 border-gray-300 last:border-0 {{#if is_blog_post}} border-b-0 {{/if}}">
     <header>
         {{#if post.thumbnail}}
-            <figure>
+            <figure class="shadow-sm">
                 <a href="{{post.url}}">
                     {{> components/common/image
                         image=post.thumbnail
@@ -11,22 +11,22 @@
             </figure>
         {{/if}}
         <h{{#if is_blog_post}}1{{else}}2{{/if}}>
-            <a href="{{post.url}}">
+            <a href="{{post.url}}" class="text-xl md:text-2xl lg:text-4xl my-4 block font-semibold leading-relaxed">
                 {{post.title}}
             </a>
         </h{{#if is_blog_post}}1{{else}}2{{/if}}>
-        <p>
+        <p class="text-gray-400 mb-2 text-sm">
             {{#if post.author}}{{lang 'blog.posted_by' name=post.author}} on {{/if}}<time>{{post.date_published}}</time>
         </p>
     </header>
-    <div>
+    <div class="leading-relaxed">
         {{#if post.body}}
             {{{post.body}}}
         {{else}}
             {{{post.summary}}}
             {{#if post.show_read_more}}
                 &hellip;
-                <a href="{{url}}" aria-label="{{post.title}} {{lang 'blog.read_more'}}">
+                <a href="{{url}}" aria-label="{{post.title}} {{lang 'blog.read_more'}}" class="font-semibold hover:underline">
                     {{lang 'blog.read_more'}}
                 </a>
             {{/if}}
@@ -34,10 +34,10 @@
     </div>
     {{#if show_tags}}
         {{#if post.tags}}
-            <ul>
+            <ul class="flex gap-3 flex-wrap my-4">
                 {{#each post.tags}}
                     <li>
-                        <a href="{{url}}">
+                        <a href="{{url}}" class="font-semibold hover:underline">
                             #{{name}}
                         </a>
                     </li>
