@@ -3,7 +3,7 @@
     {{assignVar 'encodedTitle' (encodeURI head.title)}}
     <ul class="flex items-center mt-16 -mx-2 text-xl">
         {{#each settings.add_this.buttons}}
-            <li class="">
+            <li>
                 {{#if service '===' 'facebook'}}
                     <a
                         title="{{{capitalize service}}}"
