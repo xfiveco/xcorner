@@ -1,23 +1,25 @@
 {{#partial "page"}}
 
-{{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
 
-<div>
-    <section>
-        <h1>
-            {{lang 'forbidden.page_heading'}}
-        </h1>
-        
-        <p>
-            {{lang 'forbidden.if_you_were_signed_in'}}
-            <a href="{{urls.auth.login}}">
-                {{lang 'forbidden.sign_in'}}
-            </a>
-            {{lang 'forbidden.to_continue'}}
-        </p>
-        
-        {{> components/common/search-box}}
-    </section>
+<div class="shadow-inner">
+    <div class="py-4 max-w-desktop mx-auto p-4 my-8 relative">
+        <section class="flex flex-col gap-4">
+            {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
+            <h1 class="text-3xl md:text-5xl font-bold text-center">
+                {{lang 'forbidden.page_heading'}}
+            </h1>
+            
+            <p class="text-center">
+                <span>{{lang 'forbidden.if_you_were_signed_in'}}</span>
+                <a href="{{urls.auth.login}}" class="underline underline-offset-7">
+                    {{lang 'forbidden.sign_in'}}
+                </a>
+                {{lang 'forbidden.to_continue'}}
+            </p>
+            
+            {{> components/common/search-box}}
+        </section>
+    </div>
 </div>
 
 {{/partial}}
