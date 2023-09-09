@@ -1218,6 +1218,26 @@ select {
   width: 0.75rem;
 }
 
+.w-\[50\%\] {
+  width: 50%;
+}
+
+.w-auto {
+  width: auto;
+}
+
+.w-\[25\%\] {
+  width: 25%;
+}
+
+.w-\[5\%\] {
+  width: 5%;
+}
+
+.w-\[10\%\] {
+  width: 10%;
+}
+
 .max-w-2xl {
   max-width: 42rem;
 }
@@ -2204,6 +2224,18 @@ select {
 
   .md\:w-auto {
     width: auto;
+  }
+
+  .md\:w-\[50\%\] {
+    width: 50%;
+  }
+
+  .md\:w-\[40\%\] {
+    width: 40%;
+  }
+
+  .md\:w-\[35\%\] {
+    width: 35%;
   }
 
   .md\:min-w-\[50\%\] {
