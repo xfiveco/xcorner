@@ -1,3 +1,9 @@
+{{#if post.body}}
+    <h1 class="font-bold text-3xl my-10">
+        {{post.title}}
+    </h1>
+    {{{post.body}}}
+{{else}}
 <article class="my-8 flex gap-3">
     {{#if post.thumbnail}}
     <figure class="w-[20%]">
@@ -10,42 +16,43 @@
     </figure>
     {{/if}}
     <div>
-    <header class="mb-4 text-lg">
-        <h{{#if is_blog_post}}1{{else}}2{{/if}}>
+        <header class="mb-4 text-lg">
+            <h{{#if is_blog_post}}1{{else}}2{{/if}}>
             <a href="{{post.url}}" class="hover:underline">
                 {{post.title}}
             </a>
-        </h{{#if is_blog_post}}1{{else}}2{{/if}}>
-        <p class="text-sm">
-            {{#if post.author}}{{lang 'blog.posted_by' name=post.author}} on {{/if}}<time>{{post.date_published}}</time>
-        </p>
-    </header>
-    <div>
-        {{#if post.body}}
+            </h{{#if is_blog_post}}1{{else}}2{{/if}}>
+            <p class="text-sm">
+                {{#if post.author}}{{lang 'blog.posted_by' name=post.author}} on {{/if}}<time>{{post.date_published}}</time>
+            </p>
+        </header>
+        <div>
+            {{#if post.body}}
             {{{post.body}}}
-        {{else}}
+            {{else}}
             {{{post.summary}}}
             {{#if post.show_read_more}}
-                &hellip;
-                <a href="{{url}}" aria-label="{{post.title}} {{lang 'blog.read_more'}}">
-                    {{lang 'blog.read_more'}}
-                </a>
+            &hellip;
+            <a href="{{url}}" aria-label="{{post.title}} {{lang 'blog.read_more'}}">
+                {{lang 'blog.read_more'}}
+            </a>
             {{/if}}
-        {{/if}}
-    </div>
-    {{#if show_tags}}
+            {{/if}}
+        </div>
+        {{#if show_tags}}
         {{#if post.tags}}
-            <ul>
-                {{#each post.tags}}
-                    <li>
-                        <a href="{{url}}">
-                            #{{name}}
-                        </a>
-                    </li>
-                {{/each}}
-            </ul>
+        <ul>
+            {{#each post.tags}}
+            <li>
+                <a href="{{url}}">
+                    #{{name}}
+                </a>
+            </li>
+            {{/each}}
+        </ul>
         {{/if}}
-    {{/if}}
-    {{>components/common/share url=post.url}}
+        {{/if}}
+        {{>components/common/share url=post.url}}
     </div>
 </article>
+{{/if}}

@@ -26,6 +26,7 @@ blog:
                 {{/unless}}
                 {{#each blog.posts}}
                     {{> components/blog/post post=this theme_settings=../theme_settings}}
+                    <hr>
                 {{/each}}
                 {{> components/common/paginator pagination.blog}}
             </section>
