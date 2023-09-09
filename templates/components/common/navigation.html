@@ -101,14 +101,14 @@
         </li>
         <li>
             <a 
-                class="js-nav-user-action js-cart-preview font-bold uppercase"
+                class="js-nav-user-action js-cart-preview font-bold uppercase relative pr-6"
                 data-dropdown="cart-preview-dropdown"
                 data-options="align:right"
                 href="{{urls.cart}}"
                 aria-label="{{lang 'cart.nav_aria_label'}}"
             >
                 <span>{{lang 'common.cart'}}</span>
-                <span class="js-count-pill js-cart-quantity"></span>
+                <span class="js-count-pill js-cart-quantity absolute -top-1 right-0 bg-gray-400 w-5 h-5 rounded-full flex justify-center items-center text-xs text-white"></span>
             </a>
 
             <div 
