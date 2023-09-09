@@ -12,7 +12,7 @@
                     <div></div>
                 {{/if}}
 
-                <a href="{{urls.checkout.single_address}}" class="c-button c-button--primary">
+                <a href="{{urls.checkout.single_address}}" class="border border-black py-1 px-3 cursor-pointer text-black hover:bg-black hover:text-white text-center my-4 inline-block">
                     {{lang 'cart.added_to_cart.proceed_to_checkout'}}
                 </a>
             {{/if}}
@@ -47,24 +47,22 @@
                 {{lang 'cart.added_to_cart.your_cart_contains' num_products=cart.quantity}}
             </p>
 
-            <a href="#" class="c-button c-button--primary js-reveal-close" role="button">
+            <a href="#" class="js-reveal-close border border-black py-1 px-3 cursor-pointer text-black hover:bg-black hover:text-white text-center my-4 inline-block" role="button">
                 {{lang 'cart.added_to_cart.continue_shopping'}}
             </a>
 
-            <a href="{{urls.cart}}" class="c-button">
+            <a href="{{urls.cart}}" class="border border-black py-1 px-3 cursor-pointer text-white bg-black hover:bg-white hover:text-black text-center my-4 inline-block">
                 {{lang 'cart.added_to_cart.view_or_edit_cart'}}
             </a>
         </section>
         <section class="js-product-view">
             {{#with cart.added_item}}
-                <figure class="js-product-view-image">
-                    <div>
-                        {{> components/common/image
-                            image=image
-                            fallback_size=../theme_settings.product_size
-                            default_image=../theme_settings.default_image_product
-                        }}
-                    </div>
+                <figure class="js-product-view-image max-w-[50%] mx-auto">
+                    {{> components/common/image
+                        image=image
+                        fallback_size=../theme_settings.product_size
+                        default_image=../theme_settings.default_image_product
+                    }}
                 </figure>
 
                 <div>
