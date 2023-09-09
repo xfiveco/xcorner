@@ -1,21 +1,22 @@
-<article>
-    <header>
-        {{#if post.thumbnail}}
-            <figure>
-                <a href="{{post.url}}">
-                    {{> components/common/image
-                        image=post.thumbnail
-                        fallback_size=theme_settings.blog_size
-                    }}
-                </a>
-            </figure>
-        {{/if}}
+<article class="my-8 flex gap-3">
+    {{#if post.thumbnail}}
+    <figure class="w-[20%]">
+        <a href="{{post.url}}">
+            {{> components/common/image
+            image=post.thumbnail
+            fallback_size=theme_settings.blog_size
+            }}
+        </a>
+    </figure>
+    {{/if}}
+    <div>
+    <header class="mb-4 text-lg">
         <h{{#if is_blog_post}}1{{else}}2{{/if}}>
-            <a href="{{post.url}}">
+            <a href="{{post.url}}" class="hover:underline">
                 {{post.title}}
             </a>
         </h{{#if is_blog_post}}1{{else}}2{{/if}}>
-        <p>
+        <p class="text-sm">
             {{#if post.author}}{{lang 'blog.posted_by' name=post.author}} on {{/if}}<time>{{post.date_published}}</time>
         </p>
     </header>
@@ -46,4 +47,5 @@
         {{/if}}
     {{/if}}
     {{>components/common/share url=post.url}}
+    </div>
 </article>
