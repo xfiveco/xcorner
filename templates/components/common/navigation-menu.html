@@ -1,10 +1,10 @@
-<nav class="js-nav-pages flex flex-col flex-wrap md:flex-row mx-auto justify-center gap-4 2xl:px-80">
+<nav class="js-nav-pages flex flex-col flex-wrap mx-auto justify-center gap-4 2xl:px-80">
     <div class="md:hidden w-full max-w-[90vw] md:max-w-desktop mx-auto">
         {{> components/common/quick-search name='nav-menu-quick-search'}}
     </div>
     <ul class="js-nav-pages-list{{#if theme_settings.navigation_design '!==' 'simple'}} js-nav-pages-list-depth-max{{/if}} 
         w-full md:w-auto 
-        flex md:gap-4 flex-col md:flex-row items-start md:items-center
+        flex md:gap-4 flex-col md:flex-row items-start md:items-center md:justify-center
         divide-y md:divide-y-0"
     >
         {{#each categories}}
