@@ -99,3 +99,12 @@ button.button--action:disabled {
 .form-checkbox:active+.form-label::before, .form-radio:active+.form-label::before {
     @apply outline-double outline-offset-2 outline-black !important;
 }
+
+.stepHeader-title {
+    @apply text-2xl font-bold;
+}
+
+.checkout-steps,
+.layout-main {
+    @apply max-w-desktop mx-auto pr-5;
+}
