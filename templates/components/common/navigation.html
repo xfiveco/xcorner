@@ -1,13 +1,13 @@
-<nav class="hidden md:block ml-auto mt-2 px-8">
+<nav class="hidden md:block ml-auto py-3 px-8 mb-8 text-sm bg-gray-100 w-full">
     {{#or customer (unless settings.hide_price_from_guests)}}
         {{> components/common/currency-selector}}
     {{/or}}
 
-    <ul class="flex gap-4">
+    <ul class="flex gap-4 w-full justify-end">
         {{#if customer.store_credit.value '>' 0}}
             <li>
                 <a 
-                    class="js-nav-user-action font-bold uppercase"
+                    class="js-nav-user-action uppercase"
                     data-dropdown="store-credit-dropdown"
                     data-options="align:bottom"
                     href="{{urls.cart}}"
@@ -28,10 +28,13 @@
         {{/if}}
         <li>
             <a 
-                class="js-nav-user-action js-compare-nav font-bold uppercase"
+                class="js-nav-user-action js-compare-nav uppercase flex gap-1 items-center"
                 href="{{urls.compare}}"
                 aria-label="{{lang 'common.compare'}}"
             >
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6A2.25 2.25 0 016 3.75h2.25A2.25 2.25 0 0110.5 6v2.25a2.25 2.25 0 01-2.25 2.25H6a2.25 2.25 0 01-2.25-2.25V6zM3.75 15.75A2.25 2.25 0 016 13.5h2.25a2.25 2.25 0 012.25 2.25V18a2.25 2.25 0 01-2.25 2.25H6A2.25 2.25 0 013.75 18v-2.25zM13.5 6a2.25 2.25 0 012.25-2.25H18A2.25 2.25 0 0120.25 6v2.25A2.25 2.25 0 0118 10.5h-2.25a2.25 2.25 0 01-2.25-2.25V6zM13.5 15.75a2.25 2.25 0 012.25-2.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-2.25A2.25 2.25 0 0113.5 18v-2.25z" />
+                </svg>
                 {{lang 'common.compare'}} <span class="js-count-pill is-positive"></span>
             </a>
         </li>
@@ -43,19 +46,23 @@
         {{/if}}
         <li>
             <button 
-                class="js-nav-user-action js-quick-search-expand font-bold uppercase"
+                class="js-nav-user-action js-quick-search-expand uppercase flex gap-1 items-center"
                 type="button"
                 data-search="quick-search"
                 aria-controls="quick-search"
                 aria-label="{{lang 'common.search'}}"
             >
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
+                </svg>
+
                 {{lang 'common.search'}}
             </button>
         </li>
         {{#if settings.gift_certificates_enabled}}
             <li>
                 <a 
-                    class="js-nav-user-action font-bold uppercase"
+                    class="js-nav-user-action uppercase"
                     href="{{urls.gift_certificate.purchase}}"
                     aria-label="{{lang 'common.gift_cert'}}"
                 >
@@ -66,14 +73,14 @@
         <li>
             {{#if customer}}
                 <a  
-                    class="js-nav-user-action font-bold uppercase"
+                    class="js-nav-user-action uppercase"
                     href="{{urls.account.index}}"
                     aria-label="{{lang 'common.account'}}"
                 >
                     {{lang 'common.account'}}
                 </a>
                 <a 
-                    class="js-nav-user-action font-bold uppercase"
+                    class="js-nav-user-action uppercase"
                     href="{{urls.auth.logout}}"
                     aria-label="{{lang 'common.logout'}}"
                 >
@@ -81,16 +88,16 @@
                 </a>
             {{else}}
                 <a 
-                    class="js-nav-user-action font-bold uppercase"
+                    class="js-nav-user-action uppercase"
                     href="{{urls.auth.login}}"
                     aria-label="{{lang 'common.login'}}"
                 >
                     {{lang 'common.login'}}
                 </a>
                 {{#if settings.account_creation_enabled}}
-                    <span>{{lang 'common.or'}}</span>
+                    <span>&middot;</span>
                     <a 
-                        class="js-nav-user-action font-bold uppercase"
+                        class="js-nav-user-action uppercase"
                         href="{{urls.auth.create_account}}"
                         aria-label="{{lang 'common.sign_up'}}"
                     >
@@ -101,14 +108,18 @@
         </li>
         <li>
             <a 
-                class="js-nav-user-action js-cart-preview font-bold uppercase"
+                class="js-nav-user-action js-cart-preview uppercase relative pr-6 flex gap-1 items-center"
                 data-dropdown="cart-preview-dropdown"
                 data-options="align:right"
                 href="{{urls.cart}}"
                 aria-label="{{lang 'cart.nav_aria_label'}}"
             >
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z" />
+                </svg>
+
                 <span>{{lang 'common.cart'}}</span>
-                <span class="js-count-pill js-cart-quantity"></span>
+                <span class="js-count-pill js-cart-quantity absolute -top-1 right-0 bg-gray-400 w-5 h-5 rounded-full flex justify-center items-center text-xs text-white"></span>
             </a>
 
             <div 

@@ -3,15 +3,14 @@
         class="js-nav-pages-action has-sub-menu{{#if is_active}} is-active{{/if}} 
             flex justify-between md:justify-start gap-1 items-center 
             w-screen md:w-auto 
-            px-[5vw] md:px-0 py-2 md:py-4 
-            font-bold uppercase 
+            px-[5vw] md:px-0 py-2 md:py-4
             cursor-pointer"
         href="{{url}}"
         data-collapsible="nav-pages-{{id}}"
     >
         {{name}}
     
-        <svg class="w-4 h-4">
+        <svg class="w-3 h-3">
             <use href="#icon-chevron-down" />
         </svg>
     </a>
@@ -79,7 +78,7 @@
     </div>
 {{else}}
     <a 
-        class="js-nav-pages-action{{#if is_active}} is-active{{/if}} font-bold uppercase py-1 md:py-4 w-screen md:w-auto px-[5vw] md:px-0 flex"
+        class="js-nav-pages-action{{#if is_active}} is-active{{/if}} py-1 md:py-4 w-screen md:w-auto px-[5vw] md:px-0 flex hover:underline"
         href="{{url}}"
         aria-label="{{name}}"
     >

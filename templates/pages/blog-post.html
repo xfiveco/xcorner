@@ -1,6 +1,10 @@
 {{#partial "page"}}
-    {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
-    {{> components/blog/post post=blog.post show_tags=true is_blog_post=true}}
+<div class="shadow-inner">
+    <div class="py-4 max-w-desktop mx-auto p-4 my-8 relative">
+        {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
+        {{> components/blog/post post=blog.post show_tags=true is_blog_post=true}}
+    </div>
+</div>
 {{/partial}}
 
 {{> layout/base}}

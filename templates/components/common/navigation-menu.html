@@ -1,11 +1,11 @@
-<nav class="js-nav-pages flex flex-col flex-wrap md:flex-row mx-auto justify-center gap-4 2xl:px-80">
+<nav class="js-nav-pages md:mt-4 flex flex-col flex-wrap mx-auto justify-center gap-4 2xl:px-80">
     <div class="md:hidden w-full max-w-[90vw] md:max-w-desktop mx-auto">
         {{> components/common/quick-search name='nav-menu-quick-search'}}
     </div>
     <ul class="js-nav-pages-list{{#if theme_settings.navigation_design '!==' 'simple'}} js-nav-pages-list-depth-max{{/if}} 
         w-full md:w-auto 
-        flex md:gap-4 flex-col md:flex-row items-start md:items-center
-        divide-y md:divide-y-0"
+        flex md:gap-4 flex-col md:flex-row items-start md:items-center md:justify-center
+        divide-y md:divide-y-0 text-lg"
     >
         {{#each categories}}
             <li>
@@ -24,9 +24,8 @@
                         class="js-nav-pages-action{{#if name '==' ../page.title}} active-page{{/if}} 
                             flex justify-between md:justify-start gap-1 items-center 
                             w-screen md:w-auto 
-                            px-[5vw] md:px-0 py-2 md:py-4 
-                            font-bold uppercase 
-                            cursor-pointer"
+                            px-[5vw] md:px-0 py-2 md:py-4
+                            cursor-pointer hover:underline"
                         href="{{url}}"
                         aria-label="{{name}}"
                     >
@@ -46,7 +45,7 @@
                     class="js-nav-pages-action has-sub-menu flex justify-between md:justify-start gap-1 items-center 
                         w-screen md:w-auto 
                         px-[5vw] md:px-0 py-2 md:py-4 
-                        font-bold uppercase 
+
                         cursor-pointer"
                     href="#"
                     data-collapsible="nav-pages-currency"
@@ -64,7 +63,7 @@
                         {{#each currency_selector.currencies}}
                             <li>
                                 <a 
-                                    class="js-nav-pages-action font-bold uppercase hover:underline cursor-pointer"
+                                    class="js-nav-pages-action hover:underline cursor-pointer"
                                     href="{{{switch_url}}}"
                                     aria-label="{{name}}"
                                     data-currency-code="{{{code}}}"
@@ -91,7 +90,7 @@
                     class="js-nav-pages-action flex justify-between md:justify-start gap-1 items-center 
                         w-screen md:w-auto 
                         px-[5vw] md:px-0 py-2 md:py-4 
-                        font-bold uppercase 
+
                         cursor-pointer"
                     href="{{urls.gift_certificate.purchase}}"
                     aria-label="{{lang 'common.gift_cert'}}"
@@ -105,7 +104,7 @@
                 <a class="js-nav-pages-action flex justify-between md:justify-start gap-1 items-center 
                     w-screen md:w-auto 
                     px-[5vw] md:px-0 py-2 md:py-4 
-                    font-bold uppercase 
+
                     cursor-pointer"
                 >
                     {{lang 'common.store_credit_overview' credit=customer.store_credit.formatted}}
@@ -118,7 +117,7 @@
                     class="js-nav-pages-action js-compare-nav flex justify-between md:justify-start gap-1 items-center 
                         w-screen md:w-auto 
                         px-[5vw] md:px-0 py-2 md:py-4 
-                        font-bold uppercase 
+
                         cursor-pointer"
                     href="{{urls.compare}}"
                     aria-label="{{lang 'common.compare'}}"
@@ -135,7 +134,7 @@
                         flex justify-between md:justify-start gap-1 items-center 
                         w-screen md:w-auto 
                         px-[5vw] md:px-0 py-2 md:py-4 
-                        font-bold uppercase 
+
                         cursor-pointer"
                     href="{{urls.account.index}}"
                     data-collapsible="nav-pages-account"
@@ -232,7 +231,7 @@
                     class="js-nav-pages-actionflex justify-between md:justify-start gap-1 items-center 
                         w-screen md:w-auto 
                         px-[5vw] md:px-0 py-2 md:py-4 
-                        font-bold uppercase 
+
                         cursor-pointer"
                     href="{{urls.auth.logout}}"
                     aria-label="{{lang 'common.logout'}}"
@@ -247,7 +246,7 @@
                 px-[5vw] md:px-0 py-2 md:py-4"
             >
                 <a 
-                    class="js-nav-pages-action font-bold uppercase"
+                    class="js-nav-pages-action"
                     href="{{urls.auth.login}}"
                     aria-label="{{lang 'common.login'}}"
                 >
@@ -256,7 +255,7 @@
                 {{#if settings.account_creation_enabled}}
                     {{lang 'common.or'}}
                     <a 
-                        class="js-nav-pages-action font-bold uppercase"
+                        class="js-nav-pages-action"
                         href="{{urls.auth.create_account}}"
                         aria-label="{{lang 'common.sign_up'}}"
                     >

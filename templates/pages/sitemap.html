@@ -1,33 +1,37 @@
 {{#partial "page"}}
-<h1 class="font-bold text-3xl py-4">{{lang 'sitemap.page_title'}}</h1>
+<div class="shadow-inner">
+    <div class="py-4 max-w-desktop mx-auto p-4 my-8 relative">
+        <h1 class="font-bold text-3xl my-10">{{lang 'sitemap.page_title'}}</h1>
 
-<ul>
-    {{#each sitemap}}
-        <li>
-            <h2 class="font-bold mt-6 mb-4">{{label}}</h2>
-            <ul>
-                {{#each body}}
-                    <li>
-                        <a href="{{url}}" class="underline cursor-pointer">{{label}}</a>
-                        {{#if children}}
-                            <ul>
-                            {{#each children}}
-                                {{> components/sitemap/links}}
-                            {{/each}}
-                            </ul>
+        <ul>
+            {{#each sitemap}}
+                <li>
+                    <h2>{{label}}</h2>
+                    <ul>
+                        {{#each body}}
+                            <li>
+                                <a href="{{url}}">{{label}}</a>
+                                {{#if children}}
+                                    <ul>
+                                    {{#each children}}
+                                        {{> components/sitemap/links}}
+                                    {{/each}}
+                                    </ul>
+                                {{/if}}
+                            </li>
+                        {{/each}}
+                        {{#if show_all_link}}
+                            <li>
+                                <a href="{{subsection_url}}">
+                                    {{lang 'sitemap.show_all_link'}}
+                                </a>
+                            </li>
                         {{/if}}
-                    </li>
-                {{/each}}
-                {{#if show_all_link}}
-                    <li>
-                        <a href="{{subsection_url}}" class="underline cursor-pointer">
-                            {{lang 'sitemap.show_all_link'}}
-                        </a>
-                    </li>
-                {{/if}}
-            </ul>
-        </li>
-    {{/each}}
-</ul>
+                    </ul>
+                </li>
+            {{/each}}
+        </ul>
+    </div>
+</div>
 {{/partial}}
 {{> layout/base}}

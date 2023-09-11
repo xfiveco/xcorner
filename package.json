@@ -73,7 +73,7 @@
     "webpack-merge": "^5.8.0"
   },
   "scripts": {
-    "build": "npx webpack --config webpack.prod.js",
+    "build": "npx webpack --config webpack.prod.js && npx tailwindcss -i ./assets/css/tailwind.css -o ./assets/dist/theme.css --poll && npx tailwindcss -i ./assets/css/tailwindCheckout.css -o ./assets/dist/optimized-checkout.css --poll && npx copyfiles --flat ./assets/css/swiper-bundle.min.css ./assets/dist/",
     "buildDev": "npx webpack --config webpack.dev.js",
     "createComponent": "node scripts/create-component.js",
     "dev": "npm run tailwind & npx stencil start",
