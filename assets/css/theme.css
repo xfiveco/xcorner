@@ -936,14 +936,14 @@ select {
   margin-bottom: 1rem;
 }
 
-.my-8 {
-  margin-top: 2rem;
-  margin-bottom: 2rem;
-}
-
 .my-6 {
   margin-top: 1.5rem;
   margin-bottom: 1.5rem;
+}
+
+.my-8 {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
 }
 
 .mb-10 {
@@ -2144,10 +2144,6 @@ select {
 
   .md\:w-96 {
     width: 24rem;
-  }
-
-  .md\:w-\[35\%\] {
-    width: 35%;
   }
 
   .md\:w-\[50\%\] {

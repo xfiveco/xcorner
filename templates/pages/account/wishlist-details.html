@@ -1,35 +1,37 @@
 {{#partial "page"}}
-<div class="js-pagination-wishlist">
-    {{#if wishlist.is_editable}}
-        {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
-    {{/if}}
+<section class="shadow-inner">
+    <div class="py-4 max-w-desktop mx-auto p-4 mt-8 mb-14 js-pagination-wishlist">
+        {{#if wishlist.is_editable}}
+            {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
+        {{/if}}
 
-    <div>
-        {{lang 'account.wishlists.view_heading' name=wishlist.name}}
-    </div>
+        <div class="font-bold text-3xl py-4">
+            {{lang 'account.wishlists.view_heading' name=wishlist.name}}
+        </div>
     
-    {{#if wishlist.is_editable}}
-        {{> components/account/navigation account_page='wishlists'}}
-    {{/if}}
+        {{#if wishlist.is_editable}}
+            {{> components/account/navigation account_page='wishlists'}}
+        {{/if}}
 
-    {{#if wishlist.is_editable}}
-        {{#if wishlist.is_public '>' 0}}
-            <div>
+        {{#if wishlist.is_editable}}
+            {{#if wishlist.is_public '>' 0}}
                 <div>
                     <div>
-                        {{lang 'account.wishlists.share_intro'}}
+                        <div>
+                            {{lang 'account.wishlists.share_intro'}}
+                        </div>
+                        <input class="js-form-input" value="{{settings.base_url}}{{wishlist.share_url}}" readonly>
                     </div>
-                    <input class="js-form-input" value="{{settings.base_url}}{{wishlist.share_url}}" readonly>
                 </div>
-            </div>
+            {{/if}}
         {{/if}}
-    {{/if}}
 
-    {{#if wishlist.items}}
-        {{> components/account/wishlist-item-list show_remove=wishlist.is_editable}}
-    {{else}}
-        {{> components/common/alert/alert-info (lang 'account.wishlists.empty_wishlist')}}
-    {{/if}}
-</div>
+        {{#if wishlist.items}}
+            {{> components/account/wishlist-item-list show_remove=wishlist.is_editable}}
+        {{else}}
+            {{> components/common/alert/alert-info (lang 'account.wishlists.empty_wishlist')}}
+        {{/if}}
+    </div>
+</section>
 {{/partial}}
 {{> layout/base}}

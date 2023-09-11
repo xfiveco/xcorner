@@ -1,20 +1,22 @@
 {{#partial "page"}}
-<div>
-    {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
-    
-    <div>
-        {{lang 'account.recent_items.heading' }}
-    </div>
-    
-    {{> components/account/navigation account_page='recent_items'}}
+<section class="shadow-inner">
+    <div class="py-4 max-w-desktop mx-auto p-4 mt-8 mb-14">
+        {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
+        
+        <div>
+            {{lang 'account.recent_items.heading' }}
+        </div>
+        
+        {{> components/account/navigation account_page='recent_items'}}
 
-    {{#unless customer.recently_viewed_products.items}}
-        {{> components/common/alert/alert-info (lang 'account.recent_items.no_items')}}
-    {{/unless}}
+        {{#unless customer.recently_viewed_products.items}}
+            {{> components/common/alert/alert-info (lang 'account.recent_items.no_items')}}
+        {{/unless}}
 
-    <div>
-        {{> components/products/grid products=customer.recently_viewed_products.items show_compare=customer.recently_viewed_products.show_compare}}
+        <div>
+            {{> components/products/grid products=customer.recently_viewed_products.items show_compare=customer.recently_viewed_products.show_compare}}
+        </div>
     </div>
-</div>
+</section>
 {{/partial}}
 {{> layout/base}}

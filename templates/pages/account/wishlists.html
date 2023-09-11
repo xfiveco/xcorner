@@ -1,16 +1,17 @@
 {{#partial "page"}}
-{{#if settings.show_wishlist}}
 <section class="shadow-inner">
     <div class="py-4 max-w-desktop mx-auto p-4 mt-8 mb-14">
-        {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
-        
-        <div class="font-bold text-3xl py-4">
-            {{lang 'account.wishlists.heading' }}
-        </div>
-        
-        {{> components/account/navigation account_page='wishlists'}}
-        {{> components/account/wishlist-list}}
+        {{#if settings.show_wishlist}}
+            {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
+            
+            <div class="font-bold text-3xl py-4">
+                {{lang 'account.wishlists.heading' }}
+            </div>
+            
+            {{> components/account/navigation account_page='wishlists'}}
+            {{> components/account/wishlist-list}}
+        {{/if}}
     </div>
-{{/if}}
+</section>
 {{/partial}}
 {{> layout/base}}

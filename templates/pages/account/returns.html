@@ -1,22 +1,26 @@
 {{#partial "page"}}
 
-{{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
+<section class="shadow-inner">
+    <div class="py-4 max-w-desktop mx-auto p-4 mt-8 mb-14">
+        {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
 
-<div>
-    {{lang 'account.returns.heading' }}
-</div>
+        <div class="font-bold text-3xl py-4">
+            {{lang 'account.returns.heading' }}
+        </div>
 
-{{> components/account/navigation account_page='returns'}}
+        {{> components/account/navigation account_page='returns'}}
 
-<div>
-    <section>
-        {{#if customer.returns}}
-            {{> components/account/returns-list returns=customer.returns}}
-        {{else}}
-            {{> components/common/alert/alert-info (lang 'account.returns.none')}}
-        {{/if}}
-    </section>
-</div>
+        <div>
+            <section>
+                {{#if customer.returns}}
+                    {{> components/account/returns-list returns=customer.returns}}
+                {{else}}
+                    {{> components/common/alert/alert-info (lang 'account.returns.none')}}
+                {{/if}}
+            </section>
+        </div>
+    </div>
+</section>
 
 {{/partial}}
 {{> layout/base}}
