@@ -7,6 +7,16 @@
         "content": "i18n.BackgroundAndLines"
       },
       {
+        "type": "color",
+        "label": "Primary Color",
+        "id": "color-primary"
+      },
+      {
+        "type": "color",
+        "label": "Secondary Color",
+        "id": "color-secondary"
+      },
+      {
         "type": "heading",
         "content": "i18n.BodyTextAndLinks"
       },
@@ -21,30 +31,6 @@
       {
         "type": "heading",
         "content": "i18n.ImageLoading"
-      },
-      {
-        "type": "paragraph",
-        "content": "i18n.CornerstoneDoesntLoadMostImages"
-      },
-      {
-        "type": "select",
-        "id": "lazyload_mode",
-        "force_reload": true,
-        "label": "i18n.LazyloadingMode",
-        "options": [
-          {
-            "value": "lazyload",
-            "label": "i18n.Lazyload"
-          },
-          {
-            "value": "lazyload+lqip",
-            "label": "i18n.LazyloadWithLQIP"
-          },
-          {
-            "value": "disabled",
-            "label": "i18n.Disabled"
-          }
-        ]
       },
       {
         "type": "heading",

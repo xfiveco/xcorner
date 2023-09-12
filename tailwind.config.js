@@ -1,5 +1,6 @@
 /* eslint-disable import/no-extraneous-dependencies */
 const plugin = require('tailwindcss/plugin')
+const bigCommerceConfig = require('./config.json')
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
@@ -21,7 +22,7 @@ module.exports = {
     plugins: [
         require('@tailwindcss/forms'),
         plugin(function ({ addUtilities }) {
-            addUtilities({
+            const bigCommerceUtilities = {
                 '.x-hidden': {
                     border: 0,
                     clip: 'rect(0 0 0 0)',
@@ -37,7 +38,19 @@ module.exports = {
                 '.js-inline-message': {
                     color: '#dc2626',
                 },
-            })
+            }
+
+            Object.keys(bigCommerceConfig.settings)
+                .filter((attribute) => attribute.startsWith('color-'))
+                .forEach(
+                    // eslint-disable-next-line no-return-assign
+                    (attribute) =>
+                        (bigCommerceUtilities[`.bc-${attribute}`] = {
+                            'background-color': `var(--bc-${attribute}, black)`,
+                        }),
+                )
+
+            addUtilities(bigCommerceUtilities)
         }),
     ],
 }

@@ -60,5 +60,17 @@
         <script async defer src="{{cdn 'assets/dist/theme-bundle.main.js' resourceHint='preload' as='script'}}" onload="onThemeBundleMain()"></script>
 
         {{{footer.scripts}}}
+
+        <style>
+            :root {
+                {{#each theme_settings}}
+                    {{#startsWith 'color-' @key}}
+                        --bc-{{@key}}: {{ this }};
+                    {{/startsWith}}
+                {{/each}}
+            }
+        </style>
+
+        <div class="w-full h-5 bc-color-primary">Test</div>
     </body>
 </html>

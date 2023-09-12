@@ -1882,6 +1882,14 @@ select {
   color: #dc2626;
 }
 
+.bc-color-primary {
+  background-color: var(--bc-color-primary, black);
+}
+
+.bc-color-secondary {
+  background-color: var(--bc-color-secondary, black);
+}
+
 .u-hidden-visually {
   border: 0 !important;
   clip: rect(0 0 0 0) !important;

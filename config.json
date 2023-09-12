@@ -149,7 +149,9 @@
     "checkout_payment_buttons_paypal_size": "large",
     "checkout_payment_buttons_paypal_label": "pay",
     "payment_buttons_number_of_buttons": 1,
-    "payment_buttons_provider_sorting": []
+    "payment_buttons_provider_sorting": [],
+    "color-primary": "#000000",
+    "color-secondary": "#ffffff"
   },
   "read_only_files": [],
   "resources": {
