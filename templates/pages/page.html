@@ -1,11 +1,9 @@
 {{#partial "page"}}
-<div class="shadow-inner">
-    <div class="py-4 max-w-desktop mx-auto p-4 my-8 relative">
-        {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
-
 <section class="shadow-inner">
     <div class="py-4 max-w-desktop mx-auto p-4 my-8">
-        {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
+        {{#unless theme_settings.hide_breadcrumbs }}
+            {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
+        {{/unless}}
 
         {{#unless theme_settings.hide_page_heading }}
             <h1 class="font-bold text-3xl py-4">

@@ -8,7 +8,9 @@ cart: true
 <div class="shadow-inner">
     <div class="max-w-desktop mx-auto py-8 px-4 relative">
         <div class="js-cart">
-            {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
+            {{#unless theme_settings.hide_breadcrumbs }}
+                {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
+            {{/unless}}
 
             {{> components/cart/page-title}}
 

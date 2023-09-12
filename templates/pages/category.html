@@ -17,7 +17,9 @@ category:
 {{#partial "page"}}
 <div class="shadow-inner">
     <div class="max-w-desktop mx-auto py-8 px-4 relative">
-        {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
+        {{#unless theme_settings.hide_breadcrumbs }}
+            {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
+        {{/unless}}
 
         <div class="flex flex-col-reverse md:grid md:grid-cols-2 md:gap-10 my-10">
             <div class="u-container shrink-0">

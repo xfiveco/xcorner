@@ -4,7 +4,9 @@
 
 <div class="shadow-inner">
     <div class="max-w-desktop mx-auto py-8 px-4 relative">
-        {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
+        {{#unless theme_settings.hide_breadcrumbs }}
+            {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
+        {{/unless}}
 
         <h1 class="font-bold text-3xl my-10">
             {{lang 'compare.header' products=comparisons.length}}

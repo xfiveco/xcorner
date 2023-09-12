@@ -14,7 +14,9 @@ product:
 {{#partial "page"}}
 <div class="shadow-inner">
     <div class="max-w-desktop mx-auto py-8 px-4 relative">
-        {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
+        {{#unless theme_settings.hide_breadcrumbs }}
+            {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
+        {{/unless}}
 
         {{#each product.shipping_messages}}
             {{> components/common/alert/alert-info message}}

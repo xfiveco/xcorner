@@ -2,8 +2,12 @@
 
 <section class="shadow-inner">
     <div class="md:w-[50%] mx-auto py-8 px-4 relative">
-        {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}} {{#unless theme_settings.hide_contact_us_page_heading }}
-        <h1 class="font-bold text-3xl my-10">{{page.title}}</h1>
+        {{#unless theme_settings.hide_breadcrumbs }}
+            {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}} 
+        {{/unless}}
+        
+        {{#unless theme_settings.hide_contact_us_page_heading }}
+            <h1 class="font-bold text-3xl my-10">{{page.title}}</h1>
         {{/unless}} {{#if page.sub_pages}}
         <nav>
             <ul>
