@@ -1,46 +1,50 @@
 {{#partial "page"}}
-    {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
+<section class="shadow-inner">
+    <div class="py-4 max-w-desktop mx-auto p-4 my-8">
+        {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
 
-    <div>
-        {{#if forms.address.address_id}}
-            {{lang 'forms.address.edit.heading'}}
-        {{else}}
-            {{lang 'forms.address.add.heading'}}
-        {{/if}}
-    </div>
+        <div class="font-bold text-3xl">
+            {{#if forms.address.address_id}}
+                {{lang 'forms.address.edit.heading'}}
+            {{else}}
+                {{lang 'forms.address.add.heading'}}
+            {{/if}}
+        </div>
 
-    {{> components/account/navigation account_page='addresses'}}
-
-    <div>
-        {{#if forms.address.error}}
-            {{> components/common/alert/alert-error forms.address.error}}
-        {{/if}}
+        {{> components/account/navigation account_page='addresses'}}
 
         <div>
-            <form action="{{forms.address.action}}" class="js-address-form" method="post">
-                {{#if forms.address.address_id }}
-                    <input type="hidden" name="shipid" value="{{forms.address.address_id}}">
-                {{/if}}
-                <div class="js-form-fieldset">
-                    {{#each forms.address.shipping_fields }}
-                        {{{dynamicComponent 'components/common/forms'}}}
-                    {{/each}}
-                </div>
-                <div>
-                    <button type="submit" class="c-button c-button--primary">
-                        {{lang 'forms.address.submit_value'}}
-                    </button> 
+            {{#if forms.address.error}}
+                {{> components/common/alert/alert-error forms.address.error}}
+            {{/if}}
 
-                    <a href="{{urls.account.addresses}}" class="c-button">
-                        {{lang 'common.cancel'}}
-                    </a>
-                    
-                    {{inject 'required' (lang 'common.required')}}
-                    {{inject 'state_error' (lang 'errors.state_error')}}
-                </div>
-            </form>
+            <div>
+                <form action="{{forms.address.action}}" class="js-address-form" method="post">
+                    {{#if forms.address.address_id }}
+                        <input type="hidden" name="shipid" value="{{forms.address.address_id}}">
+                    {{/if}}
+                    <div class="js-form-fieldset">
+                        {{#each forms.address.shipping_fields }}
+                            {{{dynamicComponent 'components/common/forms'}}}
+                        {{/each}}
+                    </div>
+                    <div>
+                        <button type="submit" class="c-button c-button--primary">
+                            {{lang 'forms.address.submit_value'}}
+                        </button> 
+
+                        <a href="{{urls.account.addresses}}" class="c-button">
+                            {{lang 'common.cancel'}}
+                        </a>
+                        
+                        {{inject 'required' (lang 'common.required')}}
+                        {{inject 'state_error' (lang 'errors.state_error')}}
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
+</section>
 
 {{/partial}}
 {{> layout/base}}

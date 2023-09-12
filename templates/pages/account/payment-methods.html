@@ -1,16 +1,18 @@
 {{#partial "page"}}
-    {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
+<section class="shadow-inner">
+    <div class="py-4 max-w-desktop mx-auto p-4 mt-8 mb-14">
+        {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
     
-    <div>
-        {{lang 'account.payment_methods.heading' }}
-    </div>
-    
-    {{> components/account/navigation account_page='payment_methods'}}
-
-    <div>
-        <div>
-            {{> components/account/payment-methods-list }}
+        <div class="font-bold text-3xl">
+            {{lang 'account.payment_methods.heading' }}
         </div>
-    </div>
+        
+        {{> components/account/navigation account_page='payment_methods'}}
+
+        <div>
+            <div>
+                {{> components/account/payment-methods-list }}
+            </div>
+        </div>
 {{/partial}}
 {{> layout/base}}

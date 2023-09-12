@@ -1,9 +1,10 @@
 {{#partial "page"}}
-    <div>
+<section class="shadow-inner">
+    <div class="py-4 max-w-desktop mx-auto p-4 my-8">
         {{#if settings.show_wishlist}}
             {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
             
-            <div>
+            <div class="font-bold text-3xl">
                 {{#if forms.wishlist.id}}
                     {{lang 'account.wishlists.edit'}}
                 {{else}}
@@ -19,5 +20,6 @@
             {{> components/account/add-wishlist}}
         {{/if}}
     </div>
+</section>
 {{/partial}}
 {{> layout/base}}

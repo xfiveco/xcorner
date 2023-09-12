@@ -1,230 +1,231 @@
 {{#partial "page"}}
 {{inject 'selectItem' (lang 'forms.validate.account.reorder.select_item')}}
 
-<div class="shadow-inner py-4 max-w-desktop mx-auto p-4 my-8">
-    {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
+<div class="shadow-inner">
+    <div class="py-4 max-w-desktop mx-auto p-4 my-8">
+        {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
 
-    <h1 class="font-bold text-3xl">
-        {{lang 'account.orders.details.heading' number=order.id}}
-    </h1>
+        <h1 class="font-bold text-3xl">
+            {{lang 'account.orders.details.heading' number=order.id}}
+        </h1>
 
-    {{> components/account/navigation account_page='orders'}}
+        {{> components/account/navigation account_page='orders'}}
 
-    <div>
         <div>
-            {{#each order.status_messages}}
-                {{> components/common/alert/alert-info message}}
-            {{/each}}
             <div>
-                {{> components/account/order-contents order=order}}
+                {{#each order.status_messages}}
+                    {{> components/common/alert/alert-info message}}
+                {{/each}}
+                <div>
+                    {{> components/account/order-contents order=order}}
 
-                <dl class="grid grid-cols-2 gap-2 mb-2 md:w-1/3">
-                    {{#each order.total_rows}}
-                        {{#if value.value}}
-                            <dt>{{label}}:</dt>
-                            <dd>{{value.formatted}}</dd>
-                        {{/if}}
-                    {{/each}}
-                </dl>
-            </div>
-
-            <aside>
-                <section class="my-4">
-                    <div>
-                        {{lang 'account.orders.details.order_details'}}
-                    </div>
-                    
-                    <dl class="grid grid-cols-2 gap-2 md:w-1/3">
-                        <dt>{{lang 'account.orders.details.order_status'}}</dt>
-                        <dd>{{order.status_text}}</dd>
-                        
-                        <dt>{{lang 'account.orders.details.payment_date'}}</dt>
-                        <dd>{{order.date}}</dd>
-                        
-                        <dt>{{lang 'account.orders.details.order_total'}}</dt>
-                        <dd>{{order.total.formatted}}</dd>
-                        
-                        {{#if order.payment_method}}
-                            <dt>{{lang 'account.orders.details.payment_method'}}</dt>
-                            <dd>
-                                {{order.payment_method}}
-                                {{#if order.card_number_last_four}}
-                                    {{lang 'account.orders.details.card_ending' card=order.card_number_last_four}}
-                                {{/if}}
-                            </dd>
-                        {{/if}}
-
-                        {{#if order.order_instructions}}
-                            <dt>{{lang 'account.orders.details.how_to_pay'}}</dt>
-                            <dd>{{nl2br order.order_instructions}}</dd>
-                        {{/if}}
-                    </dl>
-
-                    <button data-print-invoice="{{order.invoice_url}}" class="c-button border border-black py-1 px-3 cursor-pointer hover:bg-black hover:text-white text-center mt-4 mb-6">
-                        {{lang 'account.orders.details.print_invoice'}}
-                    </button>
-                </section>
-
-                {{#if order.shipping_address}}
-                    <section class="my-4">
-                        <div class="font-bold mb-4">
-                            {{lang 'account.orders.details.ship_to'}}
-                        </div>
-                        <ul>
-                            <li>{{{ sanitize order.shipping_address.full_name}}}</li>
-                            <li>{{{ sanitize order.shipping_address.company}}}</li>
-                            <li>{{{ sanitize order.shipping_address.address_lines.[0]}}}</li>
-                            <li>{{{ sanitize order.shipping_address.address_lines.[1]}}}</li>
-                            <li>{{{ sanitize order.shipping_address.city}}}, {{{ sanitize order.shipping_address.state}}} {{{ sanitize order.shipping_address.zip}}}</li>
-                            <li>{{{ sanitize order.shipping_address.country}}}</li>
-                        </ul>
-                    </section>
-                {{/if}}
-
-                {{#if order.pickup_address}}
-                    <section class="my-4">
-                        <div class="font-bold mb-4">
-                            {{lang 'account.orders.details.pickup'}}
-                        </div>
-                        {{#each order.pickup_address}}
-                            <dl class="grid grid-cols-2 gap-2 md:w-1/3">
-                                <dt>{{lang 'account.orders.details.pickup_method'}}</dt>
-                                <dd>{{sanitize pickup_method_display_name}}</dd>
-                            </dl>
-
-                            <ul>
-                                <li>
-                                    <strong>{{{ sanitize location_name}}}</strong>
-                                </li>
-                                <li>{{{ sanitize location_line_1}}}</li>
-                                <li>{{{ sanitize location_line_2}}}</li>
-                                <li>{{{ sanitize location_city}}}, {{{ sanitize location_state}}}, {{{ sanitize location_zip}}}</li>
-                                <li>{{{ sanitize location_country_name}}}</li>
-                            </ul>
-
-                            <dl>
-                                {{#if location_phone}}
-                                    <dt>{{lang 'account.orders.details.phone'}}</dt>
-                                    <dd>{{{ sanitize location_phone}}}</dd>
-                                {{/if}}
-
-                                {{#if order.pickup_address.location_email}}
-                                    <dt>{{lang 'account.orders.details.email'}}</dt>
-                                    <dd>{{{ sanitize location_email}}}</dd>
-                                {{/if}}
-                            </dl>
-
-                            <ul>
-                                <li>
-                                    <strong>{{{ lang 'account.orders.details.opening_hours'}}}</strong>
-                                </li>
-                                <li>{{{ sanitize collection_time_description}}}</li>
-                            </ul>
+                    <dl class="grid grid-cols-2 gap-2 mb-2 md:w-1/3">
+                        {{#each order.total_rows}}
+                            {{#if value.value}}
+                                <dt>{{label}}:</dt>
+                                <dd>{{value.formatted}}</dd>
+                            {{/if}}
                         {{/each}}
-                    </section>
-                {{else}}
-                    {{#if order.has_multiple_shipping_addresses}}
-                        <section class="my-4">
-                            <div>
-                                {{lang 'account.orders.details.ship_to'}}
-                            </div>
-                            <div>
-                                {{lang 'account.orders.details.ship_to_multi_text'}}
-                            </div>
-                        </section>
-                    {{/if}}
-                {{/if}}
+                    </dl>
+                </div>
 
-                <section class="my-4">
-                    <div class="font-bold mb-4">
-                        {{lang 'account.orders.details.bill_to'}}
-                    </div>
-
-                    <ul>
-                        <li>{{{ sanitize order.billing_address.full_name}}}</li>
-                        <li>{{{ sanitize order.billing_address.company}}}</li>
-                        <li>{{{ sanitize order.billing_address.address_lines.[0]}}}</li>
-                        <li>{{{ sanitize order.billing_address.address_lines.[1]}}}</li>
-                        <li>{{{ sanitize order.billing_address.city}}}, {{{ sanitize order.billing_address.state}}} {{{ sanitize order.billing_address.zip}}}</li>
-                        <li>{{{ sanitize order.billing_address.country}}}</li>
-                    </ul>
-                </section>
-
-                {{#if shipments}}
+                <aside>
                     <section class="my-4">
-                        <div class="font-bold mb-4">
-                            {{lang 'account.orders.details.shipments.header'}}
+                        <div>
+                            {{lang 'account.orders.details.order_details'}}
                         </div>
                         
-                        {{#each shipments}}
-                            <dl class="grid grid-cols-2 gap-4 md:w-1/3">
-                                <dt>{{lang 'account.orders.details.shipments.date'}}:</dt>
-                                <dd>{{date_shipped}}</dd>
-                                
-                                <dt>{{lang 'account.orders.details.shipments.method'}}:</dt>
-                                <dd>{{shipping_provider}}</dd>
-                                
-                                <dt>{{lang 'account.orders.details.shipments.link'}}:</dt>
+                        <dl class="grid grid-cols-2 gap-2 md:w-1/3">
+                            <dt>{{lang 'account.orders.details.order_status'}}</dt>
+                            <dd>{{order.status_text}}</dd>
+                            
+                            <dt>{{lang 'account.orders.details.payment_date'}}</dt>
+                            <dd>{{order.date}}</dd>
+                            
+                            <dt>{{lang 'account.orders.details.order_total'}}</dt>
+                            <dd>{{order.total.formatted}}</dd>
+                            
+                            {{#if order.payment_method}}
+                                <dt>{{lang 'account.orders.details.payment_method'}}</dt>
                                 <dd>
-                                    {{#if shipping_track.url}}
-                                        <a href="{{shipping_track.url}}">
-                                    {{/if}}
-
-                                    {{#if show_shipping_method}}
-                                        {{shipping_track.number}} &mdash; {{shipping_method}}
-                                    {{else}}
-                                        {{shipping_track.number}}
-                                    {{/if}}
-
-                                    {{#if shipping_track.url}}
-                                        </a>
+                                    {{order.payment_method}}
+                                    {{#if order.card_number_last_four}}
+                                        {{lang 'account.orders.details.card_ending' card=order.card_number_last_four}}
                                     {{/if}}
                                 </dd>
-                            </dl>
-                        {{/each}}
-                    </section>
-                {{/if}}
+                            {{/if}}
 
-                {{#if order.comments}}
+                            {{#if order.order_instructions}}
+                                <dt>{{lang 'account.orders.details.how_to_pay'}}</dt>
+                                <dd>{{nl2br order.order_instructions}}</dd>
+                            {{/if}}
+                        </dl>
+
+                        <button data-print-invoice="{{order.invoice_url}}" class="c-button border border-black py-1 px-3 cursor-pointer hover:bg-black hover:text-white text-center mt-4 mb-6">
+                            {{lang 'account.orders.details.print_invoice'}}
+                        </button>
+                    </section>
+
+                    {{#if order.shipping_address}}
+                        <section class="my-4">
+                            <div class="font-bold mb-4">
+                                {{lang 'account.orders.details.ship_to'}}
+                            </div>
+                            <ul>
+                                <li>{{{ sanitize order.shipping_address.full_name}}}</li>
+                                <li>{{{ sanitize order.shipping_address.company}}}</li>
+                                <li>{{{ sanitize order.shipping_address.address_lines.[0]}}}</li>
+                                <li>{{{ sanitize order.shipping_address.address_lines.[1]}}}</li>
+                                <li>{{{ sanitize order.shipping_address.city}}}, {{{ sanitize order.shipping_address.state}}} {{{ sanitize order.shipping_address.zip}}}</li>
+                                <li>{{{ sanitize order.shipping_address.country}}}</li>
+                            </ul>
+                        </section>
+                    {{/if}}
+
+                    {{#if order.pickup_address}}
+                        <section class="my-4">
+                            <div class="font-bold mb-4">
+                                {{lang 'account.orders.details.pickup'}}
+                            </div>
+                            {{#each order.pickup_address}}
+                                <dl class="grid grid-cols-2 gap-2 md:w-1/3">
+                                    <dt>{{lang 'account.orders.details.pickup_method'}}</dt>
+                                    <dd>{{sanitize pickup_method_display_name}}</dd>
+                                </dl>
+
+                                <ul>
+                                    <li>
+                                        <strong>{{{ sanitize location_name}}}</strong>
+                                    </li>
+                                    <li>{{{ sanitize location_line_1}}}</li>
+                                    <li>{{{ sanitize location_line_2}}}</li>
+                                    <li>{{{ sanitize location_city}}}, {{{ sanitize location_state}}}, {{{ sanitize location_zip}}}</li>
+                                    <li>{{{ sanitize location_country_name}}}</li>
+                                </ul>
+
+                                <dl>
+                                    {{#if location_phone}}
+                                        <dt>{{lang 'account.orders.details.phone'}}</dt>
+                                        <dd>{{{ sanitize location_phone}}}</dd>
+                                    {{/if}}
+
+                                    {{#if order.pickup_address.location_email}}
+                                        <dt>{{lang 'account.orders.details.email'}}</dt>
+                                        <dd>{{{ sanitize location_email}}}</dd>
+                                    {{/if}}
+                                </dl>
+
+                                <ul>
+                                    <li>
+                                        <strong>{{{ lang 'account.orders.details.opening_hours'}}}</strong>
+                                    </li>
+                                    <li>{{{ sanitize collection_time_description}}}</li>
+                                </ul>
+                            {{/each}}
+                        </section>
+                    {{else}}
+                        {{#if order.has_multiple_shipping_addresses}}
+                            <section class="my-4">
+                                <div>
+                                    {{lang 'account.orders.details.ship_to'}}
+                                </div>
+                                <div>
+                                    {{lang 'account.orders.details.ship_to_multi_text'}}
+                                </div>
+                            </section>
+                        {{/if}}
+                    {{/if}}
+
                     <section class="my-4">
                         <div class="font-bold mb-4">
-                            {{lang 'account.orders.details.comments'}}
+                            {{lang 'account.orders.details.bill_to'}}
                         </div>
-                        <p>{{order.comments}}</p>
+
+                        <ul>
+                            <li>{{{ sanitize order.billing_address.full_name}}}</li>
+                            <li>{{{ sanitize order.billing_address.company}}}</li>
+                            <li>{{{ sanitize order.billing_address.address_lines.[0]}}}</li>
+                            <li>{{{ sanitize order.billing_address.address_lines.[1]}}}</li>
+                            <li>{{{ sanitize order.billing_address.city}}}, {{{ sanitize order.billing_address.state}}} {{{ sanitize order.billing_address.zip}}}</li>
+                            <li>{{{ sanitize order.billing_address.country}}}</li>
+                        </ul>
                     </section>
-                {{/if}}
 
-                <section class="my-4">
-                    <div class="font-bold mb-4">
-                        {{lang 'account.orders.details.actions'}}
-                    </div>
-                    
-                    <div class="flex items-center gap-4">
-                        <form action="{{order.reorder_url}}" method="post" class="js-account-reorder-form">
-                            <input type="hidden" name="orderid" value="{{order.id}}">
-                            {{#each order.items}}
-                                {{#if show_reorder}}
-                                    <input type="hidden" name="reorderitem[{{order_product_id}}]">
-                                {{/if}}
+                    {{#if shipments}}
+                        <section class="my-4">
+                            <div class="font-bold mb-4">
+                                {{lang 'account.orders.details.shipments.header'}}
+                            </div>
+                            
+                            {{#each shipments}}
+                                <dl class="grid grid-cols-2 gap-4 md:w-1/3">
+                                    <dt>{{lang 'account.orders.details.shipments.date'}}:</dt>
+                                    <dd>{{date_shipped}}</dd>
+                                    
+                                    <dt>{{lang 'account.orders.details.shipments.method'}}:</dt>
+                                    <dd>{{shipping_provider}}</dd>
+                                    
+                                    <dt>{{lang 'account.orders.details.shipments.link'}}:</dt>
+                                    <dd>
+                                        {{#if shipping_track.url}}
+                                            <a href="{{shipping_track.url}}">
+                                        {{/if}}
+
+                                        {{#if show_shipping_method}}
+                                            {{shipping_track.number}} &mdash; {{shipping_method}}
+                                        {{else}}
+                                            {{shipping_track.number}}
+                                        {{/if}}
+
+                                        {{#if shipping_track.url}}
+                                            </a>
+                                        {{/if}}
+                                    </dd>
+                                </dl>
                             {{/each}}
+                        </section>
+                    {{/if}}
 
-                            <button type="submit" class="c-button border border-black py-1 px-3 cursor-pointer bg-black text-white hover:bg-transparent hover:text-black text-center">
-                                {{lang 'account.orders.details.reorder'}}
-                            </button> 
-                        </form>
-                        {{#if settings.returns_enabled}}
-                            {{#if order.is_complete}}
-                                <a href="{{order.return_url}}" class="c-button border border-black py-1 px-3 cursor-pointer hover:bg-black hover:text-white text-center">
-                                    {{lang 'account.orders.details.return'}}
-                                </a>
+                    {{#if order.comments}}
+                        <section class="my-4">
+                            <div class="font-bold mb-4">
+                                {{lang 'account.orders.details.comments'}}
+                            </div>
+                            <p>{{order.comments}}</p>
+                        </section>
+                    {{/if}}
+
+                    <section class="my-4">
+                        <div class="font-bold mb-4">
+                            {{lang 'account.orders.details.actions'}}
+                        </div>
+                        
+                        <div class="flex items-center gap-4">
+                            <form action="{{order.reorder_url}}" method="post" class="js-account-reorder-form">
+                                <input type="hidden" name="orderid" value="{{order.id}}">
+                                {{#each order.items}}
+                                    {{#if show_reorder}}
+                                        <input type="hidden" name="reorderitem[{{order_product_id}}]">
+                                    {{/if}}
+                                {{/each}}
+
+                                <button type="submit" class="c-button border border-black py-1 px-3 cursor-pointer bg-black text-white hover:bg-transparent hover:text-black text-center">
+                                    {{lang 'account.orders.details.reorder'}}
+                                </button> 
+                            </form>
+                            {{#if settings.returns_enabled}}
+                                {{#if order.is_complete}}
+                                    <a href="{{order.return_url}}" class="c-button border border-black py-1 px-3 cursor-pointer hover:bg-black hover:text-white text-center">
+                                        {{lang 'account.orders.details.return'}}
+                                    </a>
+                                {{/if}}
                             {{/if}}
-                        {{/if}}
-                    </div>
-                </section>
-            </aside>
+                        </div>
+                    </section>
+                </aside>
+            </div>
         </div>
     </div>
-
 </div>
 {{/partial}}
 {{> layout/base}}

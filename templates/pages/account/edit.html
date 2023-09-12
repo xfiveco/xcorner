@@ -1,23 +1,25 @@
 {{inject 'passwordRequirements' settings.password_requirements}}
 {{#partial "page"}}
-<div>
-    {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
-    
-    <div>
-        {{lang 'account.settings.heading' }}
-    </div>
-    
-    {{> components/account/navigation account_page='settings'}}
-    
-    {{#if forms.edit_account.error}}
-        {{> components/common/alert/alert-error forms.edit_account.error}}
-    {{/if}}
+<section class="shadow-inner">
+    <div class="py-4 max-w-desktop mx-auto p-4 my-8">
+        {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
+        
+        <div class="font-bold text-3xl">
+            {{lang 'account.settings.heading' }}
+        </div>
+        
+        {{> components/account/navigation account_page='settings'}}
+        
+        {{#if forms.edit_account.error}}
+            {{> components/common/alert/alert-error forms.edit_account.error}}
+        {{/if}}
 
-    {{#if forms.edit_account.success}}
-        {{> components/common/alert/alert-success forms.edit_account.success}}
-    {{/if}}
-    
-    {{> components/account/edit-account}}
-</div>
+        {{#if forms.edit_account.success}}
+            {{> components/common/alert/alert-success forms.edit_account.success}}
+        {{/if}}
+        
+        {{> components/account/edit-account}}
+    </div>
+</section>
 {{/partial}}
 {{> layout/base}}

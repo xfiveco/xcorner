@@ -1,22 +1,26 @@
 {{#partial "page"}}
-    {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
-    
-    <div>
-        {{lang 'account.addresses.heading' }}
-    </div>
-    
-    {{> components/account/navigation account_page='addresses'}}
+<section class="shadow-inner">
+    <div class="py-4 max-w-desktop mx-auto p-4 my-8">
+        {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
+        
+        <div class="font-bold text-3xl">
+            {{lang 'account.addresses.heading' }}
+        </div>
+        
+        {{> components/account/navigation account_page='addresses'}}
 
-    <div>
         <div>
-            {{#if customer.error}}
-                {{>components/common/alert/alert-error customer.error}}
-            {{/if}}
-            {{#if customer.success}}
-                {{>components/common/alert/alert-success customer.success}}
-            {{/if}}
-            {{> components/account/address-list }}
+            <div>
+                {{#if customer.error}}
+                    {{>components/common/alert/alert-error customer.error}}
+                {{/if}}
+                {{#if customer.success}}
+                    {{>components/common/alert/alert-success customer.success}}
+                {{/if}}
+                {{> components/account/address-list }}
+            </div>
         </div>
     </div>
+</section>
 {{/partial}}
 {{> layout/base}}

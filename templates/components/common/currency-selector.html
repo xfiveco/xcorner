@@ -1,8 +1,8 @@
 {{#if currency_selector.currencies.length '>' 1}}
-    <ul>
+    <ul class="flex justify-end mb-2">
         <li>
             <a 
-                class="js-nav-user-action js-nav-user-action-currency-selector has-dropdown"
+                class="js-nav-user-action js-nav-user-action-currency-selector has-dropdown flex items-center gap-4"
                 href="#"
                 data-collapsible="currency-selection"
                 aria-controls="currency-selection"
@@ -10,13 +10,13 @@
             >
                 {{lang 'common.currency' code=currency_selector.active_currency_code}}
                 <div aria-hidden="true">
-                    <svg>
+                    <svg class="w-4 h-4">
                         <use href="#icon-chevron-down" />
                     </svg>
                 </div>
             </a>
             <ul
-                class="js-dropdown-menu" 
+                class="js-dropdown-menu hidden bg-white bg-opacity-20 backdrop:blur" 
                 id="currency-selection"
                 aria-hidden="true" 
                 tabindex="-1"
