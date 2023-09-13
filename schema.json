@@ -3,6 +3,12 @@
     "name": "i18n.Global",
     "settings": [
       {
+        "type": "checkbox",
+        "force_reload": true,
+        "label": "Show all components",
+        "id": "homepage_show_all_components"
+      },
+      {
         "type": "heading",
         "content": "i18n.BackgroundAndLines"
       },
@@ -19,6 +25,121 @@
       {
         "type": "heading",
         "content": "i18n.BodyTextAndLinks"
+      },
+      {
+        "type": "heading",
+        "content": "Buttons"
+      },
+      {
+        "type": "color",
+        "label": "Text color",
+        "id": "button-text-color"
+      },
+      {
+        "type": "text",
+        "label": "Button padding Left and Right in rems from to 0 to n",
+        "id": "button-padding-inline"
+      },
+      {
+        "type": "text",
+        "label": "Button padding Top and Bottom in rems from to 0 to n",
+        "id": "button-padding-block"
+      },
+      {
+        "type": "text",
+        "label": "Button border radius in 0 to n in rems",
+        "id": "button-border-radius"
+      },
+      {
+        "type": "select",
+        "id": "button-border-style",
+        "label": "Button border style",
+        "options": [
+            { 
+                "value": "none", 
+                "label": "none" 
+            },
+            { 
+                "value": "hidden", 
+                "label": "hidden" 
+            },
+            { 
+                "value": "dotted", 
+                "label": "dotted" 
+            },
+            { 
+                "value": "dashed", 
+                "label": "dashed" 
+            },
+            { 
+                "value": "solid", 
+                "label": "solid" 
+            },
+            { 
+                "value": "double", 
+                "label": "double" 
+            },
+            { 
+                "value": "groove", 
+                "label": "groove" 
+            },
+            { 
+                "value": "ridge", 
+                "label": "ridge" 
+            },
+            { 
+                "value": "inset", 
+                "label": "inset" 
+            },
+            { 
+                "value": "outset", 
+                "label": "outset"
+            }
+        ]
+      },
+      {
+        "type": "text",
+        "label": "Button border width in pixels",
+        "id": "button-border-width"
+      },
+      {
+        "type": "color",
+        "label": "Button border color",
+        "id": "button-border-color"
+      },
+      {
+        "type": "select",
+        "id": "button-text-align",
+        "label": "Button text alignment",
+        "options": [
+            { 
+                "value": "center", 
+                "label": "center" 
+            },
+            { 
+                "value": "left", 
+                "label": "left" 
+            },
+            { 
+                "value": "right", 
+                "label": "right" 
+            }
+        ]
+      },
+      {
+        "type": "checkbox",
+        "label": "Button text uppercase",
+        "id": "button-text-uppercase"
+      },
+      {
+        "type": "color",
+        "label": "Primary button hover background color",
+        "id": "button-hover-background-color"
+      },
+      {
+        "type": "color",
+        "label": "Primary button hover text color",
+        "id": "button-hover-text-color"
       },
       {
         "type": "heading",

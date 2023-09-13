@@ -3,6 +3,10 @@
     role="main" 
     data-currency-code="{{currency_selector.active_currency_code}}"
 >
+    {{#if theme_settings.homepage_show_all_components }}
+        {{> components/custom/all-components }}
+    {{/if}}
+
     {{#block "hero"}} {{/block}}
     <div class="js-container">
         {{#block "page"}} {{/block}}
