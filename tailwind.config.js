@@ -42,13 +42,15 @@ module.exports = {
 
             Object.keys(bigCommerceConfig.settings)
                 .filter((attribute) => attribute.startsWith('color-'))
-                .forEach(
-                    // eslint-disable-next-line no-return-assign
-                    (attribute) =>
-                        (bigCommerceUtilities[`.bc-${attribute}`] = {
-                            'background-color': `var(--bc-${attribute}, black)`,
-                        }),
-                )
+                .forEach((attribute) => {
+                    bigCommerceUtilities[`.bc-bg-${attribute}`] = {
+                        'background-color': `var(--bc-${attribute}, black)`,
+                    }
+
+                    bigCommerceUtilities[`.bc-text-${attribute}`] = {
+                        color: `var(--bc-${attribute}, black)`,
+                    }
+                })
 
             addUtilities(bigCommerceUtilities)
         }),

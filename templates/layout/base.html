@@ -42,6 +42,16 @@
         {{~inject 'carouselArrowAndDotAriaLabel' (lang 'carousel.arrow_and_dot_aria_label')}}
         {{~inject 'carouselActiveDotAriaLabel' (lang 'carousel.active_dot_aria_label')}}
         {{~inject 'carouselContentAnnounceMessage' (lang 'carousel.content_announce_message')}}
+
+        <style>
+            :root {
+                {{#each theme_settings}}
+                    {{#startsWith 'color-' @key}}
+                        --bc-{{@key}}: {{ this }};
+                    {{/startsWith}}
+                {{/each}}
+            }
+        </style>
     </head>
     <body class="scroll-smooth overflow-x-hidden">
         <svg data-src="{{cdn 'img/icon-sprite.svg'}}" class="hidden"></svg>
@@ -61,16 +71,6 @@
 
         {{{footer.scripts}}}
 
-        <style>
-            :root {
-                {{#each theme_settings}}
-                    {{#startsWith 'color-' @key}}
-                        --bc-{{@key}}: {{ this }};
-                    {{/startsWith}}
-                {{/each}}
-            }
-        </style>
-
-        <div class="w-full h-5 bc-color-primary">Test</div>
+        
     </body>
 </html>

@@ -1882,12 +1882,12 @@ select {
   color: #dc2626;
 }
 
-.bc-color-primary {
+.bc-bg-color-primary {
   background-color: var(--bc-color-primary, black);
 }
 
-.bc-color-secondary {
-  background-color: var(--bc-color-secondary, black);
+.bc-text-color-primary {
+  color: var(--bc-color-primary, black);
 }
 
 .u-hidden-visually {
