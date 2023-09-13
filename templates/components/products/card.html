@@ -83,14 +83,14 @@
                         {{#if settings.data_tag_enabled}}
                             <button 
                                 type="button" 
-                                class="c-button js-quick-view border border-black py-1 px-3 cursor-pointer text-black hover:bg-black hover:text-white text-center w-full" 
+                                class="js-quick-view c-button--secondary w-full" 
                                 data-event-type="product-click" 
                                 data-product-id="{{id}}"
                             >
                                 {{lang 'products.quick_view'}}
                             </button>
                         {{else}}
-                            <button type="button" class="c-button js-quick-view border border-black py-1 px-3 cursor-pointer text-black hover:bg-black hover:text-white text-center w-full" data-product-id="{{id}}">
+                            <button type="button" class="js-quick-view c-button--secondary w-full" data-product-id="{{id}}">
                                 {{lang 'products.quick_view'}}
                             </button>
                         {{/if}}
@@ -113,7 +113,7 @@
                         <a 
                             href="{{url}}" 
                             data-event-type="product-click" 
-                            class="c-button border border-black py-1 px-3 cursor-pointer text-black hover:bg-black hover:text-white text-center w-full" 
+                            class="c-button--secondary w-full" 
                             data-product-id="{{id}}"
                         >
                             {{lang 'products.choose_options'}}
@@ -123,7 +123,7 @@
                         <a 
                             href="{{pre_order_add_to_cart_url}}" 
                             data-event-type="product-click" 
-                            class="c-button border border-black py-1 px-3 cursor-pointer text-black hover:bg-black hover:text-white text-center w-full"
+                            class="c-button--secondary w-full"
                         >
                             {{lang 'products.pre_order'}}
                         </a>
@@ -133,7 +133,7 @@
                             href="{{add_to_cart_url}}" 
                             data-event-type="product-click" 
                             data-button-type="add-cart" 
-                            class="c-button border border-black py-1 px-3 cursor-pointer text-black hover:bg-black hover:text-white text-center w-full"
+                            class="c-button--secondary w-full"
                         >
                             {{lang 'products.add_to_cart'}}
                         </a>
@@ -142,7 +142,7 @@
                         </span>
                     {{/if}}
                     {{#if out_of_stock_message }}
-                        <a href="{{url}}" data-event-type="product-click" class="c-button button--small card-figcaption-button border border-black py-1 px-3 cursor-pointer text-black hover:bg-black hover:text-white text-center w-full" data-product-id="{{id}}">{{out_of_stock_message}}</a>
+                        <a href="{{url}}" data-event-type="product-click" class="c-button button--small card-figcaption-button c-button--secondary w-full" data-product-id="{{id}}">{{out_of_stock_message}}</a>
                     {{/if}}
                 {{/if}}
             </div>

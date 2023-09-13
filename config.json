@@ -152,7 +152,7 @@
     "payment_buttons_number_of_buttons": 1,
     "payment_buttons_provider_sorting": [],
     "color-primary": "#000000",
-    "color-secondary": "#ffffff",
+    "color-secondary": "transparent",
     "button-text-color": "#ffffff",
     "button-padding-inline": "1.25",
     "button-padding-block": "0.5",
@@ -163,7 +163,10 @@
     "button-text-align": "center",
     "button-text-uppercase": true,
     "button-hover-background-color": "transparent",
-    "button-hover-text-color": "#000000"
+    "button-hover-text-color": "#000000",
+    "button-secondary-text-color": "#000000",
+    "button-seconadry-hover-background-color": "#000000",
+    "button-secondary-hover-text-color": "#ffffff"
 },
   "read_only_files": [],
   "resources": {

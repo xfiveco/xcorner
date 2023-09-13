@@ -142,6 +142,21 @@
         "id": "button-hover-text-color"
       },
       {
+        "type": "color",
+        "label": "Secondary Buttton text color",
+        "id": "button-secondary-text-color"
+      },
+      {
+        "type": "color",
+        "label": "Secondary button hover background color",
+        "id": "button-secondary-hover-background-color"
+      },
+      {
+        "type": "color",
+        "label": "Secondary button hover text color",
+        "id": "button-secondary-hover-text-color"
+      },
+      {
         "type": "heading",
         "content": "i18n.Headings"
       },

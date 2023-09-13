@@ -77,6 +77,28 @@ module.exports = {
                         'pointer-events': 'none',
                     },
                 },
+                '.c-button--secondary': {
+                    'background-color': 'var(--bc-color-secondary, black)',
+                    color: 'var(--bc-button-secondary-text-color, white)',
+                    'padding-inline': `calc(var(--bc-button-padding-inline, 0) * 1rem)`,
+                    'padding-block': `calc(var(--bc-button-padding-block, 0) * 1rem)`,
+                    'border-radius': `calc(var(--bc-button-border-radius, 0) * 1rem)`,
+                    border: `var(--bc-button-border-style) calc(var(--bc-button-border-width) * 1px) var(--bc-button-border-color)`,
+                    'text-align': 'var(--bc-button-text-align)',
+                    'text-decoration': 'none',
+                    'text-transform': 'var(--bc-button-text-uppercase)',
+                    transition: 'all cubic-bezier(.6,.07,.77,.53) 0.3s',
+                    '&:hover': {
+                        'background-color': 'var(--bc-button-secondary-hover-background-color, black)',
+                        color: 'var(--bc-button-secondary-hover-text-color, white)',
+                        transition: 'all bezier(.04,.75,.55,.82) 0.2s',
+                    },
+                    '&[disabled]': {
+                        'background-color': 'lightgray',
+                        color: 'white',
+                        'pointer-events': 'none',
+                    },
+                },
             })
         }),
     ],
