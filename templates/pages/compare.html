@@ -79,7 +79,7 @@
                                     {{#if settings.data_tag_enabled}} 
                                         data-event-type="product-click" 
                                     {{/if}} 
-                                    class="c-button c-button--primary button--large border border-black py-1 px-3 cursor-pointer bg-black text-white hover:bg-transparent hover:text-black text-center" 
+                                    class="c-button--primary" 
                                     data-product-id="{{id}}"
                                 >
                                     {{lang 'products.choose_options'}}
@@ -91,7 +91,7 @@
                                     {{#if settings.data_tag_enabled}} 
                                         data-event-type="product-click" 
                                     {{/if}} 
-                                    class="c-button c-button--primary button--large border border-black py-1 px-3 cursor-pointer bg-black text-white hover:bg-transparent hover:text-black text-center" 
+                                    class="c-button--primary" 
                                     data-product-id="{{id}}"
                                 >
                                     {{lang 'products.pre_order'}}
@@ -103,14 +103,14 @@
                                     {{#if settings.data_tag_enabled}} 
                                         data-event-type="product-click" 
                                     {{/if}} 
-                                    class="c-button c-button--primary button--large border border-black py-1 px-3 cursor-pointer bg-black text-white hover:bg-transparent hover:text-black text-center" 
+                                    class="c-button--primary" 
                                     data-product-id="{{id}}"
                                 >
                                     {{lang 'products.add_to_cart'}}
                                 </a>
                             {{/if}}
                             {{#if out_of_stock_message}}
-                                <a href="{{url}}" class="c-button c-button--primary button--large border border-black py-1 px-3 cursor-pointer bg-black text-white hover:bg-transparent hover:text-black text-center" data-product-id="{{id}}">
+                                <a href="{{url}}" class="c-button--primary" data-product-id="{{id}}">
                                     {{out_of_stock_message}}
                                 </a>
                             {{/if}}

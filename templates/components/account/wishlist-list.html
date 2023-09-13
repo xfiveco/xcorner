@@ -35,7 +35,7 @@
                 <div>
                     <form method="post" action="{{delete_url}}">
                         {{#if is_public}}
-                            <a href="{{share_url}}" class="c-button c-button--primary border border-black py-1 px-3 cursor-pointer bg-black text-white hover:bg-transparent hover:text-black text-center" role="button">
+                            <a href="{{share_url}}" class="c-button--primary" role="button">
                                 {{lang 'common.share'}}
                             </a>
                         {{/if}}
@@ -59,7 +59,7 @@
         </p>
     {{/unless}}
     <div>
-        <a href="{{this.urls.account.wishlists.add}}" class="c-button c-button--primary js-wishlist border border-black py-1 px-3 cursor-pointer bg-black text-white hover:bg-transparent hover:text-black text-center" role="button">
+        <a href="{{this.urls.account.wishlists.add}}" class="c-button--primary js-wishlist" role="button">
             {{lang 'account.wishlists.new'}}
         </a>
         {{inject 'wishlistDelete' (lang 'account.wishlists.delete_alert')}}

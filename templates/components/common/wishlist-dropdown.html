@@ -21,7 +21,7 @@
             {{#each customer.wishlists}}
                 <li class="mb-2">
                     <button 
-                        class="c-button{{#if this.num_items '!==' '0'}} button-has-items{{/if}} border border-black py-1 px-3 cursor-pointer bg-black text-white hover:bg-transparent hover:text-black text-center w-full md:w-auto md:min-w-[50%]"
+                        class="c-button--primary{{#if this.num_items '!==' '0'}} button-has-items{{/if}} w-full md:w-auto md:min-w-[50%]"
                         formaction="{{this.add_url}}&product_id={{../product.id}}"
                         type="submit"
                     >

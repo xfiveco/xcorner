@@ -16,7 +16,7 @@
         </div>
     {{/if}}
     {{#if button_text}}
-        <a href="{{url}}" aria-label="{{#if this.alt_text.length '!=' 0}}{{this.alt_text}}{{else}}{{lang 'carousel.slide_number' slide_number=(add @index 1)}}{{/if}}, {{button_text}}" class="c-button c-button--primary button--large border border-black py-1 px-3 cursor-pointer bg-black text-white hover:bg-transparent hover:text-black text-center">
+        <a href="{{url}}" aria-label="{{#if this.alt_text.length '!=' 0}}{{this.alt_text}}{{else}}{{lang 'carousel.slide_number' slide_number=(add @index 1)}}{{/if}}, {{button_text}}" class="c-button--primary">
             {{{button_text}}}
         </a>
     {{/if}}

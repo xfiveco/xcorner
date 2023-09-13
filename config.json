@@ -162,7 +162,7 @@
     "button-border-color": "#000000",
     "button-text-align": "center",
     "button-text-uppercase": true,
-    "button-hover-background-color": "#ffffff",
+    "button-hover-background-color": "transparent",
     "button-hover-text-color": "#000000"
 },
   "read_only_files": [],
