@@ -158,6 +158,89 @@
       },
       {
         "type": "heading",
+        "content": "Links"
+      },
+      {
+        "type": "color",
+        "label": "Links hover text color",
+        "id": "link-hover-text-color"
+      },
+      {
+        "type": "color",
+        "label": "Links visited text color",
+        "id": "link-visited-text-color"
+      },
+      {
+        "type": "checkbox",
+        "label": "Link text uppercase",
+        "id": "link-text-uppercase"
+      },
+      {
+        "type": "select",
+        "id": "link-text-decoration-line",
+        "label": "Link decoration line",
+        "options": [
+            {
+                 "value": "none", 
+                 "label": "none"
+            },
+            {
+                 "value": "underline", 
+                 "label": "underline"
+            },
+            {
+                 "value": "overline", 
+                 "label": "overline"
+            },
+            {
+                 "value": "line-through", 
+                 "label": "line through"
+            },
+            {
+                 "value": "blink", 
+                 "label": "blink"
+            }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "link-text-decoration-style",
+        "label": "Link decoration style",
+        "options": [
+            {
+                "value": "solid", 
+                "label": "solid"
+            },
+            {
+                "value": "double", 
+                "label": "double"
+            },
+            {
+                "value": "dotted", 
+                "label": "dotted"
+            },
+            {
+                "value": "dashed", 
+                "label": "dashed"
+            },
+            {
+                "value": "wavy", 
+                "label": "wavy"
+            }
+        ]
+      },
+      {
+        "type": "color",
+        "id": "link-text-decoration-color",
+        "label": "Link decoration color"
+      },
+      {
+        "type": "text",
+        "id": "link-text-decoration-thickness",
+        "label": "Link decoration thickness"
+      },
+      {
+        "type": "heading",
         "content": "i18n.Headings"
       },
       {

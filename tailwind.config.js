@@ -65,11 +65,11 @@ module.exports = {
                     'text-align': 'var(--bc-button-text-align)',
                     'text-decoration': 'none',
                     'text-transform': 'var(--bc-button-text-uppercase)',
-                    transition: 'all cubic-bezier(.6,.07,.77,.53) 0.3s',
+                    transition: 'all cubic-bezier(.6,.07,.77,.53) 0.2s',
                     '&:hover': {
                         'background-color': 'var(--bc-button-hover-background-color, black)',
                         color: 'var(--bc-button-hover-text-color, white)',
-                        transition: 'all bezier(.04,.75,.55,.82) 0.2s',
+                        transition: 'all bezier(.04,.75,.55,.82) 0.1s',
                     },
                     '&[disabled]': {
                         'background-color': 'lightgray',
@@ -87,16 +87,28 @@ module.exports = {
                     'text-align': 'var(--bc-button-text-align)',
                     'text-decoration': 'none',
                     'text-transform': 'var(--bc-button-text-uppercase)',
-                    transition: 'all cubic-bezier(.6,.07,.77,.53) 0.3s',
+                    transition: 'all cubic-bezier(.6,.07,.77,.53) 0.2s',
                     '&:hover': {
                         'background-color': 'var(--bc-button-secondary-hover-background-color, black)',
                         color: 'var(--bc-button-secondary-hover-text-color, white)',
-                        transition: 'all bezier(.04,.75,.55,.82) 0.2s',
+                        transition: 'all bezier(.04,.75,.55,.82) 0.1s',
                     },
                     '&[disabled]': {
                         'background-color': 'lightgray',
                         color: 'white',
                         'pointer-events': 'none',
+                    },
+                },
+                '.c-link': {
+                    color: 'var(--bc-color-primary, white)',
+                    'text-decoration':
+                        'var(--bc-link-text-decoration-line, underline) var(--bc-link-text-decoration-style, solid) var(--bc-link-text-decoration-color, currentColor) var(--bc-link-text-decoration-thickness, auto)',
+                    'text-transform': 'var(--bc-link-text-uppercase)',
+                    '&:hover': {
+                        color: 'var(--bc-link-hover-text-color)',
+                    },
+                    '&:visited': {
+                        color: 'var(--bc-link-visited-text-color)',
                     },
                 },
             })
