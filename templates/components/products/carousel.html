@@ -1,19 +1,21 @@
-<section class="relative max-w-desktop mx-auto mt-4 mb-12">
-    <div class="js-products-swiper overflow-hidden w-11/12 lg:w-10/12 mx-auto pb-8 px-4">
-        <div class="swiper-wrapper">
-            {{#each products}}
-                <div id="Slide-{{ @index }}" class="swiper-slide shrink-0 !h-auto">
-                    {{> components/products/card settings=../settings theme_settings=../theme_settings customer=../customer event="list" position=(add @index 1)}}
-                </div>
-            {{/each}}
+<reveal-observed reveal="article">
+    <section class="relative max-w-desktop mx-auto mt-4 mb-12">
+        <div class="js-products-swiper overflow-hidden w-11/12 lg:w-10/12 mx-auto pb-8 px-4">
+            <div class="swiper-wrapper">
+                {{#each products}}
+                    <div id="Slide-{{ @index }}" class="swiper-slide shrink-0 !h-auto">
+                        {{> components/products/card settings=../settings theme_settings=../theme_settings customer=../customer event="list" position=(add @index 1)}}
+                    </div>
+                {{/each}}
+            </div>
         </div>
-    </div>
 
-    {{> components/products/carousel/pagination }}
-    
-    {{#if products.length '>' 1}}
-        {{> components/carousel/content-announcement}}
-    {{/if}}
+        {{> components/products/carousel/pagination }}
+        
+        {{#if products.length '>' 1}}
+            {{> components/carousel/content-announcement}}
+        {{/if}}
 
-    {{> components/products/carousel/arrows }}
-</section>
+        {{> components/products/carousel/arrows }}
+    </section>
+</reveal-observed>

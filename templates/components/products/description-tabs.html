@@ -26,15 +26,19 @@
 
 <div>
     {{#if product.description}}
-        <div class="is-active" id="tab-description">
-            {{{product.description}}}
-        </div>
+        <reveal-observed>
+            <div class="is-active" id="tab-description">
+                {{{product.description}}}
+            </div>
+        </reveal-observed>
     {{/if}}
 
     {{#if product.warranty}}
-        <div class="{{#unless product.description}}is-active{{/unless}}" id="tab-warranty">
-            {{{product.warranty}}}
-        </div>
+        <reveal-observed>
+            <div class="{{#unless product.description}}is-active{{/unless}}" id="tab-warranty">
+                {{{product.warranty}}}
+            </div>
+        </reveal-observed>
     {{/if}}
 
     {{#all product.custom_fields theme_settings.show_custom_fields_tabs}}
@@ -46,8 +50,10 @@
     {{/all}}
 
     {{#all settings.show_product_reviews theme_settings.show_product_reviews}}
-       <div class="mt-4">
-           {{> components/products/reviews reviews=product.reviews product=product urls=urls}}
-       </div>
+        <reveal-observed>
+            <div class="mt-4">
+                {{> components/products/reviews reviews=product.reviews product=product urls=urls}}
+            </div>
+        </reveal-observed>
     {{/all}}
 </div>

@@ -20,6 +20,8 @@ export default class Global extends PageManager {
 
         // Quick View
         ;(() => import('./global/quick-view').then((quickView) => quickView.default(this.context)))()
+        // eslint-disable-next-line no-unused-expressions
+        ;(() => import('./custom/reveal-observed-elements'))()
 
         carousel(this.context)
         menu()

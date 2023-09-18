@@ -81,3 +81,11 @@
 #product-reviews-content.is-open {
     @apply block;
 }
+
+.reveal-observed-setup {
+    @apply opacity-0 translate-y-7;
+}
+
+.reveal-observed-intersect {
+    @apply opacity-100 translate-y-0 transition-all ease-out duration-300;
+}

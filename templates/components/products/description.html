@@ -1,13 +1,18 @@
 {{#if product.description}}
     <p class="js-product-view-title">{{lang 'products.description'}}</p>
-    <div {{#if settings.data_tag_enabled}} data-event-type="product" {{/if}}>
-        {{{product.description}}}
-    </div>
+
+    <reveal-observed>
+        <div {{#if settings.data_tag_enabled}} data-event-type="product" {{/if}}>
+            {{{product.description}}}
+        </div>
+    </reveal-observed>
 {{/if}}
 
 {{#if product.warranty}}
     <p class="js-product-view-title">{{lang 'products.warranty'}}</p>
-    <div>
-        {{{product.warranty}}}
-    </div>
+    <reveal-observed>
+        <div>
+            {{{product.warranty}}}
+        </div>
+    </reveal-observed>
 {{/if}}
