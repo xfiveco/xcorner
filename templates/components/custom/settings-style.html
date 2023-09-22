@@ -1,0 +1,51 @@
+{{!-- 
+==========================================================================
+ SETTINGS STYLE
+========================================================================== 
+--}}
+
+<style>
+    :root {
+        {{#each theme_settings}}
+            {{#startsWith 'color-' @key}}
+                --bc-{{@key}}: {{ this }};
+            {{/startsWith}}
+
+            {{#startsWith 'button-' @key}}
+                {{#if @key '==' 'button-text-uppercase'}}
+                    {{#if this}}
+                        --bc-{{@key}}: uppercase;
+                    {{else}}
+                        --bc-{{@key}}: none;
+                    {{/if}}
+                {{else}}
+                    --bc-{{@key}}: {{ this }};
+                {{/if}}
+            {{/startsWith}}
+
+            {{#startsWith 'link-' @key}}
+                {{#if @key '==' 'link-text-uppercase'}}
+                    {{#if this}}
+                        --bc-{{@key}}: uppercase;
+                    {{else}}
+                        --bc-{{@key}}: none;
+                    {{/if}}
+                {{else}}
+                    --bc-{{@key}}: {{ this }};
+                {{/if}}
+            {{/startsWith}}
+
+            {{#startsWith 'font-' @key}}
+                {{#startsWith 'esacreppu-' (reverse @key)}}
+                    {{#if this}}
+                        --bc-{{@key}}: uppercase;
+                    {{else}}
+                        --bc-{{@key}}: none;
+                    {{/if}}
+                {{else}}
+                    --bc-{{@key}}: {{ this }};
+                {{/startsWith}}
+            {{/startsWith}}
+        {{/each}}
+    }
+</style>

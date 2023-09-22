@@ -100,7 +100,7 @@ module.exports = {
                     },
                 },
                 '.c-link': {
-                    color: 'var(--bc-color-primary, white)',
+                    color: 'var(--bc-color-primary, black)',
                     'text-decoration':
                         'var(--bc-link-text-decoration-line, underline) var(--bc-link-text-decoration-style, solid) var(--bc-link-text-decoration-color, currentColor) var(--bc-link-text-decoration-thickness, auto)',
                     'text-transform': 'var(--bc-link-text-uppercase)',
@@ -110,6 +110,13 @@ module.exports = {
                     '&:visited': {
                         color: 'var(--bc-link-visited-text-color)',
                     },
+                },
+                '.c-title': {
+                    color: 'var(--bc-color-primary, black)',
+                    'font-weight': 'bold',  // TODO: Continue exposing these settings
+                    'font-size': '1.875rem',
+                    'line-height': '2.25rem',
+                    'text-transform': 'var(--bc-font-text-uppercase)',
                 },
             })
         }),

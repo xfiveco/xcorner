@@ -43,39 +43,7 @@
         {{~inject 'carouselActiveDotAriaLabel' (lang 'carousel.active_dot_aria_label')}}
         {{~inject 'carouselContentAnnounceMessage' (lang 'carousel.content_announce_message')}}
 
-        <style>
-            :root {
-                {{#each theme_settings}}
-                    {{#startsWith 'color-' @key}}
-                        --bc-{{@key}}: {{ this }};
-                    {{/startsWith}}
-
-                    {{#startsWith 'button-' @key}}
-                        {{#if @key '==' 'button-text-uppercase'}}
-                            {{#if this}}
-                                --bc-{{@key}}: uppercase;
-                            {{else}}
-                                --bc-{{@key}}: none;
-                            {{/if}}
-                        {{else}}
-                            --bc-{{@key}}: {{ this }};
-                        {{/if}}
-                    {{/startsWith}}
-
-                    {{#startsWith 'link-' @key}}
-                        {{#if @key '==' 'link-text-uppercase'}}
-                            {{#if this}}
-                                --bc-{{@key}}: uppercase;
-                            {{else}}
-                                --bc-{{@key}}: none;
-                            {{/if}}
-                        {{else}}
-                            --bc-{{@key}}: {{ this }};
-                        {{/if}}
-                    {{/startsWith}}
-                {{/each}}
-            }
-        </style>
+        {{> components/custom/settings-style }}
     </head>
     <body class="scroll-smooth overflow-x-hidden">
         <svg data-src="{{cdn 'img/icon-sprite.svg'}}" class="hidden"></svg>
@@ -95,6 +63,6 @@
 
         {{{footer.scripts}}}
 
-        
+ 
     </body>
 </html>

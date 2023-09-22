@@ -173,7 +173,8 @@
     "link-text-decoration-line": "underline",
     "link-text-decoration-style": "solid",
     "link-text-decoration-color": "currentColor",
-    "link-text-decoration-thickness": "auto"
+    "link-text-decoration-thickness": "auto",
+    "font-title-uppercase": true
 },
   "read_only_files": [],
   "resources": {
