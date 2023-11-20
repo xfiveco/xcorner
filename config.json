@@ -1,6 +1,6 @@
 {
   "name": "X-Corner",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "template_engine": "handlebars_v4",
   "meta": {
     "price": 0,
@@ -164,8 +164,8 @@
       "name": "Normal",
       "id": "normal",
       "meta": {
-        "desktop_screenshot": "",
-        "mobile_screenshot": "",
+        "desktop_screenshot": "desktop.jpg",
+        "mobile_screenshot": "mobile.jpg",
         "description": "Xfive.co custom BigCommerce theme",
         "demo_url": "",
         "optimized_for": [
