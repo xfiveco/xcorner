@@ -1,23 +1,178 @@
 [
+    {
+  "name": "Colors",
+  "settings": [
+      {
+          "type": "color",
+          "label": "Black",
+          "id": "color-black"
+      },
+      {
+          "type": "color",
+          "label": "White",
+          "id": "color-white"
+      },
+      {
+          "type": "heading",
+          "content": "Primary"
+      },
+      {
+          "type": "color",
+          "label": "50",
+          "id": "color-primary-50"
+      },
+      {
+          "type": "color",
+          "label": "75",
+          "id": "color-primary-75"
+      },
+      {
+          "type": "color",
+          "label": "100",
+          "id": "color-primary-100"
+      },
+      {
+          "type": "color",
+          "label": "200",
+          "id": "color-primary-200"
+      },
+      {
+          "type": "color",
+          "label": "300",
+          "id": "color-primary-300"
+      },
+      {
+          "type": "color",
+          "label": "400",
+          "id": "color-primary-400"
+      },
+      {
+          "type": "color",
+          "label": "500",
+          "id": "color-primary-500"
+      },
+      {
+          "type": "heading",
+          "content": "Secondary"
+      },
+      {
+          "type": "color",
+          "label": "50",
+          "id": "color-secondary-50"
+      },
+      {
+          "type": "color",
+          "label": "75",
+          "id": "color-secondary-75"
+      },
+      {
+          "type": "color",
+          "label": "100",
+          "id": "color-secondary-100"
+      },
+      {
+          "type": "color",
+          "label": "200",
+          "id": "color-secondary-200"
+      },
+      {
+          "type": "color",
+          "label": "300",
+          "id": "color-secondary-300"
+      },
+      {
+          "type": "color",
+          "label": "400",
+          "id": "color-secondary-400"
+      },
+      {
+          "type": "color",
+          "label": "500",
+          "id": "color-secondary-500"
+      },
+      {
+          "type": "heading",
+          "content": "Neutral"
+      },
+      {
+          "type": "color",
+          "label": "50",
+          "id": "color-neutral-50"
+      },
+      {
+          "type": "color",
+          "label": "75",
+          "id": "color-neutral-75"
+      },
+      {
+          "type": "color",
+          "label": "100",
+          "id": "color-neutral-100"
+      },
+      {
+          "type": "color",
+          "label": "200",
+          "id": "color-neutral-200"
+      },
+      {
+          "type": "color",
+          "label": "300",
+          "id": "color-neutral-300"
+      },
+      {
+          "type": "color",
+          "label": "400",
+          "id": "color-neutral-400"
+      },
+      {
+          "type": "color",
+          "label": "500",
+          "id": "color-neutral-500"
+      },
+      {
+          "type": "heading",
+          "content": "Red"
+      },
+      {
+          "type": "color",
+          "label": "50",
+          "id": "color-red-50"
+      },
+      {
+          "type": "color",
+          "label": "75",
+          "id": "color-red-75"
+      },
+      {
+          "type": "color",
+          "label": "100",
+          "id": "color-red-100"
+      },
+      {
+          "type": "color",
+          "label": "200",
+          "id": "color-red-200"
+      },
+      {
+          "type": "color",
+          "label": "300",
+          "id": "color-red-300"
+      },
+      {
+          "type": "color",
+          "label": "400",
+          "id": "color-red-400"
+      },
+      {
+          "type": "color",
+          "label": "500",
+          "id": "color-red-500"
+      }
+  ]
+},
   {
     "name": "i18n.Global",
     "settings": [
-      {
-        "type": "heading",
-        "content": "i18n.BackgroundAndLines"
-      },
-      {
-        "type": "heading",
-        "content": "i18n.BodyTextAndLinks"
-      },
-      {
-        "type": "heading",
-        "content": "i18n.Headings"
-      },
-      {
-        "type": "heading",
-        "content": "i18n.LoadingIndicators"
-      },
       {
         "type": "heading",
         "content": "i18n.ImageLoading"

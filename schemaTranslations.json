@@ -16,23 +16,6 @@
     "no": "Global",
     "ko": "글로벌"
   },
-  "i18n.BackgroundAndLines": {
-    "default": "Background and lines",
-    "fr": "Arrière-plan et lignes",
-    "it": "Sfondo e linee",
-    "zh": "背景和线条",
-    "de": "Hintergrund und Linien",
-    "es": "Fondo y líneas",
-    "nl": "Achtergrond en lijnen",
-    "pt": "Plano de fundo e linhas",
-    "pt-BR": "Plano de fundo e linhas",
-    "sv": "Bakgrund och linjer",
-    "es-MX": "Fondo y líneas",
-    "es-419": "Fondo y líneas",
-    "da": "Baggrund og linjer",
-    "no": "Bakgrunn og linjer",
-    "ko": "배경과 선"
-  },
   "i18n.BodyTextAndLinks": {
     "default": "Body text and links",
     "fr": "Corps du texte et liens",
@@ -236,23 +219,6 @@
     "da": "Volkhov",
     "no": "Volkhov",
     "ko": "Volkhov"
-  },
-  "i18n.LoadingIndicators": {
-    "default": "Loading indicators",
-    "fr": "Indicateurs de chargement",
-    "it": "Indicatori di caricamento",
-    "zh": "加载指示器",
-    "de": "Ladeanzeigen",
-    "es": "Indicadores de carga",
-    "nl": "Laadindicatoren",
-    "pt": "Indicadores de carregamento",
-    "pt-BR": "Indicadores de carregamento",
-    "sv": "Laddningsindikatorer",
-    "es-MX": "Cargando indicadores",
-    "es-419": "Cargando indicadores",
-    "da": "Indlæsningsindikator",
-    "no": "Innlastingsindikatorer",
-    "ko": "로딩 인디케이터"
   },
   "i18n.ImageLoading": {
     "default": "Image Loading",
