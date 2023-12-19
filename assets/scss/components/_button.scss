@@ -1,47 +1,144 @@
-/* ==========================================================================
-   #BUTTONS
-   ========================================================================== */
+// /* ==========================================================================
+//    #BUTTONS
+//    ========================================================================== */
 
-.c-button {
-    background-color: transparent;
-    border-color: $color-grey-450;
-    border-radius: 4px;
-    border-style: solid;
-    border-width: rem-calc(1);
-    color: $color-medium-grey;
-    cursor: pointer;
-    display: inline-block;
-    font-family: Montserrat, Arial, Helvetica, sans-serif;
-    font-size: 1rem;
-    font-weight: 400;
-    line-height: normal;
-    margin: 0 0 1rem;
-    outline: none;
-    padding: 0.85714rem 2.28571rem;
-    position: relative;
-    text-align: center;
-    text-decoration: none;
-    vertical-align: middle;
-
+@mixin button_transition() {
+    transition: all 0.2s ease-in-out;
     &:hover,
     &:focus {
-        background-color: transparent;
-        border-color: $color-grey-615;
-        color: $color-dark-grey;
+        transition: all 0.2s ease-in-out;
     }
 }
 
-/* Style variants
-   ========================================================================== */
-.c-button--primary {
-    background-color: $color-grey-625;
-    border-color: $color-grey-625;
-    color: $color-white;
-
-    &:hover,
+@mixin button_focus($color, $shadow-color) {
     &:focus {
-        background-color: $color-medium-grey;
-        border-color: $color-medium-grey;
+        background: $color;
+        box-shadow: 0px 0px 0px 4px $shadow-color;
         color: $color-white;
     }
+}
+
+@mixin button_disabled() {
+    &:disabled {
+        opacity: 0.48;
+    }
+}
+
+@mixin button_tertiary_base() {
+    padding: 12px 0;
+    background: $color-white;
+    text-align: center;
+    font-family: $font-sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 1.5;
+
+    @include button_transition();
+}
+
+.c-button {
+    color: $color-white;
+    text-align: center;
+    font-family: Assistant, $font-sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 1.5;
+    outline: 0;
+    border: 0;
+    padding: 12px 16px;
+    cursor: pointer;
+    text-decoration: none;
+
+    @include button_transition();
+    @include button_disabled();
+}
+
+@mixin button_variant($background, $shadow, $border-color: null, $border-width: 0) {
+    border-radius: 4px;
+    background: $background;
+    box-shadow: 0px 4px 12px 0px $shadow;
+    border: $border-width solid $border-color;
+}
+
+$color-primary-shadow: rgba(90, 100, 193, 0.24);
+$color-red-shadow: rgba(215, 68, 68, 0.24);
+
+.c-button--primary {
+    @include button_variant($color-primary-300, $color-primary-shadow);
+    @include button_focus($color-primary-400, $color-primary-shadow);
+
+    &:hover {
+        background: $color-primary-400;
+        color: $color-white;
+    }
+}
+
+.c-button--secondary {
+    @include button_variant($color-primary-50, $color-primary-shadow, $color-primary-75, 1px);
+    @include button_focus($color-primary-400, $color-primary-shadow);
+    color: $color-primary-300;
+
+    &:hover {
+        background: $color-primary-400;
+        color: $color-white;
+    }
+}
+
+.c-button--primary-red {
+    @include button_variant($color-red-300, $color-red-shadow);
+    @include button_focus($color-red-400, $color-red-shadow);
+
+    &:hover {
+        background: $color-red-400;
+        color: $color-white;
+    }
+}
+
+.c-button--secondary-red {
+    @include button_variant($color-red-50, $color-red-shadow, $color-red-75, 1px);
+    @include button_focus($color-red-400, $color-red-shadow);
+    color: $color-red-300;
+
+    &:hover {
+        background: $color-red-400;
+        color: $color-white;
+    }
+}
+
+.c-button--tertiary {
+    @include button_tertiary_base();
+    color: $color-primary-300;
+
+    &:hover {
+        color: $color-primary-400;
+        border-bottom: 2px solid $color-primary-400;
+    }
+
+    &:focus {
+        color: $color-primary-400;
+    }
+}
+
+.c-button--tertiary-red {
+    @include button_tertiary_base();
+    color: $color-red-300;
+
+    &:hover {
+        color: $color-red-400;
+        border-bottom: 2px solid $color-red-400;
+    }
+
+    &:focus {
+        color: $color-red-400;
+    }
+}
+
+.button--large {
+    padding: 16px 24px;
+}
+
+.button--large-tertiary {
+    padding: 16px 0;
 }
