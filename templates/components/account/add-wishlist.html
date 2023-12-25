@@ -3,48 +3,57 @@
 <div>
     <header>
         {{#if forms.wishlist.id}}
-            <h1>
-                {{lang 'account.wishlists.edit'}}
-            </h1>
+        <h1>{{lang 'account.wishlists.edit'}}</h1>
         {{else}}
-            <h1>
-                {{lang 'account.wishlists.new'}}
-            </h1>
-            <p>
-                {{lang 'account.wishlists.tag_line'}}
-            </p>
-        {{/if}}
-        {{#if forms.wishlist.errors}}
-            {{> components/common/alert/alert-error forms.wishlist.errors}}
-        {{/if}}
+        <h1>{{lang 'account.wishlists.new'}}</h1>
+        <p>{{lang 'account.wishlists.tag_line'}}</p>
+        {{/if}} {{#if forms.wishlist.errors}} {{> components/common/alert/alert-error forms.wishlist.errors}} {{/if}}
     </header>
-    <form action="{{#if forms.wishlist.id}}{{urls.account.wishlists.edit}}{{else}}{{urls.account.wishlists.add}}&product_id={{forms.wishlist.product_id}}{{/if}}" class="js-wishlist-form" method="post">
-        <input type="hidden" name="submit">
+    <form
+        action="{{#if forms.wishlist.id}}{{urls.account.wishlists.edit}}{{else}}{{urls.account.wishlists.add}}&product_id={{forms.wishlist.product_id}}{{/if}}"
+        class="js-wishlist-form"
+        method="post"
+    >
+        <input
+            type="hidden"
+            name="submit"
+        />
         <div>
             <label for="wishlistname">
                 {{lang 'forms.wishlist.name'}}
-                <small>
-                    {{lang 'common.required' }}
-                </small>
+                <small>*</small>
             </label>
-            <input class="js-form-input" name="wishlistname" id="wishlistname" value="{{forms.wishlist.name}}">
+            <input
+                class="js-form-input"
+                name="wishlistname"
+                id="wishlistname"
+                value="{{forms.wishlist.name}}"
+            />
         </div>
         <div>
             <input type="checkbox" name="publicwishlist" id="publicwishlist"{{#if forms.wishlist.is_public}} checked{{/if}}>
-            <label for="publicwishlist">
-                {{lang 'forms.wishlist.public' }}
-            </label>
+            <label for="publicwishlist"> {{lang 'forms.wishlist.public' }} </label>
         </div>
         <div>
             {{#if forms.wishlist.id}}
-                <input type="hidden" name="wishlistid" value="{{forms.wishlist.id}}">
-                <button class="c-button c-button--primary" type="submit">
-                    {{lang 'account.wishlists.save'}}
-                </button>
+            <input
+                type="hidden"
+                name="wishlistid"
+                value="{{forms.wishlist.id}}"
+            />
+            <button
+                class="c-button c-button--primary"
+                type="submit"
+            >
+                {{lang 'account.wishlists.save'}}
+            </button>
             {{else}}
-                <button class="c-button c-button--primary" type="submit">
-                    {{lang 'account.wishlists.create'}}
-                </button>
+            <button
+                class="c-button c-button--primary"
+                type="submit"
+            >
+                {{lang 'account.wishlists.create'}}
+            </button>
             {{/if}}
         </div>
     </form>
