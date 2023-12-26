@@ -22,7 +22,7 @@
     <div class="u-hidden-visually">
         {{lang 'footer.title'}}
     </div>
-    <div class="o-container">
+    <div class="footer-container">
         {{#if theme_settings.social_icon_placement_bottom '!==' 'bottom_none'}}
             <article data-section-type="footer-web-pages">
                 <div>
@@ -33,12 +33,28 @@
             </article>
         {{/if}}
 
+        {{> components/common/store-logo}}
+
         <section>
+            <article data-section-type="footer-categories">
+                <div class="footer-heading">
+                    {{lang 'footer.categories'}}
+                </div>
+                <ul class="footer-links">
+                    {{#each categories}}
+                        <li>
+                            <a href="{{url}}">{{name}}</a>
+                        </li>
+                    {{/each}}
+                </ul>
+            </article>
+
+
             <article data-section-type="footer-web-pages">
-                <div>
+                <div class="footer-heading">
                     {{lang 'footer.navigate'}}
                 </div>
-                <ul>
+                <ul class="footer-links">
                     {{#each pages}}
                         <li>
                             <a href="{{url}}">{{name}}</a>
@@ -52,25 +68,12 @@
                 </ul>
             </article>
 
-            <article data-section-type="footer-categories">
-                <div>
-                    {{lang 'footer.categories'}}
-                </div>
-                <ul>
-                    {{#each categories}}
-                        <li>
-                            <a href="{{url}}">{{name}}</a>
-                        </li>
-                    {{/each}}
-                </ul>
-            </article>
-
-            {{#and theme_settings.shop_by_brand_show_footer shop_by_brand.length}}
+            {{!-- {{#and theme_settings.shop_by_brand_show_footer shop_by_brand.length}}
                 <article data-section-type="footer-brands">
-                    <div>
+                    <div class="footer-heading">
                         {{lang 'footer.brands'}}
                     </div>
-                    <ul>
+                    <ul class="footer-links">
                         {{#each shop_by_brand}}
                             <li>
                                 <a href="{{url}}">{{name}}</a>
@@ -83,7 +86,23 @@
                         </li>
                     </ul>
                 </article>
-            {{/and}}
+            {{/and}} --}}
+
+            <article data-section-type="footer-info">
+                <div class="footer-heading">
+                    {{lang 'footer.info'}}
+                </div>
+                <div class="footer-address">
+                    <p class="footer-address-line">XCorner</p>
+                    <p class="footer-address-line">ul. Starowislna 46</p>
+                    <p class="footer-address-line">31-035 Krakow</p>
+                    <p class="footer-address-line">Poland</p>
+                </div>
+                <div class="footer-contact-info">
+                    <p class="footer-address-line">+48 123-456-789</p>
+                    <a href="mailto:xcorner@xfive.co" class="footer-contact-link">xcorner@xfive.co</a>
+                </div>
+            </article>
 
             {{#if settings.address}}
                 <article data-section-type="store-info">
@@ -100,7 +119,8 @@
                     {{/if}}
                 </article>
             {{/if}}
-
+        </section>
+        <section>
             <article data-section-type="newsletter-subscription">
                 {{#if settings.show_newsletter_box}}
                     {{> components/common/subscription-form}}
@@ -116,20 +136,22 @@
                 </p>
             </div>
         {{/if}}
-        {{#if theme_settings.show_powered_by}}
-            <div>
-                <p>
-                    {{lang 'footer.powered_by'}} <a href="https://www.bigcommerce.com?utm_source=merchant&amp;utm_medium=poweredbyBC" rel="nofollow">BigCommerce</a>
-                </p>
-            </div>
-        {{/if}}
-        {{#if theme_settings.show_copyright_footer}}
-            <div>
-                <p>
-                    &copy; {{moment format="YYYY"}} {{settings.store_name}} 
-                </p>
-            </div>
-        {{/if}}
+        <div class="footer-copyright">
+            {{#if theme_settings.show_powered_by}}
+                <div>
+                    <p class="footer-copyright-text">
+                        {{lang 'footer.powered_by'}} <a href="https://www.bigcommerce.com?utm_source=merchant&amp;utm_medium=poweredbyBC" rel="nofollow">BigCommerce</a>
+                    </p>
+                </div>
+            {{/if}}
+            {{#if theme_settings.show_copyright_footer}}
+                <div>
+                    <p class="footer-copyright-text">
+                        &copy; {{moment format="YYYY"}} {{settings.store_name}} 
+                    </p>
+                </div>
+            {{/if}}
+        </div>
     </div>
 
     {{{region name="ssl_site_seal--global"}}}
