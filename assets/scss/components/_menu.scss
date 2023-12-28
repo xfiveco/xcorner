@@ -3,14 +3,15 @@
    #MENU
    ========================================================================== */
 
-.c-menu {
-    
-}
+$quick-search-icon: "data:image/svg+xml;base64,CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSI+CjxtYXNrIGlkPSJtYXNrMF8zMDAzXzMwOTU0IiBzdHlsZT0ibWFzay10eXBlOmFscGhhIiBtYXNrVW5pdHM9InVzZXJTcGFjZU9uVXNlIiB4PSIwIiB5PSIwIiB3aWR0aD0iMjQiIGhlaWdodD0iMjQiPgo8cGF0aCBkPSJNMTEuNSAyMUMxNi43NDY3IDIxIDIxIDE2Ljc0NjcgMjEgMTEuNUMyMSA2LjI1MzI5IDE2Ljc0NjcgMiAxMS41IDJDNi4yNTMyOSAyIDIgNi4yNTMyOSAyIDExLjVDMiAxNi43NDY3IDYuMjUzMjkgMjEgMTEuNSAyMVoiIHN0cm9rZT0iIzM3M0QzRiIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPgo8cGF0aCBkPSJNMjIgMjJMMjAgMjAiIHN0cm9rZT0iIzM3M0QzRiIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPgo8L21hc2s+CjxnIG1hc2s9InVybCgjbWFzazBfMzAwM18zMDk1NCkiPgo8cmVjdCB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIGZpbGw9IiM4QzhDOEMiLz4KPC9nPgo8L3N2Zz4K";
 
-.c-menu > nav {
-    display: grid;
-    grid-template-columns: auto 1fr;
-    gap: rem-calc(10px);
+.c-menu {
+    @include container();
+    display: none;
+
+    @include bp(medium) {
+        display: block
+    }
 }
 
 .c-menu > nav ul {
@@ -24,6 +25,7 @@
 .c-menu > nav > ul {
     display: flex;
     gap: rem-calc(10px);
+    position: relative;
 }
 
 .c-menu .has-sub-menu + div {
@@ -31,5 +33,44 @@
 }
 
 .c-menu .has-sub-menu.is-open + div {
-    display: block;
+    display: flex;
+}
+
+.c-nav-sub-menu {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 2;
+    width: 100vw;
+    background-color: $color-white;
+    padding: 24px 80px;
+}
+
+.c-nav-sub-menu-items {
+    width: 100%;
+    padding: 48px 80px;
+    margin: 0;
+
+    .js-nav-pages-action {
+        padding: 0;
+    }
+}
+
+.js-search-quick {
+    padding: 16px 16px 16px 48px;
+    color: $color-neutrals-500;
+    font-family: $font-regular;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.5;
+    background-image: url($quick-search-icon);
+    background-position-y: center;
+    background-position-x: 16px;
+    background-repeat: no-repeat;
+    min-width: 342px;
 }

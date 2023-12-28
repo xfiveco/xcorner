@@ -6,12 +6,20 @@
     >
         {{name}}
     
-        <svg>
-            <use href="#icon-chevron-down" />
+        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="24" viewBox="0 0 25 24" fill="none">
+            <mask id="mask0_2973_30873" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="25" height="24">
+                <path d="M6.5 9L12.5 15L18.5 9" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </mask>
+            <g mask="url(#mask0_2973_30873)">
+                <rect x="0.5" width="24" height="24" fill="{{#if is_active}}#5A64C1{{else}}#272727{{/if}}"/>
+            </g>
         </svg>
     </a>
-    <div id="nav-pages-{{id}}" aria-hidden="true" tabindex="-1">
-        <ul>
+    <div class="c-nav-sub-menu" id="nav-pages-{{id}}" aria-hidden="true" tabindex="-1">
+        <div aria-hidden="true" class="js-quick-search">
+            {{> components/common/quick-search name='nav-quick-search'}}
+        </div>
+        <ul class="c-nav-sub-menu-items">
             <li>
                 <a 
                     class="js-nav-pages-action"
