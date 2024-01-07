@@ -368,15 +368,15 @@
         "force_reload": true,
         "options": [
           {
-            "value": true,
+            "value": "true",
             "label": "True"
           },
           {
-            "value": false,
+            "value": "false",
             "label": "False"
           }
         ],
-        "default": true
+        "default": "true"
       },
       {
         "type": "checkbox",
