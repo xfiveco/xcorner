@@ -213,7 +213,9 @@
             "10": "Oct",
             "11": "Nov",
             "12": "Dec"
-        }
+        },
+        "reach_out": "Reach out",
+        "sign_in_now": "Sign in now"
     },
     "compare": {
         "button": "Compare Products",

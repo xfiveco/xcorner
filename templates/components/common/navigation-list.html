@@ -1,6 +1,6 @@
 {{#if children}}
     <a 
-        class="js-nav-pages-action has-sub-menu{{#if is_active}} is-active{{/if}}"
+        class="js-nav-pages-action has-sub-menu{{#if is_active}} is-active{{/if}}{{#if active_category_navigation '===' 'true'}} is-active{{/if}}"
         href="{{url}}"
         data-collapsible="nav-pages-{{id}}"
     >
@@ -17,7 +17,7 @@
     </a>
     <div class="c-nav-sub-menu" id="nav-pages-{{id}}" aria-hidden="true" tabindex="-1">
         <div aria-hidden="true" class="js-quick-search">
-            {{> components/common/quick-search name='nav-quick-search'}}
+            {{> components/common/quick-search name='nav-menu-quick-search'}}
         </div>
         <ul class="c-nav-sub-menu-items">
             <li>
@@ -73,6 +73,45 @@
                     {{/if}}
                 </li>
             {{/each}}
+            <ul>
+                <li>
+                    <a 
+                        class="js-nav-pages-action"
+                        href="{{url}}"
+                        aria-label="{{lang 'category.view_all.name' category=name}}"
+                    >
+                        {{lang 'common.login'}}
+                    </a>
+                </li>
+                <li>
+                    <a 
+                        class="js-nav-pages-action sign-in-now"
+                        href="{{url}}"
+                        aria-label="{{lang 'category.view_all.name' category=name}}"
+                    >
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <path d="M20 21V19C20 17.9391 19.5786 16.9217 18.8284 16.1716C18.0783 15.4214 17.0609 15 16 15H8C6.93913 15 5.92172 15.4214 5.17157 16.1716C4.42143 16.9217 4 17.9391 4 19V21M12 11C14.2091 11 16 9.20914 16 7C16 4.79086 14.2091 3 12 3C9.79086 3 8 4.79086 8 7C8 9.20914 9.79086 11 12 11Z" stroke="#5A64C1" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        {{lang 'common.sign_in_now'}}
+                    </a>
+                </li>
+                <li>
+                    <a 
+                        class="js-nav-pages-action"
+                        href="{{url}}"
+                        aria-label="{{lang 'category.view_all.name' category=name}}"
+                    >
+                        {{lang 'common.reach_out'}}
+                    </a>
+                    {{> components/common/social-links }}
+                </li>
+                <li>
+                    {{{region name=(concat name '-navigation-dropdown-image-first--global')}}}
+                </li>
+                <li>
+                    {{{region name=(concat name '-navigation-dropdown-image-second--global')}}}
+                </li>
+            </ul>
         </ul>
     </div>
 {{else}}
