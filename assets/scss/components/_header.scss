@@ -195,3 +195,20 @@
         display: inline-block !important;
     }
 }
+
+.js-nav-promo-image {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 284 / 190;
+}
+
+.is-open {
+    .c-menu {
+        display: block;
+
+        > nav > ul {
+            flex-direction: column;
+            height: 100vh;
+        }
+    }
+}

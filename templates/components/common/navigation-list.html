@@ -105,13 +105,17 @@
                     </a>
                     {{> components/common/social-links }}
                 </li>
-                <li>
-                    {{{region name=(concat name '-navigation-dropdown-image-first--global')}}}
-                </li>
-                <li>
-                    {{{region name=(concat name '-navigation-dropdown-image-second--global')}}}
-                </li>
             </ul>
+            <li>
+                <a href="/">
+                    <img class="js-nav-promo-image" src={{cdn 'img/navigation/30-off.png'}} height="190" width="284" loading="lazy"/>
+                </a>
+            </li>
+            <li>
+                <a href="/">
+                    <img class="js-nav-promo-image" src={{cdn 'img/navigation/black-friday.png'}} height="190" width="284" loading="lazy"/>
+                </a>
+            </li>
         </ul>
     </div>
 {{else}}

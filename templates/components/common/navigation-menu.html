@@ -6,7 +6,7 @@
         {{#each categories}}
             <li>
                 {{#if ../theme_settings.navigation_design '===' 'simple'}}
-                    {{> components/common/navigation-list active_category_navigation=../theme_settings.active_category_navigation}}
+                    {{> components/common/navigation-list}}
                 {{/if}}
                 {{#if ../theme_settings.navigation_design '===' 'alternate'}}
                     {{> components/common/navigation-list-alternate}}

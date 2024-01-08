@@ -362,23 +362,6 @@
         "content": "i18n.SocialAccountsMustBeSet"
       },
       {
-        "type": "select",
-        "label": "Activate Navigation Dropdown",
-        "id": "active_category_navigation",
-        "force_reload": true,
-        "options": [
-          {
-            "value": "true",
-            "label": "True"
-          },
-          {
-            "value": "false",
-            "label": "False"
-          }
-        ],
-        "default": "true"
-      },
-      {
         "type": "checkbox",
         "label": "i18n.ShowSocialMediaIcons",
         "force_reload": true,
