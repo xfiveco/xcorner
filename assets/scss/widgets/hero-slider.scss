@@ -1,0 +1,162 @@
+$swiper-arrow-right: "data:image/svg+xml;base64,CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSI+CjxnIGlkPSJhcnJvdy1yaWdodCI+CjxwYXRoIGlkPSJWZWN0b3IiIGQ9Ik01IDEySDE5TTE5IDEyTDEyIDVNMTkgMTJMMTIgMTkiIHN0cm9rZT0id2hpdGUiIHN0cm9rZS13aWR0aD0iMS41IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KPC9nPgo8L3N2Zz4K";
+$swiper-arrow-left: "data:image/svg+xml;base64,CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSI+CjxtYXNrIGlkPSJtYXNrMF8zMDQxXzMyMDEzIiBzdHlsZT0ibWFzay10eXBlOmFscGhhIiBtYXNrVW5pdHM9InVzZXJTcGFjZU9uVXNlIiB4PSIwIiB5PSIwIiB3aWR0aD0iMjQiIGhlaWdodD0iMjQiPgo8cGF0aCBkPSJNMTkgMTJINU01IDEyTDEyIDE5TTUgMTJMMTIgNSIgc3Ryb2tlPSJibGFjayIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPgo8L21hc2s+CjxnIG1hc2s9InVybCgjbWFzazBfMzA0MV8zMjAxMykiPgo8cmVjdCB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIGZpbGw9IndoaXRlIi8+CjwvZz4KPC9zdmc+Cg==";
+
+.slide-image {
+    aspect-ratio: 342/424;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+
+    @include bp(medium) {
+        aspect-ratio: 738/484;
+    }
+
+    @include bp(large) {
+        aspect-ratio: 1280/640;
+    }
+}
+
+.slide-information {
+    position: relative;
+    background-color: $color-white;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 24px;
+    border-radius: 4px;
+    align-items: center;
+    max-width: 852px;
+    margin: -96px 24px 0;
+
+    @include bp(medium) {
+        margin: -96px 127px 0;
+        padding: 48px;
+        gap: 24px;
+    }
+
+    @include bp(large) {
+        margin: -96px auto 0;
+    }
+}
+
+.slide-title {
+    color: $color-black;
+    text-align: center;
+    font-family: $font-regular;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 1.25;
+    margin: 0;
+
+    @include bp(medium) {
+        font-size: 42px;
+        line-height: 1.33;
+    }
+}
+
+.slide-subtext {
+    color: $color-neutrals-500;
+    text-align: center;
+    font-family: $font-regular;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.33;
+    margin: 0;
+}
+
+.slide-price {
+    color: $color-neutrals-300;
+    text-align: center;
+    font-family: $font-regular;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.33;
+    margin: 0;
+
+    span {
+        color: $color-black;
+        text-align: center;
+        font-family: $font-regular;
+        font-size: 32px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 1.25;
+    }
+}
+
+.slide-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+
+    @include bp(medium) {
+        flex-direction: row;
+    }
+}
+
+.slide-navigation {
+    position: absolute;
+    bottom: 60%;
+    z-index: 2;
+    left: 0;
+    margin-left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 24px;
+
+    @include bp(small) {
+        bottom: 50%;
+    }
+
+    @include bp(medium) {
+        bottom: 50%;
+    }
+
+    @include bp(large) {
+        bottom: 400px;
+    }
+
+    .js-swiper-btn-next,
+    .js-swiper-btn-prev {
+        width: 24px;
+        height: 24px;
+        border: 0 !important;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+    }
+
+    .js-swiper-btn-next {
+        background-image: url($swiper-arrow-right);
+    }
+
+    .js-swiper-btn-prev {
+        background-image: url($swiper-arrow-left);
+    }
+
+    .js-swiper-pagination {
+        border: 0 !important;
+        padding: 0 !important;
+        display: flex;
+        justify-content: space-between;
+        gap: 24px;
+
+        .swiper-pagination-bullet {
+            background-color: transparent;
+            opacity: 1;
+            border: 2px solid $color-white;
+            width: 12px;
+            height: 12px;
+            margin: 0 !important;
+
+            &-active {
+                background-color: $color-white;
+            }
+        }
+    }
+}

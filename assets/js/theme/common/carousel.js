@@ -1,16 +1,17 @@
-import Swiper, { Navigation } from 'swiper'
+import Swiper, { Navigation, Pagination } from 'swiper'
 import q$ from '../global/selector'
 
 /* eslint-disable import/no-unresolved, import/extensions */
 import 'swiper/scss'
 import 'swiper/scss/navigation'
+import 'swiper/css/pagination'
 /* eslint-enable import/no-unresolved, import/extensions */
 
 export default function startSwiper(context) {
     if (q$('.js-home-swiper') !== null) {
         const homeCarouselParams = {
             direction: 'horizontal',
-            modules: [Navigation],
+            modules: [Navigation, Pagination],
             allowSlideNext: true,
             allowSlidePrev: true,
             slidesPerView: 1,
@@ -22,6 +23,10 @@ export default function startSwiper(context) {
             navigation: {
                 nextEl: '.js-swiper-btn-next',
                 prevEl: '.js-swiper-btn-prev',
+            },
+            pagination: {
+                el: '.js-swiper-pagination',
+                clickable: true,
             },
         }
 
