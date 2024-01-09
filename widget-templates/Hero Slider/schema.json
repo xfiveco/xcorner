@@ -1,0 +1,157 @@
+[
+  {
+    "type": "tab",
+    "label": "Settings",
+    "sections": [
+      {
+        "label": "Content",
+        "settings": [
+          {
+            "type": "boxModel",
+            "label": "Desktop Margin",
+            "id": "desktop_margin",
+            "default": {
+              "top": {
+                "value": "0",
+                "type": "px"
+              },
+              "right": {
+                "value": "0",
+                "type": "px"
+              },
+              "bottom": {
+                "value": "0",
+                "type": "px"
+              },
+              "left": {
+                "value": "0",
+                "type": "px"
+              }
+            }
+          },
+          {
+            "type": "boxModel",
+            "label": "Mobile Margin",
+            "id": "mobile_margin",
+            "default": {
+              "top": {
+                "value": "0",
+                "type": "px"
+              },
+              "right": {
+                "value": "0",
+                "type": "px"
+              },
+              "bottom": {
+                "value": "0",
+                "type": "px"
+              },
+              "left": {
+                "value": "0",
+                "type": "px"
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "array",
+    "label": "Slides",
+    "id": "slides",
+    "defaultCount": 1,
+    "entryLabel": "Slide",
+    "schema": [
+        {
+            "type": "tab",
+            "label": "Slide",
+            "sections": [
+                {
+                    "settings": [
+                        {
+                            "type": "input",
+                            "label": "Title",
+                            "id": "title",
+                            "default": "Slide Title"
+                        },
+                        {
+                            "type": "input",
+                            "label": "Subtext",
+                            "id": "subtext",
+                            "default": "Slide Sub Text"
+                        },
+                        {
+                            "type": "input",
+                            "label": "Price",
+                            "id": "price",
+                            "default": "Price"
+                        },
+                        {
+                            "type": "element",
+                            "label": "Main Button",
+                            "id": "main_button",
+                            "typeMeta": {
+                                "controls": {
+                                    "visibility": {
+                                        "default": "show"
+                                    },
+                                    "advanced": {
+                                        "settings": [
+                                            {
+                                                "type": "input",
+                                                "label": "Button Text",
+                                                "id": "text"
+                                            },
+                                            {
+                                                "type": "input",
+                                                "label": "Button URL",
+                                                "id": "url"
+                                            }
+                                        ]
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            "type": "element",
+                            "label": "Secondary Button",
+                            "id": "secondary_button",
+                            "typeMeta": {
+                                "controls": {
+                                    "visibility": {
+                                        "default": "show"
+                                    },
+                                    "advanced": {
+                                        "settings": [
+                                            {
+                                                "type": "input",
+                                                "label": "Button Text",
+                                                "id": "text"
+                                            },
+                                            {
+                                                "type": "input",
+                                                "label": "Button URL",
+                                                "id": "url"
+                                            }
+                                        ]
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            "type": "imageManager",
+                            "label": "Image",
+                            "id": "image",
+                            "default": {
+                                "src": "",
+                                "type": "IMAGE_MANAGER"
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
+]

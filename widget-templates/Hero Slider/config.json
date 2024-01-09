@@ -1,0 +1,55 @@
+{
+  "desktop_margin": {
+    "top": {
+      "value": "0",
+      "type": "px"
+    },
+    "right": {
+      "value": "0",
+      "type": "px"
+    },
+    "bottom": {
+      "value": "0",
+      "type": "px"
+    },
+    "left": {
+      "value": "0",
+      "type": "px"
+    }
+  },
+  "mobile_margin": {
+    "top": {
+      "value": "0",
+      "type": "px"
+    },
+    "right": {
+      "value": "0",
+      "type": "px"
+    },
+    "bottom": {
+      "value": "0",
+      "type": "px"
+    },
+    "left": {
+      "value": "0",
+      "type": "px"
+    }
+  },
+  "slides": [
+    {
+      "title": "Slide Title",
+      "subtext": "Slide Sub Text",
+      "price": "Price",
+      "main_button": {
+        "visibility": "show"
+      },
+      "secondary_button": {
+        "visibility": "show"
+      },
+      "image": {
+        "src": "",
+        "type": "IMAGE_MANAGER"
+      }
+    }
+  ]
+}

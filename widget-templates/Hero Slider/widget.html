@@ -1,0 +1,73 @@
+
+<style>
+    .hero-slider-{{_.id}} {
+        margin-top: {{desktop_margin.top.value}}{{desktop_margin.top.type}};
+        margin-bottom: {{desktop_margin.bottom.value}}{{desktop_margin.bottom.type}};
+    }
+
+    @media screen and (max-width: 767px) {
+        .hero-slider-{{_.id}} {
+            margin-top: {{mobile_margin.top.value}}{{mobile_margin.top.type}};
+            margin-bottom: {{mobile_margin.bottom.value}}{{mobile_margin.bottom.type}};
+        }
+    }
+</style>
+    
+<section class="js-home-swiper c-carousel hero-banner hero-banner-{{_.id}}">
+    <div class="swiper-wrapper">
+        {{#each slides}}
+            <div class="swiper-slide">
+                <div class="slide-container">
+                    {{#if image}}<img class="slide-image" src="{{image.src}}" />{{/if}}
+                    {{#or title subtext}}
+                        <div class="slide-information">
+                            {{#if title}}<h2 class="slide-title">{{title}}</h2>{{/if}}
+                            {{#if subtext}}<p class="slide-subtext">{{subtext}}</p>{{/if}}
+                            {{#if price}}<p class="slide-price">$ <span>{{price}}</span></p>{{/if}}
+                            {{#or main_button secondary_button}}
+                                <div class="slide-buttons">
+                                    {{#if main_button}}
+                                        <a class="c-button c-button--primary" href="{{main_button.url}}">{{main_button.text}}</a>
+                                    {{/if}}
+                                    {{#if secondary_button}}
+                                        <a class="c-button c-button--secondary" href="{{secondary_button.url}}">{{secondary_button.text}}</a>
+                                    {{/if}}
+                                </div>
+                            {{/or}}
+                        </div>
+                    {{/or}}
+                </div>
+            </div>
+        {{/each}}
+    </div>
+
+    <div class="slide-navigation">
+        <div class="js-swiper-btn-prev"></div>
+        <div class="js-swiper-pagination"></div>
+        <div class="js-swiper-btn-next"></div>
+    </div>
+</section>
+
+<script>
+    document.addEventListener("DOMContentLoaded", positionNavigation);
+    window.addEventListener("resize", positionNavigation);
+
+    function positionNavigation() {
+        let slides = document.querySelectorAll('.swiper-slide');
+
+        slides.forEach(function(slide) {
+            let info = slide.querySelector('.slide-information');
+            let nav = document.querySelector('.slide-navigation');
+
+            if(info && nav) {
+                let infoRect = info.getBoundingClientRect();
+                let slideRect = slide.getBoundingClientRect();
+
+                let topPosition = infoRect.top - slideRect.top - 24;
+
+                nav.style.position = 'absolute';
+                nav.style.top = topPosition + 'px';
+            }
+        });
+    }
+</script>
