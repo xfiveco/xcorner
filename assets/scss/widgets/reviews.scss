@@ -1,0 +1,91 @@
+$swiper-arrow-left-purple: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIj4KICA8cGF0aCBkPSJNMTkgMTJINU01IDEyTDEyIDE5TTUgMTJMMTIgNSIgc3Ryb2tlPSIjNUE2NEMxIiBzdHJva2Utd2lkdGg9IjEuNSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+Cjwvc3ZnPg==';
+$swiper-arrow-right-purple: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIj4KICA8cGF0aCBkPSJNNSAxMkgxOU0xOSAxMkwxMiA1TTE5IDEyTDEyIDE5IiBzdHJva2U9IiM1QTY0QzEiIHN0cm9rZS13aWR0aD0iMS41IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KPC9zdmc+';
+
+.reviews-carousel {
+    overflow: visible;
+
+    .swiper-slide {
+        max-width: 80%;
+
+        @include bp(small) {
+            max-width: 100%;
+        }
+    }
+}
+
+.review-card {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    gap: 24px;
+    padding: 24px;
+    box-shadow: 0px 12px 48px 0px rgba(39, 39, 39, 0.04);
+    background-color: $color-white;
+    border-radius: 4px;
+
+    .summary {
+        color: $color-black;
+        font-family: $font-regular;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 1.5;
+    }
+
+    .name {
+        color: $color-black;
+        font-family: $font-semi-bold;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 1.4;
+    }
+}
+
+.review-slide-navigation {
+    margin: 48px auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 24px;
+    max-width: fit-content;
+
+    .js-swiper-btn-next,
+    .js-swiper-btn-prev {
+        width: 24px;
+        height: 24px;
+        border: 0 !important;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+    }
+
+    .js-swiper-btn-next {
+        background-image: url($swiper-arrow-right-purple);
+    }
+
+    .js-swiper-btn-prev {
+        background-image: url($swiper-arrow-left-purple);
+    }
+
+    .js-swiper-pagination {
+        border: 0 !important;
+        padding: 0 !important;
+        display: flex;
+        justify-content: space-between;
+        gap: 24px;
+
+        .swiper-pagination-bullet {
+            background-color: transparent;
+            opacity: 1;
+            border: 2px solid $color-primary-300;
+            width: 12px;
+            height: 12px;
+            margin: 0 !important;
+
+            &-active {
+                background-color: $color-primary-300;
+            }
+        }
+    }
+}
