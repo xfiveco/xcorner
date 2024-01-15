@@ -1,10 +1,10 @@
 {{#partial "page"}}
 
-{{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
+<section class="contact-page-section">
+    {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
 
-<section>
     {{#unless theme_settings.hide_contact_us_page_heading }}
-        <h1>
+        <h1 class="contact-page-title">
             {{page.title}}
         </h1>
     {{/unless}}

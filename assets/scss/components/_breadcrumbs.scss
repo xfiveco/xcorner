@@ -7,9 +7,30 @@
     @include container();
 }
 
-.c-breadcrumbs ol {
-    @include list-bare();
-
+.c-breadcrumbs ul {
     display: flex;
     gap: rem-calc(10px);
+    margin: 0;
+    list-style-type: none;
+
+    li {
+        margin: 0;
+
+        a {
+            color: $color-primary-300;
+            font-family: $font-regular;
+            font-size: 16px;
+            font-style: normal;
+            font-weight: 600;
+            line-height: 1.5;
+            text-decoration-line: underline;
+        }
+
+        &.is-active {
+            a {
+                text-decoration: none;
+                color: $color-neutrals-500;
+            }
+        }
+    }
 }

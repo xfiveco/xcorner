@@ -1,9 +1,10 @@
 <nav aria-label="Breadcrumb" class="c-breadcrumbs">
-    <ol>
+    <ul>
         {{#unless theme_settings.hide_breadcrumbs }}
             {{#each breadcrumbs}}
                 <li class="{{#if @last}}is-active{{/if}}">
                     <a 
+                        class=""
                         href="{{url}}"
                         {{#if @last}}
                             aria-current="page"
@@ -12,9 +13,10 @@
                         <span>{{name}}</span>
                     </a>
                 </li>
+                {{#unless @last}}<li>›</li>{{/unless}}
             {{/each}}
         {{/unless}}
-    </ol>
+    </ul>
 </nav>
 
 <script type="application/ld+json">
