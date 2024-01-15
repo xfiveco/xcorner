@@ -546,7 +546,8 @@
             "question": "Comments/Questions",
             "submit": "Submit Form",
             "successful": "We've received your feedback and will respond shortly if required. <a href=\"{shopPath}\">Continue</a>.",
-            "manual_captcha_instruction": "Please answer the question below for additional verification."
+            "manual_captcha_instruction": "Please answer the question below for additional verification.",
+            "send_your_message": "Send your message"
         },
         "create_account": {
             "submit_value": "Create Account"

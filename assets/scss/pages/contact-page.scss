@@ -1,10 +1,105 @@
 .contact-page-section {
     display: flex;
     flex-direction: column;
-    padding: 0 80px;
-    gap: 48px;
+    padding: 24px;
+    gap: 24px;
+
+    @include bp(medium) {
+        padding: 48px;
+        gap: 48px;
+    }
+
+    @include bp(large) {
+        padding: 48px 80px;
+    }
 }
 
 .contact-page-title {
     margin: 0;
+    color: $color-black;
+    font-family: $font-regular;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 1.25;
+}
+
+.js-contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+
+    @include bp(medium) {
+        gap: 48px;
+    }
+
+    > div:not(.js-form-field) {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        row-gap: 24px;
+        column-gap: 24px;
+
+        @include bp(medium) {
+            row-gap: 48px;
+            column-gap: 24px;
+        }
+
+        @include bp(large) {
+            row-gap: 48px;
+            column-gap: 48px;
+        }
+    
+        .js-form-field {
+            width: 100%;
+
+            @include bp(small) {
+                width: calc(50% - 12px);
+            }
+
+            @include bp(medium) {
+                width: calc(50% - 24px);
+            }
+    
+            input {
+                width: 100%;
+                margin: 0;
+            }
+
+            label {
+                display: block;
+                margin-bottom: 8px;
+            }
+        }
+    }
+
+    .js-form-field {
+        textarea {
+            width: 100%;
+
+            @include bp(medium) {
+                width: auto;
+            }
+        }
+    }
+
+    .c-button {
+        width: 100%;
+
+        @include bp(medium) {
+            width: fit-content;
+        }
+    }
+
+    br {
+        display: none;
+    }
+}
+
+#contact-us-page {
+    p {
+        &:last-of-type {
+            margin-bottom: 0;
+        }
+    }
 }
