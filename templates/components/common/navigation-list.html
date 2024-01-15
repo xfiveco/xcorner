@@ -20,15 +20,6 @@
             {{> components/common/quick-search name='nav-menu-quick-search'}}
         </div>
         <ul class="c-nav-sub-menu-items">
-            <li>
-                <a 
-                    class="js-nav-pages-action"
-                    href="{{url}}"
-                    aria-label="{{lang 'category.view_all.name' category=name}}"
-                >
-                    {{lang 'category.view_all.name' category=name}}
-                </a>
-            </li>
             {{#each children}}
                 <li>
                     {{#if children}}
