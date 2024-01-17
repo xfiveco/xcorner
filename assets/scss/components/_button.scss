@@ -13,7 +13,7 @@
 @mixin button_focus($color, $shadow-color) {
     &:focus {
         background: $color;
-        box-shadow: 0px 0px 0px 4px $shadow-color;
+        box-shadow: 0 0 0 0.25rem $shadow-color;
         color: $color-white;
     }
 }
@@ -21,15 +21,16 @@
 @mixin button_disabled() {
     &:disabled {
         opacity: 0.48;
+        cursor: not-allowed;
     }
 }
 
 @mixin button_tertiary_base() {
-    padding: 12px 0;
+    padding: 0.75 0;
     background: $color-white;
     text-align: center;
     font-family: $font-sans-serif;
-    font-size: 16px;
+    font-size: 1rem;
     font-style: normal;
     font-weight: 600;
     line-height: 1.5;
@@ -41,13 +42,13 @@
     color: $color-white;
     text-align: center;
     font-family: Assistant, $font-sans-serif;
-    font-size: 16px;
+    font-size: 1rem;
     font-style: normal;
     font-weight: 600;
     line-height: 1.5;
     outline: 0;
     border: 0;
-    padding: 12px 16px;
+    padding: 0.75rem 1rem;
     cursor: pointer;
     text-decoration: none;
 
@@ -56,9 +57,9 @@
 }
 
 @mixin button_variant($background, $shadow, $border-color: null, $border-width: 0) {
-    border-radius: 4px;
+    border-radius: 0.25rem;
     background: $background;
-    box-shadow: 0px 4px 12px 0px $shadow;
+    box-shadow: 0px 0.25rem 0.75rem 0px $shadow;
     border: $border-width solid $border-color;
 }
 
@@ -86,7 +87,7 @@ $color-red-shadow: rgba(215, 68, 68, 0.24);
     }
 }
 
-.c-button--primary-red {
+.c-button--terniary {
     @include button_variant($color-red-300, $color-red-shadow);
     @include button_focus($color-red-400, $color-red-shadow);
 
@@ -96,7 +97,7 @@ $color-red-shadow: rgba(215, 68, 68, 0.24);
     }
 }
 
-.c-button--secondary-red {
+.c-button--quaternary {
     @include button_variant($color-red-50, $color-red-shadow, $color-red-75, 1px);
     @include button_focus($color-red-400, $color-red-shadow);
     color: $color-red-300;
@@ -107,13 +108,13 @@ $color-red-shadow: rgba(215, 68, 68, 0.24);
     }
 }
 
-.c-button--tertiary {
+.c-button--quinary {
     @include button_tertiary_base();
     color: $color-primary-300;
 
     &:hover {
         color: $color-primary-400;
-        border-bottom: 2px solid $color-primary-400;
+        border-bottom: 0.125rem solid $color-primary-400;
     }
 
     &:focus {
@@ -121,13 +122,13 @@ $color-red-shadow: rgba(215, 68, 68, 0.24);
     }
 }
 
-.c-button--tertiary-red {
+.c-button--senary {
     @include button_tertiary_base();
     color: $color-red-300;
 
     &:hover {
         color: $color-red-400;
-        border-bottom: 2px solid $color-red-400;
+        border-bottom: 0.125rem solid $color-red-400;
     }
 
     &:focus {
@@ -136,9 +137,9 @@ $color-red-shadow: rgba(215, 68, 68, 0.24);
 }
 
 .button--large {
-    padding: 16px 24px;
+    padding: 1rem 1.5rem;
 }
 
 .button--large-tertiary {
-    padding: 16px 0;
+    padding: 1rem 0;
 }

@@ -1,6 +1,6 @@
 /* SVG icon url's */
-$checkmark-icon: 'data:image/svg+xml;base64,CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMTIiIGhlaWdodD0iMTAiIHZpZXdCb3g9IjAgMCAxMiAxMCIgZmlsbD0ibm9uZSI+CiAgPHBhdGggZD0iTTExIDFMNCA4TDEgNSIgc3Ryb2tlPSJ3aGl0ZSIgc3Ryb2tlLXdpZHRoPSIyIi8+Cjwvc3ZnPgo=';
-$dropdown-icon: 'data:image/svg+xml;base64,CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSI+CiAgPHBhdGggZD0iTTYgOUwxMiAxNUwxOCA5IiBzdHJva2U9ImJsYWNrIiBzdHJva2Utd2lkdGg9IjEuNSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+Cjwvc3ZnPgo=';
+$checkmark-icon: './../img/icons/checkmark.svg';
+$dropdown-icon: './../img/icons/dropdown.svg';
 
 .c-form {
     .form-fieldset {
@@ -78,7 +78,7 @@ select {
     transition: all 0.2s ease-in-out;
     background: url($dropdown-icon) no-repeat;
     background-position: calc(100% - 16px) center;
-    background-size: 24px;
+    background-size: 12px;
 
     &:hover {
         border: 1px solid $color-primary-300;
@@ -186,6 +186,32 @@ label {
 .js-form-field-checkbox {
     .js-input[type='checkbox'] {
         display: none;
+
+        &:checked {
+            + label {
+                &::before {
+                    background-image: url($checkmark-icon);
+                    background-position: center;
+                    background-repeat: no-repeat;
+                    background-size: 60%;
+                    background-color: $color-primary-300;
+                    border-color: $color-primary-300;
+                }
+
+                &:hover {
+                    &::before {
+                        border-color: $color-primary-400;
+                        background-color: $color-primary-400;
+                    }
+                }
+
+                &:focus {
+                    &::before {
+                        box-shadow: 0px 0px 0px 4px rgba(90, 100, 193, 0.24);
+                    }
+                }
+            }
+        }
     }
 
     label {
@@ -220,34 +246,6 @@ label {
             &::before {
                 box-shadow: 0px 0px 0px 4px rgba(90, 100, 193, 0.24);
                 transition: all 0.2s ease-in-out;
-            }
-        }
-    }
-
-    .js-input[type='checkbox'] {
-        &:checked {
-            + label {
-                &::before {
-                    background-image: url($checkmark-icon);
-                    background-position: center;
-                    background-repeat: no-repeat;
-                    background-size: 60%;
-                    background-color: $color-primary-300;
-                    border-color: $color-primary-300;
-                }
-
-                &:hover {
-                    &::before {
-                        border-color: $color-primary-400;
-                        background-color: $color-primary-400;
-                    }
-                }
-
-                &:focus {
-                    &::before {
-                        box-shadow: 0px 0px 0px 4px rgba(90, 100, 193, 0.24);
-                    }
-                }
             }
         }
     }
