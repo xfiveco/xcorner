@@ -9,8 +9,8 @@ $dropdown-icon: './../img/icons/dropdown.svg';
 
     .form-prefix-postfix {
         display: flex;
-        flex-wrap: wrap;
         gap: rem-calc(11);
+        flex-wrap: wrap;
 
         @include bp(medium) {
             flex-wrap: nowrap;
@@ -31,12 +31,14 @@ input[type='email'],
 input[type='password'],
 textarea {
     display: flex;
-    padding: 16px;
     align-items: center;
     gap: 8px;
-    align-self: stretch;
+    padding: 16px;
+    margin-bottom: 8px;
+
     border-radius: 4px;
     border: 1px solid $color-neutrals-75;
+
     background: $color-white;
     color: $color-neutrals-500;
     font-family: $font-sans-serif;
@@ -44,8 +46,8 @@ textarea {
     font-style: normal;
     font-weight: 400;
     line-height: 1.5;
+
     transition: all 0.2s ease-in-out;
-    margin-bottom: 8px;
 
     &:hover {
         border: 1px solid $color-primary-300;
@@ -59,12 +61,13 @@ textarea {
 
 select {
     display: flex;
-    padding: 16px;
     align-items: center;
     gap: 8px;
-    align-self: stretch;
+    padding: 16px;
+
     border-radius: 4px;
     border: 1px solid $color-neutrals-75;
+
     background: $color-white;
     color: $color-neutrals-500;
     font-family: $font-sans-serif;
@@ -72,13 +75,16 @@ select {
     font-style: normal;
     font-weight: 400;
     line-height: 1.5;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    transition: all 0.2s ease-in-out;
+
     background: url($dropdown-icon) no-repeat;
     background-position: calc(100% - 16px) center;
     background-size: 12px;
+
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+
+    transition: all 0.2s ease-in-out;
 
     &:hover {
         border: 1px solid $color-primary-300;
@@ -93,11 +99,13 @@ select {
 
 label {
     color: $color-black;
+
     font-family: $font-sans-serif;
     font-size: 16px;
     font-style: normal;
     font-weight: 600;
     line-height: 1.5;
+
     margin-bottom: 8px;
 
     small {
@@ -216,10 +224,10 @@ label {
 
     label {
         &:not(:first-child) {
-            padding-left: 32px;
-            position: relative;
             cursor: pointer;
             display: block;
+            padding-left: 32px;
+            position: relative;
         }
 
         &::before {

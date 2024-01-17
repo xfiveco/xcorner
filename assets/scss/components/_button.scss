@@ -26,14 +26,14 @@
 }
 
 @mixin button_tertiary_base() {
-    padding: 0.75 0;
     background: $color-white;
-    text-align: center;
     font-family: $font-sans-serif;
     font-size: 1rem;
     font-style: normal;
     font-weight: 600;
     line-height: 1.5;
+    padding: 0.75 0;
+    text-align: center;
 
     @include button_transition();
 }
@@ -46,21 +46,22 @@
     font-style: normal;
     font-weight: 600;
     line-height: 1.5;
+    text-decoration: none;
+
     outline: 0;
     border: 0;
     padding: 0.75rem 1rem;
     cursor: pointer;
-    text-decoration: none;
 
     @include button_transition();
     @include button_disabled();
 }
 
 @mixin button_variant($background, $shadow, $border-color: null, $border-width: 0) {
-    border-radius: 0.25rem;
     background: $background;
-    box-shadow: 0px 0.25rem 0.75rem 0px $shadow;
     border: $border-width solid $border-color;
+    border-radius: 0.25rem;
+    box-shadow: 0px 0.25rem 0.75rem 0px $shadow;
 }
 
 $color-primary-shadow: rgba(90, 100, 193, 0.24);
@@ -113,8 +114,8 @@ $color-red-shadow: rgba(215, 68, 68, 0.24);
     color: $color-primary-300;
 
     &:hover {
-        color: $color-primary-400;
         border-bottom: 0.125rem solid $color-primary-400;
+        color: $color-primary-400;
     }
 
     &:focus {
@@ -127,8 +128,8 @@ $color-red-shadow: rgba(215, 68, 68, 0.24);
     color: $color-red-300;
 
     &:hover {
-        color: $color-red-400;
         border-bottom: 0.125rem solid $color-red-400;
+        color: $color-red-400;
     }
 
     &:focus {
