@@ -1,8 +1,8 @@
 {{#partial "page"}}
-<div>
+<section class="login-page">
     {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
     
-    <h1>
+    <h1 class="page-title">
         {{lang 'login.heading' }}
     </h1>
     
@@ -12,14 +12,14 @@
     {{#if forms.login.success}}
         {{> components/common/alert/alert-success forms.login.success}}
     {{/if}}
-    <div>
-        <form class="js-login-form" action="{{urls.auth.check_login}}" method="post">
+    <div class="main-login-section">
+         <form class="js-login-form" action="{{urls.auth.check_login}}" method="post">
             {{inject 'useValidEmail' (lang 'forms.validate.common.email_address')}}
             {{inject 'enterPass' (lang 'forms.validate.common.password')}}
             
             <div class="js-form-field">
                 <label for="login_email">
-                    {{lang 'login.field_email'}}
+                    {{lang 'login.field_email'}} <span class="required">*</span>
                 </label>
                 <input 
                     class="js-form-input" 
@@ -30,7 +30,7 @@
             </div>
             <div class="js-form-field">
                 <label for="login_pass">
-                    {{lang 'login.field_password'}}
+                    {{lang 'login.field_password'}} <span class="required">*</span>
                 </label>
                 <input 
                     class="js-form-input" 
@@ -40,7 +40,7 @@
                     autocomplete="off"
                 >
             </div>
-            <div>
+            <div class="submit-container">
                 <button type="submit" class="c-button c-button--primary">
                     {{lang 'login.submit_value' }}
                 </button> 
@@ -49,27 +49,30 @@
                 </a>
             </div>
         </form>
-        {{#if settings.account_creation_enabled}}
-            <div>
-                <div>
-                    {{lang 'login.new_customer.heading' }}
-                </div>
-                <div>
-                    <p>{{lang 'login.new_customer.intro' }}</p>
-                    <ul>
-                        <li>{{lang 'login.new_customer.fact1' }}</li>
-                        <li>{{lang 'login.new_customer.fact2' }}</li>
-                        <li>{{lang 'login.new_customer.fact3' }}</li>
-                        <li>{{lang 'login.new_customer.fact4' }}</li>
-                        <li>{{lang 'login.new_customer.fact5' }}</li>
-                    </ul>
-                    <a href="{{urls.auth.create_account}}" class="c-button c-button--primary">
-                        {{lang 'login.new_customer.create_account' }}
-                    </a>
-                </div>
-            </div>
-        {{/if}}
+        <div class="sign-in-image-wrapper">
+            <img class="sign-in-image" src="{{cdn 'img/pages/sign-in.png'}}" alt="Sign in image" loading="lazy"/>
+        </div>
     </div>
-</div>
+    {{#if settings.account_creation_enabled}}
+        <div class="new-customer-container">
+            <h5 class="new-customer-heading">
+                {{lang 'login.new_customer.heading' }}
+            </h5>
+            <div class="new-customer-content">
+                <p><strong>{{lang 'login.new_customer.intro' }}</strong></p>
+                <ul>
+                    <li>{{lang 'login.new_customer.fact1' }}</li>
+                    <li>{{lang 'login.new_customer.fact2' }}</li>
+                    <li>{{lang 'login.new_customer.fact3' }}</li>
+                    <li>{{lang 'login.new_customer.fact4' }}</li>
+                    <li>{{lang 'login.new_customer.fact5' }}</li>
+                </ul>
+            </div>
+            <a href="{{urls.auth.create_account}}" class="c-button c-button--secondary">
+                {{lang 'login.new_customer.create_account' }}
+            </a>
+        </div>
+    {{/if}}
+</section>
 {{/partial}}
 {{> layout/base}}
