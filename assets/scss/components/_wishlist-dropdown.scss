@@ -1,9 +1,13 @@
-
 /* ==========================================================================
    #WISHLIST-DROPDOWN
    ========================================================================== */
 
 .c-wishlist-dropdown {
+    .c-button {
+        align-items: center;
+        display: inline-flex;
+    }
+
     > ul {
         display: none;
 
@@ -23,10 +27,5 @@
                 margin-bottom: 0;
             }
         }
-    }
-
-    .c-button {
-        align-items: center;
-        display: inline-flex;
     }
 }
