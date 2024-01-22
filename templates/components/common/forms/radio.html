@@ -1,16 +1,16 @@
 <div
-    class="js-form-field"
+    class="js-form-field c-radio-field"
     id="{{id}}"
     data-validation="{{validation}}"
 >
-    <label>
+    <label class="c-radio-label">
         {{label}} {{#if required}}
         <small>*</small>
         {{/if}}
     </label>
-    {{#if radios}} {{#each radios}} <input type="radio" name="{{../name}}" id="{{../name}}_{{@index}}" value="{{value}}" class="js-input"
+    {{#if radios}} {{#each radios}} <input type="radio" name="{{../name}}" id="{{../name}}_{{@index}}" value="{{value}}" class="js-input c-radio-input"
     data-label="{{label}}" aria-required="{{required}}" aria-labelledby="{{id}}" aria-live="polite" {{#if checked}} checked {{/if}} {{#if private_id}}
     data-field-type="{{private_id}}" {{/if}} {{#if required}} required {{/if}} >
-    <label for="{{../name}}_{{@index}}"> {{label}} </label>
+    <label for="{{../name}}_{{@index}}" class="c-radio-label"> {{label}} </label>
     {{/each}} {{/if}}
 </div>

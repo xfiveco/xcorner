@@ -26,6 +26,8 @@
 }
 
 @mixin button_tertiary_base() {
+    @include button_transition();
+
     background: $color-white;
     font-family: $font-sans-serif;
     font-size: 1rem;
@@ -34,11 +36,12 @@
     line-height: 1.5;
     padding: 0.75 0;
     text-align: center;
-
-    @include button_transition();
 }
 
 .c-button {
+    @include button_transition();
+    @include button_disabled();
+
     color: $color-white;
     text-align: center;
     font-family: Assistant, $font-sans-serif;
@@ -52,9 +55,6 @@
     border: 0;
     padding: 0.75rem 1rem;
     cursor: pointer;
-
-    @include button_transition();
-    @include button_disabled();
 }
 
 @mixin button_variant($background, $shadow, $border-color: null, $border-width: 0) {
@@ -80,6 +80,7 @@ $color-red-shadow: rgba(215, 68, 68, 0.24);
 .c-button--secondary {
     @include button_variant($color-primary-50, $color-primary-shadow, $color-primary-75, 1px);
     @include button_focus($color-primary-400, $color-primary-shadow);
+
     color: $color-primary-300;
 
     &:hover {
@@ -101,6 +102,7 @@ $color-red-shadow: rgba(215, 68, 68, 0.24);
 .c-button--quaternary {
     @include button_variant($color-red-50, $color-red-shadow, $color-red-75, 1px);
     @include button_focus($color-red-400, $color-red-shadow);
+
     color: $color-red-300;
 
     &:hover {
@@ -111,6 +113,7 @@ $color-red-shadow: rgba(215, 68, 68, 0.24);
 
 .c-button--quinary {
     @include button_tertiary_base();
+
     color: $color-primary-300;
 
     &:hover {
@@ -125,6 +128,7 @@ $color-red-shadow: rgba(215, 68, 68, 0.24);
 
 .c-button--senary {
     @include button_tertiary_base();
+
     color: $color-red-300;
 
     &:hover {
@@ -141,6 +145,6 @@ $color-red-shadow: rgba(215, 68, 68, 0.24);
     padding: 1rem 1.5rem;
 }
 
-.button--large-tertiary {
+.button--large-vertically {
     padding: 1rem 0;
 }

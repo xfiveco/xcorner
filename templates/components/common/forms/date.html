@@ -6,7 +6,7 @@
         data-type="{{private_id}}"
     {{/if}}
 >
-    <label for="{{id}}">
+    <label for="{{id}}" class="c-label">
         {{label}}
         {{#if required}}
             <small>
@@ -15,12 +15,12 @@
         {{/if}}
     </label>
     <div>
-        <div class="js-form-field">
+        <div class="js-form-field c-datepicker-field">
             <label for="{{id}}_month" class="u-visually-hidden">Select month</label>
             <select 
                 name="{{month.name}}"
                 id="{{id}}_month"
-                class="js-input"
+                class="js-input c-select-input"
                 data-label="month"
                 aria-required="{{required}}"
                 aria-labelledby="{{id}}"
@@ -32,12 +32,12 @@
             {{> components/common/forms/date-options month isRequired=required}}
             </select>
         </div>
-        <div class="js-form-field">
+        <div class="js-form-field c-datepicker-field">
             <label for="{{id}}_day" class="u-visually-hidden">Select day</label>
             <select 
                 name="{{day.name}}"
                 id="{{id}}_day"
-                class="js-input"
+                class="js-input js-select-input"
                 data-label="day"
                 aria-required="{{required}}"
                 aria-labelledby="{{id}}"
@@ -49,12 +49,12 @@
             {{> components/common/forms/date-options day isRequired=required}}
             </select>
         </div>
-        <div class="js-form-field">
+        <div class="js-form-field c-datepicker-field">
             <label for="{{id}}_year" class="u-visually-hidden">Select year</label>
             <select 
                 name="{{year.name}}"
                 id="{{id}}_year"
-                class="js-input"
+                class="js-input c-select-input"
                 data-label="year"
                 aria-required="{{required}}"
                 aria-labelledby="{{id}}"
