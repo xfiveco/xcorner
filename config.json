@@ -115,7 +115,7 @@
     "swatch_option_size": "22x22",
     "social_icon_placement_top": false,
     "social_icon_placement_bottom": "bottom_none",
-    "navigation_design": "simple",
+    "navigation_design": "alternate",
     "price_ranges": true,
     "pdp_price_label": "",
     "pdp_sale_badge_label": "",
