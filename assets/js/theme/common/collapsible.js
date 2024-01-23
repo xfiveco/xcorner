@@ -225,6 +225,8 @@ export class Collapsible {
         }
 
         event.preventDefault()
+        document.querySelector('body').classList.add('has-active-nav-pages')
+        document.querySelector('.c-menu').classList.add('has-active-sub-menu')
 
         this.open()
     }
@@ -238,6 +240,8 @@ export class Collapsible {
         }
 
         event.preventDefault()
+        document.querySelector('body').classList.remove('has-active-nav-pages')
+        document.querySelector('.c-menu').classList.remove('has-active-sub-menu')
 
         const relatedTarget = event.relatedTarget
         if (!this.$toggle.contains(relatedTarget) && !this.$target.contains(relatedTarget)) {

@@ -1,16 +1,32 @@
-
 /* ==========================================================================
    #MENU
    ========================================================================== */
 
-$quick-search-icon: "data:image/svg+xml;base64,CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSI+CjxtYXNrIGlkPSJtYXNrMF8zMDAzXzMwOTU0IiBzdHlsZT0ibWFzay10eXBlOmFscGhhIiBtYXNrVW5pdHM9InVzZXJTcGFjZU9uVXNlIiB4PSIwIiB5PSIwIiB3aWR0aD0iMjQiIGhlaWdodD0iMjQiPgo8cGF0aCBkPSJNMTEuNSAyMUMxNi43NDY3IDIxIDIxIDE2Ljc0NjcgMjEgMTEuNUMyMSA2LjI1MzI5IDE2Ljc0NjcgMiAxMS41IDJDNi4yNTMyOSAyIDIgNi4yNTMyOSAyIDExLjVDMiAxNi43NDY3IDYuMjUzMjkgMjEgMTEuNSAyMVoiIHN0cm9rZT0iIzM3M0QzRiIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPgo8cGF0aCBkPSJNMjIgMjJMMjAgMjAiIHN0cm9rZT0iIzM3M0QzRiIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPgo8L21hc2s+CjxnIG1hc2s9InVybCgjbWFzazBfMzAwM18zMDk1NCkiPgo8cmVjdCB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIGZpbGw9IiM4QzhDOEMiLz4KPC9nPgo8L3N2Zz4K";
+$quick-search-icon: 'data:image/svg+xml;base64,CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSI+CjxtYXNrIGlkPSJtYXNrMF8zMDAzXzMwOTU0IiBzdHlsZT0ibWFzay10eXBlOmFscGhhIiBtYXNrVW5pdHM9InVzZXJTcGFjZU9uVXNlIiB4PSIwIiB5PSIwIiB3aWR0aD0iMjQiIGhlaWdodD0iMjQiPgo8cGF0aCBkPSJNMTEuNSAyMUMxNi43NDY3IDIxIDIxIDE2Ljc0NjcgMjEgMTEuNUMyMSA2LjI1MzI5IDE2Ljc0NjcgMiAxMS41IDJDNi4yNTMyOSAyIDIgNi4yNTMyOSAyIDExLjVDMiAxNi43NDY3IDYuMjUzMjkgMjEgMTEuNSAyMVoiIHN0cm9rZT0iIzM3M0QzRiIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPgo8cGF0aCBkPSJNMjIgMjJMMjAgMjAiIHN0cm9rZT0iIzM3M0QzRiIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPgo8L21hc2s+CjxnIG1hc2s9InVybCgjbWFzazBfMzAwM18zMDk1NCkiPgo8cmVjdCB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIGZpbGw9IiM4QzhDOEMiLz4KPC9nPgo8L3N2Zz4K';
 
 .c-menu {
     @include container();
     display: none;
 
     @include bp(medium) {
-        display: block
+        display: block;
+        position: relative;
+        z-index: 1;
+    }
+
+    &.has-active-sub-menu::before {
+        background-color: $color-white;
+        content: '';
+
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100vw;
+        margin-left: 50%;
+        transform: translateX(-50%);
+        z-index: 0;
     }
 }
 
@@ -41,56 +57,45 @@ $quick-search-icon: "data:image/svg+xml;base64,CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cud
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
     position: absolute;
     top: 100%;
     left: 0;
     z-index: 2;
-    width: 100%;
+    width: 100vw;
+    margin-left: 50%;
+    transform: translateX(-50%);
+
     background-color: $color-white;
-    padding: 24px 80px;
+    padding: 1.5rem 5rem;
+
+    &.is-mobile {
+        top: 0;
+        padding: 6.5rem 3rem 0;
+
+        @include bp(medium) {
+            display: none;
+        }
+    }
 }
 
 .c-nav-sub-menu-items {
-    width: 100vw;
-    padding: 48px 80px;
-    margin: 0;
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(2, 1fr);
-    gap: 48px;
+    grid-template-columns: 1fr;
+    gap: 3rem;
 
-    .js-nav-pages-action {
-        color: $color-neutrals-500;
-        text-align: center;
-        font-family: $font-regular;
-        font-size: 20px;
-        font-style: normal;
-        font-weight: 600;
-        line-height: 1.2;
-        padding: 0 0 24px;
-        border-bottom: 1px solid $color-neutrals-75;
+    width: 100vw;
+    padding: 3rem 5rem;
+    margin: 0;
+    padding: 1.5rem;
 
-        &.has-sub-menu {
-            span {
-                display: none;
-            }
-        }
+    @include bp(small) {
+        grid-template-columns: repeat(3, 1fr);
+        padding: 1.5rem 3rem;
+    }
 
-        ~.is-open {
-            margin-top: 24px;
-
-            .js-nav-pages-action {
-                border-bottom: 0;
-                color: $color-black;
-                text-align: center;
-                font-family: $font-regular;
-                font-size: 16px;
-                font-style: normal;
-                font-weight: 400;
-                line-height: 1.5;
-                padding: 0 0 8px;
-            }
-        }
+    @include bp(medium) {
+        grid-template-columns: repeat(4, 1fr);
     }
 
     .sign-in-now {
@@ -98,24 +103,73 @@ $quick-search-icon: "data:image/svg+xml;base64,CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cud
         display: flex;
         justify-content: flex-start;
         align-items: center;
-        gap: 8px;
-        padding: 16px 0;
-        margin: 24px 0;
+        gap: 0.5rem;
+        padding: 1rem 0;
+        margin: 1.5rem 0;
         border-bottom: 0;
     }
 }
 
-.js-search-quick {
-    padding: 16px 16px 16px 48px;
+.c-sub-menu-header-item {
     color: $color-neutrals-500;
+    text-align: center;
     font-family: $font-regular;
-    font-size: 16px;
+    font-size: 1.25rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 1.2;
+    padding: 0 0 1.5rem;
+    border-bottom: 1px solid $color-secondary-75;
+
+    &.has-sub-menu {
+        span {
+            display: none;
+        }
+    }
+
+    ~ .is-open {
+        margin-top: 1.5rem;
+    }
+}
+
+.c-sub-menu-item {
+    border-bottom: 0;
+    color: $color-black;
+    text-align: left;
+    font-family: $font-regular;
+    font-size: 1rem;
     font-style: normal;
     font-weight: 400;
     line-height: 1.5;
+    padding: 0 0 0.5rem;
+}
+
+.js-search-quick {
+    padding: 1rem 1rem 1rem 3rem;
+    min-width: 21.375rem;
+
+    color: $color-neutrals-500;
+    font-family: $font-regular;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.5;
+
     background-image: url($quick-search-icon);
     background-position-y: center;
-    background-position-x: 16px;
+    background-position-x: 1rem;
     background-repeat: no-repeat;
-    min-width: 342px;
+}
+
+.c-main-menu {
+    .c-menu-separator:last-of-type {
+        display: none;
+    }
+}
+
+.c-social-links {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin-top: 1.5rem;
 }

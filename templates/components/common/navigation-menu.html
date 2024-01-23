@@ -2,19 +2,107 @@
     <div class="u-hidden@medium">
         {{> components/common/quick-search name='nav-menu-quick-search'}}
     </div>
-    <ul class="js-nav-pages-list{{#if theme_settings.navigation_design '!==' 'simple'}} js-nav-pages-list-depth-max{{/if}}">
+    <ul class="js-nav-pages-list{{#if theme_settings.navigation_design '!==' 'simple'}} js-nav-pages-list-depth-max{{/if}} c-main-menu">
         {{#each categories}}
-            <li>
-                {{#if ../theme_settings.navigation_design '===' 'simple'}}
-                    {{> components/common/navigation-list}}
-                {{/if}}
-                {{#if ../theme_settings.navigation_design '===' 'alternate'}}
-                    {{> components/common/navigation-list-widget}}
-                {{/if}}
-            </li>
-            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="24" viewBox="0 0 25 24" fill="none">
-                <path d="M13.5 12C13.5 12.5523 13.0523 13 12.5 13C11.9477 13 11.5 12.5523 11.5 12C11.5 11.4477 11.9477 11 12.5 11C13.0523 11 13.5 11.4477 13.5 12Z" stroke="#E6DABB" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
+            {{#unless name '===' 'Shop All'}}
+                <li>
+                    {{#if ../theme_settings.navigation_design '===' 'simple'}}
+                        {{> components/common/navigation-list}}
+                    {{/if}}
+                    {{#if ../theme_settings.navigation_design '===' 'alternate'}}
+                        {{> components/common/navigation-list-custom categories=../categories}}
+                    {{/if}}
+                </li>
+                <svg class="c-menu-separator" xmlns="http://www.w3.org/2000/svg" width="25" height="24" viewBox="0 0 25 24" fill="none">
+                    <path d="M13.5 12C13.5 12.5523 13.0523 13 12.5 13C11.9477 13 11.5 12.5523 11.5 12C11.5 11.4477 11.9477 11 12.5 11C13.0523 11 13.5 11.4477 13.5 12Z" stroke="#E6DABB" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            {{/unless}}
         {{/each}}
     </ul>
+    <div class="c-nav-sub-menu is-mobile">
+        <div class="js-quick-search">
+            {{> components/common/quick-search name='nav-menu-quick-search'}}
+        </div>
+        <ul class="c-nav-sub-menu-items">
+            {{#each categories}}
+                {{#each children}}
+                    <li>
+                        {{#if children}}
+                            <a 
+                                class=" js-nav-pages-action has-sub-menu{{#if is_active}} is-active{{/if}} c-sub-menu-header-item"
+                                href="{{url}}"
+                                aria-label="{{name}}"
+                            >
+                                {{name}}
+                                <span 
+                                    data-collapsible="nav-pages-{{id}}"
+                                    data-collapsible-disabled-breakpoint="medium"
+                                    data-collapsible-disabled-state="open"
+                                    data-collapsible-enabled-state="closed"
+                                >
+                                    <svg>
+                                        <use href="#icon-chevron-down" />
+                                    </svg>
+                                </span>
+                            </a>
+                            <ul id="nav-pages-{{id}}" class="is-open">
+                                {{#each children}}
+                                    <li>
+                                        <a 
+                                            class="js-nav-pages-action{{#if is_active}} is-active{{/if}} c-sub-menu-item"
+                                            href="{{url}}"
+                                            aria-label="{{name}}"
+                                        >
+                                            {{name}}
+                                        </a>
+                                    </li>
+                                {{/each}}
+                            </ul>
+                        {{/if}}
+                    </li>
+                {{/each}}
+            {{/each}}
+            <ul>
+                <li>
+                    <a 
+                        class="js-nav-pages-action c-sub-menu-header-item"
+                        href="{{url}}"
+                    >
+                        {{lang 'common.login'}}
+                    </a>
+                </li>
+                <li>
+                    <a 
+                        class="js-nav-pages-action sign-in-now"
+                        href="{{url}}"
+                    >
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <path d="M20 21V19C20 17.9391 19.5786 16.9217 18.8284 16.1716C18.0783 15.4214 17.0609 15 16 15H8C6.93913 15 5.92172 15.4214 5.17157 16.1716C4.42143 16.9217 4 17.9391 4 19V21M12 11C14.2091 11 16 9.20914 16 7C16 4.79086 14.2091 3 12 3C9.79086 3 8 4.79086 8 7C8 9.20914 9.79086 11 12 11Z" stroke="#5A64C1" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        {{lang 'common.sign_in_now'}}
+                    </a>
+                </li>
+                <li>
+                    <a 
+                        class="js-nav-pages-action c-sub-menu-header-item"
+                        href="{{url}}"
+                        aria-label="{{lang 'category.view_all.name' category=name}}"
+                    >
+                        {{lang 'common.reach_out'}}
+                    </a>
+                    {{> components/common/social-links }}
+                </li>
+            </ul>
+            <li>
+                <a href="/">
+                    <img class="js-nav-promo-image" src={{cdn 'img/navigation/30-off.png'}} height="190" width="284" loading="lazy"/>
+                </a>
+            </li>
+            <li>
+                <a href="/">
+                    <img class="js-nav-promo-image" src={{cdn 'img/navigation/black-friday.png'}} height="190" width="284" loading="lazy"/>
+                </a>
+            </li>
+        </ul>
+    </div>
 </nav>
