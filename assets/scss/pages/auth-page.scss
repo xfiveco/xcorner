@@ -1,4 +1,4 @@
-.auth-page {
+.c-auth-page {
     padding: 1.5rem;
     display: flex;
     flex-direction: column;
@@ -275,5 +275,72 @@
         select {
             width: 100%;
         }
+    }
+}
+
+.c-forgot-password-page {
+    .page-title {
+        color: $color-black;
+        font-family: $font-semi-bold;
+        font-size: 2rem;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 2.5rem;
+    }
+}
+
+.c-forgot-password-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+
+    @include bp(medium) {
+        gap: 3rem;
+    }
+}
+
+.c-forgot-password-intro {
+    max-width: 48.875rem;
+    margin: 0;
+
+    color: $color-neutrals-500;
+    font-family: $font-regular;
+    font-size: 1.125rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.33;
+}
+
+.c-forgot-password-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+
+    .c-form__text-input {
+        width: 100%;
+
+        @include bp(medium) {
+            max-width: 20rem;
+        }
+    }
+
+    .c-button {
+        @include bp(medium) {
+            width: fit-content;
+        }
+    }
+
+    .g-recaptcha {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        @include bp(small) {
+            justify-content: flex-start;
+        }
+    }
+
+    br {
+        display: none;
     }
 }
