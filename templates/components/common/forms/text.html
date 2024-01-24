@@ -6,7 +6,7 @@
         data-type="{{private_id}}"
     {{/if}}
 >
-    <label for="{{id}}_input" class="c-label">
+    <label for="{{id}}_input" class="c-form__label">
         {{label}}
         {{#if required}}
             <small>*</small>
@@ -16,7 +16,7 @@
         type="text"
         name="{{name}}"
         id="{{id}}_input"
-        class="js-form-input js-input c-text-input"
+        class="js-form-input js-input c-form__text-input"
         data-label="{{label}}"
         aria-required="{{required}}"
         aria-labelledby="{{id}}"

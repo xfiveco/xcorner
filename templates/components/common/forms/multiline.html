@@ -1,5 +1,5 @@
 <div class="js-form-field c-textarea-field" id="{{id}}" data-validation="{{validation}}">
-    <label for="{{id}}_input" class="c-label">
+    <label for="{{id}}_input" class="c-form__label">
         {{label}}
         {{#if required}}
             <small>*</small>
@@ -13,7 +13,7 @@
         aria-required="{{required}}"
         aria-labelledby="{{id}}"
         aria-live="polite"
-        class="js-form-input js-input c-textarea-input"
+        class="js-form-input js-input c-form__textarea-input"
         {{#if private_id}}
             data-field-type="{{private_id}}"
         {{/if}}

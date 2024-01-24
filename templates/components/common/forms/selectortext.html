@@ -7,7 +7,7 @@
     {{/if}}
 >
     <noscript>
-        <label for="{{id}}_input" class="c-label">
+        <label for="{{id}}_input" class="c-form__label">
             {{label}}
             {{#if required}}
                 <small>*</small>
@@ -18,7 +18,7 @@
             id="{{id}}_input"
             name="{{name}}"
             value="{{value}}"
-            class="js-form-input js-input c-text-input"
+            class="js-form-input js-input c-form__text-input"
             aria-required="{{required}}"
             aria-labelledby="{{id}}"
             aria-live="polite"
@@ -26,7 +26,7 @@
         />
     </noscript>
 
-    <label for="{{id}}_select" class="c-label">
+    <label for="{{id}}_select" class="c-form__label">
         {{label}}
         {{#if required}}
             <small>{{lang 'common.required'}}</small>
@@ -39,7 +39,7 @@
         aria-live="polite"
         id="{{id}}_select"
         data-label="{{label}}"
-        class="js-input c-select-input"
+        class="js-input c-form__select-input"
         {{#if private_id}}
             data-field-type="{{private_id}}"
         {{/if}}

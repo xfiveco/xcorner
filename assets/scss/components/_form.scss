@@ -2,6 +2,7 @@
 $checkmark-icon: './../img/icons/checkmark.svg';
 $dropdown-icon: './../img/icons/dropdown.svg';
 $form-field-box-shadow: 0 0 0 0.25rem rgba(90, 100, 193, 0.24);
+$input-transition: all 0.2s ease-in-out;
 
 .c-form {
     .form-fieldset {
@@ -27,9 +28,9 @@ $form-field-box-shadow: 0 0 0 0.25rem rgba(90, 100, 193, 0.24);
     }
 }
 
-.c-text-input,
-.c-password-input,
-.c-textarea-input {
+.c-form__text-input,
+.c-form__password-input,
+.c-form__textarea-input {
     display: flex;
     align-items: center;
     gap: 0.5rem;
@@ -47,11 +48,11 @@ $form-field-box-shadow: 0 0 0 0.25rem rgba(90, 100, 193, 0.24);
     font-weight: 400;
     line-height: 1.5;
 
-    transition: all 0.2s ease-in-out;
+    transition: $input-transition;
 
     &:hover {
         border: 0.063rem solid $color-primary-300;
-        transition: all 0.2s ease-in-out;
+        transition: $input-transition;
     }
 
     &:focus {
@@ -59,7 +60,7 @@ $form-field-box-shadow: 0 0 0 0.25rem rgba(90, 100, 193, 0.24);
     }
 }
 
-.c-select-input {
+.c-form__select-input {
     display: flex;
     align-items: center;
     gap: 0.5rem;
@@ -84,20 +85,20 @@ $form-field-box-shadow: 0 0 0 0.25rem rgba(90, 100, 193, 0.24);
     -moz-appearance: none;
     appearance: none;
 
-    transition: all 0.2s ease-in-out;
+    transition: $input-transition;
 
     &:hover {
         border: 0.063rem solid $color-primary-300;
-        transition: all 0.2s ease-in-out;
+        transition: $input-transition;
     }
 
     &:focus {
         box-shadow: $form-field-box-shadow;
-        transition: all 0.2s ease-in-out;
+        transition: $input-transition;
     }
 }
 
-.c-label {
+.c-form__label {
     color: $color-black;
 
     font-family: $font-sans-serif;
@@ -115,12 +116,12 @@ $form-field-box-shadow: 0 0 0 0.25rem rgba(90, 100, 193, 0.24);
     }
 }
 
-.c-radio-field {
-    .c-radio-input {
+.c-form__radio-field {
+    .c-form__radio-input {
         display: none;
     }
 
-    .c-radio-label:not(:first-child) {
+    .c-form__radio-label:not(:first-child) {
         padding-left: 2rem;
         position: relative;
         cursor: pointer;
@@ -135,27 +136,27 @@ $form-field-box-shadow: 0 0 0 0.25rem rgba(90, 100, 193, 0.24);
             border-radius: 50%;
             background: $color-white;
             border: 0.063rem solid $color-neutrals-75;
-            transition: all 0.2s ease-in-out;
+            transition: $input-transition;
         }
 
         &:hover {
             &::before {
                 border: 0.063rem solid $color-primary-300;
-                transition: all 0.2s ease-in-out;
+                transition: $input-transition;
             }
         }
 
         &:focus {
             &::before {
                 box-shadow: $form-field-box-shadow;
-                transition: all 0.2s ease-in-out;
+                transition: $input-transition;
             }
         }
     }
 
-    .c-radio-input {
+    .c-form__radio-input {
         &:checked {
-            + .c-radio-label {
+            + .c-form__radio-label {
                 &::before {
                     background-color: $color-white;
                     border: 0.375rem solid $color-primary-300;
@@ -177,12 +178,12 @@ $form-field-box-shadow: 0 0 0 0.25rem rgba(90, 100, 193, 0.24);
     }
 }
 
-.c-checkbox-field {
-    .c-checkbox-input {
+.c-form__checkbox-field {
+    .c-form__checkbox-input {
         display: none;
 
         &:checked {
-            + .c-checkbox-label {
+            + .c-form__checkbox-label {
                 &::before {
                     background-image: url($checkmark-icon);
                     background-position: center;
@@ -208,7 +209,7 @@ $form-field-box-shadow: 0 0 0 0.25rem rgba(90, 100, 193, 0.24);
         }
     }
 
-    .c-checkbox-label {
+    .c-form__checkbox-label {
         &:not(:first-child) {
             cursor: pointer;
             display: block;
@@ -226,20 +227,20 @@ $form-field-box-shadow: 0 0 0 0.25rem rgba(90, 100, 193, 0.24);
             border-radius: 0.25rem;
             background: $color-white;
             border: 0.063rem solid $color-neutrals-75;
-            transition: all 0.2s ease-in-out;
+            transition: $input-transition;
         }
 
         &:hover {
             &::before {
                 border-color: $color-primary-400;
-                transition: all 0.2s ease-in-out;
+                transition: $input-transition;
             }
         }
 
         &:focus {
             &::before {
                 box-shadow: $form-field-box-shadow;
-                transition: all 0.2s ease-in-out;
+                transition: $input-transition;
             }
         }
     }

@@ -6,14 +6,14 @@
         data-type="{{private_id}}"
     {{/if}}
 >
-    <label for="{{id}}_select" class="c-label">
+    <label for="{{id}}_select" class="c-form__label">
         {{label}}
         {{#if required}}
             <small>*</small>
         {{/if}}
     </label>
     <select 
-        class="{{class}} js-input c-select-input"
+        class="{{class}} js-input c-form__select-input"
         id="{{id}}_select"
         data-label="{{label}}"
         aria-required="{{required}}"

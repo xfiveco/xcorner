@@ -6,7 +6,7 @@
         data-type="{{private_id}}"
     {{/if}}
 >
-    <label for="{{id}}" class="c-label">
+    <label for="{{id}}" class="c-form__label">
         {{label}}
         {{#if required}}
             <small>
@@ -20,7 +20,7 @@
             <select 
                 name="{{month.name}}"
                 id="{{id}}_month"
-                class="js-input c-select-input"
+                class="js-input c-form__select-input"
                 data-label="month"
                 aria-required="{{required}}"
                 aria-labelledby="{{id}}"
@@ -54,7 +54,7 @@
             <select 
                 name="{{year.name}}"
                 id="{{id}}_year"
-                class="js-input c-select-input"
+                class="js-input c-form__select-input"
                 data-label="year"
                 aria-required="{{required}}"
                 aria-labelledby="{{id}}"
