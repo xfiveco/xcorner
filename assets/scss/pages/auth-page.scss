@@ -17,6 +17,7 @@
     font-style: normal;
     font-weight: 600;
     line-height: 1.33;
+
     margin: 0;
 }
 
@@ -86,6 +87,7 @@
     font-style: normal;
     font-weight: 600;
     line-height: 2.5rem;
+
     margin: 0;
 }
 
@@ -117,6 +119,7 @@
 }
 
 .sign-in-image {
+    position: relative;
     max-width: 38.5rem;
     max-height: 38.5rem;
     width: 100%;
@@ -125,7 +128,6 @@
     aspect-ratio: 1;
     object-fit: cover;
     z-index: 1;
-    position: relative;
 }
 
 .sign-in-image-wrapper {
@@ -148,8 +150,8 @@
         height: auto;
         aspect-ratio: 1;
         background-color: rgba(90, 100, 193, 0.08);
-        z-index: 0;
         border-radius: 50%;
+        z-index: 0;
     }
 }
 
