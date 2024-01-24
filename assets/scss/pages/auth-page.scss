@@ -340,16 +340,6 @@
         }
     }
 
-    .g-recaptcha {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-
-        @include bp(small) {
-            justify-content: flex-start;
-        }
-    }
-
     br {
         display: none;
     }
