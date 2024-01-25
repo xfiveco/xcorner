@@ -1,15 +1,15 @@
 <div 
     id="{{id}}" 
-    class="js-form-field" 
+    class="js-form-field c-form__checkbox-field" 
     data-validation="{{validation}}" 
     {{#if private_id}}
         data-type="{{private_id}}"
     {{/if}}
 >
-    <label for="{{id}}">
+    <label for="{{id}}" class="c-form__label">
         {{label}}
         {{#if required}}
-            <small>{{lang 'common.required' }}</small>
+            <small>*</small>
         {{/if}}
     </label>
     {{#if checkboxes}}
@@ -19,7 +19,7 @@
                 value="{{value}}"
                 name="{{name}}"
                 id="{{name}}"
-                class="js-input"
+                class="js-input c-form__checkbox-input"
                 data-label="{{label}}"
                 aria-labelledby="{{id}}"
                 aria-live="polite"
@@ -30,7 +30,7 @@
                     data-field-type="{{private_id}}"
                 {{/if}}
             >
-            <label class="{{class}}" for="{{name}}">
+            <label class="{{class}} c-form__checkbox-label" for="{{name}}">
                 {{label}}
             </label>
         {{/each}}

@@ -1,19 +1,19 @@
 <div 
-    class="js-form-field" 
+    class="js-form-field c-select-field" 
     id="{{id}}" 
     data-validation="{{validation}}" 
     {{#if private_id}} 
         data-type="{{private_id}}"
     {{/if}}
 >
-    <label for="{{id}}_select">
+    <label for="{{id}}_select" class="c-form__label">
         {{label}}
         {{#if required}}
-            <small>{{lang 'common.required' }}</small>
+            <small>*</small>
         {{/if}}
     </label>
     <select 
-        class="{{class}} js-input"
+        class="{{class}} js-input c-form__input c-form__input--select"
         id="{{id}}_select"
         data-label="{{label}}"
         aria-required="{{required}}"

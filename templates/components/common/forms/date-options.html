@@ -1,5 +1,5 @@
 {{#unless this.value}}
-    <option value="">---</option>
+    <option class="c-input-option" value="">---</option>
     {{#each this.items}}
         <option value="{{value}}">
             {{label}}
@@ -7,10 +7,10 @@
     {{/each}}
 {{else}}
     {{#unless this.isRequired}}
-        <option value="">---</option>
+        <option class="c-input-option" value="">---</option>
     {{/unless}}
     {{#each this.items}}
-        <option 
+        <option class="c-input-option"
             {{#if ../this.value '==' value}} 
                 selected 
             {{/if}}
