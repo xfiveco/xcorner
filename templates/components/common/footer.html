@@ -18,7 +18,7 @@
     {{/if}}
 {{/if}}
 
-<footer role="contentinfo">
+<footer class="footer" role="contentinfo">
     <div class="u-hidden-visually">
         {{lang 'footer.title'}}
     </div>
@@ -36,51 +36,51 @@
         {{> components/common/store-logo}}
 
         <section>
-            <article data-section-type="footer-categories">
+            <article class="footer-column" data-section-type="footer-categories">
                 <div class="footer-heading">
                     {{lang 'footer.categories'}}
                 </div>
                 <ul class="footer-links">
                     {{#each categories}}
-                        <li>
-                            <a href="{{url}}">{{name}}</a>
+                        <li class="footer-link-item">
+                            <a class="footer-link" href="{{url}}">{{strReplace name "(dropdown)" ""}}</a>
                         </li>
                     {{/each}}
                 </ul>
             </article>
 
-
-            <article data-section-type="footer-web-pages">
+            <article class="footer-column" data-section-type="footer-web-pages">
                 <div class="footer-heading">
                     {{lang 'footer.navigate'}}
                 </div>
                 <ul class="footer-links">
                     {{#each pages}}
-                        <li>
-                            <a href="{{url}}">{{name}}</a>
+                        <li class="footer-link-item">
+                            <a class="footer-link" href="{{url}}">{{name}}</a>
                         </li>
                     {{/each}}
-                    <li>
-                        <a href="{{urls.sitemap}}">
+                    <li class="footer-link-item">
+                        <a class="footer-link" href="{{urls.sitemap}}">
                             {{lang 'sitemap.page_title'}}
                         </a>
                     </li>
                 </ul>
             </article>
 
+            {{!-- Not needed based on the designs, but kept for future use --}}
             {{!-- {{#and theme_settings.shop_by_brand_show_footer shop_by_brand.length}}
-                <article data-section-type="footer-brands">
+                <article class="footer-column" data-section-type="footer-brands">
                     <div class="footer-heading">
                         {{lang 'footer.brands'}}
                     </div>
                     <ul class="footer-links">
                         {{#each shop_by_brand}}
-                            <li>
-                                <a href="{{url}}">{{name}}</a>
+                            <li class="footer-link-item">
+                                <a class="footer-link" href="{{url}}">{{name}}</a>
                             </li>
                         {{/each}}
-                        <li>
-                            <a href="{{urls.brands}}">
+                        <li class="footer-link-item">
+                            <a class="footer-link" href="{{urls.brands}}">
                                 {{lang 'common.view_all'}}
                             </a>
                         </li>
@@ -88,7 +88,7 @@
                 </article>
             {{/and}} --}}
 
-            <article data-section-type="footer-info">
+            <article class="footer-column" data-section-type="footer-info">
                 <div class="footer-heading">
                     {{lang 'footer.info'}}
                 </div>
@@ -121,7 +121,7 @@
             {{/if}}
         </section>
         <section>
-            <article data-section-type="newsletter-subscription">
+            <article class="newsletter-subscription" data-section-type="newsletter-subscription">
                 {{#if settings.show_newsletter_box}}
                     {{> components/common/subscription-form}}
                 {{/if}}
@@ -140,7 +140,7 @@
             {{#if theme_settings.show_powered_by}}
                 <div>
                     <p class="footer-copyright-text">
-                        {{lang 'footer.powered_by'}} <a href="https://www.bigcommerce.com?utm_source=merchant&amp;utm_medium=poweredbyBC" rel="nofollow">BigCommerce</a>
+                        {{lang 'footer.powered_by'}} <a class="footer-copyright-link" href="https://www.bigcommerce.com?utm_source=merchant&amp;utm_medium=poweredbyBC" rel="nofollow">BigCommerce</a>
                     </p>
                 </div>
             {{/if}}
