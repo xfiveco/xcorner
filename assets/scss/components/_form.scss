@@ -28,9 +28,9 @@ $input-transition: all 0.2s ease-in-out;
     }
 }
 
-.c-form__text-input,
-.c-form__password-input,
-.c-form__textarea-input {
+.c-form__input,
+.c-form__input,
+.c-form__input {
     display: flex;
     align-items: center;
     gap: 0.5rem;
@@ -57,44 +57,17 @@ $input-transition: all 0.2s ease-in-out;
 
     &:focus {
         box-shadow: $form-field-box-shadow;
-    }
-}
-
-.c-form__select-input {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 1rem;
-
-    border-radius: 0.25rem;
-    border: 0.063rem solid $color-neutrals-75;
-
-    background: $color-white;
-    color: $color-neutrals-500;
-    font-family: $font-sans-serif;
-    font-size: 1rem;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 1.5;
-
-    background: url($dropdown-icon) no-repeat;
-    background-position: calc(100% - 1rem) center;
-    background-size: 0.75rem;
-
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-
-    transition: $input-transition;
-
-    &:hover {
-        border: 0.063rem solid $color-primary-300;
         transition: $input-transition;
     }
 
-    &:focus {
-        box-shadow: $form-field-box-shadow;
-        transition: $input-transition;
+    &--select {
+        background: url($dropdown-icon) no-repeat;
+        background-position: calc(100% - 1rem) center;
+        background-size: 0.75rem;
+
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
     }
 }
 
