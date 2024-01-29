@@ -9,9 +9,6 @@
     flex-direction: column;
 }
 
-.c-header > nav {
-}
-
 .c-header > nav ul {
     @include list-bare();
     display: flex;
@@ -25,4 +22,37 @@
 
 .c-header > nav .has-dropdown.is-open + ul {
     display: block;
+}
+
+.c-header-announcement-banner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: $color-black;
+    padding: 16px 24px;
+
+    p {
+        color: $color-white;
+        text-align: center;
+        font-family: $font-regular;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 1.5;
+        margin: 0;
+    }
+
+    strong {
+        font-weight: 600;
+    }
+
+    a {
+        color: $color-white;
+        font-family: $font-regular;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 24px;
+        text-decoration-line: underline;
+    }
 }
