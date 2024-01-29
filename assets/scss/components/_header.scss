@@ -9,9 +9,6 @@
     flex-direction: column;
 }
 
-.c-header > nav {
-}
-
 .c-header > nav ul {
     @include list-bare();
     display: flex;
@@ -27,7 +24,7 @@
     display: block;
 }
 
-.announcement-banner {
+.c-header-announcement-banner {
     display: flex;
     justify-content: center;
     align-items: center;
