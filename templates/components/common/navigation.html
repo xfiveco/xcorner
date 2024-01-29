@@ -7,7 +7,7 @@
         {{#if customer.store_credit.value '>' 0}}
             <li class="c-top-nav-item">
                 <a 
-                    class="js-nav-user-action c-top-nav-link"
+                    class="js-nav-user-action c-nav-page-action c-top-nav-link"
                     data-dropdown="store-credit-dropdown"
                     data-options="align:bottom"
                     href="{{urls.cart}}"
@@ -34,7 +34,7 @@
         {{/if}}
         <li>
             <button 
-                class="js-nav-user-action js-quick-search-expand c-top-nav-search"
+                class="js-nav-user-action js-quick-search-expand c-top-nav-search c-nav-page-action"
                 type="button"
                 data-search="quick-search"
                 aria-controls="quick-search"
@@ -49,12 +49,12 @@
                     <rect width="24" height="24" fill="#272727"/>
                     </g>
                 </svg>
-                <span class="js-nav-user-action-text c-search-text">{{lang 'common.search'}}</span>
+                <span class="js-nav-user-action-text c-action-text">{{lang 'common.search'}}</span>
             </button>
         </li>
         <li>
             <a 
-                class="js-nav-user-action js-compare-nav"
+                class="js-nav-user-action js-compare-nav c-nav-page-action"
                 href="{{urls.compare}}"
                 aria-label="{{lang 'common.compare'}}"
             >
@@ -69,7 +69,7 @@
                     <rect width="24" height="24" fill="#272727"/>
                     </g>
                 </svg>
-                <span class="js-nav-user-action-text">{{lang 'common.compare'}}</span>
+                <span class="js-nav-user-action-text c-action-text">{{lang 'common.compare'}}</span>
                 <span class="js-count-pill is-positive"></span>
             </a>
         </li>
@@ -87,7 +87,7 @@
 
         <li>
             <a 
-                class="js-nav-user-action js-cart-preview js-cart-redirect"
+                class="js-nav-user-action js-cart-preview js-cart-redirect c-nav-page-action"
                 href="{{urls.cart}}"
                 aria-label="{{lang 'cart.nav_aria_label'}}"
             >
@@ -99,7 +99,7 @@
                     <rect width="24" height="24" fill="#272727"/>
                     </g>
                 </svg>
-                <span class="js-nav-user-action-text">{{lang 'common.cart'}}</span>
+                <span class="js-nav-user-action-text c-action-text">{{lang 'common.cart'}}</span>
                 <span class="js-count-pill js-cart-quantity c-cart-quantity"></span>
             </a>
 
@@ -111,7 +111,7 @@
         <li class="js-nav-user-account c-top-nav-account-item">
             {{#if customer}}
                 <a  
-                    class="js-nav-user-action"
+                    class="js-nav-user-action c-nav-page-action"
                     href="{{urls.account.index}}"
                     aria-label="{{lang 'common.account'}}"
                 >
@@ -123,11 +123,11 @@
                         <rect width="24" height="24" fill="#272727"/>
                         </g>
                     </svg>
-                    <span class="js-nav-user-action-text">{{lang 'common.account'}}</span>
+                    <span class="js-nav-user-action-text c-action-text">{{lang 'common.account'}}</span>
                 </a>
             {{else}}
                 <a 
-                    class="js-nav-user-action"
+                    class="js-nav-user-action c-nav-page-action"
                     href="{{urls.auth.login}}"
                     aria-label="{{lang 'common.login'}}"
                 >
@@ -139,7 +139,7 @@
                         <rect width="24" height="24" fill="#272727"/>
                         </g>
                     </svg>
-                    <span class="js-nav-user-action-text">{{lang 'common.login'}}</span>
+                    <span class="js-nav-user-action-text c-action-text">{{lang 'common.login'}}</span>
                 </a>
             {{/if}}
         </li>

@@ -2,7 +2,7 @@
    #MENU
    ========================================================================== */
 
-$quick-search-icon: 'data:image/svg+xml;base64,CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSI+CjxtYXNrIGlkPSJtYXNrMF8zMDAzXzMwOTU0IiBzdHlsZT0ibWFzay10eXBlOmFscGhhIiBtYXNrVW5pdHM9InVzZXJTcGFjZU9uVXNlIiB4PSIwIiB5PSIwIiB3aWR0aD0iMjQiIGhlaWdodD0iMjQiPgo8cGF0aCBkPSJNMTEuNSAyMUMxNi43NDY3IDIxIDIxIDE2Ljc0NjcgMjEgMTEuNUMyMSA2LjI1MzI5IDE2Ljc0NjcgMiAxMS41IDJDNi4yNTMyOSAyIDIgNi4yNTMyOSAyIDExLjVDMiAxNi43NDY3IDYuMjUzMjkgMjEgMTEuNSAyMVoiIHN0cm9rZT0iIzM3M0QzRiIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPgo8cGF0aCBkPSJNMjIgMjJMMjAgMjAiIHN0cm9rZT0iIzM3M0QzRiIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPgo8L21hc2s+CjxnIG1hc2s9InVybCgjbWFzazBfMzAwM18zMDk1NCkiPgo8cmVjdCB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIGZpbGw9IiM4QzhDOEMiLz4KPC9nPgo8L3N2Zz4K';
+$quick-search-icon: './../icons/search.svg';
 
 .c-menu {
     @include container();
