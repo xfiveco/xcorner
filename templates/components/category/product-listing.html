@@ -2,7 +2,7 @@
 
 {{#if category.products}}
     {{> components/products/filter sort=pagination.category.sort}}
-    <div{{#if settings.data_tag_enabled}} data-list-name="{{lang 'categories.category_name' name=category.name}}"{{/if}}>
+    <div {{#if settings.data_tag_enabled}} data-list-name="{{lang 'categories.category_name' name=category.name}}"{{/if}}>
         {{#if theme_settings.product_list_display_mode '===' 'grid'}}
             {{#if settings.data_tag_enabled}}
                 {{> components/products/grid products=category.products show_compare=category.show_compare theme_settings=theme_settings event="list" }}

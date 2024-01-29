@@ -27,7 +27,7 @@
             {{/or}}"
     {{/if}}
 >
-    <figure>
+    <figure class="c-product-figure">
         {{#if stock_level '===' 0}}
             {{#if theme_settings.pdp_sold_out_label '===' ''}}
                 {{> components/products/product-badge
@@ -61,29 +61,28 @@
         {{/if}}
 
         <a 
+            class="c-product-image"
             href="{{url}}"
             aria-label="{{> components/products/product-info}}"
             {{#if settings.data_tag_enabled}} 
                 data-event-type="product-click" 
             {{/if}}
         >
-            <div>
-                {{> components/common/image
-                    image=image
-                    fallback_size=theme_settings.product_gallery_size
-                    default_image=theme_settings.default_image_product
-                }}
-            </div>
+            {{> components/common/image
+                image=image
+                fallback_size=theme_settings.product_gallery_size
+                default_image=theme_settings.default_image_product
+            }}
         </a>
 
         <figcaption>
-            <div>
+            <div class="c-product-options">
                 {{#unless hide_product_quick_view}}
                     {{#if theme_settings.show_product_quick_view}}
                         {{#if settings.data_tag_enabled}}
                             <button 
                                 type="button" 
-                                class="c-button js-quick-view" 
+                                class="c-button c-button-primary js-quick-view" 
                                 data-event-type="product-click" 
                                 data-product-id="{{id}}"
                             >
