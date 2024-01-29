@@ -18,11 +18,11 @@
     {{/if}}
 {{/if}}
 
-<footer role="contentinfo">
+<footer class="c-footer" role="contentinfo">
     <div class="u-hidden-visually">
         {{lang 'footer.title'}}
     </div>
-    <div class="o-container">
+    <div class="c-footer-container">
         {{#if theme_settings.social_icon_placement_bottom '!==' 'bottom_none'}}
             <article data-section-type="footer-web-pages">
                 <div>
@@ -33,57 +33,76 @@
             </article>
         {{/if}}
 
-        <section>
-            <article data-section-type="footer-web-pages">
-                <div>
-                    {{lang 'footer.navigate'}}
+        {{> components/common/store-logo}}
+
+        <section class="c-footer-area">
+            <article class="c-footer-column" data-section-type="footer-categories">
+                <div class="c-c-footer-heading">
+                    {{lang 'footer.categories'}}
                 </div>
-                <ul>
-                    {{#each pages}}
-                        <li>
-                            <a href="{{url}}">{{name}}</a>
+                <ul class="c-footer-links">
+                    {{#each categories}}
+                        <li class="c-footer-link-wrapper">
+                            <a class="c-footer-link" href="{{url}}">{{strReplace name "(dropdown)" ""}}</a>
                         </li>
                     {{/each}}
-                    <li>
-                        <a href="{{urls.sitemap}}">
+                </ul>
+            </article>
+
+            <article class="c-footer-column" data-section-type="footer-web-pages">
+                <div class="c-footer-heading">
+                    {{lang 'footer.navigate'}}
+                </div>
+                <ul class="c-footer-links">
+                    {{#each pages}}
+                        <li class="c-footer-link-wrapper">
+                            <a class="c-footer-link" href="{{url}}">{{name}}</a>
+                        </li>
+                    {{/each}}
+                    <li class="c-footer-link-wrapper">
+                        <a class="c-footer-link" href="{{urls.sitemap}}">
                             {{lang 'sitemap.page_title'}}
                         </a>
                     </li>
                 </ul>
             </article>
 
-            <article data-section-type="footer-categories">
-                <div>
-                    {{lang 'footer.categories'}}
-                </div>
-                <ul>
-                    {{#each categories}}
-                        <li>
-                            <a href="{{url}}">{{name}}</a>
-                        </li>
-                    {{/each}}
-                </ul>
-            </article>
-
-            {{#and theme_settings.shop_by_brand_show_footer shop_by_brand.length}}
-                <article data-section-type="footer-brands">
-                    <div>
+            {{!-- Not needed based on the designs, but kept for future use --}}
+            {{!-- {{#and theme_settings.shop_by_brand_show_footer shop_by_brand.length}}
+                <article class="c-footer-column" data-section-type="footer-brands">
+                    <div class="c-footer-heading">
                         {{lang 'footer.brands'}}
                     </div>
-                    <ul>
+                    <ul class="c-footer-links">
                         {{#each shop_by_brand}}
-                            <li>
-                                <a href="{{url}}">{{name}}</a>
+                            <li class="c-footer-link-wrapper">
+                                <a class="c-footer-link" href="{{url}}">{{name}}</a>
                             </li>
                         {{/each}}
-                        <li>
-                            <a href="{{urls.brands}}">
+                        <li class="c-footer-link-wrapper">
+                            <a class="c-footer-link" href="{{urls.brands}}">
                                 {{lang 'common.view_all'}}
                             </a>
                         </li>
                     </ul>
                 </article>
-            {{/and}}
+            {{/and}} --}}
+
+            <article class="c-footer-column" data-section-type="footer-info">
+                <div class="c-footer-heading">
+                    {{lang 'footer.info'}}
+                </div>
+                <div class="c-footer-address">
+                    <p class="c-footer-address-line">XCorner</p>
+                    <p class="c-footer-address-line">ul. Starowislna 46</p>
+                    <p class="c-footer-address-line">31-035 Krakow</p>
+                    <p class="c-footer-address-line">Poland</p>
+                </div>
+                <div class="c-footer-contact-info">
+                    <p class="c-footer-address-line">+48 123-456-789</p>
+                    <a href="mailto:xcorner@xfive.co" class="c-footer-contact-link">xcorner@xfive.co</a>
+                </div>
+            </article>
 
             {{#if settings.address}}
                 <article data-section-type="store-info">
@@ -100,15 +119,16 @@
                     {{/if}}
                 </article>
             {{/if}}
-
-            <article data-section-type="newsletter-subscription">
+        </section>
+        <section class="c-footer-area">
+            <article class="c-footer-newsletter-form" data-section-type="newsletter-subscription">
                 {{#if settings.show_newsletter_box}}
                     {{> components/common/subscription-form}}
                 {{/if}}
                 
                 {{> components/common/payment-icons}}
             </article>
-        </section>
+        </section class="c-footer-area">
         {{#if settings.paypal_commerce_credit_message}}
             <div>
                 <p>
@@ -116,20 +136,22 @@
                 </p>
             </div>
         {{/if}}
-        {{#if theme_settings.show_powered_by}}
-            <div>
-                <p>
-                    {{lang 'footer.powered_by'}} <a href="https://www.bigcommerce.com?utm_source=merchant&amp;utm_medium=poweredbyBC" rel="nofollow">BigCommerce</a>
-                </p>
-            </div>
-        {{/if}}
-        {{#if theme_settings.show_copyright_footer}}
-            <div>
-                <p>
-                    &copy; {{moment format="YYYY"}} {{settings.store_name}} 
-                </p>
-            </div>
-        {{/if}}
+        <div class="c-footer-copyright">
+            {{#if theme_settings.show_powered_by}}
+                <div>
+                    <p class="c-footer-copyright-text">
+                        {{lang 'footer.powered_by'}} <a class="footer-copyright-link" href="https://www.bigcommerce.com?utm_source=merchant&amp;utm_medium=poweredbyBC" rel="nofollow">BigCommerce</a>
+                    </p>
+                </div>
+            {{/if}}
+            {{#if theme_settings.show_copyright_footer}}
+                <div>
+                    <p class="c-footer-copyright-text">
+                        &copy; {{moment format="YYYY"}} {{settings.store_name}} 
+                    </p>
+                </div>
+            {{/if}}
+        </div>
     </div>
 
     {{{region name="ssl_site_seal--global"}}}

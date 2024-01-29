@@ -2,18 +2,129 @@
    #FOOTER
    ========================================================================== */
 
-footer {
-    background-color: $color-white;
+$at-sign-icon: '../../img/icons/at-sign.svg';
+
+.c-footer {
+    background-color: $color-secondary-50;
     border-top: 1px solid $color-white-grey;
-    padding: 3rem 0;
+    padding: 3rem;
     position: relative;
     transform: translateZ(0);
 
-    @include bp(medium) {
-        section {
+    .c-footer-area {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1.5rem;
+
+        @include bp(small) {
             display: grid;
             gap: remcalc(10.5);
-            grid-template-columns: 1fr 1fr 1fr auto;
+            grid-template-columns: repeat(3, 1fr);
         }
     }
+
+    @include bp(medium) {
+        grid-template-columns: repeat(4, 1fr);
+        padding: 5rem;
+    }
+}
+
+.c-footer-column {
+    --footer-column-gap: 0.75rem;
+    width: calc(50% - var(--footer-column-gap));
+
+    &:nth-child(3) {
+        width: 100%;
+    }
+}
+
+.c-footer-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+
+    @include bp(medium) {
+        gap: 3rem;
+    }
+}
+
+.c-footer-heading {
+    color: $color-black;
+    font-family: $font-regular;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 1.5rem;
+
+    margin-bottom: 0.75rem;
+}
+
+.c-footer-links {
+    margin: 0;
+}
+
+.c-footer-link-wrapper {
+    list-style-type: none;
+    margin-bottom: 0.5rem;
+}
+
+.c-footer-link {
+    color: $color-primary-300;
+    font-family: $font-regular;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 1.5;
+    text-decoration-line: underline;
+}
+
+.c-footer-newsletter-form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    grid-column: 1 / span 2;
+
+    width: 100%;
+    max-width: 30.375rem;
+}
+
+.c-footer-address {
+    margin-bottom: 0.5rem;
+}
+
+.c-footer-address-line {
+    color: $color-neutrals-400;
+    font-family: $font-regular;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.5rem;
+
+    margin-bottom: 0;
+}
+
+.c-footer-contact-link {
+    color: $color-primary-300;
+    font-family: $font-regular;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 1.5rem;
+    text-decoration-line: underline;
+}
+
+.c-footer-copyright-text {
+    color: $color-neutrals-300;
+    font-family: $font-regular;
+    font-size: 0.875rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.14;
+
+    margin: 0;
+}
+
+.c-footer-copyright-link {
+    color: $color-primary-300;
+    text-decoration-line: underline;
 }

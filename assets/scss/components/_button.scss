@@ -141,10 +141,18 @@ $color-red-shadow: rgba(215, 68, 68, 0.24);
     }
 }
 
-.button--large {
+.c-button--large {
     padding: 1rem 1.5rem;
 }
 
-.button--large-vertically {
+.c-button--large-vertically {
     padding: 1rem 0;
+}
+
+.c-button-full {
+    width: 100%;
+
+    @include bp(small) {
+        width: auto;
+    }
 }

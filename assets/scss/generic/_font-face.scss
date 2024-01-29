@@ -10,9 +10,9 @@
 @font-face {
     font-family: 'Assistant Regular';
     font-style: normal;
-    font-weight: 400;
+    font-weight: 600;
     font-display: swap;
-    src: url(../fonts/assistant-regular.ttf) format('ttf');
+    src: url(../fonts/assistant-regular.woff) format('woff');
 }
 
 @font-face {
@@ -20,7 +20,7 @@
     font-style: normal;
     font-weight: 700;
     font-display: swap;
-    src: url(../fonts/assistant-semibold.ttf) format('ttf');
+    src: url(../fonts/assistant-semibold.woff) format('woff');
 }
 
 * {
