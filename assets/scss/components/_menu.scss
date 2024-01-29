@@ -120,6 +120,7 @@ $quick-search-icon: 'data:image/svg+xml;base64,CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cud
     line-height: 1.2;
     padding: 0 0 1.5rem;
     border-bottom: 1px solid $color-secondary-75;
+    white-space: nowrap;
 
     &.has-sub-menu {
         span {

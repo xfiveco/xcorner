@@ -29,7 +29,7 @@
                     <li>
                         {{#if children}}
                             <a 
-                                class=" js-nav-pages-action has-sub-menu{{#if is_active}} is-active{{/if}} c-sub-menu-header-item"
+                                class=" js-nav-pages-action has-sub-menu{{#if is_active}} is-active{{/if}} c-nav-page-action c-sub-menu-header-item"
                                 href="{{url}}"
                                 aria-label="{{name}}"
                             >
@@ -49,7 +49,7 @@
                                 {{#each children}}
                                     <li>
                                         <a 
-                                            class="js-nav-pages-action{{#if is_active}} is-active{{/if}} c-sub-menu-item"
+                                            class="js-nav-pages-action{{#if is_active}} is-active{{/if}} c-nav-page-action c-sub-menu-item"
                                             href="{{url}}"
                                             aria-label="{{name}}"
                                         >
@@ -95,12 +95,12 @@
             </ul>
             <li>
                 <a href="/">
-                    <img class="js-nav-promo-image" src={{cdn 'img/navigation/30-off.png'}} height="190" width="284" loading="lazy"/>
+                    <img class="c-nav-promo-image" src={{cdn 'img/navigation/30-off.png'}} height="190" width="284" loading="lazy"/>
                 </a>
             </li>
             <li>
                 <a href="/">
-                    <img class="js-nav-promo-image" src={{cdn 'img/navigation/black-friday.png'}} height="190" width="284" loading="lazy"/>
+                    <img class="c-nav-promo-image" src={{cdn 'img/navigation/black-friday.png'}} height="190" width="284" loading="lazy"/>
                 </a>
             </li>
         </ul>
