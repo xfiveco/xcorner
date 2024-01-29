@@ -18,11 +18,11 @@
     {{/if}}
 {{/if}}
 
-<footer class="footer" role="contentinfo">
+<footer class="c-footer" role="contentinfo">
     <div class="u-hidden-visually">
         {{lang 'footer.title'}}
     </div>
-    <div class="footer-container">
+    <div class="c-footer-container">
         {{#if theme_settings.social_icon_placement_bottom '!==' 'bottom_none'}}
             <article data-section-type="footer-web-pages">
                 <div>
@@ -35,32 +35,32 @@
 
         {{> components/common/store-logo}}
 
-        <section>
-            <article class="footer-column" data-section-type="footer-categories">
-                <div class="footer-heading">
+        <section class="c-footer-area">
+            <article class="c-footer-column" data-section-type="footer-categories">
+                <div class="c-c-footer-heading">
                     {{lang 'footer.categories'}}
                 </div>
-                <ul class="footer-links">
+                <ul class="c-footer-links">
                     {{#each categories}}
-                        <li class="footer-link-item">
-                            <a class="footer-link" href="{{url}}">{{strReplace name "(dropdown)" ""}}</a>
+                        <li class="c-footer-link-wrapper">
+                            <a class="c-footer-link" href="{{url}}">{{strReplace name "(dropdown)" ""}}</a>
                         </li>
                     {{/each}}
                 </ul>
             </article>
 
-            <article class="footer-column" data-section-type="footer-web-pages">
-                <div class="footer-heading">
+            <article class="c-footer-column" data-section-type="footer-web-pages">
+                <div class="c-footer-heading">
                     {{lang 'footer.navigate'}}
                 </div>
-                <ul class="footer-links">
+                <ul class="c-footer-links">
                     {{#each pages}}
-                        <li class="footer-link-item">
-                            <a class="footer-link" href="{{url}}">{{name}}</a>
+                        <li class="c-footer-link-wrapper">
+                            <a class="c-footer-link" href="{{url}}">{{name}}</a>
                         </li>
                     {{/each}}
-                    <li class="footer-link-item">
-                        <a class="footer-link" href="{{urls.sitemap}}">
+                    <li class="c-footer-link-wrapper">
+                        <a class="c-footer-link" href="{{urls.sitemap}}">
                             {{lang 'sitemap.page_title'}}
                         </a>
                     </li>
@@ -69,18 +69,18 @@
 
             {{!-- Not needed based on the designs, but kept for future use --}}
             {{!-- {{#and theme_settings.shop_by_brand_show_footer shop_by_brand.length}}
-                <article class="footer-column" data-section-type="footer-brands">
-                    <div class="footer-heading">
+                <article class="c-footer-column" data-section-type="footer-brands">
+                    <div class="c-footer-heading">
                         {{lang 'footer.brands'}}
                     </div>
-                    <ul class="footer-links">
+                    <ul class="c-footer-links">
                         {{#each shop_by_brand}}
-                            <li class="footer-link-item">
-                                <a class="footer-link" href="{{url}}">{{name}}</a>
+                            <li class="c-footer-link-wrapper">
+                                <a class="c-footer-link" href="{{url}}">{{name}}</a>
                             </li>
                         {{/each}}
-                        <li class="footer-link-item">
-                            <a class="footer-link" href="{{urls.brands}}">
+                        <li class="c-footer-link-wrapper">
+                            <a class="c-footer-link" href="{{urls.brands}}">
                                 {{lang 'common.view_all'}}
                             </a>
                         </li>
@@ -88,19 +88,19 @@
                 </article>
             {{/and}} --}}
 
-            <article class="footer-column" data-section-type="footer-info">
-                <div class="footer-heading">
+            <article class="c-footer-column" data-section-type="footer-info">
+                <div class="c-footer-heading">
                     {{lang 'footer.info'}}
                 </div>
-                <div class="footer-address">
-                    <p class="footer-address-line">XCorner</p>
-                    <p class="footer-address-line">ul. Starowislna 46</p>
-                    <p class="footer-address-line">31-035 Krakow</p>
-                    <p class="footer-address-line">Poland</p>
+                <div class="c-footer-address">
+                    <p class="c-footer-address-line">XCorner</p>
+                    <p class="c-footer-address-line">ul. Starowislna 46</p>
+                    <p class="c-footer-address-line">31-035 Krakow</p>
+                    <p class="c-footer-address-line">Poland</p>
                 </div>
-                <div class="footer-contact-info">
-                    <p class="footer-address-line">+48 123-456-789</p>
-                    <a href="mailto:xcorner@xfive.co" class="footer-contact-link">xcorner@xfive.co</a>
+                <div class="c-footer-contact-info">
+                    <p class="c-footer-address-line">+48 123-456-789</p>
+                    <a href="mailto:xcorner@xfive.co" class="c-footer-contact-link">xcorner@xfive.co</a>
                 </div>
             </article>
 
@@ -120,15 +120,15 @@
                 </article>
             {{/if}}
         </section>
-        <section>
-            <article class="newsletter-subscription" data-section-type="newsletter-subscription">
+        <section class="c-footer-area">
+            <article class="c-footer-newsletter-form" data-section-type="newsletter-subscription">
                 {{#if settings.show_newsletter_box}}
                     {{> components/common/subscription-form}}
                 {{/if}}
                 
                 {{> components/common/payment-icons}}
             </article>
-        </section>
+        </section class="c-footer-area">
         {{#if settings.paypal_commerce_credit_message}}
             <div>
                 <p>
@@ -136,17 +136,17 @@
                 </p>
             </div>
         {{/if}}
-        <div class="footer-copyright">
+        <div class="c-footer-copyright">
             {{#if theme_settings.show_powered_by}}
                 <div>
-                    <p class="footer-copyright-text">
+                    <p class="c-footer-copyright-text">
                         {{lang 'footer.powered_by'}} <a class="footer-copyright-link" href="https://www.bigcommerce.com?utm_source=merchant&amp;utm_medium=poweredbyBC" rel="nofollow">BigCommerce</a>
                     </p>
                 </div>
             {{/if}}
             {{#if theme_settings.show_copyright_footer}}
                 <div>
-                    <p class="footer-copyright-text">
+                    <p class="c-footer-copyright-text">
                         &copy; {{moment format="YYYY"}} {{settings.store_name}} 
                     </p>
                 </div>

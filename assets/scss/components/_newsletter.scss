@@ -1,0 +1,44 @@
+.c-newsletter-heading {
+    color: $color-black;
+    font-family: $font-regular;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 1.5;
+
+    margin: 0;
+}
+
+.c-newsletter-text {
+    color: $color-neutrals-400;
+    font-family: $font-regular;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.5;
+
+    margin: 0;
+    max-width: 21.375rem;
+}
+
+.c-newsletter-fields {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+
+    @include bp(small) {
+        flex-direction: row;
+    }
+}
+
+.c-newsletter-input {
+    background-image: url($at-sign-icon);
+    background-repeat: no-repeat;
+    background-position-x: 1rem;
+    background-position-y: center;
+
+    height: 3.5rem;
+    margin: 0;
+    padding-left: 3rem;
+}
