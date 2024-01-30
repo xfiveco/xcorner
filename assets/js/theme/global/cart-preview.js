@@ -53,7 +53,7 @@ export default function (secureBaseUrl, cartId) {
             return event.stopPropagation()
         }
 
-        if ($cart.hasClass('js-cart-redirect')) {
+        if ($cart.hasClass('js-cart-disable-preview')) {
             event.preventDefault()
 
             $cartDropdown.classList.add(loadingClass)

@@ -15,11 +15,11 @@
             </g>
         </svg>
     </a>
-    <div class="c-nav-sub-menu" id="nav-pages-{{id}}" aria-hidden="true" tabindex="-1">
+    <div class="c-navigation__megamenu" id="nav-pages-{{id}}" aria-hidden="true" tabindex="-1">
         <div aria-hidden="true" class="js-quick-search">
             {{> components/common/quick-search name='nav-menu-quick-search'}}
         </div>
-        <ul class="c-nav-sub-menu-items">
+        <ul class="c-navigation__submenu">
             {{#each children}}
                 <li>
                     {{#if children}}
@@ -40,7 +40,7 @@
                                 </svg>
                             </span>
                         </a>
-                        <ul id="nav-pages-{{id}}">
+                        <ul id="nav-pages-{{id}}" class="c-navigation__submenu-list">
                             {{#each children}}
                                 <li>
                                     <a 
@@ -64,7 +64,7 @@
                     {{/if}}
                 </li>
             {{/each}}
-            <ul>
+            <ul class="c-navigation__submenu-list">
                 <li>
                     <a 
                         class="js-nav-pages-action"
@@ -76,7 +76,7 @@
                 </li>
                 <li>
                     <a 
-                        class="js-nav-pages-action sign-in-now"
+                        class="js-nav-pages-action c-navigation__sign-in"
                         href="{{url}}"
                         aria-label="{{lang 'category.view_all.name' category=name}}"
                     >

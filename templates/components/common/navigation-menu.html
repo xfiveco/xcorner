@@ -2,54 +2,44 @@
     <div class="u-hidden@medium">
         {{> components/common/quick-search name='nav-menu-quick-search'}}
     </div>
-    <ul class="js-nav-pages-list{{#if theme_settings.navigation_design '!==' 'simple'}} js-nav-pages-list-depth-max{{/if}} c-main-menu">
+    <ul class="js-nav-pages-list{{#if theme_settings.navigation_design '!==' 'simple'}} js-nav-pages-list-depth-max{{/if}} c-navigation__menu">
         {{#each categories}}
             {{#unless name '===' 'Shop All'}}
-                <li>
+                <li class="c-navigation__menu-item">
                     {{#if ../theme_settings.navigation_design '===' 'simple'}}
                         {{> components/common/navigation-list}}
                     {{/if}}
                     {{#if ../theme_settings.navigation_design '===' 'alternate'}}
-                        {{> components/common/navigation-list-custom categories=../categories}}
+                        {{> components/common/navigation-list-custom categories=../categories social_media=../social_media }}
                     {{/if}}
                 </li>
-                <svg class="c-menu-separator" xmlns="http://www.w3.org/2000/svg" width="25" height="24" viewBox="0 0 25 24" fill="none">
+                <svg class="c-navigation__separator" xmlns="http://www.w3.org/2000/svg" width="25" height="24" viewBox="0 0 25 24" fill="none">
                     <path d="M13.5 12C13.5 12.5523 13.0523 13 12.5 13C11.9477 13 11.5 12.5523 11.5 12C11.5 11.4477 11.9477 11 12.5 11C13.0523 11 13.5 11.4477 13.5 12Z" stroke="#E6DABB" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
             {{/unless}}
         {{/each}}
     </ul>
-    <div class="c-nav-sub-menu is-mobile">
+    <div class="c-navigation__megamenu is-mobile">
         <div class="js-quick-search">
             {{> components/common/quick-search name='nav-menu-quick-search'}}
         </div>
-        <ul class="c-nav-sub-menu-items">
+        <ul class="c-navigation__submenu">
             {{#each categories}}
                 {{#each children}}
                     <li>
                         {{#if children}}
                             <a 
-                                class=" js-nav-pages-action has-sub-menu{{#if is_active}} is-active{{/if}} c-nav-page-action c-sub-menu-header-item"
+                                class="js-nav-pages-action has-sub-menu{{#if is_active}} is-active{{/if}} c-navigation__link c-navigation__submenu-header"
                                 href="{{url}}"
                                 aria-label="{{name}}"
                             >
                                 {{name}}
-                                <span 
-                                    data-collapsible="nav-pages-{{id}}"
-                                    data-collapsible-disabled-breakpoint="medium"
-                                    data-collapsible-disabled-state="open"
-                                    data-collapsible-enabled-state="closed"
-                                >
-                                    <svg>
-                                        <use href="#icon-chevron-down" />
-                                    </svg>
-                                </span>
                             </a>
-                            <ul id="nav-pages-{{id}}" class="is-open">
+                            <ul id="nav-pages-{{id}}" class="is-open c-navigation__submenu-list">
                                 {{#each children}}
                                     <li>
                                         <a 
-                                            class="js-nav-pages-action{{#if is_active}} is-active{{/if}} c-nav-page-action c-sub-menu-item"
+                                            class="js-nav-pages-action{{#if is_active}} is-active{{/if}} c-navigation__link c-navigation__submenu-item"
                                             href="{{url}}"
                                             aria-label="{{name}}"
                                         >
@@ -62,10 +52,10 @@
                     </li>
                 {{/each}}
             {{/each}}
-            <ul>
+            <ul class="c-navigation__submenu-list">
                 <li>
                     <a 
-                        class="js-nav-pages-action c-sub-menu-header-item"
+                        class="js-nav-pages-action c-navigation__submenu-header"
                         href="{{url}}"
                     >
                         {{lang 'common.login'}}
@@ -73,7 +63,7 @@
                 </li>
                 <li>
                     <a 
-                        class="js-nav-pages-action sign-in-now"
+                        class="js-nav-pages-action c-navigation__sign-in"
                         href="{{url}}"
                     >
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -84,9 +74,8 @@
                 </li>
                 <li>
                     <a 
-                        class="js-nav-pages-action c-sub-menu-header-item"
-                        href="{{url}}"
-                        aria-label="{{lang 'category.view_all.name' category=name}}"
+                        class="js-nav-pages-action c-navigation__link c-navigation__submenu-header"
+                        href="#"
                     >
                         {{lang 'common.reach_out'}}
                     </a>
@@ -95,12 +84,12 @@
             </ul>
             <li>
                 <a href="/">
-                    <img class="c-nav-promo-image" src={{cdn 'img/navigation/30-off.png'}} height="190" width="284" loading="lazy"/>
+                    <img class="c-navigation__promo" src={{cdn 'img/navigation/30-off.png'}} height="190" width="284" loading="lazy"/>
                 </a>
             </li>
             <li>
                 <a href="/">
-                    <img class="c-nav-promo-image" src={{cdn 'img/navigation/black-friday.png'}} height="190" width="284" loading="lazy"/>
+                    <img class="c-navigation__promo" src={{cdn 'img/navigation/black-friday.png'}} height="190" width="284" loading="lazy"/>
                 </a>
             </li>
         </ul>

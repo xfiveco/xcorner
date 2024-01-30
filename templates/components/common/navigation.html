@@ -1,13 +1,13 @@
-<nav class="c-header-top-nav">
+<nav class="c-navigation">
     <div class="header-logo">
         {{> components/common/store-logo}}
     </div>
 
-    <ul class="c-header-top-nav-items">
+    <ul class="c-navigation__items">
         {{#if customer.store_credit.value '>' 0}}
-            <li class="c-top-nav-item">
+            <li class="c-navigation__item">
                 <a 
-                    class="js-nav-user-action c-nav-page-action c-top-nav-link"
+                    class="js-nav-user-action c-navigation__link"
                     data-dropdown="store-credit-dropdown"
                     data-options="align:bottom"
                     href="{{urls.cart}}"
@@ -34,7 +34,7 @@
         {{/if}}
         <li>
             <button 
-                class="js-nav-user-action js-quick-search-expand c-top-nav-search c-nav-page-action"
+                class="js-nav-user-action js-quick-search-expand c-navigation__link-search"
                 type="button"
                 data-search="quick-search"
                 aria-controls="quick-search"
@@ -49,12 +49,12 @@
                     <rect width="24" height="24" fill="#272727"/>
                     </g>
                 </svg>
-                <span class="js-nav-user-action-text c-action-text">{{lang 'common.search'}}</span>
+                <span class="js-nav-user-action-text c-navigation__label">{{lang 'common.search'}}</span>
             </button>
         </li>
         <li>
             <a 
-                class="js-nav-user-action js-compare-nav c-nav-page-action"
+                class="js-nav-user-action js-compare-nav c-navigation__link"
                 href="{{urls.compare}}"
                 aria-label="{{lang 'common.compare'}}"
             >
@@ -69,14 +69,14 @@
                     <rect width="24" height="24" fill="#272727"/>
                     </g>
                 </svg>
-                <span class="js-nav-user-action-text c-action-text">{{lang 'common.compare'}}</span>
+                <span class="js-nav-user-action-text c-navigation__label">{{lang 'common.compare'}}</span>
                 <span class="js-count-pill is-positive"></span>
             </a>
         </li>
         {{#if settings.gift_certificates_enabled}}
             <li>
                 <a 
-                    class="js-nav-user-action"
+                    class="js-nav-user-action c-navigation__link"
                     href="{{urls.gift_certificate.purchase}}"
                     aria-label="{{lang 'common.gift_cert'}}"
                 >
@@ -87,7 +87,7 @@
 
         <li>
             <a 
-                class="js-nav-user-action js-cart-preview js-cart-redirect c-nav-page-action"
+                class="js-nav-user-action js-cart-preview js-cart-disable-preview c-navigation__link"
                 href="{{urls.cart}}"
                 aria-label="{{lang 'cart.nav_aria_label'}}"
             >
@@ -99,8 +99,8 @@
                     <rect width="24" height="24" fill="#272727"/>
                     </g>
                 </svg>
-                <span class="js-nav-user-action-text c-action-text">{{lang 'common.cart'}}</span>
-                <span class="js-count-pill js-cart-quantity c-cart-quantity"></span>
+                <span class="js-nav-user-action-text c-navigation__label">{{lang 'common.cart'}}</span>
+                <span class="js-count-pill js-cart-quantity c-navigation__cart-quantity"></span>
             </a>
 
             <div 
@@ -108,10 +108,10 @@
                 aria-hidden="true"
             ></div>
         </li>
-        <li class="js-nav-user-account c-top-nav-account-item">
+        <li class="js-nav-user-account c-navigation__item-account">
             {{#if customer}}
                 <a  
-                    class="js-nav-user-action c-nav-page-action"
+                    class="js-nav-user-action c-navigation__link"
                     href="{{urls.account.index}}"
                     aria-label="{{lang 'common.account'}}"
                 >
@@ -123,11 +123,11 @@
                         <rect width="24" height="24" fill="#272727"/>
                         </g>
                     </svg>
-                    <span class="js-nav-user-action-text c-action-text">{{lang 'common.account'}}</span>
+                    <span class="js-nav-user-action-text c-navigation__label">{{lang 'common.account'}}</span>
                 </a>
             {{else}}
                 <a 
-                    class="js-nav-user-action c-nav-page-action"
+                    class="js-nav-user-action c-navigation__link"
                     href="{{urls.auth.login}}"
                     aria-label="{{lang 'common.login'}}"
                 >
@@ -139,22 +139,22 @@
                         <rect width="24" height="24" fill="#272727"/>
                         </g>
                     </svg>
-                    <span class="js-nav-user-action-text c-action-text">{{lang 'common.login'}}</span>
+                    <span class="js-nav-user-action-text c-navigation__label">{{lang 'common.login'}}</span>
                 </a>
             {{/if}}
         </li>
-        <a class="u-hidden@medium c-menu-toggle" href="#" data-mobile-menu-toggle="menu">
-            <svg class="c-menu-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+        <a class="u-hidden@medium c-menu__toggle" href="#" data-mobile-menu-toggle="menu">
+            <svg class="c-menu__hamburger" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                 <g id="menu">
                     <path id="Vector" d="M3 12H21M3 6H21M3 18H21" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                 </g>
             </svg>
-            <svg class="c-close-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <svg class="c-menu__close" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                 <path d="M18 6L6 18M6 6L18 18" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
         </a>
     </ul>
-    <div aria-hidden="true" class="c-quick-search u-hidden js-prevent-quick-search-close js-quick-search">
+    <div aria-hidden="true" class="c-navigation__search u-hidden js-prevent-quick-search-close js-quick-search">
         {{> components/common/quick-search name='nav-quick-search'}}
     </div>
 </nav>
