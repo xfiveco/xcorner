@@ -93,7 +93,7 @@
 
 .c-navigation-list__submenu {
     display: grid;
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
     gap: 3rem;
 
     width: 100vw;
@@ -102,11 +102,14 @@
     padding: 1.5rem;
 
     @include bp(small) {
-        grid-template-columns: repeat(3, 1fr);
         padding: 1.5rem 3rem;
     }
 
     @include bp(medium) {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    @include bp(large) {
         grid-template-columns: repeat(4, 1fr);
     }
 }
