@@ -19,23 +19,23 @@
         <div aria-hidden="true" class="js-quick-search">
             {{> components/common/quick-search name='nav-menu-quick-search'}}
         </div>
-        <ul class="c-navigation__submenu">
+        <ul class="c-navigation-list__submenu">
             {{#each categories}}
                 {{#each children}}
                     <li>
                         {{#if children}}
                             <a 
-                                class=" js-nav-pages-action has-sub-menu{{#if is_active}} is-active{{/if}} c-navigation__link c-navigation__submenu-header"
+                                class=" js-nav-pages-action has-sub-menu{{#if is_active}} is-active{{/if}} c-navigation-list__submenu-header"
                                 href="{{url}}"
                                 aria-label="{{name}}"
                             >
                                 {{name}}
                             </a>
-                            <ul id="nav-pages-{{id}}" class="is-open c-navigation__submenu-list">
+                            <ul id="nav-pages-{{id}}" class="is-open c-navigation-list__submenu-list">
                                 {{#each children}}
                                     <li>
                                         <a 
-                                            class="js-nav-pages-action{{#if is_active}} is-active{{/if}} c-navigation__link c-navigation__submenu-item"
+                                            class="js-nav-pages-action{{#if is_active}} is-active{{/if}} c-navigation-list__submenu-item"
                                             href="{{url}}"
                                             aria-label="{{name}}"
                                         >
@@ -48,10 +48,10 @@
                     </li>
                 {{/each}}
             {{/each}}
-            <ul class="c-navigation__submenu-list">
+            <ul class="c-navigation-list__submenu-list">
                 <li>
                     <a 
-                        class="js-nav-pages-action c-navigation__link c-navigation__submenu-header"
+                        class="js-nav-pages-action c-navigation-list__submenu-header"
                         href="#"
                     >
                         {{lang 'common.login'}}
@@ -59,7 +59,7 @@
                 </li>
                 <li>
                     <a 
-                        class="js-nav-pages-action c-navigation__link c-navigation__sign-in"
+                        class="js-nav-pages-action c-navigation__sign-in"
                         href="/login.php"
                     >
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -70,7 +70,7 @@
                 </li>
                 <li>
                     <a 
-                        class="js-nav-pages-action c-navigation__link c-navigation__submenu-header"
+                        class="js-nav-pages-action c-navigation-list__submenu-header"
                         href="#"
                     >
                         {{lang 'common.reach_out'}}

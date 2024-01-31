@@ -8,19 +8,9 @@
     background-color: $color-secondary-50;
     position: relative;
     z-index: $z-index-mid;
-
-    &.is-open {
-        .c-menu {
-            display: block;
-        }
-    
-        .c-navigation__megamenu {
-            display: flex;
-        }
-    }
 }
 
-.c-header-announcement-banner {
+.c-header__announcement-banner {
     display: flex;
     justify-content: center;
     align-items: center;

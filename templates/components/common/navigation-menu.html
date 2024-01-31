@@ -2,10 +2,10 @@
     <div class="u-hidden@medium">
         {{> components/common/quick-search name='nav-menu-quick-search'}}
     </div>
-    <ul class="js-nav-pages-list{{#if theme_settings.navigation_design '!==' 'simple'}} js-nav-pages-list-depth-max{{/if}} c-navigation__menu">
+    <ul class="js-nav-pages-list{{#if theme_settings.navigation_design '!==' 'simple'}} js-nav-pages-list-depth-max{{/if}} c-navigation-menu">
         {{#each categories}}
             {{#unless name '===' 'Shop All'}}
-                <li class="c-navigation__menu-item">
+                <li class="c-navigation-menu-item">
                     {{#if ../theme_settings.navigation_design '===' 'simple'}}
                         {{> components/common/navigation-list}}
                     {{/if}}
@@ -23,23 +23,23 @@
         <div class="js-quick-search">
             {{> components/common/quick-search name='nav-menu-quick-search'}}
         </div>
-        <ul class="c-navigation__submenu">
+        <ul class="c-navigation-list__submenu">
             {{#each categories}}
                 {{#each children}}
                     <li>
                         {{#if children}}
                             <a 
-                                class="js-nav-pages-action has-sub-menu{{#if is_active}} is-active{{/if}} c-navigation__link c-navigation__submenu-header"
+                                class="js-nav-pages-action has-sub-menu{{#if is_active}} is-active{{/if}} c-navigation__link c-navigation-list__submenu-header"
                                 href="{{url}}"
                                 aria-label="{{name}}"
                             >
                                 {{name}}
                             </a>
-                            <ul id="nav-pages-{{id}}" class="is-open c-navigation__submenu-list">
+                            <ul id="nav-pages-{{id}}" class="is-open c-navigation-list__submenu-list">
                                 {{#each children}}
                                     <li>
                                         <a 
-                                            class="js-nav-pages-action{{#if is_active}} is-active{{/if}} c-navigation__link c-navigation__submenu-item"
+                                            class="js-nav-pages-action{{#if is_active}} is-active{{/if}} c-navigation__link c-navigation-list__submenu-item"
                                             href="{{url}}"
                                             aria-label="{{name}}"
                                         >
@@ -52,10 +52,10 @@
                     </li>
                 {{/each}}
             {{/each}}
-            <ul class="c-navigation__submenu-list">
+            <ul class="c-navigation-list__submenu-list">
                 <li>
                     <a 
-                        class="js-nav-pages-action c-navigation__submenu-header"
+                        class="js-nav-pages-action c-navigation-list__submenu-header"
                         href="{{url}}"
                     >
                         {{lang 'common.login'}}
@@ -74,7 +74,7 @@
                 </li>
                 <li>
                     <a 
-                        class="js-nav-pages-action c-navigation__link c-navigation__submenu-header"
+                        class="js-nav-pages-action c-navigation__link c-navigation-list__submenu-header"
                         href="#"
                     >
                         {{lang 'common.reach_out'}}

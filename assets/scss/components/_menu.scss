@@ -2,8 +2,6 @@
    #MENU
    ========================================================================== */
 
-$quick-search-icon: './../icons/search.svg';
-
 .c-menu {
     @include container();
     display: none;
@@ -28,18 +26,16 @@ $quick-search-icon: './../icons/search.svg';
         transform: translateX(-50%);
         z-index: $z-index-base;
     }
+}
 
-    .has-sub-menu {
-        + .c-navigation__megamenu {
-            display: none;
-        }
-
-        &.is-open {
-            + .c-navigation__megamenu {
-                display: flex;
-            }
-        }
+.is-open {
+    .c-menu {
+        display: block;
     }
+}
+
+.c-menu__close {
+    display: none;
 }
 
 .c-menu__toggle {
@@ -47,22 +43,10 @@ $quick-search-icon: './../icons/search.svg';
     display: inline-flex;
     z-index: $z-index-mid;
 
-    .c-menu__close {
-        display: none;
-    }
-
     &.is-open {
         position: absolute;
         top: 2.5rem;
         right: 1.5rem;
-
-        .c-menu__hamburger {
-            display: none;
-        }
-
-        .c-menu__close {
-            display: inline-flex;
-        }
 
         @include bp(small) {
             right: 3rem;
@@ -71,5 +55,17 @@ $quick-search-icon: './../icons/search.svg';
 
     @include bp(medium) {
         display: none;
+    }
+}
+
+.c-menu__hamburger {
+    .is-open & {
+        display: none;
+    }
+}
+
+.c-menu__close {
+    .is-open & {
+        display: inline-flex;
     }
 }
