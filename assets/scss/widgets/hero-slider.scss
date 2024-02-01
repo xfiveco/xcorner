@@ -1,7 +1,7 @@
-$swiper-arrow-right: "data:image/svg+xml;base64,CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSI+CjxnIGlkPSJhcnJvdy1yaWdodCI+CjxwYXRoIGlkPSJWZWN0b3IiIGQ9Ik01IDEySDE5TTE5IDEyTDEyIDVNMTkgMTJMMTIgMTkiIHN0cm9rZT0id2hpdGUiIHN0cm9rZS13aWR0aD0iMS41IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KPC9nPgo8L3N2Zz4K";
-$swiper-arrow-left: "data:image/svg+xml;base64,CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSI+CjxtYXNrIGlkPSJtYXNrMF8zMDQxXzMyMDEzIiBzdHlsZT0ibWFzay10eXBlOmFscGhhIiBtYXNrVW5pdHM9InVzZXJTcGFjZU9uVXNlIiB4PSIwIiB5PSIwIiB3aWR0aD0iMjQiIGhlaWdodD0iMjQiPgo8cGF0aCBkPSJNMTkgMTJINU01IDEyTDEyIDE5TTUgMTJMMTIgNSIgc3Ryb2tlPSJibGFjayIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPgo8L21hc2s+CjxnIG1hc2s9InVybCgjbWFzazBfMzA0MV8zMjAxMykiPgo8cmVjdCB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIGZpbGw9IndoaXRlIi8+CjwvZz4KPC9zdmc+Cg==";
+$swiper-arrow-right: 'data:image/svg+xml;base64,CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSI+CjxnIGlkPSJhcnJvdy1yaWdodCI+CjxwYXRoIGlkPSJWZWN0b3IiIGQ9Ik01IDEySDE5TTE5IDEyTDEyIDVNMTkgMTJMMTIgMTkiIHN0cm9rZT0id2hpdGUiIHN0cm9rZS13aWR0aD0iMS41IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KPC9nPgo8L3N2Zz4K';
+$swiper-arrow-left: 'data:image/svg+xml;base64,CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSI+CjxtYXNrIGlkPSJtYXNrMF8zMDQxXzMyMDEzIiBzdHlsZT0ibWFzay10eXBlOmFscGhhIiBtYXNrVW5pdHM9InVzZXJTcGFjZU9uVXNlIiB4PSIwIiB5PSIwIiB3aWR0aD0iMjQiIGhlaWdodD0iMjQiPgo8cGF0aCBkPSJNMTkgMTJINU01IDEyTDEyIDE5TTUgMTJMMTIgNSIgc3Ryb2tlPSJibGFjayIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPgo8L21hc2s+CjxnIG1hc2s9InVybCgjbWFzazBfMzA0MV8zMjAxMykiPgo8cmVjdCB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIGZpbGw9IndoaXRlIi8+CjwvZz4KPC9zdmc+Cg==';
 
-.slide-image {
+.c-hero-slider__image {
     aspect-ratio: 342/424;
     width: 100%;
     height: auto;
@@ -16,7 +16,7 @@ $swiper-arrow-left: "data:image/svg+xml;base64,CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cud
     }
 }
 
-.slide-information {
+.c-hero-slider__information {
     position: relative;
     background-color: $color-white;
     display: flex;
@@ -39,7 +39,7 @@ $swiper-arrow-left: "data:image/svg+xml;base64,CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cud
     }
 }
 
-.slide-title {
+.c-hero-slider__title {
     color: $color-black;
     text-align: center;
     font-family: $font-regular;
@@ -55,7 +55,7 @@ $swiper-arrow-left: "data:image/svg+xml;base64,CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cud
     }
 }
 
-.slide-subtext {
+.c-hero-slider__subtext {
     color: $color-neutrals-500;
     text-align: center;
     font-family: $font-regular;
@@ -66,7 +66,7 @@ $swiper-arrow-left: "data:image/svg+xml;base64,CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cud
     margin: 0;
 }
 
-.slide-price {
+.c-hero-slider__price-container {
     color: $color-neutrals-300;
     text-align: center;
     font-family: $font-regular;
@@ -75,19 +75,19 @@ $swiper-arrow-left: "data:image/svg+xml;base64,CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cud
     font-weight: 400;
     line-height: 1.33;
     margin: 0;
-
-    span {
-        color: $color-black;
-        text-align: center;
-        font-family: $font-regular;
-        font-size: 32px;
-        font-style: normal;
-        font-weight: 600;
-        line-height: 1.25;
-    }
 }
 
-.slide-buttons {
+.c-hero-slider__price {
+    color: $color-black;
+    text-align: center;
+    font-family: $font-regular;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 1.25;
+}
+
+.c-hero-slider__buttons {
     display: flex;
     flex-direction: column;
     gap: 12px;
@@ -97,7 +97,7 @@ $swiper-arrow-left: "data:image/svg+xml;base64,CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cud
     }
 }
 
-.slide-navigation {
+.c-hero-slider__navigation {
     position: absolute;
     bottom: 60%;
     z-index: 2;
