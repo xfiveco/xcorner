@@ -53,17 +53,19 @@ export default function (secureBaseUrl, cartId) {
             return event.stopPropagation()
         }
 
-        event.preventDefault()
+        if ($cart.hasClass('js-cart-disable-preview')) {
+            event.preventDefault()
 
-        $cartDropdown.classList.add(loadingClass)
-        $cartDropdown.append($cartLoading)
-        $cartLoading.style.display = 'block'
+            $cartDropdown.classList.add(loadingClass)
+            $cartDropdown.append($cartLoading)
+            $cartLoading.style.display = 'block'
 
-        utils.api.cart.getContent(options, (err, response) => {
-            $cartDropdown.classList.remove(loadingClass)
-            $cartDropdown.innerHTML = response
-            $cartLoading.style.display = 'none'
-        })
+            utils.api.cart.getContent(options, (err, response) => {
+                $cartDropdown.classList.remove(loadingClass)
+                $cartDropdown.innerHTML = response
+                $cartLoading.style.display = 'none'
+            })
+        }
     })
 
     let quantity = 0

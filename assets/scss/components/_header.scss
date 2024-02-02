@@ -3,39 +3,27 @@
    ========================================================================== */
 
 .c-header {
-    @include container();
-
     display: flex;
     flex-direction: column;
+    background-color: $color-secondary-50;
+    position: relative;
+    z-index: $z-index-mid;
 }
 
-.c-header > nav ul {
-    @include list-bare();
-    display: flex;
-    justify-content: end;
-    gap: 1rem;
-}
-
-.c-header > nav .has-dropdown + ul {
-    display: none;
-}
-
-.c-header > nav .has-dropdown.is-open + ul {
-    display: block;
-}
-
-.c-header-announcement-banner {
+.c-header__announcement-banner {
     display: flex;
     justify-content: center;
     align-items: center;
     background-color: $color-black;
-    padding: 16px 24px;
+    padding: 1rem 1.5rem;
+    position: relative;
+    z-index: $z-index-mid;
 
     p {
         color: $color-white;
         text-align: center;
         font-family: $font-regular;
-        font-size: 16px;
+        font-size: 1rem;
         font-style: normal;
         font-weight: 400;
         line-height: 1.5;
@@ -49,10 +37,10 @@
     a {
         color: $color-white;
         font-family: $font-regular;
-        font-size: 16px;
+        font-size: 1rem;
         font-style: normal;
         font-weight: 600;
-        line-height: 24px;
+        line-height: 1.5rem;
         text-decoration-line: underline;
     }
 }

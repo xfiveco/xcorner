@@ -1,40 +1,22 @@
-
 /* ==========================================================================
    #QUICK-SEARCH
    ========================================================================== */
 
-.c-quick-search {
-    align-items: center;
-    background-color: $color-gray-e5;
-    display: flex;
-    justify-content: center;
-    margin-left: calc(50% - 50vw);
-    padding: 3rem;
-    width: 100vw;
+$quick-search-icon: './../icons/search.svg';
 
-    > div {
-        width: 100%;
-        max-width: 1024px;
-        margin-inline: auto;
-    }
+.c-quick-search .c-form__input {
+    padding: 1rem 1rem 1rem 3rem;
+    min-width: 21.375rem;
 
-    #nav-quick-search {
-        appearance: none;
-        background-color: $color-white;
-        border-color: $color-gray-c;
-        border-style: solid;
-        border-width: 1px;
-        border-radius: 4px;
-        color: $color-gray-6;
-        display: block;
-        font-family: inherit;
-        font-size: 20px;
-        font-smoothing: antialiased;
-        height: unset;
-        margin: 0 auto;
-        max-width: 30rem;
-        padding: 0.75rem 1rem;
-        transition: border-color .1s ease-out;
-        width: 100%;
-    }
+    color: $color-neutrals-500;
+    font-family: $font-regular;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.5;
+
+    background-image: url($quick-search-icon);
+    background-position-y: center;
+    background-position-x: 1rem;
+    background-repeat: no-repeat;
 }

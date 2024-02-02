@@ -2,7 +2,7 @@
     {{lang 'header.skip_to_main'}}
 </a>
 {{#if banners.top}}
-    <div class="c-header-announcement-banner" data-banner-location="top">
+    <div class="c-header__announcement-banner" data-banner-location="top">
         {{#each (limit banners.top_metadata 1)}}
             <div 
                 data-event-type="promotion" 
@@ -20,14 +20,8 @@
 {{/if}}
 
 <header class="js-header c-header" role="banner">
-    <a class="u-hidden@medium" href="#" data-mobile-menu-toggle="menu">
-        <span>Toggle menu</span>
-    </a>
     {{> components/common/navigation}}
 
-    <div>
-        {{> components/common/store-logo}}
-    </div>
     <div id="menu" class="js-menu c-menu">
         {{> components/common/navigation-menu}}
     </div>

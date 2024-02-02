@@ -1,6 +1,10 @@
 /* ==========================================================================
-   #TYPOGRAPHY
+   #SOCIAL LINKS
    ========================================================================== */
-
-$font-size-root: 16px;
-$font-size-base: 1rem;
+   
+.c-social-links {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+}

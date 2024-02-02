@@ -1,0 +1,16 @@
+.c-body-overlay {
+    display: none;
+
+    .has-active-nav-pages & {
+        display: block;
+        content: '';
+        background-color: rgba(39, 39, 39, 0.32);
+        backdrop-filter: blur(6px);
+        top: 0;
+        left: 0;
+        position: absolute;
+        width: 100vw;
+        height: 100%;
+        z-index: $z-index-mid-low;
+    }
+}

@@ -1,35 +1,71 @@
-
 /* ==========================================================================
    #MENU
    ========================================================================== */
 
 .c-menu {
-    
+    @include container();
+    display: none;
+
+    @include bp(medium) {
+        display: block;
+        position: relative;
+        z-index: $z-index-low;
+    }
+
+    &.js-has-active-sub-menu::before {
+        background-color: $color-white;
+        content: '';
+
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100vw;
+        margin-left: 50%;
+        transform: translateX(-50%);
+        z-index: $z-index-base;
+    }
 }
 
-.c-menu > nav {
-    display: grid;
-    grid-template-columns: auto 1fr;
-    gap: rem-calc(10px);
+.is-open {
+    .c-menu {
+        display: block;
+    }
 }
 
-.c-menu > nav ul {
-    @include list-bare();
-}
-
-.c-menu > nav > div {
-    grid-column: span 2;
-}
-
-.c-menu > nav > ul {
-    display: flex;
-    gap: rem-calc(10px);
-}
-
-.c-menu .has-sub-menu + div {
+.c-menu__close {
     display: none;
 }
 
-.c-menu .has-sub-menu.is-open + div {
-    display: block;
+.c-menu__toggle {
+    height: fit-content;
+    display: inline-flex;
+    z-index: $z-index-mid;
+
+    &.is-open {
+        position: absolute;
+        top: 2.5rem;
+        right: 1.5rem;
+
+        @include bp(small) {
+            right: 3rem;
+        }
+    }
+
+    @include bp(medium) {
+        display: none;
+    }
+}
+
+.c-menu__hamburger {
+    .is-open & {
+        display: none;
+    }
+}
+
+.c-menu__close {
+    .is-open & {
+        display: inline-flex;
+    }
 }

@@ -84,7 +84,8 @@ export class Collapsible {
         }
 
         // Auto-bind
-        this.onClicked = this.onClicked.bind(this)
+        this.onHover = this.onHover.bind(this)
+        this.onHoverLeave = this.onHoverLeave.bind(this)
         this.onDisabledMediaQueryListMatch = this.onDisabledMediaQueryListMatch.bind(this)
 
         // Assign DOM attributes
@@ -197,7 +198,10 @@ export class Collapsible {
     }
 
     bindEvents() {
-        this.$toggle.addEventListener('click', this.onClicked)
+        this.$toggle.addEventListener('mouseover', this.onHover)
+        this.$target.addEventListener('mouseover', this.onHover)
+        this.$toggle.addEventListener('mouseout', this.onHoverLeave)
+        this.$target.addEventListener('mouseout', this.onHoverLeave)
 
         if (this.disabledMediaQueryList && this.disabledMediaQueryList.addEventListener) {
             this.disabledMediaQueryList.addEventListener('change', this.onDisabledMediaQueryListMatch)
@@ -205,7 +209,7 @@ export class Collapsible {
     }
 
     unbindEvents() {
-        this.$toggle.removeEventListener('click', this.onClicked)
+        this.$toggle.removeEventListener('click', this.onHover)
 
         if (this.disabledMediaQueryList && this.disabledMediaQueryList.removeEventListener) {
             this.disabledMediaQueryList.removeEventListener('change', this.onDisabledMediaQueryListMatch)
@@ -215,14 +219,34 @@ export class Collapsible {
     /**
      * @param {Event} event
      */
-    onClicked(event) {
+    onHover(event) {
         if (this.disabled) {
             return
         }
 
         event.preventDefault()
+        document.querySelector('body').classList.add('has-active-nav-pages')
+        document.querySelector('.c-menu').classList.add('has-active-sub-menu')
 
-        this.toggle()
+        this.open()
+    }
+
+    /**
+     * @param {Event} event
+     */
+    onHoverLeave(event) {
+        if (this.disabled) {
+            return
+        }
+
+        event.preventDefault()
+        document.querySelector('body').classList.remove('has-active-nav-pages')
+        document.querySelector('.c-menu').classList.remove('has-active-sub-menu')
+
+        const relatedTarget = event.relatedTarget
+        if (!this.$toggle.contains(relatedTarget) && !this.$target.contains(relatedTarget)) {
+            this.close()
+        }
     }
 
     onDisabledMediaQueryListMatch(media) {

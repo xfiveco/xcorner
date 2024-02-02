@@ -23,6 +23,9 @@
     src: url(../fonts/assistant-semibold.woff) format('woff');
 }
 
+$font-regular: 'Assistant', sans-serif;
+$font-semi-bold: 'Assistant Semi Bold', sans-serif;
+
 * {
-    font-family: 'Assistant Regular', sans-serif;
+    font-family: 'Assistant', sans-serif;
 }
