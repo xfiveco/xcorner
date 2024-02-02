@@ -1,7 +1,7 @@
 $swiper-arrow-left-purple: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIj4KICA8cGF0aCBkPSJNMTkgMTJINU01IDEyTDEyIDE5TTUgMTJMMTIgNSIgc3Ryb2tlPSIjNUE2NEMxIiBzdHJva2Utd2lkdGg9IjEuNSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+Cjwvc3ZnPg==';
 $swiper-arrow-right-purple: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIj4KICA8cGF0aCBkPSJNNSAxMkgxOU0xOSAxMkwxMiA1TTE5IDEyTDEyIDE5IiBzdHJva2U9IiM1QTY0QzEiIHN0cm9rZS13aWR0aD0iMS41IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KPC9zdmc+';
 
-.reviews-carousel {
+.c-reviews-carousel {
     overflow: visible;
 
     .swiper-slide {
@@ -13,7 +13,7 @@ $swiper-arrow-right-purple: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL
     }
 }
 
-.review-card {
+.c-review-carousel__card {
     display: flex;
     flex-direction: column;
     flex-grow: 1;
@@ -22,27 +22,27 @@ $swiper-arrow-right-purple: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL
     box-shadow: 0px 12px 48px 0px rgba(39, 39, 39, 0.04);
     background-color: $color-white;
     border-radius: 4px;
-
-    .summary {
-        color: $color-black;
-        font-family: $font-regular;
-        font-size: 16px;
-        font-style: normal;
-        font-weight: 400;
-        line-height: 1.5;
-    }
-
-    .name {
-        color: $color-black;
-        font-family: $font-semi-bold;
-        font-size: 16px;
-        font-style: normal;
-        font-weight: 600;
-        line-height: 1.4;
-    }
 }
 
-.review-slide-navigation {
+.c-review-carousel__summary {
+    color: $color-black;
+    font-family: $font-regular;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.5;
+}
+
+.c-review-carousel__name {
+    color: $color-black;
+    font-family: $font-semi-bold;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 1.4;
+}
+
+.c-review-carousel__slide-navigation {
     margin: 48px auto;
     display: flex;
     justify-content: center;

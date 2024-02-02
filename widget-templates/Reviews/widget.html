@@ -1,33 +1,33 @@
 
 
 <style>
-    .reviews-carousel-{{_.id}} {
+    .c-reviews-carousel__{{_.id}} {
         margin-top: {{desktop_margin.top.value}}{{desktop_margin.top.type}};
         margin-bottom: {{desktop_margin.bottom.value}}{{desktop_margin.bottom.type}};
     }
 
     @media screen and (max-width: 767px) {
-        .reviews-carousel-{{_.id}} {
+        .c-reviews-carousel__{{_.id}} {
             margin-top: {{mobile_margin.top.value}}{{mobile_margin.top.type}};
             margin-bottom: {{mobile_margin.bottom.value}}{{mobile_margin.bottom.type}};
         }
     }
 </style>
     
-<section class="js-review-swiper c-carousel reviews-carousel reviews-carousel-{{_.id}}">
+<section class="js-review-swiper c-carousel c-reviews-carousel c-reviews-carousel__{{_.id}}">
     <div class="swiper-wrapper">
         {{#each slides}}
             <div class="swiper-slide">
-                <div class="review-card" data-rating="{{rating}}">
-                    <div class="rating-stars"></div>
-                    <div class="summary">{{summary}}</div>
-                    <div class="name">{{name}}</div>
+                <div class="c-review-carousel__card" data-rating="{{rating}}">
+                    <div class="c-review-carousel__rating-stars"></div>
+                    <div class="c-review-carousel__summary">{{summary}}</div>
+                    <div class="c-review-carousel__name">{{name}}</div>
                 </div>
             </div>
         {{/each}}
     </div>
 
-    <div class="review-slide-navigation">
+    <div class="c-review-carousel__slide-navigation">
         <div class="js-swiper-btn-prev"></div>
         <div class="js-swiper-pagination"></div>
         <div class="js-swiper-btn-next"></div>
@@ -36,7 +36,7 @@
 
 <script>
     function updateStarRatings() {
-        const reviewCards = document.querySelectorAll('.review-card');
+        const reviewCards = document.querySelectorAll('.c-review-carousel__card');
 
         reviewCards.forEach(card => {
             const rating = parseFloat(card.dataset.rating);
@@ -55,7 +55,7 @@
                 }
             }
 
-            card.querySelector('.rating-stars').innerHTML = html;
+            card.querySelector('.c-review-carousel__rating-stars').innerHTML = html;
         });
     }
 
