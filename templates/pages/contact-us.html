@@ -1,10 +1,10 @@
 {{#partial "page"}}
 
-<section class="contact-page-section">
+<section class="c-contact-page__section">
     {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
 
     {{#unless theme_settings.hide_contact_us_page_heading }}
-        <h1 class="contact-page-title">
+        <h1 class="c-contact-page__title">
             {{page.title}}
         </h1>
     {{/unless}}
@@ -23,9 +23,9 @@
         </nav>
     {{/if}}
 
-    <div id="contact-us-page">
+    <div class="c-contact-us__page">
         {{#if forms.contact.success}}
-            <div id="contact-us-success">
+            <div class="c-contact-us__success">
                 {{{lang 'forms.contact_us.successful' shopPath=urls.home}}}
             </div>
         {{else}}

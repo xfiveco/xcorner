@@ -1,19 +1,21 @@
 <nav aria-label="Breadcrumb" class="c-breadcrumbs">
-    <ul>
+    <ul class="c-breadcrumbs__list">
         {{#unless theme_settings.hide_breadcrumbs }}
             {{#each breadcrumbs}}
-                <li class="{{#if @last}}is-active{{/if}}">
+                <li class="{{#if @last}}c-breadcrumbs__active{{/if}} c-breadcrumbs__item">
                     <a 
-                        class=""
+                        class="c-breadcrumbs__link"
                         href="{{url}}"
                         {{#if @last}}
                             aria-current="page"
                         {{/if}}
                     >
-                        <span>{{name}}</span>
+                        {{name}}
                     </a>
                 </li>
-                {{#unless @last}}<li>›</li>{{/unless}}
+                {{#unless @last}}
+                    <li class="c-breadcrumbs__item">›</li>
+                {{/unless}}
             {{/each}}
         {{/unless}}
     </ul>

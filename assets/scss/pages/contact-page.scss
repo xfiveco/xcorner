@@ -1,4 +1,4 @@
-.contact-page-section {
+.c-contact-page__section {
     display: flex;
     flex-direction: column;
     padding: 24px;
@@ -14,17 +14,17 @@
     }
 }
 
-.contact-page-title {
+.c-contact-page__title {
     margin: 0;
     color: $color-black;
-    font-family: $font-regular;
+    font-family: $font-semi-bold;
     font-size: 32px;
     font-style: normal;
     font-weight: 600;
     line-height: 1.25;
 }
 
-.js-contact-form {
+.c-contact-form {
     display: flex;
     flex-direction: column;
     gap: 24px;
@@ -33,7 +33,7 @@
         gap: 48px;
     }
 
-    > div:not(.js-form-field) {
+    .c-form__fields-container {
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
@@ -49,8 +49,8 @@
             row-gap: 48px;
             column-gap: 48px;
         }
-    
-        .js-form-field {
+
+        .c-form__field {
             width: 100%;
 
             @include bp(small) {
@@ -60,26 +60,24 @@
             @include bp(medium) {
                 width: calc(50% - 24px);
             }
-    
-            input {
+
+            .c-form__input {
                 width: 100%;
                 margin: 0;
             }
 
-            label {
+            .c-form__label {
                 display: block;
                 margin-bottom: 8px;
             }
         }
     }
 
-    .js-form-field {
-        textarea {
-            width: 100%;
+    textarea.c-form__input {
+        width: 100%;
 
-            @include bp(medium) {
-                width: auto;
-            }
+        @include bp(medium) {
+            width: auto;
         }
     }
 
@@ -96,7 +94,13 @@
     }
 }
 
-#contact-us-page {
+.c-contact-us__page {
+    width: 100%;
+
+    @include bp(medium) {
+        max-width: 48.875rem;
+    }
+
     p {
         &:last-of-type {
             margin-bottom: 0;
