@@ -1,4 +1,5 @@
-.p-login__section {
+.p-login__section,
+.c-auth__page {
     padding: 1.5rem;
     display: flex;
     flex-direction: column;
@@ -10,7 +11,8 @@
     }
 }
 
-.p-login__title {
+.p-login__title,
+.c-auth__title {
     color: $color-black;
     font-family: $font-semi-bold;
     font-size: 2.625rem;

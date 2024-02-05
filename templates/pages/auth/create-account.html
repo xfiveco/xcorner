@@ -1,10 +1,10 @@
 {{inject 'passwordRequirements' settings.password_requirements}}
 {{inject 'recaptchaTitle' (lang 'create_account.recaptcha_title')}}
 {{#partial "page"}}
-<section class="auth-page">
+<section class="c-auth__page">
     {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
 
-    <h1>
+    <h1 class="c-auth__title ">
         {{lang 'create_account.heading' }}
     </h1>
 
