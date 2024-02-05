@@ -1,4 +1,4 @@
-.c-login__section {
+.p-login__section {
     padding: 1.5rem;
     display: flex;
     flex-direction: column;
@@ -10,7 +10,7 @@
     }
 }
 
-.c-login__title {
+.p-login__title {
     color: $color-black;
     font-family: $font-regular;
     font-size: 2.625rem;
@@ -20,7 +20,7 @@
     margin: 0;
 }
 
-.c-login__form {
+.p-login__form {
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
@@ -48,13 +48,13 @@
     }
 }
 
-.c-login__submit-container {
+.p-login__submit-container {
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
 }
 
-.c-login__submit {
+.p-login__submit {
     width: 100%;
 
     @include bp(small) {
@@ -62,7 +62,7 @@
     }
 }
 
-.c-login__forgot-password {
+.p-login__forgot-password {
     color: $color-primary-300;
     font-family: $font-semi-bold;
     font-size: 1rem;
@@ -72,7 +72,7 @@
     text-decoration-line: underline;
 }
 
-.c-login__customer {
+.p-login__customer {
     display: flex;
     flex-direction: column;
     gap: 0.75rem;
@@ -86,7 +86,7 @@
     }
 }
 
-.c-login__customer-heading {
+.p-login__customer-heading {
     color: $color-black;
     font-family: $font-semi-bold;
     font-size: 1.5rem;
@@ -96,7 +96,7 @@
     margin: 0;
 }
 
-.c-login__customer-intro {
+.p-login__customer-intro {
     strong {
         color: $color-neutrals-500;
         font-family: $font-semi-bold;
@@ -107,12 +107,12 @@
     }
 }
 
-.c-login__customer-facts {
+.p-login__customer-facts {
     list-style-type: disc;
     padding-left: 1rem;
 }
 
-.c-login__customer-fact {
+.p-login__customer-fact {
     color: $color-neutrals-500;
     font-family: $font-regular;
     font-size: 1rem;
@@ -121,12 +121,12 @@
     line-height: 1.5rem;
 }
 
-.c-login__main-container {
+.p-login__main-container {
     display: flex;
     justify-content: space-between;
 }
 
-.c-login__image {
+.p-login__image {
     max-width: 38.5rem;
     max-height: 38.5rem;
     width: 100%;
@@ -138,7 +138,7 @@
     position: relative;
 }
 
-.c-login__image-wrapper {
+.p-login__image-wrapper {
     display: none;
     position: relative;
 
@@ -161,8 +161,4 @@
         z-index: 0;
         border-radius: 50%;
     }
-}
-
-.required {
-    color: $color-red-300;
 }

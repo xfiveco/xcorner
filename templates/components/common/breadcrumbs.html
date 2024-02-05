@@ -2,7 +2,7 @@
     <ul class="c-breadcrumbs__list">
         {{#unless theme_settings.hide_breadcrumbs }}
             {{#each breadcrumbs}}
-                <li class="{{#if @last}}c-breadcrumbs__active{{/if}} c-breadcrumbs__item">
+                <li class="c-breadcrumbs__item{{#if @last}}--active{{/if}}">
                     <a 
                         class="c-breadcrumbs__link"
                         href="{{url}}"

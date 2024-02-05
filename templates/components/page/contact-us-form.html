@@ -42,7 +42,7 @@
         <div class="js-form-field c-form__field">
             <label class="c-form__label" for="contact_email">
                 {{lang 'forms.contact_us.email'}}
-                <small class="required">*</small>
+                <small class="u-required">*</small>
             </label>
             <input
                 class="js-form-input c-form__input"
@@ -90,10 +90,10 @@
     <div class="js-form-field c-form__field">
         <label class="c-form__label" for="contact_question">
             {{lang 'forms.contact_us.question'}}
-            <small class="required">*</small>
+            <small class="u-required">*</small>
         </label>
         <textarea
-            class="c-form__input"
+            class="c-form__input c-form__input--textarea"
             name="contact_question"
             id="contact_question"
             rows="5"
@@ -105,7 +105,7 @@
     <div class="js-form-field c-form__field">
         <label class="c-form__label" for="{{forms.contact.manualcaptcha.name}}">
             {{lang 'forms.contact_us.manual_captcha_instruction'}}
-            <small class="required">*</small>
+            <small class="u-required">*</small>
         </label>
         <div>
             <span> {{forms.contact.manualcaptcha.question}} </span>
@@ -122,7 +122,7 @@
     </div>
     {{/if}} {{{forms.contact.recaptcha.markup}}}
     <button
-        class="c-button c-button--primary"
+        class="c-button c-button--primary c-button-full"
         type="submit"
     >
         {{lang 'forms.contact_us.send_your_message' }}

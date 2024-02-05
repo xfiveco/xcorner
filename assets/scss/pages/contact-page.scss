@@ -1,109 +1,33 @@
-.c-contact-page__section {
+.p-contact__section {
     display: flex;
     flex-direction: column;
-    padding: 24px;
-    gap: 24px;
+    padding: rem-calc(24px);
+    gap: rem-calc(24px);
 
     @include bp(medium) {
-        padding: 48px;
-        gap: 48px;
+        padding: rem-calc(48px);
+        gap: rem-calc(48px);
     }
 
     @include bp(large) {
-        padding: 48px 80px;
+        padding: rem-calc(48px) rem-calc(80px);
     }
 }
 
-.c-contact-page__title {
+.p-contact__title {
     margin: 0;
     color: $color-black;
     font-family: $font-semi-bold;
-    font-size: 32px;
+    font-size: rem-calc(32px);
     font-style: normal;
     font-weight: 600;
     line-height: 1.25;
 }
 
-.c-contact-form {
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-
-    @include bp(medium) {
-        gap: 48px;
-    }
-
-    .c-form__fields-container {
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        row-gap: 24px;
-        column-gap: 24px;
-
-        @include bp(medium) {
-            row-gap: 48px;
-            column-gap: 24px;
-        }
-
-        @include bp(large) {
-            row-gap: 48px;
-            column-gap: 48px;
-        }
-
-        .c-form__field {
-            width: 100%;
-
-            @include bp(small) {
-                width: calc(50% - 12px);
-            }
-
-            @include bp(medium) {
-                width: calc(50% - 24px);
-            }
-
-            .c-form__input {
-                width: 100%;
-                margin: 0;
-            }
-
-            .c-form__label {
-                display: block;
-                margin-bottom: 8px;
-            }
-        }
-    }
-
-    textarea.c-form__input {
-        width: 100%;
-
-        @include bp(medium) {
-            width: auto;
-        }
-    }
-
-    .c-button {
-        width: 100%;
-
-        @include bp(medium) {
-            width: fit-content;
-        }
-    }
-
-    br {
-        display: none;
-    }
-}
-
-.c-contact-us__page {
+.p-contact__container {
     width: 100%;
 
     @include bp(medium) {
-        max-width: 48.875rem;
-    }
-
-    p {
-        &:last-of-type {
-            margin-bottom: 0;
-        }
+        max-width: 49rem;
     }
 }

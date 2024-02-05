@@ -154,6 +154,6 @@ $color-red-shadow: rgba(215, 68, 68, 0.24);
     width: 100%;
 
     @include bp(small) {
-        width: auto;
+        width: fit-content;
     }
 }

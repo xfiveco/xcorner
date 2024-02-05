@@ -93,6 +93,14 @@ $input-transition: all 0.2s ease-in-out;
         -moz-appearance: none;
         appearance: none;
     }
+
+    &--textarea {
+        width: 100%;
+
+        @include bp(medium) {
+            width: auto;
+        }
+    }
 }
 
 .c-form__label {

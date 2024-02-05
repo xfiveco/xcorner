@@ -13,10 +13,6 @@
     list-style-type: none;
 }
 
-.c-breadcrumbs__item {
-    margin: 0;
-}
-
 .c-breadcrumbs__link {
     color: $color-primary-300;
     font-family: $font-semi-bold;
@@ -27,9 +23,13 @@
     text-decoration-line: underline;
 }
 
-.c-breadcrumbs__active {
-    .c-breadcrumbs__link {
-        text-decoration: none;
-        color: $color-neutrals-500;
+.c-breadcrumbs__item {
+    margin: 0;
+
+    &--active {
+        .c-breadcrumbs__link {
+            text-decoration: none;
+            color: $color-neutrals-500;
+        }
     }
 }
