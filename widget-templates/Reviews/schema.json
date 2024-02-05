@@ -1,0 +1,103 @@
+[
+    {
+      "type": "tab",
+      "label": "Settings",
+      "sections": [
+        {
+          "label": "Content",
+          "settings": [
+            {
+              "type": "boxModel",
+              "label": "Desktop Margin",
+              "id": "desktop_margin",
+              "default": {
+                "top": {
+                  "value": "0",
+                  "type": "px"
+                },
+                "right": {
+                  "value": "0",
+                  "type": "px"
+                },
+                "bottom": {
+                  "value": "0",
+                  "type": "px"
+                },
+                "left": {
+                  "value": "0",
+                  "type": "px"
+                }
+              }
+            },
+            {
+              "type": "boxModel",
+              "label": "Mobile Margin",
+              "id": "mobile_margin",
+              "default": {
+                "top": {
+                  "value": "0",
+                  "type": "px"
+                },
+                "right": {
+                  "value": "0",
+                  "type": "px"
+                },
+                "bottom": {
+                  "value": "0",
+                  "type": "px"
+                },
+                "left": {
+                  "value": "0",
+                  "type": "px"
+                }
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "array",
+      "label": "Slides",
+      "id": "slides",
+      "defaultCount": 1,
+      "entryLabel": "Slide",
+      "schema": [
+          {
+            "type": "tab",
+            "label": "Slide",
+            "sections": [
+                {
+                    "settings": [
+                        {
+                            "type": "input",
+                            "label": "Reviewer Name",
+                            "id": "name",
+                            "default": "John Smith"
+                        },
+                        {
+                            "type": "text",
+                            "label": "Review Summary",
+                            "id": "summary",
+                            "default": "Review Summary"
+                        },
+                        {
+                            "type": "range",
+                            "label": "Rating",
+                            "id": "rating",
+                            "default": 5,
+                            "typeMeta": {
+                                "rangeValues": {
+                                    "min": 1,
+                                    "max": 5,
+                                    "step": 0.5
+                                }
+                            }
+                        }
+                    ]
+                }
+            ]
+          }
+      ]
+  }
+]

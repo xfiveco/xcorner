@@ -1,0 +1,73 @@
+
+<style>
+    .c-hero-slider__{{_.id}} {
+        margin-top: {{desktop_margin.top.value}}{{desktop_margin.top.type}};
+        margin-bottom: {{desktop_margin.bottom.value}}{{desktop_margin.bottom.type}};
+    }
+
+    @media screen and (max-width: 767px) {
+        .c-hero-slider__{{_.id}} {
+            margin-top: {{mobile_margin.top.value}}{{mobile_margin.top.type}};
+            margin-bottom: {{mobile_margin.bottom.value}}{{mobile_margin.bottom.type}};
+        }
+    }
+</style>
+    
+<section class="js-home-swiper c-carousel c-hero-slider c-hero-slider__{{_.id}}">
+    <div class="swiper-wrapper">
+        {{#each slides}}
+            <div class="swiper-slide">
+                <div class="slide-container">
+                    {{#if image}}<img class="c-hero-slider__image" src="{{image.src}}" />{{/if}}
+                    {{#or title subtext}}
+                        <div class="c-hero-slider__information">
+                            {{#if title}}<h2 class="c-hero-slider__title">{{title}}</h2>{{/if}}
+                            {{#if subtext}}<p class="c-hero-slider__subtext">{{subtext}}</p>{{/if}}
+                            {{#if price}}<p class="c-hero-slider__price-container">$ <span class="c-hero-slider__price">{{price}}</span></p>{{/if}}
+                            {{#or main_button secondary_button}}
+                                <div class="c-hero-slider__buttons">
+                                    {{#if main_button}}
+                                        <a class="c-button c-button--primary" href="{{main_button.url}}">{{main_button.text}}</a>
+                                    {{/if}}
+                                    {{#if secondary_button}}
+                                        <a class="c-button c-button--secondary" href="{{secondary_button.url}}">{{secondary_button.text}}</a>
+                                    {{/if}}
+                                </div>
+                            {{/or}}
+                        </div>
+                    {{/or}}
+                </div>
+            </div>
+        {{/each}}
+    </div>
+
+    <div class="c-hero-slider__navigation">
+        <div class="js-swiper-btn-prev c-swiper__btn-prev"></div>
+        <div class="js-swiper-pagination c-swiper__pagination"></div>
+        <div class="js-swiper-btn-next c-swiper__btn-next"></div>
+    </div>
+</section>
+
+<script>
+    document.addEventListener("DOMContentLoaded", positionNavigation);
+    window.addEventListener("resize", positionNavigation);
+
+    function positionNavigation() {
+        let slides = document.querySelectorAll('.swiper-slide');
+
+        slides.forEach(function(slide) {
+            let info = slide.querySelector('.c-hero-slider__information');
+            let nav = document.querySelector('.c-hero-slider__navigation');
+
+            if(info && nav) {
+                let infoRect = info.getBoundingClientRect();
+                let slideRect = slide.getBoundingClientRect();
+
+                let topPosition = infoRect.top - slideRect.top - 24;
+
+                nav.style.position = 'absolute';
+                nav.style.top = topPosition + 'px';
+            }
+        });
+    }
+</script>

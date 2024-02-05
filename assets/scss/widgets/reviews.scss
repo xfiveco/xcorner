@@ -1,0 +1,91 @@
+$swiper-arrow-left-purple: './../icons/arrow-left-purple.svg';
+$swiper-arrow-right-purple: './../icons/arrow-right-purple.svg';
+
+.c-reviews-carousel {
+    overflow: visible;
+
+    .swiper-slide {
+        max-width: 80%;
+
+        @include bp(small) {
+            max-width: 100%;
+        }
+    }
+}
+
+.c-review-carousel__card {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    gap: rem-calc(24px);
+    padding: rem-calc(24px);
+    box-shadow: 0 rem-calc(12px) rem-calc(48px) 0 rgba(39, 39, 39, 0.04);
+    background-color: $color-white;
+    border-radius: rem-calc(4px);
+}
+
+.c-review-carousel__summary {
+    color: $color-black;
+    font-family: $font-regular;
+    font-size: rem-calc(16px);
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.5;
+}
+
+.c-review-carousel__name {
+    color: $color-black;
+    font-family: $font-semi-bold;
+    font-size: rem-calc(16px);
+    font-style: normal;
+    font-weight: 600;
+    line-height: 1.4;
+}
+
+.c-review-carousel__slide-navigation {
+    margin: rem-calc(48px) auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: rem-calc(24px);
+    max-width: fit-content;
+
+    .c-swiper__btn-next,
+    .c-swiper__btn-prev {
+        width: rem-calc(24px);
+        height: rem-calc(24px);
+        border: 0 !important;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+    }
+
+    .c-swiper__btn-next {
+        background-image: url($swiper-arrow-right-purple);
+    }
+
+    .c-swiper__btn-prev {
+        background-image: url($swiper-arrow-left-purple);
+    }
+
+    .c-swiper__pagination {
+        border: 0 !important;
+        padding: 0 !important;
+        display: flex;
+        justify-content: space-between;
+        gap: rem-calc(24px);
+
+        .swiper-pagination-bullet {
+            background-color: transparent;
+            opacity: 1;
+            border: 2px solid $color-primary-300;
+            width: rem-calc(12px);
+            height: rem-calc(12px);
+            margin: 0 !important;
+
+            &-active {
+                background-color: $color-primary-300;
+            }
+        }
+    }
+}
