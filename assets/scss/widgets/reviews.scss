@@ -17,17 +17,17 @@ $swiper-arrow-right-purple: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL
     display: flex;
     flex-direction: column;
     flex-grow: 1;
-    gap: 24px;
-    padding: 24px;
-    box-shadow: 0px 12px 48px 0px rgba(39, 39, 39, 0.04);
+    gap: rem-calc(24px);
+    padding: rem-calc(24px);
+    box-shadow: 0 rem-calc(12px) rem-calc(48px) 0 rgba(39, 39, 39, 0.04);
     background-color: $color-white;
-    border-radius: 4px;
+    border-radius: rem-calc(4px);
 }
 
 .c-review-carousel__summary {
     color: $color-black;
     font-family: $font-regular;
-    font-size: 16px;
+    font-size: rem-calc(16px);
     font-style: normal;
     font-weight: 400;
     line-height: 1.5;
@@ -36,24 +36,24 @@ $swiper-arrow-right-purple: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL
 .c-review-carousel__name {
     color: $color-black;
     font-family: $font-semi-bold;
-    font-size: 16px;
+    font-size: rem-calc(16px);
     font-style: normal;
     font-weight: 600;
     line-height: 1.4;
 }
 
 .c-review-carousel__slide-navigation {
-    margin: 48px auto;
+    margin: rem-calc(48px) auto;
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 24px;
+    gap: rem-calc(24px);
     max-width: fit-content;
 
     .js-swiper-btn-next,
     .js-swiper-btn-prev {
-        width: 24px;
-        height: 24px;
+        width: rem-calc(24px);
+        height: rem-calc(24px);
         border: 0 !important;
         background-repeat: no-repeat;
         background-position: center;
@@ -73,14 +73,14 @@ $swiper-arrow-right-purple: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL
         padding: 0 !important;
         display: flex;
         justify-content: space-between;
-        gap: 24px;
+        gap: rem-calc(24px);
 
         .swiper-pagination-bullet {
             background-color: transparent;
             opacity: 1;
             border: 2px solid $color-primary-300;
-            width: 12px;
-            height: 12px;
+            width: rem-calc(12px);
+            height: rem-calc(12px);
             margin: 0 !important;
 
             &-active {
