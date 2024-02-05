@@ -1,4 +1,4 @@
-.login-page {
+.c-login__section {
     padding: 1.5rem;
     display: flex;
     flex-direction: column;
@@ -10,7 +10,7 @@
     }
 }
 
-.page-title {
+.c-login__title {
     color: $color-black;
     font-family: $font-regular;
     font-size: 2.625rem;
@@ -20,7 +20,7 @@
     margin: 0;
 }
 
-.js-login-form {
+.c-login__form {
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
@@ -30,52 +30,54 @@
         width: auto;
     }
 
-    .js-form-field {
+    .c-form__field {
         @include bp(medium) {
             min-width: 21.37rem;
         }
 
-        label {
+        .c-form__label {
             display: block;
             margin-bottom: 8px;
         }
 
-        input {
+        .c-form__input {
             width: 100%;
+            position: relative;
+            z-index: $z-index-low;
         }
     }
 }
 
-.submit-container {
+.c-login__submit-container {
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
+}
 
-    button {
-        width: 100%;
+.c-login__submit {
+    width: 100%;
 
-        @include bp(small) {
-            width: fit-content;
-        }
-    }
-
-    a {
-        color: $color-primary-300;
-        font-family: $font-regular;
-        font-size: 1rem;
-        font-style: normal;
-        font-weight: 600;
-        line-height: 1.5rem;
-        text-decoration-line: underline;
+    @include bp(small) {
+        width: fit-content;
     }
 }
 
-.new-customer-container {
+.c-login__forgot-password {
+    color: $color-primary-300;
+    font-family: $font-semi-bold;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 1.5rem;
+    text-decoration-line: underline;
+}
+
+.c-login__customer {
     display: flex;
     flex-direction: column;
     gap: 0.75rem;
 
-    .c-button {    
+    .c-button {
         width: 100%;
 
         @include bp(small) {
@@ -84,9 +86,9 @@
     }
 }
 
-.new-customer-heading {
+.c-login__customer-heading {
     color: $color-black;
-    font-family: $font-regular;
+    font-family: $font-semi-bold;
     font-size: 1.5rem;
     font-style: normal;
     font-weight: 600;
@@ -94,34 +96,37 @@
     margin: 0;
 }
 
-.new-customer-content {
-    p {
-        strong {
-            color: $color-neutrals-500;
-            font-family: $font-semi-bold;
-            font-size: 1rem;
-            font-style: normal;
-            font-weight: 600;
-            line-height: 1.5rem;
-        }
-    }
-
-    ul li {
+.c-login__customer-intro {
+    strong {
         color: $color-neutrals-500;
-        font-family: $font-regular;
+        font-family: $font-semi-bold;
         font-size: 1rem;
         font-style: normal;
-        font-weight: 400;
+        font-weight: 600;
         line-height: 1.5rem;
     }
 }
 
-.main-login-section {
+.c-login__customer-facts {
+    list-style-type: disc;
+    padding-left: 1rem;
+}
+
+.c-login__customer-fact {
+    color: $color-neutrals-500;
+    font-family: $font-regular;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.5rem;
+}
+
+.c-login__main-container {
     display: flex;
     justify-content: space-between;
 }
 
-.sign-in-image {
+.c-login__image {
     max-width: 38.5rem;
     max-height: 38.5rem;
     width: 100%;
@@ -133,7 +138,7 @@
     position: relative;
 }
 
-.sign-in-image-wrapper {
+.c-login__image-wrapper {
     display: none;
     position: relative;
 
@@ -143,7 +148,7 @@
 
     &::before {
         display: block;
-        content: "";
+        content: '';
         position: absolute;
         left: -25%;
         top: -25%;

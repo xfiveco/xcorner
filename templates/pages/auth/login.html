@@ -1,8 +1,8 @@
 {{#partial "page"}}
-<section class="login-page">
+<section class="c-login__section">
     {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
     
-    <h1 class="page-title">
+    <h1 class="c-login__title">
         {{lang 'login.heading' }}
     </h1>
     
@@ -12,63 +12,63 @@
     {{#if forms.login.success}}
         {{> components/common/alert/alert-success forms.login.success}}
     {{/if}}
-    <div class="main-login-section">
-         <form class="js-login-form" action="{{urls.auth.check_login}}" method="post">
+    <div class="c-login__main-container">
+         <form class="js-login-form c-login__form" action="{{urls.auth.check_login}}" method="post">
             {{inject 'useValidEmail' (lang 'forms.validate.common.email_address')}}
             {{inject 'enterPass' (lang 'forms.validate.common.password')}}
             
-            <div class="js-form-field">
-                <label for="login_email">
+            <div class="js-form-field c-form__field">
+                <label class="c-form__label" for="login_email">
                     {{lang 'login.field_email'}} <span class="required">*</span>
                 </label>
                 <input 
-                    class="js-form-input" 
+                    class="js-form-input c-form__input" 
                     name="login_email" 
                     id="login_email" 
                     type="email"
                 >
             </div>
-            <div class="js-form-field">
-                <label for="login_pass">
+            <div class="js-form-field c-form__field">
+                <label class="c-form__label" for="login_pass">
                     {{lang 'login.field_password'}} <span class="required">*</span>
                 </label>
                 <input 
-                    class="js-form-input" 
+                    class="js-form-input c-form__input" 
                     id="login_pass" 
                     type="password" 
                     name="login_pass" 
                     autocomplete="off"
                 >
             </div>
-            <div class="submit-container">
-                <button type="submit" class="c-button c-button--primary">
+            <div class="c-login__submit-container">
+                <button type="submit" class="c-button c-button--primary c-login__submit">
                     {{lang 'login.submit_value' }}
                 </button> 
-                <a href="{{urls.auth.forgot_password}}">
+                <a class="c-login__forgot-password" href="{{urls.auth.forgot_password}}">
                     {{lang 'login.forgot_password' }}
                 </a>
             </div>
         </form>
-        <div class="sign-in-image-wrapper">
-            <img class="sign-in-image" src="{{cdn 'img/pages/sign-in.png'}}" alt="Sign in image" loading="lazy"/>
+        <div class="c-login__image-wrapper">
+            <img class="c-login__image" src="{{cdn 'img/pages/sign-in.png'}}" alt="Sign in image" loading="lazy"/>
         </div>
     </div>
     {{#if settings.account_creation_enabled}}
-        <div class="new-customer-container">
-            <h5 class="new-customer-heading">
+        <div class="c-login__customer">
+            <h5 class="c-login__customer-heading">
                 {{lang 'login.new_customer.heading' }}
             </h5>
-            <div class="new-customer-content">
-                <p><strong>{{lang 'login.new_customer.intro' }}</strong></p>
-                <ul>
-                    <li>{{lang 'login.new_customer.fact1' }}</li>
-                    <li>{{lang 'login.new_customer.fact2' }}</li>
-                    <li>{{lang 'login.new_customer.fact3' }}</li>
-                    <li>{{lang 'login.new_customer.fact4' }}</li>
-                    <li>{{lang 'login.new_customer.fact5' }}</li>
+            <div class="c-login__customer-content">
+                <p class="c-login__customer-intro"><strong>{{lang 'login.new_customer.intro' }}</strong></p>
+                <ul class="c-login__customer-facts">
+                    <li class="c-login__customer-fact">{{lang 'login.new_customer.fact1' }}</li>
+                    <li class="c-login__customer-fact">{{lang 'login.new_customer.fact2' }}</li>
+                    <li class="c-login__customer-fact">{{lang 'login.new_customer.fact3' }}</li>
+                    <li class="c-login__customer-fact">{{lang 'login.new_customer.fact4' }}</li>
+                    <li class="c-login__customer-fact">{{lang 'login.new_customer.fact5' }}</li>
                 </ul>
             </div>
-            <a href="{{urls.auth.create_account}}" class="c-button c-button--secondary">
+            <a href="{{urls.auth.create_account}}" class="c-button c-button--secondary c-login__create">
                 {{lang 'login.new_customer.create_account' }}
             </a>
         </div>
