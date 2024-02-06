@@ -1,0 +1,51 @@
+.c-contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+
+    @include bp(medium) {
+        gap: 48px;
+    }
+
+    .c-form__fields-container {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 24px;
+
+        @include bp(medium) {
+            row-gap: 48px;
+            column-gap: 24px;
+        }
+
+        @include bp(large) {
+            gap: 48px;
+        }
+
+        .c-form__field {
+            width: 100%;
+
+            @include bp(small) {
+                width: calc(50% - 12px);
+            }
+
+            @include bp(medium) {
+                width: calc(50% - 24px);
+            }
+
+            .c-form__input {
+                width: 100%;
+                margin: 0;
+            }
+
+            .c-form__label {
+                display: block;
+                margin-bottom: 8px;
+            }
+        }
+    }
+
+    br {
+        display: none;
+    }
+}

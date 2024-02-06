@@ -93,12 +93,20 @@ $input-transition: all 0.2s ease-in-out;
         -moz-appearance: none;
         appearance: none;
     }
+
+    &--textarea {
+        width: 100%;
+
+        @include bp(medium) {
+            width: auto;
+        }
+    }
 }
 
 .c-form__label {
     color: $color-black;
 
-    font-family: $font-regular;
+    font-family: $font-semi-bold;
     font-size: 1rem;
     font-style: normal;
     font-weight: 600;

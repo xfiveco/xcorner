@@ -1,8 +1,8 @@
 {{#partial "page"}}
-<div>
+<section class="p-login__section">
     {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
     
-    <h1>
+    <h1 class="p-login__title">
         {{lang 'login.heading' }}
     </h1>
     
@@ -12,64 +12,67 @@
     {{#if forms.login.success}}
         {{> components/common/alert/alert-success forms.login.success}}
     {{/if}}
-    <div>
-        <form class="js-login-form" action="{{urls.auth.check_login}}" method="post">
+    <div class="p-login__main-container">
+         <form class="js-login-form p-login__form" action="{{urls.auth.check_login}}" method="post">
             {{inject 'useValidEmail' (lang 'forms.validate.common.email_address')}}
             {{inject 'enterPass' (lang 'forms.validate.common.password')}}
             
-            <div class="js-form-field">
-                <label for="login_email">
-                    {{lang 'login.field_email'}}
+            <div class="js-form-field c-form__field">
+                <label class="c-form__label" for="login_email">
+                    {{lang 'login.field_email'}} <span class="u-required">*</span>
                 </label>
                 <input 
-                    class="js-form-input" 
+                    class="js-form-input c-form__input" 
                     name="login_email" 
                     id="login_email" 
                     type="email"
                 >
             </div>
-            <div class="js-form-field">
-                <label for="login_pass">
-                    {{lang 'login.field_password'}}
+            <div class="js-form-field c-form__field">
+                <label class="c-form__label" for="login_pass">
+                    {{lang 'login.field_password'}} <span class="u-required">*</span>
                 </label>
                 <input 
-                    class="js-form-input" 
+                    class="js-form-input c-form__input" 
                     id="login_pass" 
                     type="password" 
                     name="login_pass" 
                     autocomplete="off"
                 >
             </div>
-            <div>
-                <button type="submit" class="c-button c-button--primary">
+            <div class="p-login__submit-container">
+                <button type="submit" class="c-button c-button--primary p-login__submit">
                     {{lang 'login.submit_value' }}
                 </button> 
-                <a href="{{urls.auth.forgot_password}}">
+                <a class="p-login__forgot-password" href="{{urls.auth.forgot_password}}">
                     {{lang 'login.forgot_password' }}
                 </a>
             </div>
         </form>
-        {{#if settings.account_creation_enabled}}
-            <div>
-                <div>
-                    {{lang 'login.new_customer.heading' }}
-                </div>
-                <div>
-                    <p>{{lang 'login.new_customer.intro' }}</p>
-                    <ul>
-                        <li>{{lang 'login.new_customer.fact1' }}</li>
-                        <li>{{lang 'login.new_customer.fact2' }}</li>
-                        <li>{{lang 'login.new_customer.fact3' }}</li>
-                        <li>{{lang 'login.new_customer.fact4' }}</li>
-                        <li>{{lang 'login.new_customer.fact5' }}</li>
-                    </ul>
-                    <a href="{{urls.auth.create_account}}" class="c-button c-button--primary">
-                        {{lang 'login.new_customer.create_account' }}
-                    </a>
-                </div>
-            </div>
-        {{/if}}
+        <div class="p-login__image-wrapper">
+            <img class="p-login__image" src="{{cdn 'img/pages/sign-in.jpg'}}" alt="Sign in image" loading="lazy"/>
+        </div>
     </div>
-</div>
+    {{#if settings.account_creation_enabled}}
+        <div class="p-login__customer">
+            <h5 class="p-login__customer-heading">
+                {{lang 'login.new_customer.heading' }}
+            </h5>
+            <div class="p-login__customer-content">
+                <p class="p-login__customer-intro"><strong>{{lang 'login.new_customer.intro' }}</strong></p>
+                <ul class="p-login__customer-facts">
+                    <li class="p-login__customer-fact">{{lang 'login.new_customer.fact1' }}</li>
+                    <li class="p-login__customer-fact">{{lang 'login.new_customer.fact2' }}</li>
+                    <li class="p-login__customer-fact">{{lang 'login.new_customer.fact3' }}</li>
+                    <li class="p-login__customer-fact">{{lang 'login.new_customer.fact4' }}</li>
+                    <li class="p-login__customer-fact">{{lang 'login.new_customer.fact5' }}</li>
+                </ul>
+            </div>
+            <a href="{{urls.auth.create_account}}" class="c-button c-button--secondary p-login__create">
+                {{lang 'login.new_customer.create_account' }}
+            </a>
+        </div>
+    {{/if}}
+</section>
 {{/partial}}
 {{> layout/base}}

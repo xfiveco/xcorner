@@ -1,0 +1,164 @@
+.p-login__section {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+
+    @include bp(medium) {
+        padding: 3rem 5rem;
+        gap: 3rem;
+    }
+}
+
+.p-login__title {
+    color: $color-black;
+    font-family: $font-semi-bold;
+    font-size: 2.625rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 1.33;
+    margin: 0;
+}
+
+.p-login__form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    width: 100%;
+
+    @include bp(medium) {
+        width: auto;
+    }
+
+    .c-form__field {
+        @include bp(medium) {
+            min-width: 21.37rem;
+        }
+
+        .c-form__label {
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .c-form__input {
+            width: 100%;
+            position: relative;
+            z-index: $z-index-low;
+        }
+    }
+}
+
+.p-login__submit-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.p-login__submit {
+    width: 100%;
+
+    @include bp(small) {
+        width: fit-content;
+    }
+}
+
+.p-login__forgot-password {
+    color: $color-primary-300;
+    font-family: $font-semi-bold;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 1.5rem;
+    text-decoration-line: underline;
+}
+
+.p-login__customer {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+
+    .c-button {
+        width: 100%;
+
+        @include bp(small) {
+            width: fit-content;
+        }
+    }
+}
+
+.p-login__customer-heading {
+    color: $color-black;
+    font-family: $font-semi-bold;
+    font-size: 1.5rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 2.5rem;
+    margin: 0;
+}
+
+.p-login__customer-intro {
+    strong {
+        color: $color-neutrals-500;
+        font-family: $font-semi-bold;
+        font-size: 1rem;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 1.5rem;
+    }
+}
+
+.p-login__customer-facts {
+    list-style-type: disc;
+    padding-left: 1rem;
+}
+
+.p-login__customer-fact {
+    color: $color-neutrals-500;
+    font-family: $font-regular;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.5rem;
+}
+
+.p-login__main-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.p-login__image {
+    max-width: 38.5rem;
+    max-height: 38.5rem;
+    width: 100%;
+    height: auto;
+    border-radius: 50%;
+    aspect-ratio: 1;
+    object-fit: cover;
+    z-index: 1;
+    position: relative;
+}
+
+.p-login__image-wrapper {
+    display: none;
+    position: relative;
+
+    @include bp(medium) {
+        display: block;
+    }
+
+    &::before {
+        display: block;
+        content: '';
+        position: absolute;
+        left: -25%;
+        top: -25%;
+        max-width: 38.5rem;
+        max-height: 38.5rem;
+        width: 100%;
+        height: auto;
+        aspect-ratio: 1;
+        background-color: rgba(90, 100, 193, 0.08);
+        z-index: 0;
+        border-radius: 50%;
+    }
+}

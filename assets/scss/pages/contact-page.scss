@@ -1,0 +1,33 @@
+.p-contact__section {
+    display: flex;
+    flex-direction: column;
+    padding: rem-calc(24px);
+    gap: rem-calc(24px);
+
+    @include bp(medium) {
+        padding: rem-calc(48px);
+        gap: rem-calc(48px);
+    }
+
+    @include bp(large) {
+        padding: rem-calc(48px) rem-calc(80px);
+    }
+}
+
+.p-contact__title {
+    margin: 0;
+    color: $color-black;
+    font-family: $font-semi-bold;
+    font-size: rem-calc(32px);
+    font-style: normal;
+    font-weight: 600;
+    line-height: 1.25;
+}
+
+.p-contact__container {
+    width: 100%;
+
+    @include bp(medium) {
+        max-width: 49rem;
+    }
+}

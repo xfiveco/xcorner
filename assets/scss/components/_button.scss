@@ -45,7 +45,7 @@
 
     color: $color-white;
     text-align: center;
-    font-family: Assistant, $font-sans-serif;
+    font-family: $font-semi-bold;
     font-size: 1rem;
     font-style: normal;
     font-weight: 600;
@@ -154,6 +154,6 @@ $color-red-shadow: rgba(215, 68, 68, 0.24);
     width: 100%;
 
     @include bp(small) {
-        width: auto;
+        width: fit-content;
     }
 }

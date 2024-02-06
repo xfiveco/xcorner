@@ -1,15 +1,35 @@
-
 /* ==========================================================================
    #BREADCRUMBS
    ========================================================================== */
 
 .c-breadcrumbs {
-    @include container();
+    padding: 0;
 }
 
-.c-breadcrumbs ol {
-    @include list-bare();
-
+.c-breadcrumbs__list {
     display: flex;
     gap: rem-calc(10px);
+    margin: 0;
+    list-style-type: none;
+}
+
+.c-breadcrumbs__link {
+    color: $color-primary-300;
+    font-family: $font-semi-bold;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 1.5;
+    text-decoration-line: underline;
+}
+
+.c-breadcrumbs__item {
+    margin: 0;
+
+    &--active {
+        .c-breadcrumbs__link {
+            text-decoration: none;
+            color: $color-neutrals-500;
+        }
+    }
 }
