@@ -1,4 +1,4 @@
-.c-page-container {
+.p-page__container {
     padding: 1.5rem;
     display: flex;
     flex-direction: column;
@@ -19,7 +19,7 @@
     }
 }
 
-.c-page-title {
+.p-page__title {
     color: $color-black;
     font-family: $font-semi-bold;
     font-size: 2rem;
