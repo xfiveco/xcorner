@@ -1,10 +1,10 @@
 {{inject 'passwordRequirements' settings.password_requirements}}
 {{inject 'recaptchaTitle' (lang 'create_account.recaptcha_title')}}
 {{#partial "page"}}
-<section class="c-auth__page">
+<section class="p-auth__section">
     {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
 
-    <h1 class="c-auth__title ">
+    <h1 class="p-auth__title">
         {{lang 'create_account.heading' }}
     </h1>
 
@@ -16,10 +16,10 @@
             {{#if settings.account_creation_enabled}}
                 <form 
                     action="{{urls.auth.save_new_account}}" 
-                    class="js-create-account-form c-create-account-form"
+                    class="js-create-account-form p-create-account__form"
                     method="post"
                 >
-                    <div class="sign-up-fields">
+                    <div class="p-create-account__fields">
                         {{#each forms.create_account.account_fields }}
                             {{{dynamicComponent 'components/common/forms'}}}
                         {{/each}}
@@ -30,7 +30,7 @@
                     {{inject 'required' (lang 'common.required')}}
                     {{inject 'state_error' (lang 'errors.state_error')}}
                     {{{ forms.create_account.recaptcha.markup}}}
-                    <button type="submit" class="c-button c-button--primary">
+                    <button type="submit" class="c-button c-button--primary c-button-full">
                         {{lang 'forms.create_account.submit_value' }}
                     </button> 
                 </form>

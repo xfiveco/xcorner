@@ -1,5 +1,5 @@
 <div 
-    class="js-form-field" 
+    class="js-form-field c-form__field" 
     id="{{id}}" 
     data-validation="{{validation}}" 
     {{#if private_id}}
@@ -15,7 +15,7 @@
         {{/if}}
     </label>
     <div>
-        <div class="js-form-field c-datepicker-field">
+        <div class="js-form-field c-form__field">
             <label for="{{id}}_month" class="u-visually-hidden">Select month</label>
             <select 
                 name="{{month.name}}"
@@ -32,12 +32,12 @@
             {{> components/common/forms/date-options month isRequired=required}}
             </select>
         </div>
-        <div class="js-form-field c-datepicker-field">
+        <div class="js-form-field c-form__field">
             <label for="{{id}}_day" class="u-visually-hidden">Select day</label>
             <select 
                 name="{{day.name}}"
                 id="{{id}}_day"
-                class="js-input js-select-input"
+                class="js-input js-select-input c-form__input c-form__input--select"
                 data-label="day"
                 aria-required="{{required}}"
                 aria-labelledby="{{id}}"
@@ -49,7 +49,7 @@
             {{> components/common/forms/date-options day isRequired=required}}
             </select>
         </div>
-        <div class="js-form-field c-datepicker-field">
+        <div class="js-form-field c-form__field">
             <label for="{{id}}_year" class="u-visually-hidden">Select year</label>
             <select 
                 name="{{year.name}}"
