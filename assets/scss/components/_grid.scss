@@ -1,0 +1,12 @@
+.c-grid__list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 3rem;
+
+    margin: 0;
+    list-style-type: none;
+
+    @include bp(large) {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}

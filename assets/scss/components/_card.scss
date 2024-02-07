@@ -28,3 +28,13 @@
         object-fit: cover;
     }
 }
+
+.c-card__price {
+    display: flex;
+    gap: 0.75rem;
+    align-items: center;
+}
+
+.c-card__rating {
+    margin: 0;
+}

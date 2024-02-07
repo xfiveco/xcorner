@@ -28,7 +28,7 @@ category:
 
 <div class="u-container">
     {{#unless theme_settings.hide_category_page_heading }}
-        <h1 class="p-page__title">{{category.name}}</h1>
+        <h1 class="p-page__title">{{strReplace category.name "(dropdown)" ""}}</h1>
         {{{region name="category_below_header"}}}
     {{/unless}}
 

@@ -1,8 +1,8 @@
 <fieldset class="js-form-fieldset">
-    <label for="sort">
+    <label for="sort c-form__label">
         {{lang 'common.sorter.sort_by'}}
     </label>
-    <select name="sort" id="sort" role="listbox">
+    <select class="c-form__input c-form__input--select" name="sort" id="sort" role="listbox">
         <option value="featured"{{#if sort '==' 'featured'}} selected{{/if}}>
             {{lang 'common.sorter.featured'}}
         </option>

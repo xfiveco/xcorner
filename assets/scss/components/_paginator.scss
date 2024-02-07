@@ -1,0 +1,37 @@
+.c-paginator {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.c-paginator__item {
+    margin: 0;
+}
+
+.c-paginator__link {
+    display: block;
+    width: 0.75rem;
+    height: 0.75rem;
+
+    border-radius: 50%;
+    border: 2px solid $color-primary-300;
+    background: $color-white;
+}
+
+.c-paginator__prev,
+.c-paginator__next {
+    svg {
+        vertical-align: middle;
+        max-width: 100%;
+        max-height: 100%;
+    }
+}
+
+.c-paginator--disabled {
+    opacity: 0.5;
+}
+
+.is-current {
+    background: $color-primary-300;
+}
