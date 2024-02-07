@@ -1,31 +1,8 @@
-.c-product-listing {
+.c-grid__list {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 3rem;
 
     margin: 0;
     list-style-type: none;
-}
-
-.c-product-figure {
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
-}
-
-.c-product-image {
-    display: block;
-    aspect-ratio: 17.75 / 26.5;
-
-    img {
-        width: auto;
-        height: 100%;
-        object-fit: cover;
-    }
-}
-
-.c-product-options {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
 }

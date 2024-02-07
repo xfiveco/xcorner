@@ -28,7 +28,7 @@ category:
 
 <div class="u-container">
     {{#unless theme_settings.hide_category_page_heading }}
-        <h1>{{category.name}}</h1>
+        <h1 class="p-page__title">{{category.name}}</h1>
         {{{region name="category_below_header"}}}
     {{/unless}}
 
@@ -62,7 +62,7 @@ category:
         {{/if}}
     {{/if}}
 
-    <div class="js-product-listing-container c-product-listing-container">
+    <div class="js-product-listing-container c-product__list-container">
         {{> components/category/product-listing}}
     
         {{{region name="category_below_content"}}}

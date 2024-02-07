@@ -5,7 +5,7 @@
 <ul class="js-product-list" {{#if settings.data_tag_enabled}} data-list-name="Related Products" {{/if}}>
     {{#each this}}
         <li>
-            {{>components/products/card settings=../settings theme_settings=../theme_settings event="list" position=(add @index 1)}}
+            {{>components/products/card-alternate settings=../settings theme_settings=../theme_settings event="list" position=(add @index 1)}}
         </li>
     {{/each}}
 </ul>

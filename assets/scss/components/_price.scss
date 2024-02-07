@@ -1,0 +1,27 @@
+.c-price__without-tax {
+    color: $color-black;
+    text-align: center;
+    font-family: $font-semi-bold;
+    font-size: 1.25rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 1.5rem;
+
+    &--non-sale {
+        font-size: 1rem;
+    }
+}
+
+.c-price__with-tax {
+    color: $color-black;
+    text-align: center;
+    font-family: $font-semi-bold;
+    font-size: 1.25rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 1.5rem;
+
+    &--non-sale {
+        font-size: 1rem;
+    }
+}

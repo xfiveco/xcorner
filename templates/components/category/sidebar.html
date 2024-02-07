@@ -1,13 +1,10 @@
 <nav>
     {{#if category.subcategories}}
-        <aside>
-            <div>
-                {{category.name}}
-            </div>
-            <ul>
+        <aside class="c-sidebar__box">
+            <ul class="c-sidebar__box-list">
                 {{#each category.subcategories}}
-                    <li>
-                        <a href="{{url}}" title="{{name}}">
+                    <li class="c-sidebar__box-item">
+                        <a class="c-sidebar__box-link" href="{{url}}" title="{{name}}">
                             {{name}}
                         </a>
                     </li>

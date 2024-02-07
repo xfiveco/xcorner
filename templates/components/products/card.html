@@ -76,43 +76,46 @@
         </a>
 
         <figcaption>
+            {{#if show_compare}}
+                <div class="js-form-field c-form__checkbox-field">
+                    <input 
+                        class="c-form__checkbox-input"
+                        type="checkbox" 
+                        name="products[]" 
+                        value="{{id}}" 
+                        id="compare-{{id}}" 
+                        data-compare-id="{{id}}"
+                    >
+                    <label class="c-form__checkbox-label" for="compare-{{id}}">
+                        {{lang 'products.compare'}} 
+                    </label>
+                </div>
+            {{/if}}
             <div class="c-product-options">
                 {{#unless hide_product_quick_view}}
                     {{#if theme_settings.show_product_quick_view}}
                         {{#if settings.data_tag_enabled}}
                             <button 
                                 type="button" 
-                                class="c-button c-button-primary js-quick-view" 
+                                class="c-button c-button--primary js-quick-view" 
                                 data-event-type="product-click" 
                                 data-product-id="{{id}}"
                             >
                                 {{lang 'products.quick_view'}}
                             </button>
                         {{else}}
-                            <button type="button" class="c-button js-quick-view" data-product-id="{{id}}">
+                            <button type="button" class="c-button c-button--primary js-quick-view" data-product-id="{{id}}">
                                 {{lang 'products.quick_view'}}
                             </button>
                         {{/if}}
                     {{/if}}
                 {{/unless}}
-                {{#if show_compare}}
-                    <label class="c-button" for="compare-{{id}}">
-                        {{lang 'products.compare'}} 
-                        <input 
-                            type="checkbox" 
-                            name="products[]" 
-                            value="{{id}}" 
-                            id="compare-{{id}}" 
-                            data-compare-id="{{id}}"
-                        >
-                    </label>
-                {{/if}}
                 {{#if show_cart_action}}
                     {{#if has_options}}
                         <a 
                             href="{{url}}" 
                             data-event-type="product-click" 
-                            class="c-button" 
+                            class="c-button c-button--primary" 
                             data-product-id="{{id}}"
                         >
                             {{lang 'products.choose_options'}}
@@ -122,7 +125,7 @@
                         <a 
                             href="{{pre_order_add_to_cart_url}}" 
                             data-event-type="product-click" 
-                            class="c-button"
+                            class="c-button c-button--primary"
                         >
                             {{lang 'products.pre_order'}}
                         </a>
@@ -132,7 +135,7 @@
                             href="{{add_to_cart_url}}" 
                             data-event-type="product-click" 
                             data-button-type="add-cart" 
-                            class="c-button"
+                            class="c-button c-button--primary"
                         >
                             {{lang 'products.add_to_cart'}}
                         </a>
