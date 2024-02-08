@@ -42,6 +42,8 @@ $at-sign-icon: '../../img/icons/at-sign.svg';
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
+    max-width: 80rem;
+    margin-inline: auto;
 
     @include bp(medium) {
         gap: 3rem;

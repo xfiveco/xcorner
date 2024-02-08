@@ -1,5 +1,5 @@
 <article
-    {{#if alternate}}class="card-alternate"{{/if}}
+    class="c-card__article"
     data-test="card-{{id}}"
     {{#if settings.data_tag_enabled}}
         data-event-type="{{event}}"
@@ -74,6 +74,7 @@
                 default_image=theme_settings.default_image_product
             }}
         </a>
+        {{> components/common/wishlist-add add_to_wishlist_url=add_to_wishlist_url}}
     </figure>
     <div class="c-card__product-information">
         {{#if show_compare}}
@@ -107,6 +108,7 @@
                 <span>
                     {{> components/products/ratings rating_target=name rating=rating}}
                 </span>
+                <a class="c-card__rating-count" href="{{url}}#reviews">({{num_reviews}})</a>
             </p>
         {{/and}}
 
