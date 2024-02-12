@@ -17,59 +17,12 @@ product_results:
 {{#partial "page"}}
 {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
 <section>
+    <h1 class="p-page__title">{{lang 'search.results.title'}}</h1>
     {{#if forms.search.query}}
         <div class="js-search-results-heading">
             {{>components/search/heading}}
         </div>
     {{/if}}
-    <nav>
-        <span id="search-tabs-widget-description" class="aria-description-hidden">
-            {{lang 'search.tabs_accesibility_hint'}}
-        </span>
-        <ul role="tablist" class="js-search-page-tabs">
-            <li role="presentation">
-                <a 
-                    aria-describedby="search-tabs-widget-description"
-                    role="tab" 
-                    aria-controls="product-listing-container"
-                    class="js-nav-bar-action js-product-results-toggle js-search-results-product-count" 
-                    href="{{forms.search.product_url}}"
-                >
-                    {{>components/search/product-count}}
-                </a>
-            </li>
-            <li role="presentation">
-                <a 
-                    aria-describedby="search-tabs-widget-description" 
-                    role="tab" 
-                    aria-controls="search-results-content"
-                    class="js-nav-bar-action js-content-results-toggle js-search-results-content-count" 
-                    href="{{forms.search.content_url}}">
-                    {{>components/search/content-count}}
-                </a>
-            </li>
-            {{#unless product_results.faceted_search_enabled}}
-                {{#if false}}
-                    <li>
-                        <a 
-                            class="js-nav-bar-action js-toggle-link" 
-                            data-collapsible="advanced-search-content" 
-                            href="#" 
-                            aria-controls="advanced-search-content" 
-                            aria-expanded="false"
-                        >
-                            <span>
-                                {{lang 'forms.search.hide'}}
-                            </span>
-                            <span>
-                                {{lang 'forms.search.show'}}
-                            </span>
-                        </a>
-                    </li>
-                {{/if}}
-            {{/unless}}
-        </ul>
-    </nav>
     {{#unless product_results.faceted_search_enabled}}
         {{>components/search/advanced-search}}
     {{/unless}}
