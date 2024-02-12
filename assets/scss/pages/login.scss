@@ -75,12 +75,14 @@
 }
 
 .p-login__customer-intro {
-    color: $color-neutrals-500;
-    font-family: $font-semi-bold;
-    font-size: 1rem;
-    font-style: normal;
-    font-weight: 600;
-    line-height: 1.5rem;
+    strong {
+        color: $color-neutrals-500;
+        font-family: $font-semi-bold;
+        font-size: 1rem;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 1.5rem;
+    }
 }
 
 .p-login__customer-facts {
