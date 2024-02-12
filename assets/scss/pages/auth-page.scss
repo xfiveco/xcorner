@@ -1,0 +1,21 @@
+.p-auth__section {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+
+    @include bp(medium) {
+        padding: 3rem 5rem;
+        gap: 3rem;
+    }
+}
+
+.p-auth__title {
+    color: $color-black;
+    font-family: $font-semi-bold;
+    font-size: 2.625rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 1.33;
+    margin: 0;
+}

@@ -1,5 +1,5 @@
 <div
-    class="js-form-field c-number-field"
+    class="js-form-field c-form__field"
     id="{{id}}"
     data-validation="{{validation}}"
 >
@@ -8,7 +8,7 @@
         <small>*</small>
         {{/if}}
     </label>
-    <input type="number" class="js-form-input js-input c-number-input" data-label="{{label}}" data-rule="lowerThan" min="{{limitfrom}}" max="{{limitto}}"
+    <input type="number" class="js-form-input js-input c-form__input" data-label="{{label}}" data-rule="lowerThan" min="{{limitfrom}}" max="{{limitto}}"
     title="{{lang 'forms.range' limitFrom=limitfrom limitTo=limitto}}" value="{{value}}" id="{{id}}_input" name="{{name}}"
     aria-required="{{required}}" aria-labelledby="{{id}}" aria-live="polite" {{#if private_id}} data-field-type="{{private_id}}" {{/if}} {{#if
     required}} required {{/if}} >
