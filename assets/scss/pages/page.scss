@@ -8,27 +8,4 @@
         padding: 3rem 5rem;
         gap: 3rem;
     }
-
-    p {
-        color: $color-neutrals-500;
-        font-family: $font-regular;
-        font-size: 1.125rem;
-        font-style: normal;
-        font-weight: 400;
-        line-height: 1.5rem;
-    }
-}
-
-.p-page__title {
-    color: $color-black;
-    font-family: $font-semi-bold;
-    font-size: 2rem;
-    font-style: normal;
-    font-weight: 600;
-    line-height: 2.5rem;
-
-    @include bp(medium) {
-        font-size: 2.625rem;
-        line-height: 3.5rem;
-    }
 }
