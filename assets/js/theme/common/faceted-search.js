@@ -9,6 +9,7 @@ import nod from './nod'
 import q$, { q$$ } from '../global/selector'
 import isVisible from './utils/is-visible'
 import trigger from './utils/trigger'
+import categoryFilters from '../custom/category-filters'
 
 const defaultOptions = {
     accordionToggleSelector: '.js-facets-search-wrapper .js-accordion-navigation, .js-facets-search-wrapper .js-facets-search-toggle',
@@ -61,6 +62,7 @@ class FacetedSearch {
 
         // Init collapsibles
         collapsibleFactory()
+        categoryFilters()
 
         // Init price validator
         this.initPriceValidator()
@@ -113,6 +115,8 @@ class FacetedSearch {
 
         // Init collapsibles
         collapsibleFactory()
+
+        categoryFilters()
 
         // Init price validator
         this.initPriceValidator()
