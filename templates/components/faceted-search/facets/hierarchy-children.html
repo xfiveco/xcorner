@@ -1,9 +1,9 @@
 <ul>
     {{#each this}}
-        <li class="js-nav-list-item">
+        <li class="js-nav-list-item c-facet__item">
             <a
                 href="{{url}}"
-                class="js-nav-list-action{{#if selected}} is-selected{{/if}}{{#if has_sub_categories}} has-children{{/if}} js-faceted-search-facet"
+                class="js-nav-list-action{{#if selected}} is-selected{{/if}}{{#if has_sub_categories}} has-children{{/if}} js-faceted-search-facet c-facet__link"
                 rel="nofollow"
                 data-id="{{id}}"
             >

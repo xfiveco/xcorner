@@ -1,27 +1,18 @@
-<div>
+<div class="c-facet__toggle">
     <button 
         type="button"
-        class="js-accordion-navigation{{#unless start_collapsed}} is-open{{/unless}}"
+        class="js-accordion-navigation c-accordion{{#unless start_collapsed}} is-open{{/unless}}"
         data-collapsible="#facets-{{dashcase facet}}"
         aria-label="{{lang 'search.faceted.toggleSection' title=title}}"
     >
-        <span>
+        <span class="c-accordion__title">
             {{title}}
         </span>
 
-        <span>
-            <svg>
-                <use href="#icon-add" />
-            </svg>
-            <svg>
-                <use href="#icon-remove" />
+        <span class="c-accordion__icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path d="M18 15L12 9L6 15" stroke="#5A64C1" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
         </span>
     </button>
-    
-    {{#if selected}}
-        <a href="{{remove_url}}" class="js-facets-search-clear js-faceted-search-facet">
-            {{lang 'search.faceted.clear'}}
-        </a>
-    {{/if}}
 </div>

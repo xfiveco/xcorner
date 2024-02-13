@@ -43,6 +43,7 @@
     @include button_transition();
     @include button_disabled();
 
+    display: block;
     color: $color-white;
     text-align: center;
     font-family: $font-semi-bold;
@@ -55,6 +56,7 @@
     outline: 0;
     border: 0;
     padding: 0.75rem 1rem;
+    margin: 0;
     cursor: pointer;
 }
 
@@ -150,10 +152,14 @@ $color-red-shadow: rgba(215, 68, 68, 0.24);
     padding: 1rem 0;
 }
 
-.c-button-full {
+.c-button--full {
     width: 100%;
 
     @include bp(small) {
         width: fit-content;
     }
+}
+
+.c-button--width-100 {
+    width: 100%;
 }

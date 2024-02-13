@@ -1,33 +1,6 @@
-<div>
-    <div>
-        {{lang 'search.faceted.selected.title'}}
-    </div>
-    {{#if items}}
-        <ul>
-            {{#each items}}
-                <li>
-                    <a 
-                        href="{{url}}"
-                        rel="nofollow"
-                        class="js-faceted-search-facet"
-                    >
-                        {{#if facet '===' 'rating'}}
-                            {{lang 'search.faceted.selected.rating-label' rating=title}}
-                        {{else}}
-                            {{{sanitize title}}}
-                        {{/if}}
-                        <svg>
-                            <use href="#icon-close" />
-                        </svg>
-                    </a>
-                </li>
-            {{/each}}
-        </ul>
-    {{else}}
-        <p>{{lang 'search.faceted.selected.no-filters'}}</p>
-    {{/if}}
+<div class="c-facet__selected">
     {{#if remove_all_url}}
-        <a href="{{remove_all_url}}" class="js-faceted-search-facet">
+        <a href="{{remove_all_url}}" class="js-faceted-search-facet c-button c-button--secondary c-button--width-100">
             {{lang 'search.faceted.selected.clear-all'}}
         </a>
     {{/if}}
