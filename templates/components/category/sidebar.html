@@ -1,4 +1,4 @@
-<nav>
+<nav class="c-sidebar__container">
     {{#if category.subcategories}}
         <aside class="c-sidebar__box">
             <ul class="c-sidebar-box__list">
@@ -13,8 +13,12 @@
         </aside>
     {{/if}}
     {{#if category.faceted_search_enabled}}
-        {{> components/faceted-search/index category}}
+        <aside class="c-sidebar__box">
+            {{> components/faceted-search/index category}}
+        </aside>
     {{else}}
-        {{> components/category/shop-by-price shop_by_price=category.shop_by_price category_url=category.url}}
+        <aside class="c-sidebar__box">
+            {{> components/category/shop-by-price shop_by_price=category.shop_by_price category_url=category.url}}
+        </aside>
     {{/if}}
 </nav>
