@@ -68,6 +68,7 @@
             "checkout_multiple": "or check out with multiple addresses",
             "view_cart": "View Cart"
         },
+        "title": "Cart",
         "label": "Your Cart ({quantity, plural, one {# item} other {# items}})",
         "is_empty": "Your cart is empty",
         "invalid_entry_message": "[ENTRY] is not a valid entry",
