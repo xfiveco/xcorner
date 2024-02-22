@@ -1,35 +1,36 @@
-<article>
-    <header>
+<article class="c-blog-post">
+    <header class="c-blog-post__header">
         {{#if post.thumbnail}}
-            <figure>
-                <a href="{{post.url}}">
-                    {{> components/common/image
-                        image=post.thumbnail
-                        fallback_size=theme_settings.blog_size
-                    }}
-                </a>
-            </figure>
+            <a class="c-blog-post__image-wrapper" href="{{post.url}}">
+                {{> components/common/image
+                    image=post.thumbnail
+                    fallback_size=theme_settings.blog_size
+                    class="c-blog-post__image"
+                }}
+            </a>
         {{/if}}
+    </header>
+    <div class="c-blog-post__body">
         <h{{#if is_blog_post}}1{{else}}2{{/if}}>
-            <a href="{{post.url}}">
+            <a class="c-blog-post__title" href="{{post.url}}">
                 {{post.title}}
             </a>
         </h{{#if is_blog_post}}1{{else}}2{{/if}}>
-        <p>
+        <p class="c-blog-post__meta">
             {{#if post.author}}{{lang 'blog.posted_by' name=post.author}} on {{/if}}<time>{{post.date_published}}</time>
         </p>
-    </header>
-    <div>
-        {{#if post.body}}
-            {{{post.body}}}
-        {{else}}
-            {{{post.summary}}}
-            {{#if post.show_read_more}}
-                &hellip;
-                <a href="{{url}}" aria-label="{{post.title}} {{lang 'blog.read_more'}}">
-                    {{lang 'blog.read_more'}}
-                </a>
+        <p class="c-blog-post__summary">
+            {{#if post.body}}
+                {{{post.body}}}
+            {{else}}
+                {{{post.summary}}}
             {{/if}}
+            &hellip;
+        </p>
+        {{#if post.show_read_more}}
+            <a class="c-blog-post__read-more" href="{{url}}" aria-label="{{post.title}} {{lang 'blog.read_more'}}">
+                {{lang 'blog.read_more'}}
+            </a>
         {{/if}}
     </div>
     {{#if show_tags}}

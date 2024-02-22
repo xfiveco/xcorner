@@ -1,0 +1,9 @@
+.p-blog {
+    display: flex;
+    flex-direction: column;
+    gap: rem-calc(24px);
+
+    @include bp(large) {
+        gap: rem-calc(50px);
+    }
+}
