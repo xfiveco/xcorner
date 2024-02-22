@@ -12,23 +12,12 @@
     }
 }
 
-.c-blog-post__image-link {
+.c-blog-post__image-wrapper {
     display: block;
     aspect-ratio: 230 / 132;
     width: 100%;
     height: auto;
     position: relative;
-
-    img {
-        width: 100%;
-        height: auto;
-        object-fit: cover;
-        aspect-ratio: 230 / 132;
-
-        @include bp(large) {
-            aspect-ratio: 450 / 260;
-        }
-    }
 
     @include bp(medium) {
         width: 230px;
@@ -37,6 +26,17 @@
     @include bp(large) {
         aspect-ratio: 450 / 260;
         width: 450px;
+    }
+}
+
+.c-blog-post__image {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    aspect-ratio: 230 / 132;
+
+    @include bp(large) {
+        aspect-ratio: 450 / 260;
     }
 }
 

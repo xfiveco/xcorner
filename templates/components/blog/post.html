@@ -1,10 +1,11 @@
 <article class="c-blog-post">
     <header class="c-blog-post__header">
         {{#if post.thumbnail}}
-            <a class="c-blog-post__image-link" href="{{post.url}}">
+            <a class="c-blog-post__image-wrapper" href="{{post.url}}">
                 {{> components/common/image
                     image=post.thumbnail
                     fallback_size=theme_settings.blog_size
+                    class="c-blog-post__image"
                 }}
             </a>
         {{/if}}
