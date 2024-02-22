@@ -1,7 +1,7 @@
-<div>
+<div class="c-facet">
     {{> components/faceted-search/faceted-search-navigation}}
 
-    <div id="facets-{{dashcase facet}}" class="{{#unless start_collapsed}} is-open{{/unless}}">
+    <div id="facets-{{dashcase facet}}" class="c-facet__wrapper{{#unless start_collapsed}} is-open{{/unless}}">
         <form 
             class="js-facets-search-range-form js-faceted-search-range" 
             method="get" 
@@ -11,40 +11,36 @@
             {{#if this.sort}}
                 <input type="hidden" name="sort" value="{{this.sort}}">
             {{/if}}
-            <fieldset class="js-form-fieldset">
-                <div>
-                    <div class="js-form-field">
-                        <input
-                            name="min_price"
-                            placeholder="{{lang 'search.faceted.range.min-placeholder'}}"
-                            min="0"
-                            class="js-form-input"
-                            type="number"
-                            value="{{min_price}}"
-                            required
-                        >
-                    </div>
-
-                    <div class="js-form-field">
-                        <input
-                            name="max_price"
-                            placeholder="{{lang 'search.faceted.range.max-placeholder'}}"
-                            min="0"
-                            class="js-form-input"
-                            type="number"
-                            value="{{max_price}}"
-                            required
-                        >
-                    </div>
-
-                    <div class="js-form-field">
-                        <button class="c-button button--small" type="submit">
-                            {{lang 'search.faceted.range.update'}}
-                        </button>
-                    </div>
+            <fieldset class="js-form-fieldset c-facet__range">
+                <div class="js-form-field c-form__field">
+                    <label class="c-form__label">{{lang 'search.faceted.range.min-placeholder'}}</label>
+                    <input
+                        name="min_price"
+                        min="0"
+                        class="js-form-input c-form__input c-form__input--full"
+                        type="number"
+                        value="{{min_price}}"
+                        required
+                    >
                 </div>
 
-                <div class="js-inline-message"></div>
+                <div class="js-form-field c-form__field">
+                    <label class="c-form__label">{{lang 'search.faceted.range.max-placeholder'}}</label>
+                    <input
+                        name="max_price"
+                        min="0"
+                        class="js-form-input c-form__input c-form__input--full"
+                        type="number"
+                        value="{{max_price}}"
+                        required
+                    >
+                </div>
+
+                <button class="c-button c-button--primary c-button--width-100" type="submit">
+                    {{lang 'search.faceted.range.update'}}
+                </button>
+
+                <div class="js-inline-message u-required"></div>
             </fieldset>
         </form>
     </div>

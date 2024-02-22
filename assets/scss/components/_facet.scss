@@ -1,0 +1,54 @@
+.c-facet {
+    border-radius: 0.25rem;
+    background: $color-secondary-50;
+    padding: 1.5rem;
+    width: 100%;
+}
+
+.c-facet__list {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.5rem;
+}
+
+.c-facet__wrapper {
+    display: none;
+
+    &.is-open {
+        display: block;
+    }
+}
+
+.c-facet__link {
+    color: $color-primary-300;
+    text-align: center;
+    font-family: $font-semi-bold;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 1.5rem;
+    text-decoration: none;
+}
+
+.c-facet__item-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin: 0;
+}
+
+.c-facet__item {
+    margin: 0;
+}
+
+.c-facet__range {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin: 0;
+}
+
+.c-facet__selected {
+    width: 100%;
+}

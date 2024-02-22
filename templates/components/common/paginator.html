@@ -1,56 +1,48 @@
 <nav aria-label="pagination">
-    <ul class="js-pagination-list">
-        {{#if previous}}
-            <li class="js-pagination-item-previous">
-                <a 
-                    class="js-pagination-link js-faceted-search-facet"
-                    href="{{previous}}"
-                    aria-label="{{lang 'common.previous'}}"
-                >
-                    <svg>
-                        <use href="#icon-chevron-left"></use>
-                    </svg>
-                    {{lang 'common.previous'}}
-                </a>
-            </li>
-        {{/if}}
+    <ul class="js-pagination-list c-pagination">
+        <li class="js-pagination-item-previous c-pagination__item">
+            <a 
+                class="js-pagination-link js-faceted-search-facet c-pagination__prev {{#unless previous}}c-pagination--disabled{{/unless}}"
+                href="{{previous}}"
+                aria-label="{{lang 'common.previous'}}"
+            >
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <path d="M19 12H5M5 12L12 19M5 12L12 5" stroke="#5A64C1" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </a>
+        </li>
 
         {{#each links}}
             <li 
-                {{#if this.number '==' ../current}}
-                    class="is-current"
-                {{/if}}
+                class="c-pagination__item"
             >
                 <a 
-                    class="js-pagination-link js-faceted-search-facet js-pagination-current-page-link"
+                    class="js-pagination-link js-faceted-search-facet js-pagination-current-page-link c-pagination__link {{#if this.number '==' ../current}}is-current{{/if}}"
                     href="{{this.url}}"
                     {{#if this.number '==' ../current}}
                         aria-current="page"
                     {{/if}}
                     aria-label="{{lang 'common.paginator.page_of' current=this.number total=../links.length}}"
                 >
-                    {{this.number}}
                 </a>
             </li>
         {{/each}}
 
-        {{#if next}}
-            <li class="js-pagination-item-next">
-                <a 
-                    class="js-pagination-link
-                        {{#unless reload}}
-                            js-faceted-search-facet
-                        {{/unless}}
-                    "
-                    href="{{next}}"
-                    aria-label="{{lang 'common.next'}}"
-                >
-                    {{lang 'common.next'}}
-                    <svg>
-                        <use href="#icon-chevron-right"></use>
-                    </svg>
-                </a>
-            </li>
-        {{/if}}
+        <li class="js-pagination-item-next c-pagination__item">
+            <a 
+                class="js-pagination-link c-pagination__next
+                    {{#unless reload}}
+                        js-faceted-search-facet
+                    {{/unless}}
+                    {{#unless next}}c-pagination--disabled{{/unless}}
+                "
+                href="{{next}}"
+                aria-label="{{lang 'common.next'}}"
+            >
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="#5A64C1" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </a>
+        </li>
     </ul>
 </nav>

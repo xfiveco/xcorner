@@ -1,31 +1,3 @@
 /* ==========================================================================
    #PRODUCT
    ========================================================================== */
-
-.c-product {
-    @include bp(large) {
-        display: grid;
-        grid-template-areas: "gallery info info info"
-                             "tabs tabs tabs tabs";
-    }
-}
-
-.c-product__gallery {
-    grid-area: gallery;
-}
-
-.c-product__info {
-    grid-area: info;
-}
-
-.c-product__tabs {
-    grid-area: tabs;
-}
-
-.c-product__thumbs {
-    display: flex;
-
-    img {
-        max-width: 5rem;
-    }
-}

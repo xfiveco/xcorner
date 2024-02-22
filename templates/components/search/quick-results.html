@@ -3,7 +3,7 @@
     <ul{{#if settings.data_tag_enabled}} data-list-name="Quick Search Results"{{/if}}>
         {{#each product_results.products}}
             <li class="js-product">
-                {{> components/products/card
+                {{> components/products/card-alternate
                     settings=../settings
                     alternate=true
                     show_compare=../show_compare

@@ -198,10 +198,12 @@ export class Collapsible {
     }
 
     bindEvents() {
-        this.$toggle.addEventListener('mouseover', this.onHover)
-        this.$target.addEventListener('mouseover', this.onHover)
-        this.$toggle.addEventListener('mouseout', this.onHoverLeave)
-        this.$target.addEventListener('mouseout', this.onHoverLeave)
+        if (this.$toggle.classList.contains('has-sub-menu')) {
+            this.$toggle.addEventListener('mouseover', this.onHover)
+            this.$target.addEventListener('mouseover', this.onHover)
+            this.$toggle.addEventListener('mouseout', this.onHoverLeave)
+            this.$target.addEventListener('mouseout', this.onHoverLeave)
+        }
 
         if (this.disabledMediaQueryList && this.disabledMediaQueryList.addEventListener) {
             this.disabledMediaQueryList.addEventListener('change', this.onDisabledMediaQueryListMatch)
@@ -209,7 +211,8 @@ export class Collapsible {
     }
 
     unbindEvents() {
-        this.$toggle.removeEventListener('click', this.onHover)
+        this.$toggle.removeEventListener('mouseout', this.onHover)
+        this.$toggle.removeEventListener('mouseover', this.onHover)
 
         if (this.disabledMediaQueryList && this.disabledMediaQueryList.removeEventListener) {
             this.disabledMediaQueryList.removeEventListener('change', this.onDisabledMediaQueryListMatch)

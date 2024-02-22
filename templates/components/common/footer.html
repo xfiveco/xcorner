@@ -103,22 +103,6 @@
                     <a href="mailto:xcorner@xfive.co" class="c-footer-contact-link">xcorner@xfive.co</a>
                 </div>
             </article>
-
-            {{#if settings.address}}
-                <article data-section-type="store-info">
-                    <div>
-                        {{lang 'footer.info'}}
-                    </div>
-                    <address>
-                        {{nl2br settings.address}}
-                    </address>
-                    {{#if settings.phone_number}}
-                        <strong>
-                            {{lang 'footer.call_us' phone_number=settings.phone_number}}
-                        </strong>
-                    {{/if}}
-                </article>
-            {{/if}}
         </section>
         <section class="c-footer-area">
             <article class="c-footer-newsletter-form" data-section-type="newsletter-subscription">

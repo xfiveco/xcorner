@@ -1,10 +1,10 @@
 {{#if items}}
-    <div>
+    <div class="c-facet">
         {{> components/faceted-search/faceted-search-navigation}}
 
         <div 
             id="facets-{{dashcase facet}}" 
-            class="{{#unless start_collapsed}} is-open{{/unless}}"
+            class="c-facet__wrapper{{#unless start_collapsed}} is-open{{/unless}}"
         >
             <ul 
                 id="list-{{dashcase facet}}" 
@@ -12,10 +12,10 @@
                 data-has-more-results="{{has_more_results}}"
             >
                 {{#each items}}
-                    <li class="js-nav-list-item">
+                    <li class="js-nav-list-item c-facet__item">
                         <a
                             href="{{url}}"
-                            class="{{#if selected }} is-selected{{/if}}{{#if has_sub_categories}} has-children{{/if}} js-faceted-search-facet"
+                            class="{{#if selected }} is-selected{{/if}}{{#if has_sub_categories}} has-children{{/if}} js-faceted-search-facet c-facet__link"
                             rel="nofollow"
                             data-id="{{id}}"
                         >

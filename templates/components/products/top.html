@@ -12,7 +12,7 @@
     >
         {{#each products}}
             <li class="js-product swiper-slide">
-                {{>components/products/card settings=../settings theme_settings=../theme_settings customer=../customer event="list" position=(add @index 1)}}
+                {{>components/products/card-alternate settings=../settings theme_settings=../theme_settings customer=../customer event="list" position=(add @index 1)}}
             </li>
         {{/each}}
     </ul>

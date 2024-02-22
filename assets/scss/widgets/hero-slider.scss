@@ -99,7 +99,6 @@ $swiper-arrow-left: './../icons/arrow-left.svg';
 
 .c-hero-slider__navigation {
     position: absolute;
-    bottom: 60%;
     z-index: $z-index-mid-low;
     left: 0;
     margin-left: 50%;
@@ -108,14 +107,6 @@ $swiper-arrow-left: './../icons/arrow-left.svg';
     justify-content: center;
     align-items: center;
     gap: rem-calc(24px);
-
-    @include bp(small) {
-        bottom: 50%;
-    }
-
-    @include bp(large) {
-        bottom: rem-calc(400px);
-    }
 
     .c-swiper__btn-next,
     .c-swiper__btn-prev {

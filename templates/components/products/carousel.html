@@ -2,7 +2,7 @@
     <div class="swiper-wrapper">
         {{#each products}}
             <div class="swiper-slide">
-                {{> components/products/card settings=../settings theme_settings=../theme_settings customer=../customer event="list" position=(add @index 1)}}
+                {{> components/products/card-alternate settings=../settings theme_settings=../theme_settings customer=../customer event="list" position=(add @index 1)}}
             </div>
         {{/each}}
     </div>

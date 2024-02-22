@@ -1,4 +1,3 @@
-
 /* ==========================================================================
    #CATEGORY
    ========================================================================== */
@@ -7,6 +6,9 @@
     @include container();
 
     display: grid;
-    grid-template-columns: 300px auto;
-    gap: rem-calc(20px);
+    gap: 1.5rem;
+
+    @include bp(medium) {
+        grid-template-columns: rem-calc(300px) auto;
+    }
 }

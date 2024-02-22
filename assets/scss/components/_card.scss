@@ -1,0 +1,61 @@
+.c-card__title {
+    color: $color-black;
+    font-family: $font-semi-bold;
+    font-size: 1.125rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 1.5rem;
+    text-decoration: none;
+}
+
+.c-card__product-information {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.c-card__figure {
+    border-radius: 0.25rem;
+    margin-bottom: 0.75rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.c-card__image-wrapper {
+    display: block;
+    aspect-ratio: 17.75 / 26.5;
+}
+
+.c-card__image {
+    width: auto;
+    height: 100%;
+    object-fit: cover;
+}
+
+.c-card__price {
+    display: flex;
+    gap: 0.75rem;
+    align-items: center;
+}
+
+.c-card__rating {
+    margin: 0;
+}
+
+.c-card__rating-count {
+    color: $color-primary-300;
+    text-align: center;
+    font-family: $font-semi-bold;
+    font-size: 0.875rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 1rem;
+    text-decoration-line: underline;
+}
+
+.c-card__article {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
