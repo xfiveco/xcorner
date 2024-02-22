@@ -1,8 +1,8 @@
 <nav aria-label="pagination">
-    <ul class="js-pagination-list c-paginator">
-        <li class="js-pagination-item-previous c-paginator__item">
+    <ul class="js-pagination-list c-pagination">
+        <li class="js-pagination-item-previous c-pagination__item">
             <a 
-                class="js-pagination-link js-faceted-search-facet c-paginator__prev {{#unless previous}}c-paginator--disabled{{/unless}}"
+                class="js-pagination-link js-faceted-search-facet c-pagination__prev {{#unless previous}}c-pagination--disabled{{/unless}}"
                 href="{{previous}}"
                 aria-label="{{lang 'common.previous'}}"
             >
@@ -14,10 +14,10 @@
 
         {{#each links}}
             <li 
-                class="c-paginator__item"
+                class="c-pagination__item"
             >
                 <a 
-                    class="js-pagination-link js-faceted-search-facet js-pagination-current-page-link c-paginator__link {{#if this.number '==' ../current}}is-current{{/if}}"
+                    class="js-pagination-link js-faceted-search-facet js-pagination-current-page-link c-pagination__link {{#if this.number '==' ../current}}is-current{{/if}}"
                     href="{{this.url}}"
                     {{#if this.number '==' ../current}}
                         aria-current="page"
@@ -28,13 +28,13 @@
             </li>
         {{/each}}
 
-        <li class="js-pagination-item-next c-paginator__item">
+        <li class="js-pagination-item-next c-pagination__item">
             <a 
-                class="js-pagination-link c-paginator__next
+                class="js-pagination-link c-pagination__next
                     {{#unless reload}}
                         js-faceted-search-facet
                     {{/unless}}
-                    {{#unless next}}c-paginator--disabled{{/unless}}
+                    {{#unless next}}c-pagination--disabled{{/unless}}
                 "
                 href="{{next}}"
                 aria-label="{{lang 'common.next'}}"

@@ -1,4 +1,4 @@
-.c-paginator {
+.c-pagination {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -6,11 +6,11 @@
     margin-block: 3rem;
 }
 
-.c-paginator__item {
+.c-pagination__item {
     margin: 0;
 }
 
-.c-paginator__link {
+.c-pagination__link {
     display: block;
     width: 0.75rem;
     height: 0.75rem;
@@ -19,8 +19,8 @@
     background: $color-white;
 }
 
-.c-paginator__prev,
-.c-paginator__next {
+.c-pagination__prev,
+.c-pagination__next {
     svg {
         vertical-align: middle;
         max-width: 100%;
@@ -28,7 +28,7 @@
     }
 }
 
-.c-paginator--disabled {
+.c-pagination--disabled {
     opacity: 0.5;
 }
 

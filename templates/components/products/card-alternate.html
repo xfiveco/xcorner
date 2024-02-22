@@ -61,7 +61,7 @@
         {{/if}}
 
         <a 
-            class="c-card__image"
+            class="c-card__image-wrapper"
             href="{{url}}"
             aria-label="{{> components/products/product-info}}"
             {{#if settings.data_tag_enabled}} 
@@ -72,6 +72,7 @@
                 image=image
                 fallback_size=theme_settings.product_gallery_size
                 default_image=theme_settings.default_image_product
+                class="c-card__image"
             }}
         </a>
         {{> components/common/wishlist-add add_to_wishlist_url=add_to_wishlist_url}}

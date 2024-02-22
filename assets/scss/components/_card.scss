@@ -21,15 +21,15 @@
     overflow: hidden;
 }
 
-.c-card__image {
+.c-card__image-wrapper {
     display: block;
     aspect-ratio: 17.75 / 26.5;
+}
 
-    img {
-        width: auto;
-        height: 100%;
-        object-fit: cover;
-    }
+.c-card__image {
+    width: auto;
+    height: 100%;
+    object-fit: cover;
 }
 
 .c-card__price {
