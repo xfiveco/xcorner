@@ -16,9 +16,9 @@ blog:
 
 {{#partial "page"}}
     {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
-    <section>
+    <section class="p-blog">
         {{#unless theme_settings.hide_blog_page_heading }}
-            <h1>
+            <h1 class="p-page__title">
                 {{ blog.name }}
             </h1>
         {{/unless}}
