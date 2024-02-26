@@ -36,18 +36,23 @@ export default function startSwiper(context) {
 
     const carouselParams = {
         direction: 'horizontal',
-        modules: [Navigation],
+        modules: [Navigation, Pagination],
         allowSlideNext: true,
         allowSlidePrev: true,
-        slidesPerView: 3,
+        slidesPerView: 4,
+        spaceBetween: 48,
         speed: 500,
-        loop: true,
+        loop: false,
         autoplay: {
             delay: 3000,
         },
         navigation: {
             nextEl: '.js-swiper-btn-next',
             prevEl: '.js-swiper-btn-prev',
+        },
+        pagination: {
+            el: '.js-swiper-pagination',
+            clickable: true,
         },
     }
 
@@ -85,10 +90,6 @@ export default function startSwiper(context) {
 
     if (q$('.js-featured-swiper') !== null) {
         new Swiper('.js-featured-swiper', carouselParams)
-    }
-
-    if (q$('.js-top-swiper') !== null) {
-        new Swiper('.js-top-swiper', carouselParams)
     }
 
     if (q$('.js-new-swiper') !== null) {

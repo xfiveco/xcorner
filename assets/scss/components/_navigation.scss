@@ -14,7 +14,7 @@
         padding: 1.5rem 3rem;
     }
 
-    @include bp(large) {
+    @include bp(xlarge) {
         padding: 1.5rem 0;
     }
 }
@@ -75,6 +75,7 @@
 
     @include bp(medium) {
         display: inline-block;
+        padding: 0;
     }
 }
 

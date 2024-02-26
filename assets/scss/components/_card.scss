@@ -65,3 +65,18 @@
 .c-card__rating {
     margin: 0;
 }
+
+.c-card__tag {
+    position: absolute;
+    bottom: rem-calc(12px);
+    left: rem-calc(12px);
+    padding: rem-calc(4px) rem-calc(8px);
+    border-radius: rem-calc(2px);
+    background-color: $color-secondary-50;
+    color: $color-secondary-300;
+    font-family: $font-semi-bold;
+    font-weight: 600;
+    font-size: rem-calc(14px);
+    line-height: rem-calc(16px);
+    text-align: center;
+}

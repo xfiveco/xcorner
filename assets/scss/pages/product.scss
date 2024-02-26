@@ -21,6 +21,10 @@
             'image header'
             'image info';
     }
+
+    .c-grid-list & {
+        display: flex;
+    }
 }
 
 .c-product__title {
@@ -31,6 +35,7 @@
 }
 
 .c-product__image-wrapper {
+    position: relative;
     margin: 0;
 }
 
@@ -114,9 +119,16 @@
 }
 
 .c-product__pricing {
+    display: flex;
+    gap: rem-calc(8px);
+
     .c-price__without-tax {
         font-size: rem-calc(32px);
         line-height: rem-calc(40px);
+
+        &--non-sale {
+            font-size: rem-calc(24px);
+        }
     }
 }
 
@@ -144,4 +156,19 @@
 
 .c-product__info {
     grid-area: info;
+}
+
+.c-product__tag {
+    position: absolute;
+    top: rem-calc(24px);
+    left: rem-calc(24px);
+    padding: rem-calc(4px) rem-calc(8px);
+    border-radius: rem-calc(2px);
+    background-color: $color-secondary-50;
+    color: $color-secondary-300;
+    font-family: $font-semi-bold;
+    font-weight: 600;
+    font-size: rem-calc(14px);
+    line-height: rem-calc(16px);
+    text-align: center;
 }
