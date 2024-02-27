@@ -1,0 +1,33 @@
+.c-search__wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: rem-calc(48px);
+
+    @include bp(medium) {
+        flex-direction: row;
+    }
+}
+
+.c-search__facets {
+    width: 100%;
+    min-width: 284px;
+}
+
+.c-search__results-heading {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: rem-calc(481px);
+    margin-inline: auto;
+}
+
+.c-search__heading {
+    font-family: $font-semi-bold;
+    font-size: rem-calc(16px);
+    font-weight: 600;
+    line-height: rem-calc(24px);
+    letter-spacing: 0;
+    text-align: left;
+    margin-bottom: rem-calc(8px);
+}
