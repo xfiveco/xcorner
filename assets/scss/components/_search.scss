@@ -11,7 +11,7 @@
 
 .c-search__facets {
     width: 100%;
-    min-width: 284px;
+    min-width: rem-calc(280px);
     display: none;
 
     @include bp(medium) {
@@ -31,7 +31,7 @@
     width: 100%;
 
     @include bp(medium) {
-        max-width: rem-calc(481px);
+        max-width: rem-calc(480px);
     }
 }
 
