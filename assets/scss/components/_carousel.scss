@@ -2,6 +2,9 @@
    #CAROUSEL
    ========================================================================== */
 
+$swiper-arrow-left-purple: '../icons/arrow-left-purple.svg';
+$swiper-arrow-right-purple: '../icons/arrow-right-purple.svg';
+
 .c-carousel {
     @include container();
 
@@ -34,9 +37,6 @@
         margin-bottom: rem-calc(61px);
     }
 }
-
-$swiper-arrow-left-purple: '../icons/arrow-left-purple.svg';
-$swiper-arrow-right-purple: '../icons/arrow-right-purple.svg';
 
 .c-carousel__navigation {
     margin: rem-calc(48px) auto;
