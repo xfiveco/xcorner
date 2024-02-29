@@ -54,10 +54,13 @@
             <div>
                 <button
                     data-wait-message="{{lang 'products.adding_to_cart'}}"
-                    class="c-button c-button--primary js-form-action-add-to-cart"
+                    class="c-button c-button--primary c-button__add-to-cart js-form-action-add-to-cart"
                     type="submit"
                     value="{{#if product.pre_order}}{{lang 'products.pre_order'}}{{else}}{{lang 'products.add_to_cart'}}{{/if}}"
                 >
+                    <svg width="20" height="22" viewBox="0 0 20 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M1 5L4 1H16L19 5M1 5V19C1 19.5304 1.21071 20.0391 1.58579 20.4142C1.96086 20.7893 2.46957 21 3 21H17C17.5304 21 18.0391 20.7893 18.4142 20.4142C18.7893 20.0391 19 19.5304 19 19V5M1 5H19M14 9C14 10.0609 13.5786 11.0783 12.8284 11.8284C12.0783 12.5786 11.0609 13 10 13C8.93913 13 7.92172 12.5786 7.17157 11.8284C6.42143 11.0783 6 10.0609 6 9" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
                     {{#if product.pre_order}}
                         {{lang 'products.pre_order'}}
                     {{else}}

@@ -1,50 +1,5 @@
 <form action="{{product.add_to_wishlist_url}}" class="js-wishlist-add c-wishlist-dropdown" method="post">
-    <a 
-        aria-controls="wishlist-dropdown"
-        aria-expanded="false"
-        class="c-button js-dropdown-menu-button"
-        data-dropdown="wishlist-dropdown"
-        href="#"
-    >
-        <span>
-            {{lang 'account.wishlists.add_item'}}
-        </span>
-        <svg>
-            <use href="#icon-chevron-down" />
-        </svg>
-    </a>
-
-    <ul 
-        aria-hidden="true" 
-        class="o-list-bare js-dropdown-menu"
-        id="wishlist-dropdown"
-    >
-        {{#if customer.wishlists}}
-            {{#each customer.wishlists}}
-                <li>
-                    <button 
-                        class="c-button{{#if this.num_items '!==' '0'}} button-has-items{{/if}}"
-                        formaction="{{this.add_url}}&product_id={{../product.id}}"
-                        type="submit"
-                    >
-                        {{this.name}}
-                    </button>
-                </li>
-            {{/each}}
-        {{else}}
-            <li>
-                <button class="c-button" type="submit">
-                    {{lang 'account.wishlists.add_to_default'}}
-                </button>
-            </li>
-        {{/if}}
-        <li>
-            <a 
-                class="c-button" 
-                href="/wishlist.php?action=addwishlist&product_id={{product.id}}"
-            >
-                {{lang 'account.wishlists.create_new'}}
-            </a>
-        </li>
-    </ul>
+    <button class="c-button c-button--secondary" type="submit">
+        {{lang 'account.wishlists.add_to_default'}}
+    </button>
 </form>
