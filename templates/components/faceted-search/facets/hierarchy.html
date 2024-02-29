@@ -19,12 +19,7 @@
                             rel="nofollow"
                             data-id="{{id}}"
                         >
-                            {{{sanitize title}}}
-                            {{#if ../show_product_counts}}
-                                <span>
-                                    ({{count}})
-                                </span>
-                            {{/if}}
+                            {{strReplace (sanitize title) "(dropdown)" ""}}
                         </a>
                         {{#if children}}
                             {{> components/faceted-search/facets/hierarchy-children children}}

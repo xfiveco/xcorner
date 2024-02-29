@@ -16,161 +16,57 @@ product_results:
 
 {{#partial "page"}}
 {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
-<section>
+
+    <h1 class="p-common__title">{{lang 'search.results.title'}}</h1>
     {{#if forms.search.query}}
-        <div class="js-search-results-heading">
+        <div class="js-search-results-heading c-search__results-heading">
             {{>components/search/heading}}
+            {{>components/common/search-box}}
         </div>
     {{/if}}
-    <nav>
-        <span id="search-tabs-widget-description" class="aria-description-hidden">
-            {{lang 'search.tabs_accesibility_hint'}}
-        </span>
-        <ul role="tablist" class="js-search-page-tabs">
-            <li role="presentation">
-                <a 
-                    aria-describedby="search-tabs-widget-description"
-                    role="tab" 
-                    aria-controls="product-listing-container"
-                    class="js-nav-bar-action js-product-results-toggle js-search-results-product-count" 
-                    href="{{forms.search.product_url}}"
-                >
-                    {{>components/search/product-count}}
-                </a>
-            </li>
-            <li role="presentation">
-                <a 
-                    aria-describedby="search-tabs-widget-description" 
-                    role="tab" 
-                    aria-controls="search-results-content"
-                    class="js-nav-bar-action js-content-results-toggle js-search-results-content-count" 
-                    href="{{forms.search.content_url}}">
-                    {{>components/search/content-count}}
-                </a>
-            </li>
+
+    <button class="c-button c-button--secondary c-search__hide-filters js-search-hide-filters">
+        <span class="c-search__hide-filters-label js-hide-filters-label">{{lang 'search.faceted.hide-filters'}}</span>
+        <span class="c-search__hide-filters-label js-hide-filters-label is-open">{{lang 'search.faceted.show-filters'}}</span>
+        <svg width="15" height="8" viewBox="0 0 15 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M13.5 7L7.5 1L1.5 7" stroke="#5A64C1" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+    </button>
+
+    <section class="c-search__wrapper">
+        <div class="c-search__facets js-search-facets">
             {{#unless product_results.faceted_search_enabled}}
-                {{#if false}}
-                    <li>
-                        <a 
-                            class="js-nav-bar-action js-toggle-link" 
-                            data-collapsible="advanced-search-content" 
-                            href="#" 
-                            aria-controls="advanced-search-content" 
-                            aria-expanded="false"
-                        >
-                            <span>
-                                {{lang 'forms.search.hide'}}
-                            </span>
-                            <span>
-                                {{lang 'forms.search.show'}}
-                            </span>
-                        </a>
-                    </li>
-                {{/if}}
+                {{>components/search/advanced-search}}
             {{/unless}}
-        </ul>
-    </nav>
-    {{#unless product_results.faceted_search_enabled}}
-        {{>components/search/advanced-search}}
-    {{/unless}}
-</section>
-
-<section>
-    {{#if product_results.faceted_search_enabled}}
-        <aside 
-            class="js-faceted-search-container {{#if forms.search.section '!=' 'product'}}u-hidden-visually{{/if}}" 
-        >
-            {{> components/faceted-search/index product_results}}
-        </aside>
-    {{/if}}
-    <div>
-        {{#if forms.search.has_suggestions}}
-            <div>
-                <div>
-                    {{#if forms.search.suggested_query}}
-                        <div>
-                            {{lang 'forms.search.did_you_mean'}} 
-                            <strong>
-                                {{forms.search.suggested_query.query}}
-                            </strong>
-                            <a 
-                                href="{{forms.search.suggested_query.url}}" 
-                            >
-                                {{lang 'forms.search.refine'}}
-                            </a>
-                        </div>
-
-                        {{#if result_count '===' 0}}
-                            <div>
-                                <p>
-                                    {{lang 'forms.search.your_search_for'}}
-                                    "<strong>{{{sanitize forms.search.query}}}</strong>"
-                                    {{lang 'forms.search.no_match'}}
-                                </p>
-                            </div>
-                        {{/if}}
-                    {{/if}}
-
-                    {{#if category_results.length}}
-                        <div>
-                            <div>{{lang 'forms.search.categories'}}</div>
-                            <ul>
-                                {{#each category_results}}
-                                    <li>
-                                        {{#each this}}
-                                            <a href="{{url}}">{{name}}</a>
-                                            {{#unless @last}} > {{/unless}}
-                                        {{/each}}
-                                    </li>
-                                {{/each}}
-                            </ul>
-                        </div>
-                    {{/if}}
-
-                    {{#if brand_results.length}}
-                        <div>
-                            <div>{{lang 'forms.search.brand'}}</div>
-                            {{#each brand_results}}
-                                <a href="{{url}}">{{name}}</a>
-                                {{#unless @last}}, {{/unless}}
-                            {{/each}}
-                        </div>
-                    {{/if}}
-
-                    {{#if result_count '===' 0}}
-                        <div>
-                            <div>{{lang 'forms.search.suggestions.title'}}</div>
-                            <ul>
-                                <li>{{lang 'forms.search.suggestions.line1'}}</li>
-                                <li>{{lang 'forms.search.suggestions.line2'}}</li>
-                                <li>{{lang 'forms.search.suggestions.line3'}}</li>
-                            </ul>
-                        </div>
-                    {{/if}}
-                </div>
+            {{#if product_results.faceted_search_enabled}}
+                <aside 
+                    class="js-faceted-search-container {{#if forms.search.section '!=' 'product'}}u-hidden-visually{{/if}}" 
+                >
+                    {{> components/faceted-search/index product_results}}
+                </aside>
+            {{/if}}
+        </div>
+        <div class="c-search__results">
+            <div 
+                role="tabpanel" 
+                class="js-search-results-content"
+                aria-labelledby="search-results-content-count" 
+                {{#if forms.search.section '!=' 'content'}}class="u-hidden-visually"{{/if}}
+            >
+                {{> components/search/content-listing}}
             </div>
-        {{/if}}
 
-        <div 
-            role="tabpanel" 
-            class="js-search-results-content"
-            aria-labelledby="search-results-content-count" 
-            {{#if forms.search.section '!=' 'content'}}class="u-hidden-visually"{{/if}}
-        >
-            {{> components/search/content-listing}}
+            <div 
+                role="tabpanel" 
+                class="js-product-listing-container {{#if forms.search.section '!=' 'product'}}u-hidden-visually{{/if}}"
+                aria-labelledby="search-results-product-count" 
+            >
+                {{> components/search/product-listing}}
+            </div>
+
+            {{{region name="search_below_content"}}}
         </div>
-
-        <div 
-            role="tabpanel" 
-            class="js-product-listing-container {{#if forms.search.section '!=' 'product'}}u-hidden-visually{{/if}}"
-            aria-labelledby="search-results-product-count" 
-        >
-            {{> components/search/product-listing}}
-        </div>
-
-        {{{region name="search_below_content"}}}
-    </div>
-</section>
+    </section>
 
 {{/partial}}
 {{> layout/base}}

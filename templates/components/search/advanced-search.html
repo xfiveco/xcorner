@@ -7,19 +7,19 @@
         <div>
             <fieldset>
                 <div>
-                    <label for="search_query_adv">
+                    <label class="c-form__label" for="search_query_adv">
                         {{lang 'forms.search.query' }}
                         <small>
                             {{lang 'common.required' }}
                         </small>
                     </label>
-                    <input type="text" name="search_query_adv" data-error-message="{{lang 'search.error.empty_field'}}" id="search_query_adv" value="{{forms.search.query}}">
+                    <input class="c-form__input" type="text" name="search_query_adv" data-error-message="{{lang 'search.error.empty_field'}}" id="search_query_adv" value="{{forms.search.query}}">
                 </div>
                 <div>
-                    <label for="search-form-brand">
+                    <label class="c-form__label" for="search-form-brand">
                         {{lang 'forms.search.brand' }}
                     </label>
-                    <select name="brand" id="search-form-brand">
+                    <select class="c-form__input c-form__input--select" name="brand" id="search-form-brand">
                         <option value="">{{lang 'common.no_preference'}}</option>
                         {{#each forms.search.brands_list}}
                             <option value="{{id}}" {{#if ../forms.search.values.brand '==' id}}selected{{/if}}>
@@ -31,14 +31,14 @@
             </fieldset>
             <fieldset>
                 <div>
-                    <label>
+                    <label class="c-form__label">
                         {{lang 'forms.search.categories' }}
                     </label>
                     <div class="js-search-category-tree"></div>
                 </div>
                 <div>
-                    <input type="checkbox" name="searchsubs" value="ON" id="search-form-searchsubs" checked>
-                    <label for="search-form-searchsubs">
+                    <input class="c-form__checkbox-input" type="checkbox" name="searchsubs" value="ON" id="search-form-searchsubs" checked>
+                    <label class="c-form__checkbox-label" for="search-form-searchsubs">
                         {{lang 'forms.search.searchsubs'}}
                     </label>
                 </div>
@@ -60,7 +60,7 @@
                     <span>
                         {{lang 'common.from'}}
                     </span>
-                    <input type="number" step="any" name="price_from" id="search-form-price-from" value="{{forms.search.values.price_from}}">
+                    <input class="c-form__input" type="number" step="any" name="price_from" id="search-form-price-from" value="{{forms.search.values.price_from}}">
                 </label>
                 <label>
                     <span class="u-hidden-visually">
@@ -69,7 +69,7 @@
                     <span>
                         {{lang 'common.to'}}
                     </span>
-                    <input type="number" step="any" name="price_to" id="search-form-price-to" value="{{forms.search.values.price_to}}">
+                    <input class="c-form__input" type="number" step="any" name="price_to" id="search-form-price-to" value="{{forms.search.values.price_to}}">
                 </label>
             </div>
         </div>
@@ -79,10 +79,10 @@
         </div>
         <div>
             <div>
-                <label for="search-form-featured">
+                <label class="c-form__label" for="search-form-featured">
                     {{lang 'forms.search.featured_products.title' }}
                 </label>
-                <select name="featured" id="search-form-featured">
+                <select class="c-form__input c-form__input--select" name="featured" id="search-form-featured">
                     <option value="">
                         {{lang 'common.no_preference'}}
                     </option>
@@ -95,10 +95,10 @@
                 </select>
             </div>
             <div>
-                <label for="search-form-shipping">
+                <label class="c-form__label" for="search-form-shipping">
                     {{lang 'forms.search.free_shipping.title' }}
                 </label>
-                <select name="shipping" id="search-form-shipping">
+                <select class="c-form__input c-form__input--select" name="shipping" id="search-form-shipping">
                     <option value="">
                         {{lang 'common.no_preference'}}
                     </option>

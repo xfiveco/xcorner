@@ -183,10 +183,22 @@ $input-transition: all 0.2s ease-in-out;
                 border-color: $color-primary-300;
             }
         }
+
+        + .c-form__checkbox-label-bold {
+            font-family: $font-semi-bold;
+            font-weight: 600;
+            font-size: rem-calc(16px);
+            line-height: rem-calc(24px);
+        }
     }
 }
 
 .c-form__checkbox-label {
+    font-family: $font-regular;
+    font-weight: 400;
+    font-size: rem-calc(16px);
+    line-height: rem-calc(24px);
+
     @include pseudoElementHoverFocusStyles();
 
     &:not(:first-child) {
