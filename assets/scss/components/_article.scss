@@ -1,4 +1,4 @@
-.c-blog-article__image {    
+.c-blog-article__image {
     border-radius: rem-calc(4px);
 }
 
@@ -14,7 +14,7 @@
     @include bp(medium) {
         font-size: rem-calc(42px);
         line-height: rem-calc(56px);
-        margin-bottom: rem-calc(31px);
+        margin-bottom: rem-calc(30px);
     }
 }
 
@@ -33,7 +33,7 @@
 }
 
 .c-blog-article__container {
-    max-width: rem-calc(782px);
+    max-width: rem-calc(780px);
     margin: 0 auto;
 }
 
