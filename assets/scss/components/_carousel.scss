@@ -1,7 +1,9 @@
-
 /* ==========================================================================
    #CAROUSEL
    ========================================================================== */
+
+$swiper-arrow-left-purple: '../icons/arrow-left-purple.svg';
+$swiper-arrow-right-purple: '../icons/arrow-right-purple.svg';
 
 .c-carousel {
     @include container();
@@ -18,4 +20,68 @@
     border: solid 1px #aaa;
     padding: rem-calc(10px);
     cursor: pointer;
+}
+
+.c-carousel__title {
+    color: $color-black;
+    font-family: $font-semi-bold;
+    font-style: normal;
+    font-weight: 600;
+    font-size: rem-calc(32px);
+    line-height: rem-calc(40px);
+    margin-bottom: rem-calc(28px);
+
+    @include bp(medium) {
+        font-size: rem-calc(42px);
+        line-height: rem-calc(56px);
+        margin-bottom: rem-calc(61px);
+    }
+}
+
+.c-carousel__navigation {
+    margin: rem-calc(48px) auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: rem-calc(24px);
+    max-width: fit-content;
+
+    .c-carousel__btn-next,
+    .c-carousel__btn-prev {
+        width: rem-calc(24px);
+        height: rem-calc(24px);
+        border: 0 !important;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+    }
+
+    .c-carousel__btn-next {
+        background-image: url($swiper-arrow-right-purple);
+    }
+
+    .c-carousel__btn-prev {
+        background-image: url($swiper-arrow-left-purple);
+    }
+
+    .c-carousel__pagination {
+        border: 0 !important;
+        padding: 0 !important;
+        display: flex;
+        justify-content: space-between;
+        gap: rem-calc(24px);
+
+        .swiper-pagination-bullet {
+            background-color: transparent;
+            opacity: 1;
+            border: 2px solid $color-primary-300;
+            width: rem-calc(12px);
+            height: rem-calc(12px);
+            margin: 0 !important;
+
+            &-active {
+                background-color: $color-primary-300;
+            }
+        }
+    }
 }

@@ -14,7 +14,7 @@
         padding: 1.5rem 3rem;
     }
 
-    @include bp(large) {
+    @include bp(xlarge) {
         padding: 1.5rem 0;
     }
 }
@@ -48,14 +48,6 @@
     }
 }
 
-.c-navigation__label {
-    display: none;
-
-    @include bp(medium) {
-        display: inline-block;
-    }
-}
-
 .c-navigation__link {
     display: flex;
     justify-content: space-between;
@@ -65,7 +57,7 @@
 
     color: $color-black;
     text-align: center;
-    font-family: $font-regular;
+    font-family: $font-semi-bold;
     font-size: 1rem;
     font-style: normal;
     font-weight: 600;
@@ -74,6 +66,16 @@
 
     svg {
         display: inline-block !important;
+    }
+}
+
+.c-navigation__label {
+    @extend .c-navigation__link;
+    display: none;
+
+    @include bp(medium) {
+        display: inline-block;
+        padding: 0;
     }
 }
 
@@ -119,7 +121,7 @@
 
     color: $color-neutrals-500;
     text-align: center;
-    font-family: $font-regular;
+    font-family: $font-semi-bold;
     font-size: 1.25rem;
     font-style: normal;
     font-weight: 600;

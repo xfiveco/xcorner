@@ -44,6 +44,12 @@
                 data-zoom-image="{{getImageSrcset product.main_image (cdn theme_settings.default_image_product) 1x=theme_settings.zoom_size }}"
             {{/if}}
         >
+            {{#each product.custom_fields}}
+                {{#all (if name '===' 'top_seller') (if value '===' 'yes')}}
+                        <span class="c-product__tag">Top Seller</span>
+                {{/all}}
+            {{/each}}
+
             {{!-- Remove the surrounding a-element if there is no main image. --}}
             {{#if product.main_image}}
                 <a 

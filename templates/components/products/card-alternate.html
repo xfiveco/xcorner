@@ -75,24 +75,27 @@
                 class="c-card__image"
             }}
         </a>
+        {{#each custom_fields}}
+            {{#all (if name '===' 'top_seller') (if value '===' 'yes')}}
+                    <span class="c-card__tag">Top Seller</span>
+            {{/all}}
+        {{/each}}
         {{> components/common/wishlist-add add_to_wishlist_url=add_to_wishlist_url}}
     </figure>
     <div class="c-card__product-information">
-        {{#if show_compare}}
-            <div class="js-form-field c-form__checkbox-field">
-                <input 
-                    class="c-form__checkbox-input"
-                    type="checkbox" 
-                    name="products[]" 
-                    value="{{id}}" 
-                    id="compare-{{id}}" 
-                    data-compare-id="{{id}}"
-                >
-                <label class="c-form__checkbox-label" for="compare-{{id}}">
-                    {{lang 'products.compare'}} 
-                </label>
-            </div>
-        {{/if}}
+        <div class="js-form-field c-form__checkbox-field">
+            <input 
+                class="c-form__checkbox-input"
+                type="checkbox" 
+                name="products[]" 
+                value="{{id}}" 
+                id="compare-{{id}}" 
+                data-compare-id="{{id}}"
+            >
+            <label class="c-form__checkbox-label" for="compare-{{id}}">
+                {{lang 'products.compare'}} 
+            </label>
+        </div>
         <a 
             class="c-card__title"
             aria-label="{{> components/products/product-info}}"

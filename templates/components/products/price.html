@@ -40,11 +40,10 @@ If you are making a change here or in price-range.html, you probably want to mak
         <div class="js-non-sale-price-without-tax c-price__without-tax c-price__without-tax--non-sale{{#if price.with_tax}} price-section-minor{{/if}}" {{#unless price.non_sale_price_without_tax}}style="display: none;"{{/unless}}>
             <span>
                 {{> components/products/price-label
-                    label_value=theme_settings.pdp_non_sale_price_label
                     fallback=(lang "page_builder.pdp_non_sale_price_label")
                 }}
             </span>
-            <span class="js-product-non-sale-price-without-tax c-price__without-tax">
+            <span class="js-product-non-sale-price-without-tax c-price__without-tax c-price__without-tax--non-sale">
                 {{price.non_sale_price_without_tax.formatted}}
             </span>
         </div>
@@ -54,7 +53,6 @@ If you are making a change here or in price-range.html, you probably want to mak
             </span>
             <span class="js-price-now-label" {{#unless price.non_sale_price_without_tax}}style="display: none;"{{/unless}}>
                 {{> components/products/price-label
-                    label_value=theme_settings.pdp_sale_price_label
                     fallback=(lang "page_builder.pdp_sale_price_label")
                 }}
             </span>
