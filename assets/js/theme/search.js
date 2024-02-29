@@ -8,6 +8,8 @@ import collapsibleFactory from './common/collapsible'
 import nod from './common/nod'
 import q$, { q$$ } from './global/selector'
 import trigger from './common/utils/trigger'
+import categoryFilters from './custom/category-filters'
+import searchFilterToggle from './custom/search-filter-toggle'
 
 const leftArrowKey = 37
 const rightArrowKey = 39
@@ -43,11 +45,11 @@ export default class Search extends CatalogPage {
         this.$facetedSearchContainer?.classList.remove('u-hidden-visually')
         this.$contentResultsContainer.classList.add('u-hidden-visually')
 
-        q$('.js-content-results-toggle').classList.remove('js-nav-bar-action-color-active')
-        q$('.js-content-results-toggle').classList.add('js-nav-bar-action')
+        q$('.js-content-results-toggle')?.classList.remove('js-nav-bar-action-color-active')
+        q$('.js-content-results-toggle')?.classList.add('js-nav-bar-action')
 
-        q$('.js-product-results-toggle').classList.remove('js-nav-bar-action')
-        q$('.js-product-results-toggle').classList.add('js-nav-bar-action-color-active')
+        q$('.js-product-results-toggle')?.classList.remove('js-nav-bar-action')
+        q$('.js-product-results-toggle')?.classList.add('js-nav-bar-action-color-active')
 
         this.activateTab(q$('.js-product-results-toggle'))
 
@@ -71,11 +73,11 @@ export default class Search extends CatalogPage {
         this.$productListingContainer.classList.add('u-hidden-visually')
         this.$facetedSearchContainer?.classList.add('u-hidden-visually')
 
-        q$('.js-product-results-toggle').classList.remove('js-nav-bar-action-color-active')
-        q$('.js-product-results-toggle').classList.add('js-nav-bar-action')
+        q$('.js-product-results-toggle')?.classList.remove('js-nav-bar-action-color-active')
+        q$('.js-product-results-toggle')?.classList.add('js-nav-bar-action')
 
-        q$('.js-content-results-toggle').classList.remove('js-nav-bar-action')
-        q$('.js-content-results-toggle').classList.add('js-nav-bar-action-color-active')
+        q$('.js-content-results-toggle')?.classList.remove('js-nav-bar-action')
+        q$('.js-content-results-toggle')?.classList.add('js-nav-bar-action-color-active')
 
         this.activateTab(q$('.js-content-results-toggle'))
 
@@ -140,8 +142,10 @@ export default class Search extends CatalogPage {
     }
 
     onReady() {
+        categoryFilters()
         compareProducts(this.context)
         this.arrangeFocusOnSortBy()
+        searchFilterToggle()
 
         const $searchForm = q$('.js-advanced-search-form')
         // const $categoryTreeContainer = $searchForm.querySelector('.js-search-category-tree')
@@ -162,17 +166,17 @@ export default class Search extends CatalogPage {
         // Init collapsibles
         collapsibleFactory()
 
-        q$('.js-product-results-toggle').addEventListener('click', (event) => {
+        q$('.js-product-results-toggle')?.addEventListener('click', (event) => {
             event.preventDefault()
             this.showProducts()
         })
 
-        q$('.js-content-results-toggle').addEventListener('click', (event) => {
+        q$('.js-content-results-toggle')?.addEventListener('click', (event) => {
             event.preventDefault()
             this.showContent()
         })
 
-        q$('.js-search-page-tabs').addEventListener('keyup', this.onTabChangeWithArrows)
+        q$('.js-search-page-tabs')?.addEventListener('keyup', this.onTabChangeWithArrows)
 
         if (this.$productListingContainer.querySelectorAll('li.js-product').length === 0 || url.searchParams.get('section') === 'content') {
             this.showContent(false)
@@ -180,7 +184,7 @@ export default class Search extends CatalogPage {
             this.showProducts(false)
         }
 
-        const validator = this.initValidation($searchForm).bindValidation($searchForm.querySelector('#search_query_adv'))
+        const validator = this.initValidation($searchForm).bindValidation($searchForm?.querySelector('#search_query_adv'))
 
         this.context.categoryTree.forEach((node) => {
             treeData.push(this.formatCategoryTreeForJSTree(node))
@@ -189,7 +193,7 @@ export default class Search extends CatalogPage {
         this.categoryTreeData = treeData
         // this.createCategoryTree($categoryTreeContainer)
 
-        $searchForm.addEventListener('submit', (event) => {
+        $searchForm?.addEventListener('submit', (event) => {
             // TODO: Add a jquer free jstree
             // const selectedCategoryIds = $categoryTreeContainer.jstree().get_selected()
 
@@ -343,7 +347,7 @@ export default class Search extends CatalogPage {
             this.validator.add({
                 selector: $element,
                 validate: 'presence',
-                errorMessage: $element.dataset.errorMessage,
+                errorMessage: $element?.dataset?.errorMessage,
             })
         }
 

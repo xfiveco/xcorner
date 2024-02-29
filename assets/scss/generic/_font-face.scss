@@ -10,7 +10,6 @@
 @font-face {
     font-family: 'Assistant Regular';
     font-style: normal;
-    font-weight: 600;
     font-display: swap;
     src: url(../fonts/assistant-regular.woff) format('woff');
 }
@@ -18,14 +17,13 @@
 @font-face {
     font-family: 'Assistant Semi Bold';
     font-style: normal;
-    font-weight: 700;
     font-display: swap;
     src: url(../fonts/assistant-semibold.woff) format('woff');
 }
 
-$font-regular: 'Assistant', sans-serif;
+$font-regular: 'Assistant Regular', sans-serif;
 $font-semi-bold: 'Assistant Semi Bold', sans-serif;
 
 * {
-    font-family: 'Assistant', sans-serif;
+    font-family: $font-regular;
 }
