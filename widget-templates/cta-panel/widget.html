@@ -1,0 +1,32 @@
+<style>
+    .c-cta-panel-{{_.id}} {
+        margin-top: {{desktop_margin.top.value}}{{desktop_margin.top.type}};
+        margin-bottom: {{desktop_margin.bottom.value}}{{desktop_margin.bottom.type}};
+    }
+
+    @media screen and (max-width: 800px) {
+        .c-cta-panel-{{_.id}} {
+            margin-top: {{mobile_margin.top.value}}{{mobile_margin.top.type}};
+            margin-bottom: {{mobile_margin.bottom.value}}{{mobile_margin.bottom.type}};
+        }
+    }
+</style>
+
+<div class='c-cta-panel c-cta-panel-{{_.id}}'>
+    <div class="c-cta-panel__image-wrapper">
+        {{#if image}}
+            <img class="c-cta-panel__image" src="{{image.src}}" alt="{{title}}" loading="lazy" />
+        {{/if}}
+    </div>
+    <div class="c-cta-panel__content">
+        {{#if title}}
+            <h2 class="c-cta-panel__title">{{title}}</h2>
+        {{/if}}
+        {{#if text}}
+            <p class="c-cta-panel__text">{{text}}</p>
+        {{/if}}
+        {{#and button_label button_url}}
+            <a href="{{button_url}}" class="c-button c-button--primary">{{button_label}}</a>
+        {{/and}}
+    </div>
+</div>
