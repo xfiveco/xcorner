@@ -1,0 +1,64 @@
+.c-image-banner {
+    position: relative;
+    height: rem-calc(424px);
+    width: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    gap: rem-calc(12px);
+    padding: rem-calc(24px);
+
+    @include bp(small) {
+        height: rem-calc(484px);
+    }
+
+    @include bp(medium) {
+        height: rem-calc(648px);
+    }
+
+    &::before {
+        position: absolute;
+        display: block;
+        content: '';
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(180deg, rgba($color-nude, 0) 50%, rgba($color-nude, 0.8) 100%);
+        z-index: $z-index-low;
+    }
+}
+
+.c-image-banner__title {
+    color: $color-white;
+    font-family: $font-semi-bold;
+    font-size: rem-calc(32px);
+    line-height: rem-calc(40px);
+    font-weight: 600;
+    letter-spacing: 0;
+    text-align: center;
+    margin: 0;
+    z-index: $z-index-mid-low;
+
+    @include bp(small) {
+        font-size: rem-calc(42px);
+        line-height: rem-calc(56px);
+    }
+}
+
+.c-image-banner__text {
+    color: $color-white;
+    font-family: $font-regular;
+    font-size: rem-calc(18px);
+    line-height: rem-calc(24px);
+    font-weight: 400;
+    letter-spacing: 0;
+    text-align: center;
+    margin: 0;
+    z-index: $z-index-mid-low;
+}
