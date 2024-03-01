@@ -1,0 +1,92 @@
+[
+    {
+      "type": "tab",
+      "label": "Settings",
+      "sections": [
+        {
+          "label": "Content",
+          "settings": [
+                {
+                  "type": "input",
+                  "id": "title",
+                  "label": "Title",
+                  "default": "Title"
+                },
+                {
+                  "type": "input",
+                  "id": "text",
+                  "label": "Text",
+                  "default": "I am a sample text"
+                },
+                {
+                  "type": "input",
+                  "id": "button_label",
+                  "label": "Button Label",
+                  "default": "Button Label"
+                },
+                {
+                  "type": "input",
+                  "id": "button_url",
+                  "label": "Button URL",
+                  "default": "Button URL"
+                },
+                {
+                  "type": "imageManager",
+                  "label": "Image",
+                  "id": "image",
+                  "default": {
+                      "src": "",
+                      "type": "IMAGE_MANAGER"
+                  }
+                },
+                {
+                  "type": "boxModel",
+                  "label": "Desktop Margin",
+                  "id": "desktop_margin",
+                  "default": {
+                      "top": {
+                          "value": "0",
+                          "type": "px"
+                      },
+                      "right": {
+                          "value": "0",
+                          "type": "px"
+                      },
+                      "bottom": {
+                          "value": "0",
+                          "type": "px"
+                      },
+                      "left": {
+                          "value": "0",
+                          "type": "px"
+                      }
+                  }
+                },
+                {
+                  "type": "boxModel",
+                  "label": "Mobile Margin",
+                  "id": "mobile_margin",
+                  "default": {
+                      "top": {
+                          "value": "0",
+                          "type": "px"
+                      },
+                      "right": {
+                          "value": "0",
+                          "type": "px"
+                      },
+                      "bottom": {
+                          "value": "0",
+                          "type": "px"
+                      },
+                      "left": {
+                          "value": "0",
+                          "type": "px"
+                      }
+                  }
+                }
+            ]
+        }
+      ]
+    }
+  ]

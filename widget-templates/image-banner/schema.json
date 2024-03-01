@@ -15,7 +15,7 @@
             {
                 "type": "input",
                 "id": "text",
-                "label": "text",
+                "label": "Text",
                 "default": "I am a sample text"
             },
             {
