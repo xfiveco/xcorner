@@ -1,5 +1,5 @@
 <article
-    class="c-card__article"
+    class="c-card__article {{class}}"
     data-test="card-{{id}}"
     {{#if settings.data_tag_enabled}}
         data-event-type="{{event}}"
@@ -107,22 +107,24 @@
             {{name}}
         </a>
 
-        {{#and rating show_rating}}
+        {{#if rating}}
             <p class="u-no-margin" data-test-info-type="productRating">
                 <span>
                     {{> components/products/ratings rating_target=name rating=rating}}
                 </span>
                 <a class="c-card__rating-count" href="{{url}}#reviews">({{num_reviews}})</a>
             </p>
-        {{/and}}
+        {{/if}}
 
-        <div class="c-card__price" data-test-info-type="price">
-            {{#or customer (unless settings.hide_price_from_guests)}}
-                {{> components/products/price price=price}}
-            {{else}}
-                {{> components/common/login-for-pricing}}
-            {{/or}}
-        </div>
+        {{#unless hide_price '===' 'true'}}
+            <div class="c-card__price" data-test-info-type="price">
+                {{#or customer (unless settings.hide_price_from_guests)}}
+                    {{> components/products/price price=price}}
+                {{else}}
+                    {{> components/common/login-for-pricing}}
+                {{/or}}
+            </div>
+        {{/unless}}
         {{> components/products/bulk-discount-rates}}
     </div>
 </article>

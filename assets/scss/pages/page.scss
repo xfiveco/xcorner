@@ -13,11 +13,16 @@
 .p-common__title {
     color: $color-black;
     font-family: $font-semi-bold;
-    font-size: 2.625rem;
+    font-size: rem-calc(24px);
+    line-height: rem-calc(40px);
     font-style: normal;
     font-weight: 600;
-    line-height: 1.33;
     margin: 0;
+
+    @include bp(medium) {
+        font-size: rem-calc(42px);
+        line-height: rem-calc(56px);
+    }
 }
 
 .c-login__form {

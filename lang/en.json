@@ -218,7 +218,7 @@
         "sign_in_now": "Sign in now"
     },
     "compare": {
-        "button": "Compare Products",
+        "products": "Compare products",
         "header": "Comparing {products, plural, one {# Product} other {# Products}}",
         "remove": "Remove",
         "no_remove": "At least 2 products are needed to make a valid comparison.",
