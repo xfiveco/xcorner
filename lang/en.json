@@ -135,7 +135,9 @@
             "order_subtotal": "Order subtotal",
             "continue_shopping": "Continue Shopping",
             "view_or_edit_cart": "View or edit your cart",
-            "you_might_also_like": "You may also like"
+            "you_might_also_like": "You may also like",
+            "woohoo": "Woohoo!",
+            "message": " was added to your cart."
         }
     },
     "common": {

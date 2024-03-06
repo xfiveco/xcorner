@@ -169,8 +169,9 @@
 </div>
 
 <div class="js-preview-modal is-modal-large js-reveal c-modal">
-    {{> components/common/modal/modal-close-btn }}
-
-    <div class="js-modal-content"></div>
+    <div class="c-modal__content-wrapper">
+        {{> components/common/modal/modal-close-btn }}
+        <div class="js-modal-content c-modal__content"></div>
+    </div>
     <div class="js-loading-overlay"></div>
 </div>

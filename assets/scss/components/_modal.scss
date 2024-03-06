@@ -1,4 +1,3 @@
-
 /* ==========================================================================
    #MODAL
    ========================================================================== */
@@ -15,13 +14,77 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba(0, 0, 0, 0.411);
+    background: rgba(39, 39, 39, 0.32);
+    backdrop-filter: blur(6px);
     z-index: 10;
     overflow-y: auto;
 }
 
-.c-modal.is-open > button {
+.c-modal__content-wrapper {
+    max-width: 80%;
+    max-width: rem-calc(616px);
+    margin: auto;
+    transform: translateY(50%);
+}
+
+.c-modal__content {
+    border-radius: rem-calc(4px);
+    background: $color-white;
+    max-height: 80%;
+    max-width: rem-calc(616px);
+    padding: rem-calc(48px);
+}
+
+.c-modal__close-button {
     position: absolute;
-    top: rem-calc(10px);
-    right: rem-calc(10px);
+    top: 0;
+    right: 0;
+    background-color: $color-white;
+    border: 0;
+    outline: none;
+    padding: rem-calc(24px);
+    cursor: pointer;
+}
+
+.c-modal__header-title {
+    font-family: $font-semi-bold;
+    font-size: rem-calc(24px);
+    line-height: rem-calc(40px);
+    font-weight: 600;
+    letter-spacing: 0;
+    text-align: left;
+}
+
+.c-modal__button-wrapper {
+    display: flex;
+    gap: rem-calc(12px);
+    align-items: center;
+}
+
+.c-modal__product-name {
+    color: $color-black;
+    font-family: $font-semi-bold;
+    font-size: rem-calc(16px);
+    line-height: rem-calc(24px);
+    font-weight: 600;
+    letter-spacing: 0;
+    text-align: left;
+    margin: 0;
+}
+
+.c-modal__message {
+    color: $color-neutrals-500;
+    font-family: $font-regular;
+    font-size: rem-calc(16px);
+    line-height: rem-calc(24px);
+    font-weight: 400;
+    letter-spacing: 0;
+    text-align: left;
+    margin: 0;
+}
+
+.c-modal__body {
+    display: flex;
+    flex-direction: column;
+    gap: rem-calc(12px);
 }
