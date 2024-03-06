@@ -10,6 +10,7 @@ import CartItemDetails from './common/cart-item-details'
 import q$, { q$$ } from './global/selector'
 import trigger from './common/utils/trigger'
 import toggle from './global/toggle'
+import addReviewsToCartItems from './custom/add-reviews-to-cart-items'
 
 export default class Cart extends PageManager {
     onReady() {
@@ -30,6 +31,10 @@ export default class Cart extends PageManager {
 
         this.setApplePaySupport()
         this.bindEvents()
+
+        const { storefrontApiToken } = this.context
+
+        addReviewsToCartItems(storefrontApiToken)
     }
 
     setApplePaySupport() {

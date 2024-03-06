@@ -1,26 +1,34 @@
 <div data-cart-quantity="{{cart.quantity}}">
     <div class="c-cart__item-wrapper">
         {{#each cart.items}}
-            <div class="js-item-row c-cart__item">
-                <div class="c-cart__item-image">
+            <div class="js-item-row c-cart__item" data-type-product-id="{{product_id}}">
+                <div class="c-cart__item-image-wrapper">
                     {{#if type '==' 'GiftCertificate'}}
                         <img
                             src="{{cdn ../theme_settings.default_image_gift_certificate}}"
                             alt="{{lang 'cart.gift_certificates.gift_certificate'}}"
                             title="{{lang 'cart.gift_certificates.gift_certificate'}}"
+                            class="c-cart__item-image"
                         >
                     {{else}}
                         {{> components/common/image
                             image=image
                             fallback_size=../theme_settings.product_thumb_size
                             default_image=../theme_settings.default_image_product
+                            class="c-cart__item-image"
                         }}
                     {{/if}}
                 </div>
                 <div class="c-cart__item-information">
-                    <a class="c-cart__item-title" href="{{url}}">
-                        {{name}}
-                    </a>
+                    <div class="c-cart__item-head">
+                        <a class="c-cart__item-title" href="{{url}}">
+                            {{name}}
+                        </a>
+                        <div class="c-cart__item-rating-wrapper">
+                            <span class="c-cart__item-rating" role="img" aria-label=""></span>
+                            <a class="c-cart__item-rating-link" href="{{url}}"></a>
+                        </div>
+                    </div>
 
                     {{#if options}}
                         <div class="c-cart__item-options">

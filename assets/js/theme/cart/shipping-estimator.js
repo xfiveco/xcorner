@@ -27,7 +27,7 @@ export default class ShippingEstimator {
             tap: announceInputErrorMessage,
         })
 
-        q$('.js-shipping-estimate-submit', this.$element)?.addEventListener('click', (event) => {
+        q$('.js-shipping-estimate-submit', this.$element).addEventListener('click', (event) => {
             // estimator error messages are being injected in html as a result
             // of user submit; clearing and adding role on submit provides
             // regular announcement of these error messages
@@ -140,7 +140,10 @@ export default class ShippingEstimator {
             // When you change a country, you swap the state/province between an input and a select dropdown
             // Not all countries require the province to be filled
             // We have to remove this class when we swap since nod validation doesn't cleanup for us
-            q$(this.shippingEstimator).querySelector('.js-form-field-success').classList.remove('js-form-field-success')
+            const shippingEstimator = q$(this.shippingEstimator)
+            if (shippingEstimator) {
+                shippingEstimator.querySelector('.js-form-field-success')?.classList.remove('js-form-field-success')
+            }
         })
     }
 
@@ -177,7 +180,7 @@ export default class ShippingEstimator {
             event.preventDefault()
 
             utils.api.cart.getShippingQuotes(params, 'cart/shipping-quotes', (err, response) => {
-                q$('.js-shipping-quotes').innerHTML = response.content
+                q$('.js-shipping-quotes').innerHTML = response?.content
 
                 // bind the select button
                 q$('.js-select-shipping-quote').addEventListener('click', (clickEvent) => {

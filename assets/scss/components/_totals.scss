@@ -1,0 +1,47 @@
+.c-totals__subtotal {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: rem-calc(24px);
+}
+
+.c-totals__shipping-total {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: rem-calc(24px);
+    margin-bottom: rem-calc(12px);
+}
+
+.c-totals__label {
+    color: $color-neutrals-300;
+    font-family: $font-semi-bold;
+    font-size: rem-calc(20px);
+    line-height: rem-calc(24px);
+    font-weight: 600;
+    letter-spacing: 0;
+    text-align: center;
+}
+
+.c-totals__value {
+    @extend .c-totals__label;
+    color: $color-black;
+}
+
+.c-totals__shipping-estimator {
+    margin-bottom: rem-calc(24px);
+}
+
+.c-totals__cart-total {
+    font-size: rem-calc(32px);
+    line-height: rem-calc(40px);
+    text-align: right;
+    margin-block: rem-calc(24px);
+}
+
+.c-totals__checkout-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: rem-calc(8px);
+}

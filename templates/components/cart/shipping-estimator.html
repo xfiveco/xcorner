@@ -2,65 +2,55 @@
 {{inject 'shippingProvinceErrorMessage' (lang 'cart.shipping_estimator.empty_province_error')}}
 
 {{#if shipping_cost}}
-    <div>
+    <div class="c-totals__shipping-total">
+        <strong class="c-totals__label">{{lang 'cart.checkout.shipping'}}:</strong>
         <div class="js-shipping-estimate-show">
-            <a href="#">
+            <a class="c-totals__value" href="#">
                 {{shipping_cost.formatted}}
             </a>
         </div>
     </div>
-{{else}}
-    <div>
-        <button 
-            data-collapsible="add-shipping" 
-            class="js-shipping-estimate-show" 
-            aria-labelledby="estimator-add"
-        >
-            <span class="js-shipping-estimate-show-btn-name">
-                {{lang 'cart.shipping_estimator.add_info'}}
-            </span>
-            <span id="estimator-add" class="u-hidden">
-                {{lang 'cart.shipping_estimator.add_info'}}
-            </span>
-            <span id="estimator-close" class="u-hidden">
-                {{lang 'cart.shipping_estimator.cancel'}}
-            </span>
-        </button>
-    </div>
 {{/if}}
 
-<div id="add-shipping" class="js-shipping-estimator u-hidden-visually">
-    <form class="js-estimator-form js-shipping-estimator">
-        <dl>
-            <dt>
-                <label for="shipping-country">
+<div id="add-shipping">
+    <form class="js-estimator-form js-shipping-estimator c-shipping-estimator">
+        <div class="u-width-full">
+            <label class="c-form__label" for="shipping-country">
+                {{lang 'cart.shipping_estimator.select_a_country'}}
+            </label>
+            <select
+                class="c-form__input c-form__input--select u-width-full" 
+                id="shipping-country" 
+                name="shipping-country" 
+                data-field-type="Country"
+            >
+                <option>
                     {{lang 'cart.shipping_estimator.select_a_country'}}
-                </label>
-            </dt>
-
-            <dd>
-                <select id="shipping-country" name="shipping-country" data-field-type="Country">
-                    <option>
-                        {{lang 'cart.shipping_estimator.select_a_country'}}
+                </option>
+                
+                {{#each countries}}
+                    <option value="{{id}}" {{#if selected}}selected="selected"{{/if}}>
+                        {{name}}
                     </option>
-                    
-                    {{#each countries}}
-                        <option value="{{id}}" {{#if selected}}selected="selected"{{/if}}>
-                            {{name}}
-                        </option>
-                    {{/each}}
-                </select>
-            </dd>
+                {{/each}}
+            </select>
+        </div>
 
-            <dt>
-                <label for="shipping-state">
-                    {{lang 'cart.shipping_estimator.select_a_state'}}
-                </label>
-            </dt>
-
-            <dd>
+        <div class="u-width-full">
+            <label class="c-form__label" for="shipping-state">
+                {{lang 'cart.shipping_estimator.select_a_state'}}
+            </label>
+            <div data-type="State">
+                <div>
+                    <small class="u-required" style="display: none;">*</small>
+                </div>
                 {{#if states.length}}
-                    <select id="shipping-state" name="shipping-state" data-field-type="State">
+                    <select 
+                        class="c-form__input c-form__input--select u-width-full" 
+                        id="shipping-state" 
+                        name="shipping-state" 
+                        data-field-type="State"
+                    >
                         <option>
                             {{lang 'cart.shipping_estimator.select_a_state'}}
                         </option>
@@ -73,7 +63,7 @@
                     </select>
                 {{else}}
                     <input 
-                        class="js-form-input" 
+                        class="js-form-input c-form__input u-width-full" 
                         type="text" 
                         id="shipping-state" 
                         name="shipping-state" 
@@ -81,43 +71,39 @@
                         placeholder="{{lang 'cart.shipping_estimator.select_a_state'}}"
                     >
                 {{/if}}
-            </dd>
+            </div>
+        </div>
 
-            <dt>
-                <label for="shipping-city">
-                    {{lang 'cart.shipping_estimator.suburb_city'}}
-                </label>
-            </dt>
-            <dd>
-                <input 
-                    class="js-form-input" 
-                    type="text" id="shipping-city" 
-                    name="shipping-city" 
-                    value="{{selected_city}}" 
-                    placeholder="{{lang 'cart.shipping_estimator.suburb_city'}}"
-                >
-            </dd>
+        <div class="u-width-full">
+            <label class="c-form__label" for="shipping-city">
+                {{lang 'cart.shipping_estimator.suburb_city'}}
+            </label>
+            <input 
+                class="js-form-input c-form__input u-width-full" 
+                type="text" id="shipping-city" 
+                name="shipping-city" 
+                value="{{selected_city}}" 
+                placeholder="{{lang 'cart.shipping_estimator.suburb_city'}}"
+            >
+        </div>
 
-            <dt>
-                <label for="shipping-zip">
-                    {{lang 'cart.shipping_estimator.zip_postal_code'}}
-                </label>
-            </dt>
-            <dd>
-                <input 
-                    class="js-form-input" 
-                    type="text" 
-                    id="shipping-zip" 
-                    name="shipping-zip" 
-                    value="{{selected_zip}}" 
-                    placeholder="{{lang 'cart.shipping_estimator.zip_postal_code'}}"
-                >
-            </dd>
-            
-            <button class="c-button c-button--primary js-shipping-estimate-submit">
-                {{lang 'cart.shipping_estimator.estimate_shipping'}}
-            </button>
-        </dl>
+        <div class="u-width-full">
+            <label class="c-form__label" for="shipping-zip">
+                {{lang 'cart.shipping_estimator.zip_postal_code'}}
+            </label>
+            <input 
+                class="js-form-input c-form__input u-width-full" 
+                type="text" 
+                id="shipping-zip" 
+                name="shipping-zip" 
+                value="{{selected_zip}}" 
+                placeholder="{{lang 'cart.shipping_estimator.zip_postal_code'}}"
+            >
+        </div>
+        
+        <button class="c-button c-button--secondary js-shipping-estimate-submit u-width-full">
+            {{lang 'cart.shipping_estimator.estimate_shipping'}}
+        </button>
     </form>
     <div 
         class="js-shipping-quotes" 
