@@ -266,15 +266,16 @@ export default class Cart extends PageManager {
         let preVal
 
         // cart update
-        q$('.js-cart-update', this.$cartContent)?.addEventListener('click', (event) => {
-            const $target = event.currentTarget
+        q$$('.js-cart-update', this.$cartContent)?.forEach(($btn) => {
+            $btn.addEventListener('click', (event) => {
+                const $target = event.currentTarget
 
-            event.preventDefault()
+                event.preventDefault()
 
-            // update cart quantity
-            cartUpdate($target)
+                // update cart quantity
+                cartUpdate($target)
+            })
         })
-
         // cart qty manually updates
         q$$('.js-cart-item-qty-input', this.$cartContent).forEach(($input) => {
             $input.addEventListener('focus', function onQtyFocus() {

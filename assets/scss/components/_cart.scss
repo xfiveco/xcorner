@@ -133,6 +133,9 @@
     background: none;
     outline: none;
     cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .c-cart__checkout-button-wrapper {
