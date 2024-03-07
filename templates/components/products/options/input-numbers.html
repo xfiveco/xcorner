@@ -1,12 +1,11 @@
-<div class="js-form-field" data-product-attribute="input-number">
-    <label for="attribute_number_{{id}}">
-        {{ this.display_name }}:
-
+<div class="js-form-field c-form__field" data-product-attribute="input-number">
+    <label class="c-form__label" for="attribute_number_{{id}}">
+        {{ this.display_name }}
         {{> components/common/requireness-msg}}
     </label>
 
     <input 
-        class="js-form-input" 
+        class="js-form-input c-form__unput" 
         type="number" 
         id="attribute_number_{{id}}" 
         {{#unless this.integer_only}}

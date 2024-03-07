@@ -1,12 +1,11 @@
-<div class="js-form-field" data-product-attribute="textarea">
-    <label for="attribute_textarea_{{id}}">
-        {{display_name}}:
-
+<div class="js-form-field c-form__field" data-product-attribute="textarea">
+    <label class="c-form__label" for="attribute_textarea_{{id}}">
+        {{ this.display_name }}
         {{> components/common/requireness-msg}}
     </label>
 
     <textarea 
-        class="js-form-input" 
+        class="js-form-input c-form__input--textarea" 
         id="attribute_textarea_{{id}}" 
         name="attribute[{{id}}]" 
         {{#if required}}

@@ -1,13 +1,12 @@
-<div class="js-form-field" data-product-attribute="input-checkbox">
-    <label>
-        {{display_name}}:
-
+<div class="js-form-field c-form__field" data-product-attribute="input-checkbox">
+    <label class="c-form__label">
+        {{ display_name }}
         {{> components/common/requireness-msg}}
     </label>
     <input type="hidden" name="attribute[{{id}}]" value="{{noValue}}" />
     <div>
         <input
-            class="{{#if checked}}js-default{{/if}}"
+            class="{{#if checked}}js-default{{/if}} c-form__input"
             type="checkbox"
             name="attribute[{{id}}]"
             id="attribute-check-{{id}}"
@@ -20,7 +19,7 @@
             {{/if}}
         >
 
-        <label class="form-label {{class}}" for="attribute-check-{{id}}">
+        <label class="c-form__label form-label {{class}}" for="attribute-check-{{id}}">
             {{label}}
         </label>
     </div>

@@ -5,19 +5,19 @@
 .c-modal {
     display: none;
     position: relative;
-}
 
-.c-modal.is-open {
-    display: block;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(39, 39, 39, 0.32);
-    backdrop-filter: blur(6px);
-    z-index: 10;
-    overflow-y: auto;
+    &.is-open {
+        display: block;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(39, 39, 39, 0.32);
+        backdrop-filter: blur(6px);
+        z-index: 10;
+        overflow-y: auto;
+    }
 }
 
 .c-modal__content-wrapper {
@@ -36,14 +36,15 @@
 }
 
 .c-modal__close-button {
+    background-color: $color-white;
+    border-radius: rem-calc(4px);
+    padding: rem-calc(24px);
+    cursor: pointer;
     position: absolute;
     top: 0;
     right: 0;
-    background-color: $color-white;
     border: 0;
     outline: none;
-    padding: rem-calc(24px);
-    cursor: pointer;
 }
 
 .c-modal__header-title {
