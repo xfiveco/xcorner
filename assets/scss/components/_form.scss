@@ -89,6 +89,8 @@ $input-transition: all 0.2s ease-in-out;
         background-position: calc(100% - 1rem) center;
         background-size: 0.75rem;
 
+        padding-right: rem-calc(40px);
+
         -webkit-appearance: none;
         -moz-appearance: none;
         appearance: none;
