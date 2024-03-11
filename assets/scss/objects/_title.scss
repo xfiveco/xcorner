@@ -1,16 +1,4 @@
-.p-common__container {
-    padding: 1.5rem;
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-
-    @include bp(medium) {
-        padding: 3rem 5rem;
-        gap: 3rem;
-    }
-}
-
-.p-common__title {
+.o-title {
     color: $color-black;
     font-family: $font-semi-bold;
     font-size: rem-calc(24px);

@@ -4,22 +4,22 @@
 
 {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
 
-<h1 class="p-common__title">
+<h1 class="o-title">
     {{lang 'compare.products'}}
 </h1>
 
-<div class="p-compare">
+<div class="c-product-compare">
     {{#each comparisons}}
-        <div class="p-compare__card">
+        <div class="c-product-compare__card">
             {{> components/products/card-alternate class="c-card__compare-article" hide_price='true'}}
-            <div class="p-compare__description">
+            <div class="c-product-compare__description">
                 {{{ summary }}}
             </div>
-            <div class="p-compare__details">
-                <span class="p-compare__detail-label">
+            <div class="c-product-compare__details">
+                <span class="c-product-compare__detail-label">
                     {{lang 'products.availability'}}
                 </span>
-                <div class="p-compare__detail-value">
+                <div class="c-product-compare__detail-value">
                     {{#if availability}}
                         {{ availability }}
                     {{else}}
@@ -29,22 +29,22 @@
             </div>
             {{#if custom_fields}}
                 {{#each custom_fields}}
-                    <div class="p-compare__details">
-                        <span class="p-compare__detail-label">
+                    <div class="c-product-compare__details">
+                        <span class="c-product-compare__detail-label">
                             {{strReplace name '_' ' '}}?
                         </span>
-                        <div class="p-compare__detail-value">
+                        <div class="c-product-compare__detail-value">
                             {{{value}}}
                         </div>
                     </div>
                 {{/each}}
             {{/if}}
             {{#if price.without_tax}}
-                <div class="p-compare__details">
-                    <span class="p-compare__detail-label">
+                <div class="c-product-compare__details">
+                    <span class="c-product-compare__detail-label">
                         {{lang 'cart.checkout.price'}}
                     </span>
-                    <div class="p-compare__detail-value u-font-bold">
+                    <div class="c-product-compare__detail-value u-font-bold">
                         {{price.without_tax.formatted}}
                     </div>
                 </div>
