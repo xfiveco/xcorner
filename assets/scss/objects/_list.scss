@@ -1,0 +1,8 @@
+.o-list {
+    list-style-type: disc;
+    padding-left: 1rem;
+}
+
+.o-list--bare > li {
+    margin: 0;
+}
