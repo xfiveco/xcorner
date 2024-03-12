@@ -16,6 +16,7 @@ import { creditCardType, storeInstrument, Validators as CCValidators, Formatters
 import { showAlertModal } from './global/modal'
 import compareProducts from './global/compare-products'
 import q$, { prev, q$$ } from './global/selector'
+import getOrderProductData from './custom/order-product-data'
 
 export default class Account extends PageManager {
     constructor(context) {
@@ -34,7 +35,9 @@ export default class Account extends PageManager {
         const $reorderForm = classifyForm('.js-account-reorder-form')
         const $invoiceButton = q$('[data-print-invoice]')
         const $bigCommerce = window.BigCommerce
+        const { storefrontApiToken } = this.context
 
+        getOrderProductData(storefrontApiToken)
         compareProducts(this.context)
 
         // Injected via template
@@ -137,30 +140,27 @@ export default class Account extends PageManager {
         })
     }
 
+    /* eslint-disable no-unused-vars */
     initReorderForm($reorderForm) {
-        $reorderForm.addEventListener('submit', (event) => {
-            const $productReorderCheckboxes = q$$('.js-account-list-item input[type="checkbox"]:checked')
-            let submitForm = false
-
-            $reorderForm.querySelector('[name^="reorderitem"]').remove()
-
-            $productReorderCheckboxes.forEach(($productCheckbox) => {
-                const productId = $productCheckbox.value
-                const $input = document.createElement('input')
-                $input.type = 'hidden'
-                $input.name = `reorderitem[${productId}]`
-                $input.value = '1'
-
-                submitForm = true
-
-                $reorderForm.append($input)
-            })
-
-            if (!submitForm) {
-                event.preventDefault()
-                showAlertModal(this.context.selectItem)
-            }
-        })
+        /* @TODO: Handle selected products reordering. Now it's not working as the user needs to select at least one product, but all products are being added to the cart. */
+        // $reorderForm.addEventListener('submit', (event) => {
+        // const $productReorderCheckboxes = q$$('.js-account-list-item input[type="checkbox"]:checked')
+        // let submitForm = false
+        // $reorderForm.querySelector('[name^="reorderitem"]').remove()
+        // $productReorderCheckboxes.forEach(($productCheckbox) => {
+        //     const productId = $productCheckbox.value;
+        //     const $input = document.createElement('input');
+        //     $input.type = 'hidden';
+        //     $input.name = `reorderitem[${productId}]`;
+        //     $input.value = '1';
+        //     submitForm = true;
+        //     $reorderForm.append($input);
+        // })
+        // if (!submitForm) {
+        //     event.preventDefault()
+        //     showAlertModal(this.context.selectItem)
+        // }
+        // })
     }
 
     initAddressFormValidation($addressForm) {
@@ -240,36 +240,26 @@ export default class Account extends PageManager {
     initPaymentMethodFormValidation($paymentMethodForm) {
         // Inject validations into form fields before validation runs
         /* eslint-disable no-param-reassign */
-        $paymentMethodForm.querySelector(
-            '#first_name.js-form-field',
-        ).dataset.validation = `{ "type": "singleline", "label": "${this.context.firstNameLabel}", "required": true, "maxlength": 0 }`
-        $paymentMethodForm.querySelector(
-            '#last_name.js-form-field',
-        ).dataset.validation = `{ "type": "singleline", "label": "${this.context.lastNameLabel}", "required": true, "maxlength": 0 }`
-        $paymentMethodForm.querySelector(
-            '#company.js-form-field',
-        ).dataset.validation = `{ "type": "singleline", "label": "${this.context.companyLabel}", "required": false, "maxlength": 0 }`
-        $paymentMethodForm.querySelector(
-            '#phone.js-form-field',
-        ).dataset.validation = `{ "type": "singleline", "label": "${this.context.phoneLabel}", "required": false, "maxlength": 0 }`
-        $paymentMethodForm.querySelector(
-            '#address1.js-form-field',
-        ).dataset.validation = `{ "type": "singleline", "label": "${this.context.address1Label}", "required": true, "maxlength": 0 }`
-        $paymentMethodForm.querySelector(
-            '#address2.js-form-field',
-        ).dataset.validation = `{ "type": "singleline", "label": "${this.context.address2Label}", "required": false, "maxlength": 0 }`
-        $paymentMethodForm.querySelector(
-            '#city.js-form-field',
-        ).dataset.validation = `{ "type": "singleline", "label": "${this.context.cityLabel}", "required": true, "maxlength": 0 }`
-        $paymentMethodForm.querySelector(
-            '#country.js-form-field',
-        ).dataset.validation = `{ "type": "singleselect", "label": "${this.context.countryLabel}", "required": true, "prefix": "${this.context.chooseCountryLabel}" }`
-        $paymentMethodForm.querySelector(
-            '#state.js-form-field',
-        ).dataset.validation = `{ "type": "singleline", "label": "${this.context.stateLabel}", "required": true, "maxlength": 0 }`
-        $paymentMethodForm.querySelector(
-            '#postal_code.js-form-field',
-        ).dataset.validation = `{ "type": "singleline", "label": "${this.context.postalCodeLabel}", "required": true, "maxlength": 0 }`
+        $paymentMethodForm.querySelector('#first_name.js-form-field').dataset.validation =
+            `{ "type": "singleline", "label": "${this.context.firstNameLabel}", "required": true, "maxlength": 0 }`
+        $paymentMethodForm.querySelector('#last_name.js-form-field').dataset.validation =
+            `{ "type": "singleline", "label": "${this.context.lastNameLabel}", "required": true, "maxlength": 0 }`
+        $paymentMethodForm.querySelector('#company.js-form-field').dataset.validation =
+            `{ "type": "singleline", "label": "${this.context.companyLabel}", "required": false, "maxlength": 0 }`
+        $paymentMethodForm.querySelector('#phone.js-form-field').dataset.validation =
+            `{ "type": "singleline", "label": "${this.context.phoneLabel}", "required": false, "maxlength": 0 }`
+        $paymentMethodForm.querySelector('#address1.js-form-field').dataset.validation =
+            `{ "type": "singleline", "label": "${this.context.address1Label}", "required": true, "maxlength": 0 }`
+        $paymentMethodForm.querySelector('#address2.js-form-field').dataset.validation =
+            `{ "type": "singleline", "label": "${this.context.address2Label}", "required": false, "maxlength": 0 }`
+        $paymentMethodForm.querySelector('#city.js-form-field').dataset.validation =
+            `{ "type": "singleline", "label": "${this.context.cityLabel}", "required": true, "maxlength": 0 }`
+        $paymentMethodForm.querySelector('#country.js-form-field').dataset.validation =
+            `{ "type": "singleselect", "label": "${this.context.countryLabel}", "required": true, "prefix": "${this.context.chooseCountryLabel}" }`
+        $paymentMethodForm.querySelector('#state.js-form-field').dataset.validation =
+            `{ "type": "singleline", "label": "${this.context.stateLabel}", "required": true, "maxlength": 0 }`
+        $paymentMethodForm.querySelector('#postal_code.js-form-field').dataset.validation =
+            `{ "type": "singleline", "label": "${this.context.postalCodeLabel}", "required": true, "maxlength": 0 }`
 
         const validationModel = validation($paymentMethodForm, this.context)
         const paymentMethodSelector = '.js-payment-method-form'

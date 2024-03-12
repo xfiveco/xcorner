@@ -1,14 +1,20 @@
-<div>
-    {{lang 'account.orders.details.order_contents'}}
-</div>
+{{!-- 
+    @TODO: Remove asap. 
+    I know this is ugly, but I didn't find any better way to get missing information :(  
+--}}
+{{inject 'storefrontApiToken' settings.storefront_api.token}} 
 
-<ul>
+<h3>
+    {{lang 'account.orders.details.order_contents'}}
+</h3>
+
+<ul class="o-grid o-grid--space-small o-grid--cols-1 o-grid--cols-2@small o-grid--cols-3@large">
     {{#each order.items}}
         {{#if shipping_rows.length}}
             {{#each shipping_rows}}
                 {{#if is_shipping}}
-                    <li>
-                        <div>
+                    <li class="o-grid__item--col-full">
+                        <div class="o-box o-box--neutrals-50">
                             {{lang 'account.orders.details.ship_to_multi' street=address city=city state=state zip=zip country=country}}
                         </div>
                     </li>
@@ -17,103 +23,21 @@
         {{/if}}
 
         <li class="js-account-list-item">
-            <div>
-                <div>
-                    {{#if show_reorder}}
-                        <input type="checkbox" id="account-product-id-{{order_product_id}}" value="{{order_product_id}}">
-                        <label for="account-product-id-{{order_product_id}}">
-                            <span class="u-hidden-visually">
-                                {{!-- todo: make this translatable --}}
-                                Checkbox {{order_product_id}} label
-                            </span>
-                        </label>
-                    {{/if}}
-                </div>
-                <figure>
-                    {{#if type '===' 'giftcertificate'}}
-                        <img src="{{cdn ../theme_settings.default_image_gift_certificate}}" alt="">
-                    {{else}}
-                        {{> components/common/image
-                            image=image
-                            fallback_size=../theme_settings.productthumb_size
-                            default_image=../theme_settings.default_image_product
-                        }}
-                    {{/if}}
-                    {{#unless refunded}}
-                        {{#if download_url}}
-                            <a href="{{download_url}}" class="c-button c-button--primary">
-                                <span class="u-hidden-visually">
-                                    {{lang 'account.orders.details.download_items'}}
-                                </span>
-                                <svg>
-                                    <use href="#icon-arrow-down"></use>
-                                </svg>
-                            </a>
-                        {{/if}}
-                    {{/unless}}
-                </figure>
-                <div>
-                    <span>
-                        {{price.formatted}}
-                    </span>
-                    <div>
-                        {{quantity}} &#215; {{name}}
-                    </div>
-                    {{#if brand}}
-                        <div>
-                            {{brand.name}}
-                        </div>
-                    {{/if}}
-                    {{#if options}}
-                        <dl>
-                            {{#each options}}
-                                <dt>
-                                    {{name}}:
-                                </dt>
-                                <dd>
-                                    {{> components/common/product-options}}
-                                </dd>
-                            {{/each}}
-                        </dl>
-                    {{/if}}
-                    {{#if gift_wrapping_name}}
-                        <dl>
-                            <dt>
-                                {{lang 'account.orders.gift_wrapping'}}
-                            </dt>
-                            <dd>
-                                {{gift_wrapping_name}}
-                            </dd>
-                        </dl>
-                    {{/if}}
-                    {{#if event_date}}
-                        <dl>
-                            <dt>
-                                {{event_date.name}}:
-                            </dt>
-                            <dd>
-                                {{event_date.date}}
-                            </dd>
-                        </dl>
-                    {{/if}}
-                    {{#if refunded}}
-                        <p>
-                            {{lang 'account.orders.refunded_quantity' qty=refunded_qty}}
-                        </p>
-                    {{else}}
-                        {{#if refunded_qty}}
-                            <p>
-                                {{lang 'account.orders.refunded_quantity' qty=refunded_qty}}
-                            </p>
-                        {{/if}}
-                    {{/if}}
-                    {{#if reorder_message}}
-                        <p>
-                            {{{reorder_message}}}
-                        </p>
-                    {{/if}}
-                </div>
-            </div>
+            {{#unless refunded}}
+                {{#if download_url}}
+                    <a href="{{download_url}}" class="c-button c-button--primary">
+                        <span class="u-hidden-visually">
+                            {{lang 'account.orders.details.download_items'}}
+                        </span>
+                        <svg>
+                            <use href="#icon-arrow-down"></use>
+                        </svg>
+                    </a>
+                {{/if}}
+            {{/unless}}
+
+            {{!-- @TODO: We don't have properly handled reordering only selected products, so I'm not passing show_reorder yet  --}}
+            {{> components/products/card-order id=order_product_id theme_settings=../theme_settings hide_compare=true price=price }}
         </li>
     {{/each}}
 </ul>
