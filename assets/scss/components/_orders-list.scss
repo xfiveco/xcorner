@@ -1,0 +1,38 @@
+$color-shadow: rgba($color-secondary-75, 0.5);
+
+.c-orders-list__item {
+    padding: rem-calc(24px);
+    margin-bottom: 0;
+    box-shadow: 0px 0px 9px $color-shadow;
+    border: 1px solid $color-shadow;
+}
+
+.c-orders-list__prop {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px 0;
+    
+    &:not(:last-child) {
+        border-bottom: 1px solid $color-secondary-75;
+    }
+
+    & > * {
+        font-weight: 800;
+    }
+}
+
+.c-orders-list__announcement {
+    color: $color-neutrals-500;
+    display: flex;
+    column-gap: 12px;
+    padding: 24px;
+    background-color: $color-primary-50;
+    border-radius: 4px;
+}
+
+.c-orders-list__announcement-icon {
+    --size: 20px;
+
+    width: var(--size);
+    height: var(--size);
+}
