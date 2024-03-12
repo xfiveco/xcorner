@@ -1,3 +1,19 @@
 .u-no-margin {
     margin: 0;
 }
+
+.u-margin-top--s {
+    margin-top: rem-calc(12px);
+    
+    @include bp(medium) {
+        margin-top: rem-calc(24px);
+    }
+}
+
+.u-margin-top--m {
+    margin-top: rem-calc(24px);
+    
+    @include bp(medium) {
+        margin-top: rem-calc(48px);
+    }
+}

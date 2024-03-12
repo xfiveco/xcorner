@@ -52,6 +52,7 @@
     font-weight: 600;
     line-height: 1.5;
     text-decoration: none;
+    width: fit-content;
 
     outline: 0;
     border: 0;
@@ -162,4 +163,15 @@ $color-red-shadow: rgba(215, 68, 68, 0.24);
 
 .c-button--width-100 {
     width: 100%;
+}
+
+.c-button--icon {
+    color: $color-primary-300;
+    padding: 5px;
+
+    &:hover,
+    &:active,
+    &:focus {
+        color: $color-primary-400;
+    }
 }
