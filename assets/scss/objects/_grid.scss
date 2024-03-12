@@ -1,0 +1,145 @@
+$gap-sizes: (
+    small: rem-calc(24px),
+    large: rem-calc(48px),
+);
+
+$column-sizes: (
+    fill: 1fr,
+    auto: "auto"
+);
+
+$gap-small: map-get($gap-sizes, small);
+$gap-large: map-get($gap-sizes, large);
+
+.o-grid {
+    --col-size: 1fr;
+
+    display: grid;
+    gap: $gap-small;
+    
+
+    @include bp(large) {
+        gap: $gap-large;
+    }
+
+    /* Column sizes variants */
+    @each $sizeName, $sizeValue in $column-sizes {
+        &--col-size-#{$sizeName} {
+            --col-size: #{$sizeValue};
+        }
+    }
+
+    /* Matches grid from design. */
+    &--main {
+        grid-template-columns: repeat(4, var(--col-size));
+        gap: $gap-small;
+        
+        @include bp(medium) {
+            grid-template-columns: repeat(6, var(--col-size));
+        }
+
+        @include bp(large) {
+            grid-template-columns: repeat(8, var(--col-size));
+            gap: $gap-large;
+        }
+    }
+
+    /* Gap sizes variants */
+    @each $name, $size in $gap-sizes {
+        &--space-#{$name} {
+            gap: #{$size};
+        }
+
+        &--row-space-#{$name} {
+            row-gap: #{$size};
+        }
+
+        &--col-space-#{$name} {
+            column-gap: #{$size};
+        }
+        
+    }
+
+    @for $i from 1 through 8 {
+        &--cols-#{$i} {
+            grid-template-columns: repeat(#{$i}, var(--col-size));
+        }
+
+        @each $breakpoint in $breakpoints_map {
+            &--cols-#{$i}\@#{$breakpoint} {
+                @include bp($breakpoint) {
+                    grid-template-columns: repeat(#{$i}, var(--col-size));
+                }
+            }
+        }
+    }
+}
+
+.o-grid__item {
+    /* Takes full available space. Basically equals width:100% */
+    &--col-full {
+        grid-column: 1/-1;
+    }
+
+    @for $i from 1 through 8 {
+        /* 
+            Starts at column number #i and fill available space till the end
+            example: .o-grid__item--col-2-fill
+        */
+        &--col-#{$i}-fill{
+            grid-column: #{$i}/-1;
+        }
+
+        @for $j from 1 through 8 {
+            /* 
+                Starts at column number #i and end at #j
+                example: .o-grid__item--col-2/5
+            */
+            &--col-#{$i}\/#{$j}{
+                grid-column: #{$i}/#{$j};
+            }
+
+            /* 
+                Starts at row number #i and end at #j
+                example: .o-grid__item--row-2/5
+            */
+            &--row-#{$i}\/#{$j}{
+                grid-row: #{$i}/#{$j};
+            }
+        }
+    }
+
+    /* 
+        Responsive styles. Use by adding @{breakpoint_name} at the end.
+        example: .o-grid__item--col-2/4@medium
+    */
+    @each $breakpoint in $breakpoints_map {
+        &--col-full\@#{$breakpoint} {
+            @include bp($breakpoint) {
+                grid-column: 1/-1;
+            }
+        }
+
+        @for $i from 1 through 8 {
+            @for $j from 1 through 8 {
+                &--col-#{$i}\/#{$j}\@#{$breakpoint} {
+                    @include bp($breakpoint) {
+                        grid-column: #{$i}/#{$j};
+                    }
+                }
+
+                &--row-#{$i}\/#{$j}\@#{$breakpoint} {
+                    @include bp($breakpoint) {
+                        grid-row: #{$i}/#{$j};
+                    }
+                }
+
+                &--col-#{$i}-fill\@#{$breakpoint}{
+                    @include bp($breakpoint) {
+                        grid-column: #{$i}/-1;
+                    }
+                }
+            }
+        }
+    }
+}

@@ -23,6 +23,8 @@ $breakpoints: (
     full: 1600px,
 );
 
+$breakpoints_map: map_keys($breakpoints);
+
 /* Colors
    ========================================================================== */
 
