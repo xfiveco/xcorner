@@ -1,0 +1,29 @@
+<main 
+    id="main-content" 
+    role="main" 
+    data-currency-code="{{currency_selector.active_currency_code}}"
+>
+    {{#block "hero"}} {{/block}}
+    <div class="js-container o-container o-container--tall ">
+        <div class="o-grid o-grid--main">
+            <div class="o-grid__item--col-full">
+                {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
+            </div>
+
+            <div class="o-grid__item--col-full">
+                {{#block "title"}} {{/block}}
+            </div>
+
+            <div class="o-grid__item--col-full o-grid__item--col-1/3@medium">
+                {{#block "navigation"}} {{/block}}
+            </div>
+
+            <div class="o-grid__item--col-full o-grid__item--col-3-fill@medium">
+                {{#block "page"}} {{/block}}
+            </div>
+        </div>
+    </div>
+    {{> components/common/modal/modal}}
+    {{> components/common/alert/alert-modal}}
+    {{> components/common/body-overlay}}
+</main>
