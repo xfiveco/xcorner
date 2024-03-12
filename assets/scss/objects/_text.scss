@@ -1,0 +1,36 @@
+.o-text {
+    font-family: $font-semi-bold;
+    font-style: normal;
+    font-weight: 600;
+    color: $color-black;
+    margin: 0;
+
+    &--s {
+        font-size: rem-calc(14px);
+        line-height: 1.14;
+    }
+
+    &--m {
+        font-size: rem-calc(16px);
+        line-height: 1.5;
+    }
+
+    &--l {
+        font-size: rem-calc(18px);
+        line-height: 1.33;
+    }
+
+    &--xl {
+        font-size: rem-calc(20px);
+        line-height: 1.2;
+    }
+
+    &--xxl {
+        font-size: rem-calc(24px);
+        line-height: 1.33;
+    }
+
+    &--bold {
+        font-weight: 600;
+    }
+}
