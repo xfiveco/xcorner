@@ -1,3 +1,9 @@
+.c-totals {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
 .c-totals__subtotal {
     display: flex;
     justify-content: flex-end;
