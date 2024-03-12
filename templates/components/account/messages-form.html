@@ -1,21 +1,22 @@
 {{#if customer.inbox.orders}}
-<div>{{lang 'forms.inbox.send_message'}}</div>
+<h2 class="o-heading o-heading--l">{{lang 'forms.inbox.send_message'}}</h3>
 
 <form
-    class="js-inbox-form"
+    class="js-inbox-form c-form"
     action="{{urls.account.send_message}}"
     method="post"
 >
     {{inject 'enterOrderNum' (lang 'forms.validate.account.inbox.order')}} {{inject 'enterSubject' (lang 'forms.validate.account.inbox.subject')}}
     {{inject 'enterMessage' (lang 'forms.validate.account.inbox.message')}}
     <div>
-        <label for="message_order_id">
+        <label for="message_order_id" class="c-form__label">
             {{lang 'forms.inbox.order' }}
-            <small>*</small>
+            <small aria-label="{{lang 'common.required' }}">*</small>
         </label>
         <select
             name="message_order_id"
             id="message_order_id"
+            class="c-form__input c-form__input--narrow c-form__input--select"
         >
             {{#each customer.inbox.orders}}
             <option value="{{id}}">{{lang 'forms.inbox.order_display' id=id date=date total=amount.formatted}}</option>
@@ -23,39 +24,38 @@
         </select>
     </div>
     <div>
-        <label for="message_subject">
+        <label for="message_subject" class="c-form__label">
             {{lang 'forms.inbox.subject' }}
-            <small>*</small>
+            <small aria-label="{{lang 'common.required' }}">*</small>
         </label>
         <input
             type="text"
-            class="js-form-input"
+            class="js-form-input c-form__input c-form__input--narrow"
             name="message_subject"
             id="message_subject"
         />
     </div>
     <div>
-        <label for="message_content">
+        <label for="message_content" class="c-form__label">
             {{lang 'forms.inbox.message' }}
-            <small> {{lang 'common.required' }} </small>
+            <small aria-label="{{lang 'common.required' }}">*</small>
         </label>
         <textarea
-            class="js-form-input"
+            class="js-form-input c-form__input c-form__input--narrow"
             name="message_content"
             id="message_content"
             rows="7"
         ></textarea>
     </div>
-    <div>
+    <div class="c-form__buttons">
         <button
             class="c-button c-button--primary"
             type="submit"
         >
             {{lang 'forms.inbox.submit_value' }}
         </button>
-        <button>{{lang 'forms.inbox.submit_value' }}</button>
         <button
-            class="c-button"
+            class="c-button c-button--secondary"
             type="reset"
         >
             {{lang 'forms.inbox.clear_value' }}
