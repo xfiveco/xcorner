@@ -1,14 +1,14 @@
-{{inject 'passwordRequirements' settings.password_requirements}}
-{{#partial "page"}}
-<div>
-    {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
-    
-    <div>
+{{#partial "title"}}
+    <h1 class="o-heading o-heading--l">
         {{lang 'account.settings.heading' }}
-    </div>
-    
+    </h1>
+{{/partial}}
+
+{{#partial "navigation"}}
     {{> components/account/navigation account_page='settings'}}
-    
+{{/partial}}
+
+{{#partial "page"}}
     {{#if forms.edit_account.error}}
         {{> components/common/alert/alert-error forms.edit_account.error}}
     {{/if}}
@@ -18,6 +18,6 @@
     {{/if}}
     
     {{> components/account/edit-account}}
-</div>
+
 {{/partial}}
-{{> layout/base}}
+{{> layout/account}}
