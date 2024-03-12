@@ -1,15 +1,17 @@
-{{#partial "page"}}
-{{#if settings.show_wishlist}}
-    <div>
-        {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
-        
-        <div>
-            {{lang 'account.wishlists.heading' }}
-        </div>
-        
-        {{> components/account/navigation account_page='wishlists'}}
-        {{> components/account/wishlist-list}}
-    </div>
-{{/if}}
+{{#partial "title"}}
+    <h1 class="o-heading o-heading--l">
+        {{lang 'account.wishlists.heading' }}
+    </h1>
 {{/partial}}
-{{> layout/base}}
+
+{{#partial "navigation"}}
+    {{> components/account/navigation account_page='wishlists'}}
+{{/partial}}
+
+{{#partial "page"}}
+    {{#if settings.show_wishlist}}
+        {{> components/account/wishlist-list}}
+    {{/if}}
+
+{{/partial}}
+{{> layout/account}}

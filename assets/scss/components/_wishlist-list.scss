@@ -1,0 +1,33 @@
+.c-wishlist-list {
+    margin-bottom: 20px;
+}
+
+.c-wishlist-list__item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-block: 10px;
+    border-top: 1px solid $color-secondary-75;
+
+    flex-direction: column;
+
+    @include bp(small) {
+        flex-direction: row;
+    }
+
+    &:last-child {
+        border-bottom: 1px solid $color-secondary-75;
+    }
+}
+
+.c-wishlist-list__label {
+    color: $color-neutrals-300;
+    font-weight: 400;
+}
+
+.c-wishlist-list__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    align-items: center;
+}

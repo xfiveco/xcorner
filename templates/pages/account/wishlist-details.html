@@ -1,35 +1,34 @@
-{{#partial "page"}}
-<div class="js-pagination-wishlist">
-    {{#if wishlist.is_editable}}
-        {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
-    {{/if}}
-
-    <div>
+{{#partial "title"}}
+    <h1 class="o-heading o-heading--l">
         {{lang 'account.wishlists.view_heading' name=wishlist.name}}
-    </div>
-    
-    {{#if wishlist.is_editable}}
-        {{> components/account/navigation account_page='wishlists'}}
-    {{/if}}
+    </h1>
+{{/partial}}
 
-    {{#if wishlist.is_editable}}
-        {{#if wishlist.is_public '>' 0}}
-            <div>
+{{#partial "navigation"}}
+    {{> components/account/navigation account_page='wishlists'}}
+{{/partial}}
+
+{{#partial "page"}}
+    <div class="js-pagination-wishlist">
+        {{#if wishlist.is_editable}}
+            {{#if wishlist.is_public '>' 0}}
                 <div>
                     <div>
-                        {{lang 'account.wishlists.share_intro'}}
+                        <div>
+                            {{lang 'account.wishlists.share_intro'}}
+                        </div>
+                        <input class="js-form-input" value="{{settings.base_url}}{{wishlist.share_url}}" readonly>
                     </div>
-                    <input class="js-form-input" value="{{settings.base_url}}{{wishlist.share_url}}" readonly>
                 </div>
-            </div>
+            {{/if}}
         {{/if}}
-    {{/if}}
 
-    {{#if wishlist.items}}
-        {{> components/account/wishlist-item-list show_remove=wishlist.is_editable}}
-    {{else}}
-        {{> components/common/alert/alert-info (lang 'account.wishlists.empty_wishlist')}}
-    {{/if}}
-</div>
+        {{#if wishlist.items}}
+            {{> components/account/wishlist-item-list show_remove=wishlist.is_editable}}
+        {{else}}
+            {{> components/common/alert/alert-info (lang 'account.wishlists.empty_wishlist')}}
+        {{/if}}
+    </div>
+
 {{/partial}}
-{{> layout/base}}
+{{> layout/account}}

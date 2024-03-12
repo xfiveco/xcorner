@@ -1,52 +1,41 @@
-<div>
-    <div>
-        <div>
-            {{lang 'account.wishlists.name'}}
-        </div>
-        <div>
-            {{lang 'account.wishlists.num_items'}}
-        </div>
-        <div>
-            {{lang 'account.wishlists.shared'}}
-        </div>
-        <div>
-            {{lang 'account.wishlists.action'}}
-        </div>
-    </div>
-    <div>
+<div class="c-wishlist-list">
+    <div class="c-wishlist-list__item">
         {{#each customer.wishlists}}
-            <div>
-                <div>
-                    <a href="{{view_url}}">
-                        {{name}}
-                    </a>
-                </div>
-                <div>
-                    {{num_items}}
-                </div>
-                <div>
-                    {{#if is_public }}
-                        {{lang 'common.yes'}}
-                    {{else}}
-                        {{lang 'common.no'}}
-                    {{/if}}
-                </div>
-                <div>
+                    <div class="c-wishlist-list__actions">
+                        <a href="{{view_url}}">
+                            <span class="o-text o-text--l">
+                                {{name}}
+                            </span>
+                        </a>
+                        
+                        <a href="{{edit_url}}" class="c-button c-button--icon js-wishlist">
+                            <span class="u-hidden-visually">{{lang 'common.edit'}}</span>
+                            {{> components/icon/icon iconFileName="edit"}}
+                        </a>
+                    </div>
+
+                    <span class="o-text o-text--m c-wishlist-list__label">
+                        {{lang 'account.wishlists.num_products' num_products=num_items }}
+                    </span>
+
+                    <span class="o-text o-text--m c-wishlist-list__label">
+                        {{#if is_public }}
+                            {{lang 'account.wishlists.public'}}
+                        {{else}}
+                            {{lang 'account.wishlists.private'}}
+                        {{/if}}
+                    </span>
+            
                     <form method="post" action="{{delete_url}}">
                         {{#if is_public}}
                             <a href="{{share_url}}" class="c-button c-button--primary" role="button">
                                 {{lang 'common.share'}}
                             </a>
                         {{/if}}
-                        <a href="{{edit_url}}" class="c-button js-wishlist">
-                            {{lang 'common.edit'}}
-                        </a>
-                        <button type="submit" class="c-button js-wishlist-delete">
+                        <button type="submit" class="c-button c-button--quaternary c-button--full@mobile js-wishlist-delete">
                             {{lang 'common.delete'}}
                         </button>
                     </form>
-                </div>
-            </div>
         {{/each}}
     </div>
 </div>
@@ -57,7 +46,7 @@
             {{> components/common/alert/alert-info (lang 'account.wishlists.you_have_none')}}
         </p>
     {{/unless}}
-    <div>
+    <div class="c-wishlist-list__actions">
         <a href="{{this.urls.account.wishlists.add}}" class="c-button c-button--primary js-wishlist" role="button">
             {{lang 'account.wishlists.new'}}
         </a>
@@ -68,7 +57,7 @@
                 <input type="hidden" value="{{this.id}}" name="deletewishlist[]">
             {{/each}}
             
-            <button type="submit" class="c-button js-wishlist-delete">
+            <button type="submit" class="c-button c-button--terniary js-wishlist-delete">
                 {{lang 'account.wishlists.delete_all'}}
             </button>
         {{/if}}
