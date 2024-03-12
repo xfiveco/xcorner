@@ -13,32 +13,34 @@
     }
 </style>
     
-<section class="js-home-swiper c-carousel c-hero-slider c-hero-slider__{{_.id}}">
-    <div class="swiper-wrapper">
-        {{#each slides}}
-            <div class="swiper-slide">
-                <div class="slide-container">
-                    {{#if image}}<img class="c-hero-slider__image" src="{{image.src}}" />{{/if}}
-                    {{#or title subtext}}
-                        <div class="c-hero-slider__information">
-                            {{#if title}}<h2 class="c-hero-slider__title">{{title}}</h2>{{/if}}
-                            {{#if subtext}}<p class="c-hero-slider__subtext">{{subtext}}</p>{{/if}}
-                            {{#if price}}<p class="c-hero-slider__price-container">$ <span class="c-hero-slider__price">{{price}}</span></p>{{/if}}
-                            {{#or main_button secondary_button}}
-                                <div class="c-hero-slider__buttons">
-                                    {{#if main_button}}
-                                        <a class="c-button c-button--primary" href="{{main_button.url}}">{{main_button.text}}</a>
-                                    {{/if}}
-                                    {{#if secondary_button}}
-                                        <a class="c-button c-button--secondary" href="{{secondary_button.url}}">{{secondary_button.text}}</a>
-                                    {{/if}}
-                                </div>
-                            {{/or}}
-                        </div>
-                    {{/or}}
+<section class="js-home-swiper c-hero-slider c-hero-slider__{{_.id}}">
+    <div class="{{#if has_container}}o-container{{/if}} c-hero-slider__container">
+        <div class="swiper-wrapper">
+            {{#each slides}}
+                <div class="swiper-slide">
+                    <div class="slide-container">
+                        {{#if image}}<img class="c-hero-slider__image" src="{{image.src}}" />{{/if}}
+                        {{#or title subtext}}
+                            <div class="c-hero-slider__information">
+                                {{#if title}}<h2 class="c-hero-slider__title">{{title}}</h2>{{/if}}
+                                {{#if subtext}}<p class="c-hero-slider__subtext">{{subtext}}</p>{{/if}}
+                                {{#if price}}<p class="c-hero-slider__price-container">$ <span class="c-hero-slider__price">{{price}}</span></p>{{/if}}
+                                {{#or main_button secondary_button}}
+                                    <div class="c-hero-slider__buttons">
+                                        {{#if main_button}}
+                                            <a class="c-button c-button--primary" href="{{main_button.url}}">{{main_button.text}}</a>
+                                        {{/if}}
+                                        {{#if secondary_button}}
+                                            <a class="c-button c-button--secondary" href="{{secondary_button.url}}">{{secondary_button.text}}</a>
+                                        {{/if}}
+                                    </div>
+                                {{/or}}
+                            </div>
+                        {{/or}}
+                    </div>
                 </div>
-            </div>
-        {{/each}}
+            {{/each}}
+        </div>
     </div>
 
     <div class="c-hero-slider__navigation">
