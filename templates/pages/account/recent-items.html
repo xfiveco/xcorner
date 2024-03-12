@@ -1,13 +1,14 @@
-{{#partial "page"}}
-<div>
-    {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
-    
-    <div>
+{{#partial "title"}}
+    <h1 class="o-heading o-heading--l">
         {{lang 'account.recent_items.heading' }}
-    </div>
-    
-    {{> components/account/navigation account_page='recent_items'}}
+    </h1>
+{{/partial}}
 
+{{#partial "navigation"}}
+    {{> components/account/navigation account_page='recent_items'}}
+{{/partial}}
+
+{{#partial "page"}}
     {{#unless customer.recently_viewed_products.items}}
         {{> components/common/alert/alert-info (lang 'account.recent_items.no_items')}}
     {{/unless}}
@@ -15,6 +16,6 @@
     <div>
         {{> components/products/grid products=customer.recently_viewed_products.items show_compare=customer.recently_viewed_products.show_compare}}
     </div>
-</div>
+
 {{/partial}}
-{{> layout/base}}
+{{> layout/account}}
