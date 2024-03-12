@@ -13,3 +13,4 @@ vendor/bundle
 .idea/
 /widget-templates/.env
 .eslintcache
+.env
