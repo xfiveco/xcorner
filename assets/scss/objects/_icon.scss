@@ -1,4 +1,6 @@
 .o-icon {
+    display: flex;
+    align-items: center;
     width: auto;
 }
 
@@ -6,4 +8,6 @@
     width: 1em;
     height: 1em;
     fill: currentColor;
+    max-width: unset;
+    max-height: unset;
 }
