@@ -292,7 +292,7 @@
             "overview": "Panoramica",
             "orders": "Ordini",
             "returns": "Resi",
-            "messages": "Messaggi ({num_new_messages})",
+            "messages": "Messaggi",
             "wishlists": "Liste desideri",
             "recently_viewed": "Visualizzati di recente",
             "settings": "Impostazioni account",
@@ -339,6 +339,7 @@
             "last_update": "Ultimo aggiornamento",
             "list": {
                 "order_number": "Ordine n. {number}",
+                "order": "Ordine",
                 "product_details": "{num_products, plural, one {1 prodotto} other {# prodotti}} per un totale di {cost}"
             },
             "details": {
@@ -489,7 +490,9 @@
             "delete_alert": "Eliminare le liste desideri? L'azione non può essere annullata.",
             "create_new": "Crea una nuova Lista desideri",
             "add_to_default": "Aggiungi alla mia Lista desideri",
-            "enter_wishlist_name_error": "Inserisci un nome per la lista desideri."
+            "enter_wishlist_name_error": "Inserisci un nome per la lista desideri.",
+            "private": "Privato",
+            "public": "Pubblico"
         }
     },
     "page": {

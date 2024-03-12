@@ -292,7 +292,7 @@
             "overview": "Oversikt",
             "orders": "Bestillinger",
             "returns": "Returer",
-            "messages": "Meldinger ({num_new_messages})",
+            "messages": "Meldinger",
             "wishlists": "Ønskelister",
             "recently_viewed": "Nylig sett",
             "settings": "Kontoinnstillinger",
@@ -339,6 +339,7 @@
             "last_update": "Sist oppdatert",
             "list": {
                 "order_number": "Bestilling #{number}",
+                "order": "Bestilling",
                 "product_details": "{num_products, plural, one {1 produkt} other {# produkter}} totalt {cost}"
             },
             "details": {
@@ -489,7 +490,9 @@
             "delete_alert": "Er du sikker på at du vil slette ønskelisten(e) din(e)? Denne handlingen kan ikke angres.",
             "create_new": "Opprett ny ønskeliste",
             "add_to_default": "Legg til på min ønskeliste",
-            "enter_wishlist_name_error": "Du må skrive inn et navn for ønskelisten."
+            "enter_wishlist_name_error": "Du må skrive inn et navn for ønskelisten.",
+            "private": "Privat",
+            "public": "Offentlig"
         }
     },
     "page": {

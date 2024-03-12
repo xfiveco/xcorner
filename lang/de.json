@@ -292,7 +292,7 @@
             "overview": "Übersicht",
             "orders": "Bestellungen",
             "returns": "Rückgaben",
-            "messages": "Nachrichten ({num_new_messages})",
+            "messages": "Nachrichten",
             "wishlists": "Wunschlisten",
             "recently_viewed": "Kürzlich angesehen",
             "settings": "Kontoeinstellungen",
@@ -339,6 +339,7 @@
             "last_update": "Letztes Update",
             "list": {
                 "order_number": "Bestellung #{number}",
+                "order": "Bestellung",
                 "product_details": "{num_products, plural, one {1 produkt} other {# Produkte}} mit einem Gesamtbetrag von {cost}"
             },
             "details": {
@@ -489,7 +490,9 @@
             "delete_alert": "Möchten Sie Ihre Wunschliste(n) wirklich löschen? Diese Aktion kann nicht rückgängig gemacht werden.",
             "create_new": "Neue Wunschliste erstellen",
             "add_to_default": "Zu meiner Wunschliste hinzufügen",
-            "enter_wishlist_name_error": "Sie müssen einen Namen für die Wunschliste angeben."
+            "enter_wishlist_name_error": "Sie müssen einen Namen für die Wunschliste angeben.",
+            "private": "Private",
+            "public": "Öffentlich"
         }
     },
     "page": {

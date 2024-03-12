@@ -299,7 +299,7 @@
             "overview": "Overview",
             "orders": "Orders",
             "returns": "Returns",
-            "messages": "Messages ({num_new_messages})",
+            "messages": "Messages",
             "wishlists": "Wish Lists",
             "recently_viewed": "Recently Viewed",
             "settings": "Account Settings",
@@ -346,6 +346,7 @@
             "last_update": "Last Update",
             "list": {
                 "order_number": "Order #{number}",
+                "order": "Order",
                 "product_details": "{num_products, plural, one {1 product} other {# products}} totaling {cost}"
             },
             "details": {
@@ -496,7 +497,9 @@
             "delete_alert": "Are you sure you want to delete your Wish List(s)? This action cannot be undone.",
             "create_new": "Create New Wish List",
             "add_to_default": "Add to My Wish List",
-            "enter_wishlist_name_error": "You must enter a wishlist name."
+            "enter_wishlist_name_error": "You must enter a wishlist name.",
+            "private": "Private",
+            "public": "Public"
         }
     },
     "page": {
