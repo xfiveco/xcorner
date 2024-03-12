@@ -1,23 +1,31 @@
-{{#partial "page"}}
-    {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
+---
+customer:
+    orders:
+        limit: 10
+---
 
-    <div>
+{{#partial "title"}}
+    <h1 class="o-heading o-heading--l">
         {{#if forms.address.address_id}}
             {{lang 'forms.address.edit.heading'}}
         {{else}}
             {{lang 'forms.address.add.heading'}}
         {{/if}}
-    </div>
+    </h1>
+{{/partial}}
 
+{{#partial "navigation"}}
     {{> components/account/navigation account_page='addresses'}}
+{{/partial}}
 
+{{#partial "page"}}
     <div>
         {{#if forms.address.error}}
             {{> components/common/alert/alert-error forms.address.error}}
         {{/if}}
 
         <div>
-            <form action="{{forms.address.action}}" class="js-address-form" method="post">
+            <form action="{{forms.address.action}}" class="js-address-form c-form--full" method="post">
                 {{#if forms.address.address_id }}
                     <input type="hidden" name="shipid" value="{{forms.address.address_id}}">
                 {{/if}}
@@ -41,6 +49,5 @@
             </form>
         </div>
     </div>
-
 {{/partial}}
-{{> layout/base}}
+{{> layout/account}}

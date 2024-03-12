@@ -1,22 +1,20 @@
-{{#partial "page"}}
-    {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
-    
-    <div>
+{{#partial "title"}}
+    <h1 class="o-heading o-heading--l">
         {{lang 'account.addresses.heading' }}
-    </div>
-    
-    {{> components/account/navigation account_page='addresses'}}
-
-    <div>
-        <div>
-            {{#if customer.error}}
-                {{>components/common/alert/alert-error customer.error}}
-            {{/if}}
-            {{#if customer.success}}
-                {{>components/common/alert/alert-success customer.success}}
-            {{/if}}
-            {{> components/account/address-list }}
-        </div>
-    </div>
+    </h1>
 {{/partial}}
-{{> layout/base}}
+
+{{#partial "navigation"}}
+    {{> components/account/navigation account_page='addresses'}}
+{{/partial}}
+
+{{#partial "page"}}
+    {{#if customer.error}}
+        {{>components/common/alert/alert-error customer.error}}
+    {{/if}}
+    {{#if customer.success}}
+        {{>components/common/alert/alert-success customer.success}}
+    {{/if}}
+    {{> components/account/address-list }}
+{{/partial}}
+{{> layout/account}}
