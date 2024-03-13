@@ -9,13 +9,13 @@ If you are making a change here or in price-range.html, you probably want to mak
 {{else}}
     {{#if price.with_tax}}
         <div class="js-non-sale-price-with-tax" {{#unless price.non_sale_price_with_tax}}style="display: none;"{{/unless}}>
-            <span class="js-product-non-sale-price-with-tax c-price__with-tax c-price__with-tax--non-sale">
+            <span class="js-product-non-sale-price-with-tax c-price">
                 {{price.non_sale_price_with_tax.formatted}}
             </span>
         </div>
         <div>
             </span>
-            <span class="js-product-price-with-tax c-price__with-tax">
+            <span class="js-product-price-with-tax c-price">
                 {{price.with_tax.formatted}}
             </span>
             {{#if price.without_tax}}
@@ -26,24 +26,24 @@ If you are making a change here or in price-range.html, you probably want to mak
         </div>
     {{/if}}
     {{#if price.without_tax}}
-        <div class="js-rrp-price-without-tax c-price__without-tax c-price__without-tax--sale{{#if price.with_tax}} price-section-minor{{/if}}" {{#unless price.rrp_without_tax}}style="display: none;"{{/unless}}>
+        <div class="js-rrp-price-without-tax c-price c-price__no-tax c-price__sale{{#if price.with_tax}} price-section-minor{{/if}}" {{#unless price.rrp_without_tax}}style="display: none;"{{/unless}}>
             <span>
                 {{> components/products/price-label
                     label_value=theme_settings.pdp_retail_price_label
                     fallback=(lang "page_builder.pdp_retail_price_label")
                 }}
             </span>
-            <span class="js-product-rrp-price-without-tax c-price__without-tax">
+            <span class="js-product-rrp-price-without-tax c-price">
                 {{price.rrp_without_tax.formatted}}
             </span>
         </div>
-        <div class="js-non-sale-price-without-tax c-price__without-tax c-price__without-tax--non-sale{{#if price.with_tax}} price-section-minor{{/if}}" {{#unless price.non_sale_price_without_tax}}style="display: none;"{{/unless}}>
+        <div class="js-non-sale-price-without-tax c-price c-price__no-tax {{#if price.with_tax}} price-section-minor{{/if}}" {{#unless price.non_sale_price_without_tax}}style="display: none;"{{/unless}}>
             <span>
                 {{> components/products/price-label
                     fallback=(lang "page_builder.pdp_non_sale_price_label")
                 }}
             </span>
-            <span class="js-product-non-sale-price-without-tax c-price__without-tax c-price__without-tax--non-sale">
+            <span class="js-product-non-sale-price-without-tax c-price c-price__no-tax">
                 {{price.non_sale_price_without_tax.formatted}}
             </span>
         </div>
@@ -56,7 +56,7 @@ If you are making a change here or in price-range.html, you probably want to mak
                     fallback=(lang "page_builder.pdp_sale_price_label")
                 }}
             </span>
-            <span class="js-product-price-without-tax c-price__without-tax{{#if price.with_tax}} price-section-minor{{/if}}">
+            <span class="js-product-price-without-tax c-price c-price__no-tax c-price__sale{{#if price.with_tax}} price-section-minor{{/if}}">
                 {{price.without_tax.formatted}}
             </span>
             {{#if price.with_tax}}

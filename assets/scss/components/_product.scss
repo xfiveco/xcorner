@@ -122,16 +122,16 @@
     }
 }
 
-.c-product__pricing {
+.c-product__pricing-wrapper {
     display: flex;
     gap: rem-calc(8px);
 
-    .c-price__without-tax {
-        font-size: rem-calc(32px);
-        line-height: rem-calc(40px);
+    .c-price {
+        font-size: rem-calc(24px);
 
-        &--non-sale {
-            font-size: rem-calc(24px);
+        &__no-tax {
+            font-size: rem-calc(32px);
+            line-height: rem-calc(40px);
         }
     }
 }

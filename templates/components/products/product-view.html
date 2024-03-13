@@ -118,7 +118,7 @@
 
         {{> components/products/description}}
 
-        <div class="c-product__pricing">
+        <div class="c-product__pricing-wrapper">
             {{#or customer (unless settings.hide_price_from_guests)}}
                 {{> components/products/price price=product.price}}
             {{else}}
