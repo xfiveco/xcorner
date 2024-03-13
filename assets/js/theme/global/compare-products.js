@@ -30,7 +30,7 @@ function updateCounterNav(counter, $link, urls) {
     }
 }
 
-export default function ({ noCompareMessage, urls }) {
+export default function compareProducts({ noCompareMessage, urls }) {
     let compareCounter = []
 
     const $compareLink = q$('.js-compare-nav')
