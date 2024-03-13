@@ -10,6 +10,7 @@ import CartItemDetails from './common/cart-item-details'
 import q$, { q$$ } from './global/selector'
 import trigger from './common/utils/trigger'
 import toggle from './global/toggle'
+import addReviewsToCartItems from './custom/add-reviews-to-cart-items'
 
 export default class Cart extends PageManager {
     onReady() {
@@ -30,6 +31,10 @@ export default class Cart extends PageManager {
 
         this.setApplePaySupport()
         this.bindEvents()
+
+        const { storefrontApiToken } = this.context
+
+        addReviewsToCartItems(storefrontApiToken)
     }
 
     setApplePaySupport() {
@@ -261,15 +266,16 @@ export default class Cart extends PageManager {
         let preVal
 
         // cart update
-        q$('.js-cart-update', this.$cartContent)?.addEventListener('click', (event) => {
-            const $target = event.currentTarget
+        q$$('.js-cart-update', this.$cartContent)?.forEach(($btn) => {
+            $btn.addEventListener('click', (event) => {
+                const $target = event.currentTarget
 
-            event.preventDefault()
+                event.preventDefault()
 
-            // update cart quantity
-            cartUpdate($target)
+                // update cart quantity
+                cartUpdate($target)
+            })
         })
-
         // cart qty manually updates
         q$$('.js-cart-item-qty-input', this.$cartContent).forEach(($input) => {
             $input.addEventListener('focus', function onQtyFocus() {

@@ -1,192 +1,141 @@
 <div data-cart-quantity="{{cart.quantity}}">
-    <div>
-        <div>{{lang 'cart.checkout.item'}}</div>
-        <div>{{lang 'cart.checkout.price'}}</div>
-        <div>{{lang 'cart.checkout.quantity'}}</div>
-        <div>{{lang 'cart.checkout.total'}}</div>
-    </div>
-    <div>
+    <div class="c-cart__item-wrapper">
         {{#each cart.items}}
-            <div class="js-item-row">
-                <div>
+            <div class="js-item-row c-cart__item" data-type-product-id="{{product_id}}">
+                <div class="c-cart__item-image-wrapper">
                     {{#if type '==' 'GiftCertificate'}}
                         <img
                             src="{{cdn ../theme_settings.default_image_gift_certificate}}"
                             alt="{{lang 'cart.gift_certificates.gift_certificate'}}"
                             title="{{lang 'cart.gift_certificates.gift_certificate'}}"
+                            class="c-cart__item-image"
                         >
                     {{else}}
                         {{> components/common/image
                             image=image
                             fallback_size=../theme_settings.product_thumb_size
                             default_image=../theme_settings.default_image_product
+                            class="c-cart__item-image"
                         }}
                     {{/if}}
                 </div>
-                <div>
-                    {{#if brand.name}}
-                        <p>{{brand.name}}</p>
-                    {{/if}}
-                    <div>
-                        <a href="{{url}}">
+                <div class="c-cart__item-information">
+                    <div class="c-cart__item-head">
+                        <a class="c-cart__item-title" href="{{url}}">
                             {{name}}
                         </a>
+                        <div class="c-cart__item-rating-wrapper">
+                            <div class="c-cart__item-rating" role="img" aria-label="">
+                                <span class="c-cart-item__filled-stars">
+                                    {{> components/common/star status='filled' class="u-hidden"}}
+                                    {{> components/common/star status='filled' class="u-hidden"}}
+                                    {{> components/common/star status='filled' class="u-hidden"}}
+                                    {{> components/common/star status='filled' class="u-hidden"}}
+                                    {{> components/common/star status='filled' class="u-hidden"}}
+                                </span>
+                                <span class="c-cart-item__unfilled-stars">
+                                    {{> components/common/star status='unfilled' class="u-hidden"}}
+                                    {{> components/common/star status='unfilled' class="u-hidden"}}
+                                    {{> components/common/star status='unfilled' class="u-hidden"}}
+                                    {{> components/common/star status='unfilled' class="u-hidden"}}
+                                    {{> components/common/star status='unfilled' class="u-hidden"}}
+                                </span>
+                            </div>
+                            <a class="c-cart__item-rating-link" href="{{url}}"></a>
+                        </div>
                     </div>
-                    {{#if release_date}}
-                        <p>({{release_date}})</p>
-                    {{/if}}
 
                     {{#if options}}
-                        <dl>
+                        <div class="c-cart__item-options">
                             {{#each options}}
-                                <dt>{{name}}:</dt>
-                                <dd>
-                                    {{#if is_file}}
-                                        <a href="/viewfile.php?attributeId={{id}}&cartitem={{../id}}">
-                                            {{value}}
-                                        </a>
-                                    {{else}}
-                                        {{> components/common/product-options}}
-                                    {{/if}}
-                                </dd>
+                                <p class="c-cart__option-name">
+                                    <strong>{{name}}</strong>
+                                    <span class="u-required">*</span>
+                                </p>
+                                <p class="c-cart__option-value">{{> components/common/product-options}}</p>
                             {{/each}}
-                        </dl>
 
-                        <a 
-                            href="#"
-                            data-item-edit="{{id}}"
-                            data-product-id="{{product_id}}"
-                            aria-label="{{lang 'products.change_product_options' name=name}}"
-                        >
-                            {{lang 'common.change'}}
-                        </a>
-                    {{/if}}
-
-                    {{#if type '==' 'GiftCertificate'}}
-                        <a 
-                            href="{{edit_url}}"
-                            aria-label="{{lang 'cart.gift_certificates.change_gift_certificate' certificate_name=name}}"
-                        >
-                            {{lang 'common.change'}}
-                        </a>
-                    {{/if}}
-
-                    {{> components/cart/item-giftwrap this}}
-                    
-                    {{#if event_date}}
-                        <dl>
-                            <dt>
-                                {{event_date.name}}
-                            </dt>
-                            <dd>
-                                {{event_date.date}}
-                            </dd>
-                        </dl>
-                    {{/if}}
-                </div>
-
-                <div>
-                    <span>{{lang 'cart.checkout.price'}}</span>
-                    
-                    {{#or ../customer (unless ../settings.hide_price_from_guests) (if type '==' 'GiftCertificate')}}
-                        <span class="{{#if price_discounted}}price-discounted{{/if}}">
-                            {{price.formatted}}
-                        </span>
-                        
-                        {{#if price_discounted}}
-                            <span>
-                                {{price_discounted.formatted}}
-                            </span>
-                        {{/if}}
-                    {{else}}
-                        {{> components/common/login-for-pricing}}
-                    {{/or}}
-                </div>
-
-                <div>
-                    <label for="qty-{{id}}">
-                        {{lang 'products.quantity'}}
-                    </label>
-                    
-                    <div>
-                        {{#if can_modify}}
-                            <button 
-                                class="c-button js-cart-update"
-                                data-cart-itemid="{{id}}"
-                                data-action="dec"
+                            <a 
+                                href="#"
+                                data-item-edit="{{id}}"
+                                data-product-id="{{product_id}}"
+                                aria-label="{{lang 'products.change_product_options' name=name}}"
                             >
-                                <span class="u-hidden-visually">
-                                    {{lang 'products.quantity_decrease' name=name}}
-                                </span>
-                                <svg>
-                                    <use href="#icon-keyboard-arrow-down" />
-                                </svg>
-                            </button>
-                        {{/if}}
-                        <input 
-                            class="js-form-input js-form-input-increment-total js-cart-item-qty-input"
-                            id="qty-{{id}}"
-                            name="qty-{{id}}"
-                            type="tel"
-                            value="{{quantity}}"
-                            data-quantity-min="{{min_purchase_quantity}}"
-                            data-quantity-max="{{max_purchase_quantity}}"
-                            data-quantity-min-error="{{lang 'products.quantity_min' quantity=min_purchase_quantity}}"
-                            data-quantity-max-error="{{lang 'products.quantity_max' quantity=max_purchase_quantity}}"
-                            min="1"
-                            pattern="[0-9]*"
-                            data-cart-itemid="{{id}}"
-                            data-action="manualQtyChange"
-                            aria-label="{{name}}"
-                            aria-live="polite"{{#unless can_modify}} disabled{{/unless}}>
-                        {{#if can_modify}}
-                            <button 
-                                class="c-button js-cart-update"
+                                {{lang 'common.change'}}
+                            </a>
+                        </div>
+                    {{/if}}
+
+                    <div class="c-cart__item-actions">
+                        <div class="c-cart__item-inputs">
+                            {{#if can_modify}}
+                                <button 
+                                    class="js-cart-update c-cart__item-qty-btn"
+                                    data-cart-itemid="{{id}}"
+                                    data-action="dec"
+                                >
+                                    <span class="u-hidden-visually">
+                                        {{lang 'products.quantity_decrease' name=name}}
+                                    </span>
+                                    <svg class="c-cart__icon" fill="white"><use xlink:href="#icon-decrease-quantity" /></svg>
+                                </button>
+                            {{/if}}
+                            <input 
+                                class="js-form-input js-form-input-increment-total js-cart-item-qty-input c-cart__item-qty-input"
+                                id="qty-{{id}}"
+                                name="qty-{{id}}"
+                                type="tel"
+                                value="{{quantity}}"
+                                data-quantity-min="{{min_purchase_quantity}}"
+                                data-quantity-max="{{max_purchase_quantity}}"
+                                data-quantity-min-error="{{lang 'products.quantity_min' quantity=min_purchase_quantity}}"
+                                data-quantity-max-error="{{lang 'products.quantity_max' quantity=max_purchase_quantity}}"
+                                min="1"
+                                pattern="[0-9]*"
                                 data-cart-itemid="{{id}}"
-                                data-action="inc"
-                            >
-                                <span class="u-hidden-visually">
-                                    {{lang 'products.quantity_increase' name=name}}
-                                </span>
-                                <svg>
-                                    <use href="#icon-keyboard-arrow-up" />
-                                </svg>
-                            </button>
-                        {{/if}}
+                                data-action="manualQtyChange"
+                                aria-label="{{name}}"
+                                aria-live="polite"{{#unless can_modify}} disabled{{/unless}}>
+                            {{#if can_modify}}
+                                <button 
+                                    class="js-cart-update c-cart__item-qty-btn"
+                                    data-cart-itemid="{{id}}"
+                                    data-action="inc"
+                                >
+                                    <span class="u-hidden-visually">
+                                        {{lang 'products.quantity_increase' name=name}}
+                                    </span>
+                                    <svg class="c-cart__icon" fill="white"><use xlink:href="#icon-increase-quantity" /></svg>
+                                </button>
+                            {{/if}}
+                        </div>
+                        <div class="c-order-total">
+                            {{#or ../customer (unless ../settings.hide_price_from_guests) (if type '==' 'GiftCertificate')}}
+                                <strong class="{{#if total_discounted}}price-discounted{{/if}}">
+                                    {{total.formatted}}
+                                </strong>
+                                
+                                {{#if total_discounted}}
+                                    <strong>
+                                        {{total_discounted.formatted}}
+                                    </strong>
+                                {{/if}}
+                            {{else}}
+                                --
+                            {{/or}}
+                            {{#or can_modify (if type '==' 'GiftCertificate')}}
+                                <button 
+                                    class="js-cart-remove c-cart__button-remove"
+                                    data-cart-itemid="{{id}}"
+                                    data-confirm-delete="{{lang 'cart.confirm_delete'}}"
+                                    aria-label="{{lang 'cart.remove_item' name=name}}"
+                                >
+                                    <svg class="c-cart__icon" fill="white"><use xlink:href="#icon-trash" /></svg>
+                                </button>
+                            {{/or}}
+                        </div>
                     </div>
                 </div>
-
-                <div>
-                    <span>
-                        {{lang 'cart.checkout.total'}}
-                    </span>
-
-                    {{#or ../customer (unless ../settings.hide_price_from_guests) (if type '==' 'GiftCertificate')}}
-                        <strong class="{{#if total_discounted}}price-discounted{{/if}}">
-                            {{total.formatted}}
-                        </strong>
-                        
-                        {{#if total_discounted}}
-                            <strong>
-                                {{total_discounted.formatted}}
-                            </strong>
-                        {{/if}}
-                    {{else}}
-                        --
-                    {{/or}}
-                    {{#or can_modify (if type '==' 'GiftCertificate')}}
-                        <button 
-                            class="js-cart-remove"
-                            data-cart-itemid="{{id}}"
-                            data-confirm-delete="{{lang 'cart.confirm_delete'}}"
-                            aria-label="{{lang 'cart.remove_item' name=name}}"
-                        >
-                            <svg>
-                                <use href="#icon-close"></use>
-                            </svg>
-                        </button>
-                    {{/or}}
-                </td>
             </div>
         {{/each}}
     </div>

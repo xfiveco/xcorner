@@ -4,77 +4,80 @@ cart: true
 {{inject 'cancelButtonText' (lang 'common.cancel')}}
 {{#partial "page"}}
 {{inject 'invalidEntryMessage' (lang 'cart.invalid_entry_message')}}
+{{inject 'storefrontApiToken' settings.storefront_api.token}} 
 
-<div>
-    <div class="js-cart">
-        {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
+{{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
 
-        {{> components/cart/page-title}}
+<h1 class="p-common__title">{{lang 'cart.title'}}</h1>
 
-        <div class="js-cart-status">
-            {{> components/cart/status-messages}}
+<div class="js-cart ">
+
+    <div class="js-cart-status">
+        {{> components/cart/status-messages}}
+    </div>
+
+    {{#if cart.items.length}}
+        <div class="js-loading-overlay"></div>
+
+        <div class="js-cart-content c-cart__content">
+            {{> components/cart/content}}
         </div>
 
-        {{#if cart.items.length}}
-            <div class="js-loading-overlay"></div>
+        <div class="js-cart-totals c-cart__totals">
+            {{> components/cart/totals}}
+        </div>
 
-            <div class="js-cart-content">
-                {{> components/cart/content}}
-            </div>
+        {{{region name="cart_below_totals"}}}
 
-            <div class="js-cart-totals">
-                {{> components/cart/totals}}
-            </div>
+        {{#or customer (unless settings.hide_price_from_guests)}}
+            {{#if cart.additional_checkout_buttons}}
+                <div></div>
+            {{/if}}
 
-            {{{region name="cart_below_totals"}}}
-
-            {{#or customer (unless settings.hide_price_from_guests)}}
-                {{#if cart.additional_checkout_buttons}}
-                    <div></div>
-                {{/if}}
-
-                {{#if cart.show_primary_checkout_button}}
-                    <div>
-                        <a
-                            class="c-button c-button--primary"
-                            href="{{urls.checkout.single_address}}"
-                            title="{{lang 'cart.checkout.title'}}"
-                        >
-                            {{lang 'cart.checkout.button'}}
+            {{#if cart.show_primary_checkout_button}}
+                <div class="c-cart__checkout-button-wrapper">
+                    <a
+                        class="c-button c-button--primary c-totals__checkout-button c-button--full "
+                        href="{{urls.checkout.single_address}}"
+                        title="{{lang 'cart.checkout.title'}}"
+                    >
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M1 10H23M21 4H3C1.89543 4 1 4.89543 1 6V18C1 19.1046 1.89543 20 3 20H21C22.1046 20 23 19.1046 23 18V6C23 4.89543 22.1046 4 21 4Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        {{lang 'cart.checkout.button'}}
+                    </a>
+                    {{#if cart.show_multiple_address_shipping}}
+                        <a href="{{urls.checkout.multiple_address}}">
+                            {{lang 'cart.preview.checkout_multiple'}}
                         </a>
-                        {{#if cart.show_multiple_address_shipping}}
-                            <a href="{{urls.checkout.multiple_address}}">
-                                {{lang 'cart.preview.checkout_multiple'}}
-                            </a>
-                        {{/if}}
-                    </div>
-                {{else}}
-                    <div>
-                        <a class="c-button" href="{{urls.home}}" title="{{lang 'cart.continue_shopping'}}">
-                            {{lang 'cart.continue_shopping'}}
-                        </a>
-                    </div>
-                {{/if}}
-
-                {{#if cart.additional_checkout_buttons}}
-                    <div class="js-cart-additional-checkout-buttons">
-                        {{> components/cart/additional-checkout-buttons}}
-                    </div>
-                {{/if}}
+                    {{/if}}
+                </div>
             {{else}}
-                <div>
-                    <a class="c-button" href="{{urls.auth.login}}" title="{{lang 'cart.login_to_checkout'}}">
-                        {{lang 'cart.login_to_checkout'}}
+                <div class="c-cart__checkout-button-wrapper">
+                    <a class="c-button c-button--primary c-button--full " href="{{urls.home}}" title="{{lang 'cart.continue_shopping'}}">
+                        {{lang 'cart.continue_shopping'}}
                     </a>
                 </div>
-            {{/or}}
+            {{/if}}
 
+            {{#if cart.additional_checkout_buttons}}
+                <div class="js-cart-additional-checkout-buttons">
+                    {{> components/cart/additional-checkout-buttons}}
+                </div>
+            {{/if}}
         {{else}}
-            <div tabindex="0">
-                {{lang 'cart.checkout.empty_cart'}}
+            <div>
+                <a class="c-button c-button--primrary c-button--full " href="{{urls.auth.login}}" title="{{lang 'cart.login_to_checkout'}}">
+                    {{lang 'cart.login_to_checkout'}}
+                </a>
             </div>
-        {{/if}}
-    </div>
+        {{/or}}
+
+    {{else}}
+        <div tabindex="0">
+            {{lang 'cart.checkout.empty_cart'}}
+        </div>
+    {{/if}}
 </div>
 {{/partial}}
 {{> layout/base}}

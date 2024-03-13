@@ -321,13 +321,14 @@ const Validators = {
      * @param field
      */
     cleanUpStateValidation: (field) => {
-        const $fieldClassElement = q$(`[data-type="${field.dataset.fieldType}"]`)
-
-        Object.keys(nod.classes).forEach((value) => {
-            if ($fieldClassElement.classList.contains(nod.classes[value])) {
-                $fieldClassElement.classList.remove(nod.classes[value])
-            }
-        })
+        if (field.dataset.fieldType) {
+            const $fieldClassElement = q$(`[data-field-type="${field.dataset.fieldType}"]`)
+            Object.keys(nod.classes).forEach((value) => {
+                if ($fieldClassElement.classList.contains(nod.classes[value])) {
+                    $fieldClassElement.classList.remove(nod.classes[value])
+                }
+            })
+        }
     },
 }
 

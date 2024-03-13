@@ -1,0 +1,9 @@
+{{#if status '===' 'filled'}}
+    <svg class="c-star {{#if class}}{{class}}{{/if}}">
+        <use xlink:href="#icon-star-filled" />
+    </svg>
+{{else}}
+    <svg class="c-star {{#if class}}{{class}}{{/if}}">
+        <use xlink:href="#icon-star-unfilled" />
+    </svg>
+{{/if}}

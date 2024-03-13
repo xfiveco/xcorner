@@ -1,67 +1,50 @@
-<ul>
-    <li>
-        <div>
-            <strong>{{lang 'cart.checkout.subtotal'}}:</strong>
-        </div>
-        <div>
-            {{#or customer (unless settings.hide_price_from_guests)}}
-                <span>
-                    {{cart.sub_total.formatted}}
-                </span>
-            {{else}}
-                {{> components/common/login-for-pricing}}
-            {{/or}}
-        </div>
-    </li>
+<div class="c-totals">
+    <div class="c-totals__subtotal">
+        <strong class="c-totals__label">{{lang 'cart.checkout.subtotal'}}:</strong>
+        {{#or customer (unless settings.hide_price_from_guests)}}
+            <span class="c-totals__value">
+                {{cart.sub_total.formatted}}
+            </span>
+        {{else}}
+            {{> components/common/login-for-pricing}}
+        {{/or}}
+    </div>
 
     {{#if cart.gift_wrapping_cost.value}}
-        <li>
-            <div>
-                <strong>{{lang 'cart.checkout.gift_wrapping'}}:</strong>
-            </div>
-            <div>
-                <span>
-                    {{cart.gift_wrapping_cost.formatted}}
-                </span>
-            </div>
-        </li>
+        <div class="c-totals__gift-wrapping-cost">
+            <strong class="c-totals__label">{{lang 'cart.checkout.gift_wrapping'}}:</strong>
+            <span class="c-totals__value">
+                {{cart.gift_wrapping_cost.formatted}}
+            </span>
+        </div>
     {{/if}}
 
     {{#if cart.shipping_handling.show_estimator}}
-        <li>
-            <div>
-                <strong>{{lang 'cart.checkout.shipping'}}:</strong>
-            </div>
+        <div class="c-totals__shipping-estimator">
             {{> components/cart/shipping-estimator cart.shipping_handling}}
-        </li>
+        </div>
     {{/if}}
     {{#each cart.taxes}}
         {{#unless included}}
-            <li>
-                <div>
-                    <strong>{{name}}:</strong>
-                </div>
-                <div>
-                    <span>{{cost.formatted}}</span>
-                </div>
-            </li>
+            <div class="c-totals__discount">
+                <strong class="c-totals__label">{{name}}:</strong>
+                <span class="c-totals__value">{{cost.formatted}}</span>
+            </div>
         {{/unless}}
     {{/each}}
     {{#if cart.discount }}
-        <li>
-            <div>
-                <strong>{{lang 'cart.discount'}}:</strong>
-            </div>
-            <div>
+        <div class="c-totals__discount">
+            <strong class="c-totals__label">{{lang 'cart.discount'}}:</strong>
+            <span class="c-totals__value">
                 {{cart.discount.formatted}}
-            </div>
-        </li>
+            </span>
+        </div>
     {{/if}}
     {{#if cart.coupons}}
         {{#each cart.coupons}}
-            <li>
+            <div class="c-totals__coupon">
                 <div>
-                    <strong>
+                    <strong class="c-totals__label">
                         {{lang 'cart.coupons.code_label' code=code}}
                     </strong>
                     <div>
@@ -70,68 +53,53 @@
                         </a>
                     </div>
                 </div>
-                <div>
-                    <span>{{discount.formatted}}</span>
-                </div>
-            </li>
+                <span class="c-totals__value">{{discount.formatted}}</span>
+            </div>
         {{/each}}
     {{else}}
-        <li>
-            <div>
-                <strong>{{lang 'cart.coupon_code'}}:</strong>
-            </div>
+        <div class="c-totals__coupon-input">
             {{> components/cart/coupon-input}}
-        </li>
+        </div>
     {{/if}}
     {{#if settings.gift_certificates_enabled}}
         {{#each cart.gift_certificates}}
-            <li>
+            <div class="c-totals__gift-certificate">
                 <div>
-                    <strong>
+                    <strong class="c-totals__label">
                         {{lang 'cart.gift_certificates.code_label' code=code}}
                     </strong>
-                    <span>
+                    <span class="c-totals__value">
                         {{remaining.formatted}} | <a href="{{remove_url}}">{{lang 'cart.gift_certificates.remove'}}</a>
                     </span>
                 </div>
-                <div>
+                <div class="c-totals__value">
                     {{used.formatted}}
                 </div>
-            </li>
-        {{/each}}
-        <li>
-            <div>
-                <strong>{{lang 'cart.gift_certificates.gift_certificate'}}:</strong>
             </div>
+        {{/each}}
+        <div class="c-totals__gift-certificate-input">
+            <strong class="c-totals__label">{{lang 'cart.gift_certificates.gift_certificate'}}:</strong>
             {{> components/cart/gift-certificate-input}}
-        </li>
+        </div>
     {{/if}}
     
-    <li>
-        <div>
-            <strong>{{lang 'cart.checkout.grand_total'}}:</strong>
-        </div>
-        <div>
-            {{#or customer (unless settings.hide_price_from_guests)}}
-                <span>
-                    {{cart.grand_total.formatted}}
-                </span>
-            {{else}}
-                {{> components/common/login-for-pricing}}
-            {{/or}}
-        </div>
-    </li>
+    <div class="c-totals__cart-total">
+        <strong class="c-totals__label">{{lang 'cart.checkout.grand_total'}}:</strong>
+        {{#or customer (unless settings.hide_price_from_guests)}}
+            <span class="c-totals__value">
+                {{cart.grand_total.formatted}}
+            </span>
+        {{else}}
+            {{> components/common/login-for-pricing}}
+        {{/or}}
+    </div>
 
     {{#each cart.taxes}}
         {{#if included}}
-            <li>
-                <div>
-                    <strong>{{concat name (lang 'cart.included_in_total')}}:</strong>
-                </div>
-                <div>
-                    <span>{{cost.formatted}}</span>
-                </div>
-            </li>
+            <div class="c-totals__cart-taxes">
+                <strong class="c-totals__label">{{concat name (lang 'cart.included_in_total')}}:</strong>
+                <span class="c-totals__value">{{cost.formatted}}</span>
+            </div>
         {{/if}}
     {{/each}}
-</ul>
+</div>

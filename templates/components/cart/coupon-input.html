@@ -1,20 +1,7 @@
-<div>
-    <button class="js-coupon-code-add">
-        {{lang 'cart.coupons.add_coupon'}}
-    </button>
-    
-    <button class="js-coupon-code-cancel" style="display: none;">
-        {{lang 'cart.coupons.cancel'}}
-    </button>
-</div>
-
-<div class="js-coupon-code" style="display: none;">
-    <form class="js-coupon-form" method="post" action="{{urls.cart}}">
-        <label for="couponcode">
-            {{lang 'cart.coupons.coupon_code'}}
-        </label>
+<div class="js-coupon-code">
+    <form class="js-coupon-form c-coupon-form" method="post" action="{{urls.cart}}">
         <input 
-            class="js-form-input" 
+            class="js-form-input c-form__input u-width-full" 
             data-error="{{lang 'cart.coupons.empty_error'}}" 
             id="couponcode" 
             type="text" 
@@ -24,7 +11,7 @@
         >
 
         <button 
-            class="c-button c-button--primary" 
+            class="c-button c-button--secondary u-width-full" 
             type="submit"
         >
             {{lang 'cart.coupons.button'}}
