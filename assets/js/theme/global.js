@@ -4,6 +4,7 @@ import mobileMenuToggle from './global/mobile-menu-toggle'
 import menu from './global/menu'
 import carousel from './common/carousel'
 import svgInjector from './global/svg-injector'
+import megaMenuSearch from './custom/mega-menu-search'
 
 export default class Global extends PageManager {
     onReady() {
@@ -24,6 +25,7 @@ export default class Global extends PageManager {
         carousel(this.context)
         menu()
         mobileMenuToggle()
+        megaMenuSearch()
 
         // Privacy Cookie Notification
         ;(() => import('./global/cookieNotification').then((privacyCookieNotification) => privacyCookieNotification.default()))()
