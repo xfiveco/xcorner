@@ -459,6 +459,10 @@ export default class ProductDetails extends ProductDetailsBase {
 
         // Add item to cart
         utils.api.cart.itemAdd(normalizeFormData(new FormData(form)), (err, response) => {
+            if (err || !response || response.data.error) {
+                throw new Error(err)
+            }
+
             currencySelector(response?.data.cart_id)
             const errorMessage = err || response.data.error
 

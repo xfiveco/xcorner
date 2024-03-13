@@ -1,5 +1,5 @@
 <div class="js-modal-header c-modal__header">
-    <h1 class="js-modal-header-title c-modal__header-title">
+    <h1 class="js-modal-header-title c-modal__title">
         {{lang 'cart.added_to_cart.woohoo'}} 🎉
     </h1>
 </div>
@@ -7,7 +7,7 @@
 <div class="js-modal-body c-modal__body">
     <section class="js-product-view">
         {{#with cart.added_item}}
-            <p class="c-modal__product-name">{{name}}</p>
+            <p class="c-modal__heading">{{name}}</p>
             <div>
                 {{#each options}}
                     <div class="js-product-view-info">

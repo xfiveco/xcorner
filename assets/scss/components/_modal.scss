@@ -35,6 +35,12 @@
     padding: rem-calc(48px);
 }
 
+.c-modal__button-wrapper {
+    display: flex;
+    gap: rem-calc(12px);
+    align-items: center;
+}
+
 .c-modal__close-button {
     background-color: $color-white;
     border-radius: rem-calc(4px);
@@ -47,7 +53,12 @@
     outline: none;
 }
 
-.c-modal__header-title {
+.c-modal__close-icon {
+    width: rem-calc(14px);
+    height: rem-calc(14px);
+}
+
+.c-modal__title {
     font-family: $font-semi-bold;
     font-size: rem-calc(24px);
     line-height: rem-calc(40px);
@@ -56,13 +67,7 @@
     text-align: left;
 }
 
-.c-modal__button-wrapper {
-    display: flex;
-    gap: rem-calc(12px);
-    align-items: center;
-}
-
-.c-modal__product-name {
+.c-modal__heading {
     color: $color-black;
     font-family: $font-semi-bold;
     font-size: rem-calc(16px);

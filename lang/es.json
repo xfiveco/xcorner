@@ -132,7 +132,9 @@
             "order_subtotal": "Subtotal del pedido",
             "continue_shopping": "Seguir comprando",
             "view_or_edit_cart": "Ver o editar su carrito",
-            "you_might_also_like": "También puede interesarle"
+            "you_might_also_like": "También te puede interesar",
+            "woohoo": "Woohoo!",
+            "message": " fue agregado a su carrito."
         }
     },
     "common": {
