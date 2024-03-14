@@ -32,7 +32,14 @@
             </li>
             <li>|</li>
         {{/if}}
-        <li>
+        <li class="u-hidden@medium">
+            <button
+                class="js-mobile-mega-menu-search c-navigation__link-search"
+            >
+                <svg class="c-navigation__icon"><use xlink:href="#icon-search-black" /></svg>
+            </button>
+        </li>
+        <li class="u-hidden@mobile">
             <button 
                 class="js-nav-user-action js-quick-search-expand js-mega-menu-search c-navigation__link-search"
                 type="button"
@@ -40,15 +47,7 @@
                 aria-controls="quick-search"
                 aria-label="{{lang 'common.search'}}"
             >
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                    <mask id="mask0_2973_15301" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="24">
-                    <path d="M11.5 21C16.7467 21 21 16.7467 21 11.5C21 6.25329 16.7467 2 11.5 2C6.25329 2 2 6.25329 2 11.5C2 16.7467 6.25329 21 11.5 21Z" stroke="#373D3F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                    <path d="M22 22L20 20" stroke="#373D3F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                    </mask>
-                    <g mask="url(#mask0_2973_15301)">
-                    <rect width="24" height="24" fill="#272727"/>
-                    </g>
-                </svg>
+                <svg class="c-navigation__icon"><use xlink:href="#icon-search-black" /></svg>
                 <span class="js-nav-user-action-text c-navigation__label">{{lang 'common.search'}}</span>
             </button>
         </li>
@@ -58,19 +57,9 @@
                 href="{{urls.compare}}"
                 aria-label="{{lang 'common.compare'}}"
             >
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                    <mask id="mask0_2973_15317" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="24">
-                    <path d="M22 5.15V8.85C22 11.1 21.1 12 18.85 12H16.15C13.9 12 13 11.1 13 8.85V5.15C13 2.9 13.9 2 16.15 2H18.85C21.1 2 22 2.9 22 5.15Z" stroke="#373D3F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                    <path d="M11 15.15V18.85C11 21.1 10.1 22 7.85 22H5.15C2.9 22 2 21.1 2 18.85V15.15C2 12.9 2.9 12 5.15 12H7.85C10.1 12 11 12.9 11 15.15Z" stroke="#373D3F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                    <path d="M22 15C22 18.87 18.87 22 15 22L16.05 20.25" stroke="#373D3F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                    <path d="M2 9C2 5.13 5.13 2 9 2L7.95 3.75" stroke="#373D3F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                    </mask>
-                    <g mask="url(#mask0_2973_15317)">
-                    <rect width="24" height="24" fill="#272727"/>
-                    </g>
-                </svg>
+                <svg class="c-navigation__icon"><use xlink:href="#icon-compare" /></svg>
                 <span class="js-nav-user-action-text c-navigation__label">{{lang 'common.compare'}}</span>
-                <span class="js-count-pill is-positive"></span>
+                <span class="js-count-pill is-positive u-hidden@mobile"></span>
             </a>
         </li>
         {{#if settings.gift_certificates_enabled}}
@@ -91,14 +80,7 @@
                 href="{{urls.cart}}"
                 aria-label="{{lang 'cart.nav_aria_label'}}"
             >
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                    <mask id="mask0_2973_15336" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="24">
-                    <path d="M1 1H5L7.68 14.39C7.77144 14.8504 8.02191 15.264 8.38755 15.5583C8.75318 15.8526 9.2107 16.009 9.68 16H19.4C19.8693 16.009 20.3268 15.8526 20.6925 15.5583C21.0581 15.264 21.3086 14.8504 21.4 14.39L23 6H6M9 22C9.55228 22 10 21.5523 10 21C10 20.4477 9.55228 20 9 20C8.44772 20 8 20.4477 8 21C8 21.5523 8.44772 22 9 22ZM20 22C20.5523 22 21 21.5523 21 21C21 20.4477 20.5523 20 20 20C19.4477 20 19 20.4477 19 21C19 21.5523 19.4477 22 20 22Z" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                    </mask>
-                    <g mask="url(#mask0_2973_15336)">
-                    <rect width="24" height="24" fill="#272727"/>
-                    </g>
-                </svg>
+                <svg class="c-navigation__icon"><use xlink:href="#icon-cart" /></svg>
                 <span class="js-nav-user-action-text c-navigation__label">{{lang 'common.cart'}}</span>
                 <span class="js-count-pill js-cart-quantity c-navigation__cart-quantity"></span>
             </a>
@@ -115,14 +97,7 @@
                     href="{{urls.account.index}}"
                     aria-label="{{lang 'common.account'}}"
                 >
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                        <mask id="mask0_2973_15350" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="24">
-                        <path d="M20 21V19C20 17.9391 19.5786 16.9217 18.8284 16.1716C18.0783 15.4214 17.0609 15 16 15H8C6.93913 15 5.92172 15.4214 5.17157 16.1716C4.42143 16.9217 4 17.9391 4 19V21M12 11C14.2091 11 16 9.20914 16 7C16 4.79086 14.2091 3 12 3C9.79086 3 8 4.79086 8 7C8 9.20914 9.79086 11 12 11Z" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                        </mask>
-                        <g mask="url(#mask0_2973_15350)">
-                        <rect width="24" height="24" fill="#272727"/>
-                        </g>
-                    </svg>
+                    <svg class="c-navigation__icon"><use xlink:href="#icon-account" /></svg>
                     <span class="js-nav-user-action-text c-navigation__label">{{lang 'common.account'}}</span>
                 </a>
             {{else}}
@@ -131,27 +106,16 @@
                     href="{{urls.auth.login}}"
                     aria-label="{{lang 'common.login'}}"
                 >
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                        <mask id="mask0_2973_15350" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="24">
-                        <path d="M20 21V19C20 17.9391 19.5786 16.9217 18.8284 16.1716C18.0783 15.4214 17.0609 15 16 15H8C6.93913 15 5.92172 15.4214 5.17157 16.1716C4.42143 16.9217 4 17.9391 4 19V21M12 11C14.2091 11 16 9.20914 16 7C16 4.79086 14.2091 3 12 3C9.79086 3 8 4.79086 8 7C8 9.20914 9.79086 11 12 11Z" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                        </mask>
-                        <g mask="url(#mask0_2973_15350)">
-                        <rect width="24" height="24" fill="#272727"/>
-                        </g>
-                    </svg>
+                    <svg class="c-navigation__icon"><use xlink:href="#icon-account" /></svg>
                     <span class="js-nav-user-action-text c-navigation__label">{{lang 'common.login'}}</span>
                 </a>
             {{/if}}
         </li>
-        <a class="u-hidden@medium c-menu__toggle" href="#" data-mobile-menu-toggle="menu">
-            <svg class="c-menu__hamburger" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                <g id="menu">
-                    <path id="Vector" d="M3 12H21M3 6H21M3 18H21" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                </g>
-            </svg>
-            <svg class="c-menu__close" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                <path d="M18 6L6 18M6 6L18 18" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-        </a>
+        <li>
+            <a class="u-hidden@medium c-menu__toggle" href="#" data-mobile-menu-toggle="menu">
+                <svg class="c-navigation__icon c-menu__hamburger"><use xlink:href="#icon-hamburger" /></svg>
+                <svg class="c-navigation__icon c-menu__close"><use xlink:href="#icon-menu-close" /></svg>
+            </a>
+        </li>
     </ul>
 </nav>

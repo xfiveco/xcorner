@@ -28,9 +28,18 @@
 }
 
 .u-hidden\@medium {
-    display: block;
+    display: flex;
 
     @include bp(medium) {
         display: none;
+    }
+}
+
+
+.u-hidden\@mobile {
+    display: none;
+
+    @include bp(medium) {
+        display: flex;
     }
 }

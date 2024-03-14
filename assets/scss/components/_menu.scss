@@ -36,6 +36,8 @@
 
 .c-menu__close {
     display: none;
+    max-width: rem-calc(16px) !important;
+    max-height: rem-calc(16px) !important;
 }
 
 .c-menu__toggle {

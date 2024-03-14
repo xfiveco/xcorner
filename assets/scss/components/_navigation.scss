@@ -90,6 +90,12 @@
     cursor: pointer;
 }
 
+.c-navigation__icon {
+    max-width: rem-calc(24px);
+    max-height: rem-calc(24px);
+    fill: transparent;
+}
+
 .c-navigation-list__submenu {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
