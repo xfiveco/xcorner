@@ -6,8 +6,6 @@ $swiper-arrow-left-purple: '../icons/arrow-left-purple.svg';
 $swiper-arrow-right-purple: '../icons/arrow-right-purple.svg';
 
 .c-carousel {
-    @include container();
-
     overflow-x: hidden;
 }
 
