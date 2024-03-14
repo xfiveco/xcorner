@@ -1,10 +1,10 @@
-<div data-promotion-banner>
-    <div>
-        <svg>
-            <use xlink:href="#icon-error" />
-        </svg>
-    </div>
-    <p class="js-alert-box-message">
-        <span>{{{this}}}</span>
+<div class="o-box o-box o-box--primary-50 u-foreground c-alert" data-promotion-banner>
+    <span class="c-alert__icon c-alert__icon--success">
+        {{> components/icon/icon iconFileName="error"}}
+    </span>
+    <p class="js-alert-box-message o-text o-text--m u-no-margin">
+        <span id="alert-box-message-text">
+            {{{this}}}
+        </span>
     </p>
 </div>
