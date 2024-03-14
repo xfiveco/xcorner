@@ -55,23 +55,15 @@
                 {{#if image}}
                     <span title="{{this.label}}" style="background-image: url('{{getImage image "swatch_option_size"}}');"></span>
                 {{/if}}
-                {{#if data.[2]}}
-                    <span title="{{this.label}}" style="background-color: #{{data.[0]}}"></span>
-                    <span title="{{this.label}}" style="background-color: #{{data.[1]}}"></span>
-                    <span title="{{this.label}}" style="background-color: #{{data.[2]}}"></span>
+
+                {{#each data}}
+                    <span title="{{../this.label}}" style="background-color: #{{this}}"></span>
+                {{/each}}
+                
+                {{#unless this.label '===' 'Pattern'}}
                     <span>{{this.label}}</span>
-                {{else}}
-                    {{#if data.[1]}}
-                        <span title="{{this.label}}" style="background-color: #{{data.[0]}}"></span>
-                        <span title="{{this.label}}" style="background-color: #{{data.[1]}}"></span>
-                        <span>{{this.label}}</span>
-                    {{else}}
-                        {{#if data.[0]}}
-                            <span title="{{this.label}}" style="background-color: #{{data.[0]}}"></span>
-                            <span>{{this.label}}</span>
-                        {{/if}}
-                    {{/if}}
-                {{/if}}
+                {{/unless}}
+
                 {{#if pattern}}
                     <span>
                         <span style="background-image: url('{{getImage image 'core-swatch'}}');"></span>

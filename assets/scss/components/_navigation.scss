@@ -94,6 +94,11 @@
     max-width: rem-calc(24px);
     max-height: rem-calc(24px);
     fill: transparent;
+
+    &.c-menu__close {
+        max-width: rem-calc(16px);
+        max-height: rem-calc(16px);
+    }
 }
 
 .c-navigation-list__submenu {

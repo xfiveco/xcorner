@@ -3,7 +3,7 @@
  */
 export default function megaMenuSearch() {
     const MOBILE_WIDTH = 768
-    const megaMenu = document.querySelector('.c-navigation__megamenu')
+    const megaMenu = document.querySelector('.js-navigation-megamenu')
     const searchButton = document.querySelector('.js-mega-menu-search')
 
     const openDesktopMenu = () => {

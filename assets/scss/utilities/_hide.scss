@@ -35,11 +35,8 @@
     }
 }
 
-
 .u-hidden\@mobile {
-    display: none;
-
-    @include bp(medium) {
-        display: flex;
+    @include bp-down(medium) {
+        display: none;
     }
 }
