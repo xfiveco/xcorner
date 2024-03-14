@@ -109,7 +109,7 @@ export default class ProductDetails extends ProductDetailsBase {
             bannerUtils.dispatchProductBannerEvent(productAttributesData)
         }
 
-        $productOptionsElement.style.display = 'block'
+        $productOptionsElement.style.display = 'flex'
 
         this.previewModal = modalFactory('.js-preview-modal')
 

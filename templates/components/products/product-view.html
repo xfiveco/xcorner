@@ -136,20 +136,21 @@
                 <input type="hidden" name="action" value="add">
                 <input type="hidden" name="product_id" value="{{product.id}}"/>
 
-                <div class="js-product-option-change" style="display:none;">
+                <div class="js-product-option-change c-product__options" style="display:none;">
                     {{inject 'showSwatchNames' theme_settings.show_product_swatch_names}}
                     {{#each product.options}}
                         {{{dynamicComponent 'components/products/options'}}}
                     {{/each}}
                 </div>
-                <div class="js-form-field js-form-field-stock{{#unless product.stock_level}} u-hidden-visually{{/unless}}">
+
+                {{!-- <div class="js-form-field js-form-field-stock{{#unless product.stock_level}} u-hidden-visually{{/unless}}">
                     <label>
                         {{lang 'products.current_stock'}}
                         <span class="js-product-stock">
                             {{product.stock_level}}
                         </span>
                     </label>
-                </div>
+                </div> --}}
 
                 <div class="c-product__action-buttons">
                     {{> components/products/add-to-cart with_wallet_buttons=true}}
