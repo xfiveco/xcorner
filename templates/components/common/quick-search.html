@@ -1,23 +1,25 @@
 <div class="js-container">
-    <form onsubmit="return false" data-url="{{urls.search}}" class="js-quick-search-form">
-        <div class="js-form-field c-quick-search">
-            <label class="u-hidden-visually" for="{{name}}">
-                {{lang "search.quick_search.input_label"}}
-            </label>
-            <input 
-                class="js-form-input js-search-quick c-form__input"
-                name="{{name}}"
-                id="{{name}}"
-                data-error-message="{{lang 'search.error.empty_field'}}"
-                placeholder="{{lang 'search.quick_search.input_placeholder'}}"
-                autocomplete="off"
-            >
-        </div>
-    </form>
-    <section class="c-quick-search-results js-quick-search-results" data-bind="html: results"></section>
-    <p 
-        role="status"
-        aria-live="polite"
-        data-search-aria-message-predefined-text="{{{lang 'search.results.quick_count_live'}}}"
-    ></p>
+    <div class="o-container">
+        <form onsubmit="return false" data-url="{{urls.search}}" class="js-quick-search-form">
+            <div class="js-form-field c-quick-search">
+                <label class="u-hidden-visually" for="{{name}}">
+                    {{lang "search.quick_search.input_label"}}
+                </label>
+                <input 
+                    class="js-form-input js-search-quick c-form__input"
+                    name="{{name}}"
+                    id="{{name}}"
+                    data-error-message="{{lang 'search.error.empty_field'}}"
+                    placeholder="{{lang 'search.quick_search.input_placeholder'}}"
+                    autocomplete="off"
+                >
+            </div>
+        </form>
+        <section class="c-quick-search-results js-quick-search-results" data-bind="html: results"></section>
+        <p 
+            role="status"
+            aria-live="polite"
+            data-search-aria-message-predefined-text="{{{lang 'search.results.quick_count_live'}}}"
+        ></p>
+    </div>
 </div>

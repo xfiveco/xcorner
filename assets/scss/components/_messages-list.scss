@@ -1,0 +1,36 @@
+.c-messages-list {
+    margin-bottom: 24px;
+}
+
+.c-messages-list__item {
+    display: grid;
+    gap: 10px;
+    padding: 12px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid $color-neutrals-50;
+    border-top: 1px solid $color-neutrals-50;
+
+    &--reply {
+        background-color: $color-primary-50;
+    }
+
+}
+
+.c-messages-list__badge {
+    background-color: $color-primary-400;
+    color: $color-white;
+    font-weight: 600;
+    border-radius: 4px;
+    display: inline-block;
+    font-size: 11px;
+    padding: 3px 14px;
+    margin-right: 10px;
+}
+
+.c-messages-list__item-date {
+    color: $color-neutrals-75;
+
+    &--reply {
+        color: $color-neutrals-300;
+    }
+}

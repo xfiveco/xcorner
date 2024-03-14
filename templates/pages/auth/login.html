@@ -1,78 +1,92 @@
 {{#partial "page"}}
-<section class="p-auth__section">
-    {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
-    
-    <h1 class="o-title">
-        {{lang 'login.heading' }}
-    </h1>
-    
-    {{#if forms.login.error}}
-        {{> components/common/alert/alert-error forms.login.error}}
-    {{/if}}
-    {{#if forms.login.success}}
-        {{> components/common/alert/alert-success forms.login.success}}
-    {{/if}}
-    <div class="p-login__main-container">
-         <form class="js-login-form p-login__form" action="{{urls.auth.check_login}}" method="post">
-            {{inject 'useValidEmail' (lang 'forms.validate.common.email_address')}}
-            {{inject 'enterPass' (lang 'forms.validate.common.password')}}
-            
-            <div class="js-form-field c-form__field">
-                <label class="c-form__label" for="login_email">
-                    {{lang 'login.field_email'}} <span class="u-required">*</span>
-                </label>
-                <input 
-                    class="js-form-input c-form__input" 
-                    name="login_email" 
-                    id="login_email" 
-                    type="email"
-                >
+<section>
+    <div class="o-grid o-grid--main">
+        <div class="o-grid__item--col-full">
+            {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
+        </div>
+
+        <div class="o-grid__item--col-full">
+            <div class="-grid o-grid--space-small">
+                <h1 class="o-heading o-heading--l">
+                    {{lang 'login.heading' }}
+                </h1>
+                
+                {{#if forms.login.error}}
+                        {{> components/common/alert/alert-error forms.login.error}}
+                {{/if}}
+                
+                {{#if forms.login.success}}
+                    {{> components/common/alert/alert-success forms.login.success}}
+                {{/if}}
             </div>
-            <div class="js-form-field c-form__field">
-                <label class="c-form__label" for="login_pass">
-                    {{lang 'login.field_password'}} <span class="u-required">*</span>
-                </label>
-                <input 
-                    class="js-form-input c-form__input" 
-                    id="login_pass" 
-                    type="password" 
-                    name="login_pass" 
-                    autocomplete="off"
-                >
+        </div>
+
+        <div class="o-grid__item--col-full o-grid__item--col-1/4@medium">
+            <div class="o-grid o-grid--space-small">
+                <form class="js-login-form o-grid o-grid--space-small c-form c-form--full u-foreground" action="{{urls.auth.check_login}}" method="post">
+                    {{inject 'useValidEmail' (lang 'forms.validate.common.email_address')}}
+                    {{inject 'enterPass' (lang 'forms.validate.common.password')}}
+                    
+                    <div class="js-form-field c-form__field">
+                        <label class="c-form__label" for="login_email">
+                            {{lang 'login.field_email'}} <span class="u-required">*</span>
+                        </label>
+                        <input 
+                            class="js-form-input c-form__input " 
+                            name="login_email" 
+                            id="login_email" 
+                            type="email"
+                        >
+                    </div>
+                    <div class="js-form-field c-form__field">
+                        <label class="c-form__label" for="login_pass">
+                            {{lang 'login.field_password'}} <span class="u-required">*</span>
+                        </label>
+                        <input 
+                            class="js-form-input c-form__input" 
+                            id="login_pass" 
+                            type="password" 
+                            name="login_pass" 
+                            autocomplete="off"
+                        >
+                    </div>
+
+                    <button type="submit" class="c-button c-button--primary c-button--full@mobile">
+                        {{lang 'login.submit_value' }}
+                    </button> 
+                    <a href="{{urls.auth.forgot_password}}">
+                        {{lang 'login.forgot_password' }}
+                    </a>
+                </form>
+
+                {{#if settings.account_creation_enabled}}
+                    <h5 class="o-heading o-heading--m">
+                        {{lang 'login.new_customer.heading' }}
+                    </h5>
+
+                    <div class=" u-color-neutrals-500">
+                        <p class="o-text--m o-text--bold">{{lang 'login.new_customer.intro' }}</p>
+                        <ul class="o-list o-list--bare o-text--m ">
+                            <li>{{lang 'login.new_customer.fact1' }}</li>
+                            <li>{{lang 'login.new_customer.fact2' }}</li>
+                            <li>{{lang 'login.new_customer.fact3' }}</li>
+                            <li>{{lang 'login.new_customer.fact4' }}</li>
+                            <li>{{lang 'login.new_customer.fact5' }}</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <a href="{{urls.auth.create_account}}" class="c-button c-button--secondary c-button--full@mobile">
+                            {{lang 'login.new_customer.create_account' }}
+                        </a>
+                    </div>
+                {{/if}}
             </div>
-            <div class="p-login__submit-container">
-                <button type="submit" class="c-button c-button--primary p-login__submit">
-                    {{lang 'login.submit_value' }}
-                </button> 
-                <a class="p-login__forgot-password" href="{{urls.auth.forgot_password}}">
-                    {{lang 'login.forgot_password' }}
-                </a>
-            </div>
-        </form>
-        <div class="p-login__image-wrapper">
-            <img class="p-login__image" src="{{cdn 'img/pages/sign-in.jpg'}}" alt="Sign in image" loading="lazy"/>
+        </div>
+
+        <div class="o-grid__item--col-4-fill@medium o-grid__item--col-5-fill@large u-hidden@small">
+            {{> components/round-image/round-image img_src="img/pages/sign-in.jpg" img_alt="decoration" }}
         </div>
     </div>
-    {{#if settings.account_creation_enabled}}
-        <div class="p-login__customer">
-            <h5 class="p-login__customer-heading">
-                {{lang 'login.new_customer.heading' }}
-            </h5>
-            <div class="p-login__customer-content">
-                <p class="p-login__customer-intro">{{lang 'login.new_customer.intro' }}</p>
-                <ul class="p-login__customer-facts">
-                    <li class="p-login__customer-fact">{{lang 'login.new_customer.fact1' }}</li>
-                    <li class="p-login__customer-fact">{{lang 'login.new_customer.fact2' }}</li>
-                    <li class="p-login__customer-fact">{{lang 'login.new_customer.fact3' }}</li>
-                    <li class="p-login__customer-fact">{{lang 'login.new_customer.fact4' }}</li>
-                    <li class="p-login__customer-fact">{{lang 'login.new_customer.fact5' }}</li>
-                </ul>
-            </div>
-            <a href="{{urls.auth.create_account}}" class="c-button c-button--secondary p-login__create">
-                {{lang 'login.new_customer.create_account' }}
-            </a>
-        </div>
-    {{/if}}
 </section>
 {{/partial}}
 {{> layout/base}}

@@ -1,63 +1,58 @@
-<div>
-    {{lang 'account.orders.heading' }}
-</div>
-
-<ul>
-    {{#each orders}}
-        <li class="js-account-list-item">
-            <div>
-                <div>
-                    {{#if items.0.type '===' 'giftcertificate'}}
-                        <img src="{{cdn ../theme_settings.default_image_gift_certificate}}" alt="">
-                    {{else}}
-                        {{> components/common/image
-                            image=image
-                            fallback_size=../theme_settings.productthumb_size
-                            default_image=../theme_settings.default_image_product
-                        }}
-                    {{/if}}
-                </div>
-                <div>
-                    <div>
-                        <div>
-                            {{this.status}}
-                        </div>
-                        {{#if ../settings.returns_enabled}}
-                            {{#if this.return_url}}
+{{#if orders.length ">" 0}}
+    <ul class="o-grid o-grid--space-small o-grid--cols-1 o-grid--cols-2@medium o-grid--cols-3@large c-orders-list">
+        {{#each orders}}
+            <li class="js-account-list-item c-orders-list__item">
+                    {{#if ../settings.returns_enabled}}
+                        {{#if this.return_url}}
+                            <div>
                                 <a href="{{this.return_url}}">
+                                    <span></span>
                                     {{lang 'account.orders.return_items' }}
                                 </a>
-                            {{/if}}
+                            </div>
                         {{/if}}
-                    </div>
-                    <p>
-                        <a href="{{this.details_url}}">
-                            {{lang 'account.orders.list.order_number' number=this.id}}
-                        </a>
-                    </p>
-                    <div>
-                        {{lang 'account.orders.list.product_details' num_products=this.items.length cost=this.total.formatted}}
-                    </div>
-                    <div>
-                        <div>
-                            <div>
-                                {{lang 'account.orders.order_placed' }}
-                            </div>
-                            <time>
-                                {{this.date}}
-                            </time>
+                    {{/if}}
+                
+                <h2 class="o-text--l">
+                    <a href="{{this.details_url}}">
+                        {{lang 'account.orders.list.order_number' number=this.id}}
+                    </a>
+                </h2>
+
+                <div>
+                    <div class="c-orders-list__prop">
+                        <strong class="o-text--s">Status:</strong>
+                        <div class="o-text--s o-text--bold c-orders-list__status">
+                            {{this.status}}
                         </div>
-                        <div>
-                            <div>
-                                {{lang 'account.orders.last_update' }}
-                            </div>
-                            <time>
-                                {{this.last_update_date}}
-                            </time>
-                        </div>
+                    </div>
+
+                    <div class="c-orders-list__prop">
+                        <strong class="o-text--s">{{lang 'account.orders.details.order_total'}}</strong>
+                        <span class="o-text--s o-text--bold">{{this.total.formatted}}</span>
+                    </div>
+
+                    <div class="c-orders-list__prop">
+                        <strong class="o-text--s">{{lang 'account.orders.order_placed' }}:</strong>
+                        <time class="o-text--s o-text--bold">
+                            {{this.date}}
+                        </time>
+                    </div>
+
+                    <div class="c-orders-list__prop">
+                        <strong class="o-text--s">{{lang 'account.orders.last_update' }}:</strong>
+                        <time class="o-text--s o-text--bold">
+                            {{this.last_update_date}}
+                        </time>
                     </div>
                 </div>
-            </div>
-        </li>
-    {{/each}}
-</ul>
+            </li>
+        {{/each}}
+    </ul>
+{{else}}
+    <p class="c-orders-list__announcement">
+            <svg class="c-orders-list__announcement-icon"><use xlink:href="#icon-info"/></svg>
+        <span class="o-text--m">{{lang "account.orders.none"}}</span>
+    </p>
+{{/if}}
+

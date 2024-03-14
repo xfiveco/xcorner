@@ -23,6 +23,8 @@ $breakpoints: (
     full: 1600px,
 );
 
+$breakpoints_map: map_keys($breakpoints);
+
 /* Colors
    ========================================================================== */
 
@@ -52,3 +54,5 @@ $color-border: $color-very-light-grey;
 
 // Fills
 $color-fill: $color-very-light-grey;
+
+$size-container: 1280px;

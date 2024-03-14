@@ -21,15 +21,13 @@
     font-weight: 600;
     line-height: 1.5;
     text-decoration-line: underline;
+
+    .c-breadcrumbs__item--active & {
+        text-decoration: none;
+        color: $color-neutrals-500;
+    }
 }
 
 .c-breadcrumbs__item {
     margin: 0;
-
-    &--active {
-        .c-breadcrumbs__link {
-            text-decoration: none;
-            color: $color-neutrals-500;
-        }
-    }
 }

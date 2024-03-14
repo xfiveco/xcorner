@@ -12,21 +12,23 @@
     }
 </style>
 
-<div class='c-cta-panel c-cta-panel-{{_.id}}'>
-    <div class="c-cta-panel__image-wrapper">
-        {{#if image}}
-            <img class="c-cta-panel__image" src="{{image.src}}" alt="{{title}}" loading="lazy" />
-        {{/if}}
-    </div>
-    <div class="c-cta-panel__content">
-        {{#if title}}
-            <h2 class="c-cta-panel__title">{{title}}</h2>
-        {{/if}}
-        {{#if text}}
-            <p class="c-cta-panel__text">{{text}}</p>
-        {{/if}}
-        {{#and button_label button_url}}
-            <a href="{{button_url}}" class="c-button c-button--primary">{{button_label}}</a>
-        {{/and}}
+<div class="{{#if has_container}}o-container{{/if}}">
+    <div class='c-cta-panel c-cta-panel-{{_.id}}'>
+        <div class="c-cta-panel__image-wrapper">
+            {{#if image}}
+                <img class="c-cta-panel__image" src="{{image.src}}" alt="{{title}}" loading="lazy" />
+            {{/if}}
+        </div>
+        <div class="c-cta-panel__content">
+            {{#if title}}
+                <h2 class="c-cta-panel__title">{{title}}</h2>
+            {{/if}}
+            {{#if text}}
+                <p class="c-cta-panel__text">{{text}}</p>
+            {{/if}}
+            {{#and button_label button_url}}
+                <a href="{{button_url}}" class="c-button c-button--primary">{{button_label}}</a>
+            {{/and}}
+        </div>
     </div>
 </div>

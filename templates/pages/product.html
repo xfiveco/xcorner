@@ -12,43 +12,45 @@ product:
 {{inject 'productId' product.id}}
 
 {{#partial "page"}}
+    <div class="o-grid o-grid--space-small">
+        {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
 
-    {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
+        {{#each product.shipping_messages}}
+            {{> components/common/alert/alert-info message}}
+        {{/each}}
 
-    {{#each product.shipping_messages}}
-        {{> components/common/alert/alert-info message}}
-    {{/each}}
+        {{> components/products/product-view}}
 
-    {{> components/products/product-view}}
+        {{{region name="product_below_content"}}}
 
-    {{{region name="product_below_content"}}}
+        {{#if product.videos.list.length}}
+            {{> components/products/videos product.videos}}
+        {{/if}}
 
-    {{#if product.videos.list.length}}
-        {{> components/products/videos product.videos}}
-    {{/if}}
+        {{#all settings.show_product_reviews theme_settings.show_product_reviews (if theme_settings.show_product_details_tabs '!==' true)}}
+            {{> components/products/reviews reviews=product.reviews product=product urls=urls}}
+        {{/all}}
 
-    {{#all settings.show_product_reviews theme_settings.show_product_reviews (if theme_settings.show_product_details_tabs '!==' true)}}
-        {{> components/products/reviews reviews=product.reviews product=product urls=urls}}
-    {{/all}}
+        {{#if product.related_products}}
+            <h2 class="c-carousel__title">{{lang 'products.related_products'}}</h2>
+            <div>
+                {{#if settings.data_tag_enabled}}
+                    {{> components/products/carousel products=product.related_products columns=6 list="Related Products"}}
+                {{else}}
+                    {{> components/products/carousel products=product.related_products columns=6}}
+                {{/if}}
+            </div>
+        {{/if}}
 
-     {{#if product.related_products}}
-        <h2 class="c-carousel__title">{{lang 'products.related_products'}}</h2>
-        <div>
-            {{#if settings.data_tag_enabled}}
-                {{> components/products/carousel products=product.related_products columns=6 list="Related Products"}}
-            {{else}}
-                {{> components/products/carousel products=product.related_products columns=6}}
-            {{/if}}
-        </div>
-    {{/if}}
+        {{#if product.similar_by_views}}
+            <h2 class="c-carousel__title">{{lang 'products.similar_by_views'}}</h2>
+            <div>
+                {{> components/products/carousel products=product.similar_by_views columns=6 list="Customers Also Viewed"}}
+            </div>
+        {{/if}}
 
-    {{#if product.similar_by_views}}
-        <h2 class="c-carousel__title">{{lang 'products.similar_by_views'}}</h2>
-        <div>
-            {{> components/products/carousel products=product.similar_by_views columns=6 list="Customers Also Viewed"}}
-        </div>
-    {{/if}}
+        {{> components/products/schema}}
+    </div>
 
-    {{> components/products/schema}}
 {{/partial}}
 {{> layout/base}}

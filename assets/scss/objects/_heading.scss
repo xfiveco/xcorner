@@ -1,0 +1,32 @@
+.o-heading {
+    font-family: $font-semi-bold;
+    font-style: normal;
+    font-weight: 600;
+    color: $color-black;
+    margin: 0;
+}
+
+.o-heading--m {
+    font-size: rem-calc(20px);
+    line-height: 1.2;
+
+    @include bp(medium) {
+        font-size: rem-calc(24px);
+        line-height: 1.66;
+    }
+}
+
+.o-heading--l {
+    font-size: rem-calc(32px);
+    line-height: 1.25;
+
+    @include bp(medium) {
+        font-size: rem-calc(42px);
+        line-height: 1.33;
+    }
+}
+
+
+.o-heading--bottom-space-s {
+    margin-bottom: rem-calc(12px);
+}

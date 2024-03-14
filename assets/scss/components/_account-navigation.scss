@@ -1,0 +1,50 @@
+$decoration-size: 3px;
+
+.c-account-navigation {
+    padding: rem-calc(24px);
+    background-color: $color-secondary-50;
+}
+
+.c-account-navigation__item {
+    display: flex;
+    column-gap: rem-calc(12px);
+    align-items: center;
+}
+
+.c-account-navigation__link {
+    position: relative;
+    text-decoration: none;
+
+    &::after {
+        content: "";
+        display: none;
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        height: $decoration-size;
+        transform: translateY($decoration-size);
+        background-color: currentColor;
+    }
+
+    .c-account-navigation__item.is-active & {
+        font-weight:600;
+        color: $color-primary-400;  
+
+        &::after {
+            display: block;
+        }
+    }
+}
+
+.c-account-navigation__pill {
+    color: $color-pill-text;
+    background-color: $color-pill-bg;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 1em;
+    height: 1em;
+    padding: 4px;
+    box-sizing: content-box;
+}

@@ -14,23 +14,25 @@
     }
 </style>
     
-<section class="js-review-swiper c-carousel c-reviews-carousel c-reviews-carousel__{{_.id}}">
-    <div class="swiper-wrapper">
-        {{#each slides}}
-            <div class="swiper-slide">
-                <div class="c-review-carousel__card" data-rating="{{rating}}">
-                    <div class="c-review-carousel__rating-stars" role="img" aria-label="Review rating of {{rating}} out of 5"></div>
-                    <div class="c-review-carousel__summary">{{summary}}</div>
-                    <div class="c-review-carousel__name">{{name}}</div>
+<section class="js-review-swiper c-reviews-carousel c-reviews-carousel__{{_.id}}">
+    <div class="{{#if has_container}}o-container{{/if}}">
+        <div class="swiper-wrapper">
+            {{#each slides}}
+                <div class="swiper-slide">
+                    <div class="c-review-carousel__card" data-rating="{{rating}}">
+                        <div class="c-review-carousel__rating-stars" role="img" aria-label="Review rating of {{rating}} out of 5"></div>
+                        <div class="c-review-carousel__summary">{{summary}}</div>
+                        <div class="c-review-carousel__name">{{name}}</div>
+                    </div>
                 </div>
-            </div>
-        {{/each}}
-    </div>
+            {{/each}}
+        </div>
 
-    <div class="c-review-carousel__slide-navigation">
-        <div class="js-swiper-btn-prev c-swiper__btn-prev"></div>
-        <div class="js-swiper-pagination c-swiper__pagination"></div>
-        <div class="js-swiper-btn-next c-swiper__btn-next"></div>
+        <div class="c-review-carousel__slide-navigation">
+            <div class="js-swiper-btn-prev c-swiper__btn-prev"></div>
+            <div class="js-swiper-pagination c-swiper__pagination"></div>
+            <div class="js-swiper-btn-next c-swiper__btn-next"></div>
+        </div>
     </div>
 </section>
 

@@ -1,0 +1,16 @@
+.o-box {
+    padding: rem-calc(24px);
+    margin: 0;
+
+    &--primary-50 {
+        background-color: $color-primary-50;
+    }
+
+    &--neutrals-50 {
+        background-color: $color-neutrals-50;
+    }
+
+    &--red-50 {
+        background-color: $color-red-50;
+    }
+}

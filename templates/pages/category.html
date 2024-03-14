@@ -15,6 +15,7 @@ category:
 {{/partial}}
 
 {{#partial "page"}}
+<div class="o-grid o-grid--space-small">
 
 {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
 
@@ -26,9 +27,9 @@ category:
     }}
 {{/if}}
 
-<div class="u-container">
+<div>
     {{#unless theme_settings.hide_category_page_heading }}
-        <h1 class="o-title">{{strReplace category.name "(dropdown)" ""}}</h1>
+        <h1 class="o-heading o-heading--l">{{strReplace category.name "(dropdown)" ""}}</h1>
         {{{region name="category_below_header"}}}
     {{/unless}}
 
@@ -67,6 +68,7 @@ category:
     
         {{{region name="category_below_content"}}}
     </div>
+</div>
 {{/partial}}
 
 {{> layout/base}}

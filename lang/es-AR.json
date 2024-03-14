@@ -292,7 +292,7 @@
             "overview": "Descripción general",
             "orders": "Pedidos",
             "returns": "Devoluciones",
-            "messages": "Mensajes ({num_new_messages})",
+            "messages": "Mensajes",
             "wishlists": "Listas de deseos",
             "recently_viewed": "Visto recientemente",
             "settings": "CONFIGURACIÓN DE CUENTA",
@@ -339,6 +339,7 @@
             "last_update": "Última actualización",
             "list": {
                 "order_number": "Pedido n.° {number}",
+                "order": "Pedido",
                 "product_details": "{num_products, plural, one {1 product} other {# products}} por un total de {cost}"
             },
             "details": {
@@ -489,7 +490,9 @@
             "delete_alert": "¿Está seguro de que quiere eliminar su(s) lista(s) de deseos? Esta acción no puede deshacerse.",
             "create_new": "Crear nueva lista de deseos",
             "add_to_default": "Agregar a mi lista de deseos",
-            "enter_wishlist_name_error": "Debes ingresar un nombre de lista de deseos."
+            "enter_wishlist_name_error": "Debes ingresar un nombre de lista de deseos.",
+            "private": "Privado",
+            "public": "Público"
         }
     },
     "page": {

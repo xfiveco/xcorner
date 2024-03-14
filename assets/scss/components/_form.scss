@@ -85,9 +85,13 @@ $input-transition: all 0.2s ease-in-out;
     }
 
     &--select {
+        --icon-size: 0.75rem;
+        --icon-move-right: 1rem;
+
         background: url($dropdown-icon) no-repeat;
-        background-position: calc(100% - 1rem) center;
-        background-size: 0.75rem;
+        background-position: calc(100% - var(--icon-move-right)) center;
+        background-size: var(--icon-size);
+        padding-right: calc(var(--icon-size) + 2 * var(--icon-move-right));
 
         padding-right: rem-calc(40px);
 
@@ -104,8 +108,14 @@ $input-transition: all 0.2s ease-in-out;
         }
     }
 
-    &--full {
+    &--full,
+    .c-form--full & {
         width: 100%;
+    }
+
+    &--narrow {
+        width: 100%;
+        max-width: 35rem;
     }
 }
 
@@ -231,4 +241,11 @@ $input-transition: all 0.2s ease-in-out;
     font-style: normal;
     font-weight: 400;
     line-height: 1.5;
+}
+
+.c-form__buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center;
 }

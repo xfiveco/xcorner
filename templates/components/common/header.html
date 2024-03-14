@@ -20,12 +20,14 @@
 {{/if}}
 
 <header class="js-header c-header" role="banner">
-    {{> components/common/navigation}}
+    <div class="o-container">
+        {{> components/common/navigation}}
 
-    <div id="menu" class="js-menu c-menu">
-        {{> components/common/navigation-menu}}
+        <div id="menu" class="js-menu c-menu">
+            {{> components/common/navigation-menu}}
+        </div>
+        {{{region name="header_navigation_bottom--global"}}}
     </div>
-    {{{region name="header_navigation_bottom--global"}}}
 </header>
 {{{region name="header_bottom--global"}}}
 {{{region name="header_bottom"}}}

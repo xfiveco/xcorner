@@ -1,49 +1,61 @@
-<nav>
-    <ul>
-        <li class="{{#if account_page '===' 'orders'}} is-active{{/if}}">
-            <a href="{{urls.account.orders.all}}">
+<nav class="c-account-navigation">
+    <ul class="c-account-navigation__list">
+        <li class="c-account-navigation__item {{#if account_page '===' 'orders'}} is-active{{/if}}">
+            <a class="c-account-navigation__link" href="{{urls.account.orders.all}}">
                 {{lang 'account.nav.orders'}}
             </a>
+            {{#if customer.orders.length ">" 0}}
+                <span aria-label="new messages" class="c-account-navigation__pill">{{customer.orders.length}}</span>
+            {{/if}}
         </li>
         {{#if settings.returns_enabled}}
-            <li class="{{#if account_page '===' 'returns'}} is-active{{/if}}">
-                <a href="{{urls.account.returns}}">
+            <li class="c-account-navigation__item {{#if account_page '===' 'returns'}} is-active{{/if}}">
+                <a class="c-account-navigation__link" href="{{urls.account.returns}}">
                     {{lang 'account.nav.returns'}}
                 </a>
             </li>
         {{/if}}
-        <li class="{{#if account_page '===' 'messages'}} is-active{{/if}}">
-            <a href="{{urls.account.inbox}}">
-                {{lang 'account.nav.messages' num_new_messages=customer.num_new_messages}}
+        <li class="c-account-navigation__item {{#if account_page '===' 'messages'}} is-active{{/if}}">
+            <a class="c-account-navigation__link" href="{{urls.account.inbox}}">
+                {{lang 'account.nav.messages'}}
+
+                {{#if customer.num_new_messages ">" 0}}
+                    <span aria-label="new messages" class="c-account-navigation__pill">{{customer.num_new_messages}}</span>
+                {{/if}}
             </a>
         </li>
-        <li class="{{#if account_page '===' 'addresses'}} is-active{{/if}}">
-            <a href="{{urls.account.addresses}}">
+        <li class="c-account-navigation__item {{#if account_page '===' 'addresses'}} is-active{{/if}}">
+            <a class="c-account-navigation__link" href="{{urls.account.addresses}}">
                 {{lang 'account.nav.addresses'}}
             </a>
         </li>
         {{#if settings.show_payment_methods}}
-            <li class="{{#if account_page '===' 'payment_methods'}} is-active{{/if}}">
-                <a href="{{urls.account.payment_methods.all}}">
+            <li class="c-account-navigation__item {{#if account_page '===' 'payment_methods'}} is-active{{/if}}">
+                <a class="c-account-navigation__link" href="{{urls.account.payment_methods.all}}">
                     {{lang 'account.nav.payment_methods'}}
                 </a>
             </li>
         {{/if}}
         {{#if settings.show_wishlist}}
-            <li class="{{#if account_page '===' 'wishlists'}} is-active{{/if}}">
-                <a href="{{urls.account.wishlists.all}}">
+            <li class="c-account-navigation__item {{#if account_page '===' 'wishlists'}} is-active{{/if}}">
+                <a class="c-account-navigation__link" href="{{urls.account.wishlists.all}}">
                     {{lang 'account.nav.wishlists'}}
                 </a>
             </li>
         {{/if}}
-        <li class="{{#if account_page '===' 'recent_items'}} is-active{{/if}}">
-            <a href="{{urls.account.recent_items}}">
+        <li class="c-account-navigation__item {{#if account_page '===' 'recent_items'}} is-active{{/if}}">
+            <a class="c-account-navigation__link" href="{{urls.account.recent_items}}">
                 {{lang 'account.nav.recently_viewed'}}
             </a>
         </li>
-        <li class="{{#if account_page '===' 'settings'}} is-active{{/if}}">
-            <a href="{{urls.account.details}}">
+        <li class="c-account-navigation__item {{#if account_page '===' 'settings'}} is-active{{/if}}">
+            <a class="c-account-navigation__link" href="{{urls.account.details}}">
                 {{lang 'account.nav.settings'}}
+            </a>
+        </li>
+        <li class="c-account-navigation__item">
+            <a class="c-account-navigation__link" href="{{urls.auth.logout}}">
+                {{lang 'common.logout'}}
             </a>
         </li>
     </ul>

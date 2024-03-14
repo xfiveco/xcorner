@@ -292,7 +292,7 @@
             "overview": "Overzicht",
             "orders": "Bestellingen",
             "returns": "Retourzendingen",
-            "messages": "Berichten ({num_new_messages})",
+            "messages": "Berichten",
             "wishlists": "Verlanglijstjes",
             "recently_viewed": "Recent weergegeven",
             "settings": "Accountinstellingen",
@@ -339,6 +339,7 @@
             "last_update": "Meest recente update",
             "list": {
                 "order_number": "Bestelnummer {number}",
+                "order": "Bestelnummer",
                 "product_details": "{num_products, plural, one {1 product} other {# producten}} voor in totaal {cost}"
             },
             "details": {
@@ -489,7 +490,9 @@
             "delete_alert": "Weet u zeker dat u uw verlanglijstje(s) wilt verwijderen? Dit kan niet ongedaan worden gemaakt.",
             "create_new": "Nieuw verlanglijstje aanmaken",
             "add_to_default": "Aan mijn verlanglijstje toevoegen",
-            "enter_wishlist_name_error": "U moet een naam voor het verlanglijstje invoeren."
+            "enter_wishlist_name_error": "U moet een naam voor het verlanglijstje invoeren.",
+            "private": "Privaat",
+            "public": "Openbaar"
         }
     },
     "page": {

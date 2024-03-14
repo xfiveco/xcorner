@@ -1,0 +1,140 @@
+{{!-- 
+    @TODO: Unify all card components and check if they could be merged.
+--}}
+<article
+    class="c-card__article js-card-order"
+    data-test="card-{{id}}"
+    data-sku="{{sku}}"
+    {{#if settings.data_tag_enabled}}
+        data-event-type="{{event}}"
+        data-entity-id="{{id}}"
+        data-position="{{position}}"
+        data-name="{{name}}"
+        data-product-category="
+            {{#each category}}
+                {{#if @last}}
+                    {{this}}
+                {{else}}
+                    {{this}},
+                {{/if}}
+            {{/each}}"
+        data-product-brand="{{brand.name}}"
+        data-product-price="
+            {{#or customer (unless settings.hide_price_from_guests)}}
+                {{price.value}}
+            {{else}}
+                {{lang 'common.login_for_pricing'}}
+            {{/or}}"
+    {{/if}}
+>
+    <figure class="c-card__figure">
+        {{#if stock_level '===' 0}}
+            {{#if theme_settings.pdp_sold_out_label '===' ''}}
+                {{> components/products/product-badge
+                    badge-type='sold-out'
+                    badge_view=theme_settings.product_sold_out_badges
+                    badge_label=(lang "page_builder.pdp_sold_out_label")
+                }}
+            {{else}}
+                {{> components/products/product-badge
+                    badge-type='sold-out'
+                    badge_view=theme_settings.product_sold_out_badges
+                    badge_label=theme_settings.pdp_sold_out_label
+                }}
+            {{/if}}
+        {{else}}
+            {{#or price.sale_price_with_tax.value price.sale_price_without_tax.value}}
+                {{#if theme_settings.pdp_sale_badge_label '===' ''}}
+                    {{> components/products/product-badge
+                        badge-type='sale'
+                        badge_view=theme_settings.product_sale_badges
+                        badge_label=(lang "page_builder.pdp_sale_badge_label")
+                    }}
+                {{else}}
+                    {{> components/products/product-badge
+                        badge-type='sale'
+                        badge_view=theme_settings.product_sale_badges
+                        badge_label=theme_settings.pdp_sale_badge_label
+                    }}
+                {{/if}}
+            {{/or}}
+        {{/if}}
+
+        <a 
+            class="c-card__image-wrapper js-dynamic-url"
+            href="{{url}}"
+            aria-label="{{> components/products/product-info}}"
+            {{#if settings.data_tag_enabled}} 
+                data-event-type="product-click" 
+            {{/if}}
+        >
+            {{> components/common/image
+                image=image
+                fallback_size=theme_settings.product_gallery_size
+                default_image=theme_settings.default_image_product
+                class="c-card__image"
+            }}
+        </a>
+        {{#each custom_fields}}
+            {{#all (if name '===' 'top_seller') (if value '===' 'yes')}}
+                    <span class="c-card__tag">Top Seller</span>
+            {{/all}}
+        {{/each}}
+        {{> components/common/wishlist-add add_to_wishlist_url=add_to_wishlist_url}}
+    </figure>
+    <div class="c-card__product-information">
+        {{#unless hide_compare }}
+            <div class="js-form-field c-form__checkbox-field">
+                <input 
+                    class="c-form__checkbox-input"
+                    type="checkbox" 
+                    name="products[]" 
+                    value="{{id}}" 
+                    id="compare-{{id}}" 
+                    data-compare-id="{{id}}"
+                >
+                <label class="c-form__checkbox-label" for="compare-{{id}}">
+                    {{lang 'products.compare'}} 
+                </label>
+            </div>
+        {{/unless}}
+
+        {{#if show_reorder "==" "true"}}
+            <div class="js-form-field c-form__checkbox-field">
+                <input 
+                    class="c-form__checkbox-input"
+                    type="checkbox" id="account-product-id-{{order_product_id}}" value="{{order_product_id}}"
+                >
+                <label class="c-form__checkbox-label" for="account-product-id-{{order_product_id}}">
+                    Reorder
+                </label>
+            </div>
+        {{/if}}
+
+        <a 
+            class="c-card__title js-dynamic-url"
+            data-id="{{order_product_id}}"
+            aria-label="{{> components/products/product-info}}"
+            href="{{url}}"
+            {{#if settings.data_tag_enabled}} 
+                data-event-type="product-click" 
+            {{/if}}
+        >
+            {{name}}
+        </a>
+
+        {{#and rating show_rating}}
+            <p class="u-no-margin" data-test-info-type="productRating">
+                <span>
+                    {{> components/products/ratings rating_target=name rating=rating}}
+                </span>
+                <a class="c-card__rating-count" href="{{url}}#reviews">({{num_reviews}})</a>
+            </p>
+        {{/and}}
+
+        <div class="c-card__price" data-test-info-type="price">
+            {{ price.formatted }}
+        </div>
+        {{> components/products/bulk-discount-rates}}
+    </div>
+</article>

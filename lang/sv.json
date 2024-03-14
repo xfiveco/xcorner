@@ -292,7 +292,7 @@
             "overview": "Översikt",
             "orders": "Beställningar",
             "returns": "Returnerar",
-            "messages": "Meddelanden ({num_new_messages})",
+            "messages": "Meddelanden",
             "wishlists": "Önskelistor",
             "recently_viewed": "Nyss sedda",
             "settings": "Kontoinställningar",
@@ -339,6 +339,7 @@
             "last_update": "Senast uppdateringen",
             "list": {
                 "order_number": "Beställningsnummer{number}",
+                "order": "Beställningsnummer",
                 "product_details": "{num_products, plural, one {1 produkt} other {# produkter}} för totalt {cost}"
             },
             "details": {
@@ -489,7 +490,9 @@
             "delete_alert": "Är du säker på att du vill radera önskelistan/önskelistorna? Denna åtgärd kan inte ångras.",
             "create_new": "Skapa ny önskelista",
             "add_to_default": "Lägg till i min önskelista",
-            "enter_wishlist_name_error": "Du måste ange ett namn på önskelistan."
+            "enter_wishlist_name_error": "Du måste ange ett namn på önskelistan.",
+            "private": "Privat",
+            "public": "Offentlig"
         }
     },
     "page": {

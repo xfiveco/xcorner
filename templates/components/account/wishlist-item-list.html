@@ -1,7 +1,9 @@
-<ul>
+<ul class="o-grid o-grid--cols-2@small o-grid--cols-3@large">
     {{#each wishlist.items}}
         <li class="js-product">
-            {{> components/products/card-alternate id=product_id theme_settings=../theme_settings}}
+            <div>
+                {{> components/products/card-alternate id=product_id theme_settings=../theme_settings}}
+            </div>
             
             {{#if ../show_remove}}
                 <form action="{{remove_url}}" class="form" method="post">
@@ -13,4 +15,5 @@
         </li>
     {{/each}}
 </ul>
+
 {{> components/common/paginator wishlist.pagination}}

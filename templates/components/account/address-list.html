@@ -2,54 +2,40 @@
     {{> components/common/alert/alert-info (lang 'account.addresses.no_addresses')}}
 {{/unless}}
 
-<ul>
+<ul class="o-grid o-grid--cols-2@medium o-grid--cols-3@large c-address-list">
     {{#each customer.addresses}}
-        <li>
-            <div>
-                <div>
+        <li class="c-address-list__item ">
+            <div class="c-address-list__address">
+                <address>
+                    <div>{{first_name}} {{last_name}}</div>
+                    <div>{{company}}</div>
+                    <div>{{address1}}</div>
+                    <div>{{address2}}</div>
+                    <div>{{city}}{{#if state}}, {{state}}{{/if}} {{zip}}</div>
+                    <div>{{country}}</div>
                     <div>
-                        {{first_name}} {{last_name}}
+                        {{#if phone}}{{lang 'account.addresses.phone' }} {{phone}}{{/if}}
                     </div>
-                    <ul>
-                        <li>
-                            {{company}}
-                        </li>
-                        <li>
-                            {{address1}}
-                        </li>
-                        <li>
-                            {{address2}}
-                        </li>
-                        <li>
-                            {{city}}{{#if state}}, {{state}}{{/if}} {{zip}}
-                        </li>
-                        <li>
-                            {{country}}
-                        </li>
-                    </ul>
-                    {{#if phone}}
-                        <dl>
-                            <dt>
-                                {{lang 'account.addresses.phone' }}
-                            </dt>
-                            <dd>
-                                {{phone}}
-                            </dd>
-                        </dl>
-                    {{/if}}
-                    <form action="{{delete_url}}" method="post" data-delete-address="{{lang 'forms.address.confirm_delete'}}">
-                        <a class="c-button c-button--primary button--small" href="{{edit_url}}">
-                            {{lang 'common.edit' }}
-                        </a>
-                        <button type="submit" class="c-button secondary button--small">
-                            {{lang 'common.delete' }}
-                        </button>
-                    </form>
-                </div>
+                </address>
+
+                <form action="{{delete_url}}" method="post" data-delete-address="{{lang 'forms.address.confirm_delete'}}" class="">
+                    <div class="o-grid o-grid--cols-2 o-grid--col-size-auto o-grid--space-small">
+                        <div>
+                            <a class="c-button c-button--primary" href="{{edit_url}}">
+                                {{lang 'common.edit' }}
+                            </a>
+                        </div>
+                        <div>
+                            <button type="submit" class="c-button c-button--quaternary">
+                                {{lang 'common.delete' }}
+                            </button>
+                        </div>
+                    </div>
+                </form>
             </div>
         </li>
     {{/each}}
-    <li>
+    <li class="o-grid__item--col-full">
         <a href="{{urls.account.add_address}}">
             <span class="address-symbol">&plus;</span>
             {{lang 'account.addresses.new_address' }}

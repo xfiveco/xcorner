@@ -1,11 +1,13 @@
 .o-container {
-    padding: 1.5rem;
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
+    max-width: rem-calc($size-container);
+    width: 90%;
+    margin: auto;
+}
 
+.o-container--tall {
+    padding-block: rem-calc(24px);
+    
     @include bp(medium) {
-        padding: 3rem 5rem;
-        gap: 3rem;
+        padding-block: rem-calc(48px);
     }
 }

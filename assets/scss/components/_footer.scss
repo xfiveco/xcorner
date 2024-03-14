@@ -7,25 +7,25 @@ $at-sign-icon: '../../img/icons/at-sign.svg';
 .c-footer {
     background-color: $color-secondary-50;
     border-top: 1px solid $color-white-grey;
-    padding: 3rem;
+    padding: 3rem 0;
     position: relative;
     transform: translateZ(0);
 
-    .c-footer-area {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 1.5rem;
-
-        @include bp(small) {
-            display: grid;
-            gap: remcalc(10.5);
-            grid-template-columns: repeat(3, 1fr);
-        }
-    }
-
     @include bp(medium) {
         grid-template-columns: repeat(4, 1fr);
-        padding: 5rem;
+        padding: 5rem 0;
+    }
+}
+
+.c-footer-area {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+
+    @include bp(small) {
+        display: grid;
+        gap: rem-calc(10.5);
+        grid-template-columns: repeat(3, 1fr);
     }
 }
 

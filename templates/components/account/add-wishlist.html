@@ -1,40 +1,33 @@
 {{inject 'enterWishlistNameError' (lang 'account.wishlists.enter_wishlist_name_error')}}
 
 <div>
-    <header>
-        {{#if forms.wishlist.id}}
-        <h1>{{lang 'account.wishlists.edit'}}</h1>
-        {{else}}
-        <h1>{{lang 'account.wishlists.new'}}</h1>
-        <p>{{lang 'account.wishlists.tag_line'}}</p>
-        {{/if}} {{#if forms.wishlist.errors}} {{> components/common/alert/alert-error forms.wishlist.errors}} {{/if}}
-    </header>
     <form
         action="{{#if forms.wishlist.id}}{{urls.account.wishlists.edit}}{{else}}{{urls.account.wishlists.add}}&product_id={{forms.wishlist.product_id}}{{/if}}"
-        class="js-wishlist-form"
+        class="js-wishlist-form c-form c-form--full"
         method="post"
     >
         <input
             type="hidden"
             name="submit"
+            class="c-form__input"
         />
         <div>
-            <label for="wishlistname">
+            <label for="wishlistname" class="c-form__label">
                 {{lang 'forms.wishlist.name'}}
                 <small>*</small>
             </label>
             <input
-                class="js-form-input"
+                class="js-form-input c-form__input"
                 name="wishlistname"
                 id="wishlistname"
                 value="{{forms.wishlist.name}}"
             />
         </div>
-        <div>
-            <input type="checkbox" name="publicwishlist" id="publicwishlist"{{#if forms.wishlist.is_public}} checked{{/if}}>
-            <label for="publicwishlist"> {{lang 'forms.wishlist.public' }} </label>
+        <div class="u-margin-top--s">
+            <input type="checkbox" name="publicwishlist" id="publicwishlist"{{#if forms.wishlist.is_public}} checked{{/if}} class="c-form__checkbox-input">
+            <label for="publicwishlist" class="c-form__checkbox-label"> {{lang 'forms.wishlist.public' }} </label>
         </div>
-        <div>
+        <div class="u-margin-top--s">
             {{#if forms.wishlist.id}}
             <input
                 type="hidden"

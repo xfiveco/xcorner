@@ -1,17 +1,19 @@
-<div>
-    {{lang 'account.messages.heading' }}
-</div>
-
-<ul>
+<ul class="c-messages-list">
     {{#each messages}}
-        <li class="js-account-list-item {{#unless unread}} is-read{{/unless}}">
-            <time>
-                {{date}}
-            </time>
-            <div>
-                {{subject}}
+        <li class="js-account-list c-messages-list__item {{#unless unread}} is-read{{/unless}} {{#if is_reply}}c-messages-list__item--reply{{/if}}">
+            <div class="c-messages-list__head">
+                {{#if is_reply}}
+                    <div class="c-messages-list__badge">{{../settings.store_name}} </div>
+                {{/if}}
+
+                <time class="o-text--s c-messages-list__item-date {{#if is_reply}}c-messages-list__item-date--reply{{/if}}">
+                    {{date}}
+                </time>
             </div>
-            <p>
+            <h3 class="o-text o-text--l c-messages-list__item-title">
+                {{subject}}
+            </h3>
+            <p class="o-text--m u-no-margin">
                 {{#if is_reply}}
                     {{lang 'account.messages.merchant_said' store_name=../settings.store_name}}
                 {{else}}

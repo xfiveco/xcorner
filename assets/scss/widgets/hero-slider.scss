@@ -1,6 +1,10 @@
 $swiper-arrow-right: './../icons/arrow-right.svg';
 $swiper-arrow-left: './../icons/arrow-left.svg';
 
+.c-hero-slider__container {
+    overflow-x: hidden;
+}
+
 .c-hero-slider__image {
     aspect-ratio: 342/424;
     width: 100%;

@@ -7,6 +7,12 @@
         "label": "Content",
         "settings": [
             {
+                "type": "boolean",
+                "label": "Has Container?",
+                "id": "has_container",
+                "default": false
+            },
+            {
                 "type": "input",
                 "id": "title",
                 "label": "Title",

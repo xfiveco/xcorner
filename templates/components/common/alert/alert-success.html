@@ -1,10 +1,8 @@
-<div>
-    <div>
-        <svg>
-            <use xlink:href="#icon-error" />
-        </svg>
-    </div>
-    <p class="js-alert-box-message">
+<div class="o-box o-box o-box--primary-50 u-foreground c-alert">
+    <span class="c-alert__icon c-alert__icon--success">
+        {{> components/icon/icon iconFileName="error"}}
+    </span>
+    <p class="js-alert-box-message u-no-margin">
         <span id="alert-box-message-text">
             {{{this}}}
         </span>

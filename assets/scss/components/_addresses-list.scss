@@ -1,0 +1,24 @@
+.c-address-list {
+    --column-gap: 10px; 
+    --row-gap: 30px;
+}
+
+.c-address-list__item {
+    margin-bottom: 0;
+}
+
+.c-address-list__address {
+    padding: rem-calc(24px);
+    margin-bottom: 0;
+    box-shadow: 0px 0px 9px $color-shadow;
+    border: 1px solid $color-shadow;
+    margin-bottom: 0;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+}
