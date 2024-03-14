@@ -1,10 +1,9 @@
 <div class="js-form-field" data-product-attribute="date">
-    <label {{#if style}}style="{{style}}" {{/if}}>
-        {{this.display_name}}:
-
+    <label class="c-form__label" {{#if style}}style="{{style}}" {{/if}}>
+        {{ this.display_name }}
         {{> components/common/requireness-msg}}
     </label>
-    <select name="attribute[{{this.id}}][month]" {{#if required}}required{{/if}}>
+    <select class="c-form__input c-form__input--select" name="attribute[{{this.id}}][month]" {{#if required}}required{{/if}}>
         <option value="">{{lang 'common.month'}}</option>
         {{#for 1 12}}
             <option 
@@ -18,7 +17,7 @@
         {{/for}}
     </select>
 
-    <select name="attribute[{{this.id}}][day]" {{#if required}}required{{/if}}>
+    <select class="c-form__input c-form__input--select" name="attribute[{{this.id}}][day]" {{#if required}}required{{/if}}>
         <option value="">{{lang 'common.day'}}</option>
         {{#for 1 31}}
             <option 
@@ -32,7 +31,7 @@
         {{/for}}
     </select>
 
-    <select name="attribute[{{this.id}}][year]" {{#if required}}required{{/if}}>
+    <select class="c-form__input c-form__input--select" name="attribute[{{this.id}}][year]" {{#if required}}required{{/if}}>
         <option value="">{{lang 'common.year'}}</option>
         {{#for earliest_year latest_year}}
             <option

@@ -1,9 +1,11 @@
 <button 
-    class="js-modal-close"
+    class="js-modal-close c-modal__close-button"
     type="button"
     title="{{lang 'common.close'}}"
     {{additional_attr}}
 >
     <span class="u-hidden-visually">{{lang 'common.close'}}</span>
-    <span aria-hidden="true">&#215;</span>
+    <svg class="c-modal__close-icon">
+        <use xlink:href="#icon-close-purple" />
+    </svg>
 </button>

@@ -24,7 +24,10 @@ class AddToCartWithModal {
 
                 // Add item to cart
                 utils.api.cart.itemAdd(normalizeFormData(formData), (err, response) => {
-                    currencySelector(response.data.cart_id)
+                    if (err || !response || response.data.error) {
+                        throw new Error(err)
+                    }
+                    currencySelector(response?.data.cart_id)
 
                     // Open preview modal and update content
                     if (this.previewModal) {

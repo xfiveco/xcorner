@@ -1,10 +1,10 @@
 <div 
-    class="js-form-field" 
+    class="js-form-field c-form__field" 
     data-product-attribute="set-rectangle" 
     role="radiogroup" 
     aria-labelledby="rectangle-group-label"
 >
-    <label id="rectangle-group-label">
+    <label class="c-form__label" id="rectangle-group-label">
         {{this.display_name}}:
         <span class="js-option-value"></span>
 
@@ -13,13 +13,14 @@
 
     {{#unless required}}
         <input
+            class="c-form__radio-input"
             type="radio"
             id="attribute_rectangle__{{id}}_none"
             name="attribute[{{id}}]"
             value=""
             checked="{{#if defaultValue '==' ''}}checked{{/if}}"
         >
-        <label for="attribute_rectangle__{{id}}_none">
+        <label class="c-form__radio-label" for="attribute_rectangle__{{id}}_none">
             <span>{{lang 'products.none'}}</span>
         </label>
     {{/unless}}
@@ -27,7 +28,7 @@
     {{#each this.values}}
         <div>    
             <input
-                class="{{#if selected}}js-default{{/if}}"
+                class="{{#if selected}}js-default{{/if}} c-form__radio-input"
                 type="radio"
                 id="attribute_rectangle__{{../id}}_{{id}}"
                 name="attribute[{{../id}}]"
@@ -39,7 +40,11 @@
                     required
                 {{/if}}
             >
-            <label for="attribute_rectangle__{{../id}}_{{id}}" data-product-attribute-value="{{id}}">
+            <label 
+                class="c-form__radio-label" 
+                for="attribute_rectangle__{{../id}}_{{id}}" 
+                data-product-attribute-value="{{id}}"
+            >
                 <span>{{this.label}}</span>
             </label>
         </div>

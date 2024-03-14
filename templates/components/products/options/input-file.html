@@ -1,7 +1,6 @@
 <div class="js-form-field" data-product-attribute="input-file">
-    <label for="attribute_file_{{id}}">
-        {{ this.display_name }}:
-
+    <label class="c-form__label" for="attribute_file_{{id}}">
+        {{ this.display_name }}
         {{> components/common/requireness-msg}}
     </label>
 
@@ -16,13 +15,12 @@
 
     {{#if original_name}}
         {{{lang 'products.file_option_set' url=file_url name=original_name}}}
-        <label>
-            {{lang 'cart.remove_file'}}
-            <input 
-                type="checkbox" 
-                name="{{file_remove}}"
-            >
-        </label>
+        <input 
+            class="c-form__checkbox-input"
+            type="checkbox" 
+            name="{{file_remove}}"
+        >
+        <label class="c-form__checkbox-label">{{lang 'cart.remove_file'}}</label>
     {{/if}}
     <p>
         {{#if file_size}}

@@ -1,11 +1,10 @@
-<div class="js-form-field" data-product-attribute="set-select">
-    <label for="attribute_select_{{id}}">
-        {{ this.display_name }}:
-
+<div class="js-form-field c-form__field" data-product-attribute="set-select">
+    <label class="c-form__label" for="attribute_select_{{id}}">
+        {{ this.display_name }}
         {{> components/common/requireness-msg}}
     </label>
 
-    <select name="attribute[{{this.id}}]" id="attribute_select_{{id}}" {{#if required}}required{{/if}}>
+    <select class="c-form__input c-form__input--select" name="attribute[{{this.id}}]" id="attribute_select_{{id}}" {{#if required}}required{{/if}}>
         <option value="">
             {{lang 'products.choose_options'}}
         </option>

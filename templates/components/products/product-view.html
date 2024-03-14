@@ -126,7 +126,7 @@
             {{/or}}
         </div>
         {{{region name="product_below_price"}}}
-        <div class="c-product__action-buttons">
+        <div>
             <form 
                 class="js-cart-item-add" 
                 method="post" 
@@ -151,7 +151,13 @@
                     </label>
                 </div>
 
-                {{> components/products/add-to-cart with_wallet_buttons=true}}
+                <div class="c-product__action-buttons">
+                    {{> components/products/add-to-cart with_wallet_buttons=true}}
+
+                    {{#if settings.show_wishlist}}
+                        {{> components/common/wishlist-dropdown}}
+                    {{/if}}
+                </div>
                 
                 {{#if product.out_of_stock}}
                     {{#if product.out_of_stock_message}}
@@ -161,16 +167,14 @@
                     {{/if}}
                 {{/if}}
             </form>
-            {{#if settings.show_wishlist}}
-                {{> components/common/wishlist-dropdown}}
-            {{/if}}
         </div>
     </section>
 </div>
 
 <div class="js-preview-modal is-modal-large js-reveal c-modal">
-    {{> components/common/modal/modal-close-btn }}
-
-    <div class="js-modal-content"></div>
+    <div class="c-modal__content-wrapper">
+        {{> components/common/modal/modal-close-btn }}
+        <div class="js-modal-content c-modal__content"></div>
+    </div>
     <div class="js-loading-overlay"></div>
 </div>

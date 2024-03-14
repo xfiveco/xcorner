@@ -1,118 +1,56 @@
-<div class="js-modal-header">
-    <h1 class="js-modal-header-title">
-        {{lang 'cart.added_to_cart.what_next' num_products=cart.quantity}}
+<div class="js-modal-header c-modal__header">
+    <h1 class="js-modal-header-title c-modal__title">
+        {{lang 'cart.added_to_cart.woohoo'}} 🎉
     </h1>
 </div>
 
-<div class="js-modal-body">
-    <div>
-        <section class="js-preview-cart-checkout">
-            {{#if cart.show_primary_checkout_button}}
-                {{#if cart.additional_checkout_buttons}}
-                    <div></div>
-                {{/if}}
+<div class="js-modal-body c-modal__body">
+    <section class="js-product-view">
+        {{#with cart.added_item}}
+            <p class="c-modal__heading">{{name}}</p>
+            <div>
+                {{#each options}}
+                    <div class="js-product-view-info">
+                        <span>
+                            {{name}}
+                        </span>
+                        <div>
+                            {{> components/common/product-options}}
+                        </div>
+                    </div>
+                {{/each}}
+            </div>
+        {{/with}}
+        <p class="c-modal__message">{{lang 'cart.added_to_cart.message'}}</p>
+    </section>
+    <section class="js-preview-cart-checkout c-modal__button-wrapper">
+        {{#if cart.show_primary_checkout_button}}
+            {{#if cart.additional_checkout_buttons}}
+                <div></div>
+            {{/if}}
 
-                <a href="{{urls.checkout.single_address}}" class="c-button c-button--primary">
-                    {{lang 'cart.added_to_cart.proceed_to_checkout'}}
+            <a href="{{urls.checkout.single_address}}" class="c-button c-button--primary">
+                {{lang 'cart.added_to_cart.proceed_to_checkout'}}
+            </a>
+        {{/if}}
+
+        <div>
+            {{#each cart.additional_checkout_buttons}}
+                {{{this}}}
+            {{/each}}
+        </div>
+
+        {{#if cart.show_multiple_address_shipping}}
+            <div>
+                <a href="{{urls.checkout.multiple_address}}">
+                    {{lang 'cart.preview.checkout_multiple'}}
                 </a>
-            {{/if}}
-
-            <div>
-                {{#each cart.additional_checkout_buttons}}
-                    {{{this}}}
-                {{/each}}
             </div>
+        {{/if}}
 
-            {{#if cart.show_multiple_address_shipping}}
-                <div>
-                    <a href="{{urls.checkout.multiple_address}}">
-                        {{lang 'cart.preview.checkout_multiple'}}
-                    </a>
-                </div>
-            {{/if}}
-
-            <div>
-                {{lang 'cart.added_to_cart.order_subtotal'}}
-
-                <strong>
-                    {{#or customer (unless settings.hide_price_from_guests)}}
-                        {{cart.sub_total.formatted}}
-                    {{else}}
-                        {{> components/common/login-for-pricing}}
-                    {{/or}}
-                </strong>
-            </div>
-
-            <p data-cart-quantity="{{cart.quantity}}">
-                {{lang 'cart.added_to_cart.your_cart_contains' num_products=cart.quantity}}
-            </p>
-
-            <a href="#" class="c-button c-button--primary js-reveal-close" role="button">
-                {{lang 'cart.added_to_cart.continue_shopping'}}
-            </a>
-
-            <a href="{{urls.cart}}" class="c-button">
-                {{lang 'cart.added_to_cart.view_or_edit_cart'}}
-            </a>
-        </section>
-        <section class="js-product-view">
-            {{#with cart.added_item}}
-                <figure class="js-product-view-image">
-                    <div>
-                        {{> components/common/image
-                            image=image
-                            fallback_size=../theme_settings.product_size
-                            default_image=../theme_settings.default_image_product
-                        }}
-                    </div>
-                </figure>
-
-                <div>
-                    <div>
-                        {{name}}
-                    </div>
-
-                    <div>
-                        {{brand.name}}
-                    </div>
-
-                    <div>
-                        {{#or ../customer (unless ../settings.hide_price_from_guests)}}
-                            {{quantity}} &times; {{price.formatted}}
-                        {{else}}
-                            {{> components/common/login-for-pricing}}
-                        {{/or}}
-                    </div>
-
-                    {{#each options}}
-                        <dl class="js-product-view-info">
-                            <dt>
-                                {{name}}
-                            </dt>
-                            <dd>
-                                {{> components/common/product-options}}
-                            </dd>
-                        </dl>
-                    {{/each}}
-                </div>
-            {{/with}}
-        </section>
-    </div>
-
-    {{#if cart.suggested_products}}
-        <section>
-            <div>
-                {{lang 'cart.added_to_cart.you_might_also_like'}}&hellip;
-            </div>
-
-            <ul>
-                {{#each cart.suggested_products}}
-                    <li class="js-product">
-                        {{> components/products/card-alternate settings=../settings hide_product_quick_view=true theme_settings=../theme_settings}}
-                    </li>
-                {{/each}}
-            </ul>
-        </section>
-    {{/if}}
+        <a href="#" class="c-button c-button--secondary js-reveal-close" role="button">
+            {{lang 'cart.added_to_cart.continue_shopping'}}
+        </a>
+    </section>
 </div>
 {{{remote_api_scripts}}}

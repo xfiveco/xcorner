@@ -1,10 +1,10 @@
 <div 
-    class="js-form-field" 
+    class="js-form-field c-form__field" 
     data-product-attribute="swatch" 
     role="radiogroup" 
     aria-labelledby="swatchGroup_{{id}}"
 >
-    <label id="swatchGroup_{{id}}">
+    <label class="c-form__label" id="swatchGroup_{{id}}">
         {{this.display_name}}:
         <span class="js-option-value"></span>
 
@@ -22,8 +22,9 @@
             id="attribute_swatch_{{id}}_none"
             checked="{{#if defaultValue '==' ''}}checked{{/if}}"
             aria-label="{{lang 'products.none'}}"
+            class="c-form__radio-input"
         >
-        <label for="attribute_swatch_{{id}}_none">
+        <label class="c-form__radio-label" for="attribute_swatch_{{id}}_none">
             <span title="{{lang 'products.none'}}">
                 {{lang 'products.none'}}
             </span>
@@ -33,7 +34,7 @@
     {{#each this.values}}
         <div>
             <input
-                class="{{#if selected}}js-default{{/if}}"
+                class="{{#if selected}}js-default{{/if}} c-form__radio-input"
                 type="radio"
                 name="attribute[{{../id}}]"
                 value="{{id}}"
@@ -46,7 +47,11 @@
                 {{/if}}
                 aria-label="{{this.label}}"
             >
-            <label for="attribute_swatch_{{../id}}_{{id}}" data-product-attribute-value="{{id}}">
+            <label 
+                class="c-form__radio-label" 
+                for="attribute_swatch_{{../id}}_{{id}}" 
+                data-product-attribute-value="{{id}}"
+            >
                 {{#if image}}
                     <span title="{{this.label}}" style="background-image: url('{{getImage image "swatch_option_size"}}');"></span>
                 {{/if}}
