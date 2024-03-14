@@ -12,9 +12,9 @@
         }
     }
 </style>
-    
-<section class="js-home-swiper c-hero-slider c-hero-slider__{{_.id}}">
-    <div class="{{#if has_container}}o-container{{/if}} c-hero-slider__container">
+
+<section class="{{#if has_container}}o-container{{/if}}">
+    <div class="js-home-swiper c-carousel c-hero-slider c-hero-slider__{{_.id}}">
         <div class="swiper-wrapper">
             {{#each slides}}
                 <div class="swiper-slide">
@@ -41,12 +41,12 @@
                 </div>
             {{/each}}
         </div>
-    </div>
 
-    <div class="c-hero-slider__navigation">
-        <div class="js-swiper-btn-prev c-swiper__btn-prev"></div>
-        <div class="js-swiper-pagination c-swiper__pagination"></div>
-        <div class="js-swiper-btn-next c-swiper__btn-next"></div>
+        <div class="c-hero-slider__navigation">
+            <div class="js-swiper-btn-prev c-swiper__btn-prev"></div>
+            <div class="js-swiper-pagination c-swiper__pagination"></div>
+            <div class="js-swiper-btn-next c-swiper__btn-next"></div>
+        </div>
     </div>
 </section>
 
