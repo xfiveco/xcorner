@@ -1,4 +1,3 @@
-/* @TODO: Need to figure out a way to hide API TOKEN on the front. */
 export default function getOrderProductData(apiToken) {
     const selectors = {
         item: '.js-card-order',
