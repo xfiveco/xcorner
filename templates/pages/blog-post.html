@@ -1,6 +1,7 @@
 {{#partial "page"}}
-    {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
-    {{> components/blog/article post=blog.post show_tags=true is_blog_post=true}}
+    <div class="o-grid">
+        {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
+        {{> components/blog/article post=blog.post show_tags=true is_blog_post=true}}
+    </div>
 {{/partial}}
-
 {{> layout/base}}

@@ -6,17 +6,19 @@
         </div>
 
         <div class="o-grid__item--col-full">
-            <h1 class="o-heading o-heading--l">
-                {{lang 'login.heading' }}
-            </h1>
-            
-            {{#if forms.login.error}}
-                    {{> components/common/alert/alert-error forms.login.error}}
-            {{/if}}
-            
-            {{#if forms.login.success}}
-                {{> components/common/alert/alert-success forms.login.success}}
-            {{/if}}
+            <div class="-grid o-grid--space-small">
+                <h1 class="o-heading o-heading--l">
+                    {{lang 'login.heading' }}
+                </h1>
+                
+                {{#if forms.login.error}}
+                        {{> components/common/alert/alert-error forms.login.error}}
+                {{/if}}
+                
+                {{#if forms.login.success}}
+                    {{> components/common/alert/alert-success forms.login.success}}
+                {{/if}}
+            </div>
         </div>
 
         <div class="o-grid__item--col-full o-grid__item--col-1/4@medium">

@@ -1,35 +1,39 @@
 <article class="c-blog-article">
-    <h1 class="c-blog-article__title">
-        {{post.title}}
-    </h1>
+    <div class="o-grid">
+        <div>
+            <h1 class="c-blog-article__title">
+                {{post.title}}
+            </h1>
 
-    <p class="c-blog-article__meta">
-        {{#if post.author}}{{lang 'blog.posted_by' name=post.author}} on {{/if}}<time>{{post.date_published}}</time>
-    </p>
-
-    <div class="c-blog-article__container">
-        <div class="c-wysiwyg">
-            {{#contains post.body '{more}'}}
-                {{{first (split post.body '{more}')}}}
-            {{/contains}}
+            <p class="o-text o-text--m c-blog-article__meta">
+                {{#if post.author}}{{lang 'blog.posted_by' name=post.author}} on {{/if}}<time>{{post.date_published}}</time>
+            </p>
         </div>
 
-        <header class="c-blog-article__header">
-            {{#if post.thumbnail}}
-                <a class="c-blog-article__image-wrapper" href="{{post.url}}">
-                    {{> components/common/image
-                        image=post.thumbnail
-                        fallback_size=theme_settings.blog_size
-                        class="c-blog-article__image"
-                    }}
-                </a>
-            {{/if}}
-        </header>
+        <div class="c-blog-article__container">
+            <div class="c-wysiwyg">
+                {{#contains post.body '{more}'}}
+                    {{{first (split post.body '{more}')}}}
+                {{/contains}}
+            </div>
 
-        <div class="c-blog-article__body c-wysiwyg">
-            {{#if post.body}}
-                {{{last (split post.body '{more}')}}}
-            {{/if}}
+            <header class="c-blog-article__header">
+                {{#if post.thumbnail}}
+                    <a class="c-blog-article__image-wrapper" href="{{post.url}}">
+                        {{> components/common/image
+                            image=post.thumbnail
+                            fallback_size=theme_settings.blog_size
+                            class="c-blog-article__image"
+                        }}
+                    </a>
+                {{/if}}
+            </header>
+
+            <div class="c-blog-article__body c-wysiwyg">
+                {{#if post.body}}
+                    {{{last (split post.body '{more}')}}}
+                {{/if}}
+            </div>
         </div>
     </div>
 </article>

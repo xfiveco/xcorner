@@ -15,18 +15,20 @@ blog:
 {{/partial}}
 
 {{#partial "page"}}
-    {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
-    <section class="c-blog">
-        {{#unless theme_settings.hide_blog_page_heading }}
-            <h1 class="o-title">
-                {{ blog.name }}
-            </h1>
-        {{/unless}}
-        {{#each blog.posts}}
-            {{> components/blog/post post=this theme_settings=../theme_settings}}
-        {{/each}}
-        {{> components/common/paginator pagination.blog}}
-    </section>
+    <div class="o-grid o-grid--space-small">
+        {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
+        <section class="c-blog">
+            {{#unless theme_settings.hide_blog_page_heading }}
+                <h1 class="o-heading o-heading--l">
+                    {{ blog.name }}
+                </h1>
+            {{/unless}}
+            {{#each blog.posts}}
+                {{> components/blog/post post=this theme_settings=../theme_settings}}
+            {{/each}}
+            {{> components/common/paginator pagination.blog}}
+        </section>
+    </div>
 {{/partial}}
 
 {{> layout/base}}
