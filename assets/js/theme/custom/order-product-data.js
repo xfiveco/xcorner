@@ -20,7 +20,7 @@ export default function getOrderProductData(apiToken) {
             },
             body: JSON.stringify({
                 query: `
-                        query myQuery {
+                        query getProductDetail {
                             site {
                                 product(sku: "${sku}") {
                                     path
