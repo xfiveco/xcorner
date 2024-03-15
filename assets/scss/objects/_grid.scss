@@ -16,6 +16,11 @@ $gap-large: map-get($gap-sizes, large);
 
     display: grid;
     gap: $gap-small;
+
+    /* Hide empty children to prevent displaying doubled gaps */
+    & > *:empty {
+        display: none;
+    }
     
 
     @include bp(large) {

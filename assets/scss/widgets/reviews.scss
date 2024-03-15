@@ -52,6 +52,7 @@ $swiper-arrow-right-purple: './../icons/arrow-right-purple.svg';
 
     .c-swiper__btn-next,
     .c-swiper__btn-prev {
+        flex-shrink: 0;
         width: rem-calc(24px);
         height: rem-calc(24px);
         border: 0 !important;

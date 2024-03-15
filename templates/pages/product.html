@@ -30,27 +30,31 @@ product:
         {{#all settings.show_product_reviews theme_settings.show_product_reviews (if theme_settings.show_product_details_tabs '!==' true)}}
             {{> components/products/reviews reviews=product.reviews product=product urls=urls}}
         {{/all}}
+    </div>
 
-        {{#if product.related_products}}
-            <h2 class="c-carousel__title">{{lang 'products.related_products'}}</h2>
-            <div>
-                {{#if settings.data_tag_enabled}}
-                    {{> components/products/carousel products=product.related_products columns=6 list="Related Products"}}
-                {{else}}
-                    {{> components/products/carousel products=product.related_products columns=6}}
-                {{/if}}
-            </div>
-        {{/if}}
+    {{#if product.related_products}}
+    <div class="u-margin-top--s">
+        <h2 class="c-carousel__title">{{lang 'products.related_products'}}</h2>
+        <div>
+            {{#if settings.data_tag_enabled}}
+                {{> components/products/carousel products=product.related_products columns=6 list="Related Products"}}
+            {{else}}
+                {{> components/products/carousel products=product.related_products columns=6}}
+            {{/if}}
+        </div>
+    </div>
+    {{/if}}
 
-        {{#if product.similar_by_views}}
+    {{#if product.similar_by_views}}
+        <div class="u-margin-top--s">
             <h2 class="c-carousel__title">{{lang 'products.similar_by_views'}}</h2>
             <div>
                 {{> components/products/carousel products=product.similar_by_views columns=6 list="Customers Also Viewed"}}
             </div>
-        {{/if}}
+        </div>
+    {{/if}}
 
-        {{> components/products/schema}}
-    </div>
+    {{> components/products/schema}}
 
 {{/partial}}
 {{> layout/base}}
