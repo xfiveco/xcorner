@@ -46,9 +46,9 @@ class Menu {
         const $collapsibles = collapsibleFactory('[data-collapsible]', { $context: $neighbors })
 
         if ('forEach' in this.collapsibles) {
-            $collapsibles.forEach(($collapsible) => $collapsible.close())
+            $collapsibles?.forEach(($collapsible) => $collapsible.close())
         } else {
-            $collapsibles.close()
+            $collapsibles?.close()
         }
     }
 

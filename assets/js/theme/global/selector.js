@@ -19,9 +19,10 @@ export default function q$(selector, $context = null) {
  * @returns Array[DOMElement]
  */
 export function q$$(selector, $context = null) {
-    return Array.from(($context || document).querySelectorAll(selector))
+    if ($context instanceof Element || $context instanceof HTMLDocument || !$context) {
+        return Array.from(($context || document).querySelectorAll(selector))
+    }
 }
-
 /**
  * We get all parent elemnts in order to replace jQuery#parents
  * [https://gist.github.com/ziggi/2f15832b57398649ee9b]

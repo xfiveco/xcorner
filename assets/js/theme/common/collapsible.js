@@ -278,7 +278,7 @@ export class Collapsible {
 export default function collapsibleFactory(selector = '[data-collapsible]', overrideOptions = {}) {
     const $collapsibles = q$$(selector, overrideOptions.$context)
 
-    const collapsibles = $collapsibles.map((element) => {
+    const collapsibles = $collapsibles?.map((element) => {
         const $toggle = element
         const cachedCollapsible = $toggle.data?.collapsibleInstance
 
@@ -300,9 +300,11 @@ export default function collapsibleFactory(selector = '[data-collapsible]', over
         return collapsible
     })
 
-    if (collapsibles.length > 1) {
-        return collapsibles
-    }
+    if (collapsibles) {
+        if (collapsibles.length > 1) {
+            return collapsibles
+        }
 
-    return collapsibles[0]
+        return collapsibles[0]
+    }
 }

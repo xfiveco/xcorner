@@ -34,6 +34,7 @@ export class MobileMenuToggle {
         this.$subMenus = this.$navList === null ? null : q$$('.js-nav-pages-action', this.$navList)
         this.$toggle = $toggle
         this.$searchToggle = q$('.js-mobile-mega-menu-search')
+        this.$searchInputs = q$$('.js-search-quick')
         this.mediumMediaQueryList = mediaQueryListFactory('medium')
 
         // Auto-bind
@@ -101,6 +102,12 @@ export class MobileMenuToggle {
 
         window.scrollTo({
             top: 0,
+        })
+
+        this.$searchInputs.forEach((input) => {
+            setTimeout(() => {
+                input.focus()
+            }, 1)
         })
 
         this.resetSubMenus()
