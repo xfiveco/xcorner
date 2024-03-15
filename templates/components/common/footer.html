@@ -1,6 +1,6 @@
 {{#if banners.bottom}}
     {{#if settings.data_tag_enabled}}
-        <div data-banner-location="bottom">
+        <div class="c-header__announcement-banner" data-banner-location="bottom">
             {{#each (limit banners.bottom_metadata 1)}}
                 <div data-event-type="promotion" data-entity-id="{{this.id}}" data-name="{{this.banner-name}}" data-position="{{this.location}}" data-name="{{this.banner-name}}">
                     <div data-event-type="promotion-click">
@@ -10,7 +10,7 @@
             {{/each}}
         </div>
     {{else}}
-        <div data-banner-location="bottom">
+        <div class="c-header__announcement-banner" data-banner-location="bottom">
             <div>
                 {{{limit banners.bottom 1}}}
             </div>
