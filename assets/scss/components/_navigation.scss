@@ -33,7 +33,6 @@
 
 .c-navigation__item {
     margin: 0;
-    position: relative;
     height: fit-content;
 }
 
@@ -60,6 +59,7 @@
     font-weight: 600;
     line-height: 1.5;
     text-decoration: none;
+    position: relative;
 
     svg {
         display: inline-block !important;
@@ -95,7 +95,7 @@
     max-height: rem-calc(24px);
     fill: transparent;
 
-    &.c-menu__close {
+    &--close {
         max-width: rem-calc(16px);
         max-height: rem-calc(16px);
     }
@@ -230,8 +230,8 @@
     line-height: 1.5rem;
 
     position: absolute;
-    top: -50%;
-    right: -55%;
+    top: rem-calc(2px);
+    right: rem-calc(-12px);
 
     @include bp(medium) {
         position: relative;

@@ -28,8 +28,6 @@
 }
 
 .u-hidden\@medium {
-    display: flex;
-
     @include bp(medium) {
         display: none;
     }

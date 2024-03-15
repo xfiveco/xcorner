@@ -15,9 +15,9 @@ export default function megaMenuSearch() {
         const windowWidth = window.innerWidth
 
         if (searchButton) {
-            if (windowWidth < MOBILE_WIDTH) {
-                searchButton.removeEventListener('click', openDesktopMenu)
-            } else {
+            searchButton.removeEventListener('click', openDesktopMenu)
+
+            if (windowWidth >= MOBILE_WIDTH) {
                 searchButton.addEventListener('click', openDesktopMenu)
             }
         }

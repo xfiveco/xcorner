@@ -1,6 +1,7 @@
 /* SVG icon url's */
 $checkmark-icon: './../img/icons/checkmark.svg';
 $dropdown-icon: './../img/icons/dropdown.svg';
+$quick-search-icon: './../icons/search.svg';
 $form-field-box-shadow: 0 0 0 0.25rem rgba(90, 100, 193, 0.24);
 $input-transition: all 0.2s ease-in-out;
 
@@ -116,6 +117,23 @@ $input-transition: all 0.2s ease-in-out;
     &--narrow {
         width: 100%;
         max-width: 35rem;
+    }
+
+    &--search {
+        padding: 1rem 1rem 1rem 3rem;
+        min-width: 21.375rem;
+
+        color: $color-neutrals-500;
+        font-family: $font-regular;
+        font-size: 1rem;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 1.5;
+
+        background-image: url($quick-search-icon);
+        background-position-y: center;
+        background-position-x: 1rem;
+        background-repeat: no-repeat;
     }
 }
 
