@@ -105,9 +105,9 @@ export class MobileMenuToggle {
         })
 
         this.$searchInputs.forEach((input) => {
-            setTimeout(() => {
+            requestAnimationFrame(() => {
                 input.focus()
-            }, 1)
+            })
         })
 
         this.resetSubMenus()

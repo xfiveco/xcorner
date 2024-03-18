@@ -20,7 +20,7 @@
 }
 
 .u-hidden\@small-down {
-    @include bp-down(medium) {
+    @include bp-down(small) {
         display: none;
     }
 }
