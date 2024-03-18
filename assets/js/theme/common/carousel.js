@@ -61,21 +61,21 @@ export default function startSwiper(context) {
         modules: [Navigation, Pagination],
         allowSlideNext: true,
         allowSlidePrev: true,
-        slidesPerView: 1,
+        slidesPerView: 1.2,
         speed: 500,
         loop: true,
-        spaceBetween: 48,
+        spaceBetween: 24,
         autoplay: {
             delay: 3000,
         },
         breakpoints: {
             480: {
                 slidesPerView: 2,
-                spaceBetween: 40,
+                spaceBetween: 24,
             },
             768: {
                 slidesPerView: 4,
-                spaceBetween: 40,
+                spaceBetween: 48,
             },
         },
         navigation: {

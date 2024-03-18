@@ -5,11 +5,7 @@ $swiper-arrow-right-purple: './../icons/arrow-right-purple.svg';
     overflow: visible;
 
     .swiper-slide {
-        max-width: 80%;
-
-        @include bp(small) {
-            max-width: 100%;
-        }
+        height: auto;
     }
 }
 
