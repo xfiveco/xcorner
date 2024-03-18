@@ -13,8 +13,8 @@
     }
 </style>
 
-<section class="{{#if has_container}}o-container{{/if}}">
-    <div class="js-home-swiper c-carousel c-hero-slider c-hero-slider__{{_.id}}">
+<section class="{{#if has_container}}o-container{{/if}} c-hero-slider__{{_.id}}">
+    <div class="js-home-swiper c-carousel c-hero-slider">
         <div class="swiper-wrapper">
             {{#each slides}}
                 <div class="swiper-slide">
