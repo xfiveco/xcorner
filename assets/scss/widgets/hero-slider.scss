@@ -10,6 +10,7 @@ $swiper-arrow-left: './../icons/arrow-left.svg';
     width: 100%;
     height: auto;
     object-fit: cover;
+    border-radius: rem-calc(4px);
 
     @include bp(medium) {
         aspect-ratio: 738/484;
@@ -95,10 +96,20 @@ $swiper-arrow-left: './../icons/arrow-left.svg';
     display: flex;
     flex-direction: column;
     gap: rem-calc(12px);
+    width: 100%;
 
     @include bp(medium) {
         flex-direction: row;
+        width: fit-content;
     }
+}
+
+.c-hero__button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: rem-calc(11px);
+    width: auto;
 }
 
 .c-hero-slider__navigation {
