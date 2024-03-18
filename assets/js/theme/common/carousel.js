@@ -63,7 +63,7 @@ export default function startSwiper(context) {
         allowSlidePrev: true,
         slidesPerView: 1,
         speed: 500,
-        loop: false,
+        loop: true,
         spaceBetween: 48,
         autoplay: {
             delay: 3000,
