@@ -34,7 +34,7 @@ export class MobileMenuToggle {
         this.$subMenus = this.$navList === null ? null : q$$('.js-nav-pages-action', this.$navList)
         this.$toggle = $toggle
         this.$searchToggle = q$('.js-mobile-mega-menu-search')
-        this.$searchInputs = q$$('.js-search-quick')
+        this.$searchInput = q$('.js-mobile-search')
         this.mediumMediaQueryList = mediaQueryListFactory('medium')
 
         // Auto-bind
@@ -104,10 +104,8 @@ export class MobileMenuToggle {
             top: 0,
         })
 
-        this.$searchInputs.forEach((input) => {
-            requestAnimationFrame(() => {
-                input.focus()
-            })
+        requestAnimationFrame(() => {
+            this.$searchInput.focus()
         })
 
         this.resetSubMenus()
