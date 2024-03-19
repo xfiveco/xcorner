@@ -35,6 +35,7 @@ export class MobileMenuToggle {
         this.$toggle = $toggle
         this.$searchToggle = q$('.js-mobile-mega-menu-search')
         this.$searchInput = q$('.js-mobile-search')
+        this.$bodyOverlay = q$('.c-body-overlay')
         this.mediumMediaQueryList = mediaQueryListFactory('medium')
 
         // Auto-bind
@@ -60,6 +61,7 @@ export class MobileMenuToggle {
     bindEvents() {
         this.$toggle.addEventListener('click', this.onToggleClick)
         this.$searchToggle.addEventListener('click', this.onToggleClick)
+        this.$bodyOverlay.addEventListener('click', this.onToggleClick)
         this.$header.addEventListener(CartPreviewEvents.open, this.onCartPreviewOpen)
 
         if (this.$subMenus && this.$subMenus.length) {
@@ -74,6 +76,7 @@ export class MobileMenuToggle {
     unbindEvents() {
         this.$toggle.removeEventListener('click', this.onToggleClick)
         this.$searchToggle.removeEventListener('click', this.onToggleClick)
+        this.$bodyOverlay.removeEventListener('click', this.onToggleClick)
         this.$header.removeEventListener(CartPreviewEvents.open, this.onCartPreviewOpen)
 
         if (this.mediumMediaQueryList && this.mediumMediaQueryList.addEventListener) {

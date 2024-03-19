@@ -32,6 +32,7 @@
 }
 
 .c-navigation__item {
+    display: flex;
     margin: 0;
     height: fit-content;
 }
@@ -49,7 +50,7 @@
     justify-content: space-between;
     align-items: center;
     gap: 0.5rem;
-    padding: 1rem 0;
+    padding: 1rem 0 rem-calc(4px);
 
     color: $color-black;
     text-align: center;
@@ -60,6 +61,10 @@
     line-height: 1.5;
     text-decoration: none;
     position: relative;
+
+    @include bp(medium) {
+        padding: 1rem 0;
+    }
 
     svg {
         display: inline-block !important;
@@ -119,6 +124,39 @@
 
     @include bp(large) {
         grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+.c-navigation-list__show-more {
+    font-family: $font-semi-bold;
+    font-size: rem-calc(16px);
+    line-height: rem-calc(24px);
+    font-weight: 600;
+    text-align: center;
+    color: $color-primary-300;
+    background-color: transparent;
+    padding: 0;
+    margin: 0;
+    outline: 0;
+    border: none;
+    cursor: pointer;
+
+    display: flex;
+    justify-content: space-between;
+    gap: rem-calc(8px);
+    align-items: center;
+}
+
+.c-navigation-list__arrow {
+    fill: $color-white;
+    transform: rotate(0deg);
+    transition: all 0.2s ease-in-out;
+    max-width: rem-calc(24px);
+    max-height: rem-calc(24px);
+
+    &.rotate {
+        transform: rotate(180deg);
+        transition: all 0.2s ease-in-out;
     }
 }
 
@@ -256,7 +294,16 @@
 .c-navigation__promo {
     width: 100%;
     height: auto;
-    aspect-ratio: 284 / 190;
+    aspect-ratio: 159 / 190;
+    object-fit: cover;
+
+    @include bp(small) {
+        aspect-ratio: 230 / 190;
+    }
+
+    @include bp(medium) {
+        aspect-ratio: 284 / 190;
+    }
 }
 
 .c-navigation__sign-in {

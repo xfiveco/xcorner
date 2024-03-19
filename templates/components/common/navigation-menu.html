@@ -10,7 +10,7 @@
                         {{> components/common/navigation-list}}
                     {{/if}}
                     {{#if ../theme_settings.navigation_design '===' 'alternate'}}
-                        {{> components/common/navigation-list-custom categories=../categories social_media=../social_media }}
+                        {{> components/common/navigation-list-custom categories=../categories social_media=../social_media customer=../customer}}
                     {{/if}}
                 </li>
                 <svg class="c-navigation__separator" xmlns="http://www.w3.org/2000/svg" width="25" height="24" viewBox="0 0 25 24" fill="none">
@@ -39,7 +39,7 @@
                                 </a>
                                 <ul id="nav-pages-{{id}}" class="is-open c-navigation-list__submenu-list">
                                     {{#each children}}
-                                        <li>
+                                        <li class="{{#if @index '>' 2}}u-hidden@medium-down{{else}}c-navigation-list__item--is-shown{{/if}}">
                                             <a 
                                                 class="js-nav-pages-action{{#if is_active}} is-active{{/if}} c-navigation-list__submenu-item"
                                                 href="{{url}}"
@@ -49,6 +49,15 @@
                                             </a>
                                         </li>
                                     {{/each}}
+                                    <li>
+                                        <button class="js-show-more c-navigation-list__show-more">
+                                            <span>{{lang 'common.show_more'}}</span>
+                                            <span class="u-hidden">{{lang 'common.show_less'}}</span>
+                                            <svg class="c-navigation-list__arrow">
+                                                <use xlink:href="#icon-chevron-down" />
+                                            </svg>
+                                        </button>
+                                    </li>
                                 </ul>
                             {{/if}}
                         </li>
@@ -60,7 +69,11 @@
                             class="js-nav-pages-action c-navigation-list__submenu-header"
                             href="{{url}}"
                         >
-                            {{lang 'common.login'}}
+                            {{#if customer}}
+                                {{lang 'common.account'}}
+                            {{else}}
+                                {{lang 'common.login'}}
+                            {{/if}}
                         </a>
                     </li>
                     <li>
@@ -71,7 +84,11 @@
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                                 <path d="M20 21V19C20 17.9391 19.5786 16.9217 18.8284 16.1716C18.0783 15.4214 17.0609 15 16 15H8C6.93913 15 5.92172 15.4214 5.17157 16.1716C4.42143 16.9217 4 17.9391 4 19V21M12 11C14.2091 11 16 9.20914 16 7C16 4.79086 14.2091 3 12 3C9.79086 3 8 4.79086 8 7C8 9.20914 9.79086 11 12 11Z" stroke="#5A64C1" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                             </svg>
-                            {{lang 'common.sign_in_now'}}
+                            {{#if customer}}
+                                {{lang 'common.account'}}
+                            {{else}}
+                                {{lang 'common.sign_in_now'}}
+                            {{/if}}
                         </a>
                     </li>
                     <li>
