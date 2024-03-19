@@ -176,3 +176,9 @@
     line-height: rem-calc(16px);
     text-align: center;
 }
+
+.c-product__options {
+    display: flex;
+    flex-direction: column;
+    gap: rem-calc(12px);
+}

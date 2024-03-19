@@ -2,21 +2,8 @@
    #QUICK-SEARCH
    ========================================================================== */
 
-$quick-search-icon: './../icons/search.svg';
-
-.c-quick-search .c-form__input {
-    padding: 1rem 1rem 1rem 3rem;
-    min-width: 21.375rem;
-
-    color: $color-neutrals-500;
-    font-family: $font-regular;
-    font-size: 1rem;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 1.5;
-
-    background-image: url($quick-search-icon);
-    background-position-y: center;
-    background-position-x: 1rem;
-    background-repeat: no-repeat;
+.c-quick-search {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

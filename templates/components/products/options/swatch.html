@@ -32,7 +32,7 @@
     {{/unless}}
 
     {{#each this.values}}
-        <div>
+        <div class="c-radio__item">
             <input
                 class="{{#if selected}}js-default{{/if}} c-form__radio-input"
                 type="radio"
@@ -55,23 +55,19 @@
                 {{#if image}}
                     <span title="{{this.label}}" style="background-image: url('{{getImage image "swatch_option_size"}}');"></span>
                 {{/if}}
-                {{#if data.[2]}}
-                    <span title="{{this.label}}" style="background-color: #{{data.[0]}}"></span>
-                    <span title="{{this.label}}" style="background-color: #{{data.[1]}}"></span>
-                    <span title="{{this.label}}" style="background-color: #{{data.[2]}}"></span>
-                {{else}}
-                    {{#if data.[1]}}
-                        <span title="{{this.label}}" style="background-color: #{{data.[0]}}"></span>
-                        <span title="{{this.label}}" style="background-color: #{{data.[1]}}"></span>
-                    {{else}}
-                        {{#if data.[0]}}
-                            <span title="{{this.label}}" style="background-color: #{{data.[0]}}"></span>
-                        {{/if}}
-                    {{/if}}
-                {{/if}}
+
+                {{#each data}}
+                    <span title="{{../this.label}}" style="background-color: #{{this}}"></span>
+                {{/each}}
+                
+                {{#unless this.label '===' 'Pattern'}}
+                    <span>{{this.label}}</span>
+                {{/unless}}
+
                 {{#if pattern}}
                     <span>
                         <span style="background-image: url('{{getImage image 'core-swatch'}}');"></span>
+                        <span>{{this.label}}</span>
                     </span>
                 {{/if}}
             </label>

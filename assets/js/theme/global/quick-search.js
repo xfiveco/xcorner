@@ -91,13 +91,12 @@ export default function doQuickSearch() {
 
             const $target = event.currentTarget
             const searchQuery = $target.querySelector('input')?.value
-            const searchUrl = $target.dataset.url
 
             if (searchQuery.length === 0) {
                 return
             }
 
-            window.location.href = `${searchUrl}?search_query=${encodeURIComponent(searchQuery)}`
+            window.location.href = `search.php?search_query=${encodeURIComponent(searchQuery)}`
         })
     })
 }

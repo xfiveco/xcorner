@@ -19,18 +19,20 @@
     display: none !important;
 }
 
-.u-hidden\@small {
-    display: none;
-
-    @include bp(medium) {
-        display: block;
+.u-hidden\@small-down {
+    @include bp-down(small) {
+        display: none;
     }
 }
 
-.u-hidden\@medium {
-    display: block;
-
+.u-hidden\@medium-up {
     @include bp(medium) {
+        display: none;
+    }
+}
+
+.u-hidden\@medium-down {
+    @include bp-down(medium) {
         display: none;
     }
 }
