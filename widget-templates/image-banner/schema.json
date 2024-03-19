@@ -25,6 +25,12 @@
                 "default": "I am a sample text"
             },
             {
+                "type": "input",
+                "id": "url",
+                "label": "URL",
+                "default": "#"
+            },
+            {
                 "type": "imageManager",
                 "label": "Background Image",
                 "id": "image",

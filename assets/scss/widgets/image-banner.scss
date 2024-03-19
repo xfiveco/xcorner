@@ -13,6 +13,8 @@
     gap: rem-calc(12px);
     padding: rem-calc(24px);
 
+    text-decoration: none;
+
     @include bp(small) {
         height: rem-calc(484px);
     }
