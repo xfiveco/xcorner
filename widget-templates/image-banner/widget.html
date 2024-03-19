@@ -13,12 +13,12 @@
 </style>
 
 <div class="{{#if has_container}}o-container{{/if}}">
-    <div class='c-image-banner c-image-banner-{{_.id}}' style="background-image: url('{{image.src}}')">
+    <a href="{{url}}" class='c-image-banner c-image-banner-{{_.id}}' style="background-image: url('{{image.src}}')">
         {{#if title}}
             <h2 class="c-image-banner__title">{{title}}</h2>
         {{/if}}
         {{#if text}}
             <p class="c-image-banner__text">{{text}}</p>
         {{/if}}
-    </div>
+    </a>
 </div>
