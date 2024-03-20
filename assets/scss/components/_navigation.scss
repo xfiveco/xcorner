@@ -151,10 +151,10 @@
     fill: $color-white;
     transform: rotate(0deg);
     transition: all 0.2s ease-in-out;
-    max-width: rem-calc(24px);
-    max-height: rem-calc(24px);
+    width: rem-calc(24px);
+    height: rem-calc(24px);
 
-    &.rotate {
+    .c-navigation-list__show-more.is-open & {
         transform: rotate(180deg);
         transition: all 0.2s ease-in-out;
     }

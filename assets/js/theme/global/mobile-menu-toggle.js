@@ -35,7 +35,7 @@ export class MobileMenuToggle {
         this.$toggle = $toggle
         this.$searchToggle = q$('.js-mobile-mega-menu-search')
         this.$searchInput = q$('.js-mobile-search')
-        this.$bodyOverlay = q$('.c-body-overlay')
+        this.$bodyOverlay = q$('.js-body-overlay')
         this.mediumMediaQueryList = mediaQueryListFactory('medium')
 
         // Auto-bind

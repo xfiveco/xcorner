@@ -1,20 +1,32 @@
 /**
  * Open mega menu on search button click
  */
+
+import { constants } from './constants'
+
 export default function megaMenu() {
-    const MOBILE_WIDTH = 768
+    const MOBILE_WIDTH = constants.MOBILE_WIDTH
     const megaMenuElement = document.querySelector('.js-navigation-megamenu')
     const searchButton = document.querySelector('.js-mega-menu-search')
-    const searchInputs = document.querySelectorAll('.js-search-quick')
-    const showMore = document.querySelectorAll('.js-show-more')
+    const searchInput = document.querySelector('.js-search-quick')
+    const showMoreTriggers = document.querySelectorAll('.js-show-more-item')
     let hasAttachedEvent = false
 
+    const findPreviousSiblingWithClass = (element, className) => {
+        let prevSibling = element.previousElementSibling
+
+        while (prevSibling !== null && !prevSibling.classList.contains(className)) {
+            prevSibling = prevSibling.previousElementSibling
+        }
+
+        return prevSibling
+    }
+
     const openDesktopMenu = () => {
-        megaMenuElement.previousElementSibling.classList.toggle('is-open')
+        const targetElement = findPreviousSiblingWithClass(megaMenuElement, 'js-nav-pages-action')
+        targetElement.classList.toggle('is-open')
         megaMenuElement.classList.toggle('is-open')
-        searchInputs?.forEach((input) => {
-            input.focus()
-        })
+        searchInput.focus()
     }
 
     const updateEventListeners = () => {
@@ -31,27 +43,24 @@ export default function megaMenu() {
 
     window.addEventListener('resize', updateEventListeners)
 
-    showMore.forEach((button) => {
+    showMoreTriggers.forEach((item) => {
+        const button = item.querySelector('.js-show-more')
         button.addEventListener('click', () => {
-            const buttonLabels = button.querySelectorAll('span')
-            const svg = button.querySelector('svg')
-            const liElements = []
-            let prevElement = button.parentElement.previousElementSibling
+            button.classList.toggle('is-open')
 
-            while (prevElement) {
-                if (!prevElement.classList.contains('c-navigation-list__item--is-shown')) {
-                    prevElement.classList.toggle('u-hidden@medium-down')
-                }
-                liElements.push(prevElement)
-                prevElement = prevElement.previousElementSibling
-            }
+            const listItems = item
+                .closest('.js-navigation-list-container')
+                .querySelectorAll('.js-navigation-list-item:not(.js-navigation-list-item-shown)')
 
-            if (liElements.length > 0) {
+            listItems.forEach((listItem) => {
+                listItem.classList.toggle('u-hidden@medium-down')
+            })
+
+            const buttonLabels = button.querySelectorAll('.js-show-label')
+            if (listItems.length > 0) {
                 buttonLabels.forEach((label) => {
                     label.classList.toggle('u-hidden')
                 })
-
-                svg.classList.toggle('rotate')
             }
         })
     })
