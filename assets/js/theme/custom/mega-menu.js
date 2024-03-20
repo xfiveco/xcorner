@@ -6,26 +6,14 @@ import { constants } from './constants'
 
 export default function megaMenu() {
     const MOBILE_WIDTH = constants.MOBILE_WIDTH
-    const megaMenuElement = document.querySelector('.js-navigation-megamenu')
+    const dropdown = document.querySelector('.js-dropdown')
     const searchButton = document.querySelector('.js-mega-menu-search')
     const searchInput = document.querySelector('.js-search-quick')
     const showMoreTriggers = document.querySelectorAll('.js-show-more-item')
     let hasAttachedEvent = false
 
-    const findPreviousSiblingWithClass = (element, className) => {
-        let prevSibling = element.previousElementSibling
-
-        while (prevSibling !== null && !prevSibling.classList.contains(className)) {
-            prevSibling = prevSibling.previousElementSibling
-        }
-
-        return prevSibling
-    }
-
     const openDesktopMenu = () => {
-        const targetElement = findPreviousSiblingWithClass(megaMenuElement, 'js-nav-pages-action')
-        targetElement.classList.toggle('is-open')
-        megaMenuElement.classList.toggle('is-open')
+        dropdown.classList.toggle('is-open')
         searchInput.focus()
     }
 
