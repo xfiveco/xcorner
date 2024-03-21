@@ -1,23 +1,31 @@
 <div class="is-modal-small js-reveal js-prevent-quick-search-close js-alert-modal c-modal">
-    <div class="is-alert-icon is-error-icon">
-        <span>
-            <span></span>
-            <span></span>
-        </span>
-    </div>
+    <div class="c-modal__content-wrapper">
+        <div class="c-modal__content">
+            {{> components/common/modal/modal-close-btn }}
+            
+            <div class="c-modal__message c-modal__message--centered">
+                <div class="c-modal__info-icon is-alert-icon is-error-icon">
+                    <span>
+                        <span></span>
+                        <span></span>
+                    </span>
+                </div>
 
-    <div class="is-alert-icon is-warning-icon">
-        <div>!</div>
-    </div>
+                <div class="c-modal__info-icon is-alert-icon is-warning-icon">
+                    {{> components/icon/icon iconFileName="error"}}
+                </div>
 
-    <div class="js-modal-content"></div>
+                <div class="u-margin-top--xs js-modal-content"></div>
 
-    <div>
-        <button type="button" class="is-confirm c-button js-reveal-close">
-            {{lang 'common.ok'}}
-        </button>
-        <button type="button" class="is-cancel c-button js-reveal-close">
-            {{lang 'common.cancel'}}
-        </button>
+                <div class="u-margin-top--s c-modal__button-wrapper">
+                    <button type="button" class="is-confirm c-button c-button--terniary js-reveal-close">
+                        {{lang 'common.ok'}}
+                    </button>
+                    <button type="button" class="is-cancel c-button c-button--secondary js-modal-close">
+                        {{lang 'common.cancel'}}
+                    </button>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
