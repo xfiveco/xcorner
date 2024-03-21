@@ -17,3 +17,11 @@
         margin-top: rem-calc(48px);
     }
 }
+
+.u-margin-bottom--m {
+    margin-bottom: rem-calc(24px);
+    
+    @include bp(medium) {
+        margin-bottom: rem-calc(48px);
+    }
+}

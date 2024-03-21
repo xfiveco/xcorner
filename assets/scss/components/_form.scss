@@ -55,6 +55,90 @@ $input-transition: all 0.2s ease-in-out;
     }
 }
 
+.c-form__field {
+    .c-form--create-account & {
+        grid-area: auto;
+    
+        &:nth-child(1) {
+            @include bp(large) {
+                grid-area: 1 / 1;
+            }
+        }
+    
+        &:nth-child(2) {
+            @include bp(large) {
+                grid-area: 2 / 1;
+            }
+        }
+    
+        &:nth-child(3) {
+            @include bp(large) {
+                grid-area: 2 / 2;
+            }
+        }
+    
+        &:nth-child(4) {
+            @include bp(large) {
+                grid-area: 3 / 1;
+            }
+        }
+    
+        &:nth-child(5) {
+            @include bp(large) {
+                grid-area: 3 / 2;
+            }
+        }
+    
+        &:nth-child(6) {
+            @include bp(large) {
+                grid-area: 4 / 1;
+            }
+        }
+    
+        &:nth-child(7) {
+            @include bp(large) {
+                grid-area: 4 / 2;
+            }
+        }
+    
+        &:nth-child(8) {
+            @include bp(large) {
+                grid-area: 5 / 1;
+            }
+        }
+    
+        &:nth-child(9) {
+            @include bp(large) {
+                grid-area: 5 / 2;
+            }
+        }
+    
+        &:nth-child(10) {
+            @include bp(large) {
+                grid-area: 5 / 3;
+            }
+        }
+    
+        &:nth-child(11) {
+            @include bp(large) {
+                grid-area: 6 / 1;
+            }
+        }
+    
+        &:nth-child(12) {
+            @include bp(large) {
+                grid-area: 6 / 2;
+            }
+        }
+    
+        &:nth-child(13) {
+            @include bp(large) {
+                grid-area: 6 / 3;
+            }
+        }
+    }
+}
+
 .c-form__input {
     display: flex;
     align-items: center;
@@ -114,9 +198,14 @@ $input-transition: all 0.2s ease-in-out;
         width: 100%;
     }
 
+    &--short {
+        width: 100%;
+        max-width: rem-calc(342px);
+    }
+
     &--narrow {
         width: 100%;
-        max-width: 35rem;
+        max-width: rem-calc(560px);
     }
 
     &--search {
