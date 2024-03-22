@@ -21,6 +21,7 @@ $swiper-arrow-right-purple: './../icons/arrow-right-purple.svg';
 }
 
 .c-review-carousel__summary {
+    @include truncate(4);
     color: $color-black;
     font-family: $font-regular;
     font-size: rem-calc(16px);
