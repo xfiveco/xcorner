@@ -46,7 +46,7 @@ export default function megaMenu() {
                     })
 
                     buttonLabels.forEach((label) => {
-                        label.classList.toggle('u-hidden')
+                        label.classList.toggle('is-hidden')
                     })
                 }
             })
