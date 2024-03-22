@@ -21,11 +21,7 @@ $swiper-arrow-right-purple: './../icons/arrow-right-purple.svg';
 }
 
 .c-review-carousel__summary {
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 4;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    @include truncate(4);
     color: $color-black;
     font-family: $font-regular;
     font-size: rem-calc(16px);
