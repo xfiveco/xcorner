@@ -33,6 +33,7 @@
     max-height: 80%;
     max-width: rem-calc(616px);
     padding: rem-calc(48px);
+
 }
 
 .c-modal__button-wrapper {
@@ -56,6 +57,11 @@
 .c-modal__close-icon {
     width: rem-calc(14px);
     height: rem-calc(14px);
+}
+
+.c-modal__info-icon {
+    font-size: rem-calc(40px);
+    color: $color-primary-400;
 }
 
 .c-modal__title {
@@ -87,6 +93,14 @@
     letter-spacing: 0;
     text-align: left;
     margin: 0;
+
+    &--centered {
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
 }
 
 .c-modal__body {

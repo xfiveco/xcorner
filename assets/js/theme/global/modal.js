@@ -356,9 +356,7 @@ export function showAlertModal(message, options = {}) {
         )
     }
 
-    if (showCancelButton) {
-        $cancelBtn.style.display = 'block'
-    } else {
-        $cancelBtn.style.display = 'none'
+    if ($cancelBtn) {
+        $cancelBtn.style.display = showCancelButton ? 'block' : 'none'
     }
 }
