@@ -127,6 +127,14 @@
     }
 }
 
+.c-navigation-list__item {
+    &.is-hidden {
+        @include bp-down(medium) {
+            display: none;
+        }
+    }
+}
+
 .c-navigation-list__show-more {
     font-family: $font-semi-bold;
     font-size: rem-calc(16px);

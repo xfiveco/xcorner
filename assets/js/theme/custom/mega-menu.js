@@ -5,7 +5,7 @@
 import { constants } from './constants'
 
 export default function megaMenu() {
-    const MOBILE_WIDTH = constants.MOBILE_WIDTH
+    const { MOBILE_WIDTH } = constants
     const dropdown = document.querySelector('.js-dropdown')
     const searchButton = document.querySelector('.js-mega-menu-search')
     const searchInput = document.querySelector('.js-search-quick')
@@ -33,23 +33,25 @@ export default function megaMenu() {
 
     showMoreTriggers.forEach((item) => {
         const button = item.querySelector('.js-show-more')
-        button.addEventListener('click', () => {
-            button.classList.toggle('is-open')
+        if (button && !button.hasAttribute('data-event-added')) {
+            button.addEventListener('click', () => {
+                const categoryId = button.getAttribute('data-show-more')
+                const listItems = document.querySelectorAll(`.js-navigation-list-item[data-more="${categoryId}"]`)
+                button.classList.toggle('is-open')
 
-            const listItems = item
-                .closest('.js-navigation-list-container')
-                .querySelectorAll('.js-navigation-list-item:not(.js-navigation-list-item-shown)')
+                const buttonLabels = button.querySelectorAll('.js-show-label')
+                if (listItems.length > 0) {
+                    listItems.forEach((listItem) => {
+                        listItem.classList.toggle('is-hidden')
+                    })
 
-            listItems.forEach((listItem) => {
-                listItem.classList.toggle('u-hidden@medium-down')
+                    buttonLabels.forEach((label) => {
+                        label.classList.toggle('u-hidden')
+                    })
+                }
             })
 
-            const buttonLabels = button.querySelectorAll('.js-show-label')
-            if (listItems.length > 0) {
-                buttonLabels.forEach((label) => {
-                    label.classList.toggle('u-hidden')
-                })
-            }
-        })
+            button.setAttribute('data-event-added', 'true')
+        }
     })
 }

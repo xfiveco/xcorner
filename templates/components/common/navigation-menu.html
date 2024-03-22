@@ -37,9 +37,9 @@
                                 >
                                     {{name}}
                                 </a>
-                                <ul id="nav-pages-{{id}}" class="is-open c-navigation-list__submenu-list js-navigation-list-container">
+                                <ul id="nav-pages-{{id}}" class="is-open c-navigation-list__submenu-list js-navigation-list-container" data-category-id="{{id}}">
                                     {{#each children}}
-                                        <li class="{{#if @index '>' 2}}u-hidden@medium-down{{else}}js-navigation-list-item-shown{{/if}} js-navigation-list-item">
+                                        <li class="c-navigation-list__item {{#if @index '>' 2}}is-hidden{{/if}} js-navigation-list-item" {{#if @index '>' 2}}data-more="{{../id}}{{/if}}">
                                             <a 
                                                 class="js-nav-pages-action{{#if is_active}} is-active{{/if}} c-navigation-list__submenu-item"
                                                 href="{{url}}"
@@ -50,7 +50,7 @@
                                         </li>
                                     {{/each}}
                                     <li class="js-show-more-item">
-                                        <button class="js-show-more c-navigation-list__show-more">
+                                        <button class="js-show-more c-navigation-list__show-more" data-show-more="{{id}}">
                                             <span class="js-show-label">{{lang 'common.show_more'}}</span>
                                             <span class="u-hidden js-show-label">{{lang 'common.show_less'}}</span>
                                             {{> components/icon/icon iconFileName="chevron-down" class="c-navigation-list__arrow"}}
