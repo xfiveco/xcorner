@@ -27,31 +27,35 @@ export default function megaMenu() {
         }
     }
 
+    const showMoreMenuItems = () => {
+        showMoreTriggers.forEach((item) => {
+            const button = item.querySelector('.js-show-more')
+            if (button && !button.hasAttribute('data-event-added')) {
+                button.addEventListener('click', () => {
+                    const categoryId = button.getAttribute('data-show-more')
+                    const listItems = document.querySelectorAll(`.js-navigation-list-item[data-more="${categoryId}"]`)
+                    button.classList.toggle('is-open')
+
+                    const buttonLabels = button.querySelectorAll('.js-show-label')
+                    if (listItems.length > 0) {
+                        listItems.forEach((listItem) => {
+                            listItem.classList.toggle('is-hidden')
+                        })
+
+                        buttonLabels.forEach((label) => {
+                            label.classList.toggle('is-hidden')
+                        })
+                    }
+                })
+
+                button.setAttribute('data-event-added', 'true')
+            }
+        })
+    }
+
     updateEventListeners()
 
+    showMoreMenuItems()
+
     window.addEventListener('resize', updateEventListeners)
-
-    showMoreTriggers.forEach((item) => {
-        const button = item.querySelector('.js-show-more')
-        if (button && !button.hasAttribute('data-event-added')) {
-            button.addEventListener('click', () => {
-                const categoryId = button.getAttribute('data-show-more')
-                const listItems = document.querySelectorAll(`.js-navigation-list-item[data-more="${categoryId}"]`)
-                button.classList.toggle('is-open')
-
-                const buttonLabels = button.querySelectorAll('.js-show-label')
-                if (listItems.length > 0) {
-                    listItems.forEach((listItem) => {
-                        listItem.classList.toggle('is-hidden')
-                    })
-
-                    buttonLabels.forEach((label) => {
-                        label.classList.toggle('is-hidden')
-                    })
-                }
-            })
-
-            button.setAttribute('data-event-added', 'true')
-        }
-    })
 }
