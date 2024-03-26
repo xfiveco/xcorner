@@ -5,7 +5,7 @@
                 {{lang 'account.nav.orders'}}
             </a>
             {{#if customer.orders.length ">" 0}}
-                <span aria-label="new messages" class="c-account-navigation__pill">{{customer.orders.length}}</span>
+                <span aria-label="new messages" class="c-pill">{{customer.orders.length}}</span>
             {{/if}}
         </li>
         {{#if settings.returns_enabled}}
