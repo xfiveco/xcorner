@@ -5,6 +5,7 @@ import menu from './global/menu'
 import carousel from './common/carousel'
 import svgInjector from './global/svg-injector'
 import megaMenu from './custom/mega-menu'
+import { updateCounterNav } from './global/compare-products'
 
 export default class Global extends PageManager {
     onReady() {
@@ -26,6 +27,7 @@ export default class Global extends PageManager {
         menu()
         mobileMenuToggle()
         megaMenu()
+        updateCounterNav(this.context.urls) /* Update the "compare" counter and its URL */
 
         // Privacy Cookie Notification
         ;(() => import('./global/cookieNotification').then((privacyCookieNotification) => privacyCookieNotification.default()))()

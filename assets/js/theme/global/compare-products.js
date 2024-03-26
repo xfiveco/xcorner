@@ -1,71 +1,73 @@
-import trigger from '../common/utils/trigger'
-import { showAlertModal } from './modal'
 import q$, { q$$ } from './selector'
 
-function decrementCounter(counter, item) {
-    const index = counter.indexOf(item)
+const selectors = {
+    LSProducts: 'compare-products',
+    link: '.js-compare-nav',
+    dataCompareCard: 'data-compare-card',
+    counterPill: '.js-count-pill',
+    removeAll: '.js-comparison-remove-all',
+}
 
-    if (index > -1) {
-        counter.splice(index, 1)
+let compareCounter = localStorage.getItem(selectors.LSProducts) ? JSON.parse(localStorage.getItem(selectors.LSProducts)) : []
+const $compareLink = q$(selectors.link)
+
+function updateLocalStorageProducts() {
+    localStorage.setItem(selectors.LSProducts, JSON.stringify(compareCounter))
+}
+
+function decrementCounter(item) {
+    if (compareCounter.includes(item)) {
+        compareCounter = compareCounter.filter((el) => el !== item)
+        updateLocalStorageProducts()
+    }
+
+    /* If removing item on compare page, remove product's ID from the URL and remove DOM element */
+    if (window.location.pathname.includes('compare')) {
+        const pathname = window.location.href.replaceAll(`/${item}`, '')
+        const url = new URL(pathname)
+        window.history.replaceState(null, '', url)
+        q$(`[${selectors.dataCompareCard}='${item}']`).remove()
     }
 }
 
-function incrementCounter(counter, item) {
-    counter.push(item)
-}
-
-function updateCounterNav(counter, $link, urls) {
-    if (counter.length !== 0) {
-        if (!($link.offsetWidth > 0 && $link.offsetHeight > 0)) {
-            $link.classList.add('show')
-        }
-
-        /* eslint-disable no-param-reassign */
-        $link.href = `${urls.compare}/${counter.join('/')}`
-
-        /* eslint-disable no-param-reassign */
-        $link.querySelector('.js-count-pill').innerHTML = counter.length
-    } else {
-        $link.classList.remove('show')
+function incrementCounter(item) {
+    if (compareCounter.includes(item)) {
+        return
     }
+
+    compareCounter.push(item)
+    updateLocalStorageProducts()
 }
 
-export default function compareProducts({ noCompareMessage, urls }) {
-    let compareCounter = []
+export function updateCounterNav(urls) {
+    /* eslint-disable no-param-reassign */
+    $compareLink.href = `${urls.compare}/${compareCounter.join('/')}`
 
-    const $compareLink = q$('.js-compare-nav')
+    /* eslint-disable no-param-reassign */
+    $compareLink.querySelector(selectors.counterPill).innerHTML = compareCounter && compareCounter.length > 0 ? compareCounter.length : ''
+}
 
-    q$('body').addEventListener('compare-reset', () => {
-        const $checked = q$$('input[name="products[]"]:checked', q$('body'))
-
-        compareCounter = $checked.length ? $checked.map((element) => element.value) : []
-        updateCounterNav(compareCounter, $compareLink, urls)
-    })
-
-    trigger(q$('body'), 'compare-reset')
-
+export default function compareProducts({ urls }) {
     /* eslint-disable no-unused-expressions */
     q$$('[data-compare-id]').forEach(($compare) => {
+        $compare.checked = compareCounter.includes($compare.value)
         $compare.addEventListener('click', (event) => {
             const product = event.currentTarget.value
-            const $clickedCompareLink = q$('.js-compare-nav')
 
             if (event.currentTarget.checked) {
-                incrementCounter(compareCounter, product)
+                incrementCounter(product)
             } else {
-                decrementCounter(compareCounter, product)
+                decrementCounter(product)
             }
 
-            updateCounterNav(compareCounter, $clickedCompareLink, urls)
+            updateCounterNav(urls)
         })
     })
 
-    q$('.js-compare-nav').addEventListener('click', () => {
-        const $clickedCheckedInput = q$$('input[name="products[]"]:checked', q$('body'))
-
-        if ($clickedCheckedInput.length <= 1) {
-            showAlertModal(noCompareMessage)
-            return false
-        }
+    q$(selectors.removeAll)?.addEventListener('click', () => {
+        localStorage.setItem(selectors.LSProducts, JSON.stringify([]))
+        compareCounter = []
+        updateCounterNav(urls)
+        window.location.pathname = urls.compare
     })
 }

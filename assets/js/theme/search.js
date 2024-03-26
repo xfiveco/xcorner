@@ -315,8 +315,6 @@ export default class Search extends CatalogPage {
                     this.showProducts(false)
                 }
 
-                trigger(q$('body'), 'compare-reset')
-
                 q$('html').scrollTop = 0
                 q$('body').scrollTop = 0
             },
