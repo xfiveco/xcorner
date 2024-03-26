@@ -9,6 +9,8 @@ import megaMenu from './custom/mega-menu'
 export default class Global extends PageManager {
     onReady() {
         const { cartId, secureBaseUrl } = this.context
+        /* eslint-disable prefer-const */
+        let hasAttachedEvent = false
 
         // Cart Preview
         ;(() => import('./global/cart-preview').then((cartPreview) => cartPreview.default(secureBaseUrl, cartId)))()
@@ -25,7 +27,7 @@ export default class Global extends PageManager {
         carousel(this.context)
         menu()
         mobileMenuToggle()
-        megaMenu()
+        megaMenu(hasAttachedEvent)
 
         // Privacy Cookie Notification
         ;(() => import('./global/cookieNotification').then((privacyCookieNotification) => privacyCookieNotification.default()))()

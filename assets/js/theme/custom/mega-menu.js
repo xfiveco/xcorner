@@ -4,13 +4,13 @@
 
 import { constants } from './constants'
 
-export default function megaMenu() {
+export default function megaMenu(hasAttachedEvent) {
+    let hasEvent = hasAttachedEvent
     const { MOBILE_WIDTH } = constants
     const dropdown = document.querySelector('.js-dropdown')
     const searchButton = document.querySelector('.js-mega-menu-search')
     const searchInput = document.querySelector('.js-search-quick')
     const showMoreTriggers = document.querySelectorAll('.js-show-more-item')
-    let hasAttachedEvent = false
 
     const openDesktopMenu = () => {
         dropdown.classList.toggle('is-open')
@@ -20,9 +20,9 @@ export default function megaMenu() {
     const updateEventListeners = () => {
         const windowWidth = window.innerWidth
         if (searchButton) {
-            if (windowWidth >= MOBILE_WIDTH && !hasAttachedEvent) {
+            if (windowWidth >= MOBILE_WIDTH && !hasEvent) {
                 searchButton.addEventListener('click', openDesktopMenu)
-                hasAttachedEvent = true
+                hasEvent = true
             }
         }
     }
@@ -30,7 +30,7 @@ export default function megaMenu() {
     const showMoreMenuItems = () => {
         showMoreTriggers.forEach((item) => {
             const button = item.querySelector('.js-show-more')
-            if (button && !button.hasAttribute('data-event-added')) {
+            if (button && !button.dataset.hasShowMoreEvent) {
                 button.addEventListener('click', () => {
                     const categoryId = button.getAttribute('data-show-more')
                     const listItems = document.querySelectorAll(`.js-navigation-list-item[data-more="${categoryId}"]`)
@@ -48,7 +48,7 @@ export default function megaMenu() {
                     }
                 })
 
-                button.setAttribute('data-event-added', 'true')
+                button.dataset.hasShowMoreEvent = 'true'
             }
         })
     }
