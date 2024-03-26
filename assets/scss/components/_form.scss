@@ -201,6 +201,14 @@ $input-transition: all 0.2s ease-in-out;
         width: 100%;
     }
 
+    &--full-mobile {
+        width: 100%;
+
+        @include bp(small) {
+            max-width: rem-calc(342px);
+        }
+    }
+
     &--short {
         width: 100%;
         max-width: rem-calc(342px);
