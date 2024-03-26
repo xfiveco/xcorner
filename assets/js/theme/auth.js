@@ -5,6 +5,7 @@ import validation from './common/form-validation'
 import forms from './common/models/forms'
 import { classifyForm, Validators, createPasswordValidationErrorTextObject, announceInputErrorMessage } from './common/utils/form-utils'
 import { createTranslationDictionary } from './common/utils/translations-utils'
+import passwordVisibilityToggle from './custom/password-visibility-toggle'
 import q$ from './global/selector'
 
 export default class Auth extends PageManager {
@@ -214,6 +215,8 @@ export default class Auth extends PageManager {
         if ($createAccountForm) {
             this.registerCreateAccountValidator($createAccountForm)
         }
+
+        passwordVisibilityToggle()
 
         setTimeout(() => {
             if (this.recaptcha === null) {
