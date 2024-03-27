@@ -2,6 +2,7 @@
 $checkmark-icon: './../img/icons/checkmark.svg';
 $dropdown-icon: './../img/icons/dropdown.svg';
 $quick-search-icon: './../icons/search.svg';
+$eye-icon: './../icons/eye.svg';
 $form-field-box-shadow: 0 0 0 0.25rem rgba(90, 100, 193, 0.24);
 $input-transition: all 0.2s ease-in-out;
 
@@ -56,81 +57,83 @@ $input-transition: all 0.2s ease-in-out;
 }
 
 .c-form__field {
+    position: relative;
+
     .c-form--create-account & {
         grid-area: auto;
-    
+
         &:nth-child(1) {
             @include bp(large) {
                 grid-area: 1 / 1;
             }
         }
-    
+
         &:nth-child(2) {
             @include bp(large) {
                 grid-area: 2 / 1;
             }
         }
-    
+
         &:nth-child(3) {
             @include bp(large) {
                 grid-area: 2 / 2;
             }
         }
-    
+
         &:nth-child(4) {
             @include bp(large) {
                 grid-area: 3 / 1;
             }
         }
-    
+
         &:nth-child(5) {
             @include bp(large) {
                 grid-area: 3 / 2;
             }
         }
-    
+
         &:nth-child(6) {
             @include bp(large) {
                 grid-area: 4 / 1;
             }
         }
-    
+
         &:nth-child(7) {
             @include bp(large) {
                 grid-area: 4 / 2;
             }
         }
-    
+
         &:nth-child(8) {
             @include bp(large) {
                 grid-area: 5 / 1;
             }
         }
-    
+
         &:nth-child(9) {
             @include bp(large) {
                 grid-area: 5 / 2;
             }
         }
-    
+
         &:nth-child(10) {
             @include bp(large) {
                 grid-area: 5 / 3;
             }
         }
-    
+
         &:nth-child(11) {
             @include bp(large) {
                 grid-area: 6 / 1;
             }
         }
-    
+
         &:nth-child(12) {
             @include bp(large) {
                 grid-area: 6 / 2;
             }
         }
-    
+
         &:nth-child(13) {
             @include bp(large) {
                 grid-area: 6 / 3;
@@ -355,4 +358,28 @@ $input-transition: all 0.2s ease-in-out;
     flex-wrap: wrap;
     gap: 10px;
     align-items: center;
+}
+
+.c-form__password {
+    background-image: url($eye-icon);
+    background-position-y: center;
+    background-position-x: calc(100% - 1rem);
+    background-repeat: no-repeat;
+    background-size: 24px;
+}
+
+.c-form__toggle-password {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: none;
+    outline: none;
+    border: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: rem-calc(40px);
+    height: 100%;
+    padding: 0;
+    cursor: pointer;
 }

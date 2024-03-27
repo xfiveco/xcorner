@@ -42,16 +42,19 @@
                         <label class="c-form__label" for="login_pass">
                             {{lang 'login.field_password'}} <span class="u-required">*</span>
                         </label>
-                        <input 
-                            class="js-form-input c-form__input" 
-                            id="login_pass" 
-                            type="password" 
-                            name="login_pass" 
-                            autocomplete="off"
-                        >
+                        <div class="c-form__field">
+                            <input 
+                                class="js-form-input js-password-input c-form__password c-form__input" 
+                                id="login_pass" 
+                                type="password" 
+                                name="login_pass" 
+                                autocomplete="off"
+                            >
+                            <button class="js-toggle-password c-form__toggle-password" aria-label="Toggle password visibility"></button>
+                        </div>
                     </div>
 
-                    <button type="submit" class="c-button c-button--primary c-button--full@mobile">
+                    <button type="submit" class="c-button c-button--primary c-button--full">
                         {{lang 'login.submit_value' }}
                     </button> 
                     <a href="{{urls.auth.forgot_password}}">
@@ -75,7 +78,7 @@
                         </ul>
                     </div>
                     <div>
-                        <a href="{{urls.auth.create_account}}" class="c-button c-button--secondary c-button--full@mobile">
+                        <a href="{{urls.auth.create_account}}" class="c-button c-button--secondary c-button--full">
                             {{lang 'login.new_customer.create_account' }}
                         </a>
                     </div>
