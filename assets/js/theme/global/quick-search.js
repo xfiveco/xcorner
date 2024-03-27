@@ -96,7 +96,9 @@ export default function doQuickSearch() {
                 return
             }
 
-            window.location.href = `search.php?search_query=${encodeURIComponent(searchQuery)}`
+            const protocol = window.location.protocol
+            const host = window.location.host
+            window.location.href = `${protocol}//${host}/search.php?search_query=${encodeURIComponent(searchQuery)}`
         })
     })
 }
