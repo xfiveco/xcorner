@@ -1,63 +1,68 @@
 import q$, { q$$ } from './selector'
 
 const selectors = {
-    LSProducts: 'compare-products',
     link: '.js-compare-nav',
     dataCompareCard: 'data-compare-card',
     counterPill: '.js-count-pill',
     removeAll: '.js-comparison-remove-all',
 }
 
-let compareCounter = localStorage.getItem(selectors.LSProducts) ? JSON.parse(localStorage.getItem(selectors.LSProducts)) : []
+const localStorageKeys = {
+    compareProducts: 'compare-products',
+}
+
+let compareProductsIDs = localStorage.getItem(localStorageKeys.compareProducts)
+    ? JSON.parse(localStorage.getItem(localStorageKeys.compareProducts))
+    : []
 const $compareLink = q$(selectors.link)
 
 function updateLocalStorageProducts() {
-    localStorage.setItem(selectors.LSProducts, JSON.stringify(compareCounter))
+    localStorage.setItem(localStorageKeys.compareProducts, JSON.stringify(compareProductsIDs))
 }
 
-function decrementCounter(item) {
-    if (compareCounter.includes(item)) {
-        compareCounter = compareCounter.filter((el) => el !== item)
+function decrementCounter(itemID) {
+    if (compareProductsIDs.includes(itemID)) {
+        compareProductsIDs = compareProductsIDs.filter((el) => el !== itemID)
         updateLocalStorageProducts()
     }
 
     /* If removing item on compare page, remove product's ID from the URL and remove DOM element */
     if (window.location.pathname.includes('compare')) {
-        const pathname = window.location.href.replaceAll(`/${item}`, '')
+        const pathname = window.location.href.replaceAll(`/${itemID}`, '')
         const url = new URL(pathname)
         window.history.replaceState(null, '', url)
-        q$(`[${selectors.dataCompareCard}='${item}']`).remove()
+        q$(`[${selectors.dataCompareCard}='${itemID}']`).remove()
     }
 }
 
-function incrementCounter(item) {
-    if (compareCounter.includes(item)) {
+function incrementCounter(itemID) {
+    if (compareProductsIDs.includes(itemID)) {
         return
     }
 
-    compareCounter.push(item)
+    compareProductsIDs.push(itemID)
     updateLocalStorageProducts()
 }
 
 export function updateCounterNav(urls) {
     /* eslint-disable no-param-reassign */
-    $compareLink.href = `${urls.compare}/${compareCounter.join('/')}`
+    $compareLink.href = `${urls.compare}/${compareProductsIDs.join('/')}`
 
     /* eslint-disable no-param-reassign */
-    $compareLink.querySelector(selectors.counterPill).innerHTML = compareCounter && compareCounter.length > 0 ? compareCounter.length : ''
+    $compareLink.querySelector(selectors.counterPill).innerHTML = compareProductsIDs && compareProductsIDs.length > 0 ? compareProductsIDs.length : ''
 }
 
 export default function compareProducts({ urls }) {
     /* eslint-disable no-unused-expressions */
     q$$('[data-compare-id]').forEach(($compare) => {
-        $compare.checked = compareCounter.includes($compare.value)
+        $compare.checked = compareProductsIDs.includes($compare.value)
         $compare.addEventListener('click', (event) => {
-            const product = event.currentTarget.value
+            const productID = event.currentTarget.value
 
             if (event.currentTarget.checked) {
-                incrementCounter(product)
+                incrementCounter(productID)
             } else {
-                decrementCounter(product)
+                decrementCounter(productID)
             }
 
             updateCounterNav(urls)
@@ -65,8 +70,8 @@ export default function compareProducts({ urls }) {
     })
 
     q$(selectors.removeAll)?.addEventListener('click', () => {
-        localStorage.setItem(selectors.LSProducts, JSON.stringify([]))
-        compareCounter = []
+        localStorageKeys.setItem(localStorageKeys.compareProducts, JSON.stringify([]))
+        compareProductsIDs = []
         updateCounterNav(urls)
         window.location.pathname = urls.compare
     })
