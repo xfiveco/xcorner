@@ -201,7 +201,7 @@ $input-transition: all 0.2s ease-in-out;
         width: 100%;
     }
 
-    &--full-mobile {
+    &--full\@mobile {
         width: 100%;
 
         @include bp(small) {
