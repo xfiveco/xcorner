@@ -5,9 +5,9 @@
 import { constants } from './constants'
 
 let isShowMoreEventAttached = false
+let isOpenSearchEventAttached = false
 
-export default function megaMenu(hasAttachedEvent) {
-    let hasEvent = hasAttachedEvent
+export default function megaMenu() {
     const { MOBILE_WIDTH } = constants
     const dropdown = document.querySelector('.js-dropdown')
     const searchButton = document.querySelector('.js-mega-menu-search')
@@ -22,9 +22,9 @@ export default function megaMenu(hasAttachedEvent) {
     const updateEventListeners = () => {
         const windowWidth = window.innerWidth
         if (searchButton) {
-            if (windowWidth >= MOBILE_WIDTH && !hasEvent) {
+            if (windowWidth >= MOBILE_WIDTH && !isOpenSearchEventAttached) {
                 searchButton.addEventListener('click', openDesktopMenu)
-                hasEvent = true
+                isOpenSearchEventAttached = true
             }
         }
     }
