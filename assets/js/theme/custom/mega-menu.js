@@ -4,6 +4,8 @@
 
 import { constants } from './constants'
 
+let isShowMoreEventAttached = false
+
 export default function megaMenu(hasAttachedEvent) {
     let hasEvent = hasAttachedEvent
     const { MOBILE_WIDTH } = constants
@@ -30,7 +32,7 @@ export default function megaMenu(hasAttachedEvent) {
     const showMoreMenuItems = () => {
         showMoreTriggers.forEach((item) => {
             const button = item.querySelector('.js-show-more')
-            if (button && !button.dataset.hasShowMoreEvent) {
+            if (button && !isShowMoreEventAttached) {
                 button.addEventListener('click', () => {
                     const categoryId = button.getAttribute('data-show-more')
                     const listItems = document.querySelectorAll(`.js-navigation-list-item[data-more="${categoryId}"]`)
@@ -47,10 +49,10 @@ export default function megaMenu(hasAttachedEvent) {
                         })
                     }
                 })
-
-                button.dataset.hasShowMoreEvent = 'true'
             }
         })
+
+        isShowMoreEventAttached = true
     }
 
     updateEventListeners()
