@@ -217,11 +217,11 @@
         "button": "Comparar productos",
         "header": "Comparando {products, plural, one {# Product} other {# Products}}",
         "remove": "Quitar",
-        "remove_all": "Remove All",
+        "remove_all": "Eliminar todo",
         "no_remove": "Se necesitan al menos 2 productos para hacer una comparación válida.",
         "add_to_cart": "Agregar al carrito",
         "no_compare": "Debes seleccionar al menos dos productos para compararlos.",
-        "empty": "Ooops! You haven't selected any product to compare."
+        "empty": "¡Ups! No has seleccionado ningún producto para comparar."
     },
     "category": {
         "label": "Categorías",

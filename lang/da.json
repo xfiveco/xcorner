@@ -217,11 +217,11 @@
         "button": "Sammenlign produkter",
         "header": "Sammenligner {products, plural, one {# produkt} other {# produkter}}",
         "remove": "Fjern",
-        "remove_all": "Remove All",
+        "remove_all": "Fjern alt",
         "no_remove": "Der kræves mindst 2 produkter for at foretage en gyldig sammenligning.",
         "add_to_cart": "Føj til kurv",
         "no_compare": "Du skal vælge mindst to produkter at sammenligne",
-        "empty": "Ooops! You haven't selected any product to compare."
+        "empty": "Ups! Du har ikke valgt noget produkt at sammenligne."
     },
     "category": {
         "label": "Kategorier",
