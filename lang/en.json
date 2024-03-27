@@ -226,9 +226,11 @@
         "products": "Compare products",
         "header": "Comparing {products, plural, one {# Product} other {# Products}}",
         "remove": "Remove",
+        "remove_all": "Remove All",
         "no_remove": "At least 2 products are needed to make a valid comparison.",
         "add_to_cart": "Add to cart",
-        "no_compare": "You must select at least two products to compare"
+        "no_compare": "You must select at least two products to compare",
+        "empty": "Ooops! You haven't selected any product to compare."
     },
     "category": {
         "label": "Categories",

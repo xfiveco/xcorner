@@ -7,12 +7,16 @@
     {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
 
     <h1 class="o-heading o-heading--l">
-        {{lang 'compare.products'}}
+        {{#if comparisons.length ">" 0}}
+            {{lang 'compare.products'}}
+        {{else}}
+            {{lang 'compare.empty'}}
+        {{/if}}
     </h1>
 
     <div class="c-product-compare">
         {{#each comparisons}}
-            <div class="c-product-compare__card">
+            <div class="c-product-compare__card" data-compare-card="{{id}}">
                 {{> components/products/card-alternate class="c-card__compare-article" hide_price='true'}}
                 <div class="c-product-compare__description">
                     {{{ summary }}}
@@ -54,6 +58,10 @@
             </div>
         {{/each}}
     </div>
+
+    {{#if comparisons.length ">" 0}}
+        <button class="js-comparison-remove-all c-button c-button--quaternary">{{ lang 'compare.remove_all'}}</button>
+    {{/if}}
 </div>
 
 {{/partial}}

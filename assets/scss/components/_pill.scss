@@ -1,0 +1,36 @@
+.c-pill {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1em;
+    height: 1em;
+    padding: 5px;
+    box-sizing: content-box;
+    border-radius: 50%;
+    font-size: rem-calc(14px);
+    line-height: 1.71;
+    font-weight: 600;
+    text-align: center;
+    color: $color-pill-text;
+    background-color: $color-pill-bg;
+
+    &:empty {
+        display: none;
+    }
+
+    &--floated\@mobile {
+        @include bp-down(medium) {
+            position: absolute;
+            top: 0;
+            right: 0;
+            transform: translateX(50%);
+        }
+    }
+}
+
+/* Make sure that the floated pill's container has position:relative on mobile */
+*:has(> .c-pill--floated\@mobile) {
+    @include bp-down(medium) {
+        position: relative;
+    }
+}

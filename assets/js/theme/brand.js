@@ -4,7 +4,6 @@ import compareProducts from './global/compare-products'
 import FacetedSearch from './common/faceted-search'
 import { createTranslationDictionary } from './common/utils/translations-utils'
 import q$ from './global/selector'
-import trigger from './common/utils/trigger'
 
 export default class Brand extends CatalogPage {
     constructor(context) {
@@ -55,8 +54,6 @@ export default class Brand extends CatalogPage {
             (content) => {
                 $productListingContainer.innerHTML = content.productListing
                 $facetedSearchContainer.innerHTML = content.sidebar
-
-                trigger(q$('body'), 'compare-reset')
 
                 q$('html').scrollTop(0)
                 q$('body').scrollTop(0)

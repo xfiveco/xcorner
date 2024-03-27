@@ -262,19 +262,6 @@
 
 .c-navigation__cart-quantity {
     display: inline-block;
-    background-color: $color-secondary-300;
-    border-radius: 50%;
-    width: 1.5rem;
-    height: 1.5rem;
-
-    color: $color-white;
-    text-align: center;
-    font-family: $font-regular;
-    font-size: 0.875rem;
-    font-style: normal;
-    font-weight: 600;
-    line-height: 1.5rem;
-
     position: absolute;
     top: rem-calc(2px);
     right: rem-calc(-12px);

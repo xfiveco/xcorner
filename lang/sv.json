@@ -217,9 +217,11 @@
         "button": "Jämför produkter",
         "header": "Jämföra {products, plural, one {# Produkt} other {# Produkter}}",
         "remove": "Ta bort",
+        "remove_all": "Ta bort alla",
         "no_remove": "Minst två produkter behövs för att göra en giltig jämförelse.",
         "add_to_cart": "Lägg till i kundvagn",
-        "no_compare": "Du måste välja minst två produkter att jämföra"
+        "no_compare": "Du måste välja minst två produkter att jämföra",
+        "empty": "Oj! Du har inte valt någon produkt att jämföra."
     },
     "category": {
         "label": "Kategorier",

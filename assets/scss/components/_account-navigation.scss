@@ -35,16 +35,3 @@ $decoration-size: 3px;
         }
     }
 }
-
-.c-account-navigation__pill {
-    color: $color-pill-text;
-    background-color: $color-pill-bg;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 1em;
-    height: 1em;
-    padding: 4px;
-    box-sizing: content-box;
-}

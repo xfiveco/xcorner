@@ -1,71 +1,78 @@
-import trigger from '../common/utils/trigger'
-import { showAlertModal } from './modal'
 import q$, { q$$ } from './selector'
 
-function decrementCounter(counter, item) {
-    const index = counter.indexOf(item)
+const selectors = {
+    link: '.js-compare-nav',
+    dataCompareCard: 'data-compare-card',
+    counterPill: '.js-count-pill',
+    removeAll: '.js-comparison-remove-all',
+}
 
-    if (index > -1) {
-        counter.splice(index, 1)
+const localStorageKeys = {
+    compareProducts: 'compare-products',
+}
+
+let compareProductsIDs = localStorage.getItem(localStorageKeys.compareProducts)
+    ? JSON.parse(localStorage.getItem(localStorageKeys.compareProducts))
+    : []
+const $compareLink = q$(selectors.link)
+
+function updateLocalStorageProducts() {
+    localStorage.setItem(localStorageKeys.compareProducts, JSON.stringify(compareProductsIDs))
+}
+
+function decrementCounter(itemID) {
+    if (compareProductsIDs.includes(itemID)) {
+        compareProductsIDs = compareProductsIDs.filter((el) => el !== itemID)
+        updateLocalStorageProducts()
+    }
+
+    /* If removing item on compare page, remove product's ID from the URL and remove DOM element */
+    if (window.location.pathname.includes('compare')) {
+        const pathname = window.location.href.replaceAll(`/${itemID}`, '')
+        const url = new URL(pathname)
+        window.history.replaceState(null, '', url)
+        q$(`[${selectors.dataCompareCard}='${itemID}']`).remove()
     }
 }
 
-function incrementCounter(counter, item) {
-    counter.push(item)
-}
-
-function updateCounterNav(counter, $link, urls) {
-    if (counter.length !== 0) {
-        if (!($link.offsetWidth > 0 && $link.offsetHeight > 0)) {
-            $link.classList.add('show')
-        }
-
-        /* eslint-disable no-param-reassign */
-        $link.href = `${urls.compare}/${counter.join('/')}`
-
-        /* eslint-disable no-param-reassign */
-        $link.querySelector('.js-count-pill').innerHTML = counter.length
-    } else {
-        $link.classList.remove('show')
+function incrementCounter(itemID) {
+    if (compareProductsIDs.includes(itemID)) {
+        return
     }
+
+    compareProductsIDs.push(itemID)
+    updateLocalStorageProducts()
 }
 
-export default function compareProducts({ noCompareMessage, urls }) {
-    let compareCounter = []
+export function updateCounterNav(urls) {
+    /* eslint-disable no-param-reassign */
+    $compareLink.href = `${urls.compare}/${compareProductsIDs.join('/')}`
 
-    const $compareLink = q$('.js-compare-nav')
+    /* eslint-disable no-param-reassign */
+    $compareLink.querySelector(selectors.counterPill).innerHTML = compareProductsIDs && compareProductsIDs.length > 0 ? compareProductsIDs.length : ''
+}
 
-    q$('body').addEventListener('compare-reset', () => {
-        const $checked = q$$('input[name="products[]"]:checked', q$('body'))
-
-        compareCounter = $checked.length ? $checked.map((element) => element.value) : []
-        updateCounterNav(compareCounter, $compareLink, urls)
-    })
-
-    trigger(q$('body'), 'compare-reset')
-
+export default function compareProducts({ urls }) {
     /* eslint-disable no-unused-expressions */
     q$$('[data-compare-id]').forEach(($compare) => {
+        $compare.checked = compareProductsIDs.includes($compare.value)
         $compare.addEventListener('click', (event) => {
-            const product = event.currentTarget.value
-            const $clickedCompareLink = q$('.js-compare-nav')
+            const productID = event.currentTarget.value
 
             if (event.currentTarget.checked) {
-                incrementCounter(compareCounter, product)
+                incrementCounter(productID)
             } else {
-                decrementCounter(compareCounter, product)
+                decrementCounter(productID)
             }
 
-            updateCounterNav(compareCounter, $clickedCompareLink, urls)
+            updateCounterNav(urls)
         })
     })
 
-    q$('.js-compare-nav').addEventListener('click', () => {
-        const $clickedCheckedInput = q$$('input[name="products[]"]:checked', q$('body'))
-
-        if ($clickedCheckedInput.length <= 1) {
-            showAlertModal(noCompareMessage)
-            return false
-        }
+    q$(selectors.removeAll)?.addEventListener('click', () => {
+        localStorage.setItem(localStorageKeys.compareProducts, JSON.stringify([]))
+        compareProductsIDs = []
+        updateCounterNav(urls)
+        window.location.pathname = urls.compare
     })
 }

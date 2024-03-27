@@ -217,9 +217,11 @@
         "button": "Producten vergelijken",
         "header": "{products, plural, one {# Product} other {# Products}} vergelijken",
         "remove": "Verwijderen",
+        "remove_all": "Verwijder alles",
         "no_remove": "U moet ten minste 2 producten selecteren om een geldige vergelijking te kunnen maken.",
         "add_to_cart": "Toevoegen aan winkelmandje",
-        "no_compare": "U moet ten minste twee producten selecteren om te vergelijken"
+        "no_compare": "U moet ten minste twee producten selecteren om te vergelijken",
+        "empty": "Oeps! U heeft geen product geselecteerd om te vergelijken."
     },
     "category": {
         "label": "Categorieën",
