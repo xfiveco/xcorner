@@ -64,6 +64,8 @@ export default class ImageGallery {
         const isBrowserIE = navigator.userAgent.includes('Trident')
 
         this.$mainImage.dataset.zoomImage = this.currentImage.zoomImageUrl
+        this.$mainImageNested.src = this.currentImage.zoomImageUrl
+        this.$mainImageNested.srcset = this.currentImage.zoomImageUrl
         this.$mainImageNested.alt = this.currentImage.mainImageAlt
         this.$mainImageNested.title = this.currentImage.mainImageAlt
 

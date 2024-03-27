@@ -53,7 +53,7 @@
             {{!-- Remove the surrounding a-element if there is no main image. --}}
             {{#if product.main_image}}
                 <a 
-                    class="c-product__image-link"
+                    class="js-main-image-link c-product__image-link"
                     href="{{getImageSrcset product.main_image (cdn theme_settings.default_image_product) 1x=theme_settings.zoom_size }}"
                     target="_blank"
                 >
