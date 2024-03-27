@@ -70,7 +70,7 @@ export default function compareProducts({ urls }) {
     })
 
     q$(selectors.removeAll)?.addEventListener('click', () => {
-        localStorageKeys.setItem(localStorageKeys.compareProducts, JSON.stringify([]))
+        localStorage.setItem(localStorageKeys.compareProducts, JSON.stringify([]))
         compareProductsIDs = []
         updateCounterNav(urls)
         window.location.pathname = urls.compare
