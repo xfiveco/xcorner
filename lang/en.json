@@ -218,7 +218,9 @@
             "12": "Dec"
         },
         "reach_out": "Reach out",
-        "sign_in_now": "Sign in now"
+        "sign_in_now": "Sign in now",
+        "show_more": "Show more",
+        "show_less": "Show less"
     },
     "compare": {
         "products": "Compare products",
