@@ -52,9 +52,9 @@ export default function megaMenu() {
                     })
                 }
             })
-        }
 
-        isShowMoreEventAttached = true
+            isShowMoreEventAttached = true
+        }
     }
 
     updateEventListeners()
