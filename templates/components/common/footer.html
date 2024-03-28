@@ -1,6 +1,6 @@
 {{#if banners.bottom}}
     {{#if settings.data_tag_enabled}}
-        <div class="c-header__announcement-banner" data-banner-location="bottom">
+        <div class="c-announcement-banner" data-banner-location="bottom" xmlns="http://www.w3.org/1999/html">
             {{#each (limit banners.bottom_metadata 1)}}
                 <div data-event-type="promotion" data-entity-id="{{this.id}}" data-name="{{this.banner-name}}" data-position="{{this.location}}" data-name="{{this.banner-name}}">
                     <div data-event-type="promotion-click">
@@ -10,7 +10,7 @@
             {{/each}}
         </div>
     {{else}}
-        <div class="c-header__announcement-banner" data-banner-location="bottom">
+        <div class="c-announcement-banner" data-banner-location="bottom">
             <div>
                 {{{limit banners.bottom 1}}}
             </div>
@@ -114,7 +114,8 @@
                     
                     {{> components/common/payment-icons}}
                 </article>
-            </section class="c-footer-area">
+            </section>
+            <section class="c-footer-area">
             {{#if settings.paypal_commerce_credit_message}}
                 <div>
                     <p>
@@ -122,6 +123,7 @@
                     </p>
                 </div>
             {{/if}}
+            </section>
             <div class="c-footer-copyright">
                 {{#if theme_settings.show_powered_by}}
                     <div>

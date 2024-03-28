@@ -96,7 +96,9 @@ export default function doQuickSearch() {
                 return
             }
 
-            window.location.href = `search.php?search_query=${encodeURIComponent(searchQuery)}`
+            const origin = window.location.origin
+
+            window.location.href = `${origin}/search.php?search_query=${encodeURIComponent(searchQuery)}`
         })
     })
 }
