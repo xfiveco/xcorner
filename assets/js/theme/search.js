@@ -223,8 +223,6 @@ export default class Search extends CatalogPage {
 
         requestAnimationFrame(() => {
             $searchResultsMessage.focus()
-            // document.querySelector('html').scrollTop = 0
-
             window.scrollTo(0, 0)
         })
     }
