@@ -86,3 +86,13 @@
         display: block;
     }
 }
+
+.c-search__hide-filters-icon {
+    fill: transparent;
+
+    .c-search__hide-filters:hover,
+    .c-search__hide-filters:active,
+    .c-search__hide-filters:focus & {
+        filter: brightness(0) invert(1);
+    }
+}

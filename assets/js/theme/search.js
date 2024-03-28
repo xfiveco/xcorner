@@ -221,11 +221,10 @@ export default class Search extends CatalogPage {
 
         q$('body').insertAdjacentElement('beforeend', $searchResultsMessage)
 
-        setTimeout(() => {
+        requestAnimationFrame(() => {
             $searchResultsMessage.focus()
-            q$('html').scrollTop = 0
-            q$('body').scrollTop = 0
-        }, 100)
+            document.querySelector('html').scrollTop = 0
+        })
     }
 
     loadTreeNodes(node, cb) {
