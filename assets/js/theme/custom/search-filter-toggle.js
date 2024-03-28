@@ -6,10 +6,9 @@ export default function searchFilterToggle() {
     const filterWrapper = document.querySelector('.js-search-facets')
     const filterButtonLabels = document.querySelectorAll('.js-hide-filters-label')
     if (filterButton) {
-        const filterButtonSVG = filterButton.querySelector('svg')
         filterButton.addEventListener('click', () => {
             filterWrapper.classList.toggle('is-open')
-            filterButtonSVG.classList.toggle('is-open')
+            filterButton.classList.toggle('is-open')
             filterButtonLabels.forEach((label) => {
                 label.classList.toggle('is-open')
             })
